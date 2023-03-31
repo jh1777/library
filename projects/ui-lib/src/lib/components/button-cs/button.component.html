@@ -1,0 +1,61 @@
+<div 
+    *ngIf="(buttonStore.showNonHref$ | async) && !(buttonStore.isLoading$ | async)"
+    class="csgp-button-wrapper"
+    [class.disabled]="buttonStore.disabled$ | async"
+    [ngClass]="(buttonStore.filledStyle$ | async) ? 'bordered' : ''"
+    [style.border]="(buttonStore.filledStyle$ | async) ? buttonStore.borderWidth : ''"
+    [style.border-color]="(buttonStore.filledStyleBorder$ | async) ? (buttonStore.borderColor$ | async) : ((buttonStore.color$ | async) && !(buttonStore.disabled$ | async) ? (buttonStore.color$ | async) : 'var(--csgp-button-text-color)')"
+    [style.background-color]="(buttonStore.filledStyleBackground$ | async) ? (buttonStore.backgroundColor$ | async) : ''"
+    [style.color]="!(buttonStore.disabled$ | async) ? (buttonStore.color$ | async) : ''"
+    [attr.title]="buttonStore.tooltip$ | async"
+    (click)="buttonClicked($event)"
+    (mouseenter)="mouseEnterEvent($event)"
+    (mouseleave)="mouseLeaveEvent($event)"
+    ><clr-icon 
+        *ngIf="buttonStore.icon$ | async"
+        [ngClass]="(buttonStore.disabled$ | async) ? 'disabled' : ''"
+        [style.color]="!(buttonStore.disabled$ | async) && (buttonStore.color$ | async) ? (buttonStore.color$ | async) : ''"
+        [attr.shape]="buttonStore.icon$ | async"
+        [attr.size]="buttonStore.iconSize$ | async"
+    ></clr-icon>
+    <div *ngIf="buttonStore.label$ | async">{{ buttonStore.label$ | async }}</div>
+</div>
+
+<a
+    *ngIf="(buttonStore.showHref$ | async) && !(buttonStore.isLoading$ | async)"
+    [attr.href]="buttonStore.href$ | async"
+    class="csgp-button-wrapper"
+    [class.disabled]="buttonStore.disabled$ | async"
+    [ngClass]="(buttonStore.filledStyle$ | async) ? 'bordered' : ''"
+    [style.border]="(buttonStore.filledStyle$ | async) ? buttonStore.borderWidth : ''"
+    [style.border-color]="(buttonStore.filledStyleBorder$ | async) ? (buttonStore.borderColor$ | async) : ((buttonStore.color$ | async) && !(buttonStore.disabled$ | async) ? (buttonStore.color$ | async) : 'var(--csgp-button-text-color)')"
+    [style.background-color]="(buttonStore.filledStyleBackground$ | async) ? (buttonStore.backgroundColor$ | async) : ''"
+    [style.color]="!(buttonStore.disabled$ | async) ? (buttonStore.color$ | async) : ''"
+    [attr.title]="buttonStore.tooltip$ | async"
+    (click)="buttonClicked($event)"
+    (mouseenter)="mouseEnterEvent($event)"
+    (mouseleave)="mouseLeaveEvent($event)"
+    >
+    <clr-icon 
+        *ngIf="buttonStore.icon$ | async"
+        [ngClass]="(buttonStore.disabled$ | async) ? 'disabled' : ''"
+        [style.color]="!(buttonStore.disabled$ | async) && (buttonStore.color$ | async) ? (buttonStore.color$ | async) : ''"
+        [attr.shape]="buttonStore.icon$ | async"
+        [attr.size]="buttonStore.iconSize$ | async"
+    ></clr-icon>
+    <div *ngIf="buttonStore.label$ | async">{{ buttonStore.label$ | async }}</div>
+</a>
+
+<div 
+    *ngIf="buttonStore.isLoading$ | async" 
+    class="csgp-button-wrapper disabled"
+    [ngClass]="(buttonStore.filledStyle$ | async) ? 'bordered' : ''"
+    [style.border]="(buttonStore.filledStyle$ | async) ? buttonStore.borderWidth : ''"
+    [style.border-color]="(buttonStore.filledStyleBorder$ | async) ? (buttonStore.borderColor$ | async) : ((buttonStore.color$ | async) && !(buttonStore.disabled$ | async) ? (buttonStore.color$ | async) : 'var(--csgp-button-text-color)')"
+    [style.background-color]="(buttonStore.filledStyleBackground$ | async) ? (buttonStore.backgroundColor$ | async) : ''"
+    [style.color]="!(buttonStore.disabled$ | async) ? (buttonStore.color$ | async) : ''"
+    [attr.title]="buttonStore.tooltip$ | async"
+>
+    <clr-spinner class="timeline-spinner" [clrSmall]="true"></clr-spinner>
+    <div *ngIf="buttonStore.label$ | async">{{  buttonStore.isLoadingMessage$ | async }}</div>
+</div>

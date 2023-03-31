@@ -1,16 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UiLibModule } from 'projects/ui-lib/src/public-api';
+import { CommonModule } from '@angular/common';
+import { ClarityModule } from '@clr/angular';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    ClarityModule,
+    AppRoutingModule,
+    UiLibModule
   ],
   providers: [],
   bootstrap: [AppComponent]

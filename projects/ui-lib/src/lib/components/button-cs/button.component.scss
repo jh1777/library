@@ -1,0 +1,52 @@
+:host {
+    display: contents;
+
+    .bordered {
+        padding: .1rem .3rem .1rem .3rem;
+        border-radius: .2rem;
+    }
+
+    .disabled {
+        color: var(--csgp-button-text-disabled-color, #909294) !important;
+        cursor: default !important;
+    }
+
+    .csgp-button-wrapper {
+        display: flex;
+        align-items: center;
+        width: fit-content;
+        font-size: var(--csgp-button-font-size, .6rem);
+        gap: .25rem;
+        cursor: pointer;
+        text-decoration: none;
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+         -khtml-user-select: none; /* Konqueror HTML */
+           -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                      supported by Chrome, Edge, Opera and Firefox */
+        color: var(--csgp-button-text-color, #007A93);
+
+        &:not(.disabled):hover {
+            color: var(--csgp-button-text-hover-color, #5097AB);
+            > clr-icon {
+                color: var(--csgp-button-icon-hover-color, #5097AB);
+            }
+
+            &:active {
+                color: var(--csgp-button-text-color, #007A93);
+                > clr-icon {
+                    color: var(--csgp-button-text-hover-color, #007A93);
+                }
+            }
+            
+        }
+    
+        > clr-icon {
+            color: var(--csgp-button-icon-color, #007A93);
+        }
+    
+        
+    }
+}

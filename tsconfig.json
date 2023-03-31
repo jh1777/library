@@ -5,7 +5,7 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "strict": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -18,7 +18,16 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
+    "types": ["cypress", "node", "cypress-real-events"],
     "useDefineForClassFields": false,
+    "paths": {
+      "ui-lib": [
+        "dist/ui-lib"
+      ],
+      "@ui" : [
+        "projects/ui-lib/src/lib"
+      ]
+    },
     "lib": [
       "ES2022",
       "dom"
@@ -26,8 +35,5 @@
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
   }
 }
