@@ -69,7 +69,7 @@ describe('PropertyEntryComponent', () => {
             isLoading: true
           }
     });
-    cy.get('#csgp-PropertyEntry-container-left > :nth-child(1)').should('contain.text', '◼︎◼︎');
+    cy.get('.csgp-propertyentry-container-left > :nth-child(1)').should('contain.text', '◼︎◼︎');
   })
 
   it('Content check', () => {
@@ -79,12 +79,12 @@ describe('PropertyEntryComponent', () => {
             data: testModel
         }
     });
-    cy.get('#csgp-PropertyEntry-container-left > .header-text').should('contain.text', testModel.label.value);
-    cy.get('#csgp-PropertyEntry-container-left > .subtitle').should('contain.text', testModel.subtitleLabel.value);
-    cy.get('#csgp-PropertyEntry-container-right > .header-text').should('contain.text', testModel.content.value);
-    cy.get('#csgp-PropertyEntry-container-right > .subtitle').should('contain.text', testModel.subtitleContent.value);
+    cy.get('.csgp-propertyentry-container-left > .header-text').should('contain.text', testModel.label.value);
+    cy.get('.csgp-propertyentry-container-left > .subtitle').should('contain.text', testModel.subtitleLabel.value);
+    cy.get('.csgp-propertyentry-container-right > .header-text').should('contain.text', testModel.content.value);
+    cy.get('.csgp-propertyentry-container-right > .subtitle').should('contain.text', testModel.subtitleContent.value);
 
-    cy.get('#csgp-PropertyEntry-container-right > .header-text').should('have.css', 'color', 'rgb(6, 156, 21)');
+    cy.get('.csgp-propertyentry-container-right > .header-text').should('have.css', 'color', 'rgb(6, 156, 21)');
 
   })
 

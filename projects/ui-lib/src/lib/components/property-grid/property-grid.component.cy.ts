@@ -1,6 +1,6 @@
 
-import { PropertyEntryComponent } from '../property-entry/property-entry.component';
-import { PropertyEntryModel, PropertyEntryOptions } from '../property-entry/property-entry.component.model';
+import { ClarityModule } from '@clr/angular';
+import { PropertyEntryComponent, PropertyEntryModel, PropertyEntryOptions } from '../property-entry';
 import { PropertyGridComponent } from './property-grid.component';
 import { PropertyGridModel } from './property-grid.component.model';
 
@@ -26,6 +26,7 @@ describe('PropertyGridComponent', () => {
   beforeEach(() => {
     cy.mount(PropertyGridComponent, {
         declarations: [PropertyEntryComponent],
+        imports: [ClarityModule],
         componentProperties: {
             cols: 1,
             rows: 2,
@@ -49,10 +50,11 @@ describe('PropertyGridComponent', () => {
     });
   });
 
+
   it('Items check', () => {
-    cy.get(':nth-child(1) > app-key-value-item-v2 > #csgp-PropertyEntry > #csgp-PropertyEntry-container').should('be.visible');
-    cy.get(':nth-child(2) > app-key-value-item-v2 > #csgp-PropertyEntry > #csgp-PropertyEntry-container').should('be.visible');
-    cy.get(':nth-child(3) > app-key-value-item-v2 > #csgp-PropertyEntry > #csgp-PropertyEntry-container').should('not.exist');
+    cy.get(':nth-child(1) > csgp-property-entry > .csgp-propertyentry > .csgp-propertyentry-container').should('be.visible');
+    cy.get(':nth-child(2) > csgp-property-entry > .csgp-propertyentry > .csgp-propertyentry-container').should('be.visible');
+    cy.get(':nth-child(3) > csgp-property-entry > .csgp-propertyentry > .csgp-propertyentry-container').should('not.exist');
   });
 
   it('Unified Loading check', () => {
@@ -84,8 +86,8 @@ describe('PropertyGridComponent', () => {
         }
     });
 
-    cy.get(':nth-child(1) > app-key-value-item-v2 > #csgp-PropertyEntry').should('contain.text', '◼︎◼︎');
-    cy.get(':nth-child(2) > app-key-value-item-v2 > #csgp-PropertyEntry').should('contain.text', '◼︎◼︎');
+    cy.get(':nth-child(1) > csgp-property-entry > .csgp-propertyentry').should('contain.text', '◼︎◼︎');
+    cy.get(':nth-child(2) > csgp-property-entry > .csgp-propertyentry').should('contain.text', '◼︎◼︎');
 
   });
 
@@ -117,8 +119,9 @@ describe('PropertyGridComponent', () => {
         }
     });
 
-    cy.get(':nth-child(1) > app-key-value-item-v2 > #csgp-PropertyEntry').should('contain.text', '◼︎◼︎');
-    cy.get(':nth-child(2) > app-key-value-item-v2 > #csgp-PropertyEntry').should('not.contain.text', '◼︎◼︎');
+    cy.get(':nth-child(1) > csgp-property-entry > .csgp-propertyentry').should('contain.text', '◼︎◼︎');
+    cy.get(':nth-child(2) > csgp-property-entry > .csgp-propertyentry').should('not.contain.text', '◼︎◼︎');
 
   });
+  
 })

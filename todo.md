@@ -1,30 +1,40 @@
-# Migrate to component store
+# UI Lib Status
 
-## DONE incl. Cypress
+CS - Component Store
 
+## Ohne CS
 
-## DONE (missing cypress)
+- /button (DONE)
+- /metric-entry -> Model vereinheitlichen (s.u.)
+- /property-entry -> Model vereinheitlichen (s.u.)
+- /property-grid -> Model vereinheitlichen (s.u.), neue Components 1 und 2 aufnehmen
+- /tags-v1 -> todo!, komplett umstellen auf Lib und renaming, Model vereinheitlichen (s.u.),
+- /drawer -> todo! duplizieren und zurückbauen auf normales model ohne CS
+- /drawer-entry -> todo! duplizieren und zurückbauen auf normales model ohne CS
 
-- /metric-entry (old name: metric-bar-item-v2)
-- /button
-- /tags (old: tags-v1)
-- /property-entry (old name: key-value-item-v2) (+deepmerge)
-- /drawer-entry (+deepmerge)
-- /drawer (+deepmerge)
+## Mit CS
 
-## IN PROGRESS
+> (* without Cypress)
 
+- /button-cs (DONE*)
+- /metric-entry-cs (DONE*)
+- /property-entry-cs (DONE*)
+- /drawer-cs -> todo!, rename, umstellen auf Lib und renaming, Model anschauen
+- /drawer-entry-cs -> todo!, rename, umstellen auf Lib und renaming, Model anschauen
+- /tags -> todo!, rename, umstellen auf Lib und renaming, Model anschauen
+- /property-grid-cs -> todo!, duplizieren und auf CS umstellen
 
-## OPEN
-
-- /key-value-item-grid-v2 ---> entry-grid?
 
 # New Components
 
-- property-entry-simple (only 1 Key/Value) -> integrate in grid
-- metric-entry-big (nur Key / MetricValue in large fonts) -> integrate in grid
+1. property-entry-simple (only 1 Key/Value) -> integrate in grid
+2. metric-entry-big (nur Key / MetricValue in large fonts) -> integrate in grid
 
+# ToDo
 
-# Investigate
+- Alle non-Component Stoe models vereinheitlichen in einem Model 
+    - teil-interface erstellen für error
+
+# Links
 
 - Deep Merge package -> https://www.npmjs.com/package/deepmerge 

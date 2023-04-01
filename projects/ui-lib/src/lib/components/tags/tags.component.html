@@ -1,0 +1,54 @@
+
+
+<div id="csgp-tags-group">
+    <clr-icon *ngIf="tagsStore.showTagsIcon$ | async" id="csgp-tags-icon" shape="tags"></clr-icon>
+    <clr-spinner *ngIf="tagsStore.isLoading$ | async" [clrSmall]="true"></clr-spinner>
+    <ng-container *ngIf="!(tagsStore.isLoading$ | async)">
+        <div 
+            id="csgp-tag-item" 
+            *ngFor="let tag of (tagsStore.tagsFiltered$ | async)" 
+            [attr.title]="tag.description" 
+            (click)="tagClicked($event, tag)"
+            [ngStyle]="{'cursor': (tagsStore.enableClick$ | async) ? 'pointer' : 'default'}"
+            [ngClass]="{'selectable': (tagsStore.enableClick$ | async), 'action': (tagsStore.enableClick$ | async) }"
+            
+            >
+            <strong>{{ tag.name }}</strong>: {{ tag.value }}
+            <span id="csgp-tags-buttons-group">
+                <div *ngIf="(tagsStore.enableEditButton$ | async)"
+                    id="csgp-tag-edit-button" 
+                    title="Edit this tag" 
+                    (click)="editTagClicked($event, tag)">
+                    <clr-icon shape="edit" size="12"></clr-icon>
+                </div>
+                <div 
+                    *ngIf="(tagsStore.enableDeletionButton$ | async)"
+                    id="csgp-tag-remove-button" 
+                    title="Delete this tag" 
+                    (click)="deleteTagClicked($event, tag)">
+                    <clr-icon  shape="trash" size="12"></clr-icon>
+                </div>
+            </span>
+        </div>
+        <div
+            id="csgp-tag-item"
+            [attr.title]="(tagsStore.moreTagsLabel$ | async)"
+            class="csgp-toolbutton" 
+            *ngIf="(tagsStore.overflowAfterXItems$ | async) > 0"
+            (click)="tagMoreClicked($event)"
+            [ngStyle]="{'cursor': (tagsStore.enableClickMore$ | async) ? 'pointer' : 'default'}"
+            [ngClass]="{'selectable': (tagsStore.enableClickMore$ | async), 'action': (tagsStore.enableClickMore$ | async) }"
+        >
+            &nbsp;<clr-icon shape="ellipsis-horizontal" size="15"></clr-icon>&nbsp;
+        </div>
+        <div
+            id="csgp-tag-item"
+            class="csgp-toolbutton selectable action" 
+            *ngIf="(tagsStore.showAddButton$ | async) > 0"
+            (click)="tagAddClicked($event)"
+            style="cursor: pointer"
+        >
+            &nbsp;<clr-icon shape="plus" size="15"></clr-icon>&nbsp;
+        </div>
+    </ng-container>
+</div>

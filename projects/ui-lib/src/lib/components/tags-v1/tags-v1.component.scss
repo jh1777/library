@@ -1,0 +1,102 @@
+:host {
+    display: contents;
+    --tags-action-color: #007a93;
+    --tags-action-color-light: #a2cfd8;
+    --tags-grey-light: #e3e4e5;
+    --tags-grey-dark: #444444;
+    --tags-grey-medium: #a0a1a2;
+    --tags-red: #bc1717;
+    --tags-red-light: #ebb9b9;
+    --tags-animation-duration: 0.15s;
+
+    #csgp-tags-group {
+        display: flex;
+        font-size: .5rem;
+        align-items: center;
+        gap: .5rem;
+        flex-wrap: wrap;
+    }
+
+    #csgp-tags-icon {
+        color: var(--tags-grey-medium);
+    }
+
+    #csgp-tags-buttons-group {
+        display: flex;
+        align-items: center;
+        margin-left: .2rem;
+        gap: .2rem;
+    }
+
+    #csgp-tag-item {
+        background-color: var(--tags-grey-light);
+        border-radius: .3rem;
+        border: 1px solid var(--tags-grey-light);
+        color: var(--tags-grey-dark);
+        padding: .0rem .4rem .0rem .4rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .selectable:hover {
+        border: 1px solid var(--tags-grey-medium) !important;
+    }
+
+    .action:hover {
+        color: var(--tags-action-color) !important;
+    }
+
+    .csgp-more-button {
+        cursor: pointer;
+        color: var(--tags-grey-medium);
+        border: 1px solid var(--tags-grey-light);
+    }
+
+    #csgp-tag-item:has(#csgp-tag-remove-button:hover) {
+        text-decoration: line-through;
+        border: 1px solid var(--tags-grey-medium);
+    }
+
+    #csgp-tag-remove-button {
+        cursor: pointer;
+        display: flex;
+        height: 18px;
+        width: 16px;
+        align-items: center;
+        justify-content: center;
+        color: var(--tags-grey-medium);
+        transition: width var(--tags-animation-duration) ease-in;
+        -moz-transition: width var(--tags-animation-duration) ease-in;
+        -webkit-transition: width var(--tags-animation-duration) ease-in;
+    }
+    #csgp-tag-remove-button:hover {
+        width: 30px;        
+        border-radius: 0.2rem;
+        background-color: var(--tags-red);
+        color: white;
+    }
+
+    #csgp-tag-edit-button {
+        margin-left: .2rem;
+        cursor: pointer;
+        display: flex;
+        height: 18px;
+        width: 16px;
+        align-items: center;
+        justify-content: center;
+        color: var(--tags-grey-medium);
+        transition: width var(--tags-animation-duration) ease-in;
+        -moz-transition: width var(--tags-animation-duration) ease-in;
+        -webkit-transition: width var(--tags-animation-duration) ease-in;
+    }
+    #csgp-tag-edit-button:hover {
+        width: 30px;        
+        border-radius: 0.2rem;
+        background-color: var(--tags-action-color);
+        color: white;
+    }
+
+    #csgp-tag-item:has(#csgp-tag-edit-button:hover) {
+        border: 1px solid var(--tags-grey-medium);
+    }
+}

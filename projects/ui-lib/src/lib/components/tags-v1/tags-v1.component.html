@@ -1,0 +1,40 @@
+<div id="csgp-tags-group">
+    <clr-icon *ngIf="showTagsIcon" id="csgp-tags-icon" shape="tags"></clr-icon>
+    <clr-spinner *ngIf="isLoading" [clrSmall]="true"></clr-spinner>
+    <ng-container *ngIf="!isLoading">
+        <div 
+            id="csgp-tag-item" 
+            *ngFor="let tag of tags" 
+            [attr.title]="tag.description" 
+            (click)="tagClicked($event, tag)"
+            [ngStyle]="{'cursor': enableClick ? 'pointer' : 'default'}"
+            [ngClass]="{'selectable': enableClick, 'action': enableClick }"
+            
+            >
+            <strong>{{ tag.name }}</strong>: {{ tag.value }}
+            <span id="csgp-tags-buttons-group">
+                <div *ngIf="enableEditButton" id="csgp-tag-edit-button" title="Edit this tag" (click)="editTagClicked($event, tag)">
+                    <clr-icon shape="edit" size="12"></clr-icon>
+                </div>
+                <div 
+                    *ngIf="enableDeletionButton"
+                    id="csgp-tag-remove-button" 
+                    title="Delete this tag" 
+                    (click)="deleteTagClicked($event, tag)">
+                    <clr-icon  shape="trash" size="12"></clr-icon>
+                </div>
+            </span>
+        </div>
+        <div
+            id="csgp-tag-item"
+            [attr.title]="moreTagsLabel"
+            class="csgp-more-button" 
+            *ngIf="overflowAfterXItems > 0"
+            (click)="tagMoreClicked($event)"
+            [ngStyle]="{'cursor': enableClickMore ? 'pointer' : 'default'}"
+            [ngClass]="{'selectable': enableClickMore, 'action': enableClickMore }"
+        >
+            &nbsp;<clr-icon shape="ellipsis-horizontal" size="15"></clr-icon>&nbsp;
+        </div>
+    </ng-container>
+</div>

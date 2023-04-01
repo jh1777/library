@@ -1,4 +1,4 @@
-<div id="csgp-keyvalueitem">
+<div class="csgp-propertyentry">
 
     <div *ngIf="errorData?.hasError" class="error-overlay">
         <div>{{ errorData?.message ?? 'An error occured' }}</div>
@@ -7,16 +7,15 @@
 
     <div 
         *ngIf="isLoading" 
-        id="csgp-keyvalueitem-container-loading"
-        class="no-select"
+        class="csgp-propertyentry-container-loading no-select"
         [class.pulse]="!errorData?.hasError" 
         [class.error-blur]="errorData?.hasError"
         >
-        <div id="csgp-keyvalueitem-container-left">
+        <div class="csgp-propertyentry-container-left">
             <div><ng-container *ngFor="let _ of [].constructor(7)">{{ placeholder }}</ng-container></div>
             <div><ng-container *ngFor="let _ of [].constructor(4)">{{ placeholder }}</ng-container></div>
         </div>
-        <div id="csgp-keyvalueitem-container-right">
+        <div class="csgp-propertyentry-container-right">
             <div><ng-container *ngFor="let _ of [].constructor(7)">{{ placeholder }}</ng-container></div>
             <div><ng-container *ngFor="let _ of [].constructor(4)">{{ placeholder }}</ng-container></div>
         </div>
@@ -24,10 +23,10 @@
 
     <div 
         *ngIf="!isLoading"
-        id="csgp-keyvalueitem-container" 
+        class="csgp-propertyentry-container" 
         [class.error-blur]="errorData?.hasError"
         >
-        <div id="csgp-keyvalueitem-container-left">
+        <div class="csgp-propertyentry-container-left">
             <div class="header-text icon-container" [style]="data?.label?.style">{{  data?.label?.value }}
                 <clr-icon 
                     *ngIf="data?.label?.icon?.source == 'clarity'" 
@@ -51,7 +50,7 @@
                 ></clr-icon>
             </div>
         </div>
-        <div id="csgp-keyvalueitem-container-right">
+        <div class="csgp-propertyentry-container-right">
 
             <div class="header-text icon-container" [style]="data?.content?.style">
                 <clr-icon 
@@ -72,8 +71,7 @@
                 [style.color]="data?.subtitleContent?.icon?.color"
                 [attr.shape]="data?.subtitleContent?.icon?.iconName"
                 (click)="iconClicked(data?.subtitleContent)"
-            ></clr-icon>{{  data?.subtitleContent?.value }}</div>
+            ></clr-icon>{{ data?.subtitleContent?.value }}</div>
         </div>
     </div>
-
 </div>

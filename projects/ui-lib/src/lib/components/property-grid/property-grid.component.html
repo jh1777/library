@@ -1,6 +1,6 @@
-<div id="csgp-items-grid">
+<div class="csgp-property-grid">
     <ng-container *ngFor="let _ of [].constructor(cols); let i = index">
-        <div id="csgp-items-grid-col">
+        <div class="csgp-property-grid-col">
             
             <!--
             Col-Index: {{ i }}
@@ -8,7 +8,7 @@
 
             <!-- COLS -->
             <ng-container *ngFor="let _ of [].constructor(rows); let j = index">
-                <div id="csgp-items-grid-row" *ngIf="data?.items[j+(i*rows)]">
+                <div class="csgp-property-grid-row" *ngIf="data?.items[j+(i*rows)]">
                     
                     <!--
                     Row-Index: {{ j }} <br/>
@@ -17,18 +17,18 @@
                     
                     <!-- ROWS -->
                     <ng-container *ngIf="data?.items[j+(i*rows)]?.component == 'KEY-VALUE-DOUBLE'">
-                        <app-key-value-item-v2 
+                        <csgp-property-entry 
                             [isLoading]="data?.items[j+(i*rows)]?.isLoading"
                             [data]="data?.items[j+(i*rows)]?.data"
                             [errorData]="data?.items[j+(i*rows)]?.errorData"
-                        ></app-key-value-item-v2>
+                        ></csgp-property-entry>
                     </ng-container>
                     <ng-container *ngIf="data?.items[j+(i*rows)]?.component == 'METRIC-BAR'">
-                        <app-metric-bar-item-v2
+                        <csgp-metric-entry
                             [isLoading]="data?.items[j+(i*rows)]?.isLoading"
                             [data]="data?.items[j+(i*rows)]?.data"
                             [errorData]="data?.items[j+(i*rows)]?.errorData"
-                        ></app-metric-bar-item-v2>
+                        ></csgp-metric-entry>
                     </ng-container>
                 </div>
             </ng-container>
