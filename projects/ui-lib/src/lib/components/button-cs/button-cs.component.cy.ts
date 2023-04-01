@@ -2,8 +2,10 @@
 import { ClarityModule } from '@clr/angular';
 import { createOutputSpy } from 'cypress/angular';
 
-import { ButtonComponent } from './button.component';
-import { ButtonStore } from './button.component.store';
+import { ButtonComponent } from './button-cs.component';
+import { ButtonStore } from './button-cs.component.store';
+import { ComponentStore } from '@ngrx/component-store';
+import { EventEmitter } from '@angular/core';
 
 describe('ButtonComponent', () => {
   
@@ -11,6 +13,7 @@ describe('ButtonComponent', () => {
     cy.mount(ButtonComponent, {
         componentProperties: {
             onClick: createOutputSpy('buttonClickedSpy'),
+            initialized: createOutputSpy('initSpy'),
         },
         imports: [ ClarityModule ],
         providers: [ ButtonStore ]
@@ -25,10 +28,30 @@ describe('ButtonComponent', () => {
     // })
   });
 
+  
+  it('Content check 1', () => {
+    /*
+    const change = new EventEmitter();
+    cy.spy(change, 'emit').as('changeSpy');
+    cy.mount(ButtonComponent, {
+      componentProperties: {
+        initialized: change
+      }
+    });
+*/
+    cy.get('@initSpy').then((spy: any) => {
+      const store = spy.args[0][0] as ButtonStore;
+      console.log(store);
+      store.setContent("cpu", "Test");
+    }).wait(200);
+    cy.get('.csgp-button-wrapper > div').should('contain.text', "Test");
+  });
+
+
   it('Content check', () => {
     cy.window().then((w: any) => {
       const store = w.document.buttonStore;
-      w.buttonStore.setContent("refresh", "Reload", "This is a Tooltip"); 
+      w.buttonStore?.setContent("refresh", "Reload", "This is a Tooltip"); 
     });
     //cy.get('clr-icon').should('exist');
     //cy.get('.csgp-button-wrapper > div').should("have.text", "Reload").click();

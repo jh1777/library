@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ComponentStore } from "@ngrx/component-store";
-import { IIO } from "./button.component.iio.interface";
-import { ButtonState } from "./button.component.interface";
+import { IIO } from "./button-cs.component.iio.interface";
+import { ButtonState } from "./button-cs.component.interface";
 import { produce }  from "immer"
 
 @Injectable()

@@ -2,27 +2,57 @@
 
     display: contents;
 
+    .page-header {
+        display: flex;
+    }
+
+    .header-button {
+        display: flex; 
+        margin-left: auto;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: .3rem;
+        color: #9a9a9a;
+        &:hover {
+            color: black;
+        }
+    }
+
     .columns {
         display: flex;
         width: 100%;
         flex: 1;
     }
 
+    .debugBorder {
+        border: 1px dotted #9a9a9a;
+    }
+
     .container {
         width: 100%;
         display: flex;
-        
+        flex-direction: column;
+        &:not(:first-child) {
+            margin-left: 1rem;
+        }
     }
 
+    .description {
+        font-size: small;
+        font-weight: 300;
+        color: grey;
+        line-height: normal;
+        margin-top: .3rem;
+    }
     .item {
         width: 100%;
         display: flex;
         padding: 1rem;
+        
         border: 1px dotted lightgray;
 
-        &:not(:first-child) {
-            margin-left: 1rem;
-        }
+        
     }
 
     .item-output {

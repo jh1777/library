@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Button } from '@ui';
-import { ButtonData, ButtonIIOModel} from './models/button';
+import { ButtonCS } from '@ui';
+import { ButtonViewData, ButtonViewModel } from './models/button';
+import { ButtonCSViewData, ButtonCSViewModel } from './models/button-cs';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,14 @@ import { ButtonData, ButtonIIOModel} from './models/button';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public buttonData: Array<ButtonIIOModel> = [];
+  public showBorders: boolean = false;
+
+  public buttonData: Array<ButtonViewModel> = [];
+  public buttonCSData: Array<ButtonCSViewModel> = [];
 
   constructor() {
-    this.buttonData = ButtonData;
+    this.buttonCSData = ButtonCSViewData;
+    this.buttonData = ButtonViewData;
   }
   
   /**
@@ -19,7 +24,7 @@ export class AppComponent {
    * @param $event Button.IIO
    * @param data ButtonIIOModel
    */
-  setButtonIIO($event: Button.IIO, data: ButtonIIOModel) {
+  setButtonIIO($event: ButtonCS.IIO, data: ButtonCSViewModel) {
     if (data.color) {
       $event.setColor(data.color);
     }

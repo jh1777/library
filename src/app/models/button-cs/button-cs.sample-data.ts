@@ -1,19 +1,18 @@
+import { ButtonCSViewModel } from "./button-cs.view.model";
 
-import { ButtonViewModel } from "./button.view.model";
 
-
-export var ButtonViewData: Array<ButtonViewModel> = [
+export var ButtonCSViewData: Array<ButtonCSViewModel> = [
     {
         id: "1",
         label: "Accept",
-        isLoading: false,
+        loading: false,
         icon: "check",
         $description: "Plain, no formatting, no border"        
       },
       {
         id: "2",
         label: "Delete",
-        isLoading: false,
+        loading: false,
         icon: "trash",
         color: "red",
         $description: "Custom color"
@@ -21,31 +20,31 @@ export var ButtonViewData: Array<ButtonViewModel> = [
       {
         id: "3",
         label: "Submit",
-        isLoading: false,
+        loading: false,
         icon: "check",
         color: "white",
         borderColor: "#00677F",
         backgroundColor: "#00677F",
-        filledStyle: true,
         $description: "Border style, custom background"
       },
       {
         id: "4",
         label: "Open",
-        isLoading: false,
+        loading: false,
         $description: "No Icon"
       },
       {
         id: "5",
-        isLoading: false,
+        loading: false,
         icon: "trash",
         color: "red",
         $description: "No Label"
       },
       {
         id: "6",
-        isLoadingMessage: "Loading...",
-        isLoading: true,
+        color: null,
+        label: "Loading...",
+        loading: true,
         $description: "Default isLoading style"
       }
 ];

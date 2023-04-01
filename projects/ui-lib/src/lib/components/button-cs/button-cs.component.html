@@ -57,5 +57,5 @@
     [attr.title]="buttonStore.tooltip$ | async"
 >
     <clr-spinner class="timeline-spinner" [clrSmall]="true"></clr-spinner>
-    <div *ngIf="buttonStore.label$ | async">{{  buttonStore.isLoadingMessage$ | async }}</div>
+    <div *ngIf="buttonStore.isLoadingMessage$ | async">{{  buttonStore.isLoadingMessage$ | async }}</div>
 </div>

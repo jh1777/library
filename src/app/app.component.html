@@ -1,25 +1,64 @@
 
 <div style="padding: 2rem">
 
-  <div style="font-weight: 800; font-size: large;">Components Overview</div>
+  <div class="page-header">
+    <div style="font-weight: 800; font-size: large;">Components Overview</div>
+    <div class="header-button" (click)="showBorders = !showBorders">
+      <clr-icon size="18" shape="bug"></clr-icon>
+      {{ !showBorders ? 'Enable' : 'Disable' }} Component borders
+    </div>
+  </div>
   <p></p>
-  <div><strong>BUTTON</strong> with Component Store</div>
-  <div style="margin-top: .2rem;"></div>
-  <div class="columns">
-    <ng-container *ngFor="let model of buttonData">
-      {{ model.$description }}
-      <div class="item">
-        <csgp-button-v2-cs 
-          (initialized)="setButtonIIO($event, model)"
-          (onClick)="setOutput(model)"
-          >
-        </csgp-button-v2-cs>
 
-        <div class="item-output">
-          {{ model.$output }}
+  <!-- BUTTON with Component Store -->
+  <component-header
+    title="BUTTON"
+    subtitle="with Component Store"
+  ></component-header>
+  <div class="columns">
+    <div class="container" *ngFor="let model of buttonCSData">
+      <div class="item">
+        <div [class.debugBorder]="showBorders">
+          <csgp-button-v2-cs 
+            (initialized)="setButtonIIO($event, model)"
+            (onClick)="setOutput(model)"
+            >
+          </csgp-button-v2-cs>
         </div>
       </div>
-    </ng-container>
+      <div class="description">
+         {{ model.$description }}
+      </div>
+      <div class="item-output">
+        {{ model.$output }}
+      </div>
+    </div>
   </div>
+
+  <!-- BUTTON without Component Store -->
+  <component-header
+    title="BUTTON"
+    subtitle="without Component Store"
+  ></component-header>
+  <div class="columns">
+    <div class="container" *ngFor="let model of buttonData">
+      <div class="item">
+        <div [class.debugBorder]="showBorders">
+          <csgp-button-v2 
+            [data]="model"
+            (onClick)="setOutput(model)"
+            >
+          </csgp-button-v2>
+        </div>
+      </div>
+      <div class="description">
+         {{ model.$description }}
+      </div>
+      <div class="item-output">
+        {{ model.$output }}
+      </div>
+    </div>
+  </div>
+
 
 </div>

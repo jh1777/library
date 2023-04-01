@@ -1,16 +1,16 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IIO } from './button.component.iio.interface';
-import { ButtonStore } from './button.component.store';
+import { IIO } from './button-cs.component.iio.interface';
+import { ButtonStore } from './button-cs.component.store';
 
 @Component({
   selector: 'csgp-button-v2-cs',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
+  templateUrl: './button-cs.component.html',
+  styleUrls: ['./button-cs.component.scss'],
   providers: [ButtonStore],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponentCS implements OnInit {
 
   @Output()
   onClick = new EventEmitter();

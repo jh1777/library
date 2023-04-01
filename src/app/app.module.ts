@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { UiLibModule } from 'projects/ui-lib/src/public-api';
 import { CommonModule } from '@angular/common';
 import { ClarityModule } from '@clr/angular';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,

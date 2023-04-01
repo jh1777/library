@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { UiLibComponent } from './ui-lib.component';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from './components/button-cs/button.component';
+import { ButtonComponentCS } from './components/button-cs';
 import { ClarityModule } from '@clr/angular';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
-
+import { ButtonComponent } from './components/button';
 
 
 @NgModule({
   declarations: [
     UiLibComponent,
+    ButtonComponentCS,
     ButtonComponent
   ],
   imports: [
@@ -19,6 +18,7 @@ import { BrowserModule } from '@angular/platform-browser';
   ],
   exports: [
     UiLibComponent,
+    ButtonComponentCS,
     ButtonComponent
   ]
 })
