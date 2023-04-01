@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Button } from '@ui';
-import { ButtonIIO } from './button.iio.model';
+import { ButtonData, ButtonIIOModel} from './models/button';
 
 @Component({
   selector: 'app-root',
@@ -8,60 +8,18 @@ import { ButtonIIO } from './button.iio.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public buttonStore: Button.IIO;
-  public buttonData: Array<ButtonIIO> = [];
+  public buttonData: Array<ButtonIIOModel> = [];
 
   constructor() {
-
-    this.buttonData = [
-      {
-        id: "1",
-        label: "Accept",
-        loading: false,
-        icon: "check",
-        $description: ""        
-      },
-      {
-        id: "2",
-        label: "Delete",
-        loading: false,
-        icon: "trash",
-        color: "red"
-      },
-      {
-        id: "3",
-        label: "Submit",
-        loading: false,
-        icon: "check",
-        color: "white",
-        borderColor: "#00677F",
-        backgroundColor: "#00677F"
-      },
-      {
-        id: "4",
-        label: "Open",
-        loading: false
-      },
-      {
-        id: "5",
-        color: null,
-        label: "Loading...",
-        loading: true
-      },
-      {
-        id: "6",
-        color: null,
-        label: "Loading...",
-        loading: true,
-        filled: true,
-        backgroundColor: "#efefef",
-        borderColor: "#efefef"
-      }
-    ]
+    this.buttonData = ButtonData;
   }
   
-  setButtonIIO($event: Button.IIO, data: ButtonIIO) {
-    this.buttonStore = $event;
+  /**
+   * Button
+   * @param $event Button.IIO
+   * @param data ButtonIIOModel
+   */
+  setButtonIIO($event: Button.IIO, data: ButtonIIOModel) {
     if (data.color) {
       $event.setColor(data.color);
     }

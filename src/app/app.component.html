@@ -10,7 +10,7 @@
       {{ model.$description }}
       <div class="item">
         <csgp-button-v2-cs 
-          (storeInit)="setButtonIIO($event, model)"
+          (initialized)="setButtonIIO($event, model)"
           (onClick)="setOutput(model)"
           >
         </csgp-button-v2-cs>

@@ -1,4 +1,4 @@
-export interface ButtonIIO {
+export interface ButtonIIOModel {
     id: string;
     label: string;
     loading: boolean;

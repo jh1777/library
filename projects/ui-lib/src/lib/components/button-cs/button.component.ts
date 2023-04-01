@@ -22,7 +22,7 @@ export class ButtonComponent implements OnInit {
   onMouseLeave = new EventEmitter();
 
   @Output()
-  storeInit = new EventEmitter<IIO>();
+  initialized = new EventEmitter<IIO>();
 
   ///----------
 /*
@@ -44,7 +44,7 @@ export class ButtonComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   this.storeInit.emit(this.buttonStore);
+   this.initialized.emit(this.buttonStore);
    this.buttonStore.disabled$.subscribe(this._disabled.asObservable);
 
   }
