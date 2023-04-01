@@ -1,1 +1,0 @@
-export * as Tags from './tags.component.iio.interface';

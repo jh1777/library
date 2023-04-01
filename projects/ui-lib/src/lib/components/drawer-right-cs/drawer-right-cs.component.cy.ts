@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DrawerRightComponent } from './drawer-right.component'
-import { DrawerRightStore } from './drawer-right.component.store';
+import { DrawerRightComponentCS } from './drawer-right-cs.component';
+import { DrawerRightStore } from './drawer-right-cs.component.store';
 
 describe('DrawerComponent', () => {
 
   beforeEach(() => {
-    cy.mount(DrawerRightComponent, {
+    cy.mount(DrawerRightComponentCS, {
         componentProperties: {
           drawerRightStore: new DrawerRightStore()
         },
@@ -30,5 +30,4 @@ describe('DrawerComponent', () => {
     cy.get('#csgp-drawer-header').should('contains.text', "Drawer");
     cy.get('#csgp-drawer-description').should('contains.text', "Test drawer");
   })
-
 })

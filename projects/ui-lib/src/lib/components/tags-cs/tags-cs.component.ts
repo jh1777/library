@@ -1,14 +1,14 @@
-import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
+import { AUTO_STYLE, animate, state, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IIO } from './tags.component.iio.interface';
-import { Tag } from './tags.component.interface';
-import { TagsStore } from './tags.component.store';
+import { IIO } from './tags-cs.component.iio.interface';
+import { Tag } from './tags-cs.component.interface';
+import { TagsStore } from './tags-cs.component.store';
 
 @Component({
-  selector: 'csgp-tags',
-  templateUrl: './tags.component.html',
-  styleUrls: ['./tags.component.scss'],
+  selector: 'csgp-tags-cs',
+  templateUrl: './tags-cs.component.html',
+  styleUrls: ['./tags-cs.component.scss'],
   providers: [TagsStore],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
@@ -20,7 +20,7 @@ import { TagsStore } from './tags.component.store';
     ])
   ]
 })
-export class TagsComponent {
+export class TagsComponentCS {
 
   @Input()
   public set storeReference(init: (storeReference: IIO) => void) {

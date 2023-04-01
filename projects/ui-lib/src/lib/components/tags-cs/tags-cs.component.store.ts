@@ -1,9 +1,9 @@
-import { Injectable, Input } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { ComponentStore } from '@ngrx/component-store';
 import produce from "immer";
-import { Observable, Subject } from "rxjs";
-import { IIO } from "./tags.component.iio.interface";
-import { Tag, TagsState } from "./tags.component.interface";
+import { Observable } from "rxjs";
+import { IIO } from "./tags-cs.component.iio.interface";
+import { Tag, TagsState } from "./tags-cs.component.interface";
 
 @Injectable()
 export class TagsStore extends ComponentStore<TagsState> implements IIO  {

@@ -1,5 +1,5 @@
 import { Observable } from "rxjs";
-import { Tag } from "./tags.component.interface";
+import { Tag } from "./tags-cs.component.interface";
 
 export interface IIO {
      // add a tag

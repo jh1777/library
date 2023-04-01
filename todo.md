@@ -9,7 +9,7 @@ CS - Component Store
 - /property-entry -> Model vereinheitlichen (s.u.)
 - /property-grid -> Model vereinheitlichen (s.u.), neue Components 1 und 2 aufnehmen
 - /tags-v1 -> todo!, komplett umstellen auf Lib und renaming, Model vereinheitlichen (s.u.),
-- /drawer -> todo! duplizieren und zurückbauen auf normales model ohne CS
+- /drawer-right -> todo! duplizieren und zurückbauen auf normales model ohne CS
 - /drawer-entry -> todo! duplizieren und zurückbauen auf normales model ohne CS
 
 ## Mit CS
@@ -19,7 +19,7 @@ CS - Component Store
 - /button-cs (DONE*)
 - /metric-entry-cs (DONE*)
 - /property-entry-cs (DONE*)
-- /drawer-cs -> todo!, rename, umstellen auf Lib und renaming, Model anschauen
+- /drawer-right-cs -> (DONE*)
 - /drawer-entry-cs -> todo!, rename, umstellen auf Lib und renaming, Model anschauen
 - /tags -> todo!, rename, umstellen auf Lib und renaming, Model anschauen
 - /property-grid-cs -> todo!, duplizieren und auf CS umstellen

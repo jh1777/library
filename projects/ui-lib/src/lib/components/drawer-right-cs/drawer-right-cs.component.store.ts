@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ComponentStore } from "@ngrx/component-store";
-import { IIO } from "./drawer-right.component.iio.interface";
-import { DrawerRightState } from "./drawer-right.component.interface";
+import { IIO } from "./drawer-right-cs.component.iio.interface";
+import { DrawerRightState } from "./drawer-right-cs.component.interface";
 
 const merge = require('deepmerge');
 

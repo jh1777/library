@@ -1,14 +1,15 @@
-import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
-import { Component, HostListener, Input } from '@angular/core';
+import { AUTO_STYLE, animate, state, style, transition, trigger } from '@angular/animations';
+import { ChangeDetectionStrategy, Component, HostListener, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IIO } from './drawer-right.component.iio.interface';
-import { DrawerRightStore } from './drawer-right.component.store';
+import { IIO } from './drawer-right-cs.component.iio.interface';
+import { DrawerRightStore } from './drawer-right-cs.component.store';
 
 @Component({
   selector: 'csgp-drawer-right',
-  templateUrl: './drawer-right.component.html',
-  styleUrls: ['./drawer-right.component.scss'],
+  templateUrl: './drawer-right-cs.component.html',
+  styleUrls: ['./drawer-right-cs.component.scss'],
   providers: [DrawerRightStore],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('showDrawer', [
       state('true', style({ transform: 'translateX(0)', visibility: AUTO_STYLE })),
@@ -18,7 +19,7 @@ import { DrawerRightStore } from './drawer-right.component.store';
     ])
   ]
 })
-export class DrawerRightComponent {
+export class DrawerRightComponentCS {
 
   @Input()
   public set storeReference(init: (storeReference: IIO) => void) {
