@@ -1,0 +1,28 @@
+:host {
+    display: contents;
+
+    --csgp-key-value-grid-vspacing: .8rem;
+    --csgp-key-value-grid-hspacing: .5rem;
+
+    #csgp-items-grid {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: var(--csgp-key-value-grid-vspacing);
+
+        &-col {
+            width: 100%;
+            display: flex;
+            gap: var(--csgp-key-value-grid-hspacing, 0.5rem);
+            flex-direction: column;
+            &:not(:first-child) {
+                border-left: 1px solid lightgray;
+                padding-left: var(--csgp-key-value-grid-vspacing);
+            }
+        }
+
+        &-row {
+            display: block;
+        }
+    }
+}

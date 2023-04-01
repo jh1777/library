@@ -1,0 +1,123 @@
+:host {
+    display: contents;
+
+    .subtitle {
+        font-weight: 300;
+        color: gray;
+    }
+
+    .header-text {
+        color: var(--key-value-text, black);
+        
+    }
+
+    .icon-container {
+        display: flex;
+        gap: .2rem;
+        align-items: center;
+    }
+
+    .no-select {
+        -webkit-user-select: none;
+        -ms-user-select: none; 
+        user-select: none;
+        text-decoration: none;
+        pointer-events: none;
+    }
+
+    .pulse {
+        animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        animation-delay: 0.5s;
+    }
+      
+    @keyframes pulse {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .icon-link {
+        color: #007f82;
+        cursor: pointer;
+        &:hover {
+            color: #009ea1;
+        }
+    }
+
+    .error-overlay {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        min-width: 50%;
+        text-align: center;
+        padding: .1rem .15rem .1rem .15rem;
+        background-color: var(--key-value-error-color, #ffe3e3);
+        border: 1px solid var(--key-value-error-border-color, #ffbebe);
+        border-radius: .2rem;
+        align-items: center;
+        justify-content: center;
+        font-size: .5rem;
+        font-weight: 500;
+        line-height: normal;
+        z-index: 99;
+    }
+
+    .error-blur {
+        filter: blur(1px);
+    }
+
+    .error-link {
+        color: var(--key-value-error-link-color, #007f82);
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .csgp-property-entry {
+        position: relative;
+
+        &-container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            align-items: center;
+            line-height: normal;
+            font-size: .65rem;
+            font-weight: 500;
+
+            &-loading {
+                display: flex;
+                color: #e5e6e7;
+                line-height: normal;
+                font-size: .65rem;
+                gap: 0.05rem;
+            }
+
+            &-left {
+                display: flex;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0.05rem;
+            }
+
+            &-right {
+                display: flex;
+                flex-direction: column;
+                margin-left: auto;
+                align-items: flex-end;
+                gap: 0.05rem;;
+            }
+        }
+    }
+}

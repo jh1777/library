@@ -1,0 +1,37 @@
+<div id="csgp-items-grid">
+    <ng-container *ngFor="let _ of [].constructor(cols); let i = index">
+        <div id="csgp-items-grid-col">
+            
+            <!--
+            Col-Index: {{ i }}
+            -->
+
+            <!-- COLS -->
+            <ng-container *ngFor="let _ of [].constructor(rows); let j = index">
+                <div id="csgp-items-grid-row" *ngIf="data?.items[j+(i*rows)]">
+                    
+                    <!--
+                    Row-Index: {{ j }} <br/>
+                    Index: {{ j + ( i * rows ) }}
+                    -->
+                    
+                    <!-- ROWS -->
+                    <ng-container *ngIf="data?.items[j+(i*rows)]?.component == 'KEY-VALUE-DOUBLE'">
+                        <app-key-value-item-v2 
+                            [isLoading]="data?.items[j+(i*rows)]?.isLoading"
+                            [data]="data?.items[j+(i*rows)]?.data"
+                            [errorData]="data?.items[j+(i*rows)]?.errorData"
+                        ></app-key-value-item-v2>
+                    </ng-container>
+                    <ng-container *ngIf="data?.items[j+(i*rows)]?.component == 'METRIC-BAR'">
+                        <app-metric-bar-item-v2
+                            [isLoading]="data?.items[j+(i*rows)]?.isLoading"
+                            [data]="data?.items[j+(i*rows)]?.data"
+                            [errorData]="data?.items[j+(i*rows)]?.errorData"
+                        ></app-metric-bar-item-v2>
+                    </ng-container>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>

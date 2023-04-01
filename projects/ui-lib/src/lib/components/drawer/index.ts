@@ -1,0 +1,1 @@
+export * as DrawerRight from './drawer-right.component.iio.interface';

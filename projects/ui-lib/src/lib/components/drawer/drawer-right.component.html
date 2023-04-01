@@ -1,0 +1,14 @@
+<div id="csgp-drawer-right-selector" [@showDrawer]="(drawerRightStore.show$ | async)" class="csgp-drawer-right">
+    <div class="csgp-drawer-right-header">{{ drawerRightStore.title$ | async }}
+        <div class="csgp-drawer-right-header-right">
+            <div 
+                class="csgp-drawer-right-header-right-button"
+                (click)="closeDrawer()"
+            >
+                <clr-icon size="18" shape="times"></clr-icon>
+            </div>
+        </div>
+    </div>
+    <div class="csgp-drawer-right-description">{{ drawerRightStore.description$ | async }}</div>
+    <ng-content select="[drawer-body]"></ng-content>
+</div>

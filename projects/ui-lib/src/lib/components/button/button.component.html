@@ -56,6 +56,6 @@
     [style.color]="!data.disabled ? data.color : ''"
     [attr.title]="data.tooltip"
 >
-    <clr-spinner class="timeline-spinner" [clrSmall]="true"></clr-spinner>
+    <clr-spinner [clrSmall]="true"></clr-spinner>
     <div *ngIf="data.isLoadingMessage">{{  data.isLoadingMessage }}</div>
 </div>

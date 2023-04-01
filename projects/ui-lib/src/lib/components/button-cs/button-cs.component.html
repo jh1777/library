@@ -56,6 +56,6 @@
     [style.color]="!(buttonStore.disabled$ | async) ? (buttonStore.color$ | async) : ''"
     [attr.title]="buttonStore.tooltip$ | async"
 >
-    <clr-spinner class="timeline-spinner" [clrSmall]="true"></clr-spinner>
+    <clr-spinner [clrSmall]="true"></clr-spinner>
     <div *ngIf="buttonStore.isLoadingMessage$ | async">{{  buttonStore.isLoadingMessage$ | async }}</div>
 </div>
