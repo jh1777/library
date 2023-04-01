@@ -8,12 +8,10 @@ import { MetricEntryComponentCS } from './components/metric-entry-cs';
 import { PropertyEntryComponent } from './components/property-entry';
 import { PropertyEntryComponentCS } from './components/property-entry-cs';
 import { PropertyGridComponent } from './components/property-grid';
-import { UiLibComponent } from './ui-lib.component';
 
 
 @NgModule({
   declarations: [
-    UiLibComponent,
     // BUTTON
     ButtonComponentCS,
     ButtonComponent,

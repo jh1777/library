@@ -39,7 +39,7 @@ describe('MetricEntryComponent', () => {
                 isLoading: true
                 }
         });
-        cy.get('#csgp-MetricEntry-container-left > :nth-child(1)').should('contain.text', '◼︎◼︎');
+        cy.get('.csgp-metricentry-container-left > :nth-child(1)').should('contain.text', '◼︎◼︎');
     })
 
     it('Content check', () => {
@@ -49,9 +49,9 @@ describe('MetricEntryComponent', () => {
                 data: MetricEntryData
             }
         });
-        cy.get('#csgp-MetricEntry-container-left > .header-text').should('contain.text', MetricEntryData.label.value);
+        cy.get('.csgp-metricentry-container-left > .header-text').should('contain.text', MetricEntryData.label.value);
         cy.get('.measure-value').should('contain.text', MetricEntryData.measure.value);
-        cy.get('[style="background-color: lightgrey;"] > #csgp-MetricEntry-bar').should('have.css', 'background-color', 'rgb(0, 128, 0)');
+        cy.get('[style="background-color: lightgrey;"] > .csgp-metricentry-bar').should('have.css', 'background-color', 'rgb(0, 128, 0)');
 
     })
     
