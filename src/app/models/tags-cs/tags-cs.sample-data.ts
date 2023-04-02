@@ -8,6 +8,7 @@ export var TagsCSViewData: Array<TagsCSViewModel> = [
     showAddButton: true,
     showDeletionButton: true,
     showEditButton: true,
+    enableClick: true,
     showTagsIcon: true,
     tags: [
       {
@@ -45,6 +46,7 @@ export var TagsCSViewData: Array<TagsCSViewModel> = [
   {
     id: "3",
     isLoading: true,
+    showTagsIcon: true,
     tags: [
       {
         name: "Region",

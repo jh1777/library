@@ -51,8 +51,12 @@ export class TagsPageComponent {
     });
   }
 
-  setOutput(model: any) {
-    model.$output = `id=${model}`;
+  setOutput(model: any, entry: any) {
+    if (entry) {
+      model.$output = `id=${entry.id}`;
+    } else {
+      model.$output = `id=${model.id}`;
+    }
     setTimeout(() => { model.$output = '' }, 3000);
   }
 }

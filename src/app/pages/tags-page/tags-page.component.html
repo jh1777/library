@@ -7,7 +7,7 @@
                 <csgp-tags-cs 
                     (initialized)="setIIO($event, model)" 
                     (onAddClick)="addTag(model, true)"
-                    (onClick)="setOutput(model)">
+                    (onClick)="setOutput(model, null)">
                 </csgp-tags-cs>
             </div>
         </div>
@@ -38,7 +38,7 @@
                     [overflowAfterXItems]="model.overflowAfterXItems"
                     [moreTagsLabel]="model.moreTagsLabel"
                     (onAddClick)="addTag(model, false)"
-                    (onClick)="setOutput($event)">
+                    (onClick)="setOutput(model, $event)">
                 </csgp-tags>
             </div>
         </div>
