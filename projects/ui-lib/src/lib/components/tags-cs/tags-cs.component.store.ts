@@ -72,6 +72,4 @@ export class TagsStore extends ComponentStore<TagsState> implements IIO  {
   readonly setOverflowReducer = this.updater((state, value: number) => {
     return {  ...state, overflowAfterXItems: value };
   });
-
-  
 }

@@ -1,12 +1,12 @@
-import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
+import { AUTO_STYLE, animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Tag } from './tagModel';
+import { Tag } from './tags.component.model';
 
 
 @Component({
-  selector: 'app-tags-v1',
-  templateUrl: './tags-v1.component.html',
-  styleUrls: ['./tags-v1.component.scss'],
+  selector: 'csgp-tags',
+  templateUrl: './tags.component.html',
+  styleUrls: ['./tags.component.scss'],
   animations: [
     trigger('fadeButton', [
       state('false', style({ width: AUTO_STYLE, visibility: AUTO_STYLE })),
@@ -16,7 +16,7 @@ import { Tag } from './tagModel';
     ])
   ]
 })
-export class TagsV1Component  {
+export class TagsComponent  {
 
   @Input()
   public isLoading: boolean = false;
@@ -40,10 +40,13 @@ export class TagsV1Component  {
   public showTagsIcon: boolean = true;
 
   @Input()
-  public enableDeletionButton: boolean = true;
+  public showDeletionButton: boolean = true;
 
   @Input()
-  public enableEditButton: boolean = true;
+  public showEditButton: boolean = true;
+
+  @Input()
+  public showAddButton: boolean = true;
 
   // Enables the click event and mouse pointer for all tag items
   @Input()
@@ -74,6 +77,9 @@ export class TagsV1Component  {
   @Output()
   public onClickMore = new EventEmitter<void>();
 
+  @Output()
+  public onClickAdd = new EventEmitter<void>();
+
   public tagClicked($event: any, $item: Tag) {
     if (this.enableClick) {
       $event.stopPropagation();
@@ -98,4 +104,9 @@ export class TagsV1Component  {
     this.onEditClick.emit($item);
     
   }
+
+  public tagAddClicked($event: any) {
+    $event.stopPropagation();
+    this.onClickAdd.emit();
+}
 }

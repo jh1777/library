@@ -20,8 +20,6 @@ export interface TagsState {
 
     // Enables the click event and mouse pointer for the more (...) button if present
     enableClickMore: boolean;
-    
-
 }
 
 export interface Tag {
