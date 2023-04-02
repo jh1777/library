@@ -12,6 +12,8 @@ export interface IIO {
      // Get all tags data as observable
      getTags: () => Observable<Array<Tag>>;
 
+     setLoading: (state: boolean) => void;
+     
      setId: (id: any) => void;
 
 }

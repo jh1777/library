@@ -35,6 +35,13 @@ export class TagsStore extends ComponentStore<TagsState> implements IIO  {
   readonly overflowAfterXItems$ = this.select(state => state.overflowAfterXItems);
   readonly id$ = this.select(state => state.id);
 
+  setLoading = (state: boolean) => {
+    this.setAllReducer({
+      isLoading: state
+    });
+  };
+
+
   setId = (id: any) => {
     this.setAllReducer({
       id: id

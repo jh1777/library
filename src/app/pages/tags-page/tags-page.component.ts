@@ -16,14 +16,15 @@ export class TagsPageComponent {
   constructor() {
     this.tagsCSData = TagsCSViewData;
   }
-  
+
 
   setIIO($event: TagsCS.IIO, data: TagsCSViewModel) {
-   $event.setId(data.id);
-   data?.tags?.forEach(tag => {
+    $event.setId(data.id);
+    $event.setLoading(data.isLoading);
+    data?.tags?.forEach(tag => {
       $event.addTag(tag);
-   });
-  } 
+    });
+  }
 
   setOutput(model: any) {
     model.$output = `id=${model.id}`;

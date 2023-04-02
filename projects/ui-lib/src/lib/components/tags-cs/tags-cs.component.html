@@ -2,7 +2,13 @@
 
 <div class="csgp-tags-group">
     <clr-icon *ngIf="tagsStore.showTagsIcon$ | async" class="csgp-tags-icon" shape="tags"></clr-icon>
-    <clr-spinner *ngIf="tagsStore.isLoading$ | async" [clrSmall]="true"></clr-spinner>
+    <!-- <clr-spinner *ngIf="tagsStore.isLoading$ | async" [clrSmall]="true"></clr-spinner> -->
+    <ng-container *ngIf="tagsStore.isLoading$ | async">
+        <div class="csgp-tag-item pulse" *ngFor="let _ of [].constructor(2)">
+           <span *ngFor="let _ of [].constructor(15)">&nbsp;</span>
+        </div>
+    </ng-container>
+
     <ng-container *ngIf="!(tagsStore.isLoading$ | async)">
         <div 
             class="csgp-tag-item" 

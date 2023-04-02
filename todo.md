@@ -2,13 +2,17 @@
 
 CS - Component Store
 
+## Aktuell in Arbeit
+
+tags-cs: Umstellen auf Loading bars pulsierend
+
 ## Ohne CS
 
 - /button (DONE)
 - /metric-entry -> Model vereinheitlichen (s.u.)
 - /property-entry -> Model vereinheitlichen (s.u.)
 - /property-grid -> Model vereinheitlichen (s.u.), neue Components 1 und 2 aufnehmen
-- /tags-v1 -> todo!, komplett umstellen auf Lib und renaming, Model vereinheitlichen (s.u.),
+- /tags -> todo!, Cy tests
 - /drawer-right -> todo! duplizieren und zurückbauen auf normales model ohne CS
 - /drawer-entry -> todo! duplizieren und zurückbauen auf normales model ohne CS
 
@@ -21,7 +25,7 @@ CS - Component Store
 - /property-entry-cs (DONE*)  -> umstellen auf (initialized) event
 - /drawer-right-cs -> (DONE*)  -> umstellen auf (initialized) event
 - /drawer-entry-cs -> umstellen auf (initialized) event
-- /tags-cs -> umstellen auf (initialized) event
+- /tags-cs -> umstellen auf (initialized) event, Cy tests!
 - /property-grid-cs -> todo!, duplizieren und auf CS umstellen,  -> umstellen auf (initialized) event
 
 

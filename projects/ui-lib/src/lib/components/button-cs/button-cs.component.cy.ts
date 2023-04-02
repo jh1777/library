@@ -4,8 +4,6 @@ import { createOutputSpy } from 'cypress/angular';
 
 import { ButtonComponent } from './button-cs.component';
 import { ButtonStore } from './button-cs.component.store';
-import { ComponentStore } from '@ngrx/component-store';
-import { EventEmitter } from '@angular/core';
 
 describe('ButtonComponent', () => {
   
@@ -16,7 +14,16 @@ describe('ButtonComponent', () => {
             initialized: createOutputSpy('initSpy'),
         },
         imports: [ ClarityModule ],
-        providers: [ ButtonStore ]
+        providers: [ 
+          {
+            provide: ButtonStore,
+            useFactory: () => {
+              new ButtonStore();
+              //store.setContent("check", "TEST");
+              //return store;
+            }
+          }
+        ]
         
     })
     //   .then((wrapper) => {
