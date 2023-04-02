@@ -42,10 +42,10 @@ export class TagsComponentCS {
   public onClick = new EventEmitter<Tag>();
   
   @Output()
-  public onClickMore = new EventEmitter<void>();
+  public onMoreClick = new EventEmitter<void>();
 
   @Output()
-  public onClickAdd = new EventEmitter<void>();
+  public onAddClick = new EventEmitter<void>();
 
   @Output()
   initialized = new EventEmitter<IIO>();
@@ -74,13 +74,13 @@ export class TagsComponentCS {
 
   public tagAddClicked($event: any) {
       $event.stopPropagation();
-      this.onClickAdd.emit();
+      this.onAddClick.emit();
   }
 
   public tagMoreClicked($event: any) {
     if (this._enableClickMore.value) {
       $event.stopPropagation();
-      this.onClickMore.emit();
+      this.onMoreClick.emit();
     }
   }
 

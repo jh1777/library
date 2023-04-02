@@ -25,4 +25,5 @@ export interface TagsCSViewModel extends BaseViewModel{
     // Enables the click event and mouse pointer for the more (...) button if present
     enableClickMore?: boolean;
     id?: any;
+    ref?: any;
 }

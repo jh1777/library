@@ -25,15 +25,15 @@ export class TagsComponent  {
 
   @Input()
   public set tags(items: Array<Tag>) {
-    if (this.overflowAfterXItems > 0) {
-      this._tags = items.slice(0, this.overflowAfterXItems);
-    } else {
-      this._tags = items;
-    }
+    this._tags = items;
   }
 
   public get tags(): Array<Tag> {
-    return this._tags;
+    if (this.overflowAfterXItems > 0) {
+      return this._tags.slice(0, this.overflowAfterXItems);
+    } else {
+      return this._tags;
+    }
   }
 
   @Input()
@@ -75,10 +75,10 @@ export class TagsComponent  {
   public onClick = new EventEmitter<Tag>();
   
   @Output()
-  public onClickMore = new EventEmitter<void>();
+  public onMoreClick = new EventEmitter<void>();
 
   @Output()
-  public onClickAdd = new EventEmitter<void>();
+  public onAddClick = new EventEmitter<void>();
 
   public tagClicked($event: any, $item: Tag) {
     if (this.enableClick) {
@@ -90,7 +90,7 @@ export class TagsComponent  {
   public tagMoreClicked($event: any) {
     if (this.enableClickMore) {
       $event.stopPropagation();
-      this.onClickMore.emit();
+      this.onMoreClick.emit();
     }
   }
 
@@ -107,6 +107,6 @@ export class TagsComponent  {
 
   public tagAddClicked($event: any) {
     $event.stopPropagation();
-    this.onClickAdd.emit();
+    this.onAddClick.emit();
 }
 }

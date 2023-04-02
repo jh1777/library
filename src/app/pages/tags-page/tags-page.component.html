@@ -4,7 +4,10 @@
     <div class="container" *ngFor="let model of tagsCSData">
         <div class="item">
             <div [class.debugBorder]="showComponentBorder">
-                <csgp-tags-cs (initialized)="setIIO($event, model)" (onClick)="setOutput(model)">
+                <csgp-tags-cs 
+                    (initialized)="setIIO($event, model)" 
+                    (onAddClick)="addTag(model, true)"
+                    (onClick)="setOutput(model)">
                 </csgp-tags-cs>
             </div>
         </div>
@@ -34,6 +37,7 @@
                     [enableClickMore]="model.enableClickMore"
                     [overflowAfterXItems]="model.overflowAfterXItems"
                     [moreTagsLabel]="model.moreTagsLabel"
+                    (onAddClick)="addTag(model, false)"
                     (onClick)="setOutput($event)">
                 </csgp-tags>
             </div>

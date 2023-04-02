@@ -29,8 +29,8 @@ export class TagsStore extends ComponentStore<TagsState> implements IIO  {
   readonly showTagsIcon$ = this.select(state => state.showTagsIcon);
   readonly enableClick$ = this.select(state => state.enableClick);
   readonly enableClickMore$ = this.select(state => state.enableClickMore);
-  readonly enableDeletionButton$ = this.select(state => state.showDeletionButton);
-  readonly enableEditButton$ = this.select(state => state.showEditButton);
+  readonly showDeletionButton$ = this.select(state => state.showDeletionButton);
+  readonly showEditButton$ = this.select(state => state.showEditButton);
   readonly moreTagsLabel$ = this.select(state => state.moreTagsLabel);
   readonly overflowAfterXItems$ = this.select(state => state.overflowAfterXItems);
   readonly id$ = this.select(state => state.id);
@@ -41,6 +41,23 @@ export class TagsStore extends ComponentStore<TagsState> implements IIO  {
     });
   };
 
+  setClickable = (tag: boolean, more: boolean, moreLabel: string) => {
+    this.setAllReducer({
+      enableClick: tag,
+      enableClickMore: more,
+      moreTagsLabel: moreLabel
+    });
+  };
+
+
+  setVisibility = (add: boolean, edit: boolean, del: boolean, tagsIcon: boolean) => {
+    this.setAllReducer({
+      showAddButton: add,
+      showDeletionButton: del,
+      showEditButton: edit,
+      showTagsIcon: tagsIcon
+    });
+  }
 
   setId = (id: any) => {
     this.setAllReducer({
@@ -57,7 +74,9 @@ export class TagsStore extends ComponentStore<TagsState> implements IIO  {
   }
 
   setOverflow = (items: number) => {
-    this.setOverflowReducer(items);
+    this.setAllReducer({
+      overflowAfterXItems: items
+    })
   }
   
   getTags = (): Observable<Array<Tag>> => this.tags$;
@@ -83,10 +102,6 @@ export class TagsStore extends ComponentStore<TagsState> implements IIO  {
       ? state.tags.slice(0, state.overflowAfterXItems)
       : state.tags
   );
-
-  readonly setOverflowReducer = this.updater((state, value: number) => {
-    return {  ...state, overflowAfterXItems: value };
-  });
 
   private setAllReducer = this.updater((state: TagsState, value: Partial<TagsState>) => {
     return merge(state, value);

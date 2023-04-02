@@ -21,18 +21,18 @@
             >
             <strong>{{ tag.name }}</strong>: {{ tag.value }}
             <span class="csgp-tags-buttons-group">
-                <div *ngIf="(tagsStore.enableEditButton$ | async)"
+                <div *ngIf="(tagsStore.showEditButton$ | async)"
                     class="csgp-tag-edit-button" 
                     title="Edit this tag" 
                     (click)="editTagClicked($event, tag)">
                     <clr-icon shape="edit" size="12"></clr-icon>
                 </div>
                 <div 
-                    *ngIf="(tagsStore.enableDeletionButton$ | async)"
+                    *ngIf="(tagsStore.showDeletionButton$ | async)"
                     class="csgp-tag-remove-button" 
                     title="Delete this tag" 
                     (click)="deleteTagClicked($event, tag)">
-                    <clr-icon  shape="trash" size="12"></clr-icon>
+                    <clr-icon shape="trash" size="12"></clr-icon>
                 </div>
             </span>
         </div>

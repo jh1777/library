@@ -20,8 +20,31 @@ export class TagsPageComponent {
     this.tagsData = TagsViewData;
   }
 
+  addTag(model: TagsCSViewModel | TagsViewModel, isCS: boolean) {
+    
+    if (isCS) {
+      const m = model as TagsCSViewModel;
+      m.ref.addTag({
+        name: "New",
+        value: "Tag",
+        description: ""
+      });
+    } else {
+      const m = model as TagsViewModel;
+      m.tags.push({
+        name: "New",
+        value: "Tag",
+        description: ""
+      });
+    }
+  }
+
   setIIO($event: TagsCS.IIO, data: TagsCSViewModel) {
+    data.ref = $event;
     $event.setId(data.id);
+    $event.setOverflow(data.overflowAfterXItems);
+    $event.setVisibility(data.showAddButton, data.showEditButton, data.showDeletionButton, data.showTagsIcon);
+    $event.setClickable(data.enableClick, data.enableClickMore, data.moreTagsLabel);
     $event.setLoading(data.isLoading);
     data?.tags?.forEach(tag => {
       $event.addTag(tag);

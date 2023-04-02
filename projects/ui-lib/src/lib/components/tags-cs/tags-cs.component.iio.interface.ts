@@ -12,6 +12,10 @@ export interface IIO {
      // Get all tags data as observable
      getTags: () => Observable<Array<Tag>>;
 
+     setVisibility: (add: boolean, edit: boolean, del: boolean, tagsIcon: boolean) => void;
+     
+     setClickable: (tag: boolean, more: boolean, moreLabel: string) => void;
+     
      setLoading: (state: boolean) => void;
      
      setId: (id: any) => void;
