@@ -4,7 +4,7 @@ CS - Component Store
 
 ## Aktuell in Arbeit
 
-tags-cs: Umstellen auf Loading bars pulsierend
+tags: Onclick tut nicht ... Id wird nicht angezeigt
 
 ## Ohne CS
 

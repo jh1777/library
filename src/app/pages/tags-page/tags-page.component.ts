@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TagsCS } from '@ui';
+import { TagsViewData, TagsViewModel } from 'src/app/models/tags';
 import { TagsCSViewData, TagsCSViewModel } from 'src/app/models/tags-cs';
 
 @Component({
@@ -12,11 +13,12 @@ export class TagsPageComponent {
   showComponentBorder: boolean = false;
 
   public tagsCSData: Array<TagsCSViewModel> = [];
+  public tagsData: Array<TagsViewModel> = [];
 
   constructor() {
     this.tagsCSData = TagsCSViewData;
+    this.tagsData = TagsViewData;
   }
-
 
   setIIO($event: TagsCS.IIO, data: TagsCSViewModel) {
     $event.setId(data.id);
@@ -27,7 +29,7 @@ export class TagsPageComponent {
   }
 
   setOutput(model: any) {
-    model.$output = `id=${model.id}`;
+    model.$output = `id=${model}`;
     setTimeout(() => { model.$output = '' }, 3000);
   }
 }
