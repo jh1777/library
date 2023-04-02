@@ -17,12 +17,12 @@ CS - Component Store
 > (* without Cypress)
 
 - /button-cs (DONE*)
-- /metric-entry-cs (DONE*)
-- /property-entry-cs (DONE*)
-- /drawer-right-cs -> (DONE*)
-- /drawer-entry-cs -> todo!, rename, umstellen auf Lib und renaming, Model anschauen
-- /tags -> todo!, rename, umstellen auf Lib und renaming, Model anschauen
-- /property-grid-cs -> todo!, duplizieren und auf CS umstellen
+- /metric-entry-cs (DONE*)  -> umstellen auf (initialized) event
+- /property-entry-cs (DONE*)  -> umstellen auf (initialized) event
+- /drawer-right-cs -> (DONE*)  -> umstellen auf (initialized) event
+- /drawer-entry-cs -> umstellen auf (initialized) event
+- /tags-cs -> umstellen auf (initialized) event
+- /property-grid-cs -> todo!, duplizieren und auf CS umstellen,  -> umstellen auf (initialized) event
 
 
 # New Components

@@ -1,5 +1,6 @@
-import { ComponentErrorModel } from "src/app/models/component-error.model";
-import { IconModel } from "src/app/models/icon-model";
+import { ComponentErrorModel } from "../../models/shared/component-error.model";
+import { IconModel } from "../../models/shared/icon-model";
+
 
 export interface DrawerEntryState {
     isLoading?: boolean;
@@ -13,4 +14,6 @@ export interface DrawerEntryState {
     showProgress: boolean;
     progressStatusLabel?: string;
     description?: string;
+
+    id?: any;
 }

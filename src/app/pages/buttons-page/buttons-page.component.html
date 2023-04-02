@@ -1,0 +1,37 @@
+<!-- BUTTON with Component Store -->
+<component-header title="BUTTON" subtitle="with Component Store"></component-header>
+<div class="columns">
+    <div class="container" *ngFor="let model of buttonCSData">
+        <div class="item">
+            <div [class.debugBorder]="showComponentBorder">
+                <csgp-button-v2-cs (initialized)="setButtonIIO($event, model)" (onClick)="setOutput(model)">
+                </csgp-button-v2-cs>
+            </div>
+        </div>
+        <div class="description">
+            {{ model.$description }}
+        </div>
+        <div class="item-output">
+            {{ model.$output }}
+        </div>
+    </div>
+</div>
+
+<!-- BUTTON without Component Store -->
+<component-header title="BUTTON" subtitle="without Component Store"></component-header>
+<div class="columns">
+    <div class="container" *ngFor="let model of buttonData">
+        <div class="item">
+            <div [class.debugBorder]="showComponentBorder">
+                <csgp-button-v2 [data]="model" (onClick)="setOutput(model)">
+                </csgp-button-v2>
+            </div>
+        </div>
+        <div class="description">
+            {{ model.$description }}
+        </div>
+        <div class="item-output">
+            {{ model.$output }}
+        </div>
+    </div>
+</div>

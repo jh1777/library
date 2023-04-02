@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+.columns {
+    display: flex;
+    width: 100%;
+    flex: 1;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    &:not(:first-child) {
+        margin-left: 1rem;
+    }
+}
+
+.description {
+    font-size: small;
+    font-weight: 300;
+    color: grey;
+    line-height: normal;
+    margin-top: .3rem;
+}
+.item {
+    width: 100%;
+    display: flex;
+    padding: 1rem;
+    border: 1px dotted lightgray;
+}
+
+.debugBorder {
+    border: 1px dotted #9a9a9a;
+}
+
+.item-output {
+    align-self: center;
+    margin-left: auto;
+    font-size: smaller;
+}

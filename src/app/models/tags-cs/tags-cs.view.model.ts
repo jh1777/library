@@ -1,27 +1,28 @@
-import { Tag } from "./tags-cs.component.iio.interface";
 
-export interface TagsState {
+import { Tag } from "@ui";
+import { BaseViewModel } from "../base.view.model";
+
+export interface TagsCSViewModel extends BaseViewModel{
     isLoading: boolean;
     tags: Array<Tag>;
-    moreTagsLabel: string;
+    moreTagsLabel?: string;
     // If set != 0 only this amount of tags is shown
-    overflowAfterXItems: number;
+    overflowAfterXItems?: number;
 
     // Show the clarity Tags icon at the start of tag list (default: true)
-    showTagsIcon: boolean;
+    showTagsIcon?: boolean;
 
     // enables deletion of tag in place
-    showDeletionButton: boolean;
+    showDeletionButton?: boolean;
     // enabled edit button in place
-    showEditButton: boolean;
+    showEditButton?: boolean;
     // shows plus button at the end of the tags list
-    showAddButton: boolean;
+    showAddButton?: boolean;
 
     // Enables the click event and mouse pointer for all tag items
-    enableClick: boolean;
+    enableClick?: boolean;
 
     // Enables the click event and mouse pointer for the more (...) button if present
-    enableClickMore: boolean;
-
+    enableClickMore?: boolean;
     id?: any;
 }

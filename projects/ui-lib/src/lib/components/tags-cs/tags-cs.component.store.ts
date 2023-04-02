@@ -2,8 +2,9 @@ import { Injectable } from "@angular/core";
 import { ComponentStore } from '@ngrx/component-store';
 import produce from "immer";
 import { Observable } from "rxjs";
-import { IIO } from "./tags-cs.component.iio.interface";
-import { Tag, TagsState } from "./tags-cs.component.interface";
+import { IIO, Tag } from "./tags-cs.component.iio.interface";
+import { TagsState } from "./tags-cs.component.interface";
+const merge = require('deepmerge');
 
 @Injectable()
 export class TagsStore extends ComponentStore<TagsState> implements IIO  {
@@ -32,6 +33,13 @@ export class TagsStore extends ComponentStore<TagsState> implements IIO  {
   readonly enableEditButton$ = this.select(state => state.showEditButton);
   readonly moreTagsLabel$ = this.select(state => state.moreTagsLabel);
   readonly overflowAfterXItems$ = this.select(state => state.overflowAfterXItems);
+  readonly id$ = this.select(state => state.id);
+
+  setId = (id: any) => {
+    this.setAllReducer({
+      id: id
+    });
+  }
 
   changeTag = (original: Tag, changed: Tag) => {
     this.editTagReducer({ oldTag: original, newTag: changed });
@@ -72,4 +80,8 @@ export class TagsStore extends ComponentStore<TagsState> implements IIO  {
   readonly setOverflowReducer = this.updater((state, value: number) => {
     return {  ...state, overflowAfterXItems: value };
   });
+
+  private setAllReducer = this.updater((state: TagsState, value: Partial<TagsState>) => {
+    return merge(state, value);
+});
 }

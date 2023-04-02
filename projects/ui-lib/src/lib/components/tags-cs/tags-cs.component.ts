@@ -1,8 +1,7 @@
 import { AUTO_STYLE, animate, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IIO } from './tags-cs.component.iio.interface';
-import { Tag } from './tags-cs.component.interface';
+import { IIO, Tag } from './tags-cs.component.iio.interface';
 import { TagsStore } from './tags-cs.component.store';
 
 @Component({
@@ -22,6 +21,7 @@ import { TagsStore } from './tags-cs.component.store';
 })
 export class TagsComponentCS {
 
+  /*
   @Input()
   public set storeReference(init: (storeReference: IIO) => void) {
     if(init) {
@@ -30,6 +30,7 @@ export class TagsComponentCS {
       this.tagsStore.enableClickMore$.subscribe(this._enableClickMore);
     }
   }
+  */
 
   @Output()
   public onDeleteClick = new EventEmitter<Tag>();
@@ -46,6 +47,9 @@ export class TagsComponentCS {
   @Output()
   public onClickAdd = new EventEmitter<void>();
 
+  @Output()
+  initialized = new EventEmitter<IIO>();
+
   private _enableClick = new BehaviorSubject(true);
   private _enableClickMore = new BehaviorSubject(false);
 
@@ -53,6 +57,13 @@ export class TagsComponentCS {
     public readonly tagsStore: TagsStore
   ) {
   }
+
+  ngOnInit(): void {
+    this.initialized.emit(this.tagsStore);
+    this.tagsStore.enableClick$.subscribe(this._enableClick);
+    this.tagsStore.enableClickMore$.subscribe(this._enableClickMore);
+ 
+   }
 
   public tagClicked($event: any, $item: Tag) {
     if (this._enableClick.value) {

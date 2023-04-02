@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ButtonCS } from '@ui';
+import { ButtonViewData, ButtonViewModel } from 'src/app/models/button';
+import { ButtonCSViewData, ButtonCSViewModel } from 'src/app/models/button-cs';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'buttons-page',
+  templateUrl: './buttons-page.component.html',
+  styleUrls: ['./buttons-page.component.scss']
 })
-export class AppComponent {
-  public showBorders: boolean = false;
+export class ButtonsPageComponent {
 
-  public buttonsTabActive: boolean;
-  public tagsTabActive: boolean;
-  /*
+  @Input()
+  showComponentBorder: boolean = false;
+  
+
   public buttonData: Array<ButtonViewModel> = [];
   public buttonCSData: Array<ButtonCSViewModel> = [];
 
@@ -19,7 +22,11 @@ export class AppComponent {
     this.buttonData = ButtonViewData;
   }
   
-
+  /**
+   * Button
+   * @param $event Button.IIO
+   * @param data ButtonIIOModel
+   */
   setButtonIIO($event: ButtonCS.IIO, data: ButtonCSViewModel) {
     if (data.color) {
       $event.setColor(data.color);
@@ -37,6 +44,5 @@ export class AppComponent {
     model.$output = `id=${model.id}`;
     setTimeout(() => { model.$output = '' }, 3000);
   }
-  */
 
 }

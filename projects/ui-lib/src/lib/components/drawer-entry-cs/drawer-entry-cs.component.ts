@@ -1,16 +1,16 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IIO } from './drawer-entry.component.iio.interface';
-import { DrawerEntryStore } from './drawer-entry.component.store';
+import { IIO } from './drawer-entry-cs.component.iio.interface';
+import { DrawerEntryStore } from './drawer-entry-cs.component.store';
 
 @Component({
-  selector: 'csgp-drawer-entry',
-  templateUrl: './drawer-entry.component.html',
-  styleUrls: ['./drawer-entry.component.scss'],
+  selector: 'csgp-drawer-entry-cs',
+  templateUrl: './drawer-entry-cs.component.html',
+  styleUrls: ['./drawer-entry-cs.component.scss'],
   providers: [DrawerEntryStore],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DrawerEntryComponent {
+export class DrawerEntryComponentCS {
   public placeholder = "◼︎◼︎ ";
 
   @Input()

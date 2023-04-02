@@ -7,11 +7,15 @@ import { UiLibModule } from 'projects/ui-lib/src/public-api';
 import { CommonModule } from '@angular/common';
 import { ClarityModule } from '@clr/angular';
 import { HeaderComponent } from './components/header/header.component';
+import { ButtonsPageComponent } from './pages/buttons-page/buttons-page.component';
+import { TagsPageComponent } from './pages/tags-page/tags-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    ButtonsPageComponent,
+    TagsPageComponent
   ],
   imports: [
     CommonModule,

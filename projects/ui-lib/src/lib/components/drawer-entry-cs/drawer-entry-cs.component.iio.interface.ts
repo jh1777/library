@@ -1,6 +1,7 @@
 export interface IIO {
 
     setLoading: (state: boolean) => void;
+    setId: (id: any) => void;
 
     setTitleIcon: (
         icon: string, 

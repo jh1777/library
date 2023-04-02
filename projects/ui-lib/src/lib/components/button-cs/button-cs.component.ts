@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IIO } from './button-cs.component.iio.interface';
 import { ButtonStore } from './button-cs.component.store';
@@ -45,7 +45,7 @@ export class ButtonComponentCS implements OnInit {
 
   ngOnInit(): void {
    this.initialized.emit(this.buttonStore);
-   this.buttonStore.disabled$.subscribe(this._disabled.asObservable);
+   this.buttonStore.disabled$.subscribe(this._disabled);
 
   }
  

@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { ComponentStore } from "@ngrx/component-store";
-import { ComponentErrorModel } from "src/app/models/component-error.model";
-import { IconModel } from "src/app/models/icon-model";
-import { IIO } from "./drawer-entry.component.iio.interface";
-import { DrawerEntryState } from "./drawer-entry.component.interface";
+import { ComponentErrorModel } from "../../models/shared/component-error.model";
+import { IconModel } from "../../models/shared/icon-model";
+import { IIO } from "./drawer-entry-cs.component.iio.interface";
+import { DrawerEntryState } from "./drawer-entry-cs.component.interface";
 const merge = require('deepmerge');
 
 @Injectable()
@@ -16,7 +16,6 @@ export class DrawerEntryStore extends ComponentStore<DrawerEntryState> implement
             title: "Title"
         });
     }
-
 
     // GETTER
     //-------------
@@ -37,7 +36,13 @@ export class DrawerEntryStore extends ComponentStore<DrawerEntryState> implement
     readonly progressPercent$ = this.select(state => state.progressPercent, { debounce: true });
     readonly progressStatusLabel$ = this.select(state => state.progressStatusLabel, { debounce: true });
     readonly isIconClickable$ = this.select(state => state.titleIcon?.isClickable, { debounce: true });
+    readonly id$ = this.select(state => state.id);
 
+    setId = (id: any) => {
+      this.setAllReducer({
+        id: id
+      });
+    }
     // IIO
     setLoading = (state: boolean) => {
         this.setAllReducer({

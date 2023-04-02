@@ -1,5 +1,4 @@
 import { Observable } from "rxjs";
-import { Tag } from "./tags-cs.component.interface";
 
 export interface IIO {
      // add a tag
@@ -12,4 +11,13 @@ export interface IIO {
 
      // Get all tags data as observable
      getTags: () => Observable<Array<Tag>>;
+
+     setId: (id: any) => void;
+
 }
+
+export interface Tag {
+     name: string;
+     value: string;
+     description?: string;
+ }

@@ -1,1 +1,0 @@
-export * as DrawerEntry from './drawer-entry.component.iio.interface';

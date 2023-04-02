@@ -1,0 +1,18 @@
+<!-- TAGS with Component Store -->
+<component-header title="TAGS" subtitle="with Component Store"></component-header>
+<div class="columns">
+    <div class="container" *ngFor="let model of tagsCSData">
+        <div class="item">
+            <div [class.debugBorder]="showComponentBorder">
+                <csgp-tags-cs (initialized)="setIIO($event, model)" (onClick)="setOutput(model)">
+                </csgp-tags-cs>
+            </div>
+        </div>
+        <div class="description">
+            {{ model.$description }}
+        </div>
+        <div class="item-output">
+            {{ model.$output }}
+        </div>
+    </div>
+</div>

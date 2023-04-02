@@ -1,14 +1,12 @@
 import { createOutputSpy } from "cypress/angular";
-import { ComponentErrorModel } from "src/app/models/component-error.model";
-import { CSGPIconModel } from "src/app/models/icon-model"
-import { DrawerEntryComponent } from "./drawer-entry.component";
-import { DrawerEntryModel } from "./drawer-entry.component.model"
+import { DrawerEntryComponentCS } from "./drawer-entry-cs.component";
+import { DrawerEntryModel } from "./drawer-entry.component.model";
 
-describe('DrawerEntryComponent', () => {
+describe('DrawerEntryComponentCS', () => {
 
     const model = new DrawerEntryModel({
         title: "Test Entry",
-        titleIcon: new CSGPIconModel({
+        titleIcon: new IconModel({
           color: 'rgb(128, 128, 128)',
           iconName: "info-circle",
           size: 16,
@@ -36,11 +34,11 @@ describe('DrawerEntryComponent', () => {
     });
     
     beforeEach(() => {
-        cy.mount(DrawerEntryComponent);
+        cy.mount(DrawerEntryComponentCS);
     });
 
     it('Loading check', () => {
-        cy.mount(DrawerEntryComponent, {
+        cy.mount(DrawerEntryComponentCS, {
             componentProperties: {
                 isLoading: true
             }
@@ -49,7 +47,7 @@ describe('DrawerEntryComponent', () => {
     })
 
     it('Content check', () => {
-        cy.mount(DrawerEntryComponent, {
+        cy.mount(DrawerEntryComponentCS, {
             componentProperties: {
                 isLoading: false,
                 data: model
@@ -61,7 +59,7 @@ describe('DrawerEntryComponent', () => {
     });
 
     it('Content check - no bar', () => {
-        cy.mount(DrawerEntryComponent, {
+        cy.mount(DrawerEntryComponentCS, {
             componentProperties: {
                 isLoading: false,
                 data: model2
@@ -72,7 +70,7 @@ describe('DrawerEntryComponent', () => {
     });
 
     it('Error overlay check', () => {
-        cy.mount(DrawerEntryComponent, {
+        cy.mount(DrawerEntryComponentCS, {
             componentProperties: {
                 isLoading: true,
                 errorData: errorData,
