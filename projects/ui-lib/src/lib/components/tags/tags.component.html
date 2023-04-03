@@ -8,7 +8,7 @@
     </ng-container>
     <ng-container *ngIf="!isLoading">
         <div 
-            class="csgp-tag-item" 
+            class="csgp-tag-item cy-csgp-tag-item" 
             *ngFor="let tag of tags" 
             [attr.title]="tag.description" 
             (click)="tagClicked($event, tag)"
@@ -34,7 +34,7 @@
             </span>
         </div>
         <div
-            class="csgp-tag-item csgp-toolbutton"
+            class="csgp-tag-item csgp-toolbutton cy-csgp-tag-more"
             [attr.title]="moreTagsLabel"
             *ngIf="overflowAfterXItems > 0"
             (click)="tagMoreClicked($event)"
