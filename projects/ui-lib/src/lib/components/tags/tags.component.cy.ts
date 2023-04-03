@@ -60,19 +60,31 @@ describe('TagsComponent', () => {
                 isLoading: false,
                 enableClick: true,
                 enableClickMore: true,
+                showAddButton: true,
+                showDeletionButton: true,
+                showEditButton: true,
                 overflowAfterXItems: 1,
-                //onMoreClick: createOutputSpy('moreClickedSpy'),
-                onClick: createOutputSpy('tagClickedSpy')
+                onMoreClick: createOutputSpy('moreClickedSpy'),
+                onClick: createOutputSpy('tagClickedSpy'),
+                onAddClick: createOutputSpy('addClickedSpy'),
+                onEditClick: createOutputSpy('editClickedSpy'),
+                onDeleteClick: createOutputSpy('deleteClickedSpy')
             }
         });
 
-        cy.get('[title="Test #1"]').realClick();
+        cy.get('.cy-csgp-tag-item').should('exist').realClick({ x: 10, y: 10});
         cy.get('@tagClickedSpy').should('have.been.calledOnce');
 
-       // cy.get('.cy-csgp-tag-more').click();
-       // cy.get('@moreClickedSpy').should('have.been.called');
+        cy.get('.cy-csgp-tag-more').should('exist').realClick({ x: 10, y: 10});
+        cy.get('@moreClickedSpy').should('have.been.calledOnce');
 
-        
-        
+        cy.get('.cy-csgp-tag-add').should('exist').realClick({ x: 10, y: 10});
+        cy.get('@addClickedSpy').should('have.been.calledOnce');
+
+        cy.get('.csgp-tag-edit-button > clr-icon').should('exist').realClick({ x: 5, y: 5});
+        cy.get('@editClickedSpy').should('have.been.calledOnce');
+
+        cy.get('.csgp-tag-remove-button > clr-icon').should('exist').realClick({ x: 5, y: 5});
+        cy.get('@deleteClickedSpy').should('have.been.calledOnce');
     })
 })
