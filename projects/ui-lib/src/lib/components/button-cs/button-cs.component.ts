@@ -24,29 +24,15 @@ export class ButtonComponentCS implements OnInit {
   @Output()
   initialized = new EventEmitter<IIO>();
 
-  ///----------
-/*
-  @Input()
-  public set storeReference(init: (storeReference: IIO) => void) {
-    if(init) {
-      init(this.buttonStore);
-      this.buttonStore.disabled$.subscribe(this._disabled);
-    }
-  }
-  */
-  
-
   private _disabled = new BehaviorSubject<boolean>(false);
 
   constructor(
     public readonly buttonStore: ButtonStore
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
    this.initialized.emit(this.buttonStore);
    this.buttonStore.disabled$.subscribe(this._disabled);
-
   }
  
   public buttonClicked(event: Event) {

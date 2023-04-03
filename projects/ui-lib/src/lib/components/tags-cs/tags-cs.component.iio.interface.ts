@@ -20,6 +20,11 @@ export interface IIO {
      
      setId: (id: any) => void;
 
+     // IDEA SSC
+     // setInit: (data: Partial<TagsState>) => void;
+
+     // setAll: (data: Partial<TagsState>) => void;
+
 }
 
 export interface Tag {
