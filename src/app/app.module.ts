@@ -9,13 +9,15 @@ import { ClarityModule } from '@clr/angular';
 import { HeaderComponent } from './components/header/header.component';
 import { ButtonsPageComponent } from './pages/buttons-page/buttons-page.component';
 import { TagsPageComponent } from './pages/tags-page/tags-page.component';
+import { DrawerPageComponent } from './pages/drawer-page/drawer-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ButtonsPageComponent,
-    TagsPageComponent
+    TagsPageComponent,
+    DrawerPageComponent
   ],
   imports: [
     CommonModule,

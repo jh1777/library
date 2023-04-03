@@ -1,4 +1,4 @@
-import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
+import { AUTO_STYLE, animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 @Component({
@@ -43,8 +43,8 @@ export class DrawerRightComponent {
     if (this.show && this.closeOnOutsideClick) {
         const element = document.querySelector('.csgp-drawer-right');
         const src = document.querySelector(this.sourceHtmlSelector);
-        const isDrawerItself = element.contains(event.target);
-        const isSource = src.contains(event.target);
+        const isDrawerItself = element?.contains(event.target);
+        const isSource = src?.contains(event.target);
 
         if (!isDrawerItself && !isSource) {  
           this.closeDrawer();

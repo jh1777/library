@@ -5,7 +5,7 @@ import { IIO } from './drawer-right-cs.component.iio.interface';
 import { DrawerRightStore } from './drawer-right-cs.component.store';
 
 @Component({
-  selector: 'csgp-drawer-right',
+  selector: 'csgp-drawer-right-cs',
   templateUrl: './drawer-right-cs.component.html',
   styleUrls: ['./drawer-right-cs.component.scss'],
   providers: [DrawerRightStore],

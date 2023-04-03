@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ComponentErrorModel } from '../../../models/shared/component-error.model';
+import { ComponentErrorModel } from '../../models/shared/component-error.model';
 import { DrawerEntryModel } from './drawer-entry.component.model';
 
 @Component({

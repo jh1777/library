@@ -18,7 +18,7 @@
             </div>
             <div class="csgp-drawer-entry-header-title" *ngIf="!isLoading">
                 <div>{{ data?.title }}</div>
-                <div *ngIf="data?.titleIcon">
+                <div *ngIf="data?.titleIcon" class="csgp-drawer-entry-header-title-icon">
                     <clr-icon 
                         *ngIf="data?.titleIcon?.source == 'clarity'" 
                         [class.icon-link]="data?.titleIcon?.isClickable"

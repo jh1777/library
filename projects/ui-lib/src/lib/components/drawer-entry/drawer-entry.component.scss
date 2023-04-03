@@ -90,6 +90,12 @@
                 flex-direction: row;
                 gap: .25rem;
                 align-items: center;
+
+                &-icon {
+                    line-height: normal;
+                    display: flex;
+                    align-self: center;
+                }
             }
 
             &-right {

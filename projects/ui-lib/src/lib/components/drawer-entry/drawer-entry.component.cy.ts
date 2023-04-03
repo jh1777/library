@@ -1,14 +1,17 @@
 import { createOutputSpy } from "cypress/angular";
-import { ComponentErrorModel } from "../../../models/v2/component-error.model";
-import { PortalIconModel } from "../../../models/v2/icon-model";
+
+
+import { ComponentErrorModel } from "../../models/shared/component-error.model";
+import { IconModel } from "../../models/shared/icon-model";
 import { DrawerEntryComponent } from "./drawer-entry.component";
-import { DrawerEntryModel } from "../../../models/v2/drawer-entry/drawer-entry.component.model"
+import { DrawerEntryModel } from "./drawer-entry.component.model";
+
 
 describe('DrawerEntryComponent', () => {
 
     const model = new DrawerEntryModel({
         title: "Test Entry",
-        titleIcon: new PortalIconModel({
+        titleIcon: new IconModel({
           color: 'rgb(128, 128, 128)',
           iconName: "info-circle",
           size: 16,
@@ -45,7 +48,7 @@ describe('DrawerEntryComponent', () => {
                 isLoading: true
             }
         });
-        cy.get('#csgp-drawer-entry-header').should('contain.text', '◼︎◼︎');
+        cy.get('.csgp-drawer-entry-header').should('contain.text', '◼︎◼︎');
     })
 
     it('Content check', () => {
@@ -55,9 +58,9 @@ describe('DrawerEntryComponent', () => {
                 data: model
             }
         });
-        cy.get('#csgp-drawer-entry-header-title > :nth-child(1)').should('contain.text', model.title);
-        cy.get('#csgp-drawer-entry-subtitle').should('contain.text', model.subtitle);
-        cy.get('#csgp-drawer-entry-progress').should('be.visible');
+        cy.get('.csgp-drawer-entry-header-title > :nth-child(1)').should('contain.text', model.title);
+        cy.get('.csgp-drawer-entry-subtitle').should('contain.text', model.subtitle);
+        cy.get('.csgp-drawer-entry-progress').should('be.visible');
     });
 
     it('Content check - no bar', () => {

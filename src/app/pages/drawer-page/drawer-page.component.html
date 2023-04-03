@@ -1,0 +1,25 @@
+<!-- TAGS with Component Store -->
+<component-header title="DRAWER" subtitle="without Component Store"></component-header>
+<csgp-drawer-right
+    title="Header"
+    description="This should be a descriptive text."
+    [(show)]="showDrawer"
+    [closeOnOutsideClick]=true
+    sourceHtmlSelector=".drawer-toggle-button"
+    >
+    <ng-container drawer-body>
+        <ng-container *ngFor="let item of entries">
+            <div [class.debugBorder]="showComponentBorder">
+                <csgp-drawer-entry
+                    [data]="item"
+                ></csgp-drawer-entry>
+            </div>
+            <p></p>
+        </ng-container>
+    </ng-container>
+
+</csgp-drawer-right>
+
+<csgp-button-v2 class="drawer-toggle-button"
+    [data]="buttonModel" (onClick)="showDrawer = !showDrawer">
+</csgp-button-v2>

@@ -1,8 +1,9 @@
-import { PortalIconModel } from "../icon-model";
+import { IconModel } from "../../models/shared/icon-model";
+
 
 export class DrawerEntryModel {
     title: string = "";
-    titleIcon: PortalIconModel;
+    titleIcon: IconModel;
     subtitle?: string;
     progressPercent: number = 0;
     progressColor?: string;

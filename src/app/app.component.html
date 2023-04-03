@@ -28,6 +28,16 @@
             </clr-tab-content>
         </ng-template>
     </clr-tab>
+
+    <clr-tab>
+      <button clrTabLink>Drawer</button>
+      <ng-template [(clrIfActive)]="drawerTabActive">
+          <clr-tab-content>
+            <drawer-page [showComponentBorder]="showBorders"></drawer-page>
+          </clr-tab-content>
+      </ng-template>
+  </clr-tab>
+
   </clr-tabs>
 
 </div>

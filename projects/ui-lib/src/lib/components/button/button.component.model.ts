@@ -14,16 +14,16 @@ export class ButtonModel {
     href?: string;
 
     // Size of the Icon
-    iconSize: number = 20;
+    iconSize?: number = 20;
  
     // If set the whole button is disabled; no click; no styles
-    disabled: boolean = false;
+    disabled?: boolean = false;
 
     // Icon and Label Color can be set (no hover anymore if set; optional)
     color?: string;
 
     // If set the button is shown with border and padding (false by default)
-    filledStyle: boolean = false;
+    filledStyle?: boolean = false;
 
     // If filledStyle is set this sets the border of the button (optional)
     borderColor?: string;
@@ -32,7 +32,7 @@ export class ButtonModel {
     backgroundColor?: string;
 
     // Spinning wheel is shown
-    isLoading: boolean = false;
+    isLoading?: boolean = false;
 
     // Message (not optional if Loading == true)
     isLoadingMessage?: string;

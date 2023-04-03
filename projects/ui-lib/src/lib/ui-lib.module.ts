@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { ClarityModule } from '@clr/angular';
 import { ButtonComponent } from './components/button';
 import { ButtonComponentCS } from './components/button-cs';
+import { DrawerEntryComponent } from './components/drawer-entry';
 import { DrawerEntryComponentCS } from './components/drawer-entry-cs';
+import { DrawerRightComponent } from './components/drawer-right';
 import { DrawerRightComponentCS } from './components/drawer-right-cs';
 import { MetricEntryComponent } from './components/metric-entry';
 import { MetricEntryComponentCS } from './components/metric-entry-cs';
@@ -32,8 +34,10 @@ import { TagsComponentCS } from './components/tags-cs';
     TagsComponentCS,
     // DRAWER
     DrawerRightComponentCS,
+    DrawerRightComponent,
     // DRAWER ENTRY
-    DrawerEntryComponentCS
+    DrawerEntryComponent,
+    DrawerEntryComponentCS,
   ],
   imports: [
     CommonModule,
@@ -50,7 +54,9 @@ import { TagsComponentCS } from './components/tags-cs';
     TagsComponent,
     TagsComponentCS,
     DrawerRightComponentCS,
-    DrawerEntryComponentCS
+    DrawerRightComponent,
+    DrawerEntryComponentCS,
+    DrawerEntryComponent
   ]
 })
 export class UiLibModule { }
