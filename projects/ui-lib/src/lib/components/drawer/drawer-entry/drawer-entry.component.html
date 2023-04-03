@@ -1,0 +1,72 @@
+<div class="csgp-drawer-entry" csgp-test-id="csgp-drawer-entry">
+
+    <div *ngIf="errorData?.hasError" class="error-overlay">
+        <div>{{ errorData?.message ?? 'An error occured' }}</div>
+        <div *ngIf="errorData?.showLink" (click)="errorClicked($event)" class="error-link">Show Details</div>
+    </div>
+
+    <div [class.error-blur]="errorData?.hasError">
+        <div class="csgp-drawer-entry-header" [class.error-blur]="errorData?.hasError">
+            <div 
+                class="csgp-drawer-entry-header-title-loading"
+                class="no-select loading-color"
+                [class.pulse]="!errorData?.hasError" 
+                [class.error-blur]="errorData?.hasError"
+                *ngIf="isLoading">
+                <div><ng-container *ngFor="let _ of [].constructor(8)">{{ placeholder }}</ng-container></div>
+                <div><ng-container *ngFor="let _ of [].constructor(5)">{{ placeholder }}</ng-container></div>
+            </div>
+            <div class="csgp-drawer-entry-header-title" *ngIf="!isLoading">
+                <div>{{ data?.title }}</div>
+                <div *ngIf="data?.titleIcon">
+                    <clr-icon 
+                        *ngIf="data?.titleIcon?.source == 'clarity'" 
+                        [class.icon-link]="data?.titleIcon?.isClickable"
+                        [attr.title]="data?.titleIcon?.tooltip"
+                        [attr.size]="data?.titleIcon?.size"
+                        [style.color]="data?.titleIcon?.color"
+                        [attr.shape]="data?.titleIcon?.iconName"
+                        (click)="iconClicked()"
+                    ></clr-icon>
+                </div>
+            </div>
+            <div class="csgp-drawer-entry-header-right" *ngIf="!isLoading">
+                <ng-content select="[header-right]"></ng-content>
+            </div>
+        </div>
+        <div class="csgp-drawer-entry-subtitle"
+            *ngIf="data?.subtitle && !isLoading"
+            >
+                {{ data?.subtitle }}
+        </div>
+        <div class="csgp-drawer-entry-progress" *ngIf="data?.showProgress">
+            <div 
+                class="csgp-drawer-entry-progress-bar"
+                [style.background-color]="isLoading ? 'var(--drawer-entry-bar-bg-color)' : 'lightgrey'"
+            >
+                <div class="csgp-drawer-entry-progress-bar"
+                    *ngIf="!isLoading && data?.progressPercent"
+                    [style.background-color]="data?.progressColor ?? 'var(--drawer-entry-progress-bar-default-color)'"
+                    [style.width.%]="data?.progressPercent">
+                </div>
+            </div>
+            <div class="csgp-drawer-entry-progress-label" 
+                *ngIf="!isLoading"
+                >
+                    {{ data?.progressStatusLabel }}
+                </div>
+            <div *ngIf="isLoading" class="pulse loading-color">
+                <ng-container *ngFor="let _ of [].constructor(5)">{{ placeholder }}</ng-container>
+            </div>
+        </div>
+
+        <div class="csgp-drawer-entry-description" 
+            *ngIf="data?.description && !isLoading"
+            >
+            {{ data?.description }}
+        </div>
+        <div class="csgp-drawer-entry-additional-info"  *ngIf="!isLoading">
+            <ng-content select="[additional-info]"></ng-content>
+        </div>
+    </div>
+</div>

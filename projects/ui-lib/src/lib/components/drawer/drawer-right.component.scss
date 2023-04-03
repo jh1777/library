@@ -1,0 +1,72 @@
+:host {
+    display: contents;
+    --petrol1: var(--daimler-petrol4);
+    --grey-medium: var(--daimler-grey4);
+    --header-text-color: black;
+    --description-text-color: var(--daimler-grey3);;
+    --drawer-width: 30%;
+
+    .csgp-drawer-right {
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        background-color: white;
+        width: var(--drawer-width, 30%);
+        z-index: 1000;
+        flex-direction: column;
+        overflow: hidden;
+        padding: 1.5rem;
+
+        -webkit-box-shadow: 2px 0 15px 0 var(--tile-shadow, #d0d0d0);
+        -moz-box-shadow: 2px 0 15px 0 var(--tile-shadow, #d0d0d0);
+        box-shadow: 2px 0 15px 0  var(--tile-shadow, #d0d0d0);
+
+        &-header {
+            flex: 0 1 auto;
+            display: flex;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            word-wrap: none;
+            flex-direction: row;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--header-text-color, black);
+    
+            &-right {
+                display: flex;
+                flex-direction: row;
+                margin-left: auto;
+                align-items: center;
+
+                &-button {
+                    display: flex;
+                    color: var(--grey-medium);
+                    cursor: pointer;
+                    border: 1px solid var(--grey-medium);
+                    padding: .1rem;
+                    border-radius: .2rem;
+                    &:hover {
+                        color: var(--petrol1);
+                        border: 1px solid var(--petrol1);
+                    }
+                }
+            }
+        }
+
+        &-content {
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        &-description {
+            font-size: 0.7rem;
+            font-weight: 300;
+            color: var(--description-text-color, black);
+            margin-top: 0.9rem;
+            margin-bottom: 0.9rem;
+        }
+    }
+}
