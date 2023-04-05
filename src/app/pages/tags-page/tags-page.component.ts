@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { TagsCS } from '@ui';
+import { AfterViewInit, Component, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { TagsComponentCS, TagsCS } from '@ui';
+import { Tag } from 'projects/ui-lib/src/lib/components/tags-cs/tags-cs.component.iio.interface';
 import { TagsViewData, TagsViewModel } from 'src/app/models/tags';
 import { TagsCSViewData, TagsCSViewModel } from 'src/app/models/tags-cs';
 
@@ -8,9 +9,11 @@ import { TagsCSViewData, TagsCSViewModel } from 'src/app/models/tags-cs';
   templateUrl: './tags-page.component.html',
   styleUrls: ['./tags-page.component.scss']
 })
-export class TagsPageComponent {
+export class TagsPageComponent implements AfterViewInit {
   @Input()
   showComponentBorder: boolean = false;
+
+  @ViewChildren(TagsComponentCS) viewChildren!: QueryList<TagsComponentCS>;
 
   public tagsCSData: Array<TagsCSViewModel> = [];
   public tagsData: Array<TagsViewModel> = [];
@@ -19,44 +22,22 @@ export class TagsPageComponent {
     this.tagsCSData = TagsCSViewData;
     this.tagsData = TagsViewData;
   }
-
-  addTag(model: TagsCSViewModel | TagsViewModel, isCS: boolean) {
-    
-    if (isCS) {
-      const m = model as TagsCSViewModel;
-      m.ref.addTag({
-        name: "New",
-        value: "Tag",
-        description: ""
-      });
-    } else {
-      const m = model as TagsViewModel;
-      m.tags.push({
-        name: "New",
-        value: "Tag",
-        description: ""
-      });
-    }
+  
+  ngAfterViewInit(): void {
+    console.log(this.viewChildren);
   }
 
-  setIIO($event: TagsCS.IIO, data: TagsCSViewModel) {
-    data.ref = $event;
-    $event.setId(data.id);
-    $event.setOverflow(data.overflowAfterXItems);
-    $event.setVisibility(data.showAddButton, data.showEditButton, data.showDeletionButton, data.showTagsIcon);
-    $event.setClickable(data.enableClick, data.enableClickMore, data.moreTagsLabel);
-    $event.setLoading(data.isLoading);
-    data?.tags?.forEach(tag => {
-      $event.addTag(tag);
+  addTag(model: TagsCSViewModel , isCS: boolean, i: number) {
+    var random = Math.ceil(Math.random() * 100);
+    this.viewChildren.get(i).tagsStore.addTag({
+      name: `New-${random}`,
+      value: `Tag-${random}`,
+      description: `${random}`
     });
   }
 
   setOutput(model: any, entry: any) {
-    if (entry) {
-      model.$output = `id=${entry.id}`;
-    } else {
-      model.$output = `id=${model.id}`;
-    }
+    model.$output = JSON.stringify(model)
     setTimeout(() => { model.$output = '' }, 3000);
   }
 }

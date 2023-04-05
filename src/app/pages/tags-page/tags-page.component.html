@@ -1,11 +1,12 @@
 <!-- TAGS with Component Store -->
-<component-header title="TAGS" subtitle="with Component Store"></component-header>
+<!-- <component-header title="TAGS" subtitle="with Component Store"></component-header>
 <div class="columns">
     <div class="container" *ngFor="let model of tagsCSData">
         <div class="item">
             <div [class.debugBorder]="showComponentBorder">
-                <csgp-tags-cs 
-                    (initialized)="setIIO($event, model)" 
+                <csgp-tags-cs
+                    [tags]="model.tags"
+                    [initializedCallBack]="setIIOInput" 
                     (onAddClick)="addTag(model, true)"
                     (onClick)="setOutput(model, null)">
                 </csgp-tags-cs>
@@ -18,15 +19,15 @@
             {{ model.$output }}
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- TAGS without Component Store -->
 <component-header title="TAGS" subtitle="without Component Store"></component-header>
 <div class="columns">
-    <div class="container" *ngFor="let model of tagsData">
+    <div class="container" *ngFor="let model of tagsData; index as i">
         <div class="item">
             <div [class.debugBorder]="showComponentBorder">
-                <csgp-tags 
+                <csgp-tags-cs 
                     [tags]="model.tags"
                     [isLoading]="model.isLoading"
                     [showTagsIcon]="model.showTagsIcon"
@@ -37,16 +38,16 @@
                     [enableClickMore]="model.enableClickMore"
                     [overflowAfterXItems]="model.overflowAfterXItems"
                     [moreTagsLabel]="model.moreTagsLabel"
-                    (onAddClick)="addTag(model, false)"
+                    (onAddClick)="addTag(model, true, i)"
                     (onClick)="setOutput(model, $event)">
-                </csgp-tags>
+                </csgp-tags-cs>
             </div>
         </div>
         <div class="description">
             {{ model.$description }}
         </div>
         <div class="item-output">
-            {{ model.$output }}
+            {{ model.$output | json }}
         </div>
     </div>
 </div>
