@@ -1,8 +1,10 @@
 import { Injectable } from "@angular/core";
 import { ComponentStore } from "@ngrx/component-store";
+import { deepmergeInto } from "deepmerge-ts";
+import { produce } from "immer";
 import { IIO } from "./button-cs.component.iio.interface";
 import { ButtonState } from "./button-cs.component.interface";
-import { produce }  from "immer"
+
 
 @Injectable()
 export class ButtonStore extends ComponentStore<ButtonState> implements IIO  {
@@ -48,13 +50,13 @@ export class ButtonStore extends ComponentStore<ButtonState> implements IIO  {
   readonly id$ = this.select(state => state.id);
 
   setId = (id: any) => {
-    this.setAllReducer({
+    this.mergeValueIntoState({
       id: id
     });
   }
 
   setLoading = (state: boolean, message?: string) => {
-    this.setAllReducer({
+    this.mergeValueIntoState({
         isLoading: state,
         isLoadingMessage: message ?? ''
     });
@@ -62,19 +64,19 @@ export class ButtonStore extends ComponentStore<ButtonState> implements IIO  {
 
 
   setDisabled = (state: boolean) => {
-    this.setAllReducer({
+    this.mergeValueIntoState({
       disabled: state
     });
   };
 
   setColor = (value: string) => {
-    this.setAllReducer({
+    this.mergeValueIntoState({
       color: value
     });
   };
 
   setFilled = (state: boolean) => {
-    this.setAllReducer({
+    this.mergeValueIntoState({
       filledStyle: state
     });
   }
@@ -86,7 +88,7 @@ export class ButtonStore extends ComponentStore<ButtonState> implements IIO  {
       filledStyle = false;
     }
 
-    this.setAllReducer({
+    this.mergeValueIntoState({
       borderColor: borderColor,
       backgroundColor: backgroundColor,
       filledStyle: filledStyle
@@ -94,7 +96,7 @@ export class ButtonStore extends ComponentStore<ButtonState> implements IIO  {
   };
 
   setContent = (icon?: string, label?: string, tooltip?: string) => {
-    this.setAllReducer({
+    this.mergeValueIntoState({
       icon: icon,
       label: label,
       tooltip: tooltip
@@ -103,13 +105,11 @@ export class ButtonStore extends ComponentStore<ButtonState> implements IIO  {
 
   // REDUCER
 
-  private setAllReducer = this.updater((state: ButtonState, value: Partial<ButtonState>) => {
-    const newState = produce(state, (draft: ButtonState) => {
-      draft = Object.assign(draft, value);
-    });
-    return newState;
+  public mergeValueIntoState = this.updater((state: ButtonState, value: Partial<ButtonState>) => {
+    const newState = produce(state, (draft) => {
+      deepmergeInto(draft, value);
+    })
+    return (newState);
   });
-
-
   
 }

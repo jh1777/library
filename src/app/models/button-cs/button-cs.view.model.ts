@@ -1,12 +1,17 @@
 import { BaseViewModel } from "../base.view.model";
 
-export interface ButtonCSViewModel extends BaseViewModel{
-    id?: string;
+export interface ButtonCSViewModel extends BaseViewModel {
+    id?: any;
     label?: string;
-    loading: boolean;
+    isLoading?: boolean;
+    isLoadingMessage?: string;
     icon?: string;
+    tooltip?: string;
+    href?: string;
+    iconSize?: number;
     color?: string;
     borderColor?: string;
     backgroundColor?: string;
-    filled?: boolean;
+    filledStyle?: boolean;
+    disabled?: boolean;
 }

@@ -4,7 +4,21 @@
     <div class="container" *ngFor="let model of buttonCSData">
         <div class="item">
             <div [class.debugBorder]="showComponentBorder">
-                <csgp-button-v2-cs (initialized)="setButtonIIO($event, model)" (onClick)="setOutput(model)">
+                <csgp-button-v2-cs 
+                    [label]="model.label"
+                    [icon]="model.icon"
+                    [tooltip]="model.tooltip"
+                    [href]="model.href"
+                    [iconSize]="model.iconSize"
+                    [disabled]="model.disabled"
+                    [color]="model.color"
+                    [filledStyle]="model.filledStyle"
+                    [borderColor]="model.borderColor"
+                    [backgroundColor]="model.backgroundColor"
+                    [isLoading]="model.isLoading"
+                    [id]="model.id"
+                    [isLoadingMessage]="model.isLoadingMessage"
+                    (onClick)="setOutput(model)">
                 </csgp-button-v2-cs>
             </div>
         </div>

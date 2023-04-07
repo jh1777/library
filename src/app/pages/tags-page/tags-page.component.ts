@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { TagsComponentCS, TagsCS } from '@ui';
-import { Tag } from 'projects/ui-lib/src/lib/components/tags-cs/tags-cs.component.iio.interface';
+import { AfterViewInit, Component, Input, QueryList, ViewChildren } from '@angular/core';
+import { TagsComponentCS } from '@ui';
 import { TagsViewData, TagsViewModel } from 'src/app/models/tags';
 import { TagsCSViewData, TagsCSViewModel } from 'src/app/models/tags-cs';
 

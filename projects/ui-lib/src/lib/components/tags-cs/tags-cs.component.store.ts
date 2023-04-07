@@ -2,10 +2,8 @@ import { Injectable } from "@angular/core";
 import { ComponentStore } from '@ngrx/component-store';
 import { deepmergeInto } from "deepmerge-ts";
 import produce from "immer";
-import { Observable } from "rxjs";
 import { IIO, Tag } from "./tags-cs.component.iio.interface";
 import { TagsState } from "./tags-cs.component.interface";
-const merge = require('deepmerge');
 
 @Injectable()
 export class TagsStore extends ComponentStore<TagsState> implements IIO  {
@@ -108,9 +106,7 @@ export class TagsStore extends ComponentStore<TagsState> implements IIO  {
 
   public mergeValueIntoState = this.updater((state: TagsState, value: Partial<TagsState>) => {
     const newState = produce(state, (draft) => {
-      console.log('Before', draft);
       deepmergeInto(draft, value);
-      console.log('After', draft);
     })
     return (newState);
   });
