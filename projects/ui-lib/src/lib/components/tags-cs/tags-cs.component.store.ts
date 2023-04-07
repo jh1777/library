@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ComponentStore } from '@ngrx/component-store';
+import { deepmergeInto } from "deepmerge-ts";
 import produce from "immer";
 import { Observable } from "rxjs";
 import { IIO, Tag } from "./tags-cs.component.iio.interface";
@@ -36,13 +37,13 @@ export class TagsStore extends ComponentStore<TagsState> implements IIO  {
   readonly id$ = this.select(state => state.id);
 
   setLoading = (state: boolean) => {
-    this.setAllReducer({
+    this.mergeValueIntoState({
       isLoading: state
     });
   };
 
   setClickable = (tag: boolean, more: boolean, moreLabel: string) => {
-    this.setAllReducer({
+    this.mergeValueIntoState({
       enableClick: tag,
       enableClickMore: more,
       moreTagsLabel: moreLabel
@@ -51,17 +52,11 @@ export class TagsStore extends ComponentStore<TagsState> implements IIO  {
 
 
   setVisibility = (add: boolean, edit: boolean, del: boolean, tagsIcon: boolean) => {
-    this.setAllReducer({
+    this.mergeValueIntoState({
       showAddButton: add,
       showDeletionButton: del,
       showEditButton: edit,
       showTagsIcon: tagsIcon
-    });
-  }
-
-  setId = (id: any) => {
-    this.setAllReducer({
-      id: id
     });
   }
 
@@ -73,29 +68,37 @@ export class TagsStore extends ComponentStore<TagsState> implements IIO  {
     this.addTagReducer(tag);
   }
 
+  setTags = (tags: Tag[]) => {
+    this.mergeValueIntoState({ 
+      tags: tags 
+    });
+  }
+
   setOverflow = (items: number) => {
-    this.setAllReducer({
+    this.mergeValueIntoState({
       overflowAfterXItems: items
     })
   }
-  
-  getTags = (): Observable<Array<Tag>> => this.tags$;
 
-  readonly addTagReducer = this.updater((state, tag: Tag) => ({
-    ...state,
-    tags: state.tags.concat(tag)
-  }));
+  readonly addTagReducer = this.updater((state, tag: Tag) => {
+    const newstate = produce(state, draft => {
+      draft.tags = draft.tags.concat(tag);
+    });
+    return (newstate);
+  });
 
-  readonly deleteTagReducer = this.updater((state, tag: Tag) => ({
-    ...state,
-    tags: state.tags.filter(t => t != tag)
-  }));
+  readonly deleteTagReducer = this.updater((state, tag: Tag) => {
+    const newstate = produce(state, draft => {
+      draft.tags = [...draft.tags.filter(t => t != tag)];
+    });
+    return (newstate);
+  });
 
   readonly editTagReducer = this.updater((state, value: { oldTag: Tag, newTag: Tag }) => {
-    const newstate = produce(state, draft => {
+    const newState = produce(state, draft => {
       draft.tags = draft.tags.map(item => (item === value.oldTag) ? value.newTag : item);
     });
-    return newstate;
+    return (newState);
   });
 
   readonly tagsFiltered$ = this.select(state => state.overflowAfterXItems > 0 
@@ -103,7 +106,12 @@ export class TagsStore extends ComponentStore<TagsState> implements IIO  {
       : state.tags
   );
 
-  private setAllReducer = this.updater((state: TagsState, value: Partial<TagsState>) => {
-    return merge(state, value);
-});
+  public mergeValueIntoState = this.updater((state: TagsState, value: Partial<TagsState>) => {
+    const newState = produce(state, (draft) => {
+      console.log('Before', draft);
+      deepmergeInto(draft, value);
+      console.log('After', draft);
+    })
+    return (newState);
+  });
 }
