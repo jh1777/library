@@ -4,14 +4,14 @@
     <clr-icon *ngIf="tagsStore.showTagsIcon$ | async" class="csgp-tags-icon" shape="tags"></clr-icon>
     <!-- <clr-spinner *ngIf="tagsStore.isLoading$ | async" [clrSmall]="true"></clr-spinner> -->
     <ng-container *ngIf="tagsStore.isLoading$ | async">
-        <div class="csgp-tag-item pulse" *ngFor="let _ of [].constructor(2)">
+        <div class="csgp-tag-item pulse cy-csgp-loading" *ngFor="let _ of [].constructor(2)">
            <span *ngFor="let _ of [].constructor(15)">&nbsp;</span>
         </div>
     </ng-container>
 
     <ng-container *ngIf="!(tagsStore.isLoading$ | async)">
         <div 
-            class="csgp-tag-item" 
+            class="csgp-tag-item cy-csgp-tag-item" 
             *ngFor="let tag of (tagsStore.tagsFiltered$ | async)" 
             [attr.title]="tag.description" 
             (click)="tagClicked($event, tag)"
@@ -37,7 +37,7 @@
             </span>
         </div>
         <div
-            class="csgp-tag-item csgp-toolbutton"
+            class="csgp-tag-item csgp-toolbutton cy-csgp-tag-more"
             [attr.title]="(tagsStore.moreTagsLabel$ | async)"
             *ngIf="(tagsStore.overflowAfterXItems$ | async) > 0"
             (click)="tagMoreClicked($event)"
@@ -47,7 +47,7 @@
             &nbsp;<clr-icon shape="ellipsis-horizontal" size="15"></clr-icon>&nbsp;
         </div>
         <div
-            class="csgp-tag-item csgp-toolbutton selectable action" 
+            class="csgp-tag-item csgp-toolbutton selectable action cy-csgp-tag-add" 
             *ngIf="tagsStore.showAddButton$ | async"
             (click)="tagAddClicked($event)"
         >
