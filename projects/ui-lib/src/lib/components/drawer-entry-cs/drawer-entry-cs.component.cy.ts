@@ -1,6 +1,9 @@
 import { createOutputSpy } from "cypress/angular";
+import { ComponentErrorModel } from "../../models/shared/component-error.model";
+import { IconModel } from "../../models/shared/icon-model";
+import { DrawerEntryModel } from "../drawer-entry";
 import { DrawerEntryComponentCS } from "./drawer-entry-cs.component";
-import { DrawerEntryModel } from "./drawer-entry.component.model";
+
 
 describe('DrawerEntryComponentCS', () => {
 
