@@ -11,6 +11,7 @@ import { DrawerEntryViewData, DrawerEntryViewModel } from 'src/app/models/drawer
 export class DrawerPageComponent {
   public buttonModel: ButtonModel;
   public showDrawer: boolean = false;
+  public showDrawerCS: boolean = false;
   
   public entries: Array<DrawerEntryViewModel> = [];
   

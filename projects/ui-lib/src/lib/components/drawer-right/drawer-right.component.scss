@@ -1,7 +1,5 @@
 :host {
     display: contents;
-    --petrol1: var(--daimler-petrol4);
-    --grey-medium: var(--daimler-grey4);
     --header-text-color: black;
     --description-text-color: var(--daimler-grey3);;
     --drawer-width: 30%;
@@ -45,12 +43,12 @@
                     display: flex;
                     color: var(--grey-medium);
                     cursor: pointer;
-                    border: 1px solid var(--grey-medium);
-                    padding: .1rem;
-                    border-radius: .2rem;
+                    padding: .15rem;
+                    color: var(--daimler-petrol4);
+                    border-radius: .1rem;
                     &:hover {
-                        color: var(--petrol1);
-                        border: 1px solid var(--petrol1);
+                        color: var(--daimler-petrol3);
+                        background-color: var(--grey-light1);
                     }
                 }
             }

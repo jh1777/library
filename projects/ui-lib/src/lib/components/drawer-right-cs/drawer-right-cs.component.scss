@@ -1,10 +1,7 @@
 :host {
     display: contents;
-    --petrol1: #007a93;
-    --grey-medium: #e0e1e2;
-    --grey-light: #efeeeb;
     --header-text-color: black;
-    --description-text-color: darkgrey;
+    --description-text-color: var(--daimler-grey3);;
     --drawer-width: 30%;
 
     .csgp-drawer-right {
@@ -17,6 +14,7 @@
         width: var(--drawer-width, 30%);
         z-index: 1000;
         flex-direction: column;
+        overflow: hidden;
         padding: 1.5rem;
 
         -webkit-box-shadow: 2px 0 15px 0 var(--tile-shadow, #d0d0d0);
@@ -43,19 +41,22 @@
 
                 &-button {
                     display: flex;
-                    color: lightgray;
+                    color: var(--grey-medium);
                     cursor: pointer;
-                    border: 1px solid var(--grey-medium);
-                    padding: .1rem;
-                    border-radius: .2rem;
+                    padding: .15rem;
+                    color: var(--daimler-petrol4);
+                    border-radius: .1rem;
                     &:hover {
-                        color: var(--petrol1);
-                        border: 1px solid var(--petrol1);
-
+                        color: var(--daimler-petrol3);
+                        background-color: var(--grey-light1);
                     }
                 }
-    
             }
+        }
+
+        &-content {
+            flex-grow: 1;
+            overflow: hidden;
         }
 
         &-description {
@@ -63,6 +64,7 @@
             font-weight: 300;
             color: var(--description-text-color, black);
             margin-top: 0.9rem;
+            margin-bottom: 0.9rem;
         }
     }
 }

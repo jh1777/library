@@ -1,5 +1,5 @@
 import { AUTO_STYLE, animate, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, HostListener, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Input, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IIO } from './drawer-right-cs.component.iio.interface';
 import { DrawerRightStore } from './drawer-right-cs.component.store';
@@ -19,14 +19,39 @@ import { DrawerRightStore } from './drawer-right-cs.component.store';
     ])
   ]
 })
-export class DrawerRightComponentCS {
+export class DrawerRightComponentCS implements OnInit {
 
-  @Input()
-  public set storeReference(init: (storeReference: IIO) => void) {
-    if(init) {
-      init(this.drawerRightStore);
-      this.drawerRightStore.show$.subscribe(this._show);
+  private _initializedCallBack: (storeReference: IIO) => void;
+
+  @Input() public set initializedCallBack(callBackFunc: (storeReference: IIO) => void) {
+    if (callBackFunc) {
+      this._initializedCallBack = callBackFunc;
+      this._initializedCallBack(this.drawerRightStore);
     }
+  }
+
+  @Input() public set title(value: string) {
+    this.drawerRightStore.mergeValueIntoState({
+      title: value
+    });
+  }
+
+  @Input() public set show(value: boolean) {
+    this.drawerRightStore.mergeValueIntoState({
+      show: value
+    });
+  }
+
+  @Input() public set description(value: string) {
+    this.drawerRightStore.mergeValueIntoState({
+      description: value
+    });
+  }
+
+  @Input() public set sourceHtmlSelector(value: string) {
+    this.drawerRightStore.mergeValueIntoState({
+      sourceHtmlSelector: value
+    });
   }
 
   private _show = new BehaviorSubject(false);
@@ -35,16 +60,29 @@ export class DrawerRightComponentCS {
     public readonly drawerRightStore: DrawerRightStore
   ) {}
 
-  
+  ngOnInit(): void {
+    this.drawerRightStore.show$.subscribe({
+       next: (value) => {
+         this._show.next(value);
+       }
+     });
+   }
+
   public closeDrawer() {
     this.drawerRightStore.setShow(false);
   }
 
   @HostListener('document:click', ['$event'])
   private onClick(event) {
-    const element = document.querySelector('#csgp-drawer-right-selector');
-    if (this._show.value == true && !element.contains(event.target)) {
-      this.closeDrawer();
+    if (this._show) {
+        const element = document.querySelector('.csgp-drawer-right');
+        const src = document.querySelector(this.sourceHtmlSelector);
+        const isDrawerItself = element?.contains(event.target);
+        const isSource = src?.contains(event.target);
+
+        if (!isDrawerItself && !isSource) {  
+          this.closeDrawer();
+        }
     }
   }
 }
