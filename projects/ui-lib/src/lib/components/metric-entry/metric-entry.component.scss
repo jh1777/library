@@ -97,6 +97,7 @@
             border-radius: .1rem;
             margin-bottom: 0.17rem;
             transition: all 300ms;
+            background-color: darkgray;
         }
 
         &-container {
@@ -126,7 +127,7 @@
                 display: flex;
                 flex-direction: row;
                 margin-left: auto;
-                align-items: flex-end;
+                align-items: center;
                 gap: 0.3rem;;
             }
         }

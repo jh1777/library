@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ButtonsPageComponent } from './pages/buttons-page/buttons-page.component';
 import { TagsPageComponent } from './pages/tags-page/tags-page.component';
 import { DrawerPageComponent } from './pages/drawer-page/drawer-page.component';
+import { MetricsPageComponent } from './pages/metrics-page/metrics-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DrawerPageComponent } from './pages/drawer-page/drawer-page.component';
     HeaderComponent,
     ButtonsPageComponent,
     TagsPageComponent,
-    DrawerPageComponent
+    DrawerPageComponent,
+    MetricsPageComponent
   ],
   imports: [
     CommonModule,

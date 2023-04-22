@@ -2,26 +2,8 @@ import { createOutputSpy } from "cypress/angular";
 import { ComponentErrorModel } from "../../models/shared/component-error.model";
 import { IconModel } from "../../models/shared/icon-model";
 import { MetricEntryComponent } from "./metric-entry.component";
-import { MetricEntryLabelOptions, MetricEntryMeasureOptions, MetricEntryModel } from "./metric-entry.component.model";
 
 describe('MetricEntryComponent', () => {
-
-    const MetricEntryData = new MetricEntryModel({
-        label: new MetricEntryLabelOptions({
-            value: "Started",
-            icon: new IconModel({
-            color: 'rgb(0, 128, 0)',
-            size: 14,
-            source: 'clarity',
-            iconName: 'info-circle'
-            })
-        }),
-        measure: new MetricEntryMeasureOptions({
-            color: "rgb(0, 128, 0)",
-            percent: 24,
-            value: 4322
-        })
-    });
 
     const MetricEntryErrorData = new ComponentErrorModel({
         hasError: true,
@@ -30,14 +12,27 @@ describe('MetricEntryComponent', () => {
     });
 
     beforeEach(() => {
-        cy.mount(MetricEntryComponent);
+        cy.mount(MetricEntryComponent, {
+            componentProperties: {
+                label: "Started",
+                labelIcon: new IconModel({
+                    color: 'rgb(0, 128, 0)',
+                    size: 14,
+                    source: 'clarity',
+                    iconName: 'info-circle'
+                }),
+                metricColor: "rgb(0, 128, 0)",
+                metricPercent: 24,
+                metricValue: 4322
+            }
+        });
       });
     
     it('Loading check', () => {
         cy.mount(MetricEntryComponent, {
             componentProperties: {
                 isLoading: true
-                }
+            }
         });
         cy.get('.csgp-metricentry-container-left > :nth-child(1)').should('contain.text', '◼︎◼︎');
     })
@@ -45,12 +40,11 @@ describe('MetricEntryComponent', () => {
     it('Content check', () => {
         cy.mount(MetricEntryComponent, {
             componentProperties: {
-                isLoading: false,
-                data: MetricEntryData
+                isLoading: false
             }
         });
-        cy.get('.csgp-metricentry-container-left > .header-text').should('contain.text', MetricEntryData.label.value);
-        cy.get('.measure-value').should('contain.text', MetricEntryData.measure.value);
+        cy.get('.csgp-metricentry-container-left > .header-text').should('contain.text', "Started");
+        cy.get('.measure-value').should('contain.text', "4322");
         cy.get('[style="background-color: lightgrey;"] > .csgp-metricentry-bar').should('have.css', 'background-color', 'rgb(0, 128, 0)');
 
     })

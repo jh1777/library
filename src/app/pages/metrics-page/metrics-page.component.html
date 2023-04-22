@@ -1,0 +1,29 @@
+
+<component-header title="METRIC ENTRY" subtitle="without Component Store"></component-header>
+<div class="columns">
+    <div class="container" *ngFor="let model of metricData">
+        <div class="item">
+            <div [class.debugBorder]="showComponentBorder">
+                <csgp-metric-entry
+                    [isLoading]="model.isLoading"
+                    [errorData]="model.errorData"
+                    [label]="model.label"
+                    [labelStyle]="model.labelStyle"
+                    [labelIcon]="model.labelIcon"
+                    [metricValue]="model.metricValue"
+                    [metricPercent]="model.metricPercent"
+                    [metricColor]="model.metricColor"
+                    [metricAdditionalLabel]="model.metricAdditionalLabel"
+                    [showMetricPercantageLabel]="model.showMetricPercantageLabel"
+                    (onIconClick)="setOutput(model)"
+                ></csgp-metric-entry>
+            </div>
+        </div>
+        <div class="description">
+            {{ model.$description }}
+        </div>
+        <div class="item-output">
+            {{ model.$output }}
+        </div>
+    </div>
+</div>

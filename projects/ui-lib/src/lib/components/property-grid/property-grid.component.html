@@ -26,7 +26,12 @@
                     <ng-container *ngIf="data?.items[j+(i*rows)]?.component == 'METRIC-BAR'">
                         <csgp-metric-entry
                             [isLoading]="data?.items[j+(i*rows)]?.isLoading"
-                            [data]="data?.items[j+(i*rows)]?.data"
+                            [label]="data?.items[j+(i*rows)]?.label"
+                            [labelStyle]="data?.items[j+(i*rows)]?.labelStyle"
+                            [labelIcon]="data?.items[j+(i*rows)]?.labelIcon"
+                            [metricValue]="data?.items[j+(i*rows)]?.metricValue"
+                            [metricPercent]="data?.items[j+(i*rows)]?.metricPercent"
+                            [metricColor]="data?.items[j+(i*rows)]?.metricColor"
                             [errorData]="data?.items[j+(i*rows)]?.errorData"
                         ></csgp-metric-entry>
                     </ng-container>

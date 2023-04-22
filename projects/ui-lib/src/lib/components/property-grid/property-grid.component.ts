@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { ComponentErrorModel } from '../../models/shared/component-error.model';
-import { MetricEntryLabelOptions, MetricEntryMeasureOptions, MetricEntryModel } from '../metric-entry/metric-entry.component.model';
 import { PropertyEntryModel, PropertyEntryOptions } from '../property-entry/property-entry.component.model';
 import { PropertyGridModel } from './property-grid.component.model';
 
@@ -73,27 +72,6 @@ export class PropertyGridComponent {
 
   constructor() {
 
-    const MetricEntryData = new MetricEntryModel({
-      label: new MetricEntryLabelOptions({
-          value: "Started"
-      }),
-      measure: new MetricEntryMeasureOptions({
-          color: "rgb(0, 128, 0)",
-          percent: 24,
-          value: 4322
-      })
-    });
-
-    const MetricEntryData2 = new MetricEntryModel({
-      label: new MetricEntryLabelOptions({
-          value: "Completed"
-      }),
-      measure: new MetricEntryMeasureOptions({
-          color: "rgb(128, 128, 0)",
-          value: 23424
-      })
-    });
-
     const kvData1 = new PropertyEntryModel({
       content: new PropertyEntryOptions ({
         value: "Completed",
@@ -156,12 +134,21 @@ export class PropertyGridComponent {
           component: 'KEY-VALUE-DOUBLE'
         },
         {
-          data: MetricEntryData,
-          component: 'METRIC-BAR'
+          data: {
+            label: "Started",
+            metricValue: 4322,
+            metricPercent: 24,
+            metricColor: "rgb(0, 128, 0)"
+          },
+          component: 'METRIC-ENTRY'
         },
         {
-          data: MetricEntryData2,
-          component: 'METRIC-BAR'
+          data: {
+            label: "Completed",
+            metricValue: 43222,
+            metricColor: "rgb(128, 128, 0)",
+          },
+          component: 'METRIC-ENTRY'
         }
       ]
     })

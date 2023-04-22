@@ -25,21 +25,21 @@
         [class.error-blur]="errorData?.hasError"
         >
         <div class="csgp-metricentry-container-left">
-            <div class="header-text icon-container" [style]="data?.label?.style">{{  data?.label?.value }}
+            <div class="header-text icon-container" [style]="labelStyle">{{ label }}
                 <clr-icon 
-                    *ngIf="data?.label?.icon?.source == 'clarity'" 
-                    [class.icon-link]="data?.label?.icon?.isClickable"
-                    [attr.title]="data?.label?.icon?.tooltip"
-                    [attr.size]="data?.label?.icon?.size"
-                    [style.color]="data?.label?.icon?.color"
-                    [attr.shape]="data?.label?.icon?.iconName"
-                    (click)="iconClicked(data?.label)"
+                    *ngIf="labelIcon?.source == 'clarity'" 
+                    [class.icon-link]="labelIcon?.isClickable"
+                    [attr.title]="labelIcon?.tooltip"
+                    [attr.size]="labelIcon?.size"
+                    [style.color]="labelIcon?.color"
+                    [attr.shape]="labelIcon?.iconName"
+                    (click)="iconClicked(labelIcon)"
                 ></clr-icon>
             </div>
         </div>
-        <div class="csgp-metricentry-container-right" [style.color]="data?.measure?.color">
-            <div class="measure-value">{{ data?.measure?.value }}</div>
-            <div *ngIf="data?.measure?.percent  " class="measure-percent">({{ data?.measure?.percent }}%)</div>
+        <div class="csgp-metricentry-container-right" [style.color]="metricColor">
+            <div class="measure-value">{{ metricValue }}<span *ngIf="metricAdditionalLabel"> {{ metricAdditionalLabel }}</span></div>
+            <div *ngIf="metricPercent && showMetricPercantageLabel" class="measure-percent">({{ metricPercent }}%)</div>
         </div>
         
     </div>
@@ -47,10 +47,9 @@
         class="csgp-metricentry-bar"
         [style.background-color]="isLoading ? 'var(--metric-bar-item-loading-bar-bg-color)' : 'lightgrey'">
         <div class="csgp-metricentry-bar"
-            *ngIf="!isLoading && data?.measure?.percent"
-            [style.background-color]="data?.measure?.color"
-            [style.width.%]="data?.measure?.percent">
+            *ngIf="!isLoading && metricPercent"
+            [style.background-color]="metricColor"
+            [style.width.%]="metricPercent">
         </div>
     </div>
-
 </div>

@@ -36,8 +36,16 @@
             <drawer-page [showComponentBorder]="showBorders"></drawer-page>
           </clr-tab-content>
       </ng-template>
-  </clr-tab>
+    </clr-tab>
+
+    <clr-tab>
+      <button clrTabLink>Metrics</button>
+      <ng-template [(clrIfActive)]="metricsTabActive">
+          <clr-tab-content>
+            <metrics-page [showComponentBorder]="showBorders"></metrics-page>
+          </clr-tab-content>
+      </ng-template>
+    </clr-tab>
 
   </clr-tabs>
-
 </div>
