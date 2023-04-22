@@ -15,6 +15,10 @@
         color: var(--metric-bar-item-text, black);
     }
 
+    .label-font-big {
+        font-size: 1.3rem;
+    }
+
     .icon-container {
         display: flex;
         gap: .2rem;

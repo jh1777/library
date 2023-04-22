@@ -25,7 +25,11 @@
         [class.error-blur]="metricEntryStore.hasError$ | async"
         >
         <div class="csgp-metric-entry-container-left">
-            <div class="header-text icon-container" [style]="metricEntryStore.labelStyle$ | async">{{  metricEntryStore.labelValue$ | async }}
+            <div class="header-text icon-container" 
+                [style]="metricEntryStore.labelStyle$ | async"
+                [class.label-font-big]="!(metricEntryStore.metricPercent$ | async)"
+                >
+                {{  metricEntryStore.label$ | async }}
                 <clr-icon 
                     *ngIf="(metricEntryStore.labelIcon$ | async)?.source == 'clarity'" 
                     [class.icon-link]="(metricEntryStore.labelIcon$ | async)?.isClickable"
@@ -37,19 +41,24 @@
                 ></clr-icon>
             </div>
         </div>
-        <div class="csgp-metric-entry-container-right" [style.color]="metricEntryStore.valueColor$ | async">
-            <div class="measure-value">{{ metricEntryStore.value$ | async }}</div>
-            <div *ngIf="metricEntryStore.valuePercent$ | async" class="measure-percent">({{  (metricEntryStore.valuePercent$ | async) * 100  }}%)</div>
+        <div class="csgp-metric-entry-container-right" 
+            [style.color]="metricEntryStore.metricColor$ | async"
+            [class.label-font-big]="!(metricEntryStore.metricPercent$ | async)"
+
+            >
+            <div class="measure-value">{{ metricEntryStore.metricValue$ | async }}</div>
+            <div *ngIf="(metricEntryStore.metricPercent$ | async) && (metricEntryStore.showMetricPercantageLabel$ | async)" class="measure-percent">({{ (metricEntryStore.metricPercent$ | async) }}%)</div>
         </div>
         
     </div>
     <div 
+        *ngIf="(metricEntryStore.metricPercent$ | async)"
         class="csgp-metric-entry-bar"
         [style.background-color]="(metricEntryStore.isLoading$ | async) ? 'var(--metric-entry-loading-bar-bg-color)' : 'lightgrey'">
         <div class="csgp-metric-entry-bar"
             *ngIf="metricEntryStore.showPctBar$ | async"
-            [style.background-color]="(metricEntryStore.valueColor$ | async) ?? 'var(--metric-entry-bar-default-color)'"
-            [style.width.%]="(metricEntryStore.valuePercent$ | async) * 100">
+            [style.background-color]="(metricEntryStore.metricColor$ | async)"
+            [style.width.%]="(metricEntryStore.metricPercent$ | async)">
         </div>
     </div>
 </div>

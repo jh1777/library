@@ -1,11 +1,10 @@
-import { ComponentErrorModel } from "../../models/shared/component-error.model";
-import { IconModel } from "../../models/shared/icon-model";
+import { ComponentErrorModel, IconModel } from "@ui";
+import { BaseViewModel } from "../base.view.model";
 
-
-export interface MetricEntryState {
-    isLoading?: boolean;
+export interface MetricEntryCSViewModel extends BaseViewModel {
+    id?: any;
+    isLoading: boolean;
     errorData?: ComponentErrorModel;
-    
     label: string;
     labelStyle?: string;
     labelIcon?: IconModel;

@@ -1,8 +1,8 @@
 
 import { IconModel } from "@ui";
-import { MetricEntryViewModel } from "./metric-entry.view.model";
+import { MetricEntryCSViewModel } from "./metric-entry-cs.view.model";
 
-export var MetricEntryViewData: Array<MetricEntryViewModel> = [
+export var MetricEntryCSViewData: Array<MetricEntryCSViewModel> = [
     {
         isLoading: false,
         label: "State",
@@ -44,8 +44,8 @@ export var MetricEntryViewData: Array<MetricEntryViewModel> = [
         isLoading: false,
         label: "Count",
         showMetricPercantageLabel: false,
-        metricValue: 1234,
         metricColor: "black",
+        metricValue: 1234,
         id: 6,
         $description: "Big style KPI, without bar"
     },

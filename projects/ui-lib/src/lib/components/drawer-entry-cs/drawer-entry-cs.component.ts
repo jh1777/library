@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IIO } from './drawer-entry-cs.component.iio.interface';
-import { DrawerEntryStore } from './drawer-entry-cs.component.store';
 import { ComponentErrorModel } from '../../models/shared/component-error.model';
 import { IconModel } from '../../models/shared/icon-model';
+import { IIO } from './drawer-entry-cs.component.iio.interface';
+import { DrawerEntryStore } from './drawer-entry-cs.component.store';
 
 @Component({
   selector: 'csgp-drawer-entry-cs',
@@ -95,7 +95,6 @@ export class DrawerEntryComponentCS implements OnInit {
   @Output()
   public onIconClick = new EventEmitter<void>();
   
-  private _isLoading = new BehaviorSubject(false);
   private _isIconClickable = new BehaviorSubject(null);
   
   constructor(
@@ -103,12 +102,6 @@ export class DrawerEntryComponentCS implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.drawerEntryStore.isLoading$.subscribe({
-       next: (value) => {
-         this._isLoading.next(value);
-       }
-     });
-
      this.drawerEntryStore.isIconClickable$.subscribe({
       next: (value) => {
         this._isIconClickable.next(value);

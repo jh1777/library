@@ -1,8 +1,5 @@
-import { Observable } from "rxjs";
-import { MetricEntryValueState } from "./metric-entry-cs.component.interface";
 
 export interface IIO {
-    getValueData:  () => Observable<MetricEntryValueState>;
     
     setLoading: (state: boolean) => void;
 

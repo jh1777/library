@@ -27,10 +27,11 @@ export class MetricEntryComponent {
   labelIcon?: IconModel;
 
   @Input()
+  // Value to show (mandatory)
   metricValue: number = 0;
 
   @Input()
-  // Optional percent value - if not specified the bar is not shown
+  // Optional percent value; if not specified the bar is not shown and all labels / text are displayed in large font
   metricPercent?: number;
 
   @Input()

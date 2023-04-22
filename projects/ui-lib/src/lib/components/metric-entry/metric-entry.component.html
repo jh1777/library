@@ -25,7 +25,12 @@
         [class.error-blur]="errorData?.hasError"
         >
         <div class="csgp-metricentry-container-left">
-            <div class="header-text icon-container" [style]="labelStyle">{{ label }}
+            <div 
+                class="header-text icon-container" 
+                [style]="labelStyle"
+                [class.label-font-big]="!metricPercent"
+                >
+                {{ label }}
                 <clr-icon 
                     *ngIf="labelIcon?.source == 'clarity'" 
                     [class.icon-link]="labelIcon?.isClickable"
@@ -37,13 +42,17 @@
                 ></clr-icon>
             </div>
         </div>
-        <div class="csgp-metricentry-container-right" [style.color]="metricColor">
+        <div class="csgp-metricentry-container-right" 
+            [style.color]="metricColor"
+            [class.label-font-big]="!metricPercent"
+            >
             <div class="measure-value">{{ metricValue }}<span *ngIf="metricAdditionalLabel"> {{ metricAdditionalLabel }}</span></div>
             <div *ngIf="metricPercent && showMetricPercantageLabel" class="measure-percent">({{ metricPercent }}%)</div>
         </div>
         
     </div>
     <div 
+        *ngIf="metricPercent"
         class="csgp-metricentry-bar"
         [style.background-color]="isLoading ? 'var(--metric-bar-item-loading-bar-bg-color)' : 'lightgrey'">
         <div class="csgp-metricentry-bar"

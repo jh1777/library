@@ -26,7 +26,7 @@ describe('MetricEntryComponent', () => {
                 metricValue: 4322
             }
         });
-      });
+    });
     
     it('Loading check', () => {
         cy.mount(MetricEntryComponent, {

@@ -1,12 +1,11 @@
 import { Injectable } from "@angular/core";
 import { ComponentStore } from '@ngrx/component-store';
-import produce from "immer";
-import { Observable } from "rxjs";
 import { ComponentErrorModel } from "../../models/shared/component-error.model";
 import { IconModel } from "../../models/shared/icon-model";
 import { IIO } from "./metric-entry-cs.component.iio.interface";
-import { MetricEntryState, MetricEntryValueState } from "./metric-entry-cs.component.interface";
-
+import { MetricEntryState } from "./metric-entry-cs.component.interface";
+import { deepmergeInto } from "deepmerge-ts";
+import { produce } from "immer";
 
 @Injectable()
 export class MetricEntryStore extends ComponentStore<MetricEntryState> implements IIO  {
@@ -14,18 +13,14 @@ export class MetricEntryStore extends ComponentStore<MetricEntryState> implement
         super({ 
             isLoading: false, 
             errorData: null,
-            label: {
-                value: "Label"
-            },
-            value: {
-                value: 0,
-                percent: 0
-            }
+            label: "Label",
+            metricValue: 0,
+            metricPercent: 0
         });
     }
 
     setLoading = (state: boolean) => {
-        this.setAllReducer({
+        this.mergeValueIntoState({
             isLoading: state
         });
     };
@@ -37,7 +32,7 @@ export class MetricEntryStore extends ComponentStore<MetricEntryState> implement
                 message: message,
                 showLink: showLink
             });
-            this.setAllReducer({
+            this.mergeValueIntoState({
                 errorData: err
             });
         }
@@ -52,18 +47,14 @@ export class MetricEntryStore extends ComponentStore<MetricEntryState> implement
         ) => {
 
         const data: Partial<MetricEntryState> = {
-            label: {
-                value: label,
-                style: labelStyle
-            },
-            value: {
-                value: value,
-                percent: percent,
-                color: valueColor
-            },
+            label: label,
+            labelStyle: labelStyle,
+            metricValue: value,
+            metricPercent: percent,
+            metricColor: valueColor,
             isLoading: false
         };
-        this.setAllReducer(data);
+        this.mergeValueIntoState(data);
     };
 
     setIcon = (
@@ -84,15 +75,13 @@ export class MetricEntryStore extends ComponentStore<MetricEntryState> implement
                 tooltip: tooltip
 
             };
-            this.setIconReducer(config);
+            this.mergeValueIntoState( { labelIcon: config });
 
     };
 
-    getValueData = (): Observable<MetricEntryValueState> => this.valueData$;
 
     // GETTERS
     //-------------
-    readonly valueData$ = this.select(state => state.value);
 
     readonly isLoading$ = this.select(state => state.isLoading, { debounce: true });
     // Error 
@@ -101,30 +90,28 @@ export class MetricEntryStore extends ComponentStore<MetricEntryState> implement
     readonly errorShowLink$ = this.select(state => state.errorData?.showLink, { debounce: true });
 
     // Label
-    readonly labelValue$ = this.select(state => state.label?.value, { debounce: true });
-    readonly labelStyle$ = this.select(state => state.label?.style, { debounce: true });
-    readonly labelIcon$ = this.select(state => state.label?.icon, { debounce: true });
-    readonly labelIconClickable$ = this.select(state => state.label?.icon?.isClickable, { debounce: true });
+    readonly label$ = this.select(state => state.label, { debounce: true });
+    readonly labelStyle$ = this.select(state => state.labelStyle, { debounce: true });
+    readonly labelIcon$ = this.select(state => state.labelIcon, { debounce: true });
+    readonly labelIconClickable$ = this.select(state => state.labelIcon?.isClickable, { debounce: true });
     
-    // Value
-    readonly value$ = this.select(state => state.value?.value, { debounce: true });
-    readonly valueColor$ = this.select(state => state.value?.color, { debounce: true });
-    readonly valuePercent$ = this.select(state => state.value?.percent, { debounce: true });
+    // Metric
+    readonly metricValue$ = this.select(state => state.metricValue, { debounce: true });
+    readonly metricColor$ = this.select(state => state.metricColor, { debounce: true });
+    readonly metricPercent$ = this.select(state => state.metricPercent, { debounce: true });
+
+    // Add
+    readonly metricAdditionalLabel$ = this.select(state => state.metricAdditionalLabel, { debounce: true });
+    readonly showMetricPercantageLabel$ = this.select(state => state.showMetricPercantageLabel, { debounce: true });
     
-    readonly showPctBar$ = this.select(state => !state.isLoading && (state.value?.percent != null && state.value?.percent != undefined), { debounce: true });
+    readonly showPctBar$ = this.select(state => !state.isLoading && (state.metricPercent != null && state.metricPercent != undefined), { debounce: true });
 
     // REDUCER
-    private setIconReducer = this.updater((state: MetricEntryState, value: IconModel) => {
-        const newState = produce(state, (draft: MetricEntryState) => {
-            draft.label.icon = Object.assign(draft, value);
-        });
-        return newState;
-    });
 
-    private setAllReducer = this.updater((state: MetricEntryState, value: Partial<MetricEntryState>) => {
-        const newState = produce(state, (draft: MetricEntryState) => {
-            draft = Object.assign(draft, value);
-        });
-        return newState;
+    public mergeValueIntoState = this.updater((state: MetricEntryState, value: Partial<MetricEntryState>) => {
+        const newState = produce(state, (draft) => {
+          deepmergeInto(draft, value);
+        })
+        return (newState);
     });
 }
