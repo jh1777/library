@@ -4,7 +4,8 @@ import { ComponentErrorModel } from "../../models/shared/component-error.model";
 import { IconModel } from "../../models/shared/icon-model";
 import { IIO } from "./drawer-entry-cs.component.iio.interface";
 import { DrawerEntryState } from "./drawer-entry-cs.component.interface";
-const merge = require('deepmerge');
+import { deepmergeInto } from "deepmerge-ts";
+import { produce } from "immer";
 
 @Injectable()
 export class DrawerEntryStore extends ComponentStore<DrawerEntryState> implements IIO  {
@@ -39,13 +40,13 @@ export class DrawerEntryStore extends ComponentStore<DrawerEntryState> implement
     readonly id$ = this.select(state => state.id);
 
     setId = (id: any) => {
-      this.setAllReducer({
+      this.mergeValueIntoState({
         id: id
       });
     }
     // IIO
     setLoading = (state: boolean) => {
-        this.setAllReducer({
+        this.mergeValueIntoState({
             isLoading: state
         });
     };
@@ -58,7 +59,7 @@ export class DrawerEntryStore extends ComponentStore<DrawerEntryState> implement
                 message: message,
                 showLink: showLink
             });
-            this.setAllReducer({
+            this.mergeValueIntoState({
                 errorData: err
             });
         }
@@ -71,7 +72,7 @@ export class DrawerEntryStore extends ComponentStore<DrawerEntryState> implement
             title: title,
             isLoading: false
         };
-        this.setAllReducer(data);
+        this.mergeValueIntoState(data);
     };
 
     setProgress = (showProgress: boolean, percent: number, progressStatusLabel: string, progressColor?: string) => {
@@ -81,7 +82,7 @@ export class DrawerEntryStore extends ComponentStore<DrawerEntryState> implement
             progressStatusLabel: progressStatusLabel,
             showProgress: showProgress
         };
-        this.setAllReducer(data);
+        this.mergeValueIntoState(data);
     };
 
     setTitleIcon = (
@@ -101,11 +102,14 @@ export class DrawerEntryStore extends ComponentStore<DrawerEntryState> implement
             tooltip: tooltip
         };
         //this.setIconsReducer(config);
-        this.setAllReducer({ titleIcon: config });
+        this.mergeValueIntoState({ titleIcon: config });
     };
 
     // REDUCER
-    private setAllReducer = this.updater((state: DrawerEntryState, value: Partial<DrawerEntryState>) => {
-        return merge(state, value);
+    public mergeValueIntoState = this.updater((state: DrawerEntryState, value: Partial<DrawerEntryState>) => {
+        const newState = produce(state, (draft) => {
+          deepmergeInto(draft, value);
+        })
+        return (newState);
     });
 }

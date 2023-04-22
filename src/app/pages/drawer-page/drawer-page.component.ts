@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ButtonModel } from '@ui';
 import { DrawerEntryViewData, DrawerEntryViewModel } from 'src/app/models/drawer-entry';
+import { DrawerEntryCSViewData, DrawerEntryCSViewModel } from 'src/app/models/drawer-entry-cs';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class DrawerPageComponent {
   public showDrawerCS: boolean = false;
   
   public entries: Array<DrawerEntryViewModel> = [];
+  public entriesCS: Array<DrawerEntryCSViewModel> = [];
   
   @Input()
   showComponentBorder: boolean = false;
@@ -21,6 +23,7 @@ export class DrawerPageComponent {
 
   constructor() {
     this.entries = DrawerEntryViewData;
+    this.entriesCS = DrawerEntryCSViewData;
 
     this.buttonModel = {
       label: "Toggle Drawer",

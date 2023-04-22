@@ -33,11 +33,21 @@
     sourceHtmlSelector=".drawer-toggle-button-cs"
     >
     <ng-container drawer-body>
-        <ng-container *ngFor="let item of entries">
+        <ng-container *ngFor="let item of entriesCS; let i = index">
             <div [class.debugBorder]="showComponentBorder">
-                <csgp-drawer-entry
-                    [data]="item"
-                ></csgp-drawer-entry>
+                <csgp-drawer-entry-cs
+                    [isLoading]="item.isLoading"
+                    [errorData]="item.errorData"
+                    [title]="item.title"
+                    [titleIcon]="item.titleIcon"
+                    [subtitle]="item.subtitle"
+                    [progressPercent]="item.progressPercent"
+                    [progressColor]="item.progressColor"
+                    [showProgress]="item.showProgress"
+                    [progressStatusLabel]="item.progressStatusLabel"
+                    [description]="item.description"
+                    [id]="i"
+                ></csgp-drawer-entry-cs>
             </div>
             <p></p>
         </ng-container>
