@@ -19,20 +19,38 @@
                     <ng-container *ngIf="data?.items[j+(i*rows)]?.component == 'PROPERTY'">
                         <csgp-property-entry 
                             [isLoading]="data?.items[j+(i*rows)]?.isLoading"
-                            [data]="data?.items[j+(i*rows)]?.data"
+                            [id]="data?.items[j+(i*rows)]?.data?.id"
+                            [label]="data?.items[j+(i*rows)]?.data?.label"
+                            [labelStyle]="data?.items[j+(i*rows)]?.data?.labelStyle"
+                            [labelIcon]="data?.items[j+(i*rows)]?.data?.labelIcon"
+
+                            [value]="data?.items[j+(i*rows)]?.data?.value"
+                            [valueStyle]="data?.items[j+(i*rows)]?.data?.valueStyle"
+                            [valueIcon]="data?.items[j+(i*rows)]?.data?.valueIcon"
+
+                            [subtitle]="data?.items[j+(i*rows)]?.data?.subtitle"
+                            [subtitleStyle]="data?.items[j+(i*rows)]?.data?.subtitleStyle"
+                            [subtitleIcon]="data?.items[j+(i*rows)]?.data?.subtitleIcon"
+
+                            [valueSubtitle]="data?.items[j+(i*rows)]?.data?.valueSubtitle"
+                            [valueSubtitleStyle]="data?.items[j+(i*rows)]?.data?.valueSubtitleStyle"
+                            [valueSubtitleIcon]="data?.items[j+(i*rows)]?.data?.valueSubtitleIcon"
+
+                            (onIconClick)="clickEvent(data?.items[j+(i*rows)])"
+
                             [errorData]="data?.items[j+(i*rows)]?.errorData"
                         ></csgp-property-entry>
                     </ng-container>
                     <ng-container *ngIf="data?.items[j+(i*rows)]?.component == 'METRIC'">
                         <csgp-metric-entry
                             [isLoading]="data?.items[j+(i*rows)]?.isLoading"
-                            [label]="data?.items[j+(i*rows)]?.label"
-                            [labelStyle]="data?.items[j+(i*rows)]?.labelStyle"
-                            [labelIcon]="data?.items[j+(i*rows)]?.labelIcon"
-                            [metricValue]="data?.items[j+(i*rows)]?.metricValue"
-                            [metricPercent]="data?.items[j+(i*rows)]?.metricPercent"
-                            [metricColor]="data?.items[j+(i*rows)]?.metricColor"
                             [errorData]="data?.items[j+(i*rows)]?.errorData"
+                            [label]="data?.items[j+(i*rows)]?.data?.label"
+                            [labelStyle]="data?.items[j+(i*rows)]?.data?.labelStyle"
+                            [labelIcon]="data?.items[j+(i*rows)]?.data?.labelIcon"
+                            [metricValue]="data?.items[j+(i*rows)]?.data?.metricValue"
+                            [metricPercent]="data?.items[j+(i*rows)]?.data?.metricPercent"
+                            [metricColor]="data?.items[j+(i*rows)]?.data?.metricColor"
                         ></csgp-metric-entry>
                     </ng-container>
                 </div>

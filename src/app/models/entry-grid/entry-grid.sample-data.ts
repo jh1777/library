@@ -14,7 +14,7 @@ export var EntryGridViewData: EntryGridViewModel = {
                 valueSubtitle: "+32 today",
                 subtitle: "Increase",
                 id: 1,
-                $description: "Default"
+                $description: "Default #1"
             }
         },
         {
@@ -22,12 +22,12 @@ export var EntryGridViewData: EntryGridViewModel = {
             component: "PROPERTY",
             data: {
                 isLoading: false,
-                label: "Devices",
-                value: "6723",
-                valueSubtitle: "+32 today",
+                label: "Vehicles",
+                value: "43322",
+                valueSubtitle: "+66 today",
                 subtitle: "Increase",
-                id: 1,
-                $description: "Default"
+                id: 2,
+                $description: "Default #2"
             }
         },
         {
@@ -47,7 +47,7 @@ export var EntryGridViewData: EntryGridViewModel = {
                 valueSubtitle: "-2 today",
                 valueSubtitleStyle: "color: red;",
                 subtitle: "Increase",
-                id: 2,
+                id: 3,
                 $description: "With Icon and colored subtitle"
             }
         },
@@ -69,7 +69,7 @@ export var EntryGridViewData: EntryGridViewModel = {
                 valueStyle: "color: green; font-weight: 800;",
                 valueSubtitle: "20.03.2023T12:23:45Z",
                 subtitle: "Timestamp",
-                id: 3,
+                id: 4,
                 $description: "Use for state example"
             }
         }

@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { ComponentErrorModel } from '../../models/shared/component-error.model';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EntryGridModel } from './entry-grid.component.model';
 
 @Component({
@@ -68,9 +67,11 @@ export class EntryGridComponent {
     return this._isLoading;
   }
 
+  @Output()
+  public onClick = new EventEmitter<any>();
 
   constructor() {
-
+/*
     const kvError1 = new ComponentErrorModel({
       hasError:  false
     })
@@ -80,7 +81,7 @@ export class EntryGridComponent {
       showLink: true
     })
 
-    /*
+    
     this.data = new EntryGridModel({
       items: [
         {
@@ -147,5 +148,9 @@ export class EntryGridComponent {
         item.isLoading = state;
       });
     }
+  }
+
+  public clickEvent(item: any) {
+    this.onClick.emit(item);
   }
 }
