@@ -4,7 +4,7 @@ CS - Component Store
 
 ## Aktuell in Arbeit
 
-tags: Onclick tut nicht ... Id wird nicht angezeigt
+Umstellen auf aktuelles CS pattern
 
 ## Ohne CS
 
@@ -32,11 +32,13 @@ tags: Onclick tut nicht ... Id wird nicht angezeigt
 # New Components
 
 1. property-entry-simple (only 1 Key/Value) -> integrate in grid
-2. metric-entry-big (nur Key / MetricValue in large fonts) -> integrate in grid
+
 
 # ToDo
 
-- Alle non-Component Stoe models vereinheitlichen in einem Model 
+- OnClick emitter sollten alle die id emitten, die jede component als Input() property besitzen sollte
+
+- Alle non-Component Store models vereinheitlichen in einem Model 
     - teil-interface erstellen für error
 
 # Links

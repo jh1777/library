@@ -1,29 +1,9 @@
 import { createOutputSpy } from "cypress/angular";
-
-
 import { ComponentErrorModel } from "../../models/shared/component-error.model";
 import { IconModel } from "../../models/shared/icon-model";
 import { DrawerEntryComponent } from "./drawer-entry.component";
-import { DrawerEntryModel } from "./drawer-entry.component.model";
-
 
 describe('DrawerEntryComponent', () => {
-
-    const model = new DrawerEntryModel({
-        title: "Test Entry",
-        titleIcon: new IconModel({
-          color: 'rgb(128, 128, 128)',
-          iconName: "info-circle",
-          size: 16,
-          tooltip: "Test button"
-          
-        }),
-        subtitle: "2023-03-21T12:12:23Z (18 mins ago)",
-        description: "This is the description of this entry.",
-        progressPercent: 33,
-        progressStatusLabel: "In Progress",
-        showProgress: true
-    });
 
     const errorData = new ComponentErrorModel({
         hasError: true,
@@ -31,15 +11,24 @@ describe('DrawerEntryComponent', () => {
         message: "This is an error"
 
     })
-
-    const model2 = new DrawerEntryModel({
-        title: "Test Entry2",
-        subtitle: "2023-03-21T12:12:23Z (18 mins ago)",
-        showProgress: false
-    });
     
     beforeEach(() => {
-        cy.mount(DrawerEntryComponent);
+        cy.mount(DrawerEntryComponent, {
+            componentProperties: {
+                title: "Test Entry",
+                titleIcon: new IconModel({
+                    color: 'rgb(128, 128, 128)',
+                    iconName: "info-circle",
+                    size: 16,
+                    tooltip: "Test button"
+                }),
+                subtitle: "2023-03-21T12:12:23Z (18 mins ago)",
+                description: "This is the description of this entry.",
+                progressPercent: 33,
+                progressStatusLabel: "In Progress",
+                showProgress: true
+            }
+        });
     });
 
     it('Loading check', () => {
@@ -54,12 +43,11 @@ describe('DrawerEntryComponent', () => {
     it('Content check', () => {
         cy.mount(DrawerEntryComponent, {
             componentProperties: {
-                isLoading: false,
-                data: model
+                isLoading: false
             }
         });
-        cy.get('.csgp-drawer-entry-header-title > :nth-child(1)').should('contain.text', model.title);
-        cy.get('.csgp-drawer-entry-subtitle').should('contain.text', model.subtitle);
+        cy.get('.csgp-drawer-entry-header-title > :nth-child(1)').should('contain.text', "Test Entry");
+        cy.get('.csgp-drawer-entry-subtitle').should('contain.text', "2023-03-21T12:12:23Z (18 mins ago)");
         cy.get('.csgp-drawer-entry-progress').should('be.visible');
     });
 
@@ -67,7 +55,9 @@ describe('DrawerEntryComponent', () => {
         cy.mount(DrawerEntryComponent, {
             componentProperties: {
                 isLoading: false,
-                data: model2
+                title: "Test Entry2",
+                subtitle: "2023-03-21T12:12:23Z (18 mins ago)",
+                showProgress: false
             }
         });
         cy.get('#csgp-drawer-entry-progress').should('not.exist');

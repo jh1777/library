@@ -17,15 +17,15 @@
                 <div><ng-container *ngFor="let _ of [].constructor(5)">{{ placeholder }}</ng-container></div>
             </div>
             <div class="csgp-drawer-entry-header-title" *ngIf="!isLoading">
-                <div>{{ data?.title }}</div>
-                <div *ngIf="data?.titleIcon" class="csgp-drawer-entry-header-title-icon">
+                <div>{{ title }}</div>
+                <div *ngIf="titleIcon" class="csgp-drawer-entry-header-title-icon">
                     <clr-icon 
-                        *ngIf="data?.titleIcon?.source == 'clarity'" 
-                        [class.icon-link]="data?.titleIcon?.isClickable"
-                        [attr.title]="data?.titleIcon?.tooltip"
-                        [attr.size]="data?.titleIcon?.size"
-                        [style.color]="data?.titleIcon?.color"
-                        [attr.shape]="data?.titleIcon?.iconName"
+                        *ngIf="titleIcon?.source == 'clarity'" 
+                        [class.icon-link]="titleIcon?.isClickable"
+                        [attr.title]="titleIcon?.tooltip"
+                        [attr.size]="titleIcon?.size"
+                        [style.color]="titleIcon?.color"
+                        [attr.shape]="titleIcon?.iconName"
                         (click)="iconClicked()"
                     ></clr-icon>
                 </div>
@@ -35,25 +35,25 @@
             </div>
         </div>
         <div class="csgp-drawer-entry-subtitle"
-            *ngIf="data?.subtitle && !isLoading"
+            *ngIf="subtitle && !isLoading"
             >
-                {{ data?.subtitle }}
+                {{ subtitle }}
         </div>
-        <div class="csgp-drawer-entry-progress" *ngIf="data?.showProgress">
+        <div class="csgp-drawer-entry-progress" *ngIf="showProgress">
             <div 
                 class="csgp-drawer-entry-progress-bar"
                 [style.background-color]="isLoading ? 'var(--drawer-entry-bar-bg-color)' : 'lightgrey'"
             >
                 <div class="csgp-drawer-entry-progress-bar"
-                    *ngIf="!isLoading && data?.progressPercent"
-                    [style.background-color]="data?.progressColor ?? 'var(--drawer-entry-progress-bar-default-color)'"
-                    [style.width.%]="data?.progressPercent">
+                    *ngIf="!isLoading && progressPercent"
+                    [style.background-color]="progressColor ?? 'var(--drawer-entry-progress-bar-default-color)'"
+                    [style.width.%]="progressPercent">
                 </div>
             </div>
             <div class="csgp-drawer-entry-progress-label" 
                 *ngIf="!isLoading"
                 >
-                    {{ data?.progressStatusLabel }}
+                    {{ progressStatusLabel }}
                 </div>
             <div *ngIf="isLoading" class="pulse loading-color">
                 <ng-container *ngFor="let _ of [].constructor(5)">{{ placeholder }}</ng-container>
@@ -61,9 +61,9 @@
         </div>
 
         <div class="csgp-drawer-entry-description" 
-            *ngIf="data?.description && !isLoading"
+            *ngIf="description && !isLoading"
             >
-            {{ data?.description }}
+            {{ description }}
         </div>
         <div class="csgp-drawer-entry-additional-info"  *ngIf="!isLoading">
             <ng-content select="[additional-info]"></ng-content>
