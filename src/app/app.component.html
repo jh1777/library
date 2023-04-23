@@ -39,10 +39,10 @@
     </clr-tab>
 
     <clr-tab>
-      <button clrTabLink>Metrics</button>
-      <ng-template [(clrIfActive)]="metricsTabActive">
+      <button clrTabLink>Entries</button>
+      <ng-template [(clrIfActive)]="entriesTabActive">
           <clr-tab-content>
-            <metrics-page [showComponentBorder]="showBorders"></metrics-page>
+            <entries-page [showComponentBorder]="showBorders"></entries-page>
           </clr-tab-content>
       </ng-template>
     </clr-tab>

@@ -11,6 +11,6 @@ export class AppComponent {
   public buttonsTabActive: boolean;
   public tagsTabActive: boolean;
   public drawerTabActive: boolean;
-  public metricsTabActive: boolean;
+  public entriesTabActive: boolean;
   
 }

@@ -3,11 +3,11 @@ import { MetricEntryViewData, MetricEntryViewModel } from 'src/app/models/metric
 import { MetricEntryCSViewData, MetricEntryCSViewModel } from 'src/app/models/metric-entry-cs';
 
 @Component({
-  selector: 'metrics-page',
-  templateUrl: './metrics-page.component.html',
-  styleUrls: ['./metrics-page.component.scss']
+  selector: 'entries-page',
+  templateUrl: './entries-page.component.html',
+  styleUrls: ['./entries-page.component.scss']
 })
-export class MetricsPageComponent {
+export class EntriesPageComponent {
 
   @Input()
   showComponentBorder: boolean = false;

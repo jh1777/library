@@ -1,16 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ClarityModule } from '@clr/angular';
+import { UiLibModule } from 'projects/ui-lib/src/public-api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UiLibModule } from 'projects/ui-lib/src/public-api';
-import { CommonModule } from '@angular/common';
-import { ClarityModule } from '@clr/angular';
 import { HeaderComponent } from './components/header/header.component';
 import { ButtonsPageComponent } from './pages/buttons-page/buttons-page.component';
-import { TagsPageComponent } from './pages/tags-page/tags-page.component';
 import { DrawerPageComponent } from './pages/drawer-page/drawer-page.component';
-import { MetricsPageComponent } from './pages/metrics-page/metrics-page.component';
+import { EntriesPageComponent } from './pages/entries-page/entries-page.component';
+import { TagsPageComponent } from './pages/tags-page/tags-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { MetricsPageComponent } from './pages/metrics-page/metrics-page.componen
     ButtonsPageComponent,
     TagsPageComponent,
     DrawerPageComponent,
-    MetricsPageComponent
+    EntriesPageComponent
   ],
   imports: [
     CommonModule,
