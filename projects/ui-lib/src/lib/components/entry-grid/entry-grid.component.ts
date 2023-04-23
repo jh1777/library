@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { ComponentErrorModel } from '../../models/shared/component-error.model';
-import { PropertyGridModel } from './property-grid.component.model';
+import { EntryGridModel } from './entry-grid.component.model';
 
 @Component({
-  selector: 'csgp-property-grid',
-  templateUrl: './property-grid.component.html',
-  styleUrls: ['./property-grid.component.scss']
+  selector: 'csgp-entry-grid',
+  templateUrl: './entry-grid.component.html',
+  styleUrls: ['./entry-grid.component.scss']
 })
-export class PropertyGridComponent {
+export class EntryGridComponent {
 
   private readonly _maxRows: number = 10;
   private readonly _maxCols: number = 3;
@@ -46,14 +46,14 @@ export class PropertyGridComponent {
   public hasUnifiedLoading: boolean = false;
 
   // DATA
-  private _data?: PropertyGridModel;
+  private _data?: EntryGridModel;
 
   @Input()
-  public set data(model: PropertyGridModel) {
+  public set data(model: EntryGridModel) {
     this._data = model;
     this.applyUnifiedLoading(this._isLoading);
   }
-  public get data(): PropertyGridModel {
+  public get data(): EntryGridModel {
     return this._data;
   }
 
@@ -80,7 +80,8 @@ export class PropertyGridComponent {
       showLink: true
     })
 
-    this.data = new PropertyGridModel({
+    /*
+    this.data = new EntryGridModel({
       items: [
         {
           isLoading: false,
@@ -92,7 +93,7 @@ export class PropertyGridComponent {
             valueSubtitle: "20.03.2023T12:23:45Z"
           },
           errorData: kvError1,
-          component: 'KEY-VALUE-DOUBLE'
+          component: 'PROPERTY'
         },
         {
           isLoading: false,
@@ -104,7 +105,7 @@ export class PropertyGridComponent {
             valueSubtitle: "132.322"
           },
           errorData: kvError1,
-          component: 'KEY-VALUE-DOUBLE'
+          component: 'PROPERTY'
         },
         {
           isLoading: false,
@@ -116,7 +117,7 @@ export class PropertyGridComponent {
             valueSubtitle: "20.03.2023T12:23:45Z"
           },
           errorData: kvError1,
-          component: 'KEY-VALUE-DOUBLE'
+          component: 'PROPERTY'
         },
         {
           data: {
@@ -125,7 +126,7 @@ export class PropertyGridComponent {
             metricPercent: 24,
             metricColor: "rgb(0, 128, 0)"
           },
-          component: 'METRIC-ENTRY'
+          component: 'METRIC'
         },
         {
           data: {
@@ -133,10 +134,11 @@ export class PropertyGridComponent {
             metricValue: 43222,
             metricColor: "rgb(128, 128, 0)",
           },
-          component: 'METRIC-ENTRY'
+          component: 'METRIC'
         }
       ]
     })
+    */
   }
 
   private applyUnifiedLoading(state: boolean) {

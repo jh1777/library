@@ -7,11 +7,11 @@ import { DrawerEntryComponent } from './components/drawer-entry';
 import { DrawerEntryComponentCS } from './components/drawer-entry-cs';
 import { DrawerRightComponent } from './components/drawer-right';
 import { DrawerRightComponentCS } from './components/drawer-right-cs';
+import { EntryGridComponent } from './components/entry-grid';
 import { MetricEntryComponent } from './components/metric-entry';
 import { MetricEntryComponentCS } from './components/metric-entry-cs';
 import { PropertyEntryComponent } from './components/property-entry';
 import { PropertyEntryComponentCS } from './components/property-entry-cs';
-import { PropertyGridComponent } from './components/property-grid';
 import { TagsComponent } from './components/tags';
 import { TagsComponentCS } from './components/tags-cs';
 
@@ -28,7 +28,7 @@ import { TagsComponentCS } from './components/tags-cs';
     PropertyEntryComponent,
     PropertyEntryComponentCS,
     // PROPERTY GRID
-    PropertyGridComponent,
+    EntryGridComponent,
     // TAGS
     TagsComponent,
     TagsComponentCS,
@@ -50,7 +50,7 @@ import { TagsComponentCS } from './components/tags-cs';
     MetricEntryComponent,
     PropertyEntryComponent,
     PropertyEntryComponentCS,
-    PropertyGridComponent,
+    EntryGridComponent,
     TagsComponent,
     TagsComponentCS,
     DrawerRightComponentCS,

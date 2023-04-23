@@ -47,5 +47,14 @@
       </ng-template>
     </clr-tab>
 
+    <clr-tab>
+      <button clrTabLink>Entry Grid</button>
+      <ng-template [(clrIfActive)]="entryGridTabActive">
+          <clr-tab-content>
+            <entry-grid-page [showComponentBorder]="showBorders"></entry-grid-page>
+          </clr-tab-content>
+      </ng-template>
+    </clr-tab>
+
   </clr-tabs>
 </div>

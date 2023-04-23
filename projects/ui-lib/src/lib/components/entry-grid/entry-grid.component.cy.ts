@@ -1,48 +1,44 @@
 
 import { ClarityModule } from '@clr/angular';
-import { PropertyEntryComponent, PropertyEntryModel, PropertyEntryOptions } from '../property-entry';
-import { PropertyGridComponent } from './property-grid.component';
-import { PropertyGridModel } from './property-grid.component.model';
+import { PropertyEntryComponent } from '../property-entry';
+import { EntryGridComponent } from './entry-grid.component';
+import { EntryGridModel } from './entry-grid.component.model';
 
 
 describe('PropertyGridComponent', () => {
-
-  const testModel = new PropertyEntryModel({
-    content: new PropertyEntryOptions ({
-      value: "Completed",
-      style: 'color: rgb(6, 156, 21); font-weight: 700;'
-    }),
-    subtitleContent: new PropertyEntryOptions ({
-      value: "20.03.2023T12:23:45Z"
-    }),
-    subtitleLabel: new PropertyEntryOptions ({
-      value: "Timestamp"
-    }),
-    label: new PropertyEntryOptions ({
-      value: "Onboarding State"
-    })
-  });
   
   beforeEach(() => {
-    cy.mount(PropertyGridComponent, {
+    cy.mount(EntryGridComponent, {
         declarations: [PropertyEntryComponent],
         imports: [ClarityModule],
         componentProperties: {
             cols: 1,
             rows: 2,
-            data: new PropertyGridModel({
+            data: new EntryGridModel({
                 items: [
                     {
-                        data: testModel,
+                        data: {
+                          value: "Completed",
+                          valueStyle: 'color: rgb(6, 156, 21); font-weight: 700;',
+                          valueSubtitle: "20.03.2023T12:23:45Z",
+                          subtitle: "Timestamp",
+                          label: "Onboarding State"
+                        },
                         isLoading: false,
                         errorData: null,
-                        component: 'KEY-VALUE-DOUBLE'
+                        component: 'PROPERTY'
                     },
                     {
-                        data: testModel,
+                        data: {
+                          value: "Completed",
+                          valueStyle: 'color: rgb(6, 156, 21); font-weight: 700;',
+                          valueSubtitle: "20.03.2023T12:23:45Z",
+                          subtitle: "Timestamp",
+                          label: "Onboarding State"
+                        },
                         isLoading: false,
                         errorData: null,
-                        component: 'KEY-VALUE-DOUBLE'
+                        component: 'PROPERTY'
                     }
                 ]
             }) 
@@ -58,14 +54,14 @@ describe('PropertyGridComponent', () => {
   });
 
   it('Unified Loading check', () => {
-    cy.mount(PropertyGridComponent, {
+    cy.mount(EntryGridComponent, {
         declarations: [PropertyEntryComponent],
         componentProperties: {
             cols: 1,
             rows: 2,
             hasUnifiedLoading: true,
             isLoading: true,
-            data: new PropertyGridModel({
+            data: new EntryGridModel({
                 items: [
                     {
                         data: testModel,
@@ -92,14 +88,14 @@ describe('PropertyGridComponent', () => {
   });
 
   it('No Unified Loading check', () => {
-    cy.mount(PropertyGridComponent, {
+    cy.mount(EntryGridComponent, {
         declarations: [PropertyEntryComponent],
         componentProperties: {
             cols: 1,
             rows: 2,
             hasUnifiedLoading: false,
             isLoading: true,
-            data: new PropertyGridModel({
+            data: new EntryGridModel({
                 items: [
                     {
                         data: testModel,

@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ButtonsPageComponent } from './pages/buttons-page/buttons-page.component';
 import { DrawerPageComponent } from './pages/drawer-page/drawer-page.component';
 import { EntriesPageComponent } from './pages/entries-page/entries-page.component';
+import { EntryGridPageComponent } from './pages/entry-grid-page/entry-grid-page.component';
 import { TagsPageComponent } from './pages/tags-page/tags-page.component';
 
 @NgModule({
@@ -19,7 +20,8 @@ import { TagsPageComponent } from './pages/tags-page/tags-page.component';
     ButtonsPageComponent,
     TagsPageComponent,
     DrawerPageComponent,
-    EntriesPageComponent
+    EntriesPageComponent,
+    EntryGridPageComponent
   ],
   imports: [
     CommonModule,

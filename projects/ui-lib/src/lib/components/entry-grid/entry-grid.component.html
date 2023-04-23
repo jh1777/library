@@ -16,14 +16,14 @@
                     -->
                     
                     <!-- ROWS -->
-                    <ng-container *ngIf="data?.items[j+(i*rows)]?.component == 'KEY-VALUE-DOUBLE'">
+                    <ng-container *ngIf="data?.items[j+(i*rows)]?.component == 'PROPERTY'">
                         <csgp-property-entry 
                             [isLoading]="data?.items[j+(i*rows)]?.isLoading"
                             [data]="data?.items[j+(i*rows)]?.data"
                             [errorData]="data?.items[j+(i*rows)]?.errorData"
                         ></csgp-property-entry>
                     </ng-container>
-                    <ng-container *ngIf="data?.items[j+(i*rows)]?.component == 'METRIC-BAR'">
+                    <ng-container *ngIf="data?.items[j+(i*rows)]?.component == 'METRIC'">
                         <csgp-metric-entry
                             [isLoading]="data?.items[j+(i*rows)]?.isLoading"
                             [label]="data?.items[j+(i*rows)]?.label"

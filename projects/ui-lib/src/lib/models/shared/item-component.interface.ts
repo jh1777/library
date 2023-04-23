@@ -1,8 +1,8 @@
 import { ComponentErrorModel } from "./component-error.model";
 
-export interface IPropertyComponent {
+export interface IEntryComponent {
     isLoading?: boolean;
     errorData?: ComponentErrorModel;
     data?: any;
-    component: 'KEY-VALUE-DOUBLE' | 'METRIC-ENTRY';
+    component: 'PROPERTY' | 'METRIC';
 }

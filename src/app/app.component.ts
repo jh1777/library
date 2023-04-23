@@ -12,5 +12,6 @@ export class AppComponent {
   public tagsTabActive: boolean;
   public drawerTabActive: boolean;
   public entriesTabActive: boolean;
+  public entryGridTabActive: boolean;
   
 }
