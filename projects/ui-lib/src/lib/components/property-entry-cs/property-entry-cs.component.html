@@ -12,12 +12,12 @@
         [class.error-blur]="propertyEntryStore.hasError$ | async"
         >
         <div class="csgp-property-entry-container-left">
-            <div><ng-container *ngFor="let _ of [].constructor(7)">{{ placeholder }}</ng-container></div>
-            <div><ng-container *ngFor="let _ of [].constructor(4)">{{ placeholder }}</ng-container></div>
+            <div><ng-container *ngFor="let _ of [].constructor(5)">{{ placeholder }}</ng-container></div>
+            <div><ng-container *ngFor="let _ of [].constructor(3)">{{ placeholder }}</ng-container></div>
         </div>
         <div class="csgp-property-entry-container-right">
-            <div><ng-container *ngFor="let _ of [].constructor(7)">{{ placeholder }}</ng-container></div>
-            <div><ng-container *ngFor="let _ of [].constructor(4)">{{ placeholder }}</ng-container></div>
+            <div><ng-container *ngFor="let _ of [].constructor(5)">{{ placeholder }}</ng-container></div>
+            <div><ng-container *ngFor="let _ of [].constructor(3)">{{ placeholder }}</ng-container></div>
         </div>
     </div>
 
@@ -28,7 +28,7 @@
         >
         <div class="csgp-property-entry-container-left">
             <div class="header-text icon-container" 
-                [style]="propertyEntryStore.labelStyle$ | async">{{  propertyEntryStore.labelValue$ | async }}
+                [style]="propertyEntryStore.labelStyle$ | async">{{  propertyEntryStore.label$ | async }}
                 <clr-icon 
                     *ngIf="(propertyEntryStore.labelIcon$ | async)?.source == 'clarity'" 
                     [class.icon-link]="(propertyEntryStore.labelIcon$ | async)?.isClickable"
@@ -36,44 +36,44 @@
                     [attr.size]="(propertyEntryStore.labelIcon$ | async)?.size"
                     [style.color]="(propertyEntryStore.labelIcon$ | async)?.color"
                     [attr.shape]="(propertyEntryStore.labelIcon$ | async)?.iconName"
-                    (click)="iconClicked(slot.LABEL)"
+                    (click)="labelIconClicked()"
                 ></clr-icon>
             </div>
             <div class="subtitle icon-container" 
-                [style]="propertyEntryStore.labelSubtitleStyle$ | async">{{  propertyEntryStore.labelSubtitleValue$ | async }}
+                [style]="propertyEntryStore.subtitleStyle$ | async">{{  propertyEntryStore.subtitle$ | async }}
                 <clr-icon 
-                    *ngIf="(propertyEntryStore.labelSubtitleIcon$ | async)?.source == 'clarity'" 
-                    [class.icon-link]="(propertyEntryStore.labelSubtitleIcon$ | async)?.isClickable"
-                    [attr.title]="(propertyEntryStore.labelSubtitleIcon$ | async)?.tooltip"
-                    [attr.size]="(propertyEntryStore.labelSubtitleIcon$ | async)?.size"
-                    [style.color]="(propertyEntryStore.labelSubtitleIcon$ | async)?.color"
-                    [attr.shape]="(propertyEntryStore.labelSubtitleIcon$ | async)?.iconName"
-                    (click)="iconClicked(slot.LABEL_SUBTITLE)"
+                    *ngIf="(propertyEntryStore.subtitleIcon$ | async)?.source == 'clarity'" 
+                    [class.icon-link]="(propertyEntryStore.subtitleIcon$ | async)?.isClickable"
+                    [attr.title]="(propertyEntryStore.subtitleIcon$ | async)?.tooltip"
+                    [attr.size]="(propertyEntryStore.subtitleIcon$ | async)?.size"
+                    [style.color]="(propertyEntryStore.subtitleIcon$ | async)?.color"
+                    [attr.shape]="(propertyEntryStore.subtitleIcon$ | async)?.iconName"
+                    (click)="subtitleIconClicked()"
                 ></clr-icon>
             </div>
         </div>
-        <div class="csgp-property-entry-container-right">
+        <div  *ngIf="(propertyEntryStore.value$ | async) || (propertyEntryStore.valueSubtitle$ | async)" class="csgp-property-entry-container-right">
 
-            <div class="header-text icon-container" [style]="propertyEntryStore.contentStyle$ | async">
+            <div class="header-text icon-container" [style]="propertyEntryStore.valueStyle$ | async">
                 <clr-icon 
-                *ngIf="(propertyEntryStore.contentIcon$ | async)?.source == 'clarity'" 
-                [class.icon-link]="(propertyEntryStore.contentIcon$ | async)?.isClickable"
-                [attr.title]="(propertyEntryStore.contentIcon$ | async)?.tooltip"
-                [attr.size]="(propertyEntryStore.contentIcon$ | async)?.size"
-                [style.color]="(propertyEntryStore.contentIcon$ | async)?.color"
-                [attr.shape]="(propertyEntryStore.contentIcon$ | async)?.iconName"
-                (click)="iconClicked(slot.CONTENT)"
-            ></clr-icon>{{  propertyEntryStore.contentValue$ | async }}</div>
+                *ngIf="(propertyEntryStore.valueIcon$ | async)?.source == 'clarity'" 
+                [class.icon-link]="(propertyEntryStore.valueIcon$ | async)?.isClickable"
+                [attr.title]="(propertyEntryStore.valueIcon$ | async)?.tooltip"
+                [attr.size]="(propertyEntryStore.valueIcon$ | async)?.size"
+                [style.color]="(propertyEntryStore.valueIcon$ | async)?.color"
+                [attr.shape]="(propertyEntryStore.valueIcon$ | async)?.iconName"
+                (click)="valueIconClicked()"
+            ></clr-icon>{{  propertyEntryStore.value$ | async }}</div>
 
-            <div class="subtitle icon-container" [style]="propertyEntryStore.contentSubtitleStyle$ | async"><clr-icon 
-                *ngIf="(propertyEntryStore.contentSubtitleIcon$ | async)?.source == 'clarity'" 
-                [class.icon-link]="(propertyEntryStore.contentSubtitleIcon$ | async)?.isClickable"
-                [attr.title]="(propertyEntryStore.contentSubtitleIcon$ | async)?.tooltip"
-                [attr.size]="(propertyEntryStore.contentSubtitleIcon$ | async)?.size"
-                [style.color]="(propertyEntryStore.contentSubtitleIcon$ | async)?.color"
-                [attr.shape]="(propertyEntryStore.contentSubtitleIcon$ | async)?.iconName"
-                (click)="iconClicked(slot.CONTENT_SUBTITLE)"
-            ></clr-icon>{{  propertyEntryStore.contentSubtitleValue$ | async  }}</div>
+            <div class="subtitle icon-container" [style]="propertyEntryStore.valueSubtitleStyle$ | async"><clr-icon 
+                *ngIf="(propertyEntryStore.valueSubtitleIcon$ | async)?.source == 'clarity'" 
+                [class.icon-link]="(propertyEntryStore.valueSubtitleIcon$ | async)?.isClickable"
+                [attr.title]="(propertyEntryStore.valueSubtitleIcon$ | async)?.tooltip"
+                [attr.size]="(propertyEntryStore.valueSubtitleIcon$ | async)?.size"
+                [style.color]="(propertyEntryStore.valueSubtitleIcon$ | async)?.color"
+                [attr.shape]="(propertyEntryStore.valueSubtitleIcon$ | async)?.iconName"
+                (click)="valueSubtitleIconClicked()"
+            ></clr-icon>{{  propertyEntryStore.valueSubtitle$ | async  }}</div>
         </div>
     </div>
 </div>

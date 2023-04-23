@@ -1,12 +1,11 @@
-import { ComponentErrorModel } from "../../models/shared/component-error.model";
-import { IconModel } from "../../models/shared/icon-model";
+import { ComponentErrorModel, IconModel } from "@ui";
+import { BaseViewModel } from "../base.view.model";
 
-
-export interface PropertyEntryState {
-    isLoading?: boolean;
-    errorData?: ComponentErrorModel;
+export interface PropertyEntryCSViewModel extends BaseViewModel {
     id?: any;
-
+    isLoading: boolean;
+    errorData?: ComponentErrorModel;
+    
     label: string;
     labelStyle?: string;
     labelIcon?: IconModel;

@@ -12,12 +12,12 @@
         [class.error-blur]="errorData?.hasError"
         >
         <div class="csgp-propertyentry-container-left">
-            <div><ng-container *ngFor="let _ of [].constructor(7)">{{ placeholder }}</ng-container></div>
-            <div><ng-container *ngFor="let _ of [].constructor(4)">{{ placeholder }}</ng-container></div>
+            <div><ng-container *ngFor="let _ of [].constructor(5)">{{ placeholder }}</ng-container></div>
+            <div><ng-container *ngFor="let _ of [].constructor(3)">{{ placeholder }}</ng-container></div>
         </div>
-        <div class="csgp-propertyentry-container-right">
-            <div><ng-container *ngFor="let _ of [].constructor(7)">{{ placeholder }}</ng-container></div>
-            <div><ng-container *ngFor="let _ of [].constructor(4)">{{ placeholder }}</ng-container></div>
+        <div *ngIf="value || valueSubtitle" class="csgp-propertyentry-container-right">
+            <div><ng-container *ngFor="let _ of [].constructor(5)">{{ placeholder }}</ng-container></div>
+            <div><ng-container *ngFor="let _ of [].constructor(3)">{{ placeholder }}</ng-container></div>
         </div>
     </div>
 
@@ -50,7 +50,7 @@
                 ></clr-icon>
             </div>
         </div>
-        <div class="csgp-propertyentry-container-right">
+        <div *ngIf="value || valueSubtitle" class="csgp-propertyentry-container-right">
 
             <div class="header-text icon-container" [style]="valueStyle">
                 <clr-icon 

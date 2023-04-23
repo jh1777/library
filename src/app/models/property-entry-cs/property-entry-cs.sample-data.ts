@@ -1,8 +1,8 @@
 
 import { IconModel } from "@ui";
-import { PropertyEntryViewModel } from "./property-entry.view.model";
+import { PropertyEntryCSViewModel } from "./property-entry-cs.view.model";
 
-export var PropertyEntryViewData: Array<PropertyEntryViewModel> = [
+export var PropertyEntryCSViewData: Array<PropertyEntryCSViewModel> = [
     {
         isLoading: false,
         label: "Devices",

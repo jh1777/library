@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MetricEntryViewData, MetricEntryViewModel } from 'src/app/models/metric-entry';
 import { MetricEntryCSViewData, MetricEntryCSViewModel } from 'src/app/models/metric-entry-cs';
 import { PropertyEntryViewData, PropertyEntryViewModel } from 'src/app/models/property-entry';
+import { PropertyEntryCSViewData, PropertyEntryCSViewModel } from 'src/app/models/property-entry-cs';
 
 @Component({
   selector: 'entries-page',
@@ -14,6 +15,7 @@ export class EntriesPageComponent {
   showComponentBorder: boolean = false;
   
   public propertyData: Array<PropertyEntryViewModel> = [];
+  public propertyDataCS: Array<PropertyEntryCSViewModel> = [];
   
   public metricData: Array<MetricEntryViewModel> = [];
   public metricDataCS: Array<MetricEntryCSViewModel> = [];
@@ -22,6 +24,7 @@ export class EntriesPageComponent {
     this.metricData = MetricEntryViewData;
     this.metricDataCS = MetricEntryCSViewData;
     this.propertyData = PropertyEntryViewData;
+    this.propertyDataCS = PropertyEntryCSViewData;
   }
 
   setOutput(model: any) {

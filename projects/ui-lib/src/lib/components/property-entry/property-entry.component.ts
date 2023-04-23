@@ -32,7 +32,7 @@ export class PropertyEntryComponent {
   @Input()
   subtitleIcon?: IconModel;
 
-  // Right main value
+  // Right main value (if value and valueSubtitle are not present the right column will not be shown)
   @Input()
   value: string;
   @Input()

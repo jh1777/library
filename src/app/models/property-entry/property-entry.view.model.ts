@@ -14,11 +14,11 @@ export interface PropertyEntryViewModel extends BaseViewModel {
     subtitleStyle?: string;
     subtitleIcon?: IconModel;
 
-    value: string;
+    value?: string;
     valueStyle?: string;
     valueIcon?: IconModel;
 
-    valueSubtitle: string;
+    valueSubtitle?: string;
     valueSubtitleStyle?: string;
     valueSubtitleIcon?: IconModel;
 }
