@@ -2,7 +2,23 @@ import { IconModel } from "../../models/shared/icon-model";
 
 export class PropertyEntryModel {
     
-    label?: PropertyEntryOptions;
+    label: string;
+    labelStyle?: string;
+    labelIcon?: IconModel;
+
+    subtitle: string;
+    subtitleStyle?: string;
+    subtitleIcon?: IconModel;
+
+    value: string;
+    valueStyle?: string;
+    valueIcon?: IconModel;
+
+    valueSubtitle: string;
+    valueSubtitleStyle?: string;
+    valueSubtitleIcon?: IconModel;
+
+    xlabel?: PropertyEntryOptions;
     subtitleLabel?: PropertyEntryOptions;
 
     content?: PropertyEntryOptions;

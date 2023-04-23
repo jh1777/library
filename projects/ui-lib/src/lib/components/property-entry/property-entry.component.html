@@ -27,51 +27,52 @@
         [class.error-blur]="errorData?.hasError"
         >
         <div class="csgp-propertyentry-container-left">
-            <div class="header-text icon-container" [style]="data?.label?.style">{{  data?.label?.value }}
+            <div class="header-text icon-container" [style]="labelStyle">{{  label }}
                 <clr-icon 
-                    *ngIf="data?.label?.icon?.source == 'clarity'" 
-                    [class.icon-link]="data?.label?.icon?.isClickable"
-                    [attr.title]="data?.label?.icon?.tooltip"
-                    [attr.size]="data?.label?.icon?.size"
-                    [style.color]="data?.label?.icon?.color"
-                    [attr.shape]="data?.label?.icon?.iconName"
-                    (click)="iconClicked(data?.label)"
+                    *ngIf="labelIcon?.source == 'clarity'" 
+                    [class.icon-link]="labelIcon?.isClickable"
+                    [attr.title]="labelIcon?.tooltip"
+                    [attr.size]="labelIcon?.size"
+                    [style.color]="labelIcon?.color"
+                    [attr.shape]="labelIcon?.iconName"
+                    (click)="iconClicked(labelIcon)"
                 ></clr-icon>
             </div>
-            <div class="subtitle icon-container" [style]="data?.subtitleLabel?.style">{{  data?.subtitleLabel?.value }}
+            <div class="subtitle icon-container" [style]="subtitleStyle">{{  subtitle }}
                 <clr-icon 
-                    *ngIf="data?.subtitleLabel?.icon?.source == 'clarity'" 
-                    [class.icon-link]="data?.subtitleLabel?.icon?.isClickable"
-                    [attr.title]="data?.subtitleLabel?.icon?.tooltip"
-                    [attr.size]="data?.subtitleLabel?.icon?.size"
-                    [style.color]="data?.subtitleLabel?.icon?.color"
-                    [attr.shape]="data?.subtitleLabel?.icon?.iconName"
-                    (click)="iconClicked(data?.subtitleLabel)"
+                    *ngIf="subtitleIcon?.source == 'clarity'" 
+                    [class.icon-link]="subtitleIcon?.isClickable"
+                    [attr.title]="subtitleIcon?.tooltip"
+                    [attr.size]="subtitleIcon?.size"
+                    [style.color]="subtitleIcon?.color"
+                    [attr.shape]="subtitleIcon?.iconName"
+                    (click)="iconClicked(subtitleIcon)"
                 ></clr-icon>
             </div>
         </div>
         <div class="csgp-propertyentry-container-right">
 
-            <div class="header-text icon-container" [style]="data?.content?.style">
+            <div class="header-text icon-container" [style]="valueStyle">
                 <clr-icon 
-                *ngIf="data?.content?.icon?.source == 'clarity'" 
-                [class.icon-link]="data?.content?.icon?.isClickable"
-                [attr.title]="data?.content?.icon?.tooltip"
-                [attr.size]="data?.content?.icon?.size"
-                [style.color]="data?.content?.icon?.color"
-                [attr.shape]="data?.content?.icon?.iconName"
-                (click)="iconClicked(data?.content)"
-            ></clr-icon>{{  data?.content?.value }}</div>
+                *ngIf="valueIcon?.source == 'clarity'" 
+                [class.icon-link]="valueIcon?.isClickable"
+                [attr.title]="valueIcon?.tooltip"
+                [attr.size]="valueIcon?.size"
+                [style.color]="valueIcon?.color"
+                [attr.shape]="valueIcon?.iconName"
+                (click)="iconClicked(valueIcon)"
+            ></clr-icon>{{ value }}</div>
 
-            <div class="subtitle icon-container" [style]="data?.subtitleContent?.style"><clr-icon 
-                *ngIf="data?.subtitleContent?.icon?.source == 'clarity'" 
-                [class.icon-link]="data?.subtitleContent?.icon?.isClickable"
-                [attr.title]="data?.subtitleContent?.icon?.tooltip"
-                [attr.size]="data?.subtitleContent?.icon?.size"
-                [style.color]="data?.subtitleContent?.icon?.color"
-                [attr.shape]="data?.subtitleContent?.icon?.iconName"
-                (click)="iconClicked(data?.subtitleContent)"
-            ></clr-icon>{{ data?.subtitleContent?.value }}</div>
+            <div class="subtitle icon-container" [style]="valueSubtitleStyle">
+                <clr-icon 
+                *ngIf="valueSubtitleIcon?.source == 'clarity'" 
+                [class.icon-link]="valueSubtitleIcon?.isClickable"
+                [attr.title]="valueSubtitleIcon?.tooltip"
+                [attr.size]="valueSubtitleIcon?.size"
+                [style.color]="valueSubtitleIcon?.color"
+                [attr.shape]="valueSubtitleIcon?.iconName"
+                (click)="iconClicked(valueSubtitleIcon)"
+            ></clr-icon>{{ valueSubtitle }}</div>
         </div>
     </div>
 </div>

@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { ComponentErrorModel } from '../../models/shared/component-error.model';
-import { PropertyEntryModel, PropertyEntryOptions } from '../property-entry/property-entry.component.model';
 import { PropertyGridModel } from './property-grid.component.model';
 
 @Component({
@@ -72,38 +71,6 @@ export class PropertyGridComponent {
 
   constructor() {
 
-    const kvData1 = new PropertyEntryModel({
-      content: new PropertyEntryOptions ({
-        value: "Completed",
-        style: 'color: green; font-weight: 700;'
-      }),
-      subtitleContent: new PropertyEntryOptions ({
-        value: "20.03.2023T12:23:45Z"
-      }),
-      subtitleLabel: new PropertyEntryOptions ({
-        value: "Timestamp"
-      }),
-      label: new PropertyEntryOptions ({
-        value: "Onboarding State"
-      })
-    });
-
-    const kvData2 = new PropertyEntryModel({
-      content: new PropertyEntryOptions ({
-        value: "132.322",
-        style: 'font-weight: 700;'
-      }),
-      subtitleContent: new PropertyEntryOptions ({
-        value: "+32 today"
-      }),
-      subtitleLabel: new PropertyEntryOptions ({
-        value: "Increase"
-      }),
-      label: new PropertyEntryOptions ({
-        value: "Devices"
-      })
-    });
-
     const kvError1 = new ComponentErrorModel({
       hasError:  false
     })
@@ -117,19 +84,37 @@ export class PropertyGridComponent {
       items: [
         {
           isLoading: false,
-          data: kvData1,
+          data: {
+            label: "Onboarding State",
+            subtitle: "Timestamp",
+            value: "Completed",
+            valueStyle: 'color: green; font-weight: 700;',
+            valueSubtitle: "20.03.2023T12:23:45Z"
+          },
           errorData: kvError1,
           component: 'KEY-VALUE-DOUBLE'
         },
         {
           isLoading: false,
-          data: kvData2,
+          data: {
+            label: "Devices",
+            subtitle: "Increase",
+            value: "+32 today",
+            valueStyle: 'font-weight: 700;',
+            valueSubtitle: "132.322"
+          },
           errorData: kvError1,
           component: 'KEY-VALUE-DOUBLE'
         },
         {
           isLoading: false,
-          data: kvData1,
+          data: {
+            label: "Onboarding State",
+            subtitle: "Timestamp",
+            value: "Completed",
+            valueStyle: 'color: green; font-weight: 700;',
+            valueSubtitle: "20.03.2023T12:23:45Z"
+          },
           errorData: kvError1,
           component: 'KEY-VALUE-DOUBLE'
         },

@@ -1,57 +1,9 @@
 import { createOutputSpy } from 'cypress/angular';
 import { ComponentErrorModel } from '../../models/shared/component-error.model';
-import { IconModel } from '../../models/shared/icon-model';
 import { PropertyEntryComponent } from './property-entry.component';
-import { PropertyEntryModel, PropertyEntryOptions } from './property-entry.component.model';
 
 describe('PropertyEntryComponent', () => {
 
-  const testModel = new PropertyEntryModel({
-    content: new PropertyEntryOptions ({
-      value: "Completed",
-      style: 'color: rgb(6, 156, 21); font-weight: 700;'
-    }),
-    subtitleContent: new PropertyEntryOptions ({
-      value: "20.03.2023T12:23:45Z"
-    }),
-    subtitleLabel: new PropertyEntryOptions ({
-      value: "Timestamp"
-    }),
-    label: new PropertyEntryOptions ({
-      value: "Onboarding State"
-    })
-  });
-
-  const testModelIcons = new PropertyEntryModel({
-    content: new PropertyEntryOptions ({
-      value: "Completed",
-      style: 'color: rgb(6, 156, 21); font-weight: 700;',
-      icon: new IconModel({ 
-        iconName: "check-circle", 
-        source: 'clarity',
-        size: 17,
-        isClickable: false,
-        tooltip: `The State is Completed`,
-        color: 'green'
-     })
-    }),
-    subtitleContent: new PropertyEntryOptions ({
-      value: "20.03.2023T12:23:45Z"
-    }),
-    subtitleLabel: new PropertyEntryOptions ({
-      value: "Timestamp"
-    }),
-    label: new PropertyEntryOptions ({
-      value: "Onboarding State",
-      icon: new IconModel({ 
-        iconName: "pop-out", 
-        source: 'clarity',
-        size: 16,
-        tooltip: "Click to show more details",
-        isClickable: true
-     })
-    })
-  });
 
   const testErrorModel = new ComponentErrorModel({
     hasError: true,
@@ -60,7 +12,15 @@ describe('PropertyEntryComponent', () => {
   })
   
   beforeEach(() => {
-    cy.mount(PropertyEntryComponent);
+    cy.mount(PropertyEntryComponent, {
+      componentProperties: {
+        label: "Onboarding State",
+        subtitle: "Timestamp",
+        value: "Completed",
+        valueStyle: 'color: rgb(6, 156, 21); font-weight: 700;',
+        valueSubtitle: "20.03.2023T12:23:45Z"
+      }
+    });
   });
 
   it('Loading check', () => {
@@ -75,17 +35,14 @@ describe('PropertyEntryComponent', () => {
   it('Content check', () => {
     cy.mount(PropertyEntryComponent, {
         componentProperties: {
-            isLoading: false,
-            data: testModel
+            isLoading: false
         }
     });
-    cy.get('.csgp-propertyentry-container-left > .header-text').should('contain.text', testModel.label.value);
-    cy.get('.csgp-propertyentry-container-left > .subtitle').should('contain.text', testModel.subtitleLabel.value);
-    cy.get('.csgp-propertyentry-container-right > .header-text').should('contain.text', testModel.content.value);
-    cy.get('.csgp-propertyentry-container-right > .subtitle').should('contain.text', testModel.subtitleContent.value);
-
+    cy.get('.csgp-propertyentry-container-left > .header-text').should('contain.text', "Onboarding State");
+    cy.get('.csgp-propertyentry-container-left > .subtitle').should('contain.text', "Timestamp");
+    cy.get('.csgp-propertyentry-container-right > .header-text').should('contain.text', "Completed");
+    cy.get('.csgp-propertyentry-container-right > .subtitle').should('contain.text', "20.03.2023T12:23:45Z");
     cy.get('.csgp-propertyentry-container-right > .header-text').should('have.css', 'color', 'rgb(6, 156, 21)');
-
   })
 
   it('Error overlay check', () => {

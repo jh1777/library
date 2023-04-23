@@ -1,3 +1,38 @@
+<component-header title="PROPERTY ENTRY" subtitle="without Component Store"></component-header>
+<div class="columns">
+    <div class="container" *ngFor="let model of propertyData; let i = index">
+        <div class="item">
+            <div [class.debugBorder]="showComponentBorder">
+                <csgp-property-entry
+                    [isLoading]="model.isLoading"
+                    [errorData]="model.errorData"
+                    [label]="model.label"
+                    [labelStyle]="model.labelStyle"
+                    [labelIcon]="model.labelIcon"
+                    [value]="model.value"
+                    [valueStyle]="model.valueStyle"
+                    [valueIcon]="model.valueIcon"
+
+                    [subtitle]="model.subtitle"
+                    [subtitleStyle]="model.subtitleStyle"
+                    [subtitleIcon]="model.subtitleIcon"
+
+                    [valueSubtitle]="model.valueSubtitle"
+                    [valueSubtitleStyle]="model.valueSubtitleStyle"
+                    [valueSubtitleIcon]="model.valueSubtitleIcon"
+
+                    (onIconClick)="setOutput(model)"
+                ></csgp-property-entry>
+            </div>
+        </div>
+        <div class="description">
+            {{ model.$description }}
+        </div>
+        <div class="item-output">
+            {{ model.$output }}
+        </div>
+    </div>
+</div>
 
 <component-header title="METRIC ENTRY" subtitle="without Component Store"></component-header>
 <div class="columns">
@@ -27,7 +62,6 @@
         </div>
     </div>
 </div>
-
 
 <component-header title="METRIC ENTRY" subtitle="with Component Store"></component-header>
 <div class="columns">
