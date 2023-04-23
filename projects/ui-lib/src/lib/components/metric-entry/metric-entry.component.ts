@@ -12,11 +12,12 @@ export class MetricEntryComponent {
 
   @Input()
   public isLoading: boolean = false;
+
   @Input()
   public errorData?: ComponentErrorModel;
 
   @Input()
-  label: string = "Metric";
+  label: string = "";
 
   @Input()
   // your can set a custom style for the label like 'font-weight: 800; color: red;' for example
@@ -46,12 +47,15 @@ export class MetricEntryComponent {
   // This will be displayed between the metricValue and metricPercent
   metricAdditionalLabel?: string;
 
+  @Input()
+  id?: any;
+
   // OUTPUTS 
 
   @Output()
   public onErrorClick = new EventEmitter<ComponentErrorModel>();
   @Output()
-  public onIconClick = new EventEmitter<IconModel>();
+  public onIconClick = new EventEmitter<any>();
   
   public errorClicked($event: any) {
     this.onErrorClick.emit(this.errorData);
@@ -59,7 +63,7 @@ export class MetricEntryComponent {
 
   public iconClicked(item: IconModel) {
     if (item?.isClickable) {
-      this.onIconClick.emit(item);
+      this.onIconClick.emit(this.id);
     }
   }
 }

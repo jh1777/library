@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { ComponentStore } from '@ngrx/component-store';
+import { deepmergeInto } from "deepmerge-ts";
+import { produce } from "immer";
 import { ComponentErrorModel } from "../../models/shared/component-error.model";
 import { IconModel } from "../../models/shared/icon-model";
 import { IIO } from "./metric-entry-cs.component.iio.interface";
 import { MetricEntryState } from "./metric-entry-cs.component.interface";
-import { deepmergeInto } from "deepmerge-ts";
-import { produce } from "immer";
 
 @Injectable()
 export class MetricEntryStore extends ComponentStore<MetricEntryState> implements IIO  {
@@ -57,6 +57,10 @@ export class MetricEntryStore extends ComponentStore<MetricEntryState> implement
         this.mergeValueIntoState(data);
     };
 
+    setId = (value: any) => {
+        this.mergeValueIntoState({ id: value });
+    };
+    
     setIcon = (
         icon: string, 
         clickable?: boolean, 
@@ -83,6 +87,7 @@ export class MetricEntryStore extends ComponentStore<MetricEntryState> implement
     // GETTERS
     //-------------
 
+    readonly id$ = this.select(state => state.id, { debounce: true });
     readonly isLoading$ = this.select(state => state.isLoading, { debounce: true });
     // Error 
     readonly hasError$ = this.select(state => state.errorData?.hasError, { debounce: true });

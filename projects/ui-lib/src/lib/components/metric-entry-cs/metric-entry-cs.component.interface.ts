@@ -5,7 +5,7 @@ import { IconModel } from "../../models/shared/icon-model";
 export interface MetricEntryState {
     isLoading?: boolean;
     errorData?: ComponentErrorModel;
-    
+    id?: any;
     label: string;
     labelStyle?: string;
     labelIcon?: IconModel;

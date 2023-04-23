@@ -84,11 +84,17 @@ export class MetricEntryComponentCS implements OnInit {
     });
   }
 
+  @Input() public set id(value: any) {
+    this.metricEntryStore.mergeValueIntoState({
+      id: value
+    });
+  }
+
   // OUTPUTS 
   @Output()
   public onErrorClick = new EventEmitter<void>();
   @Output()
-  public onIconClick = new EventEmitter<void>();
+  public onIconClick = new EventEmitter<any>();
   
   private _isIconClickable = new BehaviorSubject(true);
 
@@ -110,7 +116,7 @@ export class MetricEntryComponentCS implements OnInit {
 
   public iconClicked() {
     if (this._isIconClickable.value) {
-      this.onIconClick.emit();
+      this.onIconClick.emit(this.id);
     }
   }
   
