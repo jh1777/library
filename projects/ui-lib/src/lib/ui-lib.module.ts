@@ -8,6 +8,7 @@ import { DrawerEntryComponentCS } from './components/drawer-entry-cs';
 import { DrawerRightComponent } from './components/drawer-right';
 import { DrawerRightComponentCS } from './components/drawer-right-cs';
 import { EntryGridComponent } from './components/entry-grid';
+import { GridTestComponent2 } from './components/grid-test-2/grid-test-2.component';
 import { GridTestComponent } from './components/grid-test/grid-test.component';
 import { MetricEntryComponent } from './components/metric-entry';
 import { MetricEntryComponentCS } from './components/metric-entry-cs';
@@ -40,7 +41,8 @@ import { TagsComponentCS } from './components/tags-cs';
     DrawerEntryComponent,
     DrawerEntryComponentCS,
 
-    GridTestComponent
+    GridTestComponent,
+    GridTestComponent2
   ],
   imports: [
     CommonModule,
@@ -60,7 +62,8 @@ import { TagsComponentCS } from './components/tags-cs';
     DrawerRightComponent,
     DrawerEntryComponentCS,
     DrawerEntryComponent,
-    GridTestComponent
+    GridTestComponent,
+    GridTestComponent2
   ]
 })
 export class UiLibModule { }

@@ -1,0 +1,31 @@
+<!--
+<div class="table">
+    <div class="row" *ngFor="let rowData of rows">
+      <div class="cell" *ngFor="let cellData of rowData">
+        <ng-container *ngComponentOutlet="cellData.component"></ng-container>
+      </div>
+    </div>
+  </div>
+-->
+
+
+<!--
+
+<div class="csgp-property-grid">
+    <div  class="csgp-property-grid-col">
+
+
+        <div class="csgp-property-grid-row">
+            
+            <ng-content></ng-content>
+        </div>
+
+    </div>
+</div>
+-->
+
+<div *ngFor="let row of rows" class="row">
+  <div *ngFor="let child of row" class="col">
+    <ng-template #childContainer></ng-template>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ComponentErrorModel } from '../../models/shared/component-error.model';
+import { IEntry } from '../../models/shared/entry.interface';
 import { IconModel } from '../../models/shared/icon-model';
 
 @Component({
@@ -7,7 +8,7 @@ import { IconModel } from '../../models/shared/icon-model';
   templateUrl: './property-entry.component.html',
   styleUrls: ['./property-entry.component.scss']
 })
-export class PropertyEntryComponent {
+export class PropertyEntryComponent implements IEntry {
 
   public placeholder = "◼︎◼︎ ";
 
