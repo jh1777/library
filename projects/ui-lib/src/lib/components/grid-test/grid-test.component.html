@@ -1,0 +1,32 @@
+<!--
+<div class="table">
+    <div class="row" *ngFor="let rowData of rows">
+      <div class="cell" *ngFor="let cellData of rowData">
+        <ng-container *ngComponentOutlet="cellData.component"></ng-container>
+      </div>
+    </div>
+  </div>
+-->
+
+<div class="csgp-property-grid">
+    <div *ngFor="let rowData of data" class="csgp-property-grid-col">
+        
+        <!--
+        Col-Index: {{ i }}
+        -->
+
+        <!-- COLS -->
+
+        <div *ngFor="let cell of rowData" class="csgp-property-grid-row">
+            
+            <!--
+            Row-Index: {{ j }} <br/>
+            Index: {{ j + ( i * rows ) }}
+            -->
+            
+            <!-- ROWS -->
+            <ng-container *ngComponentOutlet="cell.component; content: cell.data"></ng-container>
+        </div>
+
+    </div>
+</div>

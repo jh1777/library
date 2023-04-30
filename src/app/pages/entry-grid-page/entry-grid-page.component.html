@@ -14,3 +14,70 @@
         </div>
     </div>
 </div>
+
+<!--
+<component-header title="GRID TEST" subtitle="without Component Store"></component-header>
+<app-grid-test [numColumns]="3">
+    <csgp-button-v2-cs #tableCell
+        [label]="'Test #1'"
+        (onClick)="setOutput(1)">
+    </csgp-button-v2-cs>
+    <csgp-button-v2-cs #tableCell
+        [label]="'Test #2'"
+        (onClick)="setOutput(2)">
+    </csgp-button-v2-cs>
+    <csgp-button-v2-cs #tableCell
+        [label]="'Test #3'"
+        (onClick)="setOutput(3)">
+    </csgp-button-v2-cs>
+    <csgp-button-v2-cs #tableCell
+        [label]="'Test #4'"
+        (onClick)="setOutput(4)">
+    </csgp-button-v2-cs>
+    <csgp-button-v2-cs #tableCell
+        [label]="'Test #5'"
+        (onClick)="setOutput(5)">
+    </csgp-button-v2-cs>
+</app-grid-test>
+  -->
+
+
+<component-header title="GRID TEST" subtitle="without Component Store"></component-header>
+<div class="columns">
+    <div class="container">
+        <div class="item">
+            <div [class.debugBorder]="showComponentBorder">
+                <app-grid-test [cols]="2">
+                    <csgp-property-entry #cell
+                        label="State"
+                        [value]="'12345'"
+                        [subtitle]="'Timestamp'"
+                        [valueSubtitle]="'20.04.2023'"
+                    ></csgp-property-entry>
+                    <csgp-button-v2-cs #cell
+                        [label]="'Test #2'"
+                        (onClick)="setOutput(2)">
+                    </csgp-button-v2-cs>
+                    <csgp-button-v2-cs #cell
+                        [label]="'Test #3'"
+                        (onClick)="setOutput(3)">
+                    </csgp-button-v2-cs>
+                    <csgp-button-v2-cs #cell
+                        [label]="'Test #4'"
+                        (onClick)="setOutput(4)">
+                    </csgp-button-v2-cs>
+                    <csgp-button-v2-cs #cell
+                        [label]="'Test #5'"
+                        (onClick)="setOutput(5)">
+                    </csgp-button-v2-cs>
+                </app-grid-test>
+            </div>
+        </div>
+        <div class="description">
+            {{ gridData.$description }}
+        </div>
+        <div class="item-output">
+            {{ gridData.$output }}
+        </div>
+    </div>
+</div>

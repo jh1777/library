@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { IEntry } from '../../models/shared/entry.interface';
 import { IIO } from './button-cs.component.iio.interface';
 import { ButtonStore } from './button-cs.component.store';
 
@@ -10,7 +11,7 @@ import { ButtonStore } from './button-cs.component.store';
   providers: [ButtonStore],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ButtonComponentCS implements OnInit {
+export class ButtonComponentCS implements OnInit, IEntry {
 
   private _initializedCallBack: (storeReference: IIO) => void;
 
