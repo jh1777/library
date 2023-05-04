@@ -83,7 +83,7 @@
 </div>
 
 <component-header title="GRID TEST2" subtitle="without Component Store"></component-header>
-<app-grid-test-2>
+<app-grid-test-2 [cols]="2" [rows]="2">
 
     <csgp-property-entry
         label="State"
@@ -99,5 +99,18 @@
         [valueSubtitle]="'22.04.2023'"
     ></csgp-property-entry>
 
+    <csgp-property-entry
+        label="Vehicles"
+        [value]="'12.345'"
+        [subtitle]="'New'"
+        [valueSubtitle]="'82'"
+    ></csgp-property-entry>
+
+    <csgp-property-entry
+        label="Devices"
+        [value]="'212.321'"
+        [subtitle]="'New'"
+        [valueSubtitle]="'23'"
+    ></csgp-property-entry>
 
 </app-grid-test-2>
