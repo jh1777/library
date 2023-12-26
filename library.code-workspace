@@ -7,7 +7,7 @@
 	"settings": {
 		"angular.enable-strict-mode-prompt": false,
 		"editor.codeActionsOnSave": {
-			"source.organizeImports": true
+			"source.organizeImports": "explicit"
 		}
 	}
 }
