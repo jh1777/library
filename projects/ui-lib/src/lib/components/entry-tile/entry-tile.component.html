@@ -1,41 +1,78 @@
 <div class="csgp-entry-tile-title">
-   {{ data.title }}
+  {{ data.title }}
 </div>
 
-<div class="csgp-entry-tile-base">
-    <div class="csgp-entry-tile-header">
-
-        <ng-container *ngFor="let headerProps of data.headerProperties; let i = index">
-            <csgp-property-entry
-                [id]="i"
-                [isLoading]="data.isLoading"
-                [label]="headerProps.label"
-                [value]="headerProps.value"
-                [valueIcon]="headerProps.valueIcon"
-                [valueStyle]="headerProps.valueStyle"
-            ></csgp-property-entry>
-        </ng-container>
-
-    </div>
-    
-
-    <ng-container *ngFor="let item of data.items; let j = index">
-        <div class="csgp-entry-tile-item-title">
-            {{ item.title }}
-        </div>
-        
-        <div 
-            class="csgp-entry-tile-item"
-            [class.clickable]="item.clickable"
-        >
-            
-            <div class="csgp-entry-tile-item-primary">
-                {{ item.primaryValue }}
-            </div>
-            <div class="csgp-entry-tile-item-secondary">
-                {{ item.secondaryValue }}
-            </div>
-        </div>
+<div class="csgp-entry-tile-base"
+    [class.attention-tile]="data.state === 1"
+    [class.error-tile]="data.state === 2"
+    >
+  <div class="csgp-entry-tile-header">
+    <ng-container
+      *ngFor="let headerProps of data.headerProperties; let i = index"
+    >
+      <csgp-property-entry
+        [id]="i"
+        [isLoading]="data.isLoading"
+        [label]="headerProps.label"
+        [value]="headerProps.value"
+        [valueIcon]="headerProps.valueIcon"
+        [valueStyle]="headerProps.valueStyle"
+      ></csgp-property-entry>
     </ng-container>
+  </div>
 
+  <div class="csgp-entry-tile-itemcontainer">
+    <div *ngFor="let item of data.items; let j = index">
+      <div class="csgp-entry-tile-item-title">
+        {{ item.title }}
+      </div>
+
+      <div 
+        class="csgp-entry-tile-item" 
+        [class.clickable]="item.clickable"
+        [class.attention-item]="item.state === 1"
+        [class.error-item]="item.state === 2"
+        >
+
+        <div class="csgp-entry-tile-itembox">
+            <div class="csgp-entry-tile-itembox-left">
+                <div class="csgp-entry-tile-item-primary">
+                    {{ item.primaryValue }}
+                  </div>
+                  <div class="csgp-entry-tile-item-secondary">
+                    {{ item.secondaryValue }}
+                  </div>
+            </div>
+
+            <div class="csgp-entry-tile-itembox-right">
+                <div *ngIf="item.icon" class="csgp-entry-tile-item-icon">
+                    <clr-icon 
+                        [style.color]="item.icon.color ? item.icon.color : ''"
+                        [attr.shape]="item.icon.iconName"
+                        [attr.size]="item.icon.size"
+                    ></clr-icon>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 
+        <div class="csgp-entry-tile-item-primary">
+          {{ item.primaryValue }}
+        </div>
+        <div class="csgp-entry-tile-item-secondary">
+          {{ item.secondaryValue }}
+        </div>
+        <div *ngIf="item.icon" class="csgp-entry-tile-item-icon">
+            <clr-icon 
+                [style.color]="item.icon.color ? item.icon.color : ''"
+                [attr.shape]="item.icon.iconName"
+                [attr.size]="item.icon.size"
+            ></clr-icon>
+        </div>
+-->
+
+      </div>
+    </div>
+  </div>
 </div>

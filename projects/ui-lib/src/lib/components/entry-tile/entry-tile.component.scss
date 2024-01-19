@@ -4,6 +4,14 @@
     --background: #e9e9e9;
     --daimler-grey3: #a7a8a9;
 
+    --attention-tile-bg-color: #ffecce;
+    --attention-item-bg-color: #ffecce;
+    --attention-item-border-color: #f9cb7b;
+
+    --error-tile-bg-color: #ffd1ce;
+    --error-item-bg-color: #ffd1ce;
+    --error-item-border-color: #f9817b;
+
 
     .clickable:hover {
         cursor: pointer;
@@ -11,6 +19,25 @@
         &:active {
             border: 1px solid var(--action-color);
         }
+    }
+
+
+    .attention-tile {
+        background-color: var(--attention-item-bg-color) !important;
+    }
+
+    .error-tile {
+        background-color: var(--error-item-bg-color) !important;
+    }
+
+    .attention-item {
+        background-color: var(--attention-item-bg-color) !important;
+        border: 1px solid var(--attention-item-border-color) !important;
+    }
+
+    .error-item {
+        background-color: var(--error-item-bg-color) !important;
+        border: 1px solid var(--error-item-border-color) !important;
     }
 
     .csgp-entry-tile {
@@ -30,11 +57,38 @@
 
         &-header {
             margin-top: .3rem;
+            margin-bottom: .4rem;
+        }
+
+        &-itemcontainer {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        &-itembox {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            align-items: center;
+            &-left {
+                display: flex;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            &-right {
+                display: flex;
+                flex-direction: column;
+                margin-left: auto;
+                align-items: flex-end;
+            }
         }
 
         &-item {
             &-title {
-                font-weight: 700;
+                font-weight: 500;
+                margin-bottom: .2rem;
             }
             &-primary {
                 font-weight: 400;
@@ -43,9 +97,10 @@
                 font-weight: 200;
                 color: var(--daimler-grey3);
             }
-            display: flex;
-            flex-direction: column;
-            gap: 0;
+            &-icon {
+                align-self: flex-end;
+            }
+
             line-height: normal;
             border: 1px solid white;
             background-color: white;
@@ -54,7 +109,6 @@
             box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, #d0d0d0);
             padding: .4rem .6rem;
             border-radius: .3rem;
-            margin-top: .6rem;
             &:last-child {
                 margin-bottom: .5rem;
             }
