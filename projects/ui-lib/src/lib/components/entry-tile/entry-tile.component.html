@@ -1,0 +1,41 @@
+<div class="csgp-entry-tile-title">
+   {{ data.title }}
+</div>
+
+<div class="csgp-entry-tile-base">
+    <div class="csgp-entry-tile-header">
+
+        <ng-container *ngFor="let headerProps of data.headerProperties; let i = index">
+            <csgp-property-entry
+                [id]="i"
+                [isLoading]="data.isLoading"
+                [label]="headerProps.label"
+                [value]="headerProps.value"
+                [valueIcon]="headerProps.valueIcon"
+                [valueStyle]="headerProps.valueStyle"
+            ></csgp-property-entry>
+        </ng-container>
+
+    </div>
+    
+
+    <ng-container *ngFor="let item of data.items; let j = index">
+        <div class="csgp-entry-tile-item-title">
+            {{ item.title }}
+        </div>
+        
+        <div 
+            class="csgp-entry-tile-item"
+            [class.clickable]="item.clickable"
+        >
+            
+            <div class="csgp-entry-tile-item-primary">
+                {{ item.primaryValue }}
+            </div>
+            <div class="csgp-entry-tile-item-secondary">
+                {{ item.secondaryValue }}
+            </div>
+        </div>
+    </ng-container>
+
+</div>
