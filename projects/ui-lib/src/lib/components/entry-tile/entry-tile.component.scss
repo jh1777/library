@@ -12,6 +12,9 @@
     --error-item-bg-color: #ffd1ce;
     --error-item-border-color: #f9817b;
 
+    --success-tile-bg-color: #ceffd5;
+    --success-item-bg-color: #ceffd5;
+    --success-item-border-color: #9ffdad;
 
     .clickable:hover {
         cursor: pointer;
@@ -21,13 +24,16 @@
         }
     }
 
-
     .attention-tile {
         background-color: var(--attention-item-bg-color) !important;
     }
 
     .error-tile {
         background-color: var(--error-item-bg-color) !important;
+    }
+
+    .success-tile {
+        background-color: var(--success-item-bg-color) !important;
     }
 
     .attention-item {
@@ -38,6 +44,11 @@
     .error-item {
         background-color: var(--error-item-bg-color) !important;
         border: 1px solid var(--error-item-border-color) !important;
+    }
+
+    .success-item {
+        background-color: var(--success-item-bg-color) !important;
+        border: 1px solid var(--success-item-border-color) !important;
     }
 
     .csgp-entry-tile {
@@ -56,8 +67,14 @@
         }
 
         &-header {
-            margin-top: .3rem;
-            margin-bottom: .4rem;
+            margin-top: 0.1rem;
+            margin-bottom: .2rem;
+            &-value {
+                font-weight: 700;
+            }
+            &-label {
+                font-weight: 500;
+            }
         }
 
         &-itemcontainer {
@@ -66,28 +83,10 @@
             gap: 0.2rem;
         }
 
-        &-itembox {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            align-items: center;
-            &-left {
-                display: flex;
-                align-items: flex-start;
-                flex-direction: column;
-            }
-
-            &-right {
-                display: flex;
-                flex-direction: column;
-                margin-left: auto;
-                align-items: flex-end;
-            }
-        }
-
         &-item {
             &-title {
                 font-weight: 500;
+                font-size: small;
                 margin-bottom: .2rem;
             }
             &-primary {
@@ -113,6 +112,32 @@
                 margin-bottom: .5rem;
             }
             
+
+        }
+    }
+
+    .csgp-generic-flex-row {
+        flex-direction: row !important; 
+        gap: .3rem !important;
+        align-items: center !important;
+    }
+
+    .csgp-generic-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        &-left {
+            display: flex;
+            line-height: normal;
+            flex-direction: column;
+        }
+
+        &-right {
+            display: flex;
+            flex-direction: column;
+            margin-left: auto;
+            line-height: normal;
 
         }
     }

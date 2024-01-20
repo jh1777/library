@@ -15,18 +15,26 @@ export class EntryTileComponent implements OnInit {
     this.data.state = EntryState.none;
     this.data.headerProperties.push({
       label: "State",
-      value: "Started"
+      value: "Started",
+      valueIcon: new IconModel({
+        iconName: "success-standard",
+        color: "green",
+        tooltip: "More Information",
+        size: 18,
+        isClickable: true
+      }),
     });
 
     this.data.items.push({
       primaryValue: "TLS Registration",
       secondaryValue: "23/22/2023 12:34:43 GMT+1",
-      state: EntryState.attention
+      state: EntryState.none
     });
 
     this.data.items.push({
       title: "IoT Setup",
       primaryValue: "Successful",
+      state: EntryState.none,
       clickable: true,
       icon: new IconModel({
         iconName: "success-standard",
@@ -48,7 +56,17 @@ export class EntryTileComponent implements OnInit {
 export enum EntryState {
   none = 0,
   attention = 1,
-  error = 2
+  error = 2,
+  success = 3
+}
+
+export enum EntryTileViewMode {
+  // All items shown by default
+  expanded = 0,
+  /// No items shown by default
+  collapsed = 1,
+  /// Only attention and error items shown
+  autoexpanded = 2  
 }
 
 export class EntryTile {

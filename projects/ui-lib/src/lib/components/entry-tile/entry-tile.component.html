@@ -10,6 +10,27 @@
     <ng-container
       *ngFor="let headerProps of data.headerProperties; let i = index"
     >
+      <div class="csgp-generic-container">
+        <div class="csgp-generic-container-left">
+          {{ headerProps.label }}
+        </div>
+        <div class="csgp-generic-container-right csgp-generic-flex-row" 
+        >
+          <div *ngIf="headerProps.valueIcon" class="csgp-entry-tile-header-value-icon">
+            <clr-icon 
+                [style.color]="headerProps.valueIcon.color ? headerProps.valueIcon.color : ''"
+                [attr.shape]="headerProps.valueIcon.iconName"
+                [attr.size]="headerProps.valueIcon.size"
+            ></clr-icon>
+          </div>
+          <div class="csgp-entry-tile-header-value"
+            [style]="headerProps.valueStyle"
+          >
+            {{ headerProps.value }}
+          </div>
+        </div>
+      </div>
+    <!-- 
       <csgp-property-entry
         [id]="i"
         [isLoading]="data.isLoading"
@@ -18,6 +39,7 @@
         [valueIcon]="headerProps.valueIcon"
         [valueStyle]="headerProps.valueStyle"
       ></csgp-property-entry>
+      -->
     </ng-container>
   </div>
 
@@ -32,10 +54,11 @@
         [class.clickable]="item.clickable"
         [class.attention-item]="item.state === 1"
         [class.error-item]="item.state === 2"
+        [class.success-item]="item.state === 3"
         >
 
-        <div class="csgp-entry-tile-itembox">
-            <div class="csgp-entry-tile-itembox-left">
+        <div class="csgp-generic-container">
+            <div class="csgp-generic-container-left">
                 <div class="csgp-entry-tile-item-primary">
                     {{ item.primaryValue }}
                   </div>
@@ -44,7 +67,7 @@
                   </div>
             </div>
 
-            <div class="csgp-entry-tile-itembox-right">
+            <div class="csgp-generic-container-right">
                 <div *ngIf="item.icon" class="csgp-entry-tile-item-icon">
                     <clr-icon 
                         [style.color]="item.icon.color ? item.icon.color : ''"
