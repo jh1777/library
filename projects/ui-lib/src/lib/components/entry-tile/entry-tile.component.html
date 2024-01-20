@@ -1,8 +1,21 @@
 <div class="csgp-entry-tile-title">
-  {{ data.title }}
+  <div class="csgp-generic-container-left">
+    {{ data.title }}
+  </div>
+  <div class="csgp-generic-container-right">
+    <div class="csgp-entry-tile-collapse-button">
+      <clr-icon 
+        [attr.shape]="data.isCollapsed ? 'angle' : 'angle' "
+        [class.rotate]="data.isCollapsed"
+        size="16"
+        (click)="toggleCollapsedState()"
+      ></clr-icon>
+    </div>
+  </div>
 </div>
 
-<div class="csgp-entry-tile-base"
+<div *ngIf="(data.viewMode === 1 && !data.isCollapsed) ||  data.viewMode !== 1" 
+    class="csgp-entry-tile-base"
     [class.attention-tile]="data.state === 1"
     [class.error-tile]="data.state === 2"
     >
@@ -16,7 +29,10 @@
         </div>
         <div class="csgp-generic-container-right csgp-generic-flex-row" 
         >
-          <div *ngIf="headerProps.valueIcon" class="csgp-entry-tile-header-value-icon">
+          <div *ngIf="headerProps.valueIcon" 
+            class="csgp-entry-tile-header-value-icon"
+            [attr.title]="headerProps.valueIcon.tooltip"
+          >
             <clr-icon 
                 [style.color]="headerProps.valueIcon.color ? headerProps.valueIcon.color : ''"
                 [attr.shape]="headerProps.valueIcon.iconName"
@@ -68,7 +84,10 @@
             </div>
 
             <div class="csgp-generic-container-right">
-                <div *ngIf="item.icon" class="csgp-entry-tile-item-icon">
+                <div *ngIf="item.icon" 
+                  class="csgp-entry-tile-item-icon"
+                  [attr.title]="item.icon.tooltip"
+                >
                     <clr-icon 
                         [style.color]="item.icon.color ? item.icon.color : ''"
                         [attr.shape]="item.icon.iconName"

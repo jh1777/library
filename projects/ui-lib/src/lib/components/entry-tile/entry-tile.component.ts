@@ -17,8 +17,8 @@ export class EntryTileComponent implements OnInit {
       label: "State",
       value: "Started",
       valueIcon: new IconModel({
-        iconName: "success-standard",
-        color: "green",
+        iconName: "warning-standard",
+        color: "grey",
         tooltip: "More Information",
         size: 18,
         isClickable: true
@@ -26,9 +26,17 @@ export class EntryTileComponent implements OnInit {
     });
 
     this.data.items.push({
-      primaryValue: "TLS Registration",
-      secondaryValue: "23/22/2023 12:34:43 GMT+1",
-      state: EntryState.none
+      primaryValue: "Pending",
+      title: "TLS Registration",
+      secondaryValue: "No date available",
+      state: EntryState.attention,
+      icon: new IconModel({
+        iconName: "warning-standard",
+        color: "orange",
+        tooltip: "No TLS arrived yet, please check with crew!",
+        size: 30,
+        isClickable: true
+      }),
     });
 
     this.data.items.push({
@@ -39,7 +47,7 @@ export class EntryTileComponent implements OnInit {
       icon: new IconModel({
         iconName: "success-standard",
         color: "green",
-        tooltip: "More Information",
+        tooltip: "Everything is ready on IoT Hub!",
         size: 30,
         isClickable: true
       }),
@@ -51,6 +59,9 @@ export class EntryTileComponent implements OnInit {
     console.log(this.data);
   }
 
+  public toggleCollapsedState() {
+    this.data.isCollapsed = !this.data.isCollapsed;
+  }
 }
 
 export enum EntryState {
@@ -61,10 +72,10 @@ export enum EntryState {
 }
 
 export enum EntryTileViewMode {
-  // All items shown by default
-  expanded = 0,
-  /// No items shown by default
-  collapsed = 1,
+  // All items shown by default, no collapse button
+  disabled = 0,
+  /// All items shown by default, but collapse button shown
+  manual = 1,
   /// Only attention and error items shown
   autoexpanded = 2  
 }
@@ -73,8 +84,10 @@ export class EntryTile {
   isLoading: boolean = false;
   title: string = "";
   state: EntryState = EntryState.none;
+  viewMode: EntryTileViewMode = EntryTileViewMode.manual; // TODO
   headerProperties: Array<EntryTileProperty> = [];
   items: Array<EntryTileItem> = [];
+  isCollapsed: boolean = false;
 }
 
 export class EntryTileProperty {
