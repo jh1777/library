@@ -2,19 +2,19 @@
   <div class="csgp-entry-tile-title">
     <div class="csgp-generic-container-left csgp-generic-flex-row">
       <clr-icon 
-          *ngIf="(entryTileStore.titleIcon$ | async)"
-          [attr.shape]="(entryTileStore.titleIcon$ | async)"
+          *ngIf="data.titleIcon"
+          [attr.shape]="data.titleIcon"
           size="18"
         ></clr-icon>
-      {{ (entryTileStore.title$ | async) }}
+      {{ data.title }}
     </div>
     <div class="csgp-generic-container-right">
-      <div *ngIf="(entryTileStore.collapseMode$ | async) > 0"
+      <div *ngIf="data.collapseMode > 0"
         class="csgp-entry-tile-collapse-button"
       >
         <clr-icon 
-          [attr.shape]="(entryTileStore.isCollapsed$ | async) ? 'angle' : 'angle' "
-          [class.rotate]="(entryTileStore.isCollapsed$ | async)"
+          [attr.shape]="data.isCollapsed ? 'angle' : 'angle' "
+          [class.rotate]="data.isCollapsed"
           size="16"
           (click)="toggleCollapsedState()"
         ></clr-icon>
@@ -22,18 +22,18 @@
     </div>
   </div>
 
-  <div 
+  <div  
       class="csgp-entry-tile-base"
-      [class.attention-tile]="(entryTileStore.tileState$ | async) === 1"
-      [class.error-tile]="(entryTileStore.tileState$ | async) === 2"
+      [class.attention-tile]="data.state === 1"
+      [class.error-tile]="data.state === 2"
       >
     <div class="csgp-entry-tile-header">
       <ng-container
-        *ngFor="let headerProps of (entryTileStore.header$ | async); let i = index"
+        *ngFor="let headerProps of data.header; let i = index"
       >
 
       <div 
-          *ngIf="(entryTileStore.isLoading$ | async)" 
+          *ngIf="isLoading" 
           [class.pulse]="!errorData?.hasError" 
           [class.error-blur]="errorData?.hasError"
           class="csgp-generic-container loading no-select"
@@ -49,7 +49,7 @@
 
 
         <div 
-          *ngIf="!(entryTileStore.isLoading$ | async)" 
+          *ngIf="!isLoading" 
           class="csgp-generic-container"
         >
           <div class="csgp-generic-container-left">
@@ -80,12 +80,12 @@
     </div>
 
     <div 
-      *ngIf="((entryTileStore.collapseMode$ | async) === 1 && !(entryTileStore.isCollapsed$ | async)) || (entryTileStore.collapseMode$ | async) !== 1"
+      *ngIf="(data.collapseMode === 1 && !data.isCollapsed) ||  data.collapseMode !== 1"
       class="csgp-entry-tile-itemcontainer">
-      <div *ngFor="let item of (entryTileStore.items$ | async); let j = index">
+      <div *ngFor="let item of data.items; let j = index">
 
           <div 
-              *ngIf="(entryTileStore.isLoading$ | async)" 
+              *ngIf="isLoading" 
               class="loading no-select"
               [class.pulse]="!errorData?.hasError" 
               [class.error-blur]="errorData?.hasError"
@@ -110,7 +110,7 @@
               </div>
           </div>
           <ng-container 
-            *ngIf="!(entryTileStore.isLoading$ | async) && (entryTileStore.collapseMode$ | async) !== 2 || ((entryTileStore.collapseMode$ | async) === 2 && item.state > 0 && item.state < 3)"
+            *ngIf="!isLoading && data.collapseMode !== 2 || (data.collapseMode === 2 && item.state > 0 && item.state < 3)"
             >
             <div class="csgp-entry-tile-item-title">
               {{ item.title }}
@@ -122,7 +122,7 @@
               [class.attention-item]="item.state === 1"
               [class.error-item]="item.state === 2"
               [class.success-item]="item.state === 3"
-              (click)="tileItemClicked($event, item)"
+              (click)="tileItemClicked(item)"
               >
 
               <div class="csgp-generic-container">
@@ -151,6 +151,7 @@
               </div>
             </div>
           </ng-container>
+
       </div>
     </div>
   </div>

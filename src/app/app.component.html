@@ -14,6 +14,8 @@
       <button clrTabLink>Entry Tile</button>
       <ng-template [(clrIfActive)]="entryTileTabActive">
         <clr-tab-content>
+          <entry-tile-page [showComponentBorder]="showBorders"></entry-tile-page>
+          <!-- 
           <div class="columns">
             <div class="container">
               <p></p>
@@ -25,6 +27,7 @@
             </div>
             <div class="container">&nbsp;</div>
           </div>
+          -->
         </clr-tab-content>
       </ng-template>
     </clr-tab>

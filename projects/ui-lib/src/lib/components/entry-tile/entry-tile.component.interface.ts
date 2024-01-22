@@ -23,6 +23,7 @@ export interface EntryTileState {
 
 /**
  * Entry Tile Item class
+ * Is used to show one item in the tile
  */
 export interface EntryTileItem {
   title?: string;

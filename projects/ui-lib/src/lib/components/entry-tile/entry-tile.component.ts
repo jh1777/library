@@ -1,146 +1,129 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { IconModel } from '../../models/shared/icon-model';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IIO } from './entry-tile.component.iio.interface';
+import { EntryState, EntryTileCollapseMode, EntryTileItem, EntryTileProperty } from './entry-tile.component.interface';
+import { EntryTileStore } from './entry-tile.component.store';
 
 @Component({
   selector: 'csgp-v2-entry-tile',
   templateUrl: './entry-tile.component.html',
-  styleUrls: ['./entry-tile.component.scss']
+  styleUrls: ['./entry-tile.component.scss'],
+  providers: [EntryTileStore],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EntryTileComponent implements OnInit {
+
+  private _initializedCallBack: (storeReference: IIO) => void;
+
+  @Input() public set initializedCallBack(callBackFunc: (storeReference: IIO) => void) {
+    if (callBackFunc) {
+      this._initializedCallBack = callBackFunc;
+      this._initializedCallBack(this.entryTileStore);
+    }
+  }
+  
+  // Title + Icon
+  @Input() public set title(tileTitle: string) {
+    this.entryTileStore.mergeValueIntoState({
+      title: tileTitle
+    });
+  }
+
+  // Title Icon
+  @Input() public set titleIcon(titleIcon: string) {
+    this.entryTileStore.mergeValueIntoState({
+      titleIcon: titleIcon
+    });
+  }
+  
+  // Collapsed Mode
+  @Input() public set collapseMode(value: EntryTileCollapseMode) {
+    this.entryTileStore.mergeValueIntoState({
+      collapseMode: value
+    });
+  }
+
+  // Is Collapsed
+  @Input() public set isCollapsed(value: boolean) {
+    this.entryTileStore.mergeValueIntoState({
+      isCollapsed: value
+    });
+  }
+
+  // Is Loading
+  @Input() public set isLoading(value: boolean) {
+    this.entryTileStore.mergeValueIntoState({
+      isLoading: value
+    });
+  }
+
+  // State
+  @Input() public set state(value: EntryState) {
+    this.entryTileStore.mergeValueIntoState({
+      state: value
+    });
+  }
+
+  // Header Properties Array
+  @Input() public set header(value: Array<EntryTileProperty>) {
+    this.entryTileStore.mergeValueIntoState({
+      header: value
+    });
+  }
+
+  // Header Properties Array
+  @Input() public set items(value: Array<EntryTileItem>) {
+    this.entryTileStore.mergeValueIntoState({
+      items: value
+    });
+  }
+
+  // General purpose (optional)
+  @Input() public set id(value: any) {
+    this.entryTileStore.mergeValueIntoState({
+      id: value
+    });
+  }
+
+
+  @Output()
+  onClick = new EventEmitter<EntryTileItem>();
+
+  //----------
+
   public placeholder = "⏹⏹ ";
-  @Input()
-  public isLoading: boolean = false;
 
   private _itemLimit: number = 7;
   public get getItemLimit(): number {
     return this._itemLimit;
   }
 
-  public data: EntryTile = new EntryTile();
-
   // Just placeholder for test
   public errorData;
 
-  constructor() { 
-    this.data.title = "Onboarding";
-    this.data.collapseMode = EntryTileCollapseMode.manual;
-    this.data.state = EntryState.none;
-    // this.data.titleIcon = "factory";
-    this.data.header.push({
-      label: "State",
-      value: "Started",
-      valueIcon: new IconModel({
-        iconName: "warning-standard",
-        color: "grey",
-        tooltip: "More Information",
-        size: 18,
-        isClickable: true
-      }),
-    });
-
-    this.data.items.push({
-      primaryValue: "Pending",
-      title: "TLS Registration",
-      secondaryValue: "No date available",
-      state: EntryState.attention,
-      icon: new IconModel({
-        iconName: "warning-standard",
-        color: "orange",
-        tooltip: "No TLS arrived yet, please check with crew!",
-        size: 30,
-        isClickable: false
-      }),
-    });
-
-    this.data.items.push({
-      title: "IoT Setup",
-      primaryValue: "Successful",
-      state: EntryState.none,
-      clickable: true,
-      icon: new IconModel({
-        iconName: "success-standard",
-        color: "green",
-        tooltip: "Everything is ready on IoT Hub!",
-        size: 30,
-        isClickable: false
-      }),
-      secondaryValue: "23/22/2023 12:35:22 GMT+1"
-    });
+  constructor(
+    public readonly entryTileStore: EntryTileStore
+    ) {
   }
 
-  ngOnInit(): void {
+  // Private
+  private _isCollapsed: boolean = false;
 
+  ngOnInit(): void {
+    this.entryTileStore.isCollapsed$.subscribe({
+      next: (value) => {
+        this._isCollapsed = value;
+      }
+    });
   }
 
   public toggleCollapsedState() {
-    this.data.isCollapsed = !this.data.isCollapsed;
+    //this.data.isCollapsed = !this.data.isCollapsed;
+    this.entryTileStore.setIsCollapsed(!this._isCollapsed);
   }
 
-  // Actions
-  public tileItemClicked($item: EntryTileItem) {
-    if ($item.clickable) {
-      // callback output
-      console.log($item);
-    }
+  public tileItemClicked(event: Event, $item: EntryTileItem) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.onClick.emit($item);
   }
-
-
-}
-
-
-
-/**
- * Main class for Entry Tile
- */
-export class EntryTile {
-  // states
-  isLoading: boolean = false; // done with Input but not in model
-  isCollapsed: boolean = false; // really needed in model?
-  state: EntryState = EntryState.none;
-  collapseMode: EntryTileCollapseMode = EntryTileCollapseMode.manual;
-  // Title
-  title: string = "";
-  titleIcon?: string; // Not recommended
-  // Header
-  header: Array<EntryTileProperty> = [];
-  // Content
-  items: Array<EntryTileItem> = [];
-}
-
-/**
- * Entry Tile Item class
- */
-export class EntryTileItem {
-  title?: string = "";
-  state?: EntryState = EntryState.none;
-  clickable?: boolean = false;
-  primaryValue: string = "";
-  secondaryValue?: string;
-  icon?: IconModel;
-}
-
-/**
- * Generic Label / Value pair class
- */
-export class EntryTileProperty {
-  label: string;
-  value: string;
-  valueIcon?: IconModel;
-  valueStyle?: string;
-}
-
-export enum EntryState {
-  none = 0,
-  attention = 1,
-  error = 2,
-  success = 3
-}
-
-export enum EntryTileCollapseMode {
-  // All items shown by default, no collapse button
-  disabled = 0,
-  /// All items shown by default, but collapse button shown
-  manual = 1,
-  /// Only attention and error items shown
-  autoexpanded = 2  
 }

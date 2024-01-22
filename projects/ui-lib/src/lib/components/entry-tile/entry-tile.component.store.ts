@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ComponentStore } from "@ngrx/component-store";
-import { deepmergeInto } from "deepmerge-ts/*";
+import { deepmergeInto } from "deepmerge-ts";
 import { produce } from "immer";
 import { IIO } from "./entry-tile.component.iio.interface";
 import { EntryState, EntryTileCollapseMode, EntryTileItem, EntryTileProperty, EntryTileState } from "./entry-tile.component.interface";
@@ -42,49 +42,58 @@ export class EntryTileStore extends ComponentStore<EntryTileState> implements II
   });
 
   // Setter
-  public setId = (id: any) => {
+  public readonly setId = (id: any) => {
     this.mergeValueIntoState({
       id: id
     });
   };
 
-  public setLoading = (state: boolean) => {
+  public readonly setLoading = (state: boolean) => {
     this.mergeValueIntoState({
         isLoading: state
     });
   };
   
-  public setCollapseMode = (mode: EntryTileCollapseMode) => {
+  public readonly setCollapseMode = (mode: EntryTileCollapseMode) => {
     this.mergeValueIntoState({
         collapseMode: mode
     });
   };
 
-  public setIsCollapsed = (state: boolean) => {
+  public readonly setIsCollapsed = (state: boolean) => {
     this.mergeValueIntoState({
         isCollapsed: state
     });
   };
 
-  public setTileState = (tileState: EntryState) => {
+  public readonly setTileState = (tileState: EntryState) => {
     this.mergeValueIntoState({
         state: tileState
     });
   };
 
 
-  public setTileTitle = (title: string, icon: string) => {
+  public readonly setTileTitle = (title: string, icon: string) => {
     this.mergeValueIntoState({
         title: title,
         titleIcon: icon
     });
   };
 
-  public addTileHeader = (headerData: EntryTileProperty) => {
-    this.mergeValueIntoState({
-        // TODO: How to handle arrays ?
+  /** not working!! */
+  public addTileHeader = this.updater((state, headerData: EntryTileProperty) => {
+		state.header.push(headerData);
+    return state;
+	});
+
+  /** not working!! */
+  public addTileItem = 
+    this.updater((state: EntryTileState, value: Partial<EntryTileState>) => {
+      const newState = produce(state, (draft) => {
+        deepmergeInto(draft, value);
+      })
+      return (newState);
     });
-  };
   
   
 }

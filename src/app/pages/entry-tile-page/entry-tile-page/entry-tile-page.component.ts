@@ -1,0 +1,43 @@
+import { Component, Input, QueryList, ViewChildren } from '@angular/core';
+import { EntryTileComponent } from 'projects/ui-lib/src/lib/components/entry-tile/entry-tile.component';
+import { IIO } from 'projects/ui-lib/src/lib/components/entry-tile/entry-tile.component.iio.interface';
+import { EntryTileViewData, EntryTileViewModel } from 'src/app/models/entry-tile';
+
+@Component({
+  selector: 'entry-tile-page',
+  templateUrl: './entry-tile-page.component.html',
+  styleUrls: ['./entry-tile-page.component.scss']
+})
+export class EntryTilePageComponent {
+  @Input()
+  showComponentBorder: boolean = false;
+  @ViewChildren(EntryTileComponent) viewChildren!: QueryList<EntryTileComponent>;
+
+  public tileData: Array<EntryTileViewModel> = [];
+
+  private store: IIO;
+  
+  constructor() {
+    this.tileData = EntryTileViewData;
+  }
+
+  initCallback(storeReference: IIO) {
+    this.store = storeReference;
+  }
+
+  setOutput(model: any) {
+    model.$output = `id=${model.id}`;
+    setTimeout(() => { model.$output = '' }, 3000);
+  }
+  startTest() {
+   
+    this.store = this.viewChildren.first.entryTileStore;
+    console.log("adding item...");
+
+    this.store.addTileItem({items: [{
+      title: "Test_XX",
+      primaryValue: "Works fine",
+      secondaryValue: "JH"
+    }]});
+  }
+}
