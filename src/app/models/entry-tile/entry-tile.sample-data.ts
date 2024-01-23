@@ -5,8 +5,6 @@ export var EntryTileViewData: Array<EntryTileViewModel> = [
     {
         isLoading: false,
         id: 1,
-        collapseMode: EntryTileCollapseMode.disabled,
-        title: "Test",
         header: [{
             label: "State",
             value: "Success"
@@ -17,7 +15,33 @@ export var EntryTileViewData: Array<EntryTileViewModel> = [
         }],
         isCollapsed: false,
         state: EntryState.none,
-        $description: "Very simple; 1 Item"
+        $description: "Very simple; no title; 1 header; 1 item"
+    },
+    {
+        isLoading: false,
+        id: 1,
+        title: "Simple with small items",
+        header: [{
+            label: "State",
+            value: "OK"
+        }],
+        items: [{
+            primaryValue: "Connected"
+        },
+        {
+            primaryValue: "Registered"
+        }],
+        isCollapsed: false,
+        state: EntryState.none,
+        $description: "Very simple; 1 header; 2 one line items"
+    },
+    {
+        isLoading: true,
+        id: 4,
+        title: "Loading",
+        isCollapsed: false,
+        state: EntryState.none,
+        $description: "Loading style"
     },
     {
         isLoading: false,
@@ -28,27 +52,28 @@ export var EntryTileViewData: Array<EntryTileViewModel> = [
         header: [{
             label: "State",
             value: "Completed",
-            valueStyle: "color: green"
+            valueColor: "green",
+            valueIcon: "success-standard"
+        },
+        {
+            label: "Updated",
+            value: "21 mins ago"
         }],
         items: [{
             title: "TLS Registration",
             primaryValue: "Completed",
             secondaryValue: "23 mins ago",
-            icon: {
-                size: 30,
-                color: "green",
-                iconName: "success-standard",
-                isClickable: false
-            }
+            showStateIcon: true,
+            clickable: true
         }],
         isCollapsed: false,
         state: EntryState.none,
-        $description: "Simple with Icon; Collapsible; 1 Item"
+        $description: "Simple with icon and 2 headers; collapsible; clickable 1 item"
     },
     {
         isLoading: false,
         id: 3,
-        collapseMode: EntryTileCollapseMode.disabled,
+        collapseMode: EntryTileCollapseMode.manual,
         title: "Health",
         header: [{
             label: "State",
@@ -60,27 +85,18 @@ export var EntryTileViewData: Array<EntryTileViewModel> = [
             secondaryValue: "26 sec. (avg. 7d)",
             state: EntryState.attention,
             clickable: true,
-            icon: {
-                size: 30,
-                color: "orange",
-                iconName: "warning-standard",
-                isClickable: false
-            }
+            showStateIcon: true
         },
         {
             title: "CPU Usage",
             primaryValue: "12% last 5 mins",
             secondaryValue: "33% (avg. 7d)",
-            state: EntryState.none,
-            icon: {
-                size: 30,
-                color: "green",
-                iconName: "success-standard",
-                isClickable: false
-            }
+            state: EntryState.error,
+            showStateIcon: true
         }],
         isCollapsed: false,
-        state: EntryState.attention,
-        $description: "Attention tile; 2 items"
-    },
+        state: EntryState.error,
+        $description: "Error tile; 2 items"
+    }
+    
 ]

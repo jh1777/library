@@ -3,7 +3,7 @@ import { ComponentStore } from "@ngrx/component-store";
 import { deepmergeInto } from "deepmerge-ts";
 import { produce } from "immer";
 import { IIO } from "./entry-tile.component.iio.interface";
-import { EntryState, EntryTileCollapseMode, EntryTileItem, EntryTileProperty, EntryTileState } from "./entry-tile.component.interface";
+import { EntryState, EntryTileCollapseMode, EntryTileHeader, EntryTileItem, EntryTileState } from "./entry-tile.component.interface";
 
 @Injectable()
 export class EntryTileStore extends ComponentStore<EntryTileState> implements IIO  {
@@ -15,7 +15,7 @@ export class EntryTileStore extends ComponentStore<EntryTileState> implements II
     super({ 
       title: "",
       collapseMode: EntryTileCollapseMode.disabled,
-      header: new Array<EntryTileProperty>(),
+      header: new Array<EntryTileHeader>(),
       isCollapsed: false,
       isLoading: false,
       items: new Array<EntryTileItem>(),
@@ -85,11 +85,11 @@ export class EntryTileStore extends ComponentStore<EntryTileState> implements II
 
 
   // Add one header property to the tile
-  public readonly addTileHeader = (item: EntryTileProperty) => {
+  public readonly addTileHeader = (item: EntryTileHeader) => {
     this.addTileHeaderReducer(item);
   }
 
-  private readonly addTileHeaderReducer = this.updater((state, item: EntryTileProperty) => {
+  private readonly addTileHeaderReducer = this.updater((state, item: EntryTileHeader) => {
     if (state.header.length >= this._MAX_HEADER_ITEMS) {
       return state;
     }

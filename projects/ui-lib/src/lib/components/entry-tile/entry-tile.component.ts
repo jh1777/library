@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IIO } from './entry-tile.component.iio.interface';
-import { EntryState, EntryTileCollapseMode, EntryTileItem, EntryTileProperty } from './entry-tile.component.interface';
+import { EntryState, EntryTileCollapseMode, EntryTileHeader, EntryTileItem } from './entry-tile.component.interface';
 import { EntryTileStore } from './entry-tile.component.store';
 
 @Component({
@@ -64,7 +64,7 @@ export class EntryTileComponent implements OnInit {
   }
 
   // Header Properties Array
-  @Input() public set header(value: Array<EntryTileProperty>) {
+  @Input() public set header(value: Array<EntryTileHeader>) {
     this.entryTileStore.mergeValueIntoState({
       header: value
     });
@@ -91,11 +91,6 @@ export class EntryTileComponent implements OnInit {
   //----------
 
   public placeholder = "⏹⏹ ";
-
-  private _itemLimit: number = 7;
-  public get getItemLimit(): number {
-    return this._itemLimit;
-  }
 
   // Just placeholder for test
   public errorData;

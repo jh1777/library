@@ -1,4 +1,4 @@
-import { Component, Input, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, Input, QueryList, ViewChildren } from '@angular/core';
 import { EntryTileComponent } from 'projects/ui-lib/src/lib/components/entry-tile/entry-tile.component';
 import { IIO } from 'projects/ui-lib/src/lib/components/entry-tile/entry-tile.component.iio.interface';
 import { EntryTileViewData, EntryTileViewModel } from 'src/app/models/entry-tile';
@@ -8,7 +8,7 @@ import { EntryTileViewData, EntryTileViewModel } from 'src/app/models/entry-tile
   templateUrl: './entry-tile-page.component.html',
   styleUrls: ['./entry-tile-page.component.scss']
 })
-export class EntryTilePageComponent {
+export class EntryTilePageComponent implements AfterViewInit {
   @Input()
   showComponentBorder: boolean = false;
   @ViewChildren(EntryTileComponent) viewChildren!: QueryList<EntryTileComponent>;
@@ -16,9 +16,19 @@ export class EntryTilePageComponent {
   public tileData: Array<EntryTileViewModel> = [];
 
   private store: IIO;
+
+  private isTileCollapsed: boolean;
   
   constructor() {
     this.tileData = EntryTileViewData;
+  }
+
+  ngAfterViewInit(): void {
+    this.store?.isCollapsed$.subscribe({
+      next: (state) => {
+        this.isTileCollapsed = state;
+      }
+    });
   }
 
   initCallback = (storeReference: IIO) => {
@@ -29,7 +39,12 @@ export class EntryTilePageComponent {
     model.$output = `id=${model.id}`;
     setTimeout(() => { model.$output = '' }, 3000);
   }
-  startTest() {
+
+  toggleCollapseTile() {
+    this.store.setIsCollapsed(!this.isTileCollapsed);
+  }
+
+  addTestItem() {
     console.log(this.store);
     //this.store = this.viewChildren.first.entryTileStore;
     console.log("adding item...");

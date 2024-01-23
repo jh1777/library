@@ -1,6 +1,11 @@
 <!-- BUTTON with Component Store -->
 <component-header title="ENTRY TILE" subtitle="with Component Store"></component-header>
-<div style="border: 1px solid grey; padding: .3rem; cursor: pointer;" (click)="startTest()">Test Method</div>
+
+<div style="display: flex; gap: .5rem;margin-bottom: .5rem;">
+    <div class="button" (click)="addTestItem()">Add Item and Header</div>
+    <div class="button" (click)="toggleCollapseTile()">Toggle Collapse Tile</div>
+</div>
+
 <div class="columns">
     <div class="container" *ngFor="let model of tileData">
         <div class="item">
