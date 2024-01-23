@@ -8,6 +8,9 @@ import { EntryState, EntryTileCollapseMode, EntryTileItem, EntryTileProperty, En
 @Injectable()
 export class EntryTileStore extends ComponentStore<EntryTileState> implements IIO  {
 
+  private readonly _MAX_ITEMS = 5;
+  private readonly _MAX_HEADER_ITEMS = 2;
+
   constructor() {
     super({ 
       title: "",
@@ -80,20 +83,36 @@ export class EntryTileStore extends ComponentStore<EntryTileState> implements II
     });
   };
 
-  /** not working!! */
-  public addTileHeader = this.updater((state, headerData: EntryTileProperty) => {
-		state.header.push(headerData);
-    return state;
-	});
 
-  /** not working!! */
-  public addTileItem = 
-    this.updater((state: EntryTileState, value: Partial<EntryTileState>) => {
-      const newState = produce(state, (draft) => {
-        deepmergeInto(draft, value);
-      })
-      return (newState);
+  // Add one header property to the tile
+  public readonly addTileHeader = (item: EntryTileProperty) => {
+    this.addTileHeaderReducer(item);
+  }
+
+  private readonly addTileHeaderReducer = this.updater((state, item: EntryTileProperty) => {
+    if (state.header.length >= this._MAX_HEADER_ITEMS) {
+      return state;
+    }
+
+    const newstate = produce(state, draft => {
+      draft.header = draft.header.concat(item);
     });
-  
-  
+    return (newstate);
+  });
+
+  // Add one item to the tile
+  public readonly addTileItem = (item: EntryTileItem) => {
+    this.addTileItemReducer(item);
+  }
+
+  private readonly addTileItemReducer = this.updater((state, item: EntryTileItem) => {
+    if (state.items.length >= this._MAX_ITEMS) {
+      return state;
+    }
+
+    const newstate = produce(state, draft => {
+      draft.items = draft.items.concat(item);
+    });
+    return (newstate);
+  });
 }

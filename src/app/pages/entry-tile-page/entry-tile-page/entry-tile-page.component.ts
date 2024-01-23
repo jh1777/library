@@ -21,7 +21,7 @@ export class EntryTilePageComponent {
     this.tileData = EntryTileViewData;
   }
 
-  initCallback(storeReference: IIO) {
+  initCallback = (storeReference: IIO) => {
     this.store = storeReference;
   }
 
@@ -30,14 +30,19 @@ export class EntryTilePageComponent {
     setTimeout(() => { model.$output = '' }, 3000);
   }
   startTest() {
-   
-    this.store = this.viewChildren.first.entryTileStore;
+    console.log(this.store);
+    //this.store = this.viewChildren.first.entryTileStore;
     console.log("adding item...");
 
-    this.store.addTileItem({items: [{
+    this.store.addTileItem({
       title: "Test_XX",
       primaryValue: "Works fine",
       secondaryValue: "JH"
-    }]});
+    });
+
+    this.store.addTileHeader({
+      label: "Test_XX",
+      value: "Works fine"
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { EntryState, EntryTileCollapseMode, EntryTileProperty, EntryTileState } from "./entry-tile.component.interface";
+import { EntryState, EntryTileCollapseMode, EntryTileItem, EntryTileProperty, EntryTileState } from "./entry-tile.component.interface";
 
 export interface IIO {
     setTileTitle: (title: string, icon: string) => void;
@@ -8,5 +8,5 @@ export interface IIO {
     setLoading: (state: boolean) => void;
     setId: (id: any) => void;
     addTileHeader: (data: EntryTileProperty) => void;
-    addTileItem: (item: Partial<EntryTileState>) => void;
+    addTileItem: (item: EntryTileItem) => void;
 }
