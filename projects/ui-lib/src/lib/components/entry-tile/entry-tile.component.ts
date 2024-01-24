@@ -150,8 +150,8 @@ export class EntryTileComponent implements AfterViewInit {
    * @param event {@link Event}
    */
   public showMoreClicked = (event: Event) => {
-    event.preventDefault();
-    event.stopPropagation();
+    event?.preventDefault();
+    event?.stopPropagation();
     this.onShowMoreClick.emit(this._id);
   }
 
@@ -162,8 +162,8 @@ export class EntryTileComponent implements AfterViewInit {
    */
   public tileItemClicked = (event: Event, $item: EntryTileItem) => {
     if ($item.clickable) {
-      event.preventDefault();
-      event.stopPropagation();
+      event?.preventDefault();
+      event?.stopPropagation();
       this.onItemClick.emit($item);
     }
   }
