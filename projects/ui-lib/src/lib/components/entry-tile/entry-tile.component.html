@@ -102,51 +102,68 @@
       <ng-container *ngIf="!(entryTileStore.isLoading$ | async)">
         <div *ngFor="let item of (entryTileStore.items$ | async); let j = index">
 
-            <ng-container 
-              *ngIf="(entryTileStore.collapseMode$ | async) !== 2 || ((entryTileStore.collapseMode$ | async) === 2 && item.state > 0 && item.state < 3)"
+          <ng-container 
+            *ngIf="(entryTileStore.collapseMode$ | async) !== 2 || ((entryTileStore.collapseMode$ | async) === 2 && item.state > 0 && item.state < 3)"
+            >
+            <div class="csgp-entry-tile-item-title">
+              {{ item.title }}
+            </div>
+
+            <div 
+              class="csgp-entry-tile-item" 
+              [class.clickable]="item.clickable"
+              [class.attention-item]="item.state === 1"
+              [class.error-item]="item.state === 2"
+              [class.success-item]="item.state === 3"
+              [attr.title]="item.tooltip"
+              (click)="tileItemClicked($event, item)"
               >
-              <div class="csgp-entry-tile-item-title">
-                {{ item.title }}
-              </div>
 
-              <div 
-                class="csgp-entry-tile-item" 
-                [class.clickable]="item.clickable"
-                [class.attention-item]="item.state === 1"
-                [class.error-item]="item.state === 2"
-                [class.success-item]="item.state === 3"
-                [attr.title]="item.tooltip"
-                (click)="tileItemClicked($event, item)"
-                >
-
-                <div class="csgp-generic-container">
-                    <div class="csgp-generic-container-left">
-                        <div class="csgp-entry-tile-item-primary">
-                            {{ item.primaryValue }}
-                          </div>
-                          <div class="csgp-entry-tile-item-secondary">
-                            {{ item.secondaryValue }}
-                          </div>
-                    </div>
-
-                    <div class="csgp-generic-container-right">
-                        <div *ngIf="item.showStateIcon && item.state > 0" class="csgp-entry-tile-item-icon">
-                            <clr-icon class="is-solid"
-                                [style.color]="item.state === 1 ? 'var(--attention-item-border-color)' : 
-                                  item.state === 2 ? 'var(--error-item-border-color)' :
-                                  item.state === 3 ? 'var(--success-item-border-color)' :
-                                  ''"
-                                [attr.shape]="item.state === 1 ? 'warning-standard' : 
-                                item.state === 2 ? 'error-standard' :
-                                item.state === 3 ? 'success-standard' :
-                                ''"
-                                size="30"
-                            ></clr-icon>
+              <div class="csgp-generic-container">
+                
+                  <div class="csgp-generic-container-left">
+                      <div class="csgp-entry-tile-item-primary">
+                          {{ item.primaryValue }}
                         </div>
+                        <div class="csgp-entry-tile-item-secondary">
+                          {{ item.secondaryValue }}
+                        </div>
+                  </div>
+
+                  <div class="csgp-generic-container-right">
+                    <div *ngIf="!item.showStateIcon && item.icon" class="csgp-entry-tile-item-icon">
+                      <clr-icon
+                          [style.color]="item.clickable ? 'var(--action-color)': 'grey'"
+                          [attr.shape]="item.icon"
+                          size="22"
+                      ></clr-icon>
                     </div>
-                </div>
+                    <div *ngIf="item.showStateIcon && item.state > 0" class="csgp-entry-tile-item-icon">
+                      <clr-icon class="is-solid"
+                          [style.color]="item.state === 1 ? 'var(--attention-item-border-color)' : 
+                            item.state === 2 ? 'var(--error-item-border-color)' :
+                            item.state === 3 ? 'var(--success-item-border-color)' :
+                            ''"
+                          [attr.shape]="item.state === 1 ? 'warning-standard' : 
+                          item.state === 2 ? 'error-standard' :
+                          item.state === 3 ? 'success-standard' :
+                          ''"
+                          size="30"
+                      ></clr-icon>
+                    </div>
+                  </div>
+
               </div>
-            </ng-container>
+            </div>
+          </ng-container>
+        </div>
+
+        <div 
+          *ngIf="(entryTileStore.showMoreButtonLabel$ | async)" 
+          class="csgp-entry-tile-more"
+          (click)="showMoreClicked()"
+        >
+          {{ entryTileStore.showMoreButtonLabel$ | async  }}
         </div>
       </ng-container>
     </div>

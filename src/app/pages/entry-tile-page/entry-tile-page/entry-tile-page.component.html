@@ -20,8 +20,11 @@
                     [state]="model.state"
                     [header]="model.header"
                     [items]="model.items"
+                    [showMoreButtonLabel]="model.showMoreButtonLabel"
                     [initializedCallBack]="initCallback"
-                    (onClick)="setOutput(model)">
+                    (onItemClick)="setOutput(model)"
+                    (onShowMoreClick)="moreClicked($event)"
+                >
                 </csgp-v2-entry-tile>
             </div>
         </div>

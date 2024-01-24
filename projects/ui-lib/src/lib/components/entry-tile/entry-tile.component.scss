@@ -145,6 +145,34 @@
             
 
         }
+
+        &-more {
+            display: flex;
+            margin-top: 0rem;
+            margin-bottom: .3rem;
+            justify-content: center;
+            font-size: small;
+            width: 100%;
+            text-align: center;
+            line-height: normal;
+            cursor: pointer;
+            text-decoration: none;
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                    user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome, Edge, Opera and Firefox */
+            color: var(--csgp-entry-tile-more-button-color, #007A93);
+
+            &:not(.disabled):hover {
+                color: var(--csgp-entry-tile-more-button-hover-color, #5097AB);
+                &:active {
+                    color: var(--csgp-entry-tile-more-button-color, #007A93);
+                }
+            }
+        }
     }
 
     .csgp-generic-flex-row {

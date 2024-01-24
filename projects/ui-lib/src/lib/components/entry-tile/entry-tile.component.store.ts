@@ -13,15 +13,13 @@ export class EntryTileStore extends ComponentStore<EntryTileState> implements II
 
   constructor() {
     super({ 
-      title: "",
+      title: "<Title>",
       collapseMode: EntryTileCollapseMode.disabled,
       header: new Array<EntryTileHeader>(),
       isCollapsed: false,
       isLoading: false,
       items: new Array<EntryTileItem>(),
       state: EntryState.none,
-      titleIcon: null,
-      id: null
     });
   }
 
@@ -34,8 +32,9 @@ export class EntryTileStore extends ComponentStore<EntryTileState> implements II
   readonly items$ = this.select(state => state.items);
   readonly tileState$ = this.select(state => state.state);
   readonly titleIcon$ = this.select(state => state.titleIcon);
+  readonly showMoreButtonLabel$ = this.select(state => state.showMoreButtonLabel);
   readonly id$ = this.select(state => state.id);
-  
+
   // REDUCER
   public mergeValueIntoState = this.updater((state: EntryTileState, value: Partial<EntryTileState>) => {
     const newState = produce(state, (draft) => {
@@ -83,6 +82,11 @@ export class EntryTileStore extends ComponentStore<EntryTileState> implements II
     });
   };
 
+  public readonly setShowMoreButtonLabel = (label: string) => {
+    this.mergeValueIntoState({
+        showMoreButtonLabel: label
+    });
+  };
 
   // Add one header property to the tile
   public readonly addTileHeader = (item: EntryTileHeader) => {

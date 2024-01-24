@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { IIO } from './entry-tile.component.iio.interface';
 import { EntryState, EntryTileCollapseMode, EntryTileHeader, EntryTileItem } from './entry-tile.component.interface';
 import { EntryTileStore } from './entry-tile.component.store';
@@ -10,9 +10,16 @@ import { EntryTileStore } from './entry-tile.component.store';
   providers: [EntryTileStore],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EntryTileComponent implements OnInit {
+export class EntryTileComponent implements AfterViewInit {
 
+  // Internal usage
+  private _isCollapsed: boolean = false;
+  private _id: any = null;
   private _initializedCallBack: (storeReference: IIO) => void;
+  public readonly placeholder = "⏹⏹ ";
+  // --------------
+
+  // INPUTS
 
   @Input() public set initializedCallBack(callBackFunc: (storeReference: IIO) => void) {
     if (callBackFunc) {
@@ -77,6 +84,13 @@ export class EntryTileComponent implements OnInit {
     });
   }
 
+  // More Button (optional)
+  @Input() public set showMoreButtonLabel(value: any) {
+    this.entryTileStore.mergeValueIntoState({
+      showMoreButtonLabel: value
+    });
+  }
+
   // General purpose (optional)
   @Input() public set id(value: any) {
     this.entryTileStore.mergeValueIntoState({
@@ -84,41 +98,73 @@ export class EntryTileComponent implements OnInit {
     });
   }
 
+  // OUTPUTS
 
+  /**
+   * Click event on the Item  
+   * Emits the clicked {@link EntryTileItem}
+   */
   @Output()
-  onClick = new EventEmitter<EntryTileItem>();
+  onItemClick = new EventEmitter<EntryTileItem>();
 
-  //----------
-
-  public placeholder = "⏹⏹ ";
+  /**
+   * Click event on More Button (if present)  
+   * Emits the tile id
+   */
+  @Output()
+  onShowMoreClick = new EventEmitter<any>();
 
   // Just placeholder for test
   public errorData;
 
   constructor(
     public readonly entryTileStore: EntryTileStore
-    ) {
-  }
+    ) {}
 
-  // Private
-  private _isCollapsed: boolean = false;
-
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.entryTileStore.isCollapsed$.subscribe({
       next: (value) => {
         this._isCollapsed = value;
       }
     });
+
+    this.entryTileStore.id$.subscribe({
+      next: (value) => {
+        this._id = value;
+      }
+    });
   }
 
+
+  // BUTTON ACTIONS
+
+  /**
+   * Toggle expand and collapse state on button click
+   */
   public toggleCollapsedState() {
-    //this.data.isCollapsed = !this.data.isCollapsed;
     this.entryTileStore.setIsCollapsed(!this._isCollapsed);
   }
 
-  public tileItemClicked(event: Event, $item: EntryTileItem) {
+  /**
+   * Show more button was clicked
+   * @param event {@link Event}
+   */
+  public showMoreClicked = (event: Event) => {
     event.preventDefault();
     event.stopPropagation();
-    this.onClick.emit($item);
+    this.onShowMoreClick.emit(this._id);
+  }
+
+  /**
+   * An item was clicked - event will emit if item is clickable
+   * @param event {@link Event}
+   * @param $item {@link EntryTileItem}
+   */
+  public tileItemClicked = (event: Event, $item: EntryTileItem) => {
+    if ($item.clickable) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.onItemClick.emit($item);
+    }
   }
 }

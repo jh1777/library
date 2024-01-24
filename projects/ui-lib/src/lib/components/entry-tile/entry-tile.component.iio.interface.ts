@@ -10,6 +10,7 @@ export interface IIO {
     items$: Observable<EntryTileItem[]>;
     tileState$: Observable<EntryState>;
     titleIcon$: Observable<string>;
+    showMoreButtonLabel$: Observable<string>;
     id$: Observable<any>;
 
     setTileTitle: (title: string, icon: string) => void;
@@ -20,4 +21,5 @@ export interface IIO {
     setId: (id: any) => void;
     addTileHeader: (data: EntryTileHeader) => void;
     addTileItem: (item: EntryTileItem) => void;
+    setShowMoreButtonLabel: (label: string) => void;
 }

@@ -53,6 +53,13 @@ export interface EntryTileState {
    * For definition of item model see {@link EntryTileItem}
    */
   items: Array<EntryTileItem>;
+
+  /**
+   * Optional: If you want to show a button a the bottom of the tile you can set the label of it here.  
+   * If the label is not set, there will be no button shown.  
+   * The button, if you specify a label, will trigger the `onShowMoreClick` output.
+   */
+  showMoreButtonLabel?: string;
 }
 
 /**
@@ -73,7 +80,7 @@ export interface EntryTileItem {
   */
   state?: EntryState;
   
-  /** Is the Item clickable? If yes, it has a hover and action style and emits the `ItemClicked` output */
+  /** Is the Item clickable? If yes, it has a hover and action style and emits the `onItemClick` output */
   clickable?: boolean;
   
   /** Primary Value is shown on top (line 1) inside the item box */
@@ -87,6 +94,14 @@ export interface EntryTileItem {
 
   /** Optional: Tooltip message (simple) wich is displayed on mouse over as html title */
   tooltip?: string;
+  
+  /** Optional: Icon to show at the right inside the item (clarity design icon name)   
+   * Only works if `showStateIcon == false`!   
+   * Intended mostly for usage as a clickable item to show that this is a link   
+   * Will be colorized grey by default. If the item has `clickable == true` its shown in default action color   
+   * 
+  */
+  icon?: string;
 }
 
 /**

@@ -5,15 +5,19 @@ export var EntryTileViewData: Array<EntryTileViewModel> = [
     {
         isLoading: false,
         id: 1,
+        title: "Title",
         header: [{
             label: "State",
             value: "Success"
         }],
         items: [{
             primaryValue: "Connected",
-            secondaryValue: "3 mins ago"
+            secondaryValue: "3 mins ago",
+            icon: "pop-out",
+            clickable: true
         }],
         isCollapsed: false,
+        collapseMode: EntryTileCollapseMode.disabled,
         state: EntryState.none,
         $description: "Very simple; no title; 1 header; 1 item"
     },
@@ -26,7 +30,8 @@ export var EntryTileViewData: Array<EntryTileViewModel> = [
             value: "OK"
         }],
         items: [{
-            primaryValue: "Connected"
+            primaryValue: "Connected",
+            icon: "connect"
         },
         {
             primaryValue: "Registered"
@@ -45,29 +50,32 @@ export var EntryTileViewData: Array<EntryTileViewModel> = [
     },
     {
         isLoading: false,
-        id: 2,
+        id: "This is Id=2",
         collapseMode: EntryTileCollapseMode.manual,
         title: "Onboarding",
         titleIcon: "factory",
-        header: [{
-            label: "State",
-            value: "Completed",
-            valueColor: "green",
-            valueIcon: "success-standard"
-        },
-        {
-            label: "Updated",
-            value: "21 mins ago"
-        }],
+        header: [
+            {
+                label: "State",
+                value: "Completed",
+                valueColor: "green",
+                valueIcon: "success-standard"
+            },
+            {
+                label: "Updated",
+                value: "21 mins ago"
+            }
+        ],
         items: [{
             title: "TLS Registration",
             primaryValue: "Completed",
             secondaryValue: "23 mins ago",
-            showStateIcon: true,
-            clickable: true
+            clickable: true,
+            icon: "ellipsis-vertical"
         }],
         isCollapsed: false,
         state: EntryState.none,
+        showMoreButtonLabel: "Show More informations",
         $description: "Simple with icon and 2 headers; collapsible; clickable 1 item"
     },
     {
@@ -85,7 +93,8 @@ export var EntryTileViewData: Array<EntryTileViewModel> = [
             secondaryValue: "26 sec. (avg. 7d)",
             state: EntryState.attention,
             clickable: true,
-            showStateIcon: true
+            showStateIcon: true,
+            icon: "ellipsis-vertical"
         },
         {
             title: "CPU Usage",

@@ -44,6 +44,10 @@ export class EntryTilePageComponent implements AfterViewInit {
     this.store.setIsCollapsed(!this.isTileCollapsed);
   }
 
+  moreClicked($id: any) {
+    console.log("More:: ", $id);
+  }
+
   addTestItem() {
     console.log(this.store);
     //this.store = this.viewChildren.first.entryTileStore;
