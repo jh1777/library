@@ -129,31 +129,31 @@ describe('EntryTileComponent', () => {
           return cy.wrap(wrapper).as("angular2");
         })
         cy.get("@angular2").then((wrapper) => {
-            // Icon
-            cy.get('.csgp-generic-container-left > clr-icon').should('not.exist');
-            // not Collapsed
-            cy.get('.csgp-entry-tile-itemcontainer').should('exist');
-            // Collapse Button
-            cy.get('.csgp-entry-tile-collapse-button > clr-icon').should('not.exist');
-            // Header
-            // 1st
-            cy.get('.csgp-entry-tile-header > :nth-child(1)').should('contain.text', "State");
-            cy.get('.csgp-entry-tile-header > :nth-child(1)').should('contain.text', "OK");
-            // 2nd
-            cy.get('.csgp-entry-tile-header > :nth-child(2)').should('not.exist');
+          // Icon
+          cy.get('.csgp-generic-container-left > clr-icon').should('not.exist');
+          // not Collapsed
+          cy.get('.csgp-entry-tile-itemcontainer').should('exist');
+          // Collapse Button
+          cy.get('.csgp-entry-tile-collapse-button > clr-icon').should('not.exist');
+          // Header
+          // 1st
+          cy.get('.csgp-entry-tile-header > :nth-child(1)').should('contain.text', "State");
+          cy.get('.csgp-entry-tile-header > :nth-child(1)').should('contain.text', "OK");
+          // 2nd
+          cy.get('.csgp-entry-tile-header > :nth-child(2)').should('not.exist');
 
-            // Item
-            cy.get(':nth-child(1) > .csgp-entry-tile-item > .csgp-generic-container > .csgp-generic-container-left > .csgp-entry-tile-item-title').should('not.exist');
-            cy.get(':nth-child(1) > .csgp-entry-tile-item > .csgp-generic-container > .csgp-generic-container-left > .csgp-entry-tile-item-primary').should('contain.text', "Connected");
-            cy.get(':nth-child(1) > .csgp-entry-tile-item > .csgp-generic-container > .csgp-generic-container-left > .csgp-entry-tile-item-secondary').should('not.exist');
+          // Item
+          cy.get(':nth-child(1) > .csgp-entry-tile-item > .csgp-generic-container > .csgp-generic-container-left > .csgp-entry-tile-item-title').should('not.exist');
+          cy.get(':nth-child(1) > .csgp-entry-tile-item > .csgp-generic-container > .csgp-generic-container-left > .csgp-entry-tile-item-primary').should('contain.text', "Connected");
+          cy.get(':nth-child(1) > .csgp-entry-tile-item > .csgp-generic-container > .csgp-generic-container-left > .csgp-entry-tile-item-secondary').should('not.exist');
 
-            cy.get(':nth-child(2) > .csgp-entry-tile-item > .csgp-generic-container > .csgp-generic-container-left > .csgp-entry-tile-item-primary').should('contain.text', "Registered");
-            cy.get(':nth-child(2) > .csgp-entry-tile-item > .csgp-generic-container > .csgp-generic-container-left > .csgp-entry-tile-item-secondary').should('not.exist');
+          cy.get(':nth-child(2) > .csgp-entry-tile-item > .csgp-generic-container > .csgp-generic-container-left > .csgp-entry-tile-item-primary').should('contain.text', "Registered");
+          cy.get(':nth-child(2) > .csgp-entry-tile-item > .csgp-generic-container > .csgp-generic-container-left > .csgp-entry-tile-item-secondary').should('not.exist');
 
-            // More
-            cy.get('.csgp-entry-tile-more').should('not.exist');
-            cy.get('@itemClickedSpy').should('not.have.been.called');
-            cy.get('@showMoreClickSpy').should('not.have.been.called');
+          // More
+          cy.get('.csgp-entry-tile-more').should('not.exist');
+          cy.get('@itemClickedSpy').should('not.have.been.called');
+          cy.get('@showMoreClickSpy').should('not.have.been.called');
         });
       });
 

@@ -62,6 +62,7 @@
                 ></clr-icon>
               </div>
               <div class="csgp-entry-tile-header-value"
+                *ngIf="header.value"
                 [style.color]="header.valueColor"
               >
                 {{ header.value }}
@@ -122,12 +123,18 @@
               <div class="csgp-generic-container">
                 
                   <div class="csgp-generic-container-left">
-                      <div class="csgp-entry-tile-item-primary">
-                          {{ item.primaryValue }}
-                        </div>
-                        <div class="csgp-entry-tile-item-secondary">
-                          {{ item.secondaryValue }}
-                        </div>
+                    <div 
+                      *ngIf="item.primaryValue" 
+                      class="csgp-entry-tile-item-primary"
+                    >
+                      {{ item.primaryValue }}
+                    </div>
+                    <div 
+                      *ngIf="item.secondaryValue" 
+                      class="csgp-entry-tile-item-secondary"
+                    >
+                      {{ item.secondaryValue }}
+                    </div>
                   </div>
 
                   <div class="csgp-generic-container-right">
