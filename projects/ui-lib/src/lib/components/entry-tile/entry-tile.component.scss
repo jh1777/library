@@ -17,6 +17,8 @@
     --success-item-bg-color: #ceffd5;
     --success-item-border-color: #2cd345;
 
+    --dot-size: 9px;
+
     .clickable:hover {
         cursor: pointer;
         border: 1px solid var(--daimler-grey3) !important;
@@ -180,27 +182,30 @@
             margin-bottom: .3rem;
             justify-content: center;
             user-select: none;
-            gap: .4rem;
+            gap: calc(var(--dot-size) /2);
 
             &-dot {
                 display: flex;
-                width: 10px;
-                height: 10px;
+                width: var(--dot-size);
+                height: var(--dot-size);
                 cursor: pointer;
                 border-radius: 50%;
-                border: solid 2px var(--action-color);
+                border: solid 2px var(--csgp-entry-tile-pages-dot-border-color, var(--daimler-grey3));
                 &:hover {
-                    color: var(--csgp-entry-tile-pages-dot-hover-color, #5097AB);
-                    background-color: white;
+                    border: solid 2px var(--csgp-entry-tile-pages-dot-hover-bg-color, var(--action-color));
                     &:active {
-                        background-color: var(--csgp-entry-tile-pages-dot-active-bg-color, var(--action-color));
+                        background-color: var(--csgp-entry-tile-pages-dot-hover-active-bg-color, var(--action-color));
                     }
                 }
                 &-active {
-                    background-color: var(--action-color);
+                    background-color: var(--csgp-entry-tile-pages-dot-active-bg-color, var(--daimler-grey3));
                     cursor: auto;
                     &:hover {
-                        background-color: var(--action-color);
+                        border: solid 2px var(--csgp-entry-tile-pages-dot-border-color, var(--daimler-grey3));
+                        background-color: var(--csgp-entry-tile-pages-dot-active-hover-bg-color, var(--daimler-grey3));
+                        &:active {
+                            background-color: var(--csgp-entry-tile-pages-dot-active-hover-active-bg-color, var(--daimler-grey3));
+                        }
                     }
                 }
             }
