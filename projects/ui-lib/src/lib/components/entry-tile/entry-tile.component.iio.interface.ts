@@ -12,6 +12,8 @@ export interface IIO {
     titleIcon$: Observable<string>;
     showMoreButtonLabel$: Observable<string>;
     id$: Observable<any>;
+    pageSize$: Observable<number>;
+    noOfPages: number;
 
     setTileTitle: (title: string, icon: string) => void;
     setTileState: (state: EntryState) => void;
@@ -21,5 +23,6 @@ export interface IIO {
     setId: (id: any) => void;
     addTileHeader: (data: EntryTileHeader) => void;
     addTileItem: (item: EntryTileItem) => void;
+    addTileItems: (items: Array<EntryTileItem>) => void;
     setShowMoreButtonLabel: (label: string) => void;
 }

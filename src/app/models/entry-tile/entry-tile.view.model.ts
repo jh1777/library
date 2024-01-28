@@ -14,4 +14,5 @@ export interface EntryTileViewModel extends BaseViewModel {
     state?: EntryState;
     titleIcon?: string;
     showMoreButtonLabel?: string;
+    pageSize?: number;
 }

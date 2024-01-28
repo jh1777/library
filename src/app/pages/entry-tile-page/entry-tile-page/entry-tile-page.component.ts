@@ -49,10 +49,7 @@ export class EntryTilePageComponent implements AfterViewInit {
   }
 
   addTestItem() {
-    console.log(this.store);
-    //this.store = this.viewChildren.first.entryTileStore;
-    console.log("adding item...");
-
+    
     this.store.addTileItem({
       title: "Test_XX",
       primaryValue: "Works fine",

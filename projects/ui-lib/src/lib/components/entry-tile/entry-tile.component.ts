@@ -77,11 +77,14 @@ export class EntryTileComponent implements AfterViewInit {
     });
   }
 
-  // Header Properties Array
+  // Items Array
   @Input() public set items(value: Array<EntryTileItem>) {
+    this.entryTileStore.addTileItems(value);
+    /*
     this.entryTileStore.mergeValueIntoState({
       items: value
     });
+    */
   }
 
   // More Button (optional)
@@ -89,6 +92,11 @@ export class EntryTileComponent implements AfterViewInit {
     this.entryTileStore.mergeValueIntoState({
       showMoreButtonLabel: value
     });
+  }
+
+  // Page Size (optional)
+  @Input() public set pageSize(value: number) {
+      this.entryTileStore.setPageSize(value);
   }
 
   // General purpose (optional)
@@ -135,9 +143,7 @@ export class EntryTileComponent implements AfterViewInit {
     });
   }
 
-
   // BUTTON ACTIONS
-
   /**
    * Toggle expand and collapse state on button click
    */
@@ -165,6 +171,14 @@ export class EntryTileComponent implements AfterViewInit {
       event?.preventDefault();
       event?.stopPropagation();
       this.onItemClick.emit($item);
+    }
+  }
+
+  public selectPage = (event: Event, $item: number) => {
+    if ($item != this.entryTileStore.currentPage) {
+      event?.preventDefault();
+      event?.stopPropagation();
+      this.entryTileStore.currentPage = $item;
     }
   }
 }

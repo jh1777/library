@@ -11,6 +11,23 @@ export class EntryTileStore extends ComponentStore<EntryTileState> implements II
   private readonly _MAX_ITEMS = 5;
   private readonly _MAX_HEADER_ITEMS = 2;
 
+  /** Number of pages */
+  private _noOfPages: number = 0;
+  public get noOfPages(): number {
+    return this._noOfPages;
+  }
+
+  /** Current page */
+  public _currentPage: number = 0;
+  public set currentPage(value: number) {
+    this._currentPage = value;
+    // Trigger change in UI
+    this.addTileItem(null);
+  }
+  public get currentPage(): number {
+    return this._currentPage;
+  }
+
   constructor() {
     super({ 
       title: "<Title>",
@@ -29,10 +46,19 @@ export class EntryTileStore extends ComponentStore<EntryTileState> implements II
   readonly collapseMode$ = this.select(state => state.collapseMode);
   readonly header$ = this.select(state => state.header);
   readonly isCollapsed$ = this.select(state => state.isCollapsed);
-  readonly items$ = this.select(state => state.items);
+  readonly items$ = this.select(state => {
+    if (state.pageSize && state.pageSize > 0) {
+      const startIndex = this.currentPage * state.pageSize;
+      var endIndex = this.currentPage * state.pageSize + state.pageSize;
+      return state.items.slice(startIndex, endIndex).filter(value => value != undefined && value != null);
+    } else {
+      return state.items.slice(this.currentPage * this._MAX_ITEMS, this.currentPage * this._MAX_ITEMS + this._MAX_ITEMS)
+    }
+  });
   readonly tileState$ = this.select(state => state.state);
   readonly titleIcon$ = this.select(state => state.titleIcon);
   readonly showMoreButtonLabel$ = this.select(state => state.showMoreButtonLabel);
+  readonly pageSize$ = this.select(state => state.pageSize);
   readonly id$ = this.select(state => state.id);
 
   // REDUCER
@@ -42,6 +68,18 @@ export class EntryTileStore extends ComponentStore<EntryTileState> implements II
     })
     return (newState);
   });
+
+  // Helper
+  private calcPagesNeeded(itemCount: number, pageCount: number): number {
+    let result = Math.floor(itemCount / pageCount);
+    if (itemCount % pageCount > 0) {
+      result++;
+    }
+    if (result == 0) {
+      result++
+    }
+    return result;
+  }
 
   // Setter
   public readonly setId = (id: any) => {
@@ -105,13 +143,43 @@ export class EntryTileStore extends ComponentStore<EntryTileState> implements II
   });
 
   // Add one item to the tile
-  public readonly addTileItem = (item: EntryTileItem) => {
-    this.addTileItemReducer(item);
+  public readonly addTileItems = (items: Array<EntryTileItem>) => {
+    if (items && items?.length > 0) {
+      items.forEach(item => this.addTileItemReducer(item));
+    }
   }
 
+  public readonly addTileItem = (item: EntryTileItem) => {
+      this.addTileItemReducer(item);
+  }
+
+
+  public readonly setPageSize = this.updater((state, size: number) => {
+    if (size && size > 0) {
+      // Calc number of pages we have right now
+      this._noOfPages = this.calcPagesNeeded(state.items.length, size);
+    } else {
+      this.noOfPages == 0;
+    }
+
+    const newstate = produce(state, draft => {
+      draft.pageSize = size;
+    });
+    return (newstate);
+  });
+
   private readonly addTileItemReducer = this.updater((state, item: EntryTileItem) => {
-    if (state.items.length >= this._MAX_ITEMS) {
+
+    // If a null item was added -> ignore
+    if (!item) {
       return state;
+    }
+
+    if (state.pageSize && state.pageSize > 0) {
+      // Calc number of pages we have right now
+      this._noOfPages = this.calcPagesNeeded(state.items.length + 1, state.pageSize);
+    } else {
+      this.noOfPages == 0;
     }
 
     const newstate = produce(state, draft => {

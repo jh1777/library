@@ -50,36 +50,6 @@ export var EntryTileViewData: Array<EntryTileViewModel> = [
     },
     {
         isLoading: false,
-        id: "This is Id=2",
-        collapseMode: EntryTileCollapseMode.manual,
-        title: "Onboarding",
-        titleIcon: "factory",
-        header: [
-            {
-                label: "State",
-                value: "Completed",
-                valueColor: "green",
-                valueIcon: "success-standard"
-            },
-            {
-                label: "Updated",
-                value: "21 mins ago"
-            }
-        ],
-        items: [{
-            title: "TLS Registration",
-            primaryValue: "Completed",
-            secondaryValue: "23 mins ago",
-            clickable: true,
-            icon: "ellipsis-vertical"
-        }],
-        isCollapsed: false,
-        state: EntryState.none,
-        showMoreButtonLabel: "Show More informations",
-        $description: "Simple with icon and 2 headers; collapsible; clickable 1 item"
-    },
-    {
-        isLoading: false,
         id: 3,
         collapseMode: EntryTileCollapseMode.manual,
         title: "Health",
@@ -106,6 +76,36 @@ export var EntryTileViewData: Array<EntryTileViewModel> = [
         isCollapsed: false,
         state: EntryState.error,
         $description: "Error tile; 2 items"
-    }
-    
+    },
+    {
+        isLoading: false,
+        id: "This is Id=2",
+        collapseMode: EntryTileCollapseMode.manual,
+        title: "Onboarding",
+        titleIcon: "factory",
+        header: [
+            {
+                label: "State",
+                value: "Completed",
+                valueColor: "green",
+                valueIcon: "success-standard"
+            },
+            {
+                label: "Updated",
+                value: "21 mins ago"
+            }
+        ],
+        items: [{
+            title: "TLS Registration",
+            primaryValue: "Completed",
+            secondaryValue: "23 mins ago",
+            clickable: true,
+            icon: "ellipsis-vertical"
+        }],
+        isCollapsed: false,
+        state: EntryState.none,
+        pageSize: 2,
+        showMoreButtonLabel: "Show More informations",
+        $description: "Simple with icon and 2 headers; collapsible; clickable 1 item"
+    }   
 ]

@@ -60,11 +60,22 @@ export interface EntryTileState {
    * The button, if you specify a label, will trigger the `onShowMoreClick` output.
    */
   showMoreButtonLabel?: string;
+
+  /**
+   * Optional: Set the page size of the tile
+   * If not set, no paging is done  
+   * **Important:** The maximum item count applies to each page! If `pageSize` is set higher than the maximum, it will be reduced to the maximum!   
+   * Maximum: 5
+   */
+  pageSize?: number;
 }
 
 /**
  * Entry Tile Item class
  * Is used for an item in the tile
+ * **Important:** There is a maximum items count that will be shown.  
+ * Any additional items will not be visible!   
+ * Maximum: 5
  */
 export interface EntryTileItem {
   /** Title of the Item - shown outside on top of the box */
@@ -105,7 +116,10 @@ export interface EntryTileItem {
 }
 
 /**
- * Generic Label / Value pair class
+ * Generic Label / Value pair class   
+ * **Important:** There is a maximum header items count that will be shown.  
+ * Any additional items will not be visible!   
+ * Maximum: 2
  */
 export interface EntryTileHeader {
   /** Label for the header item - shown left */
