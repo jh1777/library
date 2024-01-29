@@ -62,12 +62,18 @@ export interface EntryTileState {
   showMoreButtonLabel?: string;
 
   /**
-   * Optional: Set the page size of the tile
+   * Optional: The page size of the tile
    * If not set, no paging is done  
    * **Important:** The maximum item count applies to each page! If `pageSize` is set higher than the maximum, it will be reduced to the maximum!   
    * Maximum: 5
    */
   pageSize?: number;
+
+  /**
+   * Optional: The current page that is shown   
+   * Only applicable if `pageSize` is set to > 1  
+   */
+  currentPage?: number;
 }
 
 /**

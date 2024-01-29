@@ -1,4 +1,6 @@
+import { AUTO_STYLE, animate, state, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { timer } from 'rxjs';
 import { IIO } from './entry-tile.component.iio.interface';
 import { EntryState, EntryTileCollapseMode, EntryTileHeader, EntryTileItem } from './entry-tile.component.interface';
 import { EntryTileStore } from './entry-tile.component.store';
@@ -8,12 +10,21 @@ import { EntryTileStore } from './entry-tile.component.store';
   templateUrl: './entry-tile.component.html',
   styleUrls: ['./entry-tile.component.scss'],
   providers: [EntryTileStore],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('fade', [
+      state('false', style({ width: AUTO_STYLE, visibility: AUTO_STYLE })),
+      state('true', style({ opacity: 0 })),
+      transition('false => true',  animate('170ms ease-out'))
+    ])
+  ]
 })
 export class EntryTileComponent implements AfterViewInit {
 
   // Internal usage
   private _isCollapsed: boolean = false;
+  public currentPageValue: number = 0;
+  public newPage: number = 0;
   private _id: any = null;
   private _initializedCallBack: (storeReference: IIO) => void;
   public readonly placeholder = "⏹⏹ ";
@@ -80,11 +91,6 @@ export class EntryTileComponent implements AfterViewInit {
   // Items Array
   @Input() public set items(value: Array<EntryTileItem>) {
     this.entryTileStore.addTileItems(value);
-    /*
-    this.entryTileStore.mergeValueIntoState({
-      items: value
-    });
-    */
   }
 
   // More Button (optional)
@@ -97,6 +103,13 @@ export class EntryTileComponent implements AfterViewInit {
   // Page Size (optional)
   @Input() public set pageSize(value: number) {
       this.entryTileStore.setPageSize(value);
+  }
+
+  // Current Page (optional)
+  @Input() public set currentPage(value: number) {
+    this.entryTileStore.mergeValueIntoState({
+      currentPage: value
+    });
   }
 
   // General purpose (optional)
@@ -133,6 +146,12 @@ export class EntryTileComponent implements AfterViewInit {
     this.entryTileStore.isCollapsed$.subscribe({
       next: (value) => {
         this._isCollapsed = value;
+      }
+    });
+
+    this.entryTileStore.currentPage$.subscribe({
+      next: (value) => {
+        this.currentPageValue = value;
       }
     });
 
@@ -174,11 +193,24 @@ export class EntryTileComponent implements AfterViewInit {
     }
   }
 
+  /**
+   * Action is called if pagination is enabled and the user   
+   * switches the page.
+   * @param event {@link Event}
+   * @param $item Pagenumber
+   */
   public selectPage = (event: Event, $item: number) => {
-    if ($item != this.entryTileStore.currentPage) {
+    if ($item != this.currentPageValue) {
+      this.newPage = $item;
       event?.preventDefault();
       event?.stopPropagation();
-      this.entryTileStore.currentPage = $item;
+      timer(170).subscribe({
+        next: () => {
+          this.entryTileStore.mergeValueIntoState({
+            currentPage: $item
+          }); 
+        }
+      });
     }
   }
 }

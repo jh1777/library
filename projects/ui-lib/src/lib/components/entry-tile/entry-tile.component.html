@@ -101,7 +101,10 @@
       </div>
 
       <ng-container *ngIf="!(entryTileStore.isLoading$ | async)">
-        <div *ngFor="let item of (entryTileStore.items$ | async); let j = index">
+        <div>
+        <div
+          [@fade]="newPage != currentPageValue"
+          *ngFor="let item of (entryTileStore.items$ | async); let j = index">
 
             <ng-container 
               *ngIf="(entryTileStore.collapseMode$ | async) !== 2 || 
@@ -164,7 +167,7 @@
                 </div>
               </div>
             </ng-container>
-
+          </div>
         </div>
 
         <div 
@@ -182,7 +185,7 @@
           <div
             *ngFor="let _ of [].constructor(entryTileStore.noOfPages); let k = index"
             class="csgp-entry-tile-pages-dot"
-            [class.csgp-entry-tile-pages-dot-active]="entryTileStore.currentPage === k"
+            [class.csgp-entry-tile-pages-dot-active]="(entryTileStore.currentPage$ | async) === k"
             (click)="selectPage($event, k)"
           >
 

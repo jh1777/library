@@ -13,6 +13,7 @@ export interface IIO {
     showMoreButtonLabel$: Observable<string>;
     id$: Observable<any>;
     pageSize$: Observable<number>;
+    currentPage$: Observable<number>;
     noOfPages: number;
 
     setTileTitle: (title: string, icon: string) => void;
@@ -25,4 +26,5 @@ export interface IIO {
     addTileItem: (item: EntryTileItem) => void;
     addTileItems: (items: Array<EntryTileItem>) => void;
     setShowMoreButtonLabel: (label: string) => void;
+    setCurrentPage: (page: number) => void;
 }

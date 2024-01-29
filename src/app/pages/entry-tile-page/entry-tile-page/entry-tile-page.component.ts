@@ -48,6 +48,10 @@ export class EntryTilePageComponent implements AfterViewInit {
     console.log("More:: ", $id);
   }
 
+  gotoPage(p: number) {
+    this.store.setCurrentPage(p);
+  }
+
   addTestItem() {
     
     this.store.addTileItem({
