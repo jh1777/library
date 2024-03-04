@@ -13,6 +13,36 @@ import { EntriesPageComponent } from './pages/entries-page/entries-page.componen
 import { EntryGridPageComponent } from './pages/entry-grid-page/entry-grid-page.component';
 import { TagsPageComponent } from './pages/tags-page/tags-page.component';
 
+import {
+  ClarityIcons,
+  unknownStatusIcon, homeIcon, cogIcon, checkIcon, timesIcon, exclamationTriangleIcon, exclamationCircleIcon, checkCircleIcon, infoCircleIcon, infoStandardIcon, successStandardIcon, errorStandardIcon,
+  warningStandardIcon, helpInfoIcon, barsIcon, userIcon, angleIcon, folderIcon, folderOpenIcon, bellIcon, imageIcon, cloudIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon,
+  filterGridIcon, filterGridCircleIcon, searchIcon, viewColumnsIcon, angleDoubleIcon, calendarIcon, eventIcon, eyeIcon, stepForward2Icon,
+  arrowIcon, calculatorIcon, piggyBankIcon, shoppingBagIcon, shoppingCartIcon, walletIcon, storeIcon, euroIcon, dollarIcon, pesoIcon, creditCardIcon, bankIcon, dollarBillIcon,
+  eCheckIcon, poundIcon, cloudTrafficIcon, briefcaseIcon, boltIcon, truckIcon, uploadCloudIcon, nodeGroupIcon, cpuIcon, factoryIcon, cloudNetworkIcon, processOnVmIcon, bugIcon,
+  shieldCheckIcon, curveChartIcon, detailsIcon, cloudScaleIcon, flagIcon, assignUserIcon, bookIcon, downloadCloudIcon, formIcon, disconnectIcon, networkSwitchIcon, controlLunIcon,
+  filterIcon, logoutIcon, banIcon, switchIcon, circleIcon, sortByIcon, justifyTextIcon, syncIcon, linkIcon, clockIcon, helpIcon, copyIcon, codeIcon, compassIcon, tagsIcon, pencilIcon,
+  plusIcon, windowCloseIcon, wrenchIcon, nvmeIcon, resistorIcon, vmIcon, trashIcon, downloadIcon, refreshIcon, envelopeIcon, newIcon,
+  plusCircleIcon, keyIcon, connectIcon, popOutIcon, employeeIcon, shieldIcon, cursorHandGrabIcon, addTextIcon,
+  dotCircleIcon, undoIcon, redoIcon, tagIcon, copyToClipboardIcon, historyIcon, recycleIcon, eraserIcon, exportIcon, administratorIcon
+
+} from "@cds/core/icon";
+import '@cds/core/icon/register.js';
+
+ClarityIcons.addIcons(
+  unknownStatusIcon, homeIcon, cogIcon, checkIcon, timesIcon, exclamationTriangleIcon, exclamationCircleIcon, checkCircleIcon, infoCircleIcon, infoStandardIcon, successStandardIcon, errorStandardIcon,
+  warningStandardIcon, helpInfoIcon, barsIcon, userIcon, angleIcon, folderIcon, folderOpenIcon, bellIcon, imageIcon, cloudIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon,
+  filterGridIcon, filterGridCircleIcon, searchIcon, viewColumnsIcon, angleDoubleIcon, calendarIcon, eventIcon, eyeIcon, stepForward2Icon,
+  arrowIcon, calculatorIcon, piggyBankIcon, shoppingBagIcon, shoppingCartIcon, walletIcon, storeIcon, euroIcon, dollarIcon, pesoIcon, creditCardIcon, bankIcon, dollarBillIcon,
+  eCheckIcon, poundIcon, cloudTrafficIcon, briefcaseIcon, boltIcon, truckIcon, uploadCloudIcon, nodeGroupIcon, cpuIcon, factoryIcon, cloudNetworkIcon, processOnVmIcon, bugIcon,
+  shieldCheckIcon, curveChartIcon, detailsIcon, cloudScaleIcon, flagIcon, assignUserIcon, bookIcon, downloadCloudIcon, formIcon, disconnectIcon, networkSwitchIcon, controlLunIcon,
+  filterIcon, logoutIcon, banIcon, switchIcon, circleIcon, sortByIcon, justifyTextIcon, syncIcon, linkIcon, clockIcon, helpIcon, copyIcon, codeIcon, compassIcon, tagsIcon, pencilIcon,
+  plusIcon, windowCloseIcon, wrenchIcon, nvmeIcon, resistorIcon, vmIcon, trashIcon, downloadIcon, refreshIcon, envelopeIcon, newIcon,
+  plusCircleIcon, keyIcon, connectIcon, popOutIcon, employeeIcon, shieldIcon, cursorHandGrabIcon, addTextIcon,
+  dotCircleIcon, undoIcon, redoIcon, tagIcon, copyToClipboardIcon, historyIcon, recycleIcon, eraserIcon, exportIcon, administratorIcon
+
+
+);
 @NgModule({
   declarations: [
     AppComponent,
