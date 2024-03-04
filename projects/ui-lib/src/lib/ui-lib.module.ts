@@ -8,6 +8,7 @@ import { DrawerEntryComponentCS } from './components/drawer-entry-cs';
 import { DrawerRightComponent } from './components/drawer-right';
 import { DrawerRightComponentCS } from './components/drawer-right-cs';
 import { EntryGridComponent } from './components/entry-grid';
+import { EntryTileComponent } from './components/entry-tile/entry-tile.component';
 import { GridTestComponent2 } from './components/grid-test-2/grid-test-2.component';
 import { GridTestComponent } from './components/grid-test/grid-test.component';
 import { MetricEntryComponent } from './components/metric-entry';
@@ -72,7 +73,8 @@ ClarityIcons.addIcons(
     DrawerEntryComponentCS,
 
     GridTestComponent,
-    GridTestComponent2
+    GridTestComponent2,
+    EntryTileComponent
   ],
   imports: [
     CommonModule,
@@ -93,7 +95,8 @@ ClarityIcons.addIcons(
     DrawerEntryComponentCS,
     DrawerEntryComponent,
     GridTestComponent,
-    GridTestComponent2
+    GridTestComponent2,
+    EntryTileComponent
   ]
 })
 export class UiLibModule { }

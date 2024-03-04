@@ -12,6 +12,7 @@ import { DrawerPageComponent } from './pages/drawer-page/drawer-page.component';
 import { EntriesPageComponent } from './pages/entries-page/entries-page.component';
 import { EntryGridPageComponent } from './pages/entry-grid-page/entry-grid-page.component';
 import { TagsPageComponent } from './pages/tags-page/tags-page.component';
+import { EntryTilePageComponent } from './pages/entry-tile-page/entry-tile-page/entry-tile-page.component';
 
 import {
   ClarityIcons,
@@ -51,7 +52,8 @@ ClarityIcons.addIcons(
     TagsPageComponent,
     DrawerPageComponent,
     EntriesPageComponent,
-    EntryGridPageComponent
+    EntryGridPageComponent,
+    EntryTilePageComponent
   ],
   imports: [
     CommonModule,

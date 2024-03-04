@@ -1,0 +1,20 @@
+:host {
+    display: contents;
+
+    .button {
+        width: fit-content; 
+        border: 1px solid lightgray;
+        border-radius: .3rem; 
+        background-color: #f6f6f5; 
+        padding: .3rem .5rem; 
+        cursor: pointer;
+        user-select: none;
+        color: #007a93;
+        &:hover {
+            border: 1px solid #007a93;
+            &:active {
+                border: 1px solid black;
+            }
+        }
+    }
+}

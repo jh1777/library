@@ -1,0 +1,198 @@
+<div class="csgp-entry-tile">
+
+  <div *ngIf="(entryTileStore.title$ | async)" class="csgp-entry-tile-title">
+    <div class="csgp-generic-container-left csgp-generic-flex-row">
+      <clr-icon 
+          *ngIf="(entryTileStore.titleIcon$ | async)"
+          [attr.shape]="(entryTileStore.titleIcon$ | async)"
+          size="18"
+        ></clr-icon>
+      {{ (entryTileStore.title$ | async) }}
+    </div>
+    <div class="csgp-generic-container-right">
+      <div *ngIf="(entryTileStore.collapseMode$ | async) > 0"
+        class="csgp-entry-tile-collapse-button"
+        (click)="toggleCollapsedState()"
+      >
+        <clr-icon 
+          shape="angle" size="16"
+          [class.rotate]="(entryTileStore.isCollapsed$ | async)"
+        ></clr-icon>
+      </div>
+    </div>
+  </div>
+
+  <div 
+      class="csgp-entry-tile-base"
+      [class.attention-tile]="(entryTileStore.tileState$ | async) === 1"
+      [class.error-tile]="(entryTileStore.tileState$ | async) === 2"
+      >
+    <div class="csgp-entry-tile-header">
+      <div 
+          *ngIf="(entryTileStore.isLoading$ | async)" 
+          [class.pulse]="!errorData?.hasError" 
+          [class.error-blur]="errorData?.hasError"
+          class="csgp-generic-container loading no-select"
+        >
+          <div class="csgp-generic-container-left">
+            <div><ng-container *ngFor="let _ of [].constructor(3)">{{ placeholder }}</ng-container></div>
+            
+          </div>
+          <div class="csgp-generic-container-right">
+            <div><ng-container *ngFor="let _ of [].constructor(3)">{{ placeholder }}</ng-container></div>
+          </div>
+      </div>
+      <ng-container *ngIf="!(entryTileStore.isLoading$ | async)">
+        <ng-container *ngFor="let header of (entryTileStore.header$ | async); let i = index">
+
+          <div class="csgp-generic-container">
+            <div class="csgp-generic-container-left">
+              {{ header.label }}
+            </div>
+            <div class="csgp-generic-container-right csgp-generic-flex-row">
+
+              <div *ngIf="header.valueIcon" 
+                class="csgp-entry-tile-header-value-icon"
+                [attr.title]="header.valueIcon.tooltip"
+              >
+                <clr-icon class="is-solid"
+                    [style.color]="header.valueColor ? header.valueColor : ''"
+                    [attr.shape]="header.valueIcon"
+                    size="18"
+                ></clr-icon>
+              </div>
+              <div class="csgp-entry-tile-header-value"
+                *ngIf="header.value"
+                [style.color]="header.valueColor"
+              >
+                {{ header.value }}
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <div 
+      *ngIf="((entryTileStore.collapseMode$ | async) === 1 && !(entryTileStore.isCollapsed$ | async)) || (entryTileStore.collapseMode$ | async) !== 1"
+      class="csgp-entry-tile-itemcontainer">
+
+      <div 
+          *ngIf="(entryTileStore.isLoading$ | async)" 
+          class="loading no-select"
+          [class.pulse]="!errorData?.hasError" 
+          [class.error-blur]="errorData?.hasError"
+          >
+          <div class="csgp-entry-tile-item-title loading">
+            <div><ng-container *ngFor="let _ of [].constructor(5)">{{ placeholder }}</ng-container></div>
+          </div>
+          <div class="csgp-entry-tile-item">
+            <div class="csgp-generic-container">
+              <div class="csgp-generic-container-left">
+                  <div class="csgp-entry-tile-item-primary loading">
+                    <div><ng-container *ngFor="let _ of [].constructor(5)">{{ placeholder }}</ng-container></div>
+                  </div>
+                  <div class="csgp-entry-tile-item-secondary loading">
+                    <div><ng-container *ngFor="let _ of [].constructor(3)">{{ placeholder }}</ng-container></div>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <ng-container *ngIf="!(entryTileStore.isLoading$ | async)">
+        <div>
+        <div
+          [@fade]="newPage != currentPageValue"
+          *ngFor="let item of (entryTileStore.items$ | async); let j = index">
+
+            <ng-container 
+              *ngIf="(entryTileStore.collapseMode$ | async) !== 2 || 
+              ((entryTileStore.collapseMode$ | async) === 2 && item.state > 0 && item.state < 3)"
+              >
+              <div class="csgp-entry-tile-item-title">
+                {{ item.title }}
+              </div>
+
+              <div 
+                class="csgp-entry-tile-item" 
+                [class.clickable]="item.clickable"
+                [class.attention-item]="item.state === 1"
+                [class.error-item]="item.state === 2"
+                [class.success-item]="item.state === 3"
+                [attr.title]="item.tooltip"
+                (click)="tileItemClicked($event, item)"
+                >
+
+                <div class="csgp-generic-container">
+                  
+                    <div class="csgp-generic-container-left">
+                      <div 
+                        *ngIf="item.primaryValue" 
+                        class="csgp-entry-tile-item-primary"
+                      >
+                        {{ item.primaryValue }}
+                      </div>
+                      <div 
+                        *ngIf="item.secondaryValue" 
+                        class="csgp-entry-tile-item-secondary"
+                      >
+                        {{ item.secondaryValue }}
+                      </div>
+                    </div>
+
+                    <div class="csgp-generic-container-right">
+                      <div *ngIf="!item.showStateIcon && item.icon" class="csgp-entry-tile-item-icon">
+                        <clr-icon
+                            [style.color]="item.clickable ? 'var(--action-color)': 'grey'"
+                            [attr.shape]="item.icon"
+                            size="22"
+                        ></clr-icon>
+                      </div>
+                      <div *ngIf="item.showStateIcon && item.state > 0" class="csgp-entry-tile-item-icon">
+                        <clr-icon class="is-solid"
+                            [style.color]="item.state === 1 ? 'var(--attention-item-border-color)' : 
+                              item.state === 2 ? 'var(--error-item-border-color)' :
+                              item.state === 3 ? 'var(--success-item-border-color)' :
+                              ''"
+                            [attr.shape]="item.state === 1 ? 'warning-standard' : 
+                            item.state === 2 ? 'error-standard' :
+                            item.state === 3 ? 'success-standard' :
+                            ''"
+                            size="30"
+                        ></clr-icon>
+                      </div>
+                    </div>
+
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+        <div 
+          *ngIf="(entryTileStore.showMoreButtonLabel$ | async)" 
+          class="csgp-entry-tile-more"
+          (click)="showMoreClicked()"
+        >
+          {{ entryTileStore.showMoreButtonLabel$ | async  }}
+        </div>
+
+        <div
+          *ngIf="(entryTileStore.pageSize$ | async)"
+          class="csgp-entry-tile-pages"
+        >
+          <div
+            *ngFor="let _ of [].constructor(entryTileStore.noOfPages); let k = index"
+            class="csgp-entry-tile-pages-dot"
+            [class.csgp-entry-tile-pages-dot-active]="(entryTileStore.currentPage$ | async) === k"
+            (click)="selectPage($event, k)"
+          >
+
+          </div>
+
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
