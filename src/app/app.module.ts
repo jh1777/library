@@ -41,8 +41,6 @@ ClarityIcons.addIcons(
   plusIcon, windowCloseIcon, wrenchIcon, nvmeIcon, resistorIcon, vmIcon, trashIcon, downloadIcon, refreshIcon, envelopeIcon, newIcon,
   plusCircleIcon, keyIcon, connectIcon, popOutIcon, employeeIcon, shieldIcon, cursorHandGrabIcon, addTextIcon,
   dotCircleIcon, undoIcon, redoIcon, tagIcon, copyToClipboardIcon, historyIcon, recycleIcon, eraserIcon, exportIcon, administratorIcon
-
-
 );
 @NgModule({
   declarations: [

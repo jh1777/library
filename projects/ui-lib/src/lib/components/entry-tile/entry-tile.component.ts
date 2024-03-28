@@ -4,6 +4,14 @@ import { timer } from 'rxjs';
 import { IIO } from './entry-tile.component.iio.interface';
 import { EntryState, EntryTileCollapseMode, EntryTileHeader, EntryTileItem } from './entry-tile.component.interface';
 import { EntryTileStore } from './entry-tile.component.store';
+import {
+  ClarityIcons,
+  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon
+} from "@cds/core/icon";
+import '@cds/core/icon/register.js';
+ClarityIcons.addIcons(
+  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon
+);
 
 @Component({
   selector: 'csgp-v2-entry-tile',
