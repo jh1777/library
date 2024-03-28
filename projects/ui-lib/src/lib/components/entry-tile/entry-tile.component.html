@@ -15,7 +15,7 @@
         (click)="toggleCollapsedState()"
       >
         <cds-icon 
-          shape="angle" size="15"
+          shape="angle" size="14"
           [class.rotate]="(entryTileStore.isCollapsed$ | async)"
         ></cds-icon>
       </div>
@@ -58,7 +58,7 @@
                 <cds-icon solid
                     [style.color]="header.valueColor ? header.valueColor : ''"
                     [attr.shape]="header.valueIcon"
-                    size="18"
+                    size="16"
                 ></cds-icon>
               </div>
               <div class="csgp-entry-tile-header-value"
@@ -159,7 +159,7 @@
                             item.state === 2 ? 'error-standard' :
                             item.state === 3 ? 'success-standard' :
                             ''"
-                            size="30"
+                            size="26"
                         ></cds-icon>
                       </div>
                     </div>
