@@ -30,7 +30,7 @@
     [class.error-tile]="state == 2"
   >
     <div class="csgp-entry-tile-header">
-      @if (isLoading) {
+      @if (isLoading == true) {
         <div class="csgp-generic-container loading no-select pulse">
           <div class="csgp-generic-container-left">
             <div>
@@ -51,6 +51,7 @@
 
       @if (isLoading == false) {
         @for (title of titles; track $index) {
+          @if($index < maxTitles()) {
           <div class="csgp-generic-container">
             <div class="csgp-generic-container-left">
               {{ title.label }}
@@ -67,15 +68,16 @@
               </div>
               }
 
-              <div
-                class="csgp-entry-tile-header-value"
-                *ngIf="title.value"
-                [style.color]="title.valueColor"
-              >
-                {{ title.value }}
-              </div>
+              @if(title.value) {
+                <div class="csgp-entry-tile-header-value"                
+                  [style.color]="title.valueColor"
+                >
+                  {{ title.value }}
+                </div>
+              }
             </div>
           </div>
+          }
         }
       }
     </div>
@@ -84,12 +86,8 @@
       *ngIf="(collapseMode == 1 && !isCollapsed) || collapseMode != 1"
       class="csgp-entry-tile-itemcontainer"
     >
-      @if (isLoading) {
-        <div
-          class="loading no-select"
-          [class.pulse]="!errorData?.hasError"
-          [class.error-blur]="errorData?.hasError"
-        >
+      @if (isLoading == true) {
+        <div class="loading no-select pulse">
           <div class="csgp-entry-tile-item-title loading">
             <div>
               @for (_ of [].constructor(5); track $index) {
@@ -120,14 +118,12 @@
         </div>
       }
 
-      @if (!isLoading) {
+      @if (isLoading == false) {
         <div>
           @for (item of items; track $index) {
-            <div [@fade]="newPage != currentPageValue">
-              @if (
-                collapseMode != 2 ||
-                (collapseMode == 2 && item.state > 0 && item.state < 3)
-              ) {
+
+            <div [@fade]="newPage != currentPageValue()">
+              @if (collapseMode != 2 || (collapseMode == 2 && item.state > 0 && item.state < 3)) {
                 <div class="csgp-entry-tile-item-title">
                   {{ item.title }}
                 </div>
@@ -143,33 +139,30 @@
                 >
                   <div class="csgp-generic-container">
                     <div class="csgp-generic-container-left">
-                      <div
-                        *ngIf="item.primaryValue"
-                        class="csgp-entry-tile-item-primary"
-                      >
-                        {{ item.primaryValue }}
-                      </div>
-                      <div
-                        *ngIf="item.secondaryValue"
-                        class="csgp-entry-tile-item-secondary"
-                      >
-                        {{ item.secondaryValue }}
-                      </div>
+                      @if(item.primaryValue) {
+                        <div class="csgp-entry-tile-item-primary">
+                          {{ item.primaryValue }}
+                        </div>
+                      }
+                      @if(item.secondaryValue) {
+                        <div class="csgp-entry-tile-item-secondary">
+                          {{ item.secondaryValue }}
+                        </div>
+                      }
                     </div>
 
                     <div class="csgp-generic-container-right">
-                      <div
-                        *ngIf="!item.showStateIcon && item.icon"
-                        class="csgp-entry-tile-item-icon"
-                      >
-                        <cds-icon
-                          [style.color]="
-                            item.clickable ? 'var(--action-color)' : 'grey'
-                          "
-                          [attr.shape]="item.icon"
-                          size="22"
-                        ></cds-icon>
-                      </div>
+                      @if(!item.showStateIcon && item.icon) {
+                        <div class="csgp-entry-tile-item-icon">
+                          <cds-icon
+                            [style.color]="
+                              item.clickable ? 'var(--action-color)' : 'grey'
+                            "
+                            [attr.shape]="item.icon"
+                            size="22"
+                          ></cds-icon>
+                        </div>
+                      }
                       @if (item.showStateIcon && item.state > 0) {
                         <div class="csgp-entry-tile-item-icon">
                           <cds-icon
@@ -204,22 +197,20 @@
           }
         </div>
 
-        <div
-          *ngIf="showMoreButtonLabel"
-          class="csgp-entry-tile-more"
-          (click)="showMoreClicked()"
-        >
-          {{ showMoreButtonLabel }}
-        </div>
+        @if(showMoreButtonLabel) {
+          <div class="csgp-entry-tile-more" (click)="showMoreClicked()">
+            {{ showMoreButtonLabel }}
+          </div>
+        }
 
         @if (pageSize) {
           <div class="csgp-entry-tile-pages">
-            <div
-              *ngFor="let _ of [].constructor(noOfPages); let k = index"
-              class="csgp-entry-tile-pages-dot"
-              [class.csgp-entry-tile-pages-dot-active]="currentPage == k"
-              (click)="selectPage($event, k)"
-            ></div>
+            @for (_ of [].constructor(noOfPages); track $index) {
+              <div class="csgp-entry-tile-pages-dot"
+                [class.csgp-entry-tile-pages-dot-active]="currentPage == $index"
+                (click)="selectPage($event, $index)"
+              ></div>
+            }
           </div>
         }
       }

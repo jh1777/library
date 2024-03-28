@@ -43,8 +43,39 @@
     title="This is a new title" 
     titleIcon="cpu" 
     collapseMode="1" 
+    [isLoading]=false
     >
-    <uic-entry-tile-title label="State" value="Unhealthy"></uic-entry-tile-title>
-    <uic-entry-tile-item primaryValue="Primary" secondaryValue="Subtitle" state="1" showStateIcon=true></uic-entry-tile-item>
-    <uic-entry-tile-item primaryValue="Registered" ></uic-entry-tile-item>
+    
+    <uic-entry-tile-title 
+        label="State" 
+        value="Unhealthy"
+        valueIcon="error-standard"
+        valueColor="red"
+        >
+    </uic-entry-tile-title>
+    
+    <uic-entry-tile-title 
+        label="Updated" 
+        value="50 min ago"
+        >
+    </uic-entry-tile-title>
+
+    <uic-entry-tile-title 
+    label="Updated" 
+    value="50 min ago"
+    >
+</uic-entry-tile-title>
+
+    <uic-entry-tile-item 
+        primaryValue="Primary" 
+        secondaryValue="Subtitle" 
+        state="1" 
+        showStateIcon=true
+        >
+    </uic-entry-tile-item>
+    
+    <uic-entry-tile-item 
+        primaryValue="Registered"
+        >
+    </uic-entry-tile-item>
 </ui-entry-tile>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ContentChildren, Input, QueryList } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Input, Output, QueryList, signal } from '@angular/core';
 import { EntryTile2ItemConfigComponent } from './config/entry-tile-2.item.config.component';
 import { EntryTile2TitleConfigComponent } from './config/entry-tile-2.title.config.component';
 import {
@@ -9,6 +9,7 @@ import {
 import '@cds/core/icon/register.js';
 import { ClarityModule } from '@clr/angular';
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
+import { timer } from 'rxjs';
 ClarityIcons.addIcons(
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon
 );
@@ -51,7 +52,10 @@ export enum EntryTileCollapseMode {
 })
 export class EntryTile2Component {
   public readonly placeholder = "⏹⏹ ";
-
+  public currentPageValue = signal(0);
+  public maxTitles = signal(2);
+  public newPage: number = 0;
+  
   @ContentChildren(EntryTile2TitleConfigComponent) titles: QueryList<EntryTile2TitleConfigComponent>;
 
   @ContentChildren(EntryTile2ItemConfigComponent) items: QueryList<EntryTile2ItemConfigComponent>;
@@ -128,8 +132,70 @@ export class EntryTile2Component {
   currentPage?: number;
 
 
+  // OUTPUTS
 
+  /**
+   * Click event on the Item  
+   * Emits the clicked {@link EntryTileItem}
+   */
+  @Output()
+  onItemClick = new EventEmitter<EntryTile2ItemConfigComponent>();
+
+  /**
+   * Click event on More Button (if present)  
+   * Emits the tile id
+   */
+  @Output()
+  onShowMoreClick = new EventEmitter<any>();
+
+
+  // BUTTON ACTIONS
+  /**
+   * Toggle expand and collapse state on button click
+   */
   public toggleCollapsedState() {
+    this.isCollapsed = !this.isCollapsed;
+  }
 
+  /**
+   * Show more button was clicked
+   * @param event {@link Event}
+   */
+  public showMoreClicked = (event: Event) => {
+    event?.preventDefault();
+    event?.stopPropagation();
+    this.onShowMoreClick.emit(this.id);
+  }
+
+  /**
+   * An item was clicked - event will emit if item is clickable
+   * @param event {@link Event}
+   * @param $item {@link EntryTileItem}
+   */
+  public tileItemClicked = (event: Event, $item: EntryTile2ItemConfigComponent) => {
+    if ($item.clickable) {
+      event?.preventDefault();
+      event?.stopPropagation();
+      this.onItemClick.emit($item);
+    }
+  }
+
+  /**
+   * Action is called if pagination is enabled and the user   
+   * switches the page.
+   * @param event {@link Event}
+   * @param $item Pagenumber
+   */
+  public selectPage = (event: Event, $item: number) => {
+    if ($item != this.currentPageValue()) {
+      this.newPage = $item;
+      event?.preventDefault();
+      event?.stopPropagation();
+      timer(170).subscribe({
+        next: () => {
+          this.currentPage = $item;
+        }
+      });
+    }
   }
 }
