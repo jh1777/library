@@ -1,0 +1,228 @@
+<div class="csgp-entry-tile">
+  @if (title) {
+    <div class="csgp-entry-tile-title">
+      <div class="csgp-generic-container-left csgp-generic-flex-row">
+        @if (titleIcon) {
+          <cds-icon [attr.shape]="titleIcon" size="18"></cds-icon>
+        }
+        {{ title }}
+      </div>
+      <div class="csgp-generic-container-right">
+        @if (collapseMode > 0) {
+          <div
+            class="csgp-entry-tile-collapse-button"
+            (click)="toggleCollapsedState()"
+          >
+            <cds-icon
+              shape="angle"
+              size="14"
+              [class.rotate]="isCollapsed"
+            ></cds-icon>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  <div
+    class="csgp-entry-tile-base"
+    [class.attention-tile]="state == 1"
+    [class.error-tile]="state == 2"
+  >
+    <div class="csgp-entry-tile-header">
+      @if (isLoading) {
+        <div class="csgp-generic-container loading no-select pulse">
+          <div class="csgp-generic-container-left">
+            <div>
+              @for (_ of [].constructor(3); track $index) {
+                {{ placeholder }}
+              }
+            </div>
+          </div>
+          <div class="csgp-generic-container-right">
+            <div>
+              @for (_ of [].constructor(3); track $index) {
+                {{ placeholder }}
+              }
+            </div>
+          </div>
+        </div>
+      }
+
+      @if (isLoading == false) {
+        @for (title of titles; track $index) {
+          <div class="csgp-generic-container">
+            <div class="csgp-generic-container-left">
+              {{ title.label }}
+            </div>
+            <div class="csgp-generic-container-right csgp-generic-flex-row">
+              @if(title.valueIcon) {
+              <div class="csgp-entry-tile-header-value-icon"
+              >
+                <cds-icon solid
+                  [style.color]="title.valueColor ? title.valueColor : ''"
+                  [attr.shape]="title.valueIcon"
+                  size="16"
+                ></cds-icon>
+              </div>
+              }
+
+              <div
+                class="csgp-entry-tile-header-value"
+                *ngIf="title.value"
+                [style.color]="title.valueColor"
+              >
+                {{ title.value }}
+              </div>
+            </div>
+          </div>
+        }
+      }
+    </div>
+
+    <div
+      *ngIf="(collapseMode == 1 && !isCollapsed) || collapseMode != 1"
+      class="csgp-entry-tile-itemcontainer"
+    >
+      @if (isLoading) {
+        <div
+          class="loading no-select"
+          [class.pulse]="!errorData?.hasError"
+          [class.error-blur]="errorData?.hasError"
+        >
+          <div class="csgp-entry-tile-item-title loading">
+            <div>
+              @for (_ of [].constructor(5); track $index) {
+                {{ placeholder }}
+              }
+            </div>
+          </div>
+          <div class="csgp-entry-tile-item">
+            <div class="csgp-generic-container">
+              <div class="csgp-generic-container-left">
+                <div class="csgp-entry-tile-item-primary loading">
+                  <div>
+                    @for (_ of [].constructor(5); track $index) {
+                      {{ placeholder }}
+                    }
+                  </div>
+                </div>
+                <div class="csgp-entry-tile-item-secondary loading">
+                  <div>
+                    @for (_ of [].constructor(3); track $index) {
+                      {{ placeholder }}
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
+      @if (!isLoading) {
+        <div>
+          @for (item of items; track $index) {
+            <div [@fade]="newPage != currentPageValue">
+              @if (
+                collapseMode != 2 ||
+                (collapseMode == 2 && item.state > 0 && item.state < 3)
+              ) {
+                <div class="csgp-entry-tile-item-title">
+                  {{ item.title }}
+                </div>
+
+                <div
+                  class="csgp-entry-tile-item"
+                  [class.clickable]="item.clickable"
+                  [class.attention-item]="item.state == 1"
+                  [class.error-item]="item.state == 2"
+                  [class.success-item]="item.state == 3"
+                  [attr.title]="item.tooltip"
+                  (click)="tileItemClicked($event, item)"
+                >
+                  <div class="csgp-generic-container">
+                    <div class="csgp-generic-container-left">
+                      <div
+                        *ngIf="item.primaryValue"
+                        class="csgp-entry-tile-item-primary"
+                      >
+                        {{ item.primaryValue }}
+                      </div>
+                      <div
+                        *ngIf="item.secondaryValue"
+                        class="csgp-entry-tile-item-secondary"
+                      >
+                        {{ item.secondaryValue }}
+                      </div>
+                    </div>
+
+                    <div class="csgp-generic-container-right">
+                      <div
+                        *ngIf="!item.showStateIcon && item.icon"
+                        class="csgp-entry-tile-item-icon"
+                      >
+                        <cds-icon
+                          [style.color]="
+                            item.clickable ? 'var(--action-color)' : 'grey'
+                          "
+                          [attr.shape]="item.icon"
+                          size="22"
+                        ></cds-icon>
+                      </div>
+                      @if (item.showStateIcon && item.state > 0) {
+                        <div class="csgp-entry-tile-item-icon">
+                          <cds-icon
+                            solid
+                            [style.color]="
+                              item.state == 1
+                                ? 'var(--attention-item-border-color)'
+                                : item.state == 2
+                                  ? 'var(--error-item-border-color)'
+                                  : item.state == 3
+                                    ? 'var(--success-item-border-color)'
+                                    : ''
+                            "
+                            [attr.shape]="
+                              item.state == 1
+                                ? 'warning-standard'
+                                : item.state == 2
+                                  ? 'error-standard'
+                                  : item.state == 3
+                                    ? 'success-standard'
+                                    : ''
+                            "
+                            size="26"
+                          ></cds-icon>
+                        </div>
+                      }
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+        <div
+          *ngIf="showMoreButtonLabel"
+          class="csgp-entry-tile-more"
+          (click)="showMoreClicked()"
+        >
+          {{ showMoreButtonLabel }}
+        </div>
+
+        @if (pageSize) {
+          <div class="csgp-entry-tile-pages">
+            <div
+              *ngFor="let _ of [].constructor(noOfPages); let k = index"
+              class="csgp-entry-tile-pages-dot"
+              [class.csgp-entry-tile-pages-dot-active]="currentPage == k"
+              (click)="selectPage($event, k)"
+            ></div>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</div>
