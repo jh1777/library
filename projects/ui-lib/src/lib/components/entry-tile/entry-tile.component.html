@@ -2,11 +2,11 @@
 
   <div *ngIf="(entryTileStore.title$ | async)" class="csgp-entry-tile-title">
     <div class="csgp-generic-container-left csgp-generic-flex-row">
-      <clr-icon 
+      <cds-icon 
           *ngIf="(entryTileStore.titleIcon$ | async)"
           [attr.shape]="(entryTileStore.titleIcon$ | async)"
           size="18"
-        ></clr-icon>
+        ></cds-icon>
       {{ (entryTileStore.title$ | async) }}
     </div>
     <div class="csgp-generic-container-right">
@@ -14,10 +14,10 @@
         class="csgp-entry-tile-collapse-button"
         (click)="toggleCollapsedState()"
       >
-        <clr-icon 
-          shape="angle" size="16"
+        <cds-icon 
+          shape="angle" size="14"
           [class.rotate]="(entryTileStore.isCollapsed$ | async)"
-        ></clr-icon>
+        ></cds-icon>
       </div>
     </div>
   </div>
@@ -55,11 +55,11 @@
                 class="csgp-entry-tile-header-value-icon"
                 [attr.title]="header.valueIcon.tooltip"
               >
-                <clr-icon class="is-solid"
+                <cds-icon solid
                     [style.color]="header.valueColor ? header.valueColor : ''"
                     [attr.shape]="header.valueIcon"
-                    size="18"
-                ></clr-icon>
+                    size="16"
+                ></cds-icon>
               </div>
               <div class="csgp-entry-tile-header-value"
                 *ngIf="header.value"
@@ -143,14 +143,14 @@
 
                     <div class="csgp-generic-container-right">
                       <div *ngIf="!item.showStateIcon && item.icon" class="csgp-entry-tile-item-icon">
-                        <clr-icon
+                        <cds-icon
                             [style.color]="item.clickable ? 'var(--action-color)': 'grey'"
                             [attr.shape]="item.icon"
                             size="22"
-                        ></clr-icon>
+                        ></cds-icon>
                       </div>
                       <div *ngIf="item.showStateIcon && item.state > 0" class="csgp-entry-tile-item-icon">
-                        <clr-icon class="is-solid"
+                        <cds-icon solid
                             [style.color]="item.state === 1 ? 'var(--attention-item-border-color)' : 
                               item.state === 2 ? 'var(--error-item-border-color)' :
                               item.state === 3 ? 'var(--success-item-border-color)' :
@@ -159,8 +159,8 @@
                             item.state === 2 ? 'error-standard' :
                             item.state === 3 ? 'success-standard' :
                             ''"
-                            size="30"
-                        ></clr-icon>
+                            size="26"
+                        ></cds-icon>
                       </div>
                     </div>
 
