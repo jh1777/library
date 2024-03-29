@@ -120,9 +120,11 @@ export class EntryTile2Component implements OnDestroy {
    */
   state = input<EntryState>(EntryState.none);
 
+  /**
+   * Computed state if `state` == `automatic`  
+   * Uses `titles.state` to grab the worst state found
+   */
   calcState = computed(() => {
-
-    // TODO: chnage to calc from title state - not item states!
     if (this.state() == EntryState.automatic) {
       const itemMax = this.items.reduce((highest, current) => {
         return current.state() > highest ? current.state() : highest;

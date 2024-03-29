@@ -105,142 +105,144 @@
       }
     </div>
 
-    <div
-      *ngIf="(collapseMode() == 1 && !isCollapsed()) || collapseMode() != 1"
-      class="csgp-entry-tile-itemcontainer"
-    >
-      @if (isLoading() == true) {
-        <div class="loading no-select pulse">
-          <div class="csgp-entry-tile-item-title loading">
-            <div>
-              @for (_ of [].constructor(5); track $index) {
-                {{ placeholder }}
-              }
+    @if((collapseMode() == 1 && !isCollapsed()) || collapseMode() != 1) {
+      <div class="csgp-entry-tile-itemcontainer">
+        @if (isLoading() == true) {
+          <div class="loading no-select pulse">
+            <div class="csgp-entry-tile-item-title loading">
+              <div>
+                @for (_ of [].constructor(5); track $index) {
+                  {{ placeholder }}
+                }
+              </div>
             </div>
-          </div>
-          <div class="csgp-entry-tile-item">
-            <div class="csgp-generic-container">
-              <div class="csgp-generic-container-left">
-                <div class="csgp-entry-tile-item-primary loading">
-                  <div>
-                    @for (_ of [].constructor(5); track $index) {
-                      {{ placeholder }}
-                    }
+            <div class="csgp-entry-tile-item">
+              <div class="csgp-generic-container">
+                <div class="csgp-generic-container-left">
+                  <div class="csgp-entry-tile-item-primary loading">
+                    <div>
+                      @for (_ of [].constructor(5); track $index) {
+                        {{ placeholder }}
+                      }
+                    </div>
                   </div>
-                </div>
-                <div class="csgp-entry-tile-item-secondary loading">
-                  <div>
-                    @for (_ of [].constructor(3); track $index) {
-                      {{ placeholder }}
-                    }
+                  <div class="csgp-entry-tile-item-secondary loading">
+                    <div>
+                      @for (_ of [].constructor(3); track $index) {
+                        {{ placeholder }}
+                      }
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      }
+        }
 
-      @if (isLoading() == false) {
-        <div>
-          @for (item of items; track $index) {
-            @if ((!pageSize() && $index >= currentPage() * maxItems() && $index < currentPage() * maxItems() + maxItems())
-                  || (pageSize() > 0 && $index >= currentPage() * pageSize() && $index < currentPage() * pageSize() + pageSize())
-              ) 
-            {
-            <div [@fade]="newPage() != currentPage()">
-              @if (collapseMode() != 2 || (collapseMode() == 2 && item.state() > 0 && item.state() < 3)) {
-                <div class="csgp-entry-tile-item-title">
-                  {{ item.title() }}
-                </div>
+        @if (isLoading() == false) {
+          <div>
+            @for (item of items; track $index) {
+              @if ((!pageSize() && $index >= currentPage() * maxItems() && $index < currentPage() * maxItems() + maxItems())
+                    || (pageSize() > 0 && $index >= currentPage() * pageSize() && $index < currentPage() * pageSize() + pageSize())
+                ) 
+              {
+              <div [@fade]="newPage() != currentPage()">
+                @if (collapseMode() != 2 || (collapseMode() == 2 && item.state() > 0 && item.state() < 3)) {
 
-                <div
-                  class="csgp-entry-tile-item"
-                  [class.clickable]="item.clickable()"
-                  [class.attention-item]="item.state() == 1"
-                  [class.error-item]="item.state() == 2"
-                  [class.success-item]="item.state() == 3"
-                  [attr.title]="item.tooltip()"
-                  (click)="tileItemClicked($event, item)"
-                >
-                  <div class="csgp-generic-container">
-                    <div class="csgp-generic-container-left">
-                      @if(item.primaryValue()) {
-                        <div class="csgp-entry-tile-item-primary">
-                          {{ item.primaryValue() }}
-                        </div>
-                      }
-                      @if(item.secondaryValue()) {
-                        <div class="csgp-entry-tile-item-secondary">
-                          {{ item.secondaryValue() }}
-                        </div>
-                      }
+                  @if(item.title()) {
+                    <div class="csgp-entry-tile-item-title">
+                      {{ item.title() }}
                     </div>
+                  }
 
-                    <div class="csgp-generic-container-right">
-                      @if(!item.showStateIcon() && item.icon()) {
-                        <div class="csgp-entry-tile-item-icon">
-                          <cds-icon
-                            [style.color]="
-                              item.clickable() ? 'var(--action-color)' : 'grey'
-                            "
-                            [attr.shape]="item.icon()"
-                            size="22"
-                          ></cds-icon>
-                        </div>
-                      }
-                      @if (item.showStateIcon() && item.state() > 0) {
-                        <div class="csgp-entry-tile-item-icon">
-                          <cds-icon
-                            solid
-                            [style.color]="
-                              item.state() == 1
-                                ? 'var(--attention-item-border-color)'
-                                : item.state() == 2
-                                  ? 'var(--error-item-border-color)'
-                                  : item.state() == 3
-                                    ? 'var(--success-item-border-color)'
-                                    : ''
-                            "
-                            [attr.shape]="
-                              item.state() == 1
-                                ? 'warning-standard'
-                                : item.state() == 2
-                                  ? 'error-standard'
-                                  : item.state() == 3
-                                    ? 'success-standard'
-                                    : ''
-                            "
-                            size="26"
-                          ></cds-icon>
-                        </div>
-                      }
+                  <div
+                    class="csgp-entry-tile-item"
+                    [class.clickable]="item.clickable()"
+                    [class.attention-item]="item.state() == 1"
+                    [class.error-item]="item.state() == 2"
+                    [class.success-item]="item.state() == 3"
+                    [attr.title]="item.tooltip()"
+                    (click)="tileItemClicked($event, item)"
+                  >
+                    <div class="csgp-generic-container">
+                      <div class="csgp-generic-container-left">
+                        @if(item.primaryValue()) {
+                          <div class="csgp-entry-tile-item-primary">
+                            {{ item.primaryValue() }}
+                          </div>
+                        }
+                        @if(item.secondaryValue()) {
+                          <div class="csgp-entry-tile-item-secondary">
+                            {{ item.secondaryValue() }}
+                          </div>
+                        }
+                      </div>
+
+                      <div class="csgp-generic-container-right">
+                        @if(!item.showStateIcon() && item.icon()) {
+                          <div class="csgp-entry-tile-item-icon">
+                            <cds-icon
+                              [style.color]="
+                                item.clickable() ? 'var(--action-color)' : 'grey'
+                              "
+                              [attr.shape]="item.icon()"
+                              size="22"
+                            ></cds-icon>
+                          </div>
+                        }
+                        @if (item.showStateIcon() && item.state() > 0) {
+                          <div class="csgp-entry-tile-item-icon">
+                            <cds-icon
+                              solid
+                              [style.color]="
+                                item.state() == 1
+                                  ? 'var(--attention-item-border-color)'
+                                  : item.state() == 2
+                                    ? 'var(--error-item-border-color)'
+                                    : item.state() == 3
+                                      ? 'var(--success-item-border-color)'
+                                      : ''
+                              "
+                              [attr.shape]="
+                                item.state() == 1
+                                  ? 'warning-standard'
+                                  : item.state() == 2
+                                    ? 'error-standard'
+                                    : item.state() == 3
+                                      ? 'success-standard'
+                                      : ''
+                              "
+                              size="26"
+                            ></cds-icon>
+                          </div>
+                        }
+                      </div>
                     </div>
                   </div>
-                </div>
+                }
+              </div>
+              }
+            }
+          </div>
+
+          @if(moreButtonLabel()) {
+            <div class="csgp-entry-tile-more" (click)="showMoreClicked($event)">
+              {{ moreButtonLabel() }}
+            </div>
+          }
+
+          @if (pageSize() > 0) {
+            <div class="csgp-entry-tile-pages">
+              @for (_ of [].constructor(noOfPages()); track $index) {
+                <div class="csgp-entry-tile-pages-dot"
+                  [class.csgp-entry-tile-pages-dot-active]="currentPage() == $index"
+                  (click)="selectPage($event, $index)"
+                ></div>
               }
             </div>
-            }
           }
-        </div>
-
-        @if(moreButtonLabel()) {
-          <div class="csgp-entry-tile-more" (click)="showMoreClicked()">
-            {{ moreButtonLabel() }}
-          </div>
         }
-
-        @if (pageSize() > 0) {
-          <div class="csgp-entry-tile-pages">
-            @for (_ of [].constructor(noOfPages()); track $index) {
-              <div class="csgp-entry-tile-pages-dot"
-                [class.csgp-entry-tile-pages-dot-active]="currentPage() == $index"
-                (click)="selectPage($event, $index)"
-              ></div>
-            }
-          </div>
-        }
-      }
-    </div>
+      </div>
+    }
   </div>
 </div>
