@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Input, Output, QueryList, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Input, OnDestroy, Output, QueryList, computed, effect, input, signal } from '@angular/core';
 import { EntryTile2ItemConfigComponent } from './config/entry-tile-2.item.config.component';
 import { EntryTile2TitleConfigComponent } from './config/entry-tile-2.title.config.component';
 import {
   ClarityIcons,
-  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon
+  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisVerticalIcon, ellipsisHorizontalIcon
 } from "@cds/core/icon";
 import '@cds/core/icon/register.js';
 import { ClarityModule } from '@clr/angular';
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
-import { timer } from 'rxjs';
+import { Subscription, timer } from 'rxjs';
 ClarityIcons.addIcons(
-  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon
+  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon
 );
 
 /**
@@ -50,41 +50,62 @@ export enum EntryTileCollapseMode {
     ])
   ]
 })
-export class EntryTile2Component {
+export class EntryTile2Component implements OnDestroy {
+  ngOnDestroy(): void {
+    this._timers.forEach(t => t.unsubscribe());
+  }
+
   public readonly placeholder = "⏹⏹ ";
-  public currentPageValue = signal(0);
-  public maxTitles = signal(2);
-  public newPage: number = 0;
+  private _timers: Array<Subscription> = [];
   
-  @ContentChildren(EntryTile2TitleConfigComponent) titles: QueryList<EntryTile2TitleConfigComponent>;
-
-  @ContentChildren(EntryTile2ItemConfigComponent) items: QueryList<EntryTile2ItemConfigComponent>;
-
-
-  @Input()
-  /**  General purpose */
-  id?: any;
-
-  // states
-  /** Indicates whether the content is still loading */
-  @Input()
-  isLoading: boolean = false;
-
+  public maxTitles = signal(2);
+  public maxItems = signal(5);
+  public newPage = signal(0);
+  
   /** Represents the collapsed (=true) or expanded (=false) state of the tile.     
    * **Hint**: only applicable if the `collapseMode` is not `disabled`  
    * (default is false)
    * */
-  @Input()
-  isCollapsed?: boolean; 
+  public isCollapsed = signal(false);
+
+  /**
+   * Indicates the current shown page if pagination is used
+   */
+  public currentPage = signal(0);
+
+  public noOfPages = computed(() => {
+    if (this.pageSize() && this.pageSize() > 0) {
+      const p = this.calcPagesNeeded(this.items.length, this.pageSize())
+      return p;
+    } else {
+      return 0;
+    }
+  });
+
+  /**
+   * Title configuration objects from class EntryTile2TitleConfigComponent  
+   * See {@link EntryTile2TitleConfigComponent}
+   */
+  @ContentChildren(EntryTile2TitleConfigComponent) titles: QueryList<EntryTile2TitleConfigComponent>;
+  /**
+   * Item configuration objects from class EntryTile2ItemConfigComponent  
+   * See {@link EntryTile2ItemConfigComponent}
+   */
+  @ContentChildren(EntryTile2ItemConfigComponent) items: QueryList<EntryTile2ItemConfigComponent>;
+
+  /**  General purpose */
+  id = input<any>();
   
+  /** Indicates whether the content is still loading */
+  isLoading = input<boolean>(false);
+
   /** Controls if the tile can be collapsed  
    * There are 3 modes:
    * - `disabled` = no expand or collapse (default)
    * - `autoexpanded` = only attention and error items shown
    * - `manual` = all items shown by default, but collapse button shown
    */
-  @Input()
-  collapseMode: EntryTileCollapseMode;
+  collapseMode = input<EntryTileCollapseMode>(EntryTileCollapseMode.disabled);
 
   /**
    * Optional: State of the tile controls the color of the background  
@@ -95,25 +116,20 @@ export class EntryTile2Component {
    * - `success` = green  
    * See {@link EntryState}
    */
-  @Input()
-  state?: EntryState;
+  state = input<EntryState>(EntryState.none);
 
-  /** Optional but recommended: Tile title 
-  */
-  @Input()
-  title?: string;
+  /** Optional (but recommended): Tile title */
+  title = input<string>(null);
 
-  /** Optional: Tile title icon (not recommended to use) */
-  @Input()
-  titleIcon?: string;
+  /** Optional: Tile title icon  */
+  titleIcon = input<string>(null);
 
   /**
    * Optional: If you want to show a button a the bottom of the tile you can set the label of it here.  
    * If the label is not set, there will be no button shown.  
    * The button, if you specify a label, will trigger the `onShowMoreClick` output.
    */
-  @Input()
-  showMoreButtonLabel?: string;
+  moreButtonLabel = input<string>(null);
 
   /**
    * Optional: The page size of the tile
@@ -121,16 +137,7 @@ export class EntryTile2Component {
    * **Important:** The maximum item count applies to each page! If `pageSize` is set higher than the maximum, it will be reduced to the maximum!   
    * Maximum: 5
    */
-  @Input()
-  pageSize?: number;
-
-  /**
-   * Optional: The current page that is shown   
-   * Only applicable if `pageSize` is set to > 1  
-   */
-  @Input()
-  currentPage?: number;
-
+  pageSize = input<number>(null);
 
   // OUTPUTS
 
@@ -148,13 +155,24 @@ export class EntryTile2Component {
   @Output()
   onShowMoreClick = new EventEmitter<any>();
 
+  // Helper
+  private calcPagesNeeded = (itemCount: number, pageCount: number): number => {
+    let result = Math.floor(itemCount / pageCount);
+    if (itemCount % pageCount > 0) {
+      result++;
+    }
+    if (result == 0) {
+      result++
+    }
+    return result;
+  }
 
   // BUTTON ACTIONS
   /**
    * Toggle expand and collapse state on button click
    */
   public toggleCollapsedState() {
-    this.isCollapsed = !this.isCollapsed;
+    this.isCollapsed.set(!this.isCollapsed());
   }
 
   /**
@@ -187,15 +205,15 @@ export class EntryTile2Component {
    * @param $item Pagenumber
    */
   public selectPage = (event: Event, $item: number) => {
-    if ($item != this.currentPageValue()) {
-      this.newPage = $item;
+    if ($item != this.currentPage()) {
+      this.newPage.set($item);
       event?.preventDefault();
       event?.stopPropagation();
-      timer(170).subscribe({
+      this._timers.push(timer(170).subscribe({
         next: () => {
-          this.currentPage = $item;
+          this.currentPage.set($item);
         }
-      });
+      }));
     }
   }
 }

@@ -39,43 +39,79 @@
     </div>
 </div>
 
-<ui-entry-tile 
-    title="This is a new title" 
-    titleIcon="cpu" 
-    collapseMode="1" 
-    [isLoading]=false
-    >
-    
-    <uic-entry-tile-title 
-        label="State" 
-        value="Unhealthy"
-        valueIcon="error-standard"
-        valueColor="red"
-        >
-    </uic-entry-tile-title>
-    
-    <uic-entry-tile-title 
-        label="Updated" 
-        value="50 min ago"
-        >
-    </uic-entry-tile-title>
+<div style="display: flex; gap: .4rem;">
+    <div class="button" (click)="setMaxItems(true)">+</div>
+    <div class="button" (click)="setMaxItems(false)">-</div>
+</div>
 
-    <uic-entry-tile-title 
-    label="Updated" 
-    value="50 min ago"
-    >
-</uic-entry-tile-title>
+<div class="columns">
+    <div class="container">
+        <div class="item">
+            <ui-entry-tile 
+                title="This is a new title" 
+                titleIcon="cpu" 
+                collapseMode="1" 
+                [isLoading]=false
 
-    <uic-entry-tile-item 
-        primaryValue="Primary" 
-        secondaryValue="Subtitle" 
-        state="1" 
-        showStateIcon=true
-        >
-    </uic-entry-tile-item>
-    
-    <uic-entry-tile-item 
-        primaryValue="Registered"
-        >
-    </uic-entry-tile-item>
-</ui-entry-tile>
+
+                >
+                
+                <uic-entry-tile-title 
+                    label="State" 
+                    value="Unhealthy"
+                    valueIcon="error-standard"
+                    valueColor="red"
+                    >
+                </uic-entry-tile-title>
+                
+                <uic-entry-tile-title 
+                    label="Updated" 
+                    value="50 min ago"
+                    >
+                </uic-entry-tile-title>
+
+                <uic-entry-tile-item 
+                    primaryValue="Primary" 
+                    secondaryValue="Subtitle" 
+                    state="1" 
+                    showStateIcon=true
+                    >
+                </uic-entry-tile-item>
+                
+                <uic-entry-tile-item 
+                    primaryValue="Registered1"
+                    [clickable]="true"
+                    >
+                </uic-entry-tile-item>
+
+
+                <uic-entry-tile-item 
+                    primaryValue="Registered2"
+                    [clickable]="true"
+                    >
+                </uic-entry-tile-item>
+
+                <uic-entry-tile-item 
+                    primaryValue="Registered3"
+                    [clickable]="true"
+                    >
+                </uic-entry-tile-item>
+
+
+                <uic-entry-tile-item 
+                    primaryValue="Registered4"
+                    [clickable]="true"
+                    >
+                </uic-entry-tile-item>
+
+                <uic-entry-tile-item 
+                    primaryValue="Registered5"
+                    [clickable]="true"
+                    >
+                </uic-entry-tile-item>
+            </ui-entry-tile>
+        </div>
+    </div>
+    <div class="container">&nbsp;</div>
+    <div class="container">&nbsp;</div>
+</div>
