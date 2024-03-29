@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Input, OnDestroy, Output, QueryList, computed, effect, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, OnDestroy, Output, QueryList, computed, effect, input, signal } from '@angular/core';
 import { EntryTile2ItemConfigComponent } from './config/entry-tile-2.item.config.component';
 import { EntryTile2TitleConfigComponent } from './config/entry-tile-2.title.config.component';
 import {
@@ -10,31 +10,11 @@ import '@cds/core/icon/register.js';
 import { ClarityModule } from '@clr/angular';
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
 import { Subscription, timer } from 'rxjs';
+import { EntryTileCollapseMode } from './models/entryTileCollapseMode.model';
+import { EntryState } from './models/entryState.model';
 ClarityIcons.addIcons(
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
 );
-
-/**
- * Generic State that is used in tiles and items
- */
-export enum EntryState {
-  none = 0,
-  attention = 1,
-  error = 2,
-  success = 3,
-  automatic = 4 // only applies to while entry tile state, not working for title, items
-}
-
-export enum EntryTileCollapseMode {
-  /**  All items shown by default, no collapse button */
-  disabled = 0,
-  /** All items shown by default, but collapse button shown */
-  manual = 1,
-  /** Only attention and error items shown */
-  autoexpanded = 2,
-}
-
-
 
 @Component({
   selector: 'ui-entry-tile',

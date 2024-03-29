@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, input } from "@angular/core";
-import { EntryState } from "../entry-tile-2.component";
+import { EntryState } from "../models/entryState.model";
 
 @Component({
     selector: 'uic-entry-tile-item',
