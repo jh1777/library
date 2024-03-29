@@ -13,7 +13,7 @@
     --error-item-bg-color: #ffe6e4;
     --error-item-border-color: #e45048;
 
-    --success-tile-bg-color: #ceffd5;
+    --success-tile-bg-color: #b2eebb;
     --success-item-bg-color: #ceffd5;
     --success-item-border-color: #2cd345;
 
@@ -104,10 +104,6 @@
             margin-bottom: .2rem;
             &-value {
                 font-weight: 700;
-
-                &-icon {
-                    margin-bottom: 3px;
-                }
             }
             &-label {
                 font-weight: 500;
@@ -218,7 +214,7 @@
 
     .csgp-generic-flex-row {
         flex-direction: row !important; 
-        gap: .3rem !important;
+        gap: .25rem !important;
         align-items: center !important;
     }
 

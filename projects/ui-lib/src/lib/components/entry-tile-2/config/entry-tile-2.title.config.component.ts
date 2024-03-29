@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
-import { Component, Input } from "@angular/core";
+import { Component, input } from "@angular/core";
+import { EntryState } from "../entry-tile-2.component";
 
 
 @Component({
@@ -10,22 +11,11 @@ import { Component, Input } from "@angular/core";
   })
   export class EntryTile2TitleConfigComponent {
 
-    @Input()
     /** Label for the header item - shown left */
-    label: string;
+    label = input.required<string>();
 
     /** Value for the header item - shown right */
-    @Input()
-    value: string;
+    value = input.required<string>();
 
-    /** Optional: Clarity Icon shape name that is shown left to the value in the same color  
-     * (default is black)   
-     * */
-    @Input()
-    valueIcon?: string;
-    /** Optional: Color of the value that is shown (e.g. "red")   
-     * (default is black)
-    */
-    @Input()
-    valueColor?: string;
+    state = input<EntryState>(EntryState.none);
   }

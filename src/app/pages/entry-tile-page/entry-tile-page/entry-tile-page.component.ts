@@ -15,6 +15,10 @@ export class EntryTilePageComponent implements AfterViewInit {
   @ViewChildren(EntryTileComponent) viewChildren!: QueryList<EntryTileComponent>;
   @ViewChildren(EntryTile2Component) entryTile2!: QueryList<EntryTile2Component>;
 
+  public entryTile2State: number = 0;
+  public entryTile2TitleState: number = 1;
+  public maxItems: number = 5;
+
   public tileData: Array<EntryTileViewModel> = [];
 
   private store: IIO;
@@ -70,7 +74,9 @@ export class EntryTilePageComponent implements AfterViewInit {
 
 
   setMaxItems(plus: boolean) {
-    const v = this.entryTile2.first.maxItems();
-    this.entryTile2.first.maxItems.set(plus ? v + 1 : v - 1);
+    plus ? this.maxItems++ : this.maxItems--;
+    //const v = this.entryTile2?.first?.maxItems();
+    this.entryTile2?.first?.maxItems.set(this.maxItems);
   }
+
 }

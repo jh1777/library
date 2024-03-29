@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, Input } from "@angular/core";
+import { Component, input } from "@angular/core";
 import { EntryState } from "../entry-tile-2.component";
 
 @Component({
@@ -10,8 +10,10 @@ import { EntryState } from "../entry-tile-2.component";
   })
   export class EntryTile2ItemConfigComponent {
 
-    @Input()
-    title?: string;
+    /**
+     * Optional: Group Title to be shown at the top of the item itself
+     */
+    title = input<string>();
 
     /** Optional: State `EntryState` of the Item (`none`, `attention`, `error` or `success`) 
      * By default or if unset, it is none.
@@ -21,28 +23,22 @@ import { EntryState } from "../entry-tile-2.component";
      * - `error` = red
      * - `success` = green
     */
-    @Input()
-    state?: EntryState;
+    state = input<EntryState>(EntryState.none);
   
     /** Is the Item clickable? If yes, it has a hover and action style and emits the `onItemClick` output */
-    @Input()
-    clickable?: boolean;
+    clickable = input<boolean>(false);
     
     /** Primary Value is shown on top (line 1) inside the item box */
-    @Input()
-    primaryValue: string;
+    primaryValue = input.required<string>();
     
     /** Secondary Value is shown on top (line 2) inside the item box in grey color */
-    @Input()
-    secondaryValue?: string;
+    secondaryValue = input<string>();
     
     /** If yes, the item will show a state icon in addition to the background color */
-    @Input()
-    showStateIcon?: boolean;
+    showStateIcon = input<boolean>(false);
 
     /** Optional: Tooltip message (simple) wich is displayed on mouse over as html title */
-    @Input()
-    tooltip?: string;
+    tooltip = input<string>();
     
     /** Optional: Icon to show at the right inside the item (clarity design icon name)   
      * Only works if `showStateIcon == false`!   
@@ -50,6 +46,5 @@ import { EntryState } from "../entry-tile-2.component";
      * Will be colorized grey by default. If the item has `clickable == true` its shown in default action color   
      * 
     */
-    @Input()
-    icon?: string;
+    icon = input<string>();
   }

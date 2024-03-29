@@ -51,16 +51,13 @@
             </div>
             <div class="csgp-generic-container-right csgp-generic-flex-row">
 
-              <div *ngIf="header.valueIcon" 
-                class="csgp-entry-tile-header-value-icon"
-                [attr.title]="header.valueIcon.tooltip"
-              >
+              <ng-container *ngIf="header.valueIcon">
                 <cds-icon solid
                     [style.color]="header.valueColor ? header.valueColor : ''"
                     [attr.shape]="header.valueIcon"
                     size="16"
                 ></cds-icon>
-              </div>
+              </ng-container>
               <div class="csgp-entry-tile-header-value"
                 *ngIf="header.value"
                 [style.color]="header.valueColor"

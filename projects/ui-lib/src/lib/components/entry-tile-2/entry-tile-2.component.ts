@@ -4,14 +4,14 @@ import { EntryTile2ItemConfigComponent } from './config/entry-tile-2.item.config
 import { EntryTile2TitleConfigComponent } from './config/entry-tile-2.title.config.component';
 import {
   ClarityIcons,
-  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisVerticalIcon, ellipsisHorizontalIcon
+  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisVerticalIcon, ellipsisHorizontalIcon, popOutIcon
 } from "@cds/core/icon";
 import '@cds/core/icon/register.js';
 import { ClarityModule } from '@clr/angular';
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
 import { Subscription, timer } from 'rxjs';
 ClarityIcons.addIcons(
-  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon
+  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
 );
 
 /**
@@ -22,6 +22,7 @@ export enum EntryState {
   attention = 1,
   error = 2,
   success = 3,
+  automatic = 4 // only applies to while entry tile state, not working for title, items
 }
 
 export enum EntryTileCollapseMode {
@@ -114,9 +115,26 @@ export class EntryTile2Component implements OnDestroy {
    * - `attention` = orange
    * - `error` = red
    * - `success` = green  
+   * - `automatic` = based on the item.state it will be calculated
    * See {@link EntryState}
    */
   state = input<EntryState>(EntryState.none);
+
+  calcState = computed(() => {
+
+    // TODO: chnage to calc from title state - not item states!
+    if (this.state() == EntryState.automatic) {
+      const itemMax = this.items.reduce((highest, current) => {
+        return current.state() > highest ? current.state() : highest;
+      }, 0);
+      const titleMax = this.titles.reduce((highest, current) => {
+        return current.state() > highest ? current.state() : highest;
+      }, 0);
+      return titleMax;
+    } else {
+      return this.state();
+    }
+  })
 
   /** Optional (but recommended): Tile title */
   title = input<string>(null);

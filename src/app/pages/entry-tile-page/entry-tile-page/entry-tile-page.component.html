@@ -39,12 +39,27 @@
     </div>
 </div>
 
-<div style="display: flex; gap: .4rem;">
+<div style="display: flex; gap: .4rem; align-items: center;">
+    <div>Tile State</div>
     <div class="button" (click)="setMaxItems(true)">+</div>
+    <div>{{ maxItems }}</div>
     <div class="button" (click)="setMaxItems(false)">-</div>
+    <div class="button" (click)="entryTile2State = 4">(auto)</div>
+    <div class="button" (click)="entryTile2State = 3">GREEN</div>
+    <div class="button" (click)="entryTile2State = 2">RED</div>
+    <div class="button" (click)="entryTile2State = 1">ORANGE</div>
+    <div class="button" (click)="entryTile2State = 0">GREY</div>
+</div>
+<div style="display: flex; gap: .4rem; align-items: center;">
+    <div>First Title State</div>
+    <div class="button" (click)="entryTile2TitleState = 4">(auto)</div>
+    <div class="button" (click)="entryTile2TitleState = 3">GREEN</div>
+    <div class="button" (click)="entryTile2TitleState = 2">RED</div>
+    <div class="button" (click)="entryTile2TitleState = 1">ORANGE</div>
+    <div class="button" (click)="entryTile2TitleState = 0">GREY</div>
 </div>
 
-<div class="columns">
+<div class="columns" style="margin-top: .5rem;">
     <div class="container">
         <div class="item">
             <ui-entry-tile 
@@ -52,6 +67,8 @@
                 titleIcon="cpu" 
                 collapseMode="1" 
                 [isLoading]=false
+                moreButtonLabel="More"
+                [state]="entryTile2State"
 
 
                 >
@@ -59,48 +76,53 @@
                 <uic-entry-tile-title 
                     label="State" 
                     value="Unhealthy"
-                    valueIcon="error-standard"
-                    valueColor="red"
+                    [state]="entryTile2TitleState"
                     >
                 </uic-entry-tile-title>
                 
                 <uic-entry-tile-title 
                     label="Updated" 
-                    value="50 min ago"
+                    value="50 mins ago"
                     >
                 </uic-entry-tile-title>
 
                 <uic-entry-tile-item 
                     primaryValue="Primary" 
                     secondaryValue="Subtitle" 
-                    state="1" 
+                    state=0 
                     showStateIcon=true
                     >
                 </uic-entry-tile-item>
                 
                 <uic-entry-tile-item 
-                    primaryValue="Registered1"
+                    title="Connectivity"
+                    primaryValue="Connected"
+                    secondaryValue="4 mins ago"
+                    icon="pop-out"
                     [clickable]="true"
                     >
                 </uic-entry-tile-item>
 
 
                 <uic-entry-tile-item 
-                    primaryValue="Registered2"
-                    [clickable]="true"
+                    primaryValue="Completed"
+                    secondaryValue="2 mins ago"
+                    state=3
+                    title="TLS Registration"
                     >
                 </uic-entry-tile-item>
 
                 <uic-entry-tile-item 
-                    primaryValue="Registered3"
-                    [clickable]="true"
+                    primaryValue="Started"
+                    secondaryValue="12 mins ago"
+                    state=1
+                    title="Onboarding"
                     >
                 </uic-entry-tile-item>
 
 
                 <uic-entry-tile-item 
                     primaryValue="Registered4"
-                    [clickable]="true"
                     >
                 </uic-entry-tile-item>
 
