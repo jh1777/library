@@ -51,8 +51,13 @@
     <div class="button" (click)="entryTile2State = 0">GREY</div>
 </div>
 <div style="display: flex; gap: .4rem; align-items: center;">
+    <div>Tile Items per Page</div>
+    <div class="button" (click)="setItemsPerPage(true)">+</div>
+    <div>{{ itemsPerPage }}</div>
+    <div class="button" (click)="setItemsPerPage(false)">-</div>
+</div>
+<div style="display: flex; gap: .4rem; align-items: center;">
     <div>First Title State</div>
-    <div class="button" (click)="entryTile2TitleState = 4">(auto)</div>
     <div class="button" (click)="entryTile2TitleState = 3">GREEN</div>
     <div class="button" (click)="entryTile2TitleState = 2">RED</div>
     <div class="button" (click)="entryTile2TitleState = 1">ORANGE</div>
@@ -65,10 +70,11 @@
             <ui-entry-tile 
                 title="This is a new title" 
                 titleIcon="cpu" 
-                collapseMode="1" 
-                [isLoading]=false
+                collapseMode=1 
+                [isLoading]="false"
                 moreButtonLabel="More"
                 [state]="entryTile2State"
+                [pageSize]="itemsPerPage"
 
 
                 >

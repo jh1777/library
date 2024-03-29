@@ -18,6 +18,7 @@ export class EntryTilePageComponent implements AfterViewInit {
   public entryTile2State: number = 0;
   public entryTile2TitleState: number = 1;
   public maxItems: number = 5;
+  public itemsPerPage: number = 3;
 
   public tileData: Array<EntryTileViewModel> = [];
 
@@ -79,4 +80,7 @@ export class EntryTilePageComponent implements AfterViewInit {
     this.entryTile2?.first?.maxItems.set(this.maxItems);
   }
 
+  setItemsPerPage(plus: boolean) {
+    plus ? this.itemsPerPage++ : this.itemsPerPage--;
+  }
 }
