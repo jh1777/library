@@ -148,12 +148,11 @@
               {
               <div [@fade]="newPage() != currentPage()">
                 @if (collapseMode() != 2 || (collapseMode() == 2 && item.state() > 0 && item.state() < 3)) {
-
-                  @if(item.title() && checkItemTitleDifferences($index)) {
-                    <div class="csgp-entry-tile-item-title">
+                  <div class="csgp-entry-tile-item-title">
+                    @if(item.title() && checkItemTitleDifferences($index)) { 
                       {{ item.title() }}
-                    </div>
-                  }
+                    }
+                  </div>
 
                   <div
                     class="csgp-entry-tile-item"
