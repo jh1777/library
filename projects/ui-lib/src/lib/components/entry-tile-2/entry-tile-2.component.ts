@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Input, OnDestroy, Output, QueryList, computed, effect, input, signal } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Input, OnDestroy, Output, QueryList, computed, effect, input, signal } from '@angular/core';
 import { EntryTile2ItemConfigComponent } from './config/entry-tile-2.item.config.component';
 import { EntryTile2TitleConfigComponent } from './config/entry-tile-2.title.config.component';
 import {
@@ -52,6 +52,7 @@ export enum EntryTileCollapseMode {
   ]
 })
 export class EntryTile2Component implements OnDestroy {
+
   ngOnDestroy(): void {
     this._timers.forEach(t => t.unsubscribe());
   }
@@ -235,5 +236,17 @@ export class EntryTile2Component implements OnDestroy {
         }
       }));
     }
+  }
+
+  checkItemTitleDifferences(index: number): boolean {
+    if (index == 0) {
+      return true;
+    }
+    if (this.items.length >= index + 1) {
+      const curr = this.items.get(index).title();
+      const prev = this.items.get(index - 1).title();    
+      return prev != curr;
+    }
+    return true;
   }
 }

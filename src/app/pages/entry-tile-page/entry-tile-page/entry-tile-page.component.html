@@ -125,19 +125,18 @@
                     title="Onboarding"
                     >
                 </uic-entry-tile-item>
+                
+                @for (_ of [].constructor(4); track $index) {
+                    <uic-entry-tile-item 
+                        title="TEST"
+                        [primaryValue]="'Registered'.concat(($index + 4).toString())"
+                        >
+                    </uic-entry-tile-item>
 
-
-                <uic-entry-tile-item 
-                    primaryValue="Registered4"
-                    >
-                </uic-entry-tile-item>
-
-                <uic-entry-tile-item 
-                    primaryValue="Registered5"
-                    [clickable]="true"
-                    >
-                </uic-entry-tile-item>
+                }
             </ui-entry-tile>
+
+                
         </div>
     </div>
     <div class="container">&nbsp;</div>
