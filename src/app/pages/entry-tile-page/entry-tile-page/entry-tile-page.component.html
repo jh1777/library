@@ -39,7 +39,7 @@
     </div>
 </div>
 
-<div style="display: flex; gap: .4rem; align-items: center;">
+<div class="button-row">
     <div>Tile State</div>
     <div class="button" (click)="setMaxItems(true)">+</div>
     <div>{{ maxItems }}</div>
@@ -50,13 +50,13 @@
     <div class="button" (click)="entryTile2State = 1">ORANGE</div>
     <div class="button" (click)="entryTile2State = 0">GREY</div>
 </div>
-<div style="display: flex; gap: .4rem; align-items: center;">
+<div class="button-row">
     <div>Tile Items per Page</div>
     <div class="button" (click)="setItemsPerPage(true)">+</div>
     <div>{{ itemsPerPage }}</div>
     <div class="button" (click)="setItemsPerPage(false)">-</div>
 </div>
-<div style="display: flex; gap: .4rem; align-items: center;">
+<div class="button-row">
     <div>First Title State</div>
     <div class="button" (click)="entryTile2TitleState = 3">GREEN</div>
     <div class="button" (click)="entryTile2TitleState = 2">RED</div>
@@ -68,7 +68,7 @@
     <div class="container">
         <div class="item">
             <ui-entry-tile 
-                title="This is a new title" 
+                title="Entry Tile with config objects" 
                 titleIcon="cpu" 
                 collapseMode=1 
                 [isLoading]="false"
