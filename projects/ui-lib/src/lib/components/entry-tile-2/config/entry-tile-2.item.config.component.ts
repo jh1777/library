@@ -1,15 +1,18 @@
 import { CommonModule } from "@angular/common";
-import { Component, input } from "@angular/core";
+import { Component, ContentChild, ContentChildren, Query, QueryList, input } from "@angular/core";
 import { EntryState } from "../models/entryState.model";
+import { BadgeComponent } from "../../badge/badge.component";
 
 @Component({
     selector: 'uic-entry-tile-item',
     standalone: true,
     imports: [CommonModule],
-    template: ''
+    template: '<div class="badge-component"><ng-content select="badge"></ng-content></div>',
+    styleUrl: './entry-tile-2.item.config.component.scss'
   })
   export class EntryTile2ItemConfigComponent {
 
+    @ContentChildren(BadgeComponent) badge: QueryList<BadgeComponent>;
     /**
      * Optional: Group Title to be shown at the top of the item itself
      */
