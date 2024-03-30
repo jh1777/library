@@ -1,0 +1,22 @@
+:host {
+    display: contents;
+
+    .csgp-badge-red {
+        background-color: red !important;
+        color: white !important;
+    }
+
+    .csgp-badge {
+        display: inline-flex;
+        height: 20px;
+        min-width: 20px;
+        font-size: small;
+        width: fit-content;
+        border-radius: 0.5rem;
+        background-color: grey;
+        padding: 0.1rem 0.2rem;
+        content: " ";
+        align-items: center; 
+        justify-content: center;
+    }
+}

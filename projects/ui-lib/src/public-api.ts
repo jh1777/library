@@ -4,3 +4,4 @@
 
 export * from './lib/ui-lib.module';
 export * from './lib/components/entry-tile-2';
+export * from './lib/components/badge/badge.component';
