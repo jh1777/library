@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ClarityModule } from '@clr/angular';
-import { BadgeComponent, EntryTile2Component, EntryTile2ItemConfigComponent, EntryTile2TitleConfigComponent, UiLibModule } from 'projects/ui-lib/src/public-api';
+import { BadgeComponent, EntryTile2Component, EntryTile2ItemConfigComponent, EntryTile2TitleConfigComponent, TestButtonComponent, UiLibModule } from 'projects/ui-lib/src/public-api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -63,7 +63,8 @@ ClarityIcons.addIcons(
     EntryTile2Component,
     EntryTile2ItemConfigComponent,
     EntryTile2TitleConfigComponent,
-    BadgeComponent
+    BadgeComponent,
+    TestButtonComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

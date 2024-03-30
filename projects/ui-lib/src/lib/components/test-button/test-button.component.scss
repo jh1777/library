@@ -1,0 +1,28 @@
+:host {
+    position: relative;
+    display: flex;
+    width: fit-content; 
+    border: 1px solid lightgray;
+    border-radius: .2rem;
+    box-shadow: 0px 0px 7px #eaeaea;
+    background-color: #f6f6f5; 
+    padding: .15rem .4rem; 
+    cursor: pointer;
+    user-select: none;
+    color: #007a93;
+    &:hover {
+        border: 1px solid #007a93;
+        &:active {
+            border: 1px solid black;
+        }
+    }
+
+    .csgp-test-button-badge {
+        position: absolute;
+        top: 0%; // Align vertically centered
+        right: -8px; // Adjust as needed for desired distance from the button edge
+        transform: translateY(-50%); // Center vertically
+    }
+    
+}
+

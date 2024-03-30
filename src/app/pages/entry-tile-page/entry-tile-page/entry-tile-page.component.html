@@ -87,6 +87,7 @@
                     showStateIcon=true
                     >
                     <ui-badge value=23 [state]=2></ui-badge>
+                    <ui-badge value=99 [state]=2></ui-badge>
 
                 </uic-entry-tile-item>
                 
@@ -131,7 +132,16 @@
         </div>
     </div>
     <div class="container">
+        <ui-test-button label="Very long Button #1">
+            <ui-badge value="7"></ui-badge>    
+            <ui-badge value="99"></ui-badge>    
+        </ui-test-button>
+        <br/>
         <ui-badge  [state]=2></ui-badge>
     </div>
     <div class="container">&nbsp;</div>
 </div>
+
+<ui-test-button label="Very long Button #1">
+    <ui-badge value="127"></ui-badge>    
+</ui-test-button>
