@@ -7,7 +7,7 @@ import { BadgeComponent } from "../../badge/badge.component";
     selector: 'uic-entry-tile-item',
     standalone: true,
     imports: [CommonModule],
-    template: '<div class="badge-component"><ng-content select="badge"></ng-content></div>',
+    template: '<div class="badge-component"><ng-content select="ui-badge"></ng-content></div>',
     styleUrl: './entry-tile-2.item.config.component.scss'
   })
   export class EntryTile2ItemConfigComponent {

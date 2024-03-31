@@ -1,8 +1,18 @@
 :host {
     display: contents;
 
-    .csgp-badge-red {
+    .csgp-badge-error {
         background-color: red !important;
+        color: white !important;
+    }
+
+    .csgp-badge-warning {
+        background-color: #dea035 !important;
+        color: white !important;
+    }
+
+    .csgp-badge-success {
+        background-color: #2cd345 !important;
         color: white !important;
     }
 
@@ -13,7 +23,7 @@
         font-size: small;
         width: fit-content;
         border-radius: .5rem;
-        background-color: grey;
+        background-color: darkgrey;
         padding: 0.1rem 0.2rem;
         align-items: center; 
         justify-content: center;

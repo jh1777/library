@@ -142,11 +142,14 @@
 
         @if (isLoading() == false) {
           <div>
+            <ng-content select="uic-entry-tile-item"></ng-content>
+
             @for (item of items; track $index) {
               @if ((!pageSize() && $index >= currentPage() * maxItems() && $index < currentPage() * maxItems() + maxItems())
                     || (pageSize() > 0 && $index >= currentPage() * pageSize() && $index < currentPage() * pageSize() + pageSize())
                 ) 
               {
+              
               <div [@fade]="newPage() != currentPage()">
                 @if (collapseMode() != 2 || (collapseMode() == 2 && item.state() > 0 && item.state() < 3)) {
                   <div class="csgp-entry-tile-item-title">

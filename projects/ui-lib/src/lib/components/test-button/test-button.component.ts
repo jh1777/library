@@ -12,19 +12,16 @@ import { BadgeComponent } from '../badge/badge.component';
 })
 export class TestButtonComponent implements AfterContentInit {
    @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
-  //@ContentChild(BadgeComponent) badge: BadgeComponent;
 
   label = input.required<string>();
   
   ngAfterContentInit() {
-    if (this.badges.length > 1) {
-      
-    }
+
     // Check if more than one ui-badge is used and throw error
-    //if (this.badges.length > 1) {
+    if (this.badges.length > 1) {
 
       //this.badges.reset([this.badges.last]);
-      //throw new Error('Only one ui-badge is allowed within ui-test-button');
-    //}
+      throw new Error('Only one ui-badge is allowed within ui-test-button');
+    }
   }
 }
