@@ -86,7 +86,6 @@
                     state=0 
                     showStateIcon=true
                     >
-                    <ui-badge value=23 [state]=2></ui-badge>
 
                 </uic-entry-tile-item>
                 
@@ -97,7 +96,6 @@
                     icon="pop-out"
                     [clickable]="true"
                     >
-                    <ui-badge value=24 [state]=1></ui-badge>
 
                 </uic-entry-tile-item>
 
@@ -116,7 +114,6 @@
                     state=1
                     title="Onboarding"
                     >
-                    <ui-badge value=23 [state]=2></ui-badge>
                 </uic-entry-tile-item>
                 
                 @for (_ of [].constructor(4); track $index) {
@@ -135,7 +132,6 @@
     <div class="container">
         <ui-test-button label="Very long Button #1">
             <ui-badge value="7"></ui-badge>    
-            <ui-badge value="99"></ui-badge>    
         </ui-test-button>
         <br/>
         <ui-badge  [state]=2></ui-badge>
@@ -143,9 +139,6 @@
     <div class="container">&nbsp;</div>
 </div>
 
-<ui-test-button label="Very long Button #1">
-    <ui-badge value="127"></ui-badge>    
-</ui-test-button>
 
 <br/>
 <ui-entry-tile-3 

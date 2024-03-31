@@ -7,12 +7,10 @@ import { BadgeComponent } from "../../badge/badge.component";
     selector: 'uic-entry-tile-item',
     standalone: true,
     imports: [CommonModule],
-    template: '<div class="badge-component"><ng-content select="ui-badge"></ng-content></div>',
-    styleUrl: './entry-tile-2.item.config.component.scss'
+    template: ''
   })
   export class EntryTile2ItemConfigComponent {
 
-    @ContentChildren(BadgeComponent) badge: QueryList<BadgeComponent>;
     /**
      * Optional: Group Title to be shown at the top of the item itself
      */
