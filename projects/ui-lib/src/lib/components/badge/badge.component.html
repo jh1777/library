@@ -1,7 +1,9 @@
-<div class="csgp-badge"
-    [class.csgp-badge-error]="state() == 2"
-    [class.csgp-badge-warning]="state() == 1"
-    [class.csgp-badge-success]="state() == 3"
->
-    {{ value() ?? ' ' }}
-</div>
+@if(hidden() == false) {
+    <div class="csgp-badge"
+        [class.csgp-badge-error]="state() == 2"
+        [class.csgp-badge-warning]="state() == 1"
+        [class.csgp-badge-success]="state() == 3"
+    >
+        {{ value() ?? ' ' }}
+    </div>
+}

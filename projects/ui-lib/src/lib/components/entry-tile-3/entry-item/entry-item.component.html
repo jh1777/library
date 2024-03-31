@@ -1,1 +1,106 @@
-<p>item works!</p>
+@if (isLoading() == true) {
+  <div class="loading no-select pulse">
+    <div class="csgp-entry-tile-item-title loading">
+      <div>
+        @for (_ of [].constructor(5); track $index) {
+          {{ placeholder }}
+        }
+      </div>
+    </div>
+    <div class="csgp-entry-tile-item">
+      <div class="csgp-generic-container">
+        <div class="csgp-generic-container-left">
+          <div class="csgp-entry-tile-item-primary loading">
+            <div>
+              @for (_ of [].constructor(5); track $index) {
+                {{ placeholder }}
+              }
+            </div>
+          </div>
+          <div class="csgp-entry-tile-item-secondary loading">
+            <div>
+              @for (_ of [].constructor(3); track $index) {
+                {{ placeholder }}
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+@if (isLoading() == false) {
+  <div>
+    <div class="csgp-entry-tile-item-title">
+      {{ title() }}
+    </div>
+
+    <div
+      class="csgp-entry-tile-item"
+      [class.clickable]="clickable()"
+      [class.attention-item]="state() == 1"
+      [class.error-item]="state() == 2"
+      [class.success-item]="state() == 3"
+      [attr.title]="tooltip()"
+      (click)="tileItemClicked($event, null)"
+    >
+      <div class="csgp-badge">
+        <ng-content select="ui-badge"></ng-content>
+      </div>
+
+      <div class="csgp-generic-container">
+        <div class="csgp-generic-container-left">
+          @if (primaryValue()) {
+            <div class="csgp-entry-tile-item-primary">
+              {{ primaryValue() }}
+            </div>
+          }
+          @if (secondaryValue()) {
+            <div class="csgp-entry-tile-item-secondary">
+              {{ secondaryValue() }}
+            </div>
+          }
+        </div>
+
+        <div class="csgp-generic-container-right">
+          @if (!showStateIcon() && icon()) {
+            <div class="csgp-entry-tile-item-icon">
+              <cds-icon
+                [style.color]="clickable() ? 'var(--action-color)' : 'grey'"
+                [attr.shape]="icon()"
+                size="22"
+              ></cds-icon>
+            </div>
+          }
+          @if (showStateIcon() && state() > 0) {
+            <div class="csgp-entry-tile-item-icon">
+              <cds-icon
+                solid
+                [style.color]="
+                  state() == 1
+                    ? 'var(--attention-item-border-color)'
+                    : state() == 2
+                      ? 'var(--error-item-border-color)'
+                      : state() == 3
+                        ? 'var(--success-item-border-color)'
+                        : ''
+                "
+                [attr.shape]="
+                  state() == 1
+                    ? 'warning-standard'
+                    : state() == 2
+                      ? 'error-standard'
+                      : state() == 3
+                        ? 'success-standard'
+                        : ''
+                "
+                size="26"
+              ></cds-icon>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}

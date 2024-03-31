@@ -1,16 +1,26 @@
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Output, QueryList, computed, input, signal } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, ElementRef, EventEmitter, Output, QueryList, computed, input, signal } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
-import { EntryTile2TitleConfigComponent, EntryTile2ItemConfigComponent } from '../entry-tile-2';
 import { EntryTileCollapseMode } from './models/entryTileCollapseMode.model';
 import { EntryState } from './models/entryState.model';
 import { ClarityModule } from '@clr/angular';
+import {
+  ClarityIcons,
+  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisVerticalIcon, ellipsisHorizontalIcon, popOutIcon
+} from "@cds/core/icon";
+import '@cds/core/icon/register.js';
+import { EntryItemComponent } from './entry-item/entry-item.component';
+import { EntryKeyValueComponent } from './entry-key-value/entry-key-value.component';
+ClarityIcons.addIcons(
+  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
+);
+
 
 @Component({
   selector: 'ui-entry-tile-3',
   standalone: true,
-  imports: [CommonModule, ClarityModule],
+  imports: [CommonModule, ClarityModule, EntryItemComponent, EntryKeyValueComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './entry-tile-3.component.html',
   styleUrl: './entry-tile-3.component.scss',
@@ -22,8 +32,26 @@ import { ClarityModule } from '@clr/angular';
     ])
   ]
 })
-export class EntryTile3Component {
-  
+export class EntryTile3Component implements AfterContentInit {
+  constructor(private elementRef: ElementRef) {}
+
+  ngAfterContentInit(): void {
+
+    if(this.items.length > this.maxItems()) {
+      for (let i = this.maxItems(); i < this.items.length; i++) {
+        this.items.get(i).hidden.set(true);
+      }
+    }
+
+    if(this.titles.length > this.maxTitles()) {
+      for (let i = this.maxTitles(); i < this.titles.length; i++) {
+        this.titles.get(i).hidden.set(true);
+      }
+    }
+  }
+  @ContentChildren(EntryItemComponent) items: QueryList<EntryItemComponent>;
+  @ContentChildren(EntryKeyValueComponent) titles: QueryList<EntryKeyValueComponent>;
+
   ngOnDestroy(): void {
     this._timers.forEach(t => t.unsubscribe());
   }
@@ -54,17 +82,6 @@ export class EntryTile3Component {
       return 0;
     }
   });
-
-  /**
-   * Title configuration objects from class EntryTile2TitleConfigComponent  
-   * See {@link EntryTile2TitleConfigComponent}
-   */
-  @ContentChildren(EntryTile2TitleConfigComponent) titles: QueryList<EntryTile2TitleConfigComponent>;
-  /**
-   * Item configuration objects from class EntryTile2ItemConfigComponent  
-   * See {@link EntryTile2ItemConfigComponent}
-   */
-  @ContentChildren(EntryTile2ItemConfigComponent) items: QueryList<EntryTile2ItemConfigComponent>;
 
   /**  General purpose */
   id = input<any>();
@@ -134,13 +151,6 @@ export class EntryTile3Component {
   // OUTPUTS
 
   /**
-   * Click event on the Item  
-   * Emits the clicked {@link EntryTileItem}
-   */
-  @Output()
-  onItemClick = new EventEmitter<EntryTile2ItemConfigComponent>();
-
-  /**
    * Click event on More Button (if present)  
    * Emits the tile id
    */
@@ -177,18 +187,6 @@ export class EntryTile3Component {
     this.onShowMoreClick.emit(this.id);
   }
 
-  /**
-   * An item was clicked - event will emit if item is clickable
-   * @param event {@link Event}
-   * @param $item {@link EntryTileItem}
-   */
-  public tileItemClicked = (event: Event, $item: EntryTile2ItemConfigComponent) => {
-    if ($item.clickable) {
-      event?.preventDefault();
-      event?.stopPropagation();
-      this.onItemClick.emit($item);
-    }
-  }
 
   /**
    * Action is called if pagination is enabled and the user   

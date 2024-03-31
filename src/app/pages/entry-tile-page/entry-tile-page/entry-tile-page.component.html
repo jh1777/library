@@ -146,3 +146,42 @@
 <ui-test-button label="Very long Button #1">
     <ui-badge value="127"></ui-badge>    
 </ui-test-button>
+
+<br/>
+<ui-entry-tile-3 
+    title="Another Separated Tile" 
+    titleIcon="cpu" 
+    collapseMode=1 
+    [isLoading]="false"
+    moreButtonLabel="More"
+    [state]="entryTile2State"
+    [pageSize]="itemsPerPage"
+    >
+    
+    <ui-entry-key-value label="State" value="Unhealthy" [state]="entryTile2TitleState"></ui-entry-key-value>
+    <ui-entry-key-value label="Updated" value="50 mins ago"></ui-entry-key-value>
+    <ui-entry-key-value label="Updated" value="50 mins ago"></ui-entry-key-value>
+
+    <ui-entry-item 
+        primaryValue="Primary" 
+        secondaryValue="Subtitle" 
+        state=0 
+        showStateIcon=true
+        >
+        <ui-badge value=13 [state]=3></ui-badge>
+    </ui-entry-item>
+
+    <ui-entry-item 
+        title="Connectivity"
+        primaryValue="Connected"
+        secondaryValue="4 mins ago"
+        icon="pop-out"
+        [clickable]="true"
+        >
+        <ui-badge value=24 [state]=2></ui-badge>
+        <ui-badge value=33 [state]=2></ui-badge>
+<!--
+        <ui-badge value=24 [state]=2></ui-badge>
+-->
+    </ui-entry-item>
+</ui-entry-tile-3>

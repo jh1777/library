@@ -21,7 +21,7 @@ export class TestButtonComponent implements AfterContentInit {
     if (this.badges.length > 1) {
 
       //this.badges.reset([this.badges.last]);
-      throw new Error('Only one ui-badge is allowed within ui-test-button');
+      //throw new Error('Only one ui-badge is allowed within ui-test-button');
     }
   }
 }

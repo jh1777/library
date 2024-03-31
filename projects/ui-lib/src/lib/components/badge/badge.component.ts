@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ViewEncapsulation, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation, input, signal } from '@angular/core';
 
 @Component({
   selector: 'ui-badge',
@@ -10,6 +10,8 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation, input } from '@a
   styleUrl: './badge.component.scss'
 })
 export class BadgeComponent {
+
+  hidden = signal<boolean>(false);
 
   value = input<number>();
   
