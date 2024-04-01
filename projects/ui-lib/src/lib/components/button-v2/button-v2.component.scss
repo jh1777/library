@@ -37,7 +37,7 @@
     }
 
     .bordered {
-        padding: .4rem .5rem;
+        padding: .35rem .45rem;
         border-radius: .25rem;
         background-color: var(--csgp-button-v2-primary-color, #007A93);
         color: var(--csgp-button-v2-text-color) !important;
@@ -57,7 +57,7 @@
         display: flex;
         align-items: center;
         width: fit-content;
-        font-size: var(--csgp-button-font-size, .7rem);
+        font-size: var(--csgp-button-font-size, .65rem);
         gap: .3rem;
         line-height: normal;
         cursor: pointer;
