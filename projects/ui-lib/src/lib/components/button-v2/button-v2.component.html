@@ -1,0 +1,19 @@
+@if(hidden() == false) {
+    <div class="csgp-badge">
+        <ng-content select="ui-badge"></ng-content>
+    </div>
+    <div 
+        class="csgp-button-v2"
+        [title]="tooltip()"
+        [class.disabled]="disabled() == true"
+        [class.bordered]="style() == 1 || style() == 2 || style() == 3"
+        [class.primary]="style() == 1"
+        [class.secondary]="style() == 2"
+        [class.outline]="style() == 3"
+    >
+    @if(icon() != null) {
+        <cds-icon [attr.shape]="icon()" size="18"></cds-icon>
+    }
+    {{ label() }}
+    </div>
+}
