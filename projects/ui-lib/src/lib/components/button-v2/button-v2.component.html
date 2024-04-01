@@ -10,6 +10,7 @@
         [class.primary]="style() == 1"
         [class.secondary]="style() == 2"
         [class.outline]="style() == 3"
+        (click)="onClick.emit(id())"
     >
     @if(icon() != null) {
         <cds-icon [attr.shape]="icon()" size="18"></cds-icon>

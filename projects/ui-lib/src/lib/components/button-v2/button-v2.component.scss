@@ -1,6 +1,7 @@
 :host {
     position: relative;
     display: inline-flex;
+    min-width: max-content;
 
     .disabled {
         --csgp-button-v2-primary-color: white !important;

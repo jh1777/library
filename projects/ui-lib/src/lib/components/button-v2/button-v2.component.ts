@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, input, signal } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Output, QueryList, input, output, signal } from '@angular/core';
 import { ClarityModule } from '@clr/angular';
 import {
   ClarityIcons,
@@ -58,9 +58,12 @@ export class ButtonV2Component implements AfterContentInit {
       }
     }
   }
-  
+
   hidden = signal<boolean>(false);
   
+  data = input<any>();
+  id = input<string>();
+
   label = input.required<string>();
 
   style = input<ButtonStyle>(ButtonStyle.primary);
@@ -70,4 +73,8 @@ export class ButtonV2Component implements AfterContentInit {
   disabled = input<boolean>(false);
 
   tooltip = input<string>();
+
+  @Output()
+  onClick = new EventEmitter<string>();
+  
 }
