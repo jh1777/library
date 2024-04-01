@@ -46,7 +46,7 @@
 
           @if(buttons.length > 0) {
             
-            <div style="display: flex; gap: .5rem; flex-direction: row;">
+            <div class="csgp-entry-tile-buttons" style="">
               <ng-content select="ui-test-button"></ng-content>
             </div>
           }
@@ -62,6 +62,7 @@
               @for (_ of [].constructor(noOfPages()); track $index) {
                 <div
                   class="csgp-entry-tile-pages-dot"
+                  [attr.title]="paginationTooltip().concat(($index + 1).toString())"
                   [class.csgp-entry-tile-pages-dot-active]="
                     currentPage() == $index
                   "

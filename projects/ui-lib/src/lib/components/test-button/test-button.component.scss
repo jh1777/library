@@ -3,10 +3,11 @@
     display: flex;
     width: fit-content; 
     border: 1px solid lightgray;
-    border-radius: .2rem;
+    border-radius: var(--csgp-test-button-border-radius, .2rem);
     box-shadow: 0px 0px 7px #eaeaea;
     background-color: #f6f6f5; 
     padding: .15rem .4rem; 
+    min-width: fit-content;
     cursor: pointer;
     user-select: none;
     color: #007a93;

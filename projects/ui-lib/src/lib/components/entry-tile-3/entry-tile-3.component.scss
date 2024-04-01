@@ -72,6 +72,12 @@
         font-weight: 200;
 
       }
+      &-buttons {
+        display: flex; 
+        gap: .5rem; 
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
 
       &-collapse-button {
         display: flex;

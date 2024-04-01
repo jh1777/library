@@ -67,6 +67,7 @@ export class EntryItemComponent implements AfterContentInit {
   public readonly placeholder = '⏹⏹ ';
 
   hidden = signal<boolean>(false);
+  showTitle = signal<boolean>(true);
 
   /** Indicates whether the content is still loading */
   isLoading = input<boolean>(false);

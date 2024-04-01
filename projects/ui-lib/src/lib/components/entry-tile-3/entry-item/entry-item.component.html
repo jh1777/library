@@ -33,9 +33,11 @@
 
   @if (isLoading() == false) {
     <div>
-      <div class="csgp-entry-tile-item-title">
-        {{ title() }}
-      </div>
+      @if(showTitle() == true) {
+        <div class="csgp-entry-tile-item-title">
+          {{ title() }}
+        </div>
+      }
 
       <div
         class="csgp-entry-tile-item"

@@ -35,8 +35,13 @@ ClarityIcons.addIcons(
 })
 export class EntryTile3Component implements AfterContentInit {
 
-  private filterItems= () => {
+  private prepareItems = () => {
     for (let i = 0; i < this.items.length; i++) {
+      // check for item.title grouping
+      // TODO: respect pages!
+      
+
+      // pagination
       if((!this.pageSize() && i >= this.currentPage() * this.maxItems() && i < this.currentPage() *this.maxItems() + this.maxItems())
       || (this.pageSize() > 0 && i >= this.currentPage() * this.pageSize() && i < this.currentPage() * this.pageSize() + this.pageSize())) 
       {
@@ -44,11 +49,18 @@ export class EntryTile3Component implements AfterContentInit {
       } else {
         this.items.get(i).hidden.set(true);
       }
+
+
+      if (i > 0 && this.items.get(i-1).title() == this.items.get(i).title() && this.items.get(i-1).hidden() == false) {
+        this.items.get(i).showTitle.set(false);
+      } else {
+        this.items.get(i).showTitle.set(true);
+      }
       
     }
   }
   ngAfterContentInit(): void {
-    this.filterItems();
+    this.prepareItems();
     let errorMessage = '';
 
     if(this.items.length > this.maxItems() && !this.pageSize())
@@ -81,6 +93,7 @@ export class EntryTile3Component implements AfterContentInit {
   public maxItems = signal(5);
   public newPage = signal(0);
   public errorMessage = signal<string>('');
+  public paginationTooltip = signal<string>('Page ');
   
   /** Represents the collapsed (=true) or expanded (=false) state of the tile.     
    * **Hint**: only applicable if the `collapseMode` is not `disabled`  
@@ -216,13 +229,12 @@ export class EntryTile3Component implements AfterContentInit {
   public selectPage = (event: Event, $item: number) => {
     if ($item != this.currentPage()) {
       this.newPage.set($item);
-      console.log("Set new page: ", $item )
       event?.preventDefault();
       event?.stopPropagation();
       this._timers.push(timer(170).subscribe({
         next: () => {
           this.currentPage.set($item);
-          this.filterItems();
+          this.prepareItems();
         }
       }));
     }
