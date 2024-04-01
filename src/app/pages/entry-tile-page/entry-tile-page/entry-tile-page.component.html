@@ -145,24 +145,35 @@
     title="Another Separated Tile" 
     titleIcon="cpu" 
     collapseMode=1 
-    [isLoading]="false"
+    [isLoading]="true"
     moreButtonLabel="More"
     [state]="entryTile2State"
     [pageSize]="itemsPerPage"
     >
-    
+    <ui-test-button label="Very long Button #2"></ui-test-button>
     <ui-entry-key-value label="State" value="Unhealthy" [state]="entryTile2TitleState"></ui-entry-key-value>
-    <ui-entry-key-value label="Updated" value="50 mins ago"></ui-entry-key-value>
-    <ui-entry-key-value label="Updated" value="50 mins ago"></ui-entry-key-value>
-
+    <ui-entry-key-value label="Updated" value="50 mins ago" [isLoading]="false"></ui-entry-key-value>
     <ui-entry-item 
         primaryValue="Primary" 
         secondaryValue="Subtitle" 
         state=0 
         showStateIcon=true
+        [isLoading]="false"
         >
         <ui-badge value=13 [state]=3></ui-badge>
+        <ui-test-button label="Very long Button #1">
+            <ui-badge value="7"></ui-badge>    
+        </ui-test-button>
     </ui-entry-item>
+
+    @for (_ of [].constructor(4); track $index) {
+        <ui-entry-item 
+            title="TEST"
+            [primaryValue]="'Registered'.concat(($index + 4).toString())"
+            >
+        </ui-entry-item>
+
+    }
 
     <ui-entry-item 
         title="Connectivity"
@@ -173,8 +184,11 @@
         >
         <ui-badge value=24 [state]=2></ui-badge>
         <ui-badge value=33 [state]=2></ui-badge>
-<!--
-        <ui-badge value=24 [state]=2></ui-badge>
--->
     </ui-entry-item>
+
+    <ui-test-button label="Button #3">
+        <ui-badge value="1" state=0></ui-badge>
+    </ui-test-button>
+    <ui-test-button label="Button #4"></ui-test-button>
+
 </ui-entry-tile-3>

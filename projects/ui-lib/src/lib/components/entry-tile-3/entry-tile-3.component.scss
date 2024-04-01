@@ -65,7 +65,14 @@
   
     .csgp-entry-tile {
       min-width: 200px;
-  
+      &-error {
+        color: var(--attention-item-border-color); 
+        font-size: small;
+        margin-right: .6rem;
+        font-weight: 200;
+
+      }
+
       &-collapse-button {
         display: flex;
         border: 1px solid lightgrey;
@@ -120,42 +127,6 @@
         display: flex;
         flex-direction: column;
         gap: 0.2rem;
-      }
-  
-      &-item {
-        &-title {
-          font-weight: 600;
-          font-size: small;
-          margin-bottom: .15rem;
-        }
-  
-        &-primary {
-          font-weight: 400;
-        }
-  
-        &-secondary {
-          font-weight: 200;
-          color: var(--daimler-grey3);
-        }
-  
-        &-icon {
-          align-self: flex-end;
-        }
-  
-        line-height: normal;
-        border: 1px solid white;
-        background-color: white;
-        -webkit-box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, #d0d0d0);
-        -moz-box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, #d0d0d0);
-        box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, #d0d0d0);
-        padding: .4rem .6rem;
-        border-radius: .3rem;
-  
-        &:last-child {
-          margin-bottom: .5rem;
-        }
-  
-  
       }
   
       &-more {
@@ -254,9 +225,10 @@
   
       &-right {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         margin-left: auto;
         line-height: normal;
+        align-items: center;
   
       }
     }

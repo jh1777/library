@@ -13,6 +13,8 @@ import { BadgeComponent } from '../badge/badge.component';
 export class TestButtonComponent implements AfterContentInit {
    @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
 
+   hidden = signal<boolean>(false);
+   
   label = input.required<string>();
   
   ngAfterContentInit() {

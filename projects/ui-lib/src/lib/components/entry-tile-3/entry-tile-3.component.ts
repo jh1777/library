@@ -1,6 +1,6 @@
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, ElementRef, EventEmitter, Output, QueryList, computed, input, signal } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Output, QueryList, computed, input, signal } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { EntryTileCollapseMode } from './models/entryTileCollapseMode.model';
 import { EntryState } from './models/entryState.model';
@@ -12,6 +12,7 @@ import {
 import '@cds/core/icon/register.js';
 import { EntryItemComponent } from './entry-item/entry-item.component';
 import { EntryKeyValueComponent } from './entry-key-value/entry-key-value.component';
+import { TestButtonComponent } from '../test-button/test-button.component';
 ClarityIcons.addIcons(
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
 );
@@ -33,24 +34,41 @@ ClarityIcons.addIcons(
   ]
 })
 export class EntryTile3Component implements AfterContentInit {
-  constructor(private elementRef: ElementRef) {}
 
-  ngAfterContentInit(): void {
-
-    if(this.items.length > this.maxItems()) {
-      for (let i = this.maxItems(); i < this.items.length; i++) {
+  private filterItems= () => {
+    for (let i = 0; i < this.items.length; i++) {
+      if((!this.pageSize() && i >= this.currentPage() * this.maxItems() && i < this.currentPage() *this.maxItems() + this.maxItems())
+      || (this.pageSize() > 0 && i >= this.currentPage() * this.pageSize() && i < this.currentPage() * this.pageSize() + this.pageSize())) 
+      {
+        this.items.get(i).hidden.set(false);
+      } else {
         this.items.get(i).hidden.set(true);
       }
+      
+    }
+  }
+  ngAfterContentInit(): void {
+    this.filterItems();
+    let errorMessage = '';
+
+    if(this.items.length > this.maxItems() && !this.pageSize())
+    {
+      const msg = `Too many items used! Max. ${this.maxItems()} allowed`;
+      errorMessage == '' ? errorMessage = msg : errorMessage = `${errorMessage}; ${msg}`;
     }
 
     if(this.titles.length > this.maxTitles()) {
       for (let i = this.maxTitles(); i < this.titles.length; i++) {
         this.titles.get(i).hidden.set(true);
+        const msg = `Too many key-values used! Max. ${this.maxTitles()} allowed`;
+        errorMessage == '' ? errorMessage = msg : errorMessage = `${errorMessage}; ${msg}`;
       }
-    }
+    } 
+    this.errorMessage.set(errorMessage);
   }
   @ContentChildren(EntryItemComponent) items: QueryList<EntryItemComponent>;
   @ContentChildren(EntryKeyValueComponent) titles: QueryList<EntryKeyValueComponent>;
+  @ContentChildren(TestButtonComponent) buttons: QueryList<TestButtonComponent>;
 
   ngOnDestroy(): void {
     this._timers.forEach(t => t.unsubscribe());
@@ -62,6 +80,7 @@ export class EntryTile3Component implements AfterContentInit {
   public maxTitles = signal(2);
   public maxItems = signal(5);
   public newPage = signal(0);
+  public errorMessage = signal<string>('');
   
   /** Represents the collapsed (=true) or expanded (=false) state of the tile.     
    * **Hint**: only applicable if the `collapseMode` is not `disabled`  
@@ -197,11 +216,13 @@ export class EntryTile3Component implements AfterContentInit {
   public selectPage = (event: Event, $item: number) => {
     if ($item != this.currentPage()) {
       this.newPage.set($item);
+      console.log("Set new page: ", $item )
       event?.preventDefault();
       event?.stopPropagation();
       this._timers.push(timer(170).subscribe({
         next: () => {
           this.currentPage.set($item);
+          this.filterItems();
         }
       }));
     }

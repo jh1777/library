@@ -1,62 +1,78 @@
 <div class="csgp-entry-tile">
-    @if (title()) {
-      <div class="csgp-entry-tile-title">
-        <div class="csgp-generic-container-left csgp-generic-flex-row">
-          @if (titleIcon()) {
-            <cds-icon [attr.shape]="titleIcon()" size="20"></cds-icon>
-          }
-          {{ title() + '-> #T: ' + titles.length + ', #I: ' + items.length }}
-          
-        </div>
-        <div class="csgp-generic-container-right">
-          @if (collapseMode() > 0) {
-            <div
-              class="csgp-entry-tile-collapse-button"
-              (click)="toggleCollapsedState()"
-            >
-              <cds-icon
-                shape="angle"
-                size="14"
-                [class.rotate]="isCollapsed()"
-              ></cds-icon>
-            </div>
-          }
-        </div>
+  @if (title()) {
+    <div class="csgp-entry-tile-title">
+      <div class="csgp-generic-container-left csgp-generic-flex-row">
+        @if (titleIcon()) {
+          <cds-icon [attr.shape]="titleIcon()" size="20"></cds-icon>
+        }
+        {{ title() + "-> #T: " + titles.length + ", #I: " + items.length }}
       </div>
-    }
-  
-    <div
-      class="csgp-entry-tile-base"
-      [class.attention-tile]="state() == 1 || state() == 4 && calcState() == 1"
-      [class.error-tile]="state() == 2 || state() == 4 && calcState() == 2"
-      [class.success-tile]="state() == 3 || state() == 4 && calcState() == 3"
-    >
+      <div class="csgp-generic-container-right">
+        @if (errorMessage()) {
+          <span class="csgp-entry-tile-error">
+            <cds-icon solid shape="warning-standard" size="14"></cds-icon>
+            {{ errorMessage() }}
+          </span>
+        }
+        @if (collapseMode() > 0) {
+          <div
+            class="csgp-entry-tile-collapse-button"
+            (click)="toggleCollapsedState()"
+          >
+            <cds-icon
+              shape="angle"
+              size="14"
+              [class.rotate]="isCollapsed()"
+            ></cds-icon>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  <div
+    class="csgp-entry-tile-base"
+    [class.attention-tile]="state() == 1 || (state() == 4 && calcState() == 1)"
+    [class.error-tile]="state() == 2 || (state() == 4 && calcState() == 2)"
+    [class.success-tile]="state() == 3 || (state() == 4 && calcState() == 3)"
+  >
     <div class="csgp-entry-tile-header">
       <ng-content select="ui-entry-key-value"></ng-content>
     </div>
-  
-      @if((collapseMode() == 1 && !isCollapsed()) || collapseMode() != 1) {
+    <div [@fade]="newPage() != currentPage()">
+      @if ((collapseMode() == 1 && !isCollapsed()) || collapseMode() != 1) {
         <div class="csgp-entry-tile-itemcontainer">
-            <ng-content select="ui-entry-item"></ng-content>
-  
-            @if(moreButtonLabel()) {
-              <div class="csgp-entry-tile-more" (click)="showMoreClicked($event)">
-                {{ moreButtonLabel() }}
-              </div>
-            }
-  
-            @if (pageSize() > 0) {
-              <div class="csgp-entry-tile-pages">
-                @for (_ of [].constructor(noOfPages()); track $index) {
-                  <div class="csgp-entry-tile-pages-dot"
-                    [class.csgp-entry-tile-pages-dot-active]="currentPage() == $index"
-                    (click)="selectPage($event, $index)"
-                  ></div>
-                }
-              </div>
-            }
-          
+          <ng-content select="ui-entry-item"></ng-content>
+
+          @if(buttons.length > 0) {
+            
+            <div style="display: flex; gap: .5rem; flex-direction: row;">
+              <ng-content select="ui-test-button"></ng-content>
+            </div>
+          }
+
+          @if (moreButtonLabel()) {
+            <div class="csgp-entry-tile-more" (click)="showMoreClicked($event)">
+              {{ moreButtonLabel() }}
+            </div>
+          }
+
+          @if (pageSize() > 0) {
+            <div class="csgp-entry-tile-pages">
+              @for (_ of [].constructor(noOfPages()); track $index) {
+                <div
+                  class="csgp-entry-tile-pages-dot"
+                  [class.csgp-entry-tile-pages-dot-active]="
+                    currentPage() == $index
+                  "
+                  (click)="selectPage($event, $index)"
+                ></div>
+              }
+            </div>
+          }
         </div>
-    }
+      }
     </div>
+    
   </div>
+</div>

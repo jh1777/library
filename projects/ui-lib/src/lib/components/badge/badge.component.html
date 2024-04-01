@@ -3,7 +3,10 @@
         [class.csgp-badge-error]="state() == 2"
         [class.csgp-badge-warning]="state() == 1"
         [class.csgp-badge-success]="state() == 3"
+        [class.csgp-badge-small]="size() == 1"
+        [class.csgp-badge-medium]="size() == 2"
+        [class.csgp-badge-large]="size() == 3"
     >
-        {{ value() ?? ' ' }}
+        {{ value() }}
     </div>
 }

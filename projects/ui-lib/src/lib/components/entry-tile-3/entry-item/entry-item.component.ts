@@ -26,6 +26,7 @@ import {
   popOutIcon,
 } from '@cds/core/icon';
 import '@cds/core/icon/register.js';
+import { TestButtonComponent } from '../../test-button/test-button.component';
 ClarityIcons.addIcons(
   angleIcon,
   errorStandardIcon,
@@ -47,11 +48,18 @@ ClarityIcons.addIcons(
 })
 export class EntryItemComponent implements AfterContentInit {
   @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
+  @ContentChildren(TestButtonComponent) buttons: QueryList<TestButtonComponent>;
 
   ngAfterContentInit(): void {
     if(this.badges.length > 1) {
       for (let i = 1; i < this.badges.length; i++) {
         this.badges.get(i).hidden.set(true);
+      }
+    }
+
+    if(this.buttons.length > 1) {
+      for (let i = 1; i < this.buttons.length; i++) {
+        this.buttons.get(i).hidden.set(true);
       }
     }
   }

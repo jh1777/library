@@ -13,6 +13,9 @@ export class BadgeComponent {
 
   hidden = signal<boolean>(false);
 
+  /**
+   * Number (value) to show in the badge; Optional
+   */
   value = input<number>();
   
   /**
@@ -23,5 +26,12 @@ export class BadgeComponent {
    */
   state = input<number>(2);
 
+  /**
+   * Size of badge
+   * 1 - small
+   * 2 - medium
+   * 3 - large
+   */
+  size = input<number>(2);
 
 }

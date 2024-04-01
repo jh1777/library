@@ -2,28 +2,60 @@
     display: contents;
 
     .csgp-badge-error {
-        background-color: red !important;
+        background-color: var(--csgp-badge-error-background-color, #e45048) !important;
         color: white !important;
     }
 
     .csgp-badge-warning {
-        background-color: #dea035 !important;
+        background-color: var(--csgp-badge-warning-background-color, #dea035) !important;
         color: white !important;
     }
 
     .csgp-badge-success {
-        background-color: #2cd345 !important;
+        background-color: var(--csgp-badge-success-background-color, #2cd345) !important;
         color: white !important;
+    }
+
+    .csgp-badge-small {
+        --size-value: 15px;
+        height: var(--size-value);
+        min-height: var(--size-value);
+        max-height: var(--size-value);
+        min-width: var(--size-value);
+        max-width: var(--size-value);
+        width: var(--size-value);
+        font-size: x-small;
+    }
+
+    .csgp-badge-medium {
+        --size-value: 20px;
+        height: var(--size-value);
+        min-height: var(--size-value);
+        max-height: var(--size-value);
+        min-width: var(--size-value);
+        max-width: var(--size-value);
+        width: var(--size-value);
+        font-size: small;
+    }
+
+    .csgp-badge-large {
+        --size-value: 24px;
+        height: var(--size-value);
+        min-height: var(--size-value);
+        max-height: var(--size-value);
+        min-width: var(--size-value);
+        max-width: var(--size-value);
+        width: var(--size-value);
+        font-size: large;
+        border-radius: .8rem !important;
     }
 
     .csgp-badge {
         display: flex;
-        height: 20px;
-        min-width: 20px;
-        font-size: small;
         width: fit-content;
         border-radius: .5rem;
         background-color: darkgrey;
+        color: white;
         padding: 0.1rem 0.2rem;
         align-items: center; 
         justify-content: center;
