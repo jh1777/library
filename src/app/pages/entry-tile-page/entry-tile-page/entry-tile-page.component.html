@@ -141,7 +141,7 @@
                 [state]="entryTile2State"
                 [pageSize]="itemsPerPage"
                 >
-                <ui-test-button label="Very long Button #2"></ui-test-button>
+                <ui-button-v2 label="Long Button #2" [style]=1></ui-button-v2>
                 <ui-entry-key-value label="State" value="Unhealthy" [state]="entryTile2TitleState"></ui-entry-key-value>
                 <ui-entry-key-value label="Updated" value="50 mins ago" [isLoading]="false"></ui-entry-key-value>
                 <ui-entry-item 
@@ -152,9 +152,7 @@
                     [isLoading]="false"
                     >
                     <ui-badge value=13 [state]=3></ui-badge>
-                    <ui-test-button label="Very long Button #1">
-                        <ui-badge value="7"></ui-badge>    
-                    </ui-test-button>
+                    <ui-button-v2 label="Inline Button" [style]=0 icon="check"></ui-button-v2>
                 </ui-entry-item>
 
                 @for (_ of [].constructor(4); track $index) {
@@ -177,10 +175,10 @@
                     <ui-badge value=33 [state]=2></ui-badge>
                 </ui-entry-item>
 
-                <ui-test-button label="Button #3">
+                <ui-button-v2 label="Button #3" [style]=3>
                     <ui-badge value="1" state=1></ui-badge>
-                </ui-test-button>
-                <ui-test-button label="Button #4"></ui-test-button>
+                </ui-button-v2>
+                <ui-button-v2 label="Button #4"></ui-button-v2>
 
             </ui-entry-tile-3>
         </div>

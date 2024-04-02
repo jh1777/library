@@ -27,6 +27,7 @@ import {
 } from '@cds/core/icon';
 import '@cds/core/icon/register.js';
 import { TestButtonComponent } from '../../test-button/test-button.component';
+import { ButtonV2Component } from '../../button-v2/button-v2.component';
 ClarityIcons.addIcons(
   angleIcon,
   errorStandardIcon,
@@ -48,7 +49,7 @@ ClarityIcons.addIcons(
 })
 export class EntryItemComponent implements AfterContentInit {
   @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
-  @ContentChildren(TestButtonComponent) buttons: QueryList<TestButtonComponent>;
+  @ContentChildren(ButtonV2Component) buttons: QueryList<ButtonV2Component>;
 
   ngAfterContentInit(): void {
     if(this.badges.length > 1) {

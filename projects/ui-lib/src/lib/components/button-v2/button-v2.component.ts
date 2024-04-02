@@ -37,7 +37,8 @@ export enum ButtonStyle {
   noborder = 0,
   primary = 1,
   secondary = 2,
-  outline = 3
+  outline = 3,
+  destructive = 4
 }
 
 
@@ -59,6 +60,8 @@ export class ButtonV2Component implements AfterContentInit {
     }
   }
 
+  // TODO: isLoading style!!
+  // TODO: style = 4 - Destructive!
   hidden = signal<boolean>(false);
   
   data = input<any>();

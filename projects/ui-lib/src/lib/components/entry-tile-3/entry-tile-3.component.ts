@@ -13,6 +13,7 @@ import '@cds/core/icon/register.js';
 import { EntryItemComponent } from './entry-item/entry-item.component';
 import { EntryKeyValueComponent } from './entry-key-value/entry-key-value.component';
 import { TestButtonComponent } from '../test-button/test-button.component';
+import { ButtonV2Component } from '../button-v2/button-v2.component';
 ClarityIcons.addIcons(
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
 );
@@ -37,9 +38,6 @@ export class EntryTile3Component implements AfterContentInit {
 
   private prepareItems = () => {
     for (let i = 0; i < this.items.length; i++) {
-      // check for item.title grouping
-      // TODO: respect pages!
-      
 
       // pagination
       if((!this.pageSize() && i >= this.currentPage() * this.maxItems() && i < this.currentPage() *this.maxItems() + this.maxItems())
@@ -50,7 +48,7 @@ export class EntryTile3Component implements AfterContentInit {
         this.items.get(i).hidden.set(true);
       }
 
-
+      // check for item.title grouping
       if (i > 0 && this.items.get(i-1).title() == this.items.get(i).title() && this.items.get(i-1).hidden() == false) {
         this.items.get(i).showTitle.set(false);
       } else {
@@ -80,7 +78,7 @@ export class EntryTile3Component implements AfterContentInit {
   }
   @ContentChildren(EntryItemComponent) items: QueryList<EntryItemComponent>;
   @ContentChildren(EntryKeyValueComponent) titles: QueryList<EntryKeyValueComponent>;
-  @ContentChildren(TestButtonComponent) buttons: QueryList<TestButtonComponent>;
+  @ContentChildren(ButtonV2Component) buttons: QueryList<ButtonV2Component>;
 
   ngOnDestroy(): void {
     this._timers.forEach(t => t.unsubscribe());
