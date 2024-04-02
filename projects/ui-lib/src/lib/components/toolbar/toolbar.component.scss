@@ -1,0 +1,11 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+
+    .right {
+        margin-left: auto;
+        flex-direction: row;
+        gap: .5rem;
+    }
+}
