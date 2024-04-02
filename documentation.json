@@ -2242,7 +2242,7 @@
         },
         {
             "name": "EntryTilePageComponent",
-            "id": "component-EntryTilePageComponent-7fe28335b74fd55aabefb7afb4535fdb2a365d79e47acaa1cba676fc19d6b229946687916ca1ce80438c566d477701d6f76380e5c21a669211d2795f9da08a7a",
+            "id": "component-EntryTilePageComponent-a1df708ca0e44eeeaab35c4026fa7319ec7188487da03e7ad6bef7aedc1ed1c0a83286d2e9939762a4a68410d1e61b69579a693ec8e3be23fad45c5dcad4d6c9",
             "file": "src/app/pages/entry-tile-page/entry-tile-page/entry-tile-page.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2265,13 +2265,67 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
+                    "line": 14,
                     "type": "boolean",
                     "decorators": []
                 }
             ],
             "outputsClass": [],
             "propertiesClass": [
+                {
+                    "name": "buttonId",
+                    "defaultValue": "signal<string>(\"\")",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "entryTile2",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<EntryTile2Component>",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "decorators": [
+                        {
+                            "name": "ViewChildren",
+                            "stringifiedArguments": "EntryTile2Component"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "entryTile2State",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "entryTile2TitleState",
+                    "defaultValue": "1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        125
+                    ]
+                },
                 {
                     "name": "initCallback",
                     "defaultValue": "() => {...}",
@@ -2280,7 +2334,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 34
+                    "line": 43
                 },
                 {
                     "name": "isTileCollapsed",
@@ -2289,9 +2343,35 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 20,
+                    "line": 29,
                     "modifierKind": [
                         123
+                    ]
+                },
+                {
+                    "name": "itemsPerPage",
+                    "defaultValue": "3",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "maxItems",
+                    "defaultValue": "5",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        125
                     ]
                 },
                 {
@@ -2301,7 +2381,7 @@
                     "type": "IIO",
                     "optional": false,
                     "description": "",
-                    "line": 18,
+                    "line": 27,
                     "modifierKind": [
                         123
                     ]
@@ -2314,7 +2394,7 @@
                     "type": "Array<EntryTileViewModel>",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 23,
                     "modifierKind": [
                         125
                     ]
@@ -2326,7 +2406,7 @@
                     "type": "QueryList<EntryTileComponent>",
                     "optional": false,
                     "description": "",
-                    "line": 14,
+                    "line": 15,
                     "decorators": [
                         {
                             "name": "ViewChildren",
@@ -2345,7 +2425,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 55,
+                    "line": 64,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2362,7 +2442,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 51,
+                    "line": 60,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2390,7 +2470,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 47,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2411,9 +2491,65 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 26,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": ""
+                },
+                {
+                    "name": "setItemsPerPage",
+                    "args": [
+                        {
+                            "name": "plus",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 85,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "plus",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setMaxItems",
+                    "args": [
+                        {
+                            "name": "plus",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 79,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "plus",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "setOutput",
@@ -2428,7 +2564,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 47,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2449,7 +2585,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -2463,11 +2599,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, Input, QueryList, ViewChildren } from '@angular/core';\nimport { EntryTileComponent } from 'projects/ui-lib/src/lib/components/entry-tile/entry-tile.component';\nimport { IIO } from 'projects/ui-lib/src/lib/components/entry-tile/entry-tile.component.iio.interface';\nimport { EntryTileViewData, EntryTileViewModel } from 'src/app/models/entry-tile';\n\n@Component({\n  selector: 'entry-tile-page',\n  templateUrl: './entry-tile-page.component.html',\n  styleUrls: ['./entry-tile-page.component.scss']\n})\nexport class EntryTilePageComponent implements AfterViewInit {\n  @Input()\n  showComponentBorder: boolean = false;\n  @ViewChildren(EntryTileComponent) viewChildren!: QueryList<EntryTileComponent>;\n\n  public tileData: Array<EntryTileViewModel> = [];\n\n  private store: IIO;\n\n  private isTileCollapsed: boolean;\n  \n  constructor() {\n    this.tileData = EntryTileViewData;\n  }\n\n  ngAfterViewInit(): void {\n    this.store?.isCollapsed$.subscribe({\n      next: (state) => {\n        this.isTileCollapsed = state;\n      }\n    });\n  }\n\n  initCallback = (storeReference: IIO) => {\n    this.store = storeReference;\n  }\n\n  setOutput(model: any) {\n    model.$output = `id=${model.id}`;\n    setTimeout(() => { model.$output = '' }, 3000);\n  }\n\n  toggleCollapseTile() {\n    this.store.setIsCollapsed(!this.isTileCollapsed);\n  }\n\n  moreClicked($id: any) {\n    console.log(\"More:: \", $id);\n  }\n\n  gotoPage(p: number) {\n    this.store.setCurrentPage(p);\n  }\n\n  addTestItem() {\n    \n    this.store.addTileItem({\n      title: \"Test_XX\",\n      primaryValue: \"Works fine\",\n      secondaryValue: \"JH\"\n    });\n\n    this.store.addTileHeader({\n      label: \"Test_XX\",\n      value: \"Works fine\"\n    });\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, Component, Input, QueryList, ViewChildren, signal } from '@angular/core';\nimport { EntryTileComponent } from 'projects/ui-lib/src/lib/components/entry-tile/entry-tile.component';\nimport { IIO } from 'projects/ui-lib/src/lib/components/entry-tile/entry-tile.component.iio.interface';\nimport { EntryTile2Component } from 'projects/ui-lib/src/public-api';\nimport { EntryTileViewData, EntryTileViewModel } from 'src/app/models/entry-tile';\n\n@Component({\n  selector: 'entry-tile-page',\n  templateUrl: './entry-tile-page.component.html',\n  styleUrls: ['./entry-tile-page.component.scss']\n})\nexport class EntryTilePageComponent implements AfterViewInit {\n  @Input()\n  showComponentBorder: boolean = false;\n  @ViewChildren(EntryTileComponent) viewChildren!: QueryList<EntryTileComponent>;\n  @ViewChildren(EntryTile2Component) entryTile2!: QueryList<EntryTile2Component>;\n\n  public entryTile2State: number = 0;\n  public entryTile2TitleState: number = 1;\n  public maxItems: number = 5;\n  public itemsPerPage: number = 3;\n\n  public tileData: Array<EntryTileViewModel> = [];\n\n  buttonId = signal<string>(\"\");\n\n  private store: IIO;\n\n  private isTileCollapsed: boolean;\n  \n  constructor() {\n    this.tileData = EntryTileViewData;\n  }\n\n  ngAfterViewInit(): void {\n    this.store?.isCollapsed$.subscribe({\n      next: (state) => {\n        this.isTileCollapsed = state;\n      }\n    });\n  }\n\n  initCallback = (storeReference: IIO) => {\n    this.store = storeReference;\n  }\n\n  setOutput(model: any) {\n    model.$output = `id=${model.id}`;\n    setTimeout(() => { model.$output = '' }, 3000);\n  }\n\n  toggleCollapseTile() {\n    this.store.setIsCollapsed(!this.isTileCollapsed);\n  }\n\n  moreClicked($id: any) {\n    console.log(\"More:: \", $id);\n  }\n\n  gotoPage(p: number) {\n    this.store.setCurrentPage(p);\n  }\n\n  addTestItem() {\n    \n    this.store.addTileItem({\n      title: \"Test_XX\",\n      primaryValue: \"Works fine\",\n      secondaryValue: \"JH\"\n    });\n\n    this.store.addTileHeader({\n      label: \"Test_XX\",\n      value: \"Works fine\"\n    });\n  }\n\n\n  setMaxItems(plus: boolean) {\n    plus ? this.maxItems++ : this.maxItems--;\n    //const v = this.entryTile2?.first?.maxItems();\n    this.entryTile2?.first?.maxItems.set(this.maxItems);\n  }\n\n  setItemsPerPage(plus: boolean) {\n    plus ? this.itemsPerPage++ : this.itemsPerPage--;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n    display: contents;\n\n    .button {\n        width: fit-content; \n        border: 1px solid lightgray;\n        border-radius: .3rem; \n        background-color: #f6f6f5; \n        padding: .3rem .5rem; \n        cursor: pointer;\n        user-select: none;\n        color: #007a93;\n        &:hover {\n            border: 1px solid #007a93;\n            &:active {\n                border: 1px solid black;\n            }\n        }\n    }\n}",
+                    "data": ":host {\n    display: contents;\n\n    .button-row {\n        margin-bottom: .3rem;\n        display: flex; \n        gap: .4rem; \n        align-items: center;\n    }\n\n    .button {\n        width: fit-content; \n        border: 1px solid lightgray;\n        border-radius: .2rem;\n        box-shadow: 0px 0px 7px #eaeaea;\n        background-color: #f6f6f5; \n        padding: .15rem .4rem; \n        cursor: pointer;\n        user-select: none;\n        color: #007a93;\n        &:hover {\n            border: 1px solid #007a93;\n            &:active {\n                border: 1px solid black;\n            }\n        }\n    }\n}",
                     "styleUrl": "./entry-tile-page.component.scss"
                 }
             ],
@@ -2478,13 +2614,13 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 20
+                "line": 29
             },
             "extends": [],
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<!-- BUTTON with Component Store -->\n<component-header title=\"ENTRY TILE\" subtitle=\"with Component Store\"></component-header>\n\n<div style=\"display: flex; gap: .5rem;margin-bottom: .5rem;\">\n    <div class=\"button\" (click)=\"addTestItem()\">Add Item and Header</div>\n    <div class=\"button\" (click)=\"toggleCollapseTile()\">Toggle Collapse Tile</div>\n    <div class=\"button\" (click)=\"gotoPage(1)\">Page 2</div>\n</div>\n\n<div class=\"columns\">\n    <div class=\"container\" *ngFor=\"let model of tileData\">\n        <div class=\"item\">\n            <div [class.debugBorder]=\"showComponentBorder\">\n                <csgp-v2-entry-tile\n                    [isLoading]=\"model.isLoading\"\n                    [id]=\"model.id\"\n                    [title]=\"model.title\"\n                    [titleIcon]=\"model.titleIcon\"\n                    [collapseMode]=\"model.collapseMode\"\n                    [isCollapsed]=\"model.isCollapsed\"\n                    [state]=\"model.state\"\n                    [header]=\"model.header\"\n                    [items]=\"model.items\"\n                    [showMoreButtonLabel]=\"model.showMoreButtonLabel\"\n                    [pageSize]=\"model.pageSize\"\n                    [initializedCallBack]=\"initCallback\"\n                    (onItemClick)=\"setOutput(model)\"\n                    (onShowMoreClick)=\"moreClicked($event)\"\n                >\n                </csgp-v2-entry-tile>\n            </div>\n        </div>\n        <div class=\"description\">\n            {{ model.$description }}\n        </div>\n        <div class=\"item-output\">\n            {{ model.$output }}\n        </div>\n    </div>\n</div>"
+            "templateData": "<!-- BUTTON with Component Store -->\n<component-header title=\"ENTRY TILE\" subtitle=\"with Component Store\"></component-header>\n\n<div style=\"display: flex; gap: .5rem;margin-bottom: .5rem;\">\n    <div class=\"button\" (click)=\"addTestItem()\">Add Item and Header</div>\n    <div class=\"button\" (click)=\"toggleCollapseTile()\">Toggle Collapse Tile</div>\n    <div class=\"button\" (click)=\"gotoPage(1)\">Page 2</div>\n</div>\n\n<div class=\"columns\">\n    <div class=\"container\" *ngFor=\"let model of tileData\">\n        <div class=\"item\">\n            <div [class.debugBorder]=\"showComponentBorder\">\n                <csgp-v2-entry-tile\n                    [isLoading]=\"model.isLoading\"\n                    [id]=\"model.id\"\n                    [title]=\"model.title\"\n                    [titleIcon]=\"model.titleIcon\"\n                    [collapseMode]=\"model.collapseMode\"\n                    [isCollapsed]=\"model.isCollapsed\"\n                    [state]=\"model.state\"\n                    [header]=\"model.header\"\n                    [items]=\"model.items\"\n                    [showMoreButtonLabel]=\"model.showMoreButtonLabel\"\n                    [pageSize]=\"model.pageSize\"\n                    [initializedCallBack]=\"initCallback\"\n                    (onItemClick)=\"setOutput(model)\"\n                    (onShowMoreClick)=\"moreClicked($event)\"\n                >\n                </csgp-v2-entry-tile>\n            </div>\n        </div>\n        <div class=\"description\">\n            {{ model.$description }}\n        </div>\n        <div class=\"item-output\">\n            {{ model.$output }}\n        </div>\n    </div>\n</div>\n\n<div class=\"button-row\">\n    <div>Tile State</div>\n    <div class=\"button\" (click)=\"setMaxItems(true)\">+</div>\n    <div>{{ maxItems }}</div>\n    <div class=\"button\" (click)=\"setMaxItems(false)\">-</div>\n    <div class=\"button\" (click)=\"entryTile2State = 4\">(auto)</div>\n    <div class=\"button\" (click)=\"entryTile2State = 3\">GREEN</div>\n    <div class=\"button\" (click)=\"entryTile2State = 2\">RED</div>\n    <div class=\"button\" (click)=\"entryTile2State = 1\">ORANGE</div>\n    <div class=\"button\" (click)=\"entryTile2State = 0\">GREY</div>\n</div>\n<div class=\"button-row\">\n    <div>Tile Items per Page</div>\n    <div class=\"button\" (click)=\"setItemsPerPage(true)\">+</div>\n    <div>{{ itemsPerPage }}</div>\n    <div class=\"button\" (click)=\"setItemsPerPage(false)\">-</div>\n</div>\n<div class=\"button-row\">\n    <div>First Title State</div>\n    <div class=\"button\" (click)=\"entryTile2TitleState = 3\">GREEN</div>\n    <div class=\"button\" (click)=\"entryTile2TitleState = 2\">RED</div>\n    <div class=\"button\" (click)=\"entryTile2TitleState = 1\">ORANGE</div>\n    <div class=\"button\" (click)=\"entryTile2TitleState = 0\">GREY</div>\n</div>\n\n<div class=\"columns\" style=\"margin-top: .5rem;\">\n    <div class=\"container\">\n        <div class=\"item\">\n            <ui-entry-tile \n                title=\"Entry Tile with config objects\" \n                titleIcon=\"cpu\" \n                collapseMode=1 \n                [isLoading]=\"false\"\n                moreButtonLabel=\"More\"\n                [state]=\"entryTile2State\"\n                [pageSize]=\"itemsPerPage\"\n                >\n                \n                <uic-entry-tile-title label=\"State\" value=\"Unhealthy\" [state]=\"entryTile2TitleState\"></uic-entry-tile-title>\n                <uic-entry-tile-title label=\"Updated\" value=\"50 mins ago\" isLoading=\"true\"></uic-entry-tile-title>\n\n                <uic-entry-tile-item \n                    primaryValue=\"Primary\" \n                    secondaryValue=\"Subtitle\" \n                    state=0 \n                    showStateIcon=true\n                    >\n\n                </uic-entry-tile-item>\n                \n                <uic-entry-tile-item \n                    title=\"Connectivity\"\n                    primaryValue=\"Connected\"\n                    secondaryValue=\"4 mins ago\"\n                    icon=\"pop-out\"\n                    [clickable]=\"true\"\n                    >\n\n                </uic-entry-tile-item>\n\n\n                <uic-entry-tile-item \n                    primaryValue=\"Completed\"\n                    secondaryValue=\"2 mins ago\"\n                    state=3\n                    title=\"TLS Registration\"\n                    >\n                </uic-entry-tile-item>\n\n                <uic-entry-tile-item \n                    primaryValue=\"Started\"\n                    secondaryValue=\"12 mins ago\"\n                    state=1\n                    title=\"Onboarding\"\n                    >\n                </uic-entry-tile-item>\n                \n                @for (_ of [].constructor(4); track $index) {\n                    <uic-entry-tile-item \n                        title=\"TEST\"\n                        [primaryValue]=\"'Registered'.concat(($index + 4).toString())\"\n                        >\n                    </uic-entry-tile-item>\n\n                }\n            </ui-entry-tile>\n\n                \n        </div>\n    </div>\n    \n    <div class=\"container\">\n        <div class=\"item\">\n            <ui-entry-tile-3 \n                title=\"Separated Tile\" \n                titleIcon=\"cpu\" \n                collapseMode=1 \n                [isLoading]=\"true\"\n                moreButtonLabel=\"More\"\n                [state]=\"entryTile2State\"\n                [pageSize]=\"itemsPerPage\"\n                >\n                <ui-button-v2 label=\"Long Button #2\" [style]=1></ui-button-v2>\n                <ui-entry-key-value label=\"State\" value=\"Unhealthy\" [state]=\"entryTile2TitleState\"></ui-entry-key-value>\n                <ui-entry-key-value label=\"Updated\" value=\"50 mins ago\" [isLoading]=\"false\"></ui-entry-key-value>\n                <ui-entry-item \n                    primaryValue=\"Primary\" \n                    secondaryValue=\"Subtitle\" \n                    state=0 \n                    showStateIcon=true\n                    [isLoading]=\"false\"\n                    >\n                    <ui-badge value=13 [state]=3></ui-badge>\n                    <ui-button-v2 label=\"Start\" [style]=0 icon=\"play\"></ui-button-v2>\n                    <ui-button-v2 label=\"Stop\" [style]=6 icon=\"stop\"></ui-button-v2>\n                </ui-entry-item>\n\n                @for (_ of [].constructor(4); track $index) {\n                    <ui-entry-item \n                        title=\"TEST\"\n                        [primaryValue]=\"'Registered'.concat(($index + 4).toString())\"\n                        >\n                            <ui-button-v2 label=\"Delete\" [style]=6 icon=\"trash\"></ui-button-v2>\n                        \n                    </ui-entry-item>\n\n                }\n\n                <ui-entry-item \n                    title=\"Connectivity\"\n                    primaryValue=\"Connected\"\n                    secondaryValue=\"4 mins ago\"\n                    icon=\"pop-out\"\n                    [clickable]=\"true\"\n                    >\n                    <ui-badge value=6 [state]=2 [size]=2></ui-badge>\n                    <ui-badge value=33 [state]=2></ui-badge>\n                </ui-entry-item>\n\n                <ui-button-v2 label=\"Accept\" [style]=5 icon=\"check\">\n                    <ui-badge value=\"3\"></ui-badge>\n                </ui-button-v2>\n                <ui-button-v2 label=\"Delete\" [style]=4 icon=\"trash\"></ui-button-v2>\n\n            </ui-entry-tile-3>\n        </div>\n    </div>\n    <div class=\"container\">\n       <div class=\"item\">\n            <ui-button-v2 \n                label=\"Button Label\" \n                icon=\"trash\" \n                [disabled]=\"false\"\n                [style]=1\n                id=\"a2a3a5b0\"\n                (onClick)=\"buttonId.set($event)\"\n            >\n                <ui-badge value=3 [state]=0></ui-badge>\n            </ui-button-v2>\n\n        </div>\n        <br/>\n        Id from Button: {{ buttonId() }}\n    </div>\n</div>\n\n\n<br/>\n<ui-test-button label=\"Very long Button #1\">\n    <ui-badge value=\"7\"></ui-badge>    \n</ui-test-button>\n<br/>\n<ui-badge  [state]=2></ui-badge>\n<br/>"
         },
         {
             "name": "HeaderComponent",
@@ -2955,13 +3091,13 @@
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-3507a0f8ec6d3d187414294a1226ed182414c7602450d1da1543af62a9e99524fd211e59701dc328a3bf36f4aa4dccbefec2e296c4c4e4b20670b0b7ed7e9bd0",
+            "id": "module-AppModule-556864969f5a7c90b9cb9a865c284c47b0fe0b77b7cbbdb03746a82165cf987b54fbe69dc9b7d49f621f3005938083ae698a270ee3d032066a579e9e41a2c502",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { BrowserAnimationsModule } from \"@angular/platform-browser/animations\";\nimport { ClarityModule } from '@clr/angular';\nimport { UiLibModule } from 'projects/ui-lib/src/public-api';\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { HeaderComponent } from './components/header/header.component';\nimport { ButtonsPageComponent } from './pages/buttons-page/buttons-page.component';\nimport { DrawerPageComponent } from './pages/drawer-page/drawer-page.component';\nimport { EntriesPageComponent } from './pages/entries-page/entries-page.component';\nimport { EntryGridPageComponent } from './pages/entry-grid-page/entry-grid-page.component';\nimport { TagsPageComponent } from './pages/tags-page/tags-page.component';\nimport { EntryTilePageComponent } from './pages/entry-tile-page/entry-tile-page/entry-tile-page.component';\n\nimport {\n  ClarityIcons,\n  unknownStatusIcon, homeIcon, cogIcon, checkIcon, timesIcon, exclamationTriangleIcon, exclamationCircleIcon, checkCircleIcon, infoCircleIcon, infoStandardIcon, successStandardIcon, errorStandardIcon,\n  warningStandardIcon, helpInfoIcon, barsIcon, userIcon, angleIcon, folderIcon, folderOpenIcon, bellIcon, imageIcon, cloudIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon,\n  filterGridIcon, filterGridCircleIcon, searchIcon, viewColumnsIcon, angleDoubleIcon, calendarIcon, eventIcon, eyeIcon, stepForward2Icon,\n  arrowIcon, calculatorIcon, piggyBankIcon, shoppingBagIcon, shoppingCartIcon, walletIcon, storeIcon, euroIcon, dollarIcon, pesoIcon, creditCardIcon, bankIcon, dollarBillIcon,\n  eCheckIcon, poundIcon, cloudTrafficIcon, briefcaseIcon, boltIcon, truckIcon, uploadCloudIcon, nodeGroupIcon, cpuIcon, factoryIcon, cloudNetworkIcon, processOnVmIcon, bugIcon,\n  shieldCheckIcon, curveChartIcon, detailsIcon, cloudScaleIcon, flagIcon, assignUserIcon, bookIcon, downloadCloudIcon, formIcon, disconnectIcon, networkSwitchIcon, controlLunIcon,\n  filterIcon, logoutIcon, banIcon, switchIcon, circleIcon, sortByIcon, justifyTextIcon, syncIcon, linkIcon, clockIcon, helpIcon, copyIcon, codeIcon, compassIcon, tagsIcon, pencilIcon,\n  plusIcon, windowCloseIcon, wrenchIcon, nvmeIcon, resistorIcon, vmIcon, trashIcon, downloadIcon, refreshIcon, envelopeIcon, newIcon,\n  plusCircleIcon, keyIcon, connectIcon, popOutIcon, employeeIcon, shieldIcon, cursorHandGrabIcon, addTextIcon,\n  dotCircleIcon, undoIcon, redoIcon, tagIcon, copyToClipboardIcon, historyIcon, recycleIcon, eraserIcon, exportIcon, administratorIcon\n\n} from \"@cds/core/icon\";\nimport '@cds/core/icon/register.js';\n\nClarityIcons.addIcons(\n  unknownStatusIcon, homeIcon, cogIcon, checkIcon, timesIcon, exclamationTriangleIcon, exclamationCircleIcon, checkCircleIcon, infoCircleIcon, infoStandardIcon, successStandardIcon, errorStandardIcon,\n  warningStandardIcon, helpInfoIcon, barsIcon, userIcon, angleIcon, folderIcon, folderOpenIcon, bellIcon, imageIcon, cloudIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon,\n  filterGridIcon, filterGridCircleIcon, searchIcon, viewColumnsIcon, angleDoubleIcon, calendarIcon, eventIcon, eyeIcon, stepForward2Icon,\n  arrowIcon, calculatorIcon, piggyBankIcon, shoppingBagIcon, shoppingCartIcon, walletIcon, storeIcon, euroIcon, dollarIcon, pesoIcon, creditCardIcon, bankIcon, dollarBillIcon,\n  eCheckIcon, poundIcon, cloudTrafficIcon, briefcaseIcon, boltIcon, truckIcon, uploadCloudIcon, nodeGroupIcon, cpuIcon, factoryIcon, cloudNetworkIcon, processOnVmIcon, bugIcon,\n  shieldCheckIcon, curveChartIcon, detailsIcon, cloudScaleIcon, flagIcon, assignUserIcon, bookIcon, downloadCloudIcon, formIcon, disconnectIcon, networkSwitchIcon, controlLunIcon,\n  filterIcon, logoutIcon, banIcon, switchIcon, circleIcon, sortByIcon, justifyTextIcon, syncIcon, linkIcon, clockIcon, helpIcon, copyIcon, codeIcon, compassIcon, tagsIcon, pencilIcon,\n  plusIcon, windowCloseIcon, wrenchIcon, nvmeIcon, resistorIcon, vmIcon, trashIcon, downloadIcon, refreshIcon, envelopeIcon, newIcon,\n  plusCircleIcon, keyIcon, connectIcon, popOutIcon, employeeIcon, shieldIcon, cursorHandGrabIcon, addTextIcon,\n  dotCircleIcon, undoIcon, redoIcon, tagIcon, copyToClipboardIcon, historyIcon, recycleIcon, eraserIcon, exportIcon, administratorIcon\n);\n@NgModule({\n  declarations: [\n    AppComponent,\n    HeaderComponent,\n    ButtonsPageComponent,\n    TagsPageComponent,\n    DrawerPageComponent,\n    EntriesPageComponent,\n    EntryGridPageComponent,\n    EntryTilePageComponent\n  ],\n  imports: [\n    CommonModule,\n    BrowserModule,\n    BrowserAnimationsModule,\n    ClarityModule,\n    AppRoutingModule,\n    UiLibModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { BrowserAnimationsModule } from \"@angular/platform-browser/animations\";\nimport { ClarityModule } from '@clr/angular';\nimport { BadgeComponent, ButtonV2Component, EntryItemComponent, EntryKeyValueComponent, EntryTile2Component, EntryTile2ItemConfigComponent, EntryTile2TitleConfigComponent, EntryTile3Component, TestButtonComponent, UiLibModule } from 'projects/ui-lib/src/public-api';\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { HeaderComponent } from './components/header/header.component';\nimport { ButtonsPageComponent } from './pages/buttons-page/buttons-page.component';\nimport { DrawerPageComponent } from './pages/drawer-page/drawer-page.component';\nimport { EntriesPageComponent } from './pages/entries-page/entries-page.component';\nimport { EntryGridPageComponent } from './pages/entry-grid-page/entry-grid-page.component';\nimport { TagsPageComponent } from './pages/tags-page/tags-page.component';\nimport { EntryTilePageComponent } from './pages/entry-tile-page/entry-tile-page/entry-tile-page.component';\n\nimport {\n  ClarityIcons,\n  unknownStatusIcon, homeIcon, cogIcon, checkIcon, timesIcon, exclamationTriangleIcon, exclamationCircleIcon, checkCircleIcon, infoCircleIcon, infoStandardIcon, successStandardIcon, errorStandardIcon,\n  warningStandardIcon, helpInfoIcon, barsIcon, userIcon, angleIcon, folderIcon, folderOpenIcon, bellIcon, imageIcon, cloudIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon,\n  filterGridIcon, filterGridCircleIcon, searchIcon, viewColumnsIcon, angleDoubleIcon, calendarIcon, eventIcon, eyeIcon, stepForward2Icon,\n  arrowIcon, calculatorIcon, piggyBankIcon, shoppingBagIcon, shoppingCartIcon, walletIcon, storeIcon, euroIcon, dollarIcon, pesoIcon, creditCardIcon, bankIcon, dollarBillIcon,\n  eCheckIcon, poundIcon, cloudTrafficIcon, briefcaseIcon, boltIcon, truckIcon, uploadCloudIcon, nodeGroupIcon, cpuIcon, factoryIcon, cloudNetworkIcon, processOnVmIcon, bugIcon,\n  shieldCheckIcon, curveChartIcon, detailsIcon, cloudScaleIcon, flagIcon, assignUserIcon, bookIcon, downloadCloudIcon, formIcon, disconnectIcon, networkSwitchIcon, controlLunIcon,\n  filterIcon, logoutIcon, banIcon, switchIcon, circleIcon, sortByIcon, justifyTextIcon, syncIcon, linkIcon, clockIcon, helpIcon, copyIcon, codeIcon, compassIcon, tagsIcon, pencilIcon,\n  plusIcon, windowCloseIcon, wrenchIcon, nvmeIcon, resistorIcon, vmIcon, trashIcon, downloadIcon, refreshIcon, envelopeIcon, newIcon,\n  plusCircleIcon, keyIcon, connectIcon, popOutIcon, employeeIcon, shieldIcon, cursorHandGrabIcon, addTextIcon,\n  dotCircleIcon, undoIcon, redoIcon, tagIcon, copyToClipboardIcon, historyIcon, recycleIcon, eraserIcon, exportIcon, administratorIcon\n\n} from \"@cds/core/icon\";\nimport '@cds/core/icon/register.js';\n\nClarityIcons.addIcons(\n  unknownStatusIcon, homeIcon, cogIcon, checkIcon, timesIcon, exclamationTriangleIcon, exclamationCircleIcon, checkCircleIcon, infoCircleIcon, infoStandardIcon, successStandardIcon, errorStandardIcon,\n  warningStandardIcon, helpInfoIcon, barsIcon, userIcon, angleIcon, folderIcon, folderOpenIcon, bellIcon, imageIcon, cloudIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon,\n  filterGridIcon, filterGridCircleIcon, searchIcon, viewColumnsIcon, angleDoubleIcon, calendarIcon, eventIcon, eyeIcon, stepForward2Icon,\n  arrowIcon, calculatorIcon, piggyBankIcon, shoppingBagIcon, shoppingCartIcon, walletIcon, storeIcon, euroIcon, dollarIcon, pesoIcon, creditCardIcon, bankIcon, dollarBillIcon,\n  eCheckIcon, poundIcon, cloudTrafficIcon, briefcaseIcon, boltIcon, truckIcon, uploadCloudIcon, nodeGroupIcon, cpuIcon, factoryIcon, cloudNetworkIcon, processOnVmIcon, bugIcon,\n  shieldCheckIcon, curveChartIcon, detailsIcon, cloudScaleIcon, flagIcon, assignUserIcon, bookIcon, downloadCloudIcon, formIcon, disconnectIcon, networkSwitchIcon, controlLunIcon,\n  filterIcon, logoutIcon, banIcon, switchIcon, circleIcon, sortByIcon, justifyTextIcon, syncIcon, linkIcon, clockIcon, helpIcon, copyIcon, codeIcon, compassIcon, tagsIcon, pencilIcon,\n  plusIcon, windowCloseIcon, wrenchIcon, nvmeIcon, resistorIcon, vmIcon, trashIcon, downloadIcon, refreshIcon, envelopeIcon, newIcon,\n  plusCircleIcon, keyIcon, connectIcon, popOutIcon, employeeIcon, shieldIcon, cursorHandGrabIcon, addTextIcon,\n  dotCircleIcon, undoIcon, redoIcon, tagIcon, copyToClipboardIcon, historyIcon, recycleIcon, eraserIcon, exportIcon, administratorIcon\n);\n@NgModule({\n  declarations: [\n    AppComponent,\n    HeaderComponent,\n    ButtonsPageComponent,\n    TagsPageComponent,\n    DrawerPageComponent,\n    EntriesPageComponent,\n    EntryGridPageComponent,\n    EntryTilePageComponent\n  ],\n  imports: [\n    CommonModule,\n    BrowserModule,\n    BrowserAnimationsModule,\n    ClarityModule,\n    AppRoutingModule,\n    UiLibModule,\n    EntryTile2Component,\n    EntryTile2ItemConfigComponent,\n    EntryTile2TitleConfigComponent,\n    BadgeComponent,\n    TestButtonComponent,\n    EntryTile3Component,\n    EntryKeyValueComponent,\n    EntryItemComponent,\n    ButtonV2Component\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }",
             "children": [
                 {
                     "type": "providers",
@@ -3647,7 +3783,7 @@
                 "linktype": "component",
                 "name": "EntryTilePageComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/14",
+                "coverageCount": "0/22",
                 "status": "low"
             },
             {

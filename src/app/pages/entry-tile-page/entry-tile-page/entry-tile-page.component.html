@@ -67,66 +67,19 @@
 <div class="columns" style="margin-top: .5rem;">
     <div class="container">
         <div class="item">
-            <ui-entry-tile 
-                title="Entry Tile with config objects" 
-                titleIcon="cpu" 
-                collapseMode=1 
-                [isLoading]="false"
-                moreButtonLabel="More"
-                [state]="entryTile2State"
-                [pageSize]="itemsPerPage"
-                >
-                
-                <uic-entry-tile-title label="State" value="Unhealthy" [state]="entryTile2TitleState"></uic-entry-tile-title>
-                <uic-entry-tile-title label="Updated" value="50 mins ago" isLoading="true"></uic-entry-tile-title>
-
-                <uic-entry-tile-item 
+            <ui-entry-tile-3 title="Slotted Empty Tile" collapseMode=1>
+                <!--
+                <ui-entry-key-value label="State" value="Healthy"></ui-entry-key-value>
+                -->
+                <ui-entry-item 
                     primaryValue="Primary" 
                     secondaryValue="Subtitle" 
                     state=0 
                     showStateIcon=true
+                    [isLoading]="false"
                     >
-
-                </uic-entry-tile-item>
-                
-                <uic-entry-tile-item 
-                    title="Connectivity"
-                    primaryValue="Connected"
-                    secondaryValue="4 mins ago"
-                    icon="pop-out"
-                    [clickable]="true"
-                    >
-
-                </uic-entry-tile-item>
-
-
-                <uic-entry-tile-item 
-                    primaryValue="Completed"
-                    secondaryValue="2 mins ago"
-                    state=3
-                    title="TLS Registration"
-                    >
-                </uic-entry-tile-item>
-
-                <uic-entry-tile-item 
-                    primaryValue="Started"
-                    secondaryValue="12 mins ago"
-                    state=1
-                    title="Onboarding"
-                    >
-                </uic-entry-tile-item>
-                
-                @for (_ of [].constructor(4); track $index) {
-                    <uic-entry-tile-item 
-                        title="TEST"
-                        [primaryValue]="'Registered'.concat(($index + 4).toString())"
-                        >
-                    </uic-entry-tile-item>
-
-                }
-            </ui-entry-tile>
-
-                
+                </ui-entry-item>
+            </ui-entry-tile-3>
         </div>
     </div>
     

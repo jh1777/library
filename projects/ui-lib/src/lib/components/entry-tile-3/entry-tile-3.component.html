@@ -5,7 +5,7 @@
         @if (titleIcon()) {
           <cds-icon [attr.shape]="titleIcon()" size="20"></cds-icon>
         }
-        {{ title() + "-> #T: " + titles.length + ", #I: " + items.length }}
+        {{ title() }}
       </div>
       <div class="csgp-generic-container-right">
         @if (errorMessage()) {
@@ -38,10 +38,14 @@
   >
     <div class="csgp-entry-tile-header">
       <ng-content select="ui-entry-key-value"></ng-content>
+      @if(titles?.length == 0 && items?.length == 0) {
+        There is no content configured yet.
+      } 
     </div>
     <div [@fade]="newPage() != currentPage()">
       @if ((collapseMode() == 1 && !isCollapsed()) || collapseMode() != 1) {
         <div class="csgp-entry-tile-itemcontainer">
+
           <ng-content select="ui-entry-item"></ng-content>
 
           @if(buttons.length > 0) {
