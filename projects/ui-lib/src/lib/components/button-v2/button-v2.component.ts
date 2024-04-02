@@ -34,11 +34,18 @@ ClarityIcons.addIcons(
 );
 
 export enum ButtonStyle {
+  /** Small button without any borders and backgrounds */
   noborder = 0,
+  /** Primary style button with petrol bg color and white fonts */
   primary = 1,
+  /** Secondary style button with grey bg color and white fonts */
   secondary = 2,
+  /** Blank outline style button with white fill color and petrol borders */
   outline = 3,
-  destructive = 4
+  /** Destructive  style button with red fill color and white fonts */
+  destructive = 4,
+  /** Confirmation  style button with green fill color and white fonts */
+  confirm = 5
 }
 
 
@@ -60,8 +67,7 @@ export class ButtonV2Component implements AfterContentInit {
     }
   }
 
-  // TODO: isLoading style!!
-  // TODO: style = 4 - Destructive!
+  // TODO: desctructive style for noborder???
   hidden = signal<boolean>(false);
   
   data = input<any>();

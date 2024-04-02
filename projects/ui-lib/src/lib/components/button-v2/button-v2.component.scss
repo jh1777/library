@@ -28,6 +28,18 @@
         --csgp-button-v2-primary-hover-color: #a7a7a7;
         --csgp-button-v2-text-color: white;
     }
+
+    .destructive {
+        --csgp-button-v2-primary-color: #e45048;
+        --csgp-button-v2-primary-hover-color: #f76962;
+        --csgp-button-v2-text-color: white;
+    }
+
+    .confirm {
+        --csgp-button-v2-primary-color: #2cd345;
+        --csgp-button-v2-primary-hover-color: #4dea65;
+        --csgp-button-v2-text-color: white;
+    }
     
     .outline {
         --csgp-button-v2-primary-color: white;

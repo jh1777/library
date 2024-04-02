@@ -78,7 +78,7 @@
                 >
                 
                 <uic-entry-tile-title label="State" value="Unhealthy" [state]="entryTile2TitleState"></uic-entry-tile-title>
-                <uic-entry-tile-title label="Updated" value="50 mins ago"></uic-entry-tile-title>
+                <uic-entry-tile-title label="Updated" value="50 mins ago" isLoading="true"></uic-entry-tile-title>
 
                 <uic-entry-tile-item 
                     primaryValue="Primary" 
@@ -175,10 +175,10 @@
                     <ui-badge value=33 [state]=2></ui-badge>
                 </ui-entry-item>
 
-                <ui-button-v2 label="Button #3" [style]=3>
-                    <ui-badge value="1" state=1></ui-badge>
+                <ui-button-v2 label="Accept" [style]=5 icon="check">
+                    <ui-badge value="3"></ui-badge>
                 </ui-button-v2>
-                <ui-button-v2 label="Button #4"></ui-button-v2>
+                <ui-button-v2 label="Delete" [style]=4 icon="trash"></ui-button-v2>
 
             </ui-entry-tile-3>
         </div>
