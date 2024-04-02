@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, Input, QueryList, ViewChildren, signal } from '@angular/core';
 import { EntryTileComponent } from 'projects/ui-lib/src/lib/components/entry-tile/entry-tile.component';
 import { IIO } from 'projects/ui-lib/src/lib/components/entry-tile/entry-tile.component.iio.interface';
 import { EntryTile2Component } from 'projects/ui-lib/src/public-api';
@@ -21,6 +21,8 @@ export class EntryTilePageComponent implements AfterViewInit {
   public itemsPerPage: number = 3;
 
   public tileData: Array<EntryTileViewModel> = [];
+
+  buttonId = signal<string>("");
 
   private store: IIO;
 

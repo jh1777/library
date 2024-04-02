@@ -132,7 +132,8 @@
   
       &-right {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        gap: .3rem;
         margin-left: auto;
         line-height: normal;
   

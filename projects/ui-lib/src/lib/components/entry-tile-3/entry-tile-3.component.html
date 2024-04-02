@@ -17,7 +17,7 @@
         @if (collapseMode() > 0) {
           <div
             class="csgp-entry-tile-collapse-button"
-            (click)="toggleCollapsedState()"
+            (click)="isCollapsed.set(!this.isCollapsed())"
           >
             <cds-icon
               shape="angle"
@@ -52,7 +52,7 @@
           }
 
           @if (moreButtonLabel()) {
-            <div class="csgp-entry-tile-more" (click)="showMoreClicked($event)">
+            <div class="csgp-entry-tile-more" (click)="onShowMoreClick.emit(id())">
               {{ moreButtonLabel() }}
             </div>
           }

@@ -24,10 +24,15 @@ import {
   ellipsisVerticalIcon,
   ellipsisHorizontalIcon,
   popOutIcon,
+  playIcon,
+  stopIcon,
+  pauseIcon,
+  refreshIcon
 } from '@cds/core/icon';
 import '@cds/core/icon/register.js';
 import { TestButtonComponent } from '../../test-button/test-button.component';
 import { ButtonV2Component } from '../../button-v2/button-v2.component';
+import { UIBaseComponent } from '../../../base/ui-base.component';
 ClarityIcons.addIcons(
   angleIcon,
   errorStandardIcon,
@@ -37,6 +42,10 @@ ClarityIcons.addIcons(
   ellipsisHorizontalIcon,
   ellipsisVerticalIcon,
   popOutIcon,
+  playIcon,
+  stopIcon,
+  pauseIcon,
+  refreshIcon
 );
 
 @Component({
@@ -47,7 +56,7 @@ ClarityIcons.addIcons(
   templateUrl: './entry-item.component.html',
   styleUrl: './entry-item.component.scss',
 })
-export class EntryItemComponent implements AfterContentInit {
+export class EntryItemComponent extends UIBaseComponent implements AfterContentInit {
   @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
   @ContentChildren(ButtonV2Component) buttons: QueryList<ButtonV2Component>;
 
@@ -58,8 +67,8 @@ export class EntryItemComponent implements AfterContentInit {
       }
     }
 
-    if(this.buttons.length > 1) {
-      for (let i = 1; i < this.buttons.length; i++) {
+    if(this.buttons.length > 2) {
+      for (let i = 2; i < this.buttons.length; i++) {
         this.buttons.get(i).hidden.set(true);
       }
     }
@@ -67,7 +76,6 @@ export class EntryItemComponent implements AfterContentInit {
 
   public readonly placeholder = '⏹⏹ ';
 
-  hidden = signal<boolean>(false);
   showTitle = signal<boolean>(true);
 
   /** Indicates whether the content is still loading */

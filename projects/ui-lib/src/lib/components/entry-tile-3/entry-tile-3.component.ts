@@ -12,8 +12,8 @@ import {
 import '@cds/core/icon/register.js';
 import { EntryItemComponent } from './entry-item/entry-item.component';
 import { EntryKeyValueComponent } from './entry-key-value/entry-key-value.component';
-import { TestButtonComponent } from '../test-button/test-button.component';
 import { ButtonV2Component } from '../button-v2/button-v2.component';
+import { UIBaseComponent } from '../../base/ui-base.component';
 ClarityIcons.addIcons(
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
 );
@@ -34,7 +34,7 @@ ClarityIcons.addIcons(
     ])
   ]
 })
-export class EntryTile3Component implements AfterContentInit {
+export class EntryTile3Component extends UIBaseComponent implements AfterContentInit {
 
   private prepareItems = () => {
     for (let i = 0; i < this.items.length; i++) {
@@ -112,9 +112,6 @@ export class EntryTile3Component implements AfterContentInit {
       return 0;
     }
   });
-
-  /**  General purpose */
-  id = input<any>();
   
   /** Indicates whether the content is still loading */
   isLoading = input<boolean>(false);
@@ -179,7 +176,6 @@ export class EntryTile3Component implements AfterContentInit {
   pageSize = input<number>(null);
 
   // OUTPUTS
-
   /**
    * Click event on More Button (if present)  
    * Emits the tile id
@@ -200,23 +196,6 @@ export class EntryTile3Component implements AfterContentInit {
   }
 
   // BUTTON ACTIONS
-  /**
-   * Toggle expand and collapse state on button click
-   */
-  public toggleCollapsedState() {
-    this.isCollapsed.set(!this.isCollapsed());
-  }
-
-  /**
-   * Show more button was clicked
-   * @param event {@link Event}
-   */
-  public showMoreClicked = (event: Event) => {
-    event?.preventDefault();
-    event?.stopPropagation();
-    this.onShowMoreClick.emit(this.id);
-  }
-
 
   /**
    * Action is called if pagination is enabled and the user   
@@ -236,17 +215,5 @@ export class EntryTile3Component implements AfterContentInit {
         }
       }));
     }
-  }
-
-  checkItemTitleDifferences(index: number): boolean {
-    if (index == 0) {
-      return true;
-    }
-    if (this.items.length >= index + 1) {
-      const curr = this.items.get(index).title();
-      const prev = this.items.get(index - 1).title();    
-      return prev != curr;
-    }
-    return true;
   }
 }

@@ -18,6 +18,7 @@ import {
 } from '@cds/core/icon';
 import '@cds/core/icon/register.js';
 import { BadgeComponent } from '../badge/badge.component';
+import { UIBaseComponent } from '../../base/ui-base.component';
 ClarityIcons.addIcons(
   angleIcon,
   errorStandardIcon,
@@ -34,8 +35,10 @@ ClarityIcons.addIcons(
 );
 
 export enum ButtonStyle {
-  /** Small button without any borders and backgrounds */
-  noborder = 0,
+  /** Small standard petrol button without any borders and backgrounds */
+  simple_primary = 0,
+  /** Small standard red button without any borders and backgrounds */
+  simple_destructive = 6,
   /** Primary style button with petrol bg color and white fonts */
   primary = 1,
   /** Secondary style button with grey bg color and white fonts */
@@ -57,7 +60,7 @@ export enum ButtonStyle {
   templateUrl: './button-v2.component.html',
   styleUrl: './button-v2.component.scss'
 })
-export class ButtonV2Component implements AfterContentInit {
+export class ButtonV2Component extends UIBaseComponent implements AfterContentInit {
   @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
   ngAfterContentInit(): void {
     if(this.badges.length > 1) {
@@ -66,13 +69,7 @@ export class ButtonV2Component implements AfterContentInit {
       }
     }
   }
-
-  // TODO: desctructive style for noborder???
-  hidden = signal<boolean>(false);
-  
-  data = input<any>();
-  id = input<string>();
-
+ 
   label = input.required<string>();
 
   style = input<ButtonStyle>(ButtonStyle.primary);

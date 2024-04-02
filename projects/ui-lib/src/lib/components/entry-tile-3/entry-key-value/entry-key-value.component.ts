@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { EntryState } from '../models/entryState.model';
 import { ClarityModule } from '@clr/angular';
 import {
@@ -7,6 +7,7 @@ import {
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisVerticalIcon, ellipsisHorizontalIcon, popOutIcon
 } from "@cds/core/icon";
 import '@cds/core/icon/register.js';
+import { UIBaseComponent } from '../../../base/ui-base.component';
 ClarityIcons.addIcons(
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
 );
@@ -19,10 +20,8 @@ ClarityIcons.addIcons(
   templateUrl: './entry-key-value.component.html',
   styleUrl: './entry-key-value.component.scss'
 })
-export class EntryKeyValueComponent {
+export class EntryKeyValueComponent extends UIBaseComponent {
   public readonly placeholder = "⏹⏹ ";
-
-  hidden = signal<boolean>(false);
 
   /** Indicates whether the content is still loading */
   isLoading = input<boolean>(false);

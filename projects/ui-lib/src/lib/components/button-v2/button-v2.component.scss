@@ -65,11 +65,42 @@
         }
     }
 
+    .simple-primary {
+        --csgp-button-v2-primary-hover-color: #5097AB;
+        --csgp-button-v2-text-color: #007A93;
+    }
+
+    .simple-destructive {
+        --csgp-button-v2-primary-hover-color: #f76962;
+        --csgp-button-v2-text-color: #e45048;
+    }
+
+    .simple {
+        &:not(.disabled):hover {
+            color: var(--csgp-button-v2-primary-hover-color, #5097AB) !important;
+            > cds-icon {
+                color: var(--csgp-button-v2-primary-hover-color, #5097AB) !important;
+            }
+
+            &:active {
+                color: var(--csgp-button-v2-text-color, #007A93) !important;
+                > cds-icon {
+                    color: var(--csgp-button-v2-text-color, #007A93) !important;
+                }
+            }
+            
+        }
+
+        > cds-icon {
+            color: var(--csgp-button-v2-text-color, #007A93) !important;
+        }
+    }
+
     .csgp-button-v2 {
         display: flex;
         align-items: center;
         width: fit-content;
-        font-size: var(--csgp-button-font-size, .65rem);
+        font-size: var(--csgp-button-v2-font-size, .65rem);
         gap: .3rem;
         line-height: normal;
         cursor: pointer;
@@ -82,25 +113,6 @@
                 user-select: none; /* Non-prefixed version, currently
                                         supported by Chrome, Edge, Opera and Firefox */
         color: var(--csgp-button-v2-text-color, #007A93);
-
-        &:not(.disabled):hover {
-            color: var(--csgp-button-text-hover-color, #5097AB);
-            > cds-icon {
-                color: var(--csgp-button-icon-hover-color, #5097AB);
-            }
-
-            &:active {
-                color: var(--csgp-button-text-color, #007A93);
-                > cds-icon {
-                    color: var(--csgp-button-text-hover-color, #007A93);
-                }
-            }
-            
-        }
-
-        > cds-icon {
-            color: var(--csgp-button-icon-color, #007A93);
-        }
     }
 
     .csgp-badge {
