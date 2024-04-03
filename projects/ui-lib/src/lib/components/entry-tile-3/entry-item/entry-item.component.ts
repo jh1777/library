@@ -4,7 +4,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
-  ElementRef,
   EventEmitter,
   Output,
   QueryList,
@@ -30,7 +29,6 @@ import {
   refreshIcon
 } from '@cds/core/icon';
 import '@cds/core/icon/register.js';
-import { TestButtonComponent } from '../../test-button/test-button.component';
 import { ButtonV2Component } from '../../button-v2/button-v2.component';
 import { UIBaseComponent } from '../../../base/ui-base.component';
 ClarityIcons.addIcons(

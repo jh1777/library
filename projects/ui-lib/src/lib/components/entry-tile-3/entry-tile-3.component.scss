@@ -17,7 +17,7 @@
     --success-item-bg-color: #ceffd5;
     --success-item-border-color: #2cd345;
   
-    --dot-size: 9px;
+    --dot-size: 10px;
   
     .clickable:hover {
       cursor: pointer;
@@ -107,11 +107,13 @@
         flex-direction: column;
         border-radius: .3rem;
         padding: .3rem .6rem;
+        color: black;
       }
   
       &-title {
         display: flex;
         font-size: large;
+        color: black;
         font-weight: 700;
         margin-bottom: 0.3rem;
       }

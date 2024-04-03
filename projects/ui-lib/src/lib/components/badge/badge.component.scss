@@ -1,13 +1,6 @@
 :host {
     display: contents;
-    text-decoration: none;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-        -khtml-user-select: none; /* Konqueror HTML */
-        -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
+
     .csgp-badge-error {
         background-color: var(--csgp-badge-error-background-color, #e45048) !important;
         color: white !important;
@@ -67,5 +60,15 @@
         align-items: center; 
         justify-content: center;
         box-shadow: 0px 0px 3px var(--csgp-badge-shadow-color, #9a9a9a);
+        text-decoration: none;
+        cursor: default;
+        -moz-text-decoration: none;
+        -webkit-text-decoration: none;
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none;
     }
 }

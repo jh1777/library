@@ -15,11 +15,11 @@ import {
   trashIcon,
   popOutIcon,
   undoIcon,
+  copyIcon
 } from '@cds/core/icon';
 import '@cds/core/icon/register.js';
 import { BadgeComponent } from '../badge/badge.component';
 import { UIBaseComponent } from '../../base/ui-base.component';
-import { UIToolbarBaseComponent } from '../../base/toolbar-base.component';
 ClarityIcons.addIcons(
   angleIcon,
   errorStandardIcon,
@@ -33,6 +33,7 @@ ClarityIcons.addIcons(
   trashIcon,
   undoIcon,
   popOutIcon,
+  copyIcon
 );
 
 export enum ButtonStyle {
@@ -61,7 +62,7 @@ export enum ButtonStyle {
   templateUrl: './button-v2.component.html',
   styleUrl: './button-v2.component.scss'
 })
-export class ButtonV2Component extends UIToolbarBaseComponent implements AfterContentInit {
+export class ButtonV2Component extends UIBaseComponent implements AfterContentInit {
   @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
   ngAfterContentInit(): void {
     if(this.badges.length > 1) {
@@ -70,8 +71,10 @@ export class ButtonV2Component extends UIToolbarBaseComponent implements AfterCo
       }
     }
   }
+
+  whiteMode = signal<boolean>(false);
  
-  label = input.required<string>();
+  label = input<string>();
 
   style = input<ButtonStyle>(ButtonStyle.primary);
 

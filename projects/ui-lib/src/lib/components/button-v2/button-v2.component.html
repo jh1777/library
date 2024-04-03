@@ -15,6 +15,7 @@
         [class.outline]="style() == 3"
         [class.destructive]="style() == 4 || style() == 6"
         [class.confirm]="style() == 5"
+        [class.white-mode]="whiteMode() == true"
         (click)="onClick.emit(id())"
     >
     @if(icon() != null) {
