@@ -172,6 +172,20 @@
         </div>
         <br/>
         Id from Button: {{ buttonId() }}
+        <div class="item">
+            <ui-card title="Simple Card" text="This is the content of this card.">
+                
+                <ui-button-v2 
+                label="Button Label" 
+                icon="trash" 
+                [disabled]="false"
+                [style]=1
+                id="a2a3a5b0"
+                (onClick)="buttonId.set($event)"
+            >
+            </ui-button-v2>
+            </ui-card>
+        </div>
     </div>
 </div>
 

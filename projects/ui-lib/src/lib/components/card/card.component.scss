@@ -1,0 +1,36 @@
+:host {
+    position: relative;
+    display: contents;
+
+
+    .csgp-card {
+        background-color: white;
+        color: black;
+        display: flex;
+        flex-direction: column;
+        gap: .4rem;
+        -webkit-box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, #d0d0d0);
+        -moz-box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, #d0d0d0);
+        box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, #d0d0d0);
+        padding: .55rem .55rem;
+        border-radius: .3rem;
+        &-header {
+            font-size: large;
+            font-weight: 700;
+            display: flex;
+            flex-direction: row;
+
+        }
+        &-content {
+            font-size: .7rem;
+            display: flex;
+            flex-direction: row;
+        }
+        &-footer {
+            display: flex;
+            flex-direction: row;
+            gap: .4rem;
+            margin-left: auto;
+        }
+    }
+}
