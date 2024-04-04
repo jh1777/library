@@ -57,7 +57,7 @@ export enum ButtonStyle {
 @Component({
   selector: 'ui-button-v2',
   standalone: true,
-  imports: [CommonModule, ClarityModule],
+  imports: [CommonModule, ClarityModule, UIBaseComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './button-v2.component.html',
   styleUrl: './button-v2.component.scss'

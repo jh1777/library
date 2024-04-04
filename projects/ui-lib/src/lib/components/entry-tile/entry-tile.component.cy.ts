@@ -60,13 +60,13 @@ describe('EntryTileComponent', () => {
   
       cy.get("@angular").then((wrapper) => {
         // Icon
-        cy.get('.csgp-generic-container-left > clr-icon').should('exist');
+        cy.get('.csgp-generic-container-left > cds-icon').should('exist');
         // Title
         cy.get('.csgp-entry-tile-title > .csgp-generic-container-left').should('contain.text', "Test Tile");
         // not Collapsed
         cy.get('.csgp-entry-tile-itemcontainer').should('exist');
         // Collapse Button
-        cy.get('.csgp-entry-tile-collapse-button > clr-icon').should('exist');
+        cy.get('.csgp-entry-tile-collapse-button > cds-icon').should('exist');
         // Header
         // 1st
         cy.get('.csgp-entry-tile-header > :nth-child(1)').should('contain.text', "State");
@@ -83,7 +83,7 @@ describe('EntryTileComponent', () => {
         cy.get('.csgp-entry-tile-item-secondary').should('contain.text', "23 mins ago");
 
         // Icon
-        cy.get('.csgp-entry-tile-item-icon > clr-icon').should('exist');
+        cy.get('.csgp-entry-tile-item-icon > cds-icon').should('exist');
 
         // More
         cy.get('.csgp-entry-tile-more').should('contain.text', "Show More informations");
@@ -130,11 +130,11 @@ describe('EntryTileComponent', () => {
         })
         cy.get("@angular2").then((wrapper) => {
           // Icon
-          cy.get('.csgp-generic-container-left > clr-icon').should('not.exist');
+          cy.get('.csgp-generic-container-left > cds-icon').should('not.exist');
           // not Collapsed
           cy.get('.csgp-entry-tile-itemcontainer').should('exist');
           // Collapse Button
-          cy.get('.csgp-entry-tile-collapse-button > clr-icon').should('not.exist');
+          cy.get('.csgp-entry-tile-collapse-button > cds-icon').should('not.exist');
           // Header
           // 1st
           cy.get('.csgp-entry-tile-header > :nth-child(1)').should('contain.text', "State");
