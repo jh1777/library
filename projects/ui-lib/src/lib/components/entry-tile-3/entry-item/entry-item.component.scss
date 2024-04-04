@@ -209,6 +209,7 @@
         top: 0%; // Align vertically centered
         right: -8px; // Adjust as needed for desired distance from the button edge
         transform: translateY(-50%); // Center vertically
+        z-index: 999;
     }
   
   }

@@ -14,7 +14,7 @@
             {{ errorMessage() }}
           </span>
         }
-        @if (collapseMode() > 0) {
+        @if (collapseMode() > 0 && titles?.length > 0) {
           <div
             class="csgp-entry-tile-collapse-button"
             (click)="isCollapsed.set(!this.isCollapsed())"
@@ -36,12 +36,14 @@
     [class.error-tile]="state() == 2 || (state() == 4 && calcState() == 2)"
     [class.success-tile]="state() == 3 || (state() == 4 && calcState() == 3)"
   >
+
     <div class="csgp-entry-tile-header">
       <ng-content select="ui-entry-key-value"></ng-content>
       @if(titles?.length == 0 && items?.length == 0) {
         There is no content configured yet.
       } 
     </div>
+  
     <div [@fade]="newPage() != currentPage()">
       @if ((collapseMode() == 1 && !isCollapsed()) || collapseMode() != 1) {
         <div class="csgp-entry-tile-itemcontainer">

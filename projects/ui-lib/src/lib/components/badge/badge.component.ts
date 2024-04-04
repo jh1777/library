@@ -12,6 +12,7 @@ import { UIBaseComponent } from '../../base/ui-base.component';
 })
 export class BadgeComponent extends UIBaseComponent {
 
+  label = input<string>();
 
   /**
    * Number (value) to show in the badge; Optional
