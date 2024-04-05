@@ -12,13 +12,15 @@
         -webkit-box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, #d0d0d0);
         -moz-box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, #d0d0d0);
         box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, #d0d0d0);
-        padding: .55rem .55rem;
+        padding: .8rem 1rem;
         border-radius: .3rem;
         &-header {
             font-size: large;
             font-weight: 700;
             display: flex;
             flex-direction: row;
+            align-items: center;
+            gap: .5rem;
 
         }
         &-content {
@@ -29,8 +31,8 @@
         &-footer {
             display: flex;
             flex-direction: row;
+            margin-top: .3rem;
             gap: .4rem;
-            margin-left: auto;
         }
     }
 }
