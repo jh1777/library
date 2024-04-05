@@ -4,7 +4,7 @@
             {{ title() }}
 
             <div style="margin-left: auto;">
-                <ng-content select="[btnHeader]"></ng-content>
+                <ng-content select="ui-button-v2[btnHeader]"></ng-content>
             </div>
             <!-- <ng-content select="ui-button-v2[slot=btn01]"></ng-content> -->
         </div>
@@ -14,6 +14,9 @@
         <div class="csgp-card-footer">
             <!-- <ng-content select="ui-button-v2[slot=btn02]"></ng-content> -->
             <ng-content select="[btnFooter]"></ng-content>
+            <div style="margin-left: auto;">
+                <ng-content select="ui-button-v2[btnFooterRight]"></ng-content>
+            </div>
         </div>
     </div>
 }
