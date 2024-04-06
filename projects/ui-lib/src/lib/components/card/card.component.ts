@@ -13,7 +13,7 @@ import { ButtonV2Component } from '../button-v2/button-v2.component';
 export class CardComponent extends UIBaseComponent implements AfterContentInit {
 
   @ContentChildren(ButtonV2Component) buttons: QueryList<ButtonV2Component>;
-
+// TODO :IS LOADING
   ngAfterContentInit(): void {
     if (this.buttons.length > 2) {
       throw Error("Maximum number of buttons in a card is 3");
