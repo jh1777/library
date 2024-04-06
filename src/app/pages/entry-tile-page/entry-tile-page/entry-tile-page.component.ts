@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, Input, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, Input, QueryList, ViewChildren, signal } from '@angular/core';
 import { EntryTileComponent } from 'projects/ui-lib/src/lib/components/entry-tile/entry-tile.component';
 import { IIO } from 'projects/ui-lib/src/lib/components/entry-tile/entry-tile.component.iio.interface';
+import { EntryTile2Component } from 'projects/ui-lib/src/public-api';
 import { EntryTileViewData, EntryTileViewModel } from 'src/app/models/entry-tile';
 
 @Component({
@@ -12,8 +13,16 @@ export class EntryTilePageComponent implements AfterViewInit {
   @Input()
   showComponentBorder: boolean = false;
   @ViewChildren(EntryTileComponent) viewChildren!: QueryList<EntryTileComponent>;
+  @ViewChildren(EntryTile2Component) entryTile2!: QueryList<EntryTile2Component>;
+
+  public entryTile2State: number = 0;
+  public entryTile2TitleState: number = 1;
+  public maxItems: number = 5;
+  public itemsPerPage: number = 3;
 
   public tileData: Array<EntryTileViewModel> = [];
+
+  buttonId = signal<string>("");
 
   private store: IIO;
 
@@ -64,5 +73,16 @@ export class EntryTilePageComponent implements AfterViewInit {
       label: "Test_XX",
       value: "Works fine"
     });
+  }
+
+
+  setMaxItems(plus: boolean) {
+    plus ? this.maxItems++ : this.maxItems--;
+    //const v = this.entryTile2?.first?.maxItems();
+    this.entryTile2?.first?.maxItems.set(this.maxItems);
+  }
+
+  setItemsPerPage(plus: boolean) {
+    plus ? this.itemsPerPage++ : this.itemsPerPage--;
   }
 }

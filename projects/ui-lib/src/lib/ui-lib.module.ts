@@ -96,7 +96,7 @@ ClarityIcons.addIcons(
     DrawerEntryComponent,
     GridTestComponent,
     GridTestComponent2,
-    EntryTileComponent
+    EntryTileComponent,
   ]
 })
 export class UiLibModule { }

@@ -1,0 +1,70 @@
+@if (hidden() == false) {
+  @if (isLoading() == true) {
+    <div class="csgp-generic-container loading no-select pulse">
+      <div class="csgp-generic-container-left">
+        <div>
+          @for (_ of [].constructor(3); track $index) {
+            {{ placeholder }}
+          }
+        </div>
+      </div>
+      <div class="csgp-generic-container-right">
+        <div>
+          @for (_ of [].constructor(3); track $index) {
+            {{ placeholder }}
+          }
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (isLoading() == false) {
+    <div class="csgp-generic-container">
+      <div class="csgp-generic-container-left">
+        {{ label() }}
+      </div>
+      <div class="csgp-generic-container-right csgp-generic-flex-row">
+        @if (state()) {
+          <cds-icon
+            solid
+            [style.color]="
+              state() == 1
+                ? 'var(--attention-item-border-color)'
+                : state() == 2
+                  ? 'var(--error-item-border-color)'
+                  : state() == 3
+                    ? 'var(--success-item-border-color)'
+                    : ''
+            "
+            [attr.shape]="
+              state() == 1
+                ? 'warning-standard'
+                : state() == 2
+                  ? 'error-standard'
+                  : state() == 3
+                    ? 'success-standard'
+                    : ''
+            "
+            size="16"
+          >
+          </cds-icon>
+        }
+
+        <div
+          class="csgp-entry-tile-header-value"
+          [style.color]="
+            state() == 1
+              ? 'var(--attention-item-border-color)'
+              : state() == 2
+                ? 'var(--error-item-border-color)'
+                : state() == 3
+                  ? 'var(--success-item-border-color)'
+                  : ''
+          "
+        >
+          {{ value() }}
+        </div>
+      </div>
+    </div>
+  }
+}

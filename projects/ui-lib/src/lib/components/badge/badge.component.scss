@@ -1,0 +1,104 @@
+:host {
+    display: contents;
+
+    .csgp-badge-error {
+        background-color: var(--csgp-badge-error-background-color, #e45048) !important;
+        color: white !important;
+    }
+
+    .csgp-badge-warning {
+        background-color: var(--csgp-badge-warning-background-color, #dea035) !important;
+        color: white !important;
+    }
+
+    .csgp-badge-success {
+        background-color: var(--csgp-badge-success-background-color, #2cd345) !important;
+        color: white !important;
+    }
+
+    .csgp-badge-container-error {
+        background-color: var(--csgp-badge-container-error-background-color, #f76962) !important;
+        border: 1px solid var(--csgp-badge-container-error-background-color, #f76962) !important;
+        color: white !important;
+    }
+
+    .csgp-badge-container-warning {
+        background-color: var(--csgp-badge-container-warning-background-color, #edb350) !important;
+        border: 1px solid var(--csgp-badge-container-warning-background-color, #edb350) !important;
+        color: white !important;
+    }
+
+    .csgp-badge-container-success {
+        background-color: var(--csgp-badge-container-success-background-color, #4dea65) !important;
+        border: 1px solid var(--csgp-badge-container-success-background-color, #4dea65) !important;
+        color: white !important;
+    }
+
+    .csgp-badge-small {
+        --size-value: 15px;
+        height: var(--size-value);
+        min-height: var(--size-value);
+        max-height: var(--size-value);
+        min-width: var(--size-value);
+        max-width: var(--size-value);
+        width: var(--size-value);
+        font-size: x-small;
+    }
+
+    .csgp-badge-medium {
+        --size-value: 20px;
+        height: var(--size-value);
+        min-height: var(--size-value);
+        max-height: var(--size-value);
+        min-width: var(--size-value);
+        max-width: var(--size-value);
+        width: var(--size-value);
+        font-size: .6rem;
+    }
+
+    .csgp-badge-large {
+        --size-value: 24px;
+        height: var(--size-value);
+        min-height: var(--size-value);
+        max-height: var(--size-value);
+        min-width: var(--size-value);
+        max-width: var(--size-value);
+        width: var(--size-value);
+        font-size: large;
+        border-radius: .8rem !important;
+    }
+
+    .csgp-badge {
+        display: flex;
+        width: fit-content;
+        border-radius: .5rem;
+        background-color: #787878;
+        color: white;
+        padding: 0.1rem 0.2rem;
+        align-items: center; 
+        justify-content: center;
+        box-shadow: 0px 0px 3px var(--csgp-badge-shadow-color, #9a9a9a);
+        text-decoration: none;
+        cursor: default;
+        -moz-text-decoration: none;
+        -webkit-text-decoration: none;
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none;
+
+        &-container {
+            padding: 0.1rem 0.35rem;
+            gap: .25rem;
+            background-color: white;
+            align-items: center; 
+            justify-content: center;
+            display: flex;
+            width: fit-content;
+            border-radius: .3rem;
+            border: 1px solid lightgrey;
+        }
+    }
+}

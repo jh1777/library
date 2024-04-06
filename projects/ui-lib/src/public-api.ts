@@ -3,3 +3,11 @@
  */
 
 export * from './lib/ui-lib.module';
+export * from './lib/components/entry-tile-2';
+export * from './lib/components/badge/badge.component';
+export * from './lib/components/test-button/test-button.component';
+export * from './lib/components/entry-tile-3';
+export * from './lib/components/button-v2/button-v2.component';
+export * from './lib/components/value-tile/value-tile.component';
+export * from './lib/components/card/card.component';
+export * from './lib/components/toolbar/toolbar.component';

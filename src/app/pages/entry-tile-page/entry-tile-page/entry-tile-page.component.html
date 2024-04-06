@@ -1,6 +1,7 @@
 <!-- BUTTON with Component Store -->
-<component-header title="ENTRY TILE" subtitle="with Component Store"></component-header>
+<component-header title="ENTRY TILE V3" subtitle="with NG 17, Slots, Signals"></component-header>
 
+<!-- 
 <div style="display: flex; gap: .5rem;margin-bottom: .5rem;">
     <div class="button" (click)="addTestItem()">Add Item and Header</div>
     <div class="button" (click)="toggleCollapseTile()">Toggle Collapse Tile</div>
@@ -35,6 +36,177 @@
         </div>
         <div class="item-output">
             {{ model.$output }}
+        </div>
+    </div>
+</div>
+
+-->
+TOOLBAR
+<br/>
+<div class="item">
+    <ui-toolbar>
+        <ui-button-v2 slot="left" label="Left Simple #1" icon="check" [style]=0></ui-button-v2>
+        <ui-button-v2 slot="left" label="Left Simple #2" [style]=0 [disabled]=true></ui-button-v2>
+        <ui-badge [state]=0 label="CTP2" slot="left"></ui-badge>
+        
+        <ui-button-v2 label="Right #1" slot="right">
+            <ui-badge value=3></ui-badge>
+        </ui-button-v2>
+        <ui-button-v2 label="Right #2" slot="right" [style]="3">
+        </ui-button-v2>
+        <ui-button-v2 icon="play" slot="right" [style]="0"></ui-button-v2>
+        <ui-button-v2 icon="stop" slot="right" [style]="0"></ui-button-v2>
+    </ui-toolbar>
+</div>
+<br/>
+
+
+<div class="button-row">
+    <div>Tile State</div>
+    <div class="button" (click)="setMaxItems(true)">+</div>
+    <div>{{ maxItems }}</div>
+    <div class="button" (click)="setMaxItems(false)">-</div>
+    <div class="button" (click)="entryTile2State = 4">(auto)</div>
+    <div class="button" (click)="entryTile2State = 3">GREEN</div>
+    <div class="button" (click)="entryTile2State = 2">RED</div>
+    <div class="button" (click)="entryTile2State = 1">ORANGE</div>
+    <div class="button" (click)="entryTile2State = 0">GREY</div>
+</div>
+<div class="button-row">
+    <div>Tile Items per Page</div>
+    <div class="button" (click)="setItemsPerPage(true)">+</div>
+    <div>{{ itemsPerPage }}</div>
+    <div class="button" (click)="setItemsPerPage(false)">-</div>
+</div>
+<div class="button-row">
+    <div>First Title State</div>
+    <div class="button" (click)="entryTile2TitleState = 3">GREEN</div>
+    <div class="button" (click)="entryTile2TitleState = 2">RED</div>
+    <div class="button" (click)="entryTile2TitleState = 1">ORANGE</div>
+    <div class="button" (click)="entryTile2TitleState = 0">GREY</div>
+</div>
+
+<div class="columns" style="margin-top: .5rem;">
+    <div class="container">
+        <div class="item">
+            <ui-entry-tile-3 title="Slotted Empty Tile" collapseMode=1>
+                <!--
+                <ui-entry-key-value label="State" value="Healthy"></ui-entry-key-value>
+                -->
+                <ui-entry-item 
+                    primaryValue="Primary" 
+                    secondaryValue="Subtitle" 
+                    state=0 
+                    showStateIcon=true
+                    [isLoading]="false"
+                    >
+                    <ui-button-v2 label="Start" icon="play">
+                        <ui-badge value=13></ui-badge>
+                    </ui-button-v2>
+                    
+                    
+                </ui-entry-item>
+            </ui-entry-tile-3>
+        </div>
+        <br/>
+        VALUE TILE
+        <div class="item">
+            <ui-value-tile key="Vin" value="WDB0101010110">
+                <ui-badge [state]=0 label="CTP2"></ui-badge>
+                <ui-button-v2 icon="copy" [style]=0></ui-button-v2>
+                <ui-button-v2 icon="pop-out" [style]=0></ui-button-v2>
+            </ui-value-tile>
+        </div>
+        <br/>
+        BADGE
+        <div class="item">
+            <ui-badge [state]=0 label="CTP3"></ui-badge>  
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="item">
+            <ui-entry-tile-3 
+                title="Separated Tile" 
+                titleIcon="cpu" 
+                collapseMode=1 
+                [isLoading]="true"
+                moreButtonLabel="More"
+                [state]="entryTile2State"
+                [pageSize]="itemsPerPage"
+                >
+                <ui-button-v2 label="Long Button #2" [style]=1></ui-button-v2>
+                <ui-entry-key-value label="State" value="Unhealthy" [state]="entryTile2TitleState"></ui-entry-key-value>
+                <ui-entry-key-value label="Updated" value="50 mins ago" [isLoading]="false"></ui-entry-key-value>
+                <ui-entry-item 
+                    primaryValue="Primary" 
+                    secondaryValue="Subtitle" 
+                    state=0 
+                    showStateIcon=true
+                    [isLoading]="false"
+                    >
+                    <ui-badge value=13 [state]=3></ui-badge>
+                    <ui-button-v2 label="Start" [style]=0 icon="play"></ui-button-v2>
+                    <ui-button-v2 label="Stop" [style]=6 icon="stop"></ui-button-v2>
+                </ui-entry-item>
+
+                @for (_ of [].constructor(4); track $index) {
+                    <ui-entry-item 
+                        title="TEST"
+                        [primaryValue]="'Registered'.concat(($index + 4).toString())"
+                        >
+                            <ui-button-v2 label="Delete" [style]=6 icon="trash"></ui-button-v2>
+                        
+                    </ui-entry-item>
+
+                }
+
+                <ui-entry-item 
+                    title="Connectivity"
+                    primaryValue="Connected"
+                    secondaryValue="4 mins ago"
+                    icon="pop-out"
+                    [clickable]="true"
+                    >
+                    <ui-badge value=6 [state]=2 [size]=2></ui-badge>
+                    <ui-badge value=33 [state]=2></ui-badge>
+                </ui-entry-item>
+
+                <ui-button-v2 label="Accept" [style]=5 icon="check">
+                    <ui-badge value="3"></ui-badge>
+                </ui-button-v2>
+                <ui-button-v2 label="Delete" [style]=4 icon="trash"></ui-button-v2>
+
+            </ui-entry-tile-3>
+        </div>
+    </div>
+    <div class="container">
+        BUTTON V2
+       <div class="item">
+            <ui-button-v2 
+                label="Button Label" 
+                icon="trash" 
+                [disabled]="false"
+                [style]=1
+                id="a2a3a5b0"
+                (onClick)="buttonId.set($event)"
+            >
+                <ui-badge value=3 [state]=0></ui-badge>
+            </ui-button-v2>
+
+        </div>
+        <br/>
+        Id from Button: {{ buttonId() }}
+        <br/>
+        CARD
+
+        <div class="item">
+            <ui-card title="Simple Card" text="This is the content of this card.">
+                
+                <ui-button-v2 btnHeader label="Top Left"></ui-button-v2>
+                <ui-button-v2 btnFooter label="Footer Left"></ui-button-v2>
+                <ui-button-v2 label="Footer Right" slot="footer-right"></ui-button-v2>
+            </ui-card>
         </div>
     </div>
 </div>
