@@ -1,6 +1,7 @@
 <!-- BUTTON with Component Store -->
-<component-header title="ENTRY TILE" subtitle="with Component Store"></component-header>
+<component-header title="ENTRY TILE V3" subtitle="with NG 17, Slots, Signals"></component-header>
 
+<!-- 
 <div style="display: flex; gap: .5rem;margin-bottom: .5rem;">
     <div class="button" (click)="addTestItem()">Add Item and Header</div>
     <div class="button" (click)="toggleCollapseTile()">Toggle Collapse Tile</div>
@@ -38,6 +39,27 @@
         </div>
     </div>
 </div>
+
+-->
+TOOLBAR
+<br/>
+<div class="item">
+    <ui-toolbar>
+        <ui-button-v2 slot="left" label="Left Simple #1" icon="check" [style]=0></ui-button-v2>
+        <ui-button-v2 slot="left" label="Left Simple #2" [style]=0 [disabled]=true></ui-button-v2>
+        <ui-badge [state]=0 label="CTP2" slot="left"></ui-badge>
+        
+        <ui-button-v2 label="Right #1" slot="right">
+            <ui-badge value=3></ui-badge>
+        </ui-button-v2>
+        <ui-button-v2 label="Right #2" slot="right" [style]="3">
+        </ui-button-v2>
+        <ui-button-v2 icon="play" slot="right" [style]="0"></ui-button-v2>
+        <ui-button-v2 icon="stop" slot="right" [style]="0"></ui-button-v2>
+    </ui-toolbar>
+</div>
+<br/>
+
 
 <div class="button-row">
     <div>Tile State</div>
@@ -87,6 +109,7 @@
             </ui-entry-tile-3>
         </div>
         <br/>
+        VALUE TILE
         <div class="item">
             <ui-value-tile key="Vin" value="WDB0101010110">
                 <ui-badge [state]=0 label="CTP2"></ui-badge>
@@ -95,6 +118,7 @@
             </ui-value-tile>
         </div>
         <br/>
+        BADGE
         <div class="item">
             <ui-badge [state]=0 label="CTP3"></ui-badge>  
         </div>
@@ -157,6 +181,7 @@
         </div>
     </div>
     <div class="container">
+        BUTTON V2
        <div class="item">
             <ui-button-v2 
                 label="Button Label" 
@@ -172,22 +197,16 @@
         </div>
         <br/>
         Id from Button: {{ buttonId() }}
+        <br/>
+        CARD
+
         <div class="item">
             <ui-card title="Simple Card" text="This is the content of this card.">
                 
                 <ui-button-v2 btnHeader label="Top Left"></ui-button-v2>
                 <ui-button-v2 btnFooter label="Footer Left"></ui-button-v2>
-                <ui-button-v2 btnFooterRight label="Footer Right" slot="btn03"></ui-button-v2>
+                <ui-button-v2 label="Footer Right" slot="footer-right"></ui-button-v2>
             </ui-card>
         </div>
     </div>
 </div>
-
-
-<br/>
-<ui-test-button label="Very long Button #1">
-    <ui-badge value="7"></ui-badge>    
-</ui-test-button>
-<br/>
-<ui-badge value=" " [state]=2></ui-badge>
-<br/>
