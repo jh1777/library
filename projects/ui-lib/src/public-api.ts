@@ -15,3 +15,4 @@ export * from './lib/components/card/card.component';
 export * from './lib/components/toolbar/toolbar.component';
 export * from './lib/components/property-entry-2/property-entry-2.component';
 export * from './lib/components/property-metric/property-metric.component';
+export * from './lib/components/entry-tile-grid/entry-tile-grid.component';
