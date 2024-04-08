@@ -1,0 +1,132 @@
+:host {
+    position: relative;
+    display: inline-flex;
+    min-width: max-content;
+
+    .disabled {
+        --csgp-button-v2-primary-color: white !important;
+        --csgp-button-v2-primary-hover-color: white !important;
+        --csgp-button-v2-text-color: #a4a4a4 !important;
+        border: 1px solid var(--csgp-button-v2-text-color) !important;
+        &:not(.bordered) {
+            border: 0px !important;
+        }
+        cursor: default !important;
+        &:not(.bordered) > cds-icon {
+            color: var(--csgp-button-v2-text-color) !important;
+        }
+    }
+
+    .primary {
+        --csgp-button-v2-primary-color: #007A93;
+        --csgp-button-v2-primary-hover-color: #5097AB;
+        --csgp-button-v2-text-color: white;
+    }
+
+    .secondary {
+        --csgp-button-v2-primary-color: #999999;
+        --csgp-button-v2-primary-hover-color: #a7a7a7;
+        --csgp-button-v2-text-color: white;
+    }
+
+    .destructive {
+        --csgp-button-v2-primary-color: #e45048;
+        --csgp-button-v2-primary-hover-color: #f76962;
+        --csgp-button-v2-text-color: white;
+    }
+
+    .confirm {
+        --csgp-button-v2-primary-color: #2cd345;
+        --csgp-button-v2-primary-hover-color: #4dea65;
+        --csgp-button-v2-text-color: white;
+    }
+    
+    .outline {
+        --csgp-button-v2-primary-color: white;
+        --csgp-button-v2-primary-hover-color: #f2f3f4;
+        --csgp-button-v2-text-color: #007A93;
+        border: 1px solid #007A93;
+    }
+
+    .white-mode {
+        --csgp-button-v2-primary-color: white !important;
+        --csgp-button-v2-primary-hover-color: #e9e9e9 !important;
+        --csgp-button-v2-text-color: white !important;
+    }
+
+    .bordered {
+        padding: .35rem .45rem;
+        border-radius: .25rem;
+        background-color: var(--csgp-button-v2-primary-color, #007A93);
+        color: var(--csgp-button-v2-text-color) !important;
+        > cds-icon {
+            color: var(--csgp-button-v2-text-color) !important;
+        }
+
+        &:not(.disabled):hover {
+            background-color: var(--csgp-button-v2-primary-hover-color, #5097AB) !important;
+            &:active {
+                background-color: var(--csgp-button-v2-primary-color, #007A93) !important;
+            }
+        }
+    }
+
+    .simple-primary {
+        --csgp-button-v2-primary-hover-color: #5097AB;
+        --csgp-button-v2-text-color: #007A93;
+    }
+
+    .simple-destructive {
+        --csgp-button-v2-primary-hover-color: #f76962;
+        --csgp-button-v2-text-color: #e45048;
+    }
+
+    .simple {
+        &:not(.disabled):hover {
+            color: var(--csgp-button-v2-primary-hover-color, #5097AB) !important;
+            > cds-icon {
+                color: var(--csgp-button-v2-primary-hover-color, #5097AB) !important;
+            }
+
+            &:active {
+                color: var(--csgp-button-v2-text-color, #007A93) !important;
+                > cds-icon {
+                    color: var(--csgp-button-v2-text-color, #007A93) !important;
+                }
+            }
+            
+        }
+
+        > cds-icon {
+            color: var(--csgp-button-v2-text-color, #007A93) !important;
+        }
+    }
+
+    .csgp-button-v2 {
+        display: flex;
+        align-items: center;
+        width: fit-content;
+        font-size: var(--csgp-button-v2-font-size, .65rem);
+        font-weight: 500;
+        gap: .3rem;
+        line-height: normal;
+        cursor: pointer;
+        text-decoration: none;
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome, Edge, Opera and Firefox */
+        color: var(--csgp-button-v2-text-color, #007A93) !important;
+    }
+
+    .csgp-badge {
+        position: absolute;
+        top: 0%; // Align vertically centered
+        right: -8px; // Adjust as needed for desired distance from the button edge
+        transform: translateY(-50%); // Center vertically
+    }
+  
+}

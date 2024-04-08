@@ -1,0 +1,22 @@
+@if(hidden() == false) {
+    @for(_ of [].constructor(calcColumns()); track $index) {
+        <div class="csgp-entry-tile-grid-column">
+            @if($index == 0) {
+                <ng-content select="ui-entry-tile-3[column=1]"></ng-content>
+            }
+            @if($index == 1) {
+                <ng-content select="ui-entry-tile-3[column=2]"></ng-content>
+            }
+            @if($index == 2) {
+                <ng-content select="ui-entry-tile-3[column=3]"></ng-content>
+            }
+            @if($index == 3) {
+                <ng-content select="ui-entry-tile-3[column=4]"></ng-content>
+            }
+            @if($index == 4) {
+                <ng-content select="ui-entry-tile-3[column=5]"></ng-content>
+            }
+            
+        </div>
+    }
+}

@@ -24,6 +24,9 @@
       "ui-lib": [
         "dist/ui-lib"
       ],
+      "ui": [
+        "./dist/ui"
+      ],
       "@ui" : [
         "projects/ui-lib/src/lib"
       ]

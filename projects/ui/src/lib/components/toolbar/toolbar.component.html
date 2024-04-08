@@ -1,0 +1,10 @@
+@if(hidden() == false) {
+    <div class="csgp-toolbar-left">
+        <ng-content select="ui-button-v2[slot=left]"></ng-content>
+        <ng-content select="ui-badge[slot=left]"></ng-content>
+    </div>
+    <div class="csgp-toolbar-right">
+        <ng-content select="ui-button-v2[slot=right]"></ng-content>
+        <ng-content select="ui-badge[slot=right]"></ng-content>
+    </div>
+}
