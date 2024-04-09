@@ -46,7 +46,7 @@
         [class.error-item]="state() == 2"
         [class.success-item]="state() == 3"
         [attr.title]="tooltip()"
-        (click)="tileItemClicked($event, null)"
+        (click)="onItemClick.emit(id())"
       >
         <div class="csgp-badge">
           <ng-content select="ui-badge"></ng-content>

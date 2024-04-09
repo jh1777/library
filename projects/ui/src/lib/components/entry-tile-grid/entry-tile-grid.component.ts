@@ -11,8 +11,15 @@ import { UIBaseComponent } from '../../shared';
 })
 export class EntryTileGridComponent extends UIBaseComponent implements AfterContentInit {
 
+  /**
+   * Number of Columns for the Grid  
+   * (max 5)
+   */
   columns = input.required<number>();
 
+  /**
+   * Internally used: Max overflow for columns
+   */
   calcColumns = computed(() => {
     if (this.columns() > 5) {
       return 5
@@ -24,7 +31,7 @@ export class EntryTileGridComponent extends UIBaseComponent implements AfterCont
 
   ngAfterContentInit(): void {
     if (this.columns() > 5) {
-      throw new Error('There are only 5 columns supported currently!');
+      console.error('There are only 5 columns supported currently!');
     }
   }
 }

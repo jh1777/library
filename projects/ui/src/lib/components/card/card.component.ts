@@ -11,11 +11,11 @@ import { ButtonComponent } from '../button';
   styleUrl: './card.component.scss'
 })
 export class CardComponent extends UIBaseComponent implements AfterContentInit {
-  public readonly placeholder = '⏹⏹ ';
 
   @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
 
   ngAfterContentInit(): void {
+    /*
     if (this.buttons.length > 2) {
       console.error("Maximum number of buttons in a card is 3");
     }
@@ -25,6 +25,9 @@ export class CardComponent extends UIBaseComponent implements AfterContentInit {
         element.hidden.set(true);
       }
     }
+    */
+
+    super.limitContentChildren<ButtonComponent>(this.buttons, 3);
   }
 
   /** Main title of the card - shown at the top */
@@ -33,5 +36,6 @@ export class CardComponent extends UIBaseComponent implements AfterContentInit {
   /** Simple unformattted string showed as text content */
   text = input<string>();
 
+  /** Set isLoading property which hides content and shows pulsing placeholders */
   isLoading = input<boolean>(false);
 }

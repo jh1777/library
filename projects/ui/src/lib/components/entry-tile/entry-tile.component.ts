@@ -1,6 +1,6 @@
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Output, QueryList, computed, input, signal } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Output, QueryList, computed, input, output, signal } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { ClarityModule } from '@clr/angular';
 import {
@@ -83,7 +83,6 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
     this._timers.forEach(t => t.unsubscribe());
   }
 
-  public readonly placeholder = "⏹⏹ ";
   private _timers: Array<Subscription> = [];
   
   public maxTitles = signal(2);
@@ -176,11 +175,10 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
 
   // OUTPUTS
   /**
-   * Click event on More Button (if present)  
-   * Emits the tile id
+   * Click event on More Button (if present)   
+   * Emits the tile `id()`
    */
-  @Output()
-  onShowMoreClick = new EventEmitter<any>();
+  onShowMoreClick = output<string>();
 
   // Helper
   private calcPagesNeeded = (itemCount: number, pageCount: number): number => {

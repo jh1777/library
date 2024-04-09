@@ -4,10 +4,9 @@ import {
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
-  EventEmitter,
-  Output,
   QueryList,
   input,
+  output,
   signal,
 } from '@angular/core';
 import { BadgeComponent } from '../../badge';
@@ -58,6 +57,7 @@ export class EntryItemComponent extends UIBaseComponent implements AfterContentI
   @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
   @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
 
+  // TODO: replace with UIBase check!
   ngAfterContentInit(): void {
     if(this.badges.length > 1) {
       for (let i = 1; i < this.badges.length; i++) {
@@ -71,8 +71,6 @@ export class EntryItemComponent extends UIBaseComponent implements AfterContentI
       }
     }
   }
-
-  public readonly placeholder = '⏹⏹ ';
 
   showTitle = signal<boolean>(true);
 
@@ -117,22 +115,8 @@ export class EntryItemComponent extends UIBaseComponent implements AfterContentI
   icon = input<string>();
 
   /**
-   * Click event on the Item
-   * Emits the clicked {@link EntryTileItem}
+   * Click event on the Item  
+   * Emits the `id()` of the item
    */
-  @Output()
-  onItemClick = new EventEmitter<any>();
-
-  /**
-   * An item was clicked - event will emit if item is clickable
-   * @param event {@link Event}
-   * @param $item {@link EntryTileItem}
-   */
-  public tileItemClicked = (event: Event, $item: any) => {
-    if ($item.clickable) {
-      event?.preventDefault();
-      event?.stopPropagation();
-      this.onItemClick.emit($item);
-    }
-  };
+  onItemClick = output<string>();
 }

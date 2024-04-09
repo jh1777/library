@@ -21,7 +21,6 @@ ClarityIcons.addIcons(
   styleUrl: './entry-key-value.component.scss'
 })
 export class EntryKeyValueComponent extends UIBaseComponent {
-  public readonly placeholder = "⏹⏹ ";
 
   /** Indicates whether the content is still loading */
   isLoading = input<boolean>(false);
