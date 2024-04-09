@@ -78,6 +78,11 @@
             flex-direction: row;
             align-items: center;
             gap: .5rem;
+            &-right {
+              margin-left: auto;
+              display: flex;
+              align-items: center;
+            }
 
         }
         &-content {

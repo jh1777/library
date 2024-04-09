@@ -4,7 +4,7 @@
 <div class="columns" style="margin-top: .5rem;">
     <div class="container">
         <div class="item">
-            BADGE
+            <strong>BADGE</strong>
             <div class="instances">
                 <ui-badge value="4" [style]=1></ui-badge>
                 <ui-badge value="4" [style]=2></ui-badge>
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="item">
-            BUTTTON
+            <strong>BUTTON</strong>
             <div class="instances">
                 <ui-button label="Simple button" [style]=0></ui-button>
                 <ui-button label="Simple button with icon" icon="check" [style]=0></ui-button>
@@ -26,6 +26,17 @@
                 <ui-button label="Notifications">
                     <ui-badge value="4" [style]=2></ui-badge>
                 </ui-button>
+            </div>
+        </div>
+        <div class="item">
+            <strong>CARD</strong>
+            <div class="instances">
+                <ui-card title="Card Example" text="Sample Card">
+                    <ui-button label="Okay" slot="footer-left"></ui-button>
+                </ui-card>
+                <ui-card title="Card Example #2" text="Sample Card">
+                    <ui-button icon="pop-out" [style]=0 slot="header-right"></ui-button>
+                </ui-card>
             </div>
         </div>
     </div>

@@ -3,8 +3,8 @@
         <div class="csgp-card-header">
             @if(isLoading() == false) {
                 {{ title() }}
-                <div style="margin-left: auto;">
-                    <ng-content select="ui-button-v2[btnHeader]"></ng-content>
+                <div class="csgp-card-header-right">
+                    <ng-content select="ui-button[slot=header-right]"></ng-content>
                 </div>
             } @else {
                 <div class="loading pulse">
@@ -32,9 +32,9 @@
         </div>
         @if(isLoading() == false) {
             <div class="csgp-card-footer">
-                <ng-content select="[btnFooter]"></ng-content>
+                <ng-content select="ui-button[slot=footer-left]"></ng-content>
                 <div style="margin-left: auto;">
-                    <ng-content select="ui-button-v2[slot=footer-right]"></ng-content>
+                    <ng-content select="ui-button[slot=footer-right]"></ng-content>
                 </div>
             </div>
         }
