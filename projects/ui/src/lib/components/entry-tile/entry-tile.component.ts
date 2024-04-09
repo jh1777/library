@@ -60,6 +60,8 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
     this.prepareItems();
     let errorMessage = '';
 
+    // TODO: use super.limit.... method? Show errors in component is not strategy! Remove all that code!
+
     if(this.items.length > this.maxItems() && !this.pageSize())
     {
       const msg = `Too many items used! Max. ${this.maxItems()} allowed`;

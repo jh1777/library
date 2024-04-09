@@ -53,9 +53,9 @@
           @if(buttons.length > 0) {
             
             <div class="csgp-entry-tile-buttons">
-              <ng-content select="ui-button-v2[position=left]"></ng-content>
+              <ng-content select="ui-button[slot=left]"></ng-content>
               <div class="csgp-entry-tile-buttons-right">
-                <ng-content select="ui-button-v2[position=right]"></ng-content>
+                <ng-content select="ui-button[slot=right]"></ng-content>
               </div>
             </div>
           }

@@ -1,6 +1,7 @@
 :host {
+    @import '../../styles/ui.styles.scss';
+
     position: relative;
     display: flex;
     flex-direction: column;
-
 }

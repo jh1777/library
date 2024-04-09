@@ -15,18 +15,6 @@ export class CardComponent extends UIBaseComponent implements AfterContentInit {
   @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
 
   ngAfterContentInit(): void {
-    /*
-    if (this.buttons.length > 2) {
-      console.error("Maximum number of buttons in a card is 3");
-    }
-    for (let index = 0; index < this.buttons.length; index++) {
-      const element = this.buttons.get(index);
-      if (index > 2) {
-        element.hidden.set(true);
-      }
-    }
-    */
-
     super.limitContentChildren<ButtonComponent>(this.buttons, 3);
   }
 

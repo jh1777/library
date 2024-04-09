@@ -17,22 +17,15 @@ export class ValueTileComponent extends UIBaseComponent implements AfterContentI
   @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
 
   ngAfterContentInit(): void {
-    if(this.badges.length > 1) {
-      for (let i = 1; i < this.badges.length; i++) {
-        this.badges.get(i).hidden.set(true);
-      }
-    }
+    super.limitContentChildren(this.buttons, 2);
+    super.limitContentChildren(this.badges, 1);
 
     for (let i = 0; i < this.buttons.length; i++) {
-      if (i > 1) {
-        this.buttons.get(i).hidden.set(true);
-      }
+      // Set white mode for any child button if state > 0
       if (this.state() > 0) {
-        console.log("Set white mode for button ", i)
         this.buttons.get(i).whiteMode.set(true);
       }
-    }
-    
+    }    
   }
 
   /** Then key (or label) of the data - shown left */

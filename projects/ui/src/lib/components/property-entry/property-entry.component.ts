@@ -16,25 +16,7 @@ export class PropertyEntryComponent extends UIBaseComponent {
   @ContentChildren(PropertyMetricComponent) metrics: QueryList<PropertyMetricComponent>;
 
   ngAfterContentInit(): void {
-    if (this.keyvalues.length > 1) {
-      console.error("Maximum number of key values in a component is 2");
-    }
-    for (let index = 0; index < this.keyvalues.length; index++) {
-      const element = this.keyvalues.get(index);
-      if (index > 1) {
-        element.hidden.set(true);
-      }
-    }
-
-    if (this.metrics.length > 0) {
-      console.error("Maximum number of metrics in a component is 1");
-    }
-    for (let index = 0; index < this.metrics.length; index++) {
-      const element = this.metrics.get(index);
-      if (index > 0) {
-        element.hidden.set(true);
-      }
-    }
+    super.limitContentChildren(this.keyvalues, 2);
+    super.limitContentChildren(this.metrics, 1);
   }
-
 }

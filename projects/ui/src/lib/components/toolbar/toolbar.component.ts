@@ -19,15 +19,7 @@ export class ToolbarComponent extends UIBaseComponent implements AfterContentIni
   maxBadges = input<number>(3);
 
   ngAfterContentInit(): void {
-    if(this.badges.length >= this.maxBadges()) {
-      for (let i = this.maxBadges() - 1; i < this.badges.length; i++) {
-        this.badges.get(i).hidden.set(true);
-      }
-    }
-    if(this.buttons.length >= this.maxButtons()) {
-      for (let i = this.maxButtons() - 1; i < this.buttons.length; i++) {
-        this.buttons.get(i).hidden.set(true);
-      }
-    }
+    super.limitContentChildren(this.badges, this.maxBadges());
+    super.limitContentChildren(this.buttons, this.maxButtons());
   }
 }

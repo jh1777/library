@@ -48,11 +48,7 @@ ClarityIcons.addIcons(
 export class ButtonComponent extends UIBaseComponent implements AfterContentInit {
   @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
   ngAfterContentInit(): void {
-    if(this.badges.length > 1) {
-      for (let i = 1; i < this.badges.length; i++) {
-        this.badges.get(i).hidden.set(true);
-      }
-    }
+    super.limitContentChildren(this.badges, 1);
   }
 
   /**

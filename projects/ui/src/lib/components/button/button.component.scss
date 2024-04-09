@@ -1,4 +1,6 @@
 :host {
+    @import '../../styles/ui.styles.scss';
+
     position: relative;
     display: inline-flex;
     min-width: max-content;

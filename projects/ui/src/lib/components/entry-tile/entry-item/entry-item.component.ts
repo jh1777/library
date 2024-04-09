@@ -57,19 +57,9 @@ export class EntryItemComponent extends UIBaseComponent implements AfterContentI
   @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
   @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
 
-  // TODO: replace with UIBase check!
   ngAfterContentInit(): void {
-    if(this.badges.length > 1) {
-      for (let i = 1; i < this.badges.length; i++) {
-        this.badges.get(i).hidden.set(true);
-      }
-    }
-
-    if(this.buttons.length > 2) {
-      for (let i = 2; i < this.buttons.length; i++) {
-        this.buttons.get(i).hidden.set(true);
-      }
-    }
+    super.limitContentChildren(this.badges, 1);
+    super.limitContentChildren(this.buttons, 2);
   }
 
   showTitle = signal<boolean>(true);

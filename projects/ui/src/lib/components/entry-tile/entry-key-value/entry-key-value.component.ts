@@ -22,6 +22,9 @@ ClarityIcons.addIcons(
 })
 export class EntryKeyValueComponent extends UIBaseComponent {
 
+  // TODO: IS this component needed?? property-entry???
+
+  
   /** Indicates whether the content is still loading */
   isLoading = input<boolean>(false);
 
