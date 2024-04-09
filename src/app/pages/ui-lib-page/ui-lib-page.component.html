@@ -4,7 +4,29 @@
 <div class="columns" style="margin-top: .5rem;">
     <div class="container">
         <div class="item">
-            WORKS
+            BADGE
+            <div class="instances">
+                <ui-badge value="4" [style]=1></ui-badge>
+                <ui-badge value="4" [style]=2></ui-badge>
+                <ui-badge value="4" [style]=3></ui-badge>
+                <ui-badge value="4" [style]=4></ui-badge>
+                <ui-badge label="CTP2" [style]=4></ui-badge>
+            </div>
+        </div>
+        <div class="item">
+            BUTTTON
+            <div class="instances">
+                <ui-button label="Simple button" [style]=0></ui-button>
+                <ui-button label="Simple button with icon" icon="check" [style]=0></ui-button>
+                <ui-button label="Simple disabled button" icon="check" [style]=0 [disabled]=true></ui-button>
+                <ui-button label="Apply" icon="check"></ui-button>
+                <ui-button label="Cancel" icon="times" [style]=4></ui-button>
+                <ui-button label="Ok" [style]=5></ui-button>
+                
+                <ui-button label="Notifications">
+                    <ui-badge value="4" [style]=2></ui-badge>
+                </ui-button>
+            </div>
         </div>
     </div>
 </div>

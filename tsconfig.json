@@ -27,8 +27,11 @@
       "ui": [
         "./dist/ui"
       ],
-      "@ui" : [
+      "@ui": [
         "projects/ui-lib/src/lib"
+      ],
+      "@uiv2": [
+        "projects/ui/src/lib"
       ]
     },
     "lib": [

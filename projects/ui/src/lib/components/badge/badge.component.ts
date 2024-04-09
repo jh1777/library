@@ -12,20 +12,23 @@ import { UIBaseComponent } from '../../shared';
 })
 export class BadgeComponent extends UIBaseComponent {
 
+  /**
+   * Text label to show in the badge (optional)
+   */
   label = input<string>();
 
   /**
-   * Number (value) to show in the badge; Optional
+   * Number (value) to show in the badge color circle (optional)
    */
   value = input<number>();
   
   /**
-   * 0 - grey
-   * 1 - warning
-   * 2 - red
-   * 3 - green
+   * 0 - Grey
+   * 1 - Warning
+   * 2 - Red
+   * 3 - Green
    */
-  state = input<number>(2);
+  style = input<number>(2);
 
   /**
    * Size of badge

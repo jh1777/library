@@ -52,8 +52,7 @@ ClarityIcons.addIcons(
     DrawerPageComponent,
     EntriesPageComponent,
     EntryGridPageComponent,
-    EntryTilePageComponent,
-    UiLibPageComponent
+    EntryTilePageComponent
   ],
   imports: [
     CommonModule,
@@ -79,7 +78,8 @@ ClarityIcons.addIcons(
     ToolbarComponent,
     PropertyEntry2Component,
     PropertyMetricComponent,
-    EntryTileGridComponent
+    EntryTileGridComponent,
+    UiLibPageComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
