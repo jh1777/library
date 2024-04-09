@@ -34,6 +34,13 @@ ClarityIcons.addIcons(
   ]
 })
 export class EntryTileComponent extends UIBaseComponent implements AfterContentInit {
+  @ContentChildren(EntryItemComponent) items: QueryList<EntryItemComponent>;
+  @ContentChildren(EntryKeyValueComponent) titles: QueryList<EntryKeyValueComponent>;
+  @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
+
+  ngOnDestroy(): void {
+    this._timers.forEach(t => t.unsubscribe());
+  }
 
   private prepareItems = () => {
     for (let i = 0; i < this.items.length; i++) {
@@ -56,11 +63,12 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
       
     }
   }
+
   ngAfterContentInit(): void {
     this.prepareItems();
     let errorMessage = '';
 
-    // TODO: use super.limit.... method? Show errors in component is not strategy! Remove all that code!
+    // TODO: Show errors in component is not strategy! Remove?
 
     if(this.items.length > this.maxItems() && !this.pageSize())
     {
@@ -68,22 +76,13 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
       errorMessage == '' ? errorMessage = msg : errorMessage = `${errorMessage}; ${msg}`;
     }
 
-    if(this.titles.length > this.maxTitles()) {
-      for (let i = this.maxTitles(); i < this.titles.length; i++) {
-        this.titles.get(i).hidden.set(true);
-        const msg = `Too many key-values used! Max. ${this.maxTitles()} allowed`;
-        errorMessage == '' ? errorMessage = msg : errorMessage = `${errorMessage}; ${msg}`;
-      }
-    } 
+    const overMax = super.limitContentChildren(this.titles, this.maxTitles());
+    const msg = `Too many key-values used! Max. ${this.maxTitles()} allowed`;
+    errorMessage == '' ? errorMessage = msg : errorMessage = `${errorMessage}; ${msg}`;
+    
     this.errorMessage.set(errorMessage);
   }
-  @ContentChildren(EntryItemComponent) items: QueryList<EntryItemComponent>;
-  @ContentChildren(EntryKeyValueComponent) titles: QueryList<EntryKeyValueComponent>;
-  @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
-
-  ngOnDestroy(): void {
-    this._timers.forEach(t => t.unsubscribe());
-  }
+  
 
   private _timers: Array<Subscription> = [];
   
@@ -95,7 +94,7 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
   
   /** Represents the collapsed (=true) or expanded (=false) state of the tile.     
    * **Hint**: only applicable if the `collapseMode` is not `disabled`  
-   * (default is false)
+   * (default is `false`)  
    * */
   public isCollapsed = signal(false);
 
