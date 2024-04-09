@@ -29,6 +29,7 @@ import {
 
 } from "@cds/core/icon";
 import '@cds/core/icon/register.js';
+import { UiLibPageComponent } from './pages/ui-lib-page/ui-lib-page.component';
 
 ClarityIcons.addIcons(
   unknownStatusIcon, homeIcon, cogIcon, checkIcon, timesIcon, exclamationTriangleIcon, exclamationCircleIcon, checkCircleIcon, infoCircleIcon, infoStandardIcon, successStandardIcon, errorStandardIcon,
@@ -51,7 +52,8 @@ ClarityIcons.addIcons(
     DrawerPageComponent,
     EntriesPageComponent,
     EntryGridPageComponent,
-    EntryTilePageComponent
+    EntryTilePageComponent,
+    UiLibPageComponent
   ],
   imports: [
     CommonModule,
@@ -60,12 +62,14 @@ ClarityIcons.addIcons(
     ClarityModule,
     AppRoutingModule,
     UiLibModule,
+
+    // ols components from 'ui-lib' project
     EntryTile2Component,
     EntryTile2ItemConfigComponent,
     EntryTile2TitleConfigComponent,
     BadgeComponent,
     TestButtonComponent,
-    
+    // new components from 'ui-lib' project
     EntryTile3Component,
     EntryKeyValueComponent,
     EntryItemComponent,

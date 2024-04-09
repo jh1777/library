@@ -14,5 +14,6 @@ export class AppComponent {
   public entriesTabActive: boolean;
   public entryGridTabActive: boolean;
   public entryTileTabActive: boolean;
+  public uiLibTabActive: boolean;
   
 }

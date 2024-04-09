@@ -17,7 +17,7 @@ export class CardComponent extends UIBaseComponent implements AfterContentInit {
 
   ngAfterContentInit(): void {
     if (this.buttons.length > 2) {
-      throw Error("Maximum number of buttons in a card is 3");
+      console.error("Maximum number of buttons in a card is 3");
     }
     for (let index = 0; index < this.buttons.length; index++) {
       const element = this.buttons.get(index);

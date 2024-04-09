@@ -10,6 +10,16 @@
   <p></p>
 
   <clr-tabs>
+
+    <clr-tab>
+      <button clrTabLink>UI Library (v2)</button>
+      <ng-template [(clrIfActive)]="uiLibTabActive">
+          <clr-tab-content>
+            <ui-lib-page [showComponentBorder]="showBorders"></ui-lib-page>
+          </clr-tab-content>
+      </ng-template>
+    </clr-tab>
+  
     <clr-tab>
       <button clrTabLink>Entry Tile V3 etc.</button>
       <ng-template [(clrIfActive)]="entryTileTabActive">
@@ -77,5 +87,6 @@
       </ng-template>
     </clr-tab>
 
+    
   </clr-tabs>
 </div>
