@@ -16,6 +16,8 @@ export class ValueTileComponent extends UIBaseComponent implements AfterContentI
   @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
   @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
 
+// TODO: Implement isLoading!!
+
   ngAfterContentInit(): void {
     super.limitContentChildren(this.buttons, 2);
     super.limitContentChildren(this.badges, 1);
