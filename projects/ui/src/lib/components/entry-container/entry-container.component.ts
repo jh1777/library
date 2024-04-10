@@ -1,19 +1,19 @@
 import { ChangeDetectionStrategy, Component, ContentChildren, QueryList } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
 import { EntryKeyValueComponent } from '../entry-tile';
-import { PropertyMetricComponent } from '../property-metric';
+import { EntryMetricComponent } from '../entry-metric';
 
 @Component({
-  selector: 'ui-property-entry',
+  selector: 'ui-entry-container',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
-  templateUrl: './property-entry.component.html',
-  styleUrl: './property-entry.component.scss'
+  templateUrl: './entry-container.component.html',
+  styleUrl: './entry-container.component.scss'
 })
-export class PropertyEntryComponent extends UIBaseComponent {
+export class EntryContainerComponent extends UIBaseComponent {
   @ContentChildren(EntryKeyValueComponent) keyvalues: QueryList<EntryKeyValueComponent>;
-  @ContentChildren(PropertyMetricComponent) metrics: QueryList<PropertyMetricComponent>;
+  @ContentChildren(EntryMetricComponent) metrics: QueryList<EntryMetricComponent>;
 
   ngAfterContentInit(): void {
     super.limitContentChildren(this.keyvalues, 2);

@@ -1,5 +1,22 @@
 :host {
-    display: contents;
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+    .title {
+        font-size: .8rem;
+        font-weight: 700;
+        color: black;
+        line-height: normal;
+        &:not(.subtitle) {
+            margin-bottom: 1rem;
+        }
+    }
+    .subtitle {
+        font-size: .7rem;
+        font-weight: 300;
+        color: #454545;
+        line-height: normal;
+    }
     .container {
         gap: 1rem;
     }

@@ -77,8 +77,10 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
     }
 
     const overMax = super.limitContentChildren(this.titles, this.maxTitles());
-    const msg = `Too many key-values used! Max. ${this.maxTitles()} allowed`;
-    errorMessage == '' ? errorMessage = msg : errorMessage = `${errorMessage}; ${msg}`;
+    if (overMax) {
+      const msg = `Too many key-values used! Max. ${this.maxTitles()} allowed`;
+      errorMessage == '' ? errorMessage = msg : errorMessage = `${errorMessage}; ${msg}`;
+    }
     
     this.errorMessage.set(errorMessage);
   }
@@ -112,8 +114,6 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
     }
   });
   
-  /** Indicates whether the content is still loading */
-  isLoading = input<boolean>(false);
 
   /** Controls if the tile can be collapsed  
    * There are 3 modes:

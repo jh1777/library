@@ -1,11 +1,16 @@
-import { CommonModule } from "@angular/common";
-import { AfterViewInit, Component, Input } from "@angular/core";
-import { BadgeComponent, ButtonComponent, CardComponent } from "projects/ui/src/public-api";
+
+import { Component, Input } from "@angular/core";
+import { BadgeComponent, ButtonComponent, 
+  CardComponent, EntryTileComponent, 
+  EntryKeyValueComponent, EntryItemComponent,
+  EntryContainerComponent, EntryMetricComponent,
+  ToolbarComponent, ValueTileComponent, EntryTileGridComponent
+ } from "projects/ui/src/public-api";
 
 @Component({
     selector: 'ui-lib-page',
     standalone: true,
-    imports: [BadgeComponent, ButtonComponent, CardComponent],
+    imports: [BadgeComponent, EntryTileGridComponent, ValueTileComponent, ToolbarComponent, ButtonComponent, CardComponent, EntryTileComponent, EntryKeyValueComponent, EntryItemComponent, EntryContainerComponent, EntryMetricComponent],
     templateUrl: './ui-lib-page.component.html',
     styleUrls: ['./ui-lib-page.component.scss']
   })

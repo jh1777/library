@@ -1,16 +1,16 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
-import { PropertyMetricStyle } from './property-metric.models';
+import { EntryMetricStyle } from './entry-metric.models';
 
 @Component({
-  selector: 'ui-property-metric',
+  selector: 'ui-entry-metric',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
-  templateUrl: './property-metric.component.html',
-  styleUrl: './property-metric.component.scss'
+  templateUrl: './entry-metric.component.html',
+  styleUrl: './entry-metric.component.scss'
 })
-export class PropertyMetricComponent extends UIBaseComponent {
+export class EntryMetricComponent extends UIBaseComponent {
 
   /** Indicates whether the content is still loading */
   isLoading = input<boolean>(false);
@@ -18,7 +18,7 @@ export class PropertyMetricComponent extends UIBaseComponent {
   /** Value to show 0 - 100 */
   percent = input<number>(0);
   
-    /** Optional: State `PropertyMetricStyle` of the metric (`none`, `attention`, `error` or `success`) 
+    /** Optional: State `EntryMetricStyle` of the metric (`none`, `attention`, `error` or `success`) 
    * By default or if unset, it is none.
    * The bar will get colorized in:
    * - `None` = default, 
@@ -26,5 +26,5 @@ export class PropertyMetricComponent extends UIBaseComponent {
    * - `Error` = red
    * - `Success` = green
   */
-  style = input<PropertyMetricStyle>(PropertyMetricStyle.None);
+  style = input<EntryMetricStyle>(EntryMetricStyle.None);
 }
