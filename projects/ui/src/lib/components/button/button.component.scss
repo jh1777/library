@@ -6,9 +6,9 @@
     min-width: max-content;
 
     .disabled {
-        --csgp-button-v2-primary-color: white !important;
-        --csgp-button-v2-primary-hover-color: white !important;
-        --csgp-button-v2-text-color: #a4a4a4 !important;
+        --csgp-button-v2-primary-color: #{$ui-inverted-text-color} !important;
+        --csgp-button-v2-primary-hover-color: #{$ui-inverted-text-color} !important;
+        --csgp-button-v2-text-color: #{$ui-light-standard-color} !important;
         border: 1px solid var(--csgp-button-v2-text-color) !important;
         &:not(.bordered) {
             border: 0px !important;

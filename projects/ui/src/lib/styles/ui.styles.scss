@@ -1,3 +1,6 @@
+$ui-black: #000000;
+$ui-white: #ffffff;
+
 $ui-success-color: #2cd345 !default;
 $ui-attention-color: #dea035 !default;
 $ui-error-color: #e45048 !default;
@@ -16,4 +19,8 @@ $ui-light-error-color: #ffccca !default;
 $ui-light-standard-color: #a7a8a9 !default;
 $ui-light-petrol-color: #69BAC9 !default;
 
-$ui-standard-text-color: black !default;
+$ui-dark-standard-color: #777777 !default;
+
+$ui-standard-text-color: $ui-black !default;
+$ui-inverted-text-color: $ui-white !default;
+$ui-shadow-color: #9a9a9a !default;
