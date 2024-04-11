@@ -1,6 +1,6 @@
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Output, QueryList, computed, input, output, signal } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Output, QueryList, ViewEncapsulation, computed, input, output, signal } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { ClarityModule } from '@clr/angular';
 import {
