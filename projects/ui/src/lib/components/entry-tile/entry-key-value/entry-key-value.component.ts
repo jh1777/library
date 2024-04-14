@@ -21,10 +21,7 @@ ClarityIcons.addIcons(
   styleUrl: './entry-key-value.component.scss'
 })
 export class EntryKeyValueComponent extends UIBaseComponent {
-
-  // TODO: IS this component needed?? property-entry???
-
-  
+ 
   /** Indicates whether the content is still loading */
   isLoading = input<boolean>(false);
 
@@ -44,4 +41,9 @@ export class EntryKeyValueComponent extends UIBaseComponent {
    * - `Dimmed` = grey
   */
   state = input<EntryKeyValueState>(EntryKeyValueState.None);
+
+  /**
+   * Makes the Key and Value of bigger font size, the icon as well if present
+   */
+  big = input<boolean>(false);
 }

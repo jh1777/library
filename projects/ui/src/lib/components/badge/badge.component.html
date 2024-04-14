@@ -1,9 +1,9 @@
 @if(hidden() == false) {
     @if(label()) {
-        <div class="csgp-badge-container"
-            [class.csgp-badge-container-error]="style() == 2"
-            [class.csgp-badge-container-warning]="style() == 1"
-            [class.csgp-badge-container-success]="style() == 3"
+        <div class="ui-badge-container"
+            [class.ui-badge-container-error]="style() == 2"
+            [class.ui-badge-container-attention]="style() == 1"
+            [class.ui-badge-container-success]="style() == 3"
         >
             {{ label() }}
             @if (value()) {
@@ -17,13 +17,13 @@
     }
 
     <ng-template #badgevalue>
-        <div class="csgp-badge"
-            [class.csgp-badge-error]="style() == 2"
-            [class.csgp-badge-warning]="style() == 1"
-            [class.csgp-badge-success]="style() == 3"
-            [class.csgp-badge-small]="size() == 1"
-            [class.csgp-badge-medium]="size() == 2"
-            [class.csgp-badge-large]="size() == 3"
+        <div class="ui-badge"
+            [class.ui-badge-error]="style() == 2"
+            [class.ui-badge-warning]="style() == 1"
+            [class.ui-badge-success]="style() == 3"
+            [class.ui-badge-small]="size() == 1"
+            [class.ui-badge-medium]="size() == 2"
+            [class.ui-badge-large]="size() == 3"
         >
             {{ value() }}
         </div>

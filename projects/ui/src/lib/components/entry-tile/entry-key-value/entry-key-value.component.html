@@ -1,14 +1,14 @@
 @if (hidden() == false) {
   @if (isLoading() == true) {
-    <div class="csgp-generic-container loading no-select pulse">
-      <div class="csgp-generic-container-left">
+    <div class="ui-generic-container loading no-select pulse">
+      <div class="ui-generic-container-left">
         <div>
           @for (_ of [].constructor(3); track $index) {
             {{ placeholder }}
           }
         </div>
       </div>
-      <div class="csgp-generic-container-right">
+      <div class="ui-generic-container-right">
         <div>
           @for (_ of [].constructor(3); track $index) {
             {{ placeholder }}
@@ -19,11 +19,15 @@
   }
 
   @if (isLoading() == false) {
-    <div class="csgp-generic-container">
-      <div class="csgp-generic-container-left">
+    <div class="ui-generic-container">
+      <div 
+        class="ui-generic-container-left"
+        [class.big-style]="big() == true">
         {{ label() }}
       </div>
-      <div class="csgp-generic-container-right csgp-generic-flex-row">
+      <div 
+        class="ui-generic-container-right ui-generic-flex-row" 
+        [class.big-style]="big() == true">
         @if (state() > 0 && state() < 4) {
           <cds-icon
             solid
@@ -45,13 +49,13 @@
                     ? 'success-standard'
                     : ''
             "
-            size="16"
+            [attr.size]="big() == true ? 18 : 16"
           >
           </cds-icon>
         }
 
         <div
-          class="csgp-entry-key-value"
+          class="ui-entry-key-value"
           [style.color]="
             state() == 1
               ? 'var(--attention-kv-entry-color)'

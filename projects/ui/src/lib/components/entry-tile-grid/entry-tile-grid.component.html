@@ -1,6 +1,6 @@
 @if(hidden() == false) {
     @for(_ of [].constructor(calcColumns()); track $index) {
-        <div class="csgp-entry-tile-grid-column">
+        <div class="ui-entry-tile-grid-column">
             @if($index == 0) {
                 <ng-content select="ui-entry-tile[column=1]"></ng-content>
             }
@@ -16,7 +16,6 @@
             @if($index == 4) {
                 <ng-content select="ui-entry-tile[column=5]"></ng-content>
             }
-            
         </div>
     }
 }

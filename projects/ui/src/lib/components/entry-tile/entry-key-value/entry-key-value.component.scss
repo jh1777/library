@@ -1,125 +1,123 @@
 :host {
-    @import '../../../styles/ui.styles.scss';
+  @import '../../../styles/ui.styles.scss';
 
-    display: contents;
-    --action-color: #007a93;
-    --background: #e9e9e9;
-    --daimler-grey3: #a7a8a9;
-    --grey-light1: #e9e9e9;
+  display: contents;
 
-    --attention-kv-entry-color: #dea035;
-    --error-kv-entry-color: #e45048;
-    --success-kv-entry-color: #2cd345;
-    --dimmed-kv-entry-color: #ababab;
-  
-    --dot-size: 9px;
-  
-    .clickable:hover {
-      cursor: pointer;
-      border: 1px solid var(--daimler-grey3) !important;
-  
-      &:active {
-        border: 1px solid var(--action-color) !important;
-      }
-    }
-  
-    .csgp-entry-key-value {
-      font-weight: 700;
-      color: black;
-    }
-  
-    .csgp-generic-flex-row {
-      flex-direction: row !important;
-      gap: .25rem !important;
-      align-items: center !important;
-    }
-  
-    .csgp-generic-container {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      align-items: center;
-  
-      &-left {
-        display: flex;
-        line-height: normal;
-        flex-direction: column;
-        ::before:not(.loading) {
-          color: black;
-        }
-      }
-  
-      &-right {
-        display: flex;
-        flex-direction: column;
-        margin-left: auto;
-        line-height: normal;
-  
-      }
-    }
-  
-    @keyframes pulse {
-      0% {
-        opacity: 1;
-      }
-  
-      50% {
-        opacity: 0.5;
-      }
-  
-      100% {
-        opacity: 1;
-      }
-    }
-  
-    @-moz-keyframes pulse {
-      0% {
-        opacity: 1;
-      }
-  
-      50% {
-        opacity: 0.5;
-      }
-  
-      100% {
-        opacity: 1;
-      }
-    }
-  
-    @-webkit-keyframes pulse {
-      0% {
-        opacity: 1;
-      }
-  
-      50% {
-        opacity: 0.5;
-      }
-  
-      100% {
-        opacity: 1;
-      }
-    }
-  
-    .pulse {
-      -webkit-animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-      -webkit-animation-delay: 0.5s;
-      -moz-animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-      -moz-animation-delay: 0.5s;
-      animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-      animation-delay: 0.5s;
-    }
-  
-    .loading {
-      color: var(--loading-color, #d0d0d0);
-      line-height: 1rem;
-    }
-  
-    .no-select {
-      -webkit-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      text-decoration: none;
-      pointer-events: none;
-    }
-  
+  --attention-kv-entry-color: #{$ui-attention-color};
+  --error-kv-entry-color: #{$ui-error-color};
+  --success-kv-entry-color: #{$ui-success-color};
+  --dimmed-kv-entry-color: #{$ui-light-standard-color};
+
+  --dot-size: 9px;
+
+  .big-style {
+    font-size: .85rem;
   }
+
+  .clickable:hover {
+    cursor: pointer;
+    border: 1px solid $ui-standard-color !important;
+
+    &:active {
+      border: 1px solid $ui-petrol-color !important;
+    }
+  }
+
+  .ui-entry-key-value {
+    font-weight: 700;
+    color: $ui-standard-text-color;
+  }
+
+  .ui-generic-flex-row {
+    flex-direction: row !important;
+    gap: .25rem !important;
+    align-items: center !important;
+  }
+
+  .ui-generic-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+
+    &-left {
+      display: flex;
+      line-height: normal;
+      flex-direction: column;
+      ::before:not(.loading) {
+        color: $ui-standard-text-color;
+      }
+    }
+
+    &-right {
+      display: flex;
+      flex-direction: column;
+      margin-left: auto;
+      line-height: normal;
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-moz-keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .pulse {
+    -webkit-animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    -moz-animation-delay: 0.5s;
+    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation-delay: 0.5s;
+  }
+
+  .loading {
+    color: $ui-standard-color;
+    line-height: 1rem;
+  }
+
+  .no-select {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-decoration: none;
+    pointer-events: none;
+  }
+}

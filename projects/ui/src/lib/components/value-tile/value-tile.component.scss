@@ -1,57 +1,57 @@
 :host {
     @import '../../styles/ui.styles.scss';
 
-    --csgp-value-tile-key-background: #cacaca;
-    --csgp-value-tile-value-background: #e9e9e9;
-    --csgp-value-tile-text-color: black;
+    --ui-value-tile-key-background: #{$ui-light-standard-color};
+    --ui-value-tile-value-background: #{$ui-alternative-standard-color};
+    --ui-value-tile-text-color: #{$ui-standard-text-color};
 
-    --attention-item-value-color: #eab65d;
-    --attention-item-key-color: #dea035;
+    --attention-item-value-color: #{$ui-alternative-attention-color};
+    --attention-item-key-color: #{$ui-attention-color};
 
-    --success-item-value-color: #55e06a;
-    --success-item-key-color: #2cd345;
+    --success-item-value-color: #{$ui-alternative-success-color};
+    --success-item-key-color: #{$ui-success-color};
 
-    --error-item-value-color: #ec6058;
-    --error-item-key-color: #e45048;
+    --error-item-value-color: #{$ui-alternative-error-color};
+    --error-item-key-color: #{$ui-error-color};
 
     --padding: .2rem .5rem;
 
     display: inline-flex;
     position: relative;
     flex-direction: row;
-    color: black;
+    color: $ui-standard-text-color;
 
     .success {
-        --csgp-value-tile-key-background: var(--success-item-key-color);
-        --csgp-value-tile-value-background: var(--success-item-value-color);
-        --csgp-value-tile-text-color: white;
+        --ui-value-tile-key-background: var(--success-item-key-color);
+        --ui-value-tile-value-background: var(--success-item-value-color);
+        --ui-value-tile-text-color: #{$ui-inverted-text-color};
     }
 
     .error {
-        --csgp-value-tile-key-background: var(--error-item-key-color);
-        --csgp-value-tile-value-background: var(--error-item-value-color);
-        --csgp-value-tile-text-color: white;
+        --ui-value-tile-key-background: var(--error-item-key-color);
+        --ui-value-tile-value-background: var(--error-item-value-color);
+        --ui-value-tile-text-color: #{$ui-inverted-text-color};
     }
 
     .attention {
-        --csgp-value-tile-key-background: var(--attention-item-key-color);
-        --csgp-value-tile-value-background: var(--attention-item-value-color);
-        --csgp-value-tile-text-color: white;
+        --ui-value-tile-key-background: var(--attention-item-key-color);
+        --ui-value-tile-value-background: var(--attention-item-value-color);
+        --ui-value-tile-text-color: #{$ui-inverted-text-color};
     }
 
-    .csgp-value-tile-key {
-        background-color: var(--csgp-value-tile-key-background);
+    .ui-value-tile-key {
+        background-color: var(--ui-value-tile-key-background);
         border-radius: .3rem 0rem 0rem .3rem;
         padding: var(--padding);
-        color: var(--csgp-value-tile-text-color);
+        color: var(--ui-value-tile-text-color);
         font-weight: 700;
         z-index: 22;
     }
-    .csgp-value-tile-value {
-        background-color: var(--csgp-value-tile-value-background);
+    .ui-value-tile-value {
+        background-color: var(--ui-value-tile-value-background);
         border-radius: 0rem .3rem .3rem 0rem;
         padding: var(--padding);
-        color: var(--csgp-value-tile-text-color);
+        color: var(--ui-value-tile-text-color);
         font-weight: 300;
         display: flex;
         gap: .3rem;
@@ -59,7 +59,7 @@
         align-items: center;
     }
 
-    .csgp-badge {
+    .ui-badge {
         position: absolute;
         top: 0%; // Align vertically centered
         right: -8px; // Adjust as needed for desired distance from the button edge
@@ -67,4 +67,59 @@
         z-index: 999;
     }
 
+    @keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+    }
+
+    @-moz-keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+    }
+
+    @-webkit-keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+    }
+
+    .pulse {
+    -webkit-animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    -moz-animation-delay: 0.5s;
+    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation-delay: 0.5s;
+    }
+
+    .loading {
+    color: $ui-standard-color;
+    line-height: 1rem;
+    }
 }

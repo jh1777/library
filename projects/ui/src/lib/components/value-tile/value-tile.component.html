@@ -1,24 +1,42 @@
 @if(hidden() == false) {
-    <div class="csgp-badge">
-        <ng-content select="ui-badge"></ng-content>
-    </div>
-    <div 
-        class="csgp-value-tile-key"
-        [class.attention]="state() == 1"
-        [class.error]="state() == 2"
-        [class.success]="state() == 3"
-    >
-        {{ key() }}
-    </div>
-    <div
-        class="csgp-value-tile-value"
-        [class.attention]="state() == 1"
-        [class.error]="state() == 2"
-        [class.success]="state() == 3"
-    >
-        {{ value() }}
-        <ng-content 
-            select="ui-button"
-        ></ng-content>
-    </div>
+    @if (isLoading() == true) {
+        <div class="ui-value-tile-key loading no-select pulse">
+            <div>
+                @for (_ of [].constructor(4); track $index) {
+                    &nbsp;
+                }
+            </div>
+        </div>
+        <div class="ui-value-tile-value loading no-select pulse">
+            <div>
+                @for (_ of [].constructor(6); track $index) {
+                    &nbsp;
+                }
+            </div>
+        </div>
+    }
+    @else {
+        <div class="ui-badge">
+            <ng-content select="ui-badge"></ng-content>
+        </div>
+        <div 
+            class="ui-value-tile-key"
+            [class.attention]="state() == 1"
+            [class.error]="state() == 2"
+            [class.success]="state() == 3"
+        >
+            {{ key() }}
+        </div>
+        <div
+            class="ui-value-tile-value"
+            [class.attention]="state() == 1"
+            [class.error]="state() == 2"
+            [class.success]="state() == 3"
+        >
+            {{ value() }}
+            <ng-content 
+                select="ui-button"
+            ></ng-content>
+        </div>
+    }
 }

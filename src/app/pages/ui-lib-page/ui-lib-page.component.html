@@ -7,6 +7,7 @@
     <ui-badge value="4" [style]="3"></ui-badge>
     <ui-badge value="4" [style]="4"></ui-badge>
     <ui-badge label="CTP2" [style]="4"></ui-badge>
+    <ui-badge label="CTP3" value="45" [style]="3"></ui-badge>
   </div>
 </div>
 
@@ -15,12 +16,12 @@
   <div class="instances">
     <ui-button label="Simple button" [style]="0"></ui-button>
     <ui-button
-      label="Simple button with icon"
+      label="Simple + Icon"
       icon="check"
       [style]="0"
     ></ui-button>
     <ui-button
-      label="Simple disabled button"
+      label="Simple disabled"
       icon="check"
       [style]="0"
       [disabled]="true"
@@ -28,11 +29,13 @@
     <ui-button label="Apply" icon="check"></ui-button>
     <ui-button label="Cancel" icon="times" [style]="4"></ui-button>
     <ui-button label="Ok" [style]="5"></ui-button>
+    <ui-button label="None" [style]="2"></ui-button>
 
     <ui-button label="Notifications">
       <ui-badge value="4" [style]="2"></ui-badge>
-      <ui-badge value="5" [style]="2"></ui-badge>
     </ui-button>
+    <ui-button label="Outline" [style]="3"></ui-button>
+    
   </div>
 </div>
 <div class="item">
@@ -43,6 +46,8 @@
     </ui-card>
     <ui-card title="Card Example #2" text="Sample Card">
       <ui-button icon="pop-out" [style]="0" slot="header-right"></ui-button>
+    </ui-card>
+    <ui-card title="Card Example #2" text="Sample Card" [isLoading]=true>
     </ui-card>
   </div>
 </div>
@@ -55,6 +60,7 @@
           label="State"
           value="Okay"
           [state]="3"
+          [big]=true
         ></ui-entry-key-value>
 
         <ui-entry-item
@@ -63,6 +69,11 @@
           state="0"
           showStateIcon="true"
           [isLoading]="false"
+        >
+        </ui-entry-item>
+        <ui-entry-item
+          primaryValue="Primary"
+          [isLoading]=true
         >
         </ui-entry-item>
       </ui-entry-tile>
@@ -196,6 +207,16 @@
         </ui-entry-metric>
       </ui-entry-container>
     </div>
+    <div class="container">
+      <ui-entry-container>
+        <ui-entry-key-value
+          label="State"
+          value="Warning"
+          state="1"
+          [big]=true
+        ></ui-entry-key-value>
+      </ui-entry-container>
+    </div>
   </div>
 </div>
 <div class="item">
@@ -245,7 +266,7 @@
 <div class="item">
   <div class="title">VALUE TILE (containing BADGE & BUTTON)</div>
   <div class="instances">
-    <ui-value-tile key="Vin" value="WDB0101010110">
+    <ui-value-tile key="Vin" value="WDB0101010110" [isLoading]=false>
       <ui-button icon="copy" [style]="0"></ui-button>
       <ui-button icon="pop-out" [style]="0"></ui-button>
     </ui-value-tile>
@@ -253,6 +274,8 @@
     <ui-value-tile key="Streaming" value="ENABLED" state="3"> </ui-value-tile>
     <ui-value-tile key="Notifications" value="Pending">
       <ui-badge [style]="1" value="12"></ui-badge>
+    </ui-value-tile>
+    <ui-value-tile key="xx" value="xx" [isLoading]=true>
     </ui-value-tile>
   </div>
 </div>

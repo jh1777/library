@@ -48,7 +48,7 @@ ClarityIcons.addIcons(
 @Component({
   selector: 'ui-entry-item',
   standalone: true,
-  imports: [CommonModule, ClarityModule, BadgeComponent],
+  imports: [CommonModule, ClarityModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './entry-item.component.html',
   styleUrl: './entry-item.component.scss',

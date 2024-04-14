@@ -3,31 +3,30 @@
 
     position: relative;
 
-
     .loading {
-        background-color: #e9e9e9 !important;
+        background-color: $ui-standard-color !important;
     }
     .attention-bar {
-        background-color: var(--attention-bar-bg-color, #dea035) !important;
+        background-color: var(--attention-bar-bg-color, #{$ui-attention-color}) !important;
     }
     .error-bar {
-        background-color: var(--error-bar-bg-color, #e45048) !important;
+        background-color: var(--error-bar-bg-color, #{$ui-error-color}) !important;
     }
     .success-bar {
-        background-color: var(--success-bar-bg-color, #2cd345) !important;
+        background-color: var(--success-bar-bg-color, #{$ui-success-color}) !important;
     }
     .default-bar {
-        background-color: var(--default-bar-bg-color, #007A93) !important;
+        background-color: var(--default-bar-bg-color, #{$ui-petrol-color}) !important;
     }
 
-    .csgp-property-metric-bar {
+    .ui-property-metric-bar {
         height: var(--metric-bar-item-bar-height, .45rem);
         width: 100%;
         margin-top: .25rem;
         border-radius: .1rem;
         margin-bottom: 0.17rem;
         transition: all 300ms;
-        background-color: lightgray;
+        background-color: $ui-light-standard-color;
     }
 
     @keyframes pulse {
@@ -80,5 +79,4 @@
         animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         animation-delay: 0.5s;
       }
-    
 }

@@ -1,9 +1,9 @@
 @if(hidden() == false) {
-    <div class="csgp-card">
-        <div class="csgp-card-header">
+    <div class="ui-card">
+        <div class="ui-card-header">
             @if(isLoading() == false) {
                 {{ title() }}
-                <div class="csgp-card-header-right">
+                <div class="ui-card-header-right">
                     <ng-content select="ui-button[slot=header-right]"></ng-content>
                 </div>
             } @else {
@@ -14,7 +14,7 @@
                 </div>
             }
         </div>
-        <div class="csgp-card-content">
+        <div class="ui-card-content">
             @if(isLoading() == false) {
                 {{ text() }}
             } @else {
@@ -31,7 +31,7 @@
             }
         </div>
         @if(isLoading() == false) {
-            <div class="csgp-card-footer">
+            <div class="ui-card-footer">
                 <ng-content select="ui-button[slot=footer-left]"></ng-content>
                 <div style="margin-left: auto;">
                     <ng-content select="ui-button[slot=footer-right]"></ng-content>

@@ -6,109 +6,108 @@
     min-width: max-content;
 
     .disabled {
-        --csgp-button-v2-primary-color: #{$ui-inverted-text-color} !important;
-        --csgp-button-v2-primary-hover-color: #{$ui-inverted-text-color} !important;
-        --csgp-button-v2-text-color: #{$ui-light-standard-color} !important;
-        border: 1px solid var(--csgp-button-v2-text-color) !important;
+        --ui-button-primary-color: #{$ui-inverted-text-color} !important;
+        --ui-button-primary-hover-color: #{$ui-inverted-text-color} !important;
+        --ui-button-text-color: #{$ui-standard-color} !important;
+        border: 1px solid var(--ui-button-text-color) !important;
         &:not(.bordered) {
             border: 0px !important;
         }
         cursor: default !important;
         &:not(.bordered) > cds-icon {
-            color: var(--csgp-button-v2-text-color) !important;
+            color: var(--ui-button-text-color) !important;
         }
     }
 
     .primary {
-        --csgp-button-v2-primary-color: #007A93;
-        --csgp-button-v2-primary-hover-color: #5097AB;
-        --csgp-button-v2-text-color: white;
+        --ui-button-primary-color: #{$ui-petrol-color};
+        --ui-button-primary-hover-color: #{$ui-alternative-petrol-color};
+        --ui-button-text-color: #{$ui-inverted-text-color};
     }
 
     .secondary {
-        --csgp-button-v2-primary-color: #999999;
-        --csgp-button-v2-primary-hover-color: #a7a7a7;
-        --csgp-button-v2-text-color: white;
+        --ui-button-primary-color: #{$ui-dark-standard-color};
+        --ui-button-primary-hover-color: #{$ui-standard-color};
+        --ui-button-text-color: #{$ui-inverted-text-color};;
     }
 
     .destructive {
-        --csgp-button-v2-primary-color: #e45048;
-        --csgp-button-v2-primary-hover-color: #f76962;
-        --csgp-button-v2-text-color: white;
+        --ui-button-primary-color: #{$ui-error-color};
+        --ui-button-primary-hover-color: #{$ui-alternative-error-color};
+        --ui-button-text-color: #{$ui-inverted-text-color};
     }
 
     .confirm {
-        --csgp-button-v2-primary-color: #2cd345;
-        --csgp-button-v2-primary-hover-color: #4dea65;
-        --csgp-button-v2-text-color: white;
+        --ui-button-primary-color: #{$ui-success-color};
+        --ui-button-primary-hover-color: #{$ui-alternative-success-color};
+        --ui-button-text-color: #{$ui-inverted-text-color};
     }
     
     .outline {
-        --csgp-button-v2-primary-color: white;
-        --csgp-button-v2-primary-hover-color: #f2f3f4;
-        --csgp-button-v2-text-color: #007A93;
-        border: 1px solid #007A93;
+        --ui-button-primary-color: #{$ui-inverted-text-color};
+        --ui-button-primary-hover-color: #{$ui-alternative-standard-color};
+        --ui-button-text-color: #{$ui-petrol-color};
+        border: 1px solid #{$ui-petrol-color};
     }
 
     .white-mode {
-        --csgp-button-v2-primary-color: white !important;
-        --csgp-button-v2-primary-hover-color: #e9e9e9 !important;
-        --csgp-button-v2-text-color: white !important;
+        --ui-button-primary-color: #{$ui-inverted-text-color} !important;
+        --ui-button-primary-hover-color: #{$ui-alternative-standard-color} !important;
+        --ui-button-text-color: #{$ui-inverted-text-color} !important;
     }
 
     .bordered {
         padding: .35rem .45rem;
         border-radius: .25rem;
-        background-color: var(--csgp-button-v2-primary-color, #007A93);
-        color: var(--csgp-button-v2-text-color) !important;
+        background-color: var(--ui-button-primary-color);
+        color: var(--ui-button-text-color) !important;
         > cds-icon {
-            color: var(--csgp-button-v2-text-color) !important;
+            color: var(--ui-button-text-color) !important;
         }
 
         &:not(.disabled):hover {
-            background-color: var(--csgp-button-v2-primary-hover-color, #5097AB) !important;
+            background-color: var(--ui-button-primary-hover-color) !important;
             &:active {
-                background-color: var(--csgp-button-v2-primary-color, #007A93) !important;
+                background-color: var(--ui-button-primary-color) !important;
             }
         }
     }
 
     .simple-primary {
-        --csgp-button-v2-primary-hover-color: #5097AB;
-        --csgp-button-v2-text-color: #007A93;
+        --ui-button-primary-hover-color: #{$ui-alternative-petrol-color};
+        --ui-button-text-color: #{$ui-petrol-color};
     }
 
     .simple-destructive {
-        --csgp-button-v2-primary-hover-color: #f76962;
-        --csgp-button-v2-text-color: #e45048;
+        --ui-button-primary-hover-color: #{$ui-alternative-error-color};
+        --ui-button-text-color: #{$ui-error-color};
     }
 
     .simple {
         &:not(.disabled):hover {
-            color: var(--csgp-button-v2-primary-hover-color, #5097AB) !important;
+            color: var(--ui-button-primary-hover-color) !important;
             > cds-icon {
-                color: var(--csgp-button-v2-primary-hover-color, #5097AB) !important;
+                color: var(--ui-button-primary-hover-color) !important;
             }
 
             &:active {
-                color: var(--csgp-button-v2-text-color, #007A93) !important;
+                color: var(--ui-button-text-color) !important;
                 > cds-icon {
-                    color: var(--csgp-button-v2-text-color, #007A93) !important;
+                    color: var(--ui-button-text-color) !important;
                 }
             }
-            
         }
 
         > cds-icon {
-            color: var(--csgp-button-v2-text-color, #007A93) !important;
+            color: var(--ui-button-text-color) !important;
         }
     }
 
-    .csgp-button-v2 {
+    .ui-button {
         display: flex;
         align-items: center;
         width: fit-content;
-        font-size: var(--csgp-button-v2-font-size, .65rem);
+        font-size: var(--ui-button-font-size, .65rem);
         font-weight: 500;
         gap: .3rem;
         line-height: normal;
@@ -121,14 +120,13 @@
             -ms-user-select: none; /* Internet Explorer/Edge */
                 user-select: none; /* Non-prefixed version, currently
                                         supported by Chrome, Edge, Opera and Firefox */
-        color: var(--csgp-button-v2-text-color, #007A93) !important;
+        color: var(--ui-button-text-color) !important;
     }
 
-    .csgp-badge {
+    .ui-badge {
         position: absolute;
         top: 0%; // Align vertically centered
         right: -8px; // Adjust as needed for desired distance from the button edge
         transform: translateY(-50%); // Center vertically
     }
-  
 }

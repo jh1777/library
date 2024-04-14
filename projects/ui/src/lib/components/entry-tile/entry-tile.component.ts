@@ -1,6 +1,6 @@
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Output, QueryList, ViewEncapsulation, computed, input, output, signal } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, computed, input, output, signal } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { ClarityModule } from '@clr/angular';
 import {
@@ -21,7 +21,7 @@ ClarityIcons.addIcons(
 @Component({
   selector: 'ui-entry-tile',
   standalone: true,
-  imports: [CommonModule, ClarityModule, EntryItemComponent, EntryKeyValueComponent],
+  imports: [CommonModule, ClarityModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './entry-tile.component.html',
   styleUrl: './entry-tile.component.scss',
@@ -37,6 +37,9 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
   @ContentChildren(EntryItemComponent) items: QueryList<EntryItemComponent>;
   @ContentChildren(EntryKeyValueComponent) titles: QueryList<EntryKeyValueComponent>;
   @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
+
+
+  // TODO: Why is a tooltip shown onhover of Tile??
 
   ngOnDestroy(): void {
     this._timers.forEach(t => t.unsubscribe());

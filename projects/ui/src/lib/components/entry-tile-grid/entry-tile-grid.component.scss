@@ -1,22 +1,22 @@
 :host {
     @import '../../styles/ui.styles.scss';
 
-    --csgp-entry-tile-grid-vspacing: .5rem;
-    --csgp-entry-tile-grid-hspacing: .8rem;
+    --ui-entry-tile-grid-vspacing: .5rem;
+    --ui-entry-tile-grid-hspacing: .8rem;
 
     display: flex;
     flex-direction: row;
     width: 100%;
-    gap: var(--csgp-entry-tile-grid-vspacing, 0.5rem);
-    .csgp-entry-tile-grid-column {
+    gap: var(--ui-entry-tile-grid-vspacing, 0.5rem);
+    
+    .ui-entry-tile-grid-column {
         width: 100%;
         min-width: max-content;
         display: flex;
-        gap: var(--csgp-entry-tile-grid-hspacing, 0.5rem);
+        gap: var(--ui-entry-tile-grid-hspacing, 0.5rem);
         flex-direction: column;
         &:not(:first-child) {
-            //border-left: 1px solid lightgray;
-            padding-left: var(--csgp-entry-tile-grid-vspacing);
+            padding-left: var(--ui-entry-tile-grid-vspacing);
         }
     }
 

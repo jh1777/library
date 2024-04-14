@@ -30,6 +30,9 @@ export class ValueTileComponent extends UIBaseComponent implements AfterContentI
     }    
   }
 
+  /** Indicates whether the content is still loading */
+  isLoading = input<boolean>(false);
+
   /** Then key (or label) of the data - shown left */
   key = input.required<string>();
 

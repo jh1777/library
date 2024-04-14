@@ -2,32 +2,28 @@
 
 :host {    
 
-    display: contents;
-    --action-color: #{$ui-petrol-color};
-  
-    --background: #{$ui-alternative-standard-color};
-    --daimler-grey3: #{$ui-light-standard-color};
+    display: contents;  
   
     --attention-tile-bg-color: #{$ui-light-attention-color};
-    --attention-item-bg-color: #ffecce;
+    --attention-item-bg-color: #{$ui-light-attention-color};
     --attention-item-border-color: #{$ui-attention-color};
   
     --error-tile-bg-color: #{$ui-light-error-color};
-    --error-item-bg-color: #ffe6e4;
+    --error-item-bg-color: #{$ui-light-error-color};
     --error-item-border-color: #{$ui-error-color};;
   
     --success-tile-bg-color: #{$ui-light-success-color};
-    --success-item-bg-color: #ceffd5;
+    --success-item-bg-color:  #{$ui-light-success-color};
     --success-item-border-color: #{$ui-success-color};
   
     --dot-size: 10px;
   
     .clickable:hover {
       cursor: pointer;
-      border: 1px solid var(--daimler-grey3) !important;
+      border: 1px solid $ui-standard-color !important;
   
       &:active {
-        border: 1px solid var(--action-color) !important;
+        border: 1px solid $ui-petrol-color !important;
       }
     }
   
@@ -66,7 +62,7 @@
       border: 1px solid var(--success-item-border-color) !important;
     }
   
-    .csgp-entry-tile {
+    .ui-entry-tile {
       min-width: 250px;
       &-error {
         color: var(--attention-item-border-color); 
@@ -91,7 +87,7 @@
 
       &-collapse-button {
         display: flex;
-        border: 1px solid var(--background);
+        border: 1px solid $ui-standard-color;
         align-items: center;
         padding: .1rem .2rem;
         border-radius: 2rem;
@@ -101,29 +97,29 @@
         user-select: none;
   
         &:hover {
-          color: var(--action-color);
-          border: 1px solid var(--action-color);
+          color: $ui-petrol-color;
+          border: 1px solid $ui-petrol-color;
   
           &:active {
-            background-color: var(--action-color);
-            color: white;
+            background-color: $ui-petrol-color;
+            color: $ui-inverted-text-color;
           }
         }
       }
   
       &-base {
-        background-color: var(--background);
+        background-color: $ui-alternative-standard-color;
         display: flex;
         flex-direction: column;
         border-radius: .3rem;
         padding: .3rem .6rem;
-        color: black;
+        color: $ui-standard-text-color;
       }
   
       &-title {
         display: flex;
         font-size: large;
-        color: black;
+        color: $ui-standard-text-color;
         font-weight: 700;
         margin-bottom: 0.3rem;
       }
@@ -171,13 +167,13 @@
         user-select: none;
         /* Non-prefixed version, currently
                                           supported by Chrome, Edge, Opera and Firefox */
-        color: var(--csgp-entry-tile-more-button-color, var(--action-color));
+        color: var(--ui-entry-tile-more-button-color, $ui-petrol-color);
   
         &:not(.disabled):hover {
-          color: var(--csgp-entry-tile-more-button-hover-color, $ui-alternative-petrol-color);
+          color: var(--ui-entry-tile-more-button-hover-color, $ui-alternative-petrol-color);
   
           &:active {
-            color: var(--csgp-entry-tile-more-button-color, var(--action-color));
+            color: var(--ui-entry-tile-more-button-color, $ui-petrol-color);
           }
         }
       }
@@ -196,26 +192,26 @@
           height: var(--dot-size);
           cursor: pointer;
           border-radius: 50%;
-          border: solid 2px var(--csgp-entry-tile-pages-dot-border-color, var(--daimler-grey3));
+          border: solid 2px var(--ui-entry-tile-pages-dot-border-color, $ui-standard-color);
   
           &:hover {
-            border: solid 2px var(--csgp-entry-tile-pages-dot-hover-bg-color, var(--action-color));
+            border: solid 2px var(--ui-entry-tile-pages-dot-hover-bg-color, $ui-petrol-color);
   
             &:active {
-              background-color: var(--csgp-entry-tile-pages-dot-hover-active-bg-color, var(--action-color));
+              background-color: var(--ui-entry-tile-pages-dot-hover-active-bg-color, $ui-petrol-color);
             }
           }
   
           &-active {
-            background-color: var(--csgp-entry-tile-pages-dot-active-bg-color, var(--daimler-grey3));
+            background-color: var(--ui-entry-tile-pages-dot-active-bg-color, $ui-standard-color);
             cursor: auto;
   
             &:hover {
-              border: solid 2px var(--csgp-entry-tile-pages-dot-border-color, var(--daimler-grey3));
-              background-color: var(--csgp-entry-tile-pages-dot-active-hover-bg-color, var(--daimler-grey3));
+              border: solid 2px var(--ui-entry-tile-pages-dot-border-color, $ui-standard-color);
+              background-color: var(--ui-entry-tile-pages-dot-active-hover-bg-color, $ui-standard-color);
   
               &:active {
-                background-color: var(--csgp-entry-tile-pages-dot-active-hover-active-bg-color, var(--daimler-grey3));
+                background-color: var(--ui-entry-tile-pages-dot-active-hover-active-bg-color, $ui-standard-color);
               }
             }
           }
@@ -223,13 +219,13 @@
       }
     }
   
-    .csgp-generic-flex-row {
+    .ui-generic-flex-row {
       flex-direction: row !important;
       gap: .25rem !important;
       align-items: center !important;
     }
   
-    .csgp-generic-container {
+    .ui-generic-container {
       display: flex;
       flex-direction: row;
       width: 100%;
@@ -303,7 +299,7 @@
     }
   
     .loading {
-      color: var(--loading-color, #d0d0d0);
+      color: $ui-standard-color;
       line-height: 1rem;
     }
   

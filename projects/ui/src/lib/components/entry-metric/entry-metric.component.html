@@ -1,14 +1,14 @@
 @if(hidden() == false) {
     <div 
-        class="csgp-property-metric-bar"
+        class="ui-property-metric-bar"
 >
         @if(isLoading() == true) {
-            <div class="csgp-property-metric-bar loading pulse"
+            <div class="ui-property-metric-bar loading pulse"
                 [style.width.%]="100">
             </div>
         }
         @if(isLoading() == false && percent() > 0) {
-            <div class="csgp-property-metric-bar"
+            <div class="ui-property-metric-bar"
                 [class.default-bar]="style() == 0"
                 [class.attention-bar]="style() == 1"
                 [class.error-bar]="style() == 2"

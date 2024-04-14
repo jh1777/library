@@ -5,18 +5,16 @@
     position: relative;
     width: 100%;
 
-    .csgp-toolbar-left {
+    .ui-toolbar-left {
         display: flex;
         gap: .5rem;
         align-items: center;
 
     }
-    .csgp-toolbar-right {
+    .ui-toolbar-right {
         margin-left: auto;
         display: flex;
         gap: .5rem;
         align-items: center;
-
     }
-    
 }
