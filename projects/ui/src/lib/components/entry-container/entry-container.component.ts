@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ContentChildren, QueryList } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, QueryList, signal } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
 import { EntryKeyValueComponent } from '../entry-tile';
 import { EntryMetricComponent } from '../entry-metric';
@@ -15,8 +15,11 @@ export class EntryContainerComponent extends UIBaseComponent {
   @ContentChildren(EntryKeyValueComponent) keyvalues: QueryList<EntryKeyValueComponent>;
   @ContentChildren(EntryMetricComponent) metrics: QueryList<EntryMetricComponent>;
 
+  maxKeyValues = signal(2);
+  maxMetrics = signal(1);
+
   ngAfterContentInit(): void {
-    super.limitContentChildren(this.keyvalues, 2);
-    super.limitContentChildren(this.metrics, 1);
+    super.limitContentChildren(this.keyvalues, this.maxKeyValues());
+    super.limitContentChildren(this.metrics, this.maxMetrics());
   }
 }

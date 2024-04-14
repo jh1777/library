@@ -18,8 +18,8 @@ export class CardComponent extends UIBaseComponent implements AfterContentInit {
     super.limitContentChildren<ButtonComponent>(this.buttons, 3);
   }
 
-  /** Main title of the card - shown at the top */
-  title = input<string>();
+  /** Main header title of the card - shown at the top */
+  header = input<string>();
 
   /** Simple unformattted string showed as text content */
   text = input<string>();

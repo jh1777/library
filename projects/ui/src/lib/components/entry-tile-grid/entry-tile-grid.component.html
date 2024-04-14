@@ -3,18 +3,23 @@
         <div class="ui-entry-tile-grid-column">
             @if($index == 0) {
                 <ng-content select="ui-entry-tile[column=1]"></ng-content>
+                <ng-content select="ui-metric-tile[column=1]"></ng-content>
             }
             @if($index == 1) {
                 <ng-content select="ui-entry-tile[column=2]"></ng-content>
+                <ng-content select="ui-metric-tile[column=2]"></ng-content>
             }
             @if($index == 2) {
                 <ng-content select="ui-entry-tile[column=3]"></ng-content>
+                <ng-content select="ui-metric-tile[column=3]"></ng-content>
             }
             @if($index == 3) {
                 <ng-content select="ui-entry-tile[column=4]"></ng-content>
+                <ng-content select="ui-metric-tile[column=4]"></ng-content>
             }
             @if($index == 4) {
                 <ng-content select="ui-entry-tile[column=5]"></ng-content>
+                <ng-content select="ui-metric-tile[column=5]"></ng-content>
             }
         </div>
     }

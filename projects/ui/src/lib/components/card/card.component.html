@@ -2,7 +2,7 @@
     <div class="ui-card">
         <div class="ui-card-header">
             @if(isLoading() == false) {
-                {{ title() }}
+                {{ header() }}
                 <div class="ui-card-header-right">
                     <ng-content select="ui-button[slot=header-right]"></ng-content>
                 </div>

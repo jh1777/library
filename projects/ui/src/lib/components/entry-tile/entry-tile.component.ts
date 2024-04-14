@@ -57,8 +57,8 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
         this.items.get(i).hidden.set(true);
       }
 
-      // check for item.title grouping
-      if (i > 0 && this.items.get(i-1).title() == this.items.get(i).title() && this.items.get(i-1).hidden() == false) {
+      // check for item.header grouping
+      if (i > 0 && this.items.get(i-1).header() == this.items.get(i).header() && this.items.get(i-1).hidden() == false) {
         this.items.get(i).showTitle.set(false);
       } else {
         this.items.get(i).showTitle.set(true);
@@ -156,10 +156,10 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
     }
   })
 
-  /** Optional (but recommended): Tile title */
-  title = input<string>(null);
+  /** Optional (but recommended): Tile header */
+  header = input<string>(null);
 
-  /** Optional: Tile title icon  */
+  /** Optional: Tile header icon  */
   titleIcon = input<string>(null);
 
   /**

@@ -1,7 +1,7 @@
 @if (hidden() == false) {
   @if (isLoading() == true) {
     <div class="loading no-select pulse">
-      <div class="ui-entry-tile-item-title loading">
+      <div class="ui-entry-tile-item-header loading">
         <div>
           @for (_ of [].constructor(5); track $index) {
             {{ placeholder }}
@@ -34,8 +34,8 @@
   @if (isLoading() == false) {
     <div>
       @if(showTitle() == true) {
-        <div class="ui-entry-tile-item-title">
-          {{ title() }}
+        <div class="ui-entry-tile-item-header">
+          {{ header() }}
         </div>
       }
 

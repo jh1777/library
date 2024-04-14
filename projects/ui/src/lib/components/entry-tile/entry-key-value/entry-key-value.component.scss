@@ -42,6 +42,7 @@
 
     &-left {
       display: flex;
+      font-weight: 500;
       line-height: normal;
       flex-direction: column;
       ::before:not(.loading) {

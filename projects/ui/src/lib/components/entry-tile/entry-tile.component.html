@@ -1,12 +1,12 @@
 @if(hidden() == false) {
   <div class="ui-entry-tile">
-    @if (title()) {
-      <div class="ui-entry-tile-title">
+    @if (header()) {
+      <div class="ui-entry-tile-titleheader">
         <div class="ui-generic-container-left ui-generic-flex-row">
           @if (titleIcon()) {
             <cds-icon [attr.shape]="titleIcon()" size="20"></cds-icon>
           }
-          {{ title() }}
+          {{ header() }}
         </div>
         <div class="ui-generic-container-right">
           @if (errorMessage()) {

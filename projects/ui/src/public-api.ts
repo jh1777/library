@@ -9,5 +9,6 @@ export * from './lib/components/entry-tile';
 export * from './lib/components/entry-tile-grid';
 export * from './lib/components/entry-container';
 export * from './lib/components/entry-metric';
+export * from './lib/components/metric-tile';
 export * from './lib/components/toolbar';
 export * from './lib/components/value-tile';

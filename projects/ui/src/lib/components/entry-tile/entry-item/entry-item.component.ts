@@ -67,9 +67,9 @@ export class EntryItemComponent extends UIBaseComponent implements AfterContentI
   /** Indicates whether the content is still loading */
   isLoading = input<boolean>(false);
   /**
-   * Optional: Group Title to be shown at the top of the item itself
+   * Optional: Group header to be shown at the top of the item itself
    */
-  title = input<string>();
+  header = input<string>();
 
   /** Optional: State `EntryState` of the Item (`none`, `attention`, `error` or `success`)
    * By default or if unset, it is none.

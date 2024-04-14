@@ -1,0 +1,26 @@
+:host {
+    @import '../../styles/ui.styles.scss';
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .ui-metric-tile-header {
+        display: flex;
+        font-size: large;
+        color: $ui-standard-text-color;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+    }
+
+    .ui-metric-tile-container {
+        min-width: 250px;
+        background-color: $ui-alternative-standard-color;
+        display: flex;
+        flex-direction: column;
+        gap: .45rem;
+        border-radius: .3rem;
+        padding: .7rem .8rem;
+        color: $ui-standard-text-color;
+    }
+}
