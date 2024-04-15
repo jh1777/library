@@ -63,13 +63,6 @@
   }
 
   .ui-entry-tile {
-    
-    &-itemcontainer {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
     &-item {
       &-header {
         font-weight: 600;
@@ -91,6 +84,7 @@
       }
 
       line-height: normal;
+      min-width: $ui-min-width;
       position: relative;
       border: 1px solid $ui-inverted-text-color;
       background-color: $ui-inverted-text-color;

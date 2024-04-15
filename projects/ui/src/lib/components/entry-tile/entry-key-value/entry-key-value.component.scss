@@ -10,6 +10,7 @@
 
   --dot-size: 9px;
 
+  
   .big-style {
     font-size: .85rem;
   }
@@ -35,6 +36,7 @@
   }
 
   .ui-generic-container {
+    min-width: $ui-min-width;
     display: flex;
     flex-direction: row;
     width: 100%;

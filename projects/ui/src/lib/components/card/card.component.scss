@@ -14,6 +14,7 @@
         color: $ui-standard-text-color;
         display: flex;
         flex-direction: column;
+        min-width: $ui-min-width;
         gap: .4rem;
         -webkit-box-shadow: 0 0 10px 0 var(--entry-tile-item-shadow-color, $ui-light-shadow-color);
         -moz-box-shadow: 0 0 10px 0 var(--entry-tile-item-shadow-color, $ui-light-shadow-color);

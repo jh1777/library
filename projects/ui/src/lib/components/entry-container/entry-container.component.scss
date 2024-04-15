@@ -1,7 +1,7 @@
 :host {
     @import '../../styles/ui.styles.scss';
 
-    min-width: 150px;
+    min-width: $ui-min-width;
     position: relative;
     display: flex;
     flex-direction: column;
