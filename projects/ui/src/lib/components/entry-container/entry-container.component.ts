@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ContentChildren, QueryList, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, QueryList, input, output, signal } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
 import { EntryKeyValueComponent } from '../entry-tile';
 import { EntryMetricComponent } from '../entry-metric';
@@ -17,6 +17,11 @@ export class EntryContainerComponent extends UIBaseComponent {
 
   maxKeyValues = signal(2);
   maxMetrics = signal(1);
+
+  /** Is the entry container clickable? If yes, it has a hover and action style and emits the `onItemClick` output */
+  clickable = input<boolean>(false);
+
+  onClick = output<string>();
 
   ngAfterContentInit(): void {
     super.limitContentChildren(this.keyvalues, this.maxKeyValues());

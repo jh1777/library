@@ -1,4 +1,5 @@
 
+import { CommonModule } from "@angular/common";
 import { Component, Input } from "@angular/core";
 import { BadgeComponent, ButtonComponent, 
   CardComponent, EntryTileComponent, 
@@ -10,7 +11,7 @@ import { BadgeComponent, ButtonComponent,
 @Component({
     selector: 'ui-lib-page',
     standalone: true,
-    imports: [BadgeComponent, EntryTileGridComponent, ValueTileComponent, MetricTileComponent, ToolbarComponent, ButtonComponent, CardComponent, EntryTileComponent, EntryKeyValueComponent, EntryItemComponent, EntryContainerComponent, EntryMetricComponent],
+    imports: [CommonModule, BadgeComponent, EntryTileGridComponent, ValueTileComponent, MetricTileComponent, ToolbarComponent, ButtonComponent, CardComponent, EntryTileComponent, EntryKeyValueComponent, EntryItemComponent, EntryContainerComponent, EntryMetricComponent],
     templateUrl: './ui-lib-page.component.html',
     styleUrls: ['./ui-lib-page.component.scss']
   })
@@ -18,4 +19,9 @@ import { BadgeComponent, ButtonComponent,
 
     @Input()
     showComponentBorder: boolean = false;
+
+
+    log($event: any) {
+      console.log("(UiLibPageComponent) Event Logging", $event);
+    }
   }

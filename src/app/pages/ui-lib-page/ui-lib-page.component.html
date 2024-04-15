@@ -52,7 +52,11 @@
   </div>
 </div>
 <div class="item">
-  <div class="title">ENTRY TILE (containing ENTRY KEY VALUE & ENTRY ITEM)</div>
+  <div class="title">ENTRY TILE (containing ENTRY KEY VALUE & ENTRY ITEM)
+    <div class="subtitle">
+      main tile to show kay-value pairs or property data (with or without states); several config options available
+    </div>
+  </div>
   <div class="columns" style="margin-top: 0.5rem">
     <div class="container">
       <ui-entry-tile header="Simple Tile">
@@ -179,6 +183,9 @@
 <div class="item">
   <div class="title">
     ENTRY CONTAINER (containing ENTRY KEY VALUE & ENTRY METRIC)
+    <div class="subtitle">
+      used for layouting several ENTRY KEY VALUE & ENTRY METRIC components in columns; can be made clickable
+    </div>
   </div>
   <div class="columns" style="margin-top: 0.5rem">
     <div class="container">
@@ -360,7 +367,7 @@
           <ui-entry-metric [percent]="14" [style]="1" [isLoading]="false"> </ui-entry-metric>
         </ui-entry-container>
 
-        <ui-entry-container>
+        <ui-entry-container id="middle-metric-123" [clickable]=true (onClick)="log($event)">
           <ui-entry-key-value label="Started" value="33%"></ui-entry-key-value>
           <ui-entry-metric [percent]="33" [isLoading]="false"> </ui-entry-metric>
         </ui-entry-container>

@@ -15,7 +15,8 @@
 
     .ui-metric-tile-container {
         min-width: 250px;
-        background-color: $ui-alternative-standard-color;
+        background-color: $ui-inverted-text-color;
+        border: 3px solid $ui-alternative-standard-color;
         display: flex;
         flex-direction: column;
         gap: .45rem;

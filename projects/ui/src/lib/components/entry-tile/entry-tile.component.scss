@@ -4,15 +4,12 @@
 
     display: contents;  
   
-    --attention-tile-bg-color: #{$ui-light-attention-color};
     --attention-item-bg-color: #{$ui-light-attention-color};
     --attention-item-border-color: #{$ui-attention-color};
   
-    --error-tile-bg-color: #{$ui-light-error-color};
     --error-item-bg-color: #{$ui-light-error-color};
     --error-item-border-color: #{$ui-error-color};;
   
-    --success-tile-bg-color: #{$ui-light-success-color};
     --success-item-bg-color:  #{$ui-light-success-color};
     --success-item-border-color: #{$ui-success-color};
   
@@ -36,15 +33,21 @@
     }
   
     .attention-tile {
-      background-color: var(--attention-tile-bg-color) !important;
+      background-color: mix(white, $ui-light-attention-color, 20%) !important;
     }
   
     .error-tile {
-      background-color: var(--error-tile-bg-color) !important;
+      background-color: mix(white, $ui-light-error-color, 20%) !important;
+      /* tryout:
+      background: linear-gradient(45deg, 
+        mix(white, $ui-light-error-color, 80%),
+        mix($ui-error-color, $ui-light-error-color, 20%), 
+        mix(white, $ui-light-error-color, 80%)) !important;
+        */
     }
   
     .success-tile {
-      background-color: var(--success-tile-bg-color) !important;
+      background-color: mix(white, $ui-light-success-color, 20%) !important;
     }
   
     .attention-item {

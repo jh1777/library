@@ -1,4 +1,10 @@
 @if(hidden() == false) {
-    <ng-content select="ui-entry-key-value"></ng-content>
-    <ng-content select="ui-entry-metric"></ng-content>
+    <div 
+        class="ui-entry-container"
+        [class.clickable]="clickable() == true"
+        (click)="onClick.emit(id())"
+    >
+        <ng-content select="ui-entry-key-value"></ng-content>
+        <ng-content select="ui-entry-metric"></ng-content>
+    </div>
 }
