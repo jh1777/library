@@ -1,4 +1,21 @@
 <h3>UI Library (v2) with ng17, Signals etc.</h3>
+
+<div class="item">
+  <div class="title">
+    SWITCH
+    <div class="subtitle">
+      Simple toggle switch -> Current state: <strong>{{ toggleState().toString().toUpperCase() }}</strong> / Modify: 
+      <ui-button [label]="'Switch to '+(!toggleState()).toString().toUpperCase()" (onClick)="toggleState.set(!toggleState())"></ui-button>
+
+    </div>
+  </div>
+  <div class="columns" style="margin-top: 0.5rem">
+    <div class="container">
+      <ui-switch [(state)]="toggleState"></ui-switch>
+    </div>
+  </div>
+</div>
+
 <div class="item">
   <div class="title">BADGE</div>
   <div class="instances">
@@ -384,4 +401,6 @@
     <div class="container">
       &nbsp;
     </div>
-</div>
+  </div>
+
+

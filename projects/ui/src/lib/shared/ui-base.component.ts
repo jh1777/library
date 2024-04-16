@@ -8,6 +8,8 @@ import { Component, QueryList, input, signal } from "@angular/core";
   export class UIBaseComponent {
     public readonly placeholder = '⏹⏹ ';
 
+    // TODO: MAybe add tooltip as global input?
+    
     /**
      * Generic data object (optional)  
      * (tpye `any`)

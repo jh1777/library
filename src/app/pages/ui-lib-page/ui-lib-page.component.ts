@@ -1,9 +1,9 @@
 
 import { CommonModule } from "@angular/common";
-import { Component, Input } from "@angular/core";
+import { Component, Input, signal } from "@angular/core";
 import { BadgeComponent, ButtonComponent, 
   CardComponent, EntryTileComponent, 
-  EntryKeyValueComponent, EntryItemComponent,
+  EntryKeyValueComponent, EntryItemComponent, SwitchComponent,
   EntryContainerComponent, EntryMetricComponent,
   ToolbarComponent, ValueTileComponent, EntryTileGridComponent, MetricTileComponent
  } from "projects/ui/src/public-api";
@@ -11,14 +11,13 @@ import { BadgeComponent, ButtonComponent,
 @Component({
     selector: 'ui-lib-page',
     standalone: true,
-    imports: [CommonModule, BadgeComponent, EntryTileGridComponent, ValueTileComponent, MetricTileComponent, ToolbarComponent, ButtonComponent, CardComponent, EntryTileComponent, EntryKeyValueComponent, EntryItemComponent, EntryContainerComponent, EntryMetricComponent],
+    imports: [CommonModule, BadgeComponent, SwitchComponent, EntryTileGridComponent, ValueTileComponent, MetricTileComponent, ToolbarComponent, ButtonComponent, CardComponent, EntryTileComponent, EntryKeyValueComponent, EntryItemComponent, EntryContainerComponent, EntryMetricComponent],
     templateUrl: './ui-lib-page.component.html',
     styleUrls: ['./ui-lib-page.component.scss']
   })
   export class UiLibPageComponent   {
 
-    @Input()
-    showComponentBorder: boolean = false;
+    toggleState = signal<boolean>(false);
 
 
     log($event: any) {
