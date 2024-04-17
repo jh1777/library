@@ -11,5 +11,6 @@ export * from './lib/components/entry-container';
 export * from './lib/components/entry-metric';
 export * from './lib/components/metric-tile';
 export * from './lib/components/switch';
+export * from './lib/components/tabs';
 export * from './lib/components/toolbar';
 export * from './lib/components/value-tile';

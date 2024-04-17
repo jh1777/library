@@ -1,0 +1,15 @@
+@if(hidden() == false) {
+
+    <div class="ui-tabs">
+        @for (tab of tabs; track $index) {
+            <div class="ui-tab" 
+                [class.active]="tab.active() == true" 
+                (click)="selectTab(tab)">
+                {{ tab.label() }}
+            </div>
+        }
+    </div>
+    <div class="ui-tab-content">
+        <ng-content select="ui-tab"></ng-content>
+    </div>
+}

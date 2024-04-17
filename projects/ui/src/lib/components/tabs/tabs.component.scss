@@ -1,0 +1,47 @@
+:host {
+    @import '../../styles/ui.styles.scss';
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+ 
+    .ui-tabs {
+        display: flex;
+        border-bottom: 1px solid $ui-alternative-standard-color;
+        gap: .2rem;
+    }
+      
+    .ui-tab {
+        padding: .2rem .45rem;
+        cursor: pointer;
+        display: inline-block;
+        border-bottom: none;
+        background-color: $ui-inverted-text-color !important;
+        margin-bottom: 0;
+        border-radius: .25rem .25rem 0 0;
+        color: $ui-standard-text-color;
+        border: 1px solid $ui-alternative-standard-color;
+        border-bottom: 0;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+
+        &:hover {
+            border: 1px solid $ui-petrol-color !important;
+            border-bottom: 0 !important;
+        }
+    }
+      
+    .ui-tab.active {
+        border: 1px solid $ui-petrol-color !important;
+        background-color: $ui-petrol-color !important;
+        color: $ui-inverted-text-color;
+        border-bottom: 0 !important;
+    }
+
+    .ui-tab-content {
+        // Future use
+    }
+      
+}

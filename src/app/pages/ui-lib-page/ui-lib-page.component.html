@@ -1,5 +1,39 @@
 <h3>UI Library (v2) with ng17, Signals etc.</h3>
 
+
+<div class="item">
+  <div class="title">
+    TABS (using TAB)
+    <div class="subtitle">
+      Current active tab is index = {{ activeTabIndex() }}
+      <ui-button [label]="'Switch to 0'" (onClick)="activeTabIndex.set(0)"></ui-button>
+      <ui-button [label]="'Switch to 1'" (onClick)="activeTabIndex.set(1)"></ui-button>
+    </div>
+  </div>
+  <div class="columns" style="margin-top: 0.5rem">
+    <div class="container">
+      <ui-tabs [(activeIndex)]="activeTabIndex">
+        <ui-tab label="Fruits">
+          <li>
+            Apple
+          </li>
+          <li>
+            Lemon
+          </li>
+        </ui-tab>
+        <ui-tab label="Pizza" [active]=true>
+          <li>
+            Salami
+          </li>
+          <li>
+            Funghi
+          </li>
+        </ui-tab>
+      </ui-tabs>
+    </div>
+  </div>
+</div>
+
 <div class="item">
   <div class="title">
     SWITCH
@@ -11,7 +45,7 @@
   </div>
   <div class="columns" style="margin-top: 0.5rem">
     <div class="container">
-      <ui-switch [(state)]="toggleState"></ui-switch>
+      <ui-switch label="Switch" [(state)]="toggleState"></ui-switch>
     </div>
   </div>
 </div>
