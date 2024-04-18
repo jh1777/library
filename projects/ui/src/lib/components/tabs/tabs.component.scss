@@ -6,10 +6,46 @@
     flex-direction: column;
     gap: .8rem;
  
+    --collapse-button-size: 22px;
+
     .ui-tabs {
         display: flex;
         border-bottom: 1px solid $ui-alternative-standard-color;
         gap: .2rem;
+
+        &-buttons {
+            display: flex;
+            flex-direction: row;
+            gap: .3rem;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        &-button {
+            display: flex;
+            border: 1px solid $ui-standard-color;
+            align-items: center;
+            padding: .1rem .2rem;
+            border-radius: 2rem;
+            width: var(--collapse-button-size);
+            min-width: var(--collapse-button-size);
+            max-width: var(--collapse-button-size);
+            height: var(--collapse-button-size);
+            min-height: var(--collapse-button-size);
+            max-height: var(--collapse-button-size);
+            cursor: pointer;
+            user-select: none;
+    
+            &:hover {
+            color: $ui-petrol-color;
+            border: 1px solid $ui-petrol-color;
+        
+                &:active {
+                    background-color: $ui-petrol-color;
+                    color: $ui-inverted-text-color;
+                }
+            }
+        }
     }
       
     .ui-tab {
@@ -34,10 +70,15 @@
     }
       
     .ui-tab.active {
-        border: 1px solid $ui-petrol-color !important;
-        background-color: $ui-petrol-color !important;
-        color: $ui-inverted-text-color;
-        border-bottom: 0 !important;
+        &:not(.filled) {
+            background-color: $ui-alternative-standard-color !important;
+            color: $ui-standard-text-color;
+        }
+        &:not(.flat) {
+            border: 1px solid $ui-petrol-color !important;
+            background-color: $ui-petrol-color !important;
+            color: $ui-inverted-text-color;
+        }
     }
 
     .ui-tab-content {

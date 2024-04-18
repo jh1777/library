@@ -5,16 +5,26 @@ import {
   ContentChildren,
   QueryList,
   effect,
+  input,
   model,
 } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
 import { TabComponent } from './tab/tab.component';
+import { TabStyle } from './tabs.models';
+import { ClarityModule } from '@clr/angular';
+import {
+  ClarityIcons,
+  angleIcon
+} from "@cds/core/icon";
+ClarityIcons.addIcons(
+  angleIcon
+);
 
 @Component({
   selector: 'ui-tabs',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+  imports: [ClarityModule],
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.scss',
 })
@@ -29,6 +39,10 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
   */
   activeIndex = model<number>(-1);
 
+  style = input<TabStyle>(TabStyle.Filled);
+  
+  showButtons = input<boolean>(true);
+
   constructor() {
     super();
     effect(
@@ -42,8 +56,23 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
     );
   }
 
+  private getActiveTabs(): TabComponent[] {
+    return this.tabs.filter((tab) => tab.active);
+  }
+
+  private getActiveTabIndex(): number | null {
+    const tab = this.getActiveTabs();
+    if (tab && tab.length > 0) {
+      const idx = this.tabs.toArray().findIndex((t) => t === tab[0]);
+      if (idx > -1) {
+        return idx;
+      }
+    }
+    return null;
+  }
+
   ngAfterContentInit() {
-    const activeTabs = this.tabs.filter((tab) => tab.active);
+    const activeTabs = this.getActiveTabs();
     if (activeTabs.length === 0) {
       this.selectTab(this.tabs.first);
     }
@@ -59,6 +88,16 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
       if (idx > -1 && this.activeIndex() != idx) {
         this.activeIndex.set(idx);
       }
+    }
+  }
+
+  activateTab(direction: number) {
+    const idx = this.getActiveTabIndex();
+    if (idx != null) {
+      let newIdx = idx + direction;
+      if (newIdx < 0) { newIdx = 0; }
+      if (newIdx == this.tabs.length) { newIdx = this.tabs.length - 1; }
+      this.selectTab(this.tabs.get(newIdx));
     }
   }
 }

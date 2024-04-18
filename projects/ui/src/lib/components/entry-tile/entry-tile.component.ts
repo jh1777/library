@@ -12,7 +12,7 @@ import { EntryItemComponent } from './entry-item/entry-item.component';
 import { EntryKeyValueComponent } from './entry-key-value/entry-key-value.component';
 import { ButtonComponent } from '../button';
 import { UIBaseComponent } from '../../shared';
-import { EntryTileCollapseMode, EntryTileState } from './entry-tile-models';
+import { EntryTileCollapseMode, EntryTileState } from './entry-tile.models';
 ClarityIcons.addIcons(
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
 );

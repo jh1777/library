@@ -3,11 +3,32 @@
     <div class="ui-tabs">
         @for (tab of tabs; track $index) {
             <div class="ui-tab" 
-                [class.active]="tab.active() == true" 
+                [class.active]="tab.active() == true"
+                [class.filled]="style() == 0"
+                [class.flat]="style() == 1"
                 (click)="selectTab(tab)">
                 {{ tab.label() }}
             </div>
         }
+
+        @if (showButtons() == true) {
+            <div class="ui-tabs-buttons">
+                <div class="ui-tabs-button">
+                    <cds-icon shape="angle" 
+                            style="transform: rotateZ(-90deg) translateY(-10%);" 
+                            [attr.size]=13
+                            (click)="activateTab(-1)"
+                            ></cds-icon>
+                </div>
+                <div class="ui-tabs-button">
+                    <cds-icon shape="angle" 
+                            style="transform: rotateZ(90deg);" 
+                            [attr.size]=13
+                            (click)="activateTab(1)"
+                            ></cds-icon>
+                </div>
+            </div>
+          }
     </div>
     <div class="ui-tab-content">
         <ng-content select="ui-tab"></ng-content>
