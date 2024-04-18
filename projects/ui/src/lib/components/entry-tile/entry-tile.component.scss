@@ -14,6 +14,7 @@
     --success-item-border-color: #{$ui-success-color};
   
     --dot-size: 10px;
+    --collapse-button-size: 23px;
   
     .clickable:hover {
       cursor: pointer;
@@ -24,12 +25,16 @@
       }
     }
   
+    .no-rotate {
+      transform: translateY(-1%);
+    }
+    
     .rotate {
       -webkit-transform: rotateZ(180deg);
       -moz-transform: rotateZ(180deg);
       -o-transform: rotateZ(180deg);
       -ms-transform: rotateZ(180deg);
-      transform: rotateZ(180deg);
+      transform: rotateZ(180deg) translateY(-2%);
     }
   
     .attention-tile {
@@ -94,8 +99,12 @@
         align-items: center;
         padding: .1rem .2rem;
         border-radius: 2rem;
-        width: 1.2rem;
-        height: 1.2rem;
+        width: var(--collapse-button-size);
+        min-width: var(--collapse-button-size);
+        max-width: var(--collapse-button-size);
+        height: var(--collapse-button-size);
+        min-height: var(--collapse-button-size);
+        max-height: var(--collapse-button-size);
         cursor: pointer;
         user-select: none;
   

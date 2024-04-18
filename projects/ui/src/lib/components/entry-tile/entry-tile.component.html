@@ -22,8 +22,9 @@
             >
               <cds-icon
                 shape="angle"
-                size="14"
-                [class.rotate]="isCollapsed()"
+                [attr.size]=13
+                [class.rotate]="isCollapsed() == true"
+                [class.no-rotate]="isCollapsed() == false"
               ></cds-icon>
             </div>
           }
