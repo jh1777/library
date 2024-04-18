@@ -1,5 +1,19 @@
 <h3>UI Library (v2) with ng17, Signals etc.</h3>
 
+<div class="item">
+  <div class="title">
+    INPUT
+    <div class="subtitle">
+      <ui-button [label]="'Set Value'" (onClick)="inputValue.set('New Value')"></ui-button>
+
+    </div>
+  </div>
+  <div class="columns" style="margin-top: 0.5rem">
+    <div class="container">
+      <ui-input [(value)]="inputValue"></ui-input>
+    </div>
+  </div>
+</div>
 
 <div class="item">
   <div class="title">
@@ -12,22 +26,22 @@
   </div>
   <div class="columns" style="margin-top: 0.5rem">
     <div class="container">
-      <ui-tabs [(activeIndex)]="activeTabIndex" [style]=1>
+      <ui-tabs [(activeIndex)]="activeTabIndex" [style]=1 [showButtons]=true>
         <ui-tab label="Fruits">
-          <li>
-            Apple
-          </li>
-          <li>
-            Lemon
-          </li>
+          <li>Apple</li>
+          <li>Lemon</li>
         </ui-tab>
         <ui-tab label="Pizza" [active]=true>
-          <li>
-            Salami
-          </li>
-          <li>
-            Funghi
-          </li>
+          <li>Salami</li>
+          <li>Funghi</li>
+        </ui-tab>
+        <ui-tab label="Disabled" [disabled]=true>
+          <li>Unreachable</li>
+          <li>Content</li>
+        </ui-tab>
+        <ui-tab label="More Fruits">
+          <li>Kiwi</li>
+          <li>Banana</li>
         </ui-tab>
       </ui-tabs>
     </div>

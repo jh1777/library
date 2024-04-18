@@ -20,6 +20,10 @@
         flex-direction: row;
         gap: .4rem;
         align-items: center;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
 
         &-toggle {
             display: flex;
@@ -32,10 +36,7 @@
             min-height: $ui-switch-height;
             height: $ui-switch-height;
             max-height: $ui-switch-height;
-            cursor: pointer;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
+            
             box-shadow: inset 0 0 4px 0 $ui-shadow-color;
             -webkit-box-shadow: inset 0 0 4px 0 $ui-shadow-color;
             -moz-box-shadow: inset 0 0 4px 0 $ui-shadow-color;

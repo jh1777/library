@@ -63,7 +63,7 @@
         -webkit-user-select: none;
         -moz-user-select: none;
 
-        &:hover {
+        &:not(.disabled):hover {
             border: 1px solid $ui-petrol-color !important;
             border-bottom: 0 !important;
         }
@@ -80,6 +80,13 @@
             color: $ui-inverted-text-color;
         }
     }
+
+    .ui-tab.disabled {
+        color: $ui-alternative-standard-color !important;
+        cursor: default;
+    }
+
+
 
     .ui-tab-content {
         // Future use

@@ -4,14 +4,14 @@ import { Component, Input, signal } from "@angular/core";
 import { BadgeComponent, ButtonComponent, 
   CardComponent, EntryTileComponent, TabComponent, TabsComponent,
   EntryKeyValueComponent, EntryItemComponent, SwitchComponent,
-  EntryContainerComponent, EntryMetricComponent,
+  EntryContainerComponent, EntryMetricComponent, InputComponent,
   ToolbarComponent, ValueTileComponent, EntryTileGridComponent, MetricTileComponent
  } from "projects/ui/src/public-api";
 
 @Component({
     selector: 'ui-lib-page',
     standalone: true,
-    imports: [CommonModule, BadgeComponent, SwitchComponent, TabComponent, TabsComponent, EntryTileGridComponent, ValueTileComponent, MetricTileComponent, ToolbarComponent, ButtonComponent, CardComponent, EntryTileComponent, EntryKeyValueComponent, EntryItemComponent, EntryContainerComponent, EntryMetricComponent],
+    imports: [CommonModule, BadgeComponent, SwitchComponent, InputComponent, TabComponent, TabsComponent, EntryTileGridComponent, ValueTileComponent, MetricTileComponent, ToolbarComponent, ButtonComponent, CardComponent, EntryTileComponent, EntryKeyValueComponent, EntryItemComponent, EntryContainerComponent, EntryMetricComponent],
     templateUrl: './ui-lib-page.component.html',
     styleUrls: ['./ui-lib-page.component.scss']
   })
@@ -20,6 +20,8 @@ import { BadgeComponent, ButtonComponent,
     toggleState = signal<boolean>(false);
 
     activeTabIndex = signal<number>(0);
+
+    inputValue = signal<string>("Initial Value");
 
     log($event: any) {
       console.log("(UiLibPageComponent) Event Logging", $event);

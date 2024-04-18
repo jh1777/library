@@ -1,9 +1,9 @@
 @if(hidden() == false) {
-    <div class="ui-switch" [attr.title]="tooltip()">
+    <div class="ui-switch" [attr.title]="tooltip()" (click)="state.set(!state())">
         <div class="ui-switch-toggle"
             [class.knob-on]="state() == true"
             [class.knob-off]="state() == false"
-            (click)="state.set(!state())">
+            >
             <div [@switchPosition]="state()" class="ui-switch-toggle-knob">
             </div>
         </div>

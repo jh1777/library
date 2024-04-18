@@ -39,8 +39,16 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
   */
   activeIndex = model<number>(-1);
 
+  /**
+   * Style of the Tab Buttons  
+   * Filled = 0 (default)  
+   * Flat = 1  
+   */
   style = input<TabStyle>(TabStyle.Filled);
   
+  /**
+   * Show previous/next tab buttons
+   */
   showButtons = input<boolean>(true);
 
   constructor() {
@@ -57,7 +65,7 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
   }
 
   private getActiveTabs(): TabComponent[] {
-    return this.tabs.filter((tab) => tab.active);
+    return this.tabs.filter((tab) => tab.active() == true);
   }
 
   private getActiveTabIndex(): number | null {
@@ -78,7 +86,15 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
     }
   }
 
+  /**
+   * Selects a specific Tab
+   * @param tab TabComponent
+   */
   selectTab(tab: TabComponent) {
+    if (!tab || tab.disabled() == true) {
+      return;
+    }
+
     const tabs = this.tabs.toArray();
     tabs.forEach((t) => t.active.set(false));
     tab.active.set(true);
@@ -91,13 +107,29 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
     }
   }
 
+  /**
+   * Set a next/previous Tab as active
+   * @param direction Direction indicator (1: next, -1: previous)
+   */
   activateTab(direction: number) {
-    const idx = this.getActiveTabIndex();
-    if (idx != null) {
-      let newIdx = idx + direction;
+
+    const handleIndex = (index: number): TabComponent => {
+      let newIdx = index + direction;
       if (newIdx < 0) { newIdx = 0; }
       if (newIdx == this.tabs.length) { newIdx = this.tabs.length - 1; }
-      this.selectTab(this.tabs.get(newIdx));
+
+      let tab = this.tabs.get(newIdx);
+      if (tab.disabled() == true) {
+        tab = handleIndex(newIdx);
+      }
+      return tab;
+    }
+
+    const idx = this.getActiveTabIndex();
+
+    if (idx != null) {
+      const nextTab = handleIndex(idx);
+      this.selectTab(nextTab);
     }
   }
 }

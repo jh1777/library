@@ -22,4 +22,6 @@ export class TabComponent extends UIBaseComponent {
    * a ui-tabs component scope
    */
   active = model<boolean>();
+
+  disabled = input<boolean>(false);
 }
