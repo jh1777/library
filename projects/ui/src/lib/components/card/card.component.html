@@ -5,6 +5,7 @@
                 {{ header() }}
                 <div class="ui-card-header-right">
                     <ng-content select="ui-button[slot=header-right]"></ng-content>
+                    <ng-content select="ui-switch[slot=header-right]"></ng-content>
                 </div>
             } @else {
                 <div class="loading pulse">
@@ -32,8 +33,10 @@
         </div>
         @if(isLoading() == false) {
             <div class="ui-card-footer">
+                <ng-content select="ui-switch[slot=footer-left]"></ng-content>
                 <ng-content select="ui-button[slot=footer-left]"></ng-content>
                 <div style="margin-left: auto;">
+                    <ng-content select="ui-switch[slot=footer-right]"></ng-content>
                     <ng-content select="ui-button[slot=footer-right]"></ng-content>
                 </div>
             </div>

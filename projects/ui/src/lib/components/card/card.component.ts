@@ -1,6 +1,7 @@
 import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, input } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
 import { ButtonComponent } from '../button';
+import { SwitchComponent } from '../switch';
 
 @Component({
   selector: 'ui-card',
@@ -13,9 +14,11 @@ import { ButtonComponent } from '../button';
 export class CardComponent extends UIBaseComponent implements AfterContentInit {
 
   @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
+  @ContentChildren(SwitchComponent) switches: QueryList<SwitchComponent>;
 
   ngAfterContentInit(): void {
-    super.limitContentChildren<ButtonComponent>(this.buttons, 3);
+    super.limitContentChildren<SwitchComponent>(this.switches, 1);
+    super.limitContentChildren<ButtonComponent>(this.buttons, 2);
   }
 
   /** Main header title of the card - shown at the top */
