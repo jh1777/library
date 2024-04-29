@@ -10,5 +10,7 @@
   "include": [
     "**/*.spec.ts",
     "**/*.d.ts"
-  ]
+  ],
+  "files": ["cypress.config.ts"],
+  "exclude": ["cypress.config.ts"]
 }

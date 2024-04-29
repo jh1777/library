@@ -1,3 +1,9 @@
+@import './font.metropolis.scss';
+
+*, html {
+    font-family: 'Metropolis';
+}
+
 $ui-black: #000000;
 $ui-white: #ffffff;
 
@@ -30,3 +36,5 @@ $ui-alternative-shadow-color: #d0d0d0 !default;
 $ui-light-shadow-color: #ededed !default;
 
 $ui-min-width: 250px;
+$ui-base-font-size: 12px;
+$ui-border-radius: 4px;

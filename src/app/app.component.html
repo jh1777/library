@@ -1,5 +1,12 @@
+<ui-menu-bar>
+  <uic-menu-item label="Home" route="/" [exactMatch]=true></uic-menu-item>
+  <uic-menu-item label="Device" route="/device"></uic-menu-item>
+  <uic-menu-item label="Vehicle" route="/vehicle"></uic-menu-item>
+  <uic-menu-item label="Tags" route="/tags"></uic-menu-item>
+</ui-menu-bar>
+<router-outlet></router-outlet>
+<!-- 
 <div style="padding: 2rem">
-
   <div class="page-header">
     <div style="font-weight: 800; font-size: large;">Components Overview</div>
     <div class="header-button" (click)="showBorders = !showBorders">
@@ -25,19 +32,6 @@
       <ng-template [(clrIfActive)]="entryTileTabActive">
         <clr-tab-content>
           <entry-tile-page [showComponentBorder]="showBorders"></entry-tile-page>
-          <!-- 
-          <div class="columns">
-            <div class="container">
-              <p></p>
-              <csgp-v2-entry-tile></csgp-v2-entry-tile>
-            </div>
-            <div class="container">
-              <p></p>
-              <csgp-v2-entry-tile isLoading="true"></csgp-v2-entry-tile>
-            </div>
-            <div class="container">&nbsp;</div>
-          </div>
-          -->
         </clr-tab-content>
       </ng-template>
     </clr-tab>
@@ -90,3 +84,4 @@
     
   </clr-tabs>
 </div>
+-->
