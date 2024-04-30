@@ -1,8 +1,9 @@
 :host {
+    @import '../../styles/ui.styles.scss';
     position: relative;
 
     padding: .3rem .4rem;
-    border-radius: .3rem;
+    border-radius: $ui-border-radius;
     border: 1px solid grey;
     min-width: 100px;
     user-select: none;

@@ -41,7 +41,7 @@
 
     .ui-value-tile-key {
         background-color: var(--ui-value-tile-key-background);
-        border-radius: .3rem 0rem 0rem .3rem;
+        border-radius: $ui-border-radius 0 0 $ui-border-radius;
         padding: var(--padding);
         color: var(--ui-value-tile-text-color);
         font-weight: 700;
@@ -49,7 +49,7 @@
     }
     .ui-value-tile-value {
         background-color: var(--ui-value-tile-value-background);
-        border-radius: 0rem .3rem .3rem 0rem;
+        border-radius: 0 $ui-border-radius $ui-border-radius 0;
         padding: var(--padding);
         color: var(--ui-value-tile-text-color);
         font-weight: 300;

@@ -3,6 +3,7 @@
     
     display: contents;
 
+
     .ui-badge-error {
         background-color: var(--ui-badge-error-background-color, $ui-error-color) !important;
         color: $ui-inverted-text-color !important;
@@ -37,14 +38,17 @@
     }
 
     .ui-badge-small {
-        --size-value: 15px;
+        --size-value: 18px;
         height: var(--size-value);
         min-height: var(--size-value);
         max-height: var(--size-value);
         min-width: var(--size-value);
         max-width: var(--size-value);
         width: var(--size-value);
-        font-size: x-small;
+        font-size: 10px;
+        &.overflow {
+            font-size: 9px !important;
+        }
     }
 
     .ui-badge-medium {
@@ -55,19 +59,26 @@
         min-width: var(--size-value);
         max-width: var(--size-value);
         width: var(--size-value);
-        font-size: .6rem;
+        font-size: 12px;
+
+        &.overflow {
+            font-size: 10px !important;
+        }
     }
 
     .ui-badge-large {
-        --size-value: 24px;
+        --size-value: 22px;
         height: var(--size-value);
         min-height: var(--size-value);
         max-height: var(--size-value);
         min-width: var(--size-value);
         max-width: var(--size-value);
         width: var(--size-value);
-        font-size: large;
-        border-radius: .8rem !important;
+        font-size: 14px;
+        border-radius: calc(var(--size-value) / 2) !important;
+        &.overflow {
+            font-size: 12px !important;
+        }
     }
 
     .ui-badge {

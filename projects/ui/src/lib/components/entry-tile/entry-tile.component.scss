@@ -98,7 +98,7 @@
         border: 1px solid $ui-standard-color;
         align-items: center;
         padding: .1rem .2rem;
-        border-radius: 2rem;
+        border-radius: 50%;
         width: var(--collapse-button-size);
         min-width: var(--collapse-button-size);
         max-width: var(--collapse-button-size);
@@ -123,7 +123,7 @@
         background-color: $ui-alternative-standard-color;
         display: flex;
         flex-direction: column;
-        border-radius: .3rem;
+        border-radius: $ui-border-radius;
         padding: .3rem .6rem;
         color: $ui-standard-text-color;
       }

@@ -1,4 +1,5 @@
-<h3>UI Library (v2) with ng17, Signals etc.</h3>
+
+<div class="page-header">UI Library (v2) with ng17, Signals etc.</div>
 
 
 <div class="item">
@@ -66,12 +67,18 @@
 </div>
 
 <div class="item">
-  <div class="title">BADGE</div>
+  <div class="title">BADGE
+    <div class="subtitle">
+      Overflow > 99; Supports three sizes and four styles (colors); Supports text content as well
+    </div>
+  </div>
   <div class="instances">
-    <ui-badge value="4" [style]="1"></ui-badge>
-    <ui-badge value="4" [style]="2"></ui-badge>
+    <ui-badge value="14" [style]="1"></ui-badge>
+    <ui-badge value="99" [style]="2"></ui-badge>
     <ui-badge value="4" [style]="3"></ui-badge>
     <ui-badge value="4" [style]="4"></ui-badge>
+    <ui-badge value="18" size="1"></ui-badge>
+    <ui-badge value="96" size="3"></ui-badge>
     <ui-badge label="CTP2" [style]="4"></ui-badge>
     <ui-badge label="CTP3" value="45" [style]="3"></ui-badge>
   </div>
@@ -353,71 +360,7 @@
     </ui-value-tile>
   </div>
 </div>
-<div class="item">
-  <div class="title">
-    ENTRY TILE GRID (containing ENTRY TILE / METRIC TILE)
-    <div class="subtitle">
-      used for layouting several ENTRY TILE / METRIC TILE components in columns
-    </div>
-  </div>
-  <ui-entry-tile-grid [columns]="3">
-    <ui-entry-tile header="Slotted Empty Tile" collapseMode="1" column="1">
-      <ui-entry-key-value
-        label="Updated"
-        value="50 mins ago"
-        [isLoading]="false"
-      ></ui-entry-key-value>
-      <ui-entry-item
-        primaryValue="Primary"
-        secondaryValue="Subtitle"
-      ></ui-entry-item>
-      <ui-entry-item
-        primaryValue="Attributes"
-        secondaryValue="Updated"
-      ></ui-entry-item>
-    </ui-entry-tile>
-    <ui-entry-tile header="Tile at Col 3" collapseMode="1" column="3">
-      <ui-entry-item
-        primaryValue="Secondary"
-        secondaryValue="Subtitle"
-        icon="pop-out"
-        clickable="true"
-      >
-      </ui-entry-item>
-    </ui-entry-tile>
-    <ui-entry-tile header="Another Col 3" collapseMode="1" column="3">
-      <ui-entry-item
-        primaryValue="Connected"
-        secondaryValue="Yes"
-      ></ui-entry-item>
-      <ui-button
-        label="Delete"
-        [style]="4"
-        icon="trash"
-        slot="right"
-      ></ui-button>
-      <ui-button
-        label="Accept"
-        [style]="5"
-        icon="check"
-        slot="left"
-      ></ui-button>
-    </ui-entry-tile>
-    <ui-entry-tile header="Loading Demo" collapseMode="1" column="2">
-      <ui-entry-item
-        primaryValue="Attributes"
-        secondaryValue="Updated"
-        [isLoading]="true"
-      ></ui-entry-item>
-    </ui-entry-tile>
-    <ui-metric-tile header="Test Metrics" column="2">
-      <ui-entry-container>
-        <ui-entry-key-value label="None" value="14%" [state]="1"></ui-entry-key-value>
-        <ui-entry-metric [percent]="14" [style]="1" [isLoading]="false"> </ui-entry-metric>
-      </ui-entry-container>
-    </ui-metric-tile>
-  </ui-entry-tile-grid>
-</div>
+
 
 <div class="item">
   <div class="title">

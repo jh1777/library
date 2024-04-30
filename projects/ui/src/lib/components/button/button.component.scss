@@ -58,7 +58,7 @@
 
     .bordered {
         padding: .35rem .45rem;
-        border-radius: .25rem;
+        border-radius: $ui-border-radius;
         background-color: var(--ui-button-primary-color);
         color: var(--ui-button-text-color) !important;
         > cds-icon {

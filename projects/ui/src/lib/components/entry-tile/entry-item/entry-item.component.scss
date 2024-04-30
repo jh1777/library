@@ -92,7 +92,7 @@
       -moz-box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, $ui-alternative-shadow-color);
       box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, $ui-alternative-shadow-color);
       padding: .4rem .6rem;
-      border-radius: .3rem;
+      border-radius: $ui-border-radius;
 
       &:last-child {
         margin-bottom: .5rem;

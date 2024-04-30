@@ -29,7 +29,7 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            border-radius: .5rem;
+            border-radius: calc($ui-switch-width - $ui-switch-height);
             min-width: $ui-switch-width;
             width: $ui-switch-width;
             max-width: $ui-switch-width;
@@ -51,7 +51,7 @@
                 max-width: $ui-switch-knob-size;
                 min-height: $ui-switch-knob-size;
                 max-height: $ui-switch-knob-size;
-                border-radius: .5rem;
+                border-radius: 50%;
                 background-color: $ui-inverted-text-color;
                 -webkit-box-shadow: 0 0 3px 0 $ui-shadow-color;
                 -moz-box-shadow: 0 0 3px 0 $ui-shadow-color;

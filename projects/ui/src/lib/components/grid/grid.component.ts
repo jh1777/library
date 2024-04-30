@@ -2,14 +2,14 @@ import { AfterContentInit, ChangeDetectionStrategy, Component, computed, input }
 import { UIBaseComponent } from '../../shared';
 
 @Component({
-  selector: 'ui-entry-tile-grid',
+  selector: 'ui-grid',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
-  templateUrl: './entry-tile-grid.component.html',
-  styleUrl: './entry-tile-grid.component.scss'
+  templateUrl: './grid.component.html',
+  styleUrl: './grid.component.scss'
 })
-export class EntryTileGridComponent extends UIBaseComponent implements AfterContentInit {
+export class GridComponent extends UIBaseComponent implements AfterContentInit {
 
   /**
    * Number of Columns for the Grid  
