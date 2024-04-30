@@ -38,9 +38,6 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
   @ContentChildren(EntryKeyValueComponent) titles: QueryList<EntryKeyValueComponent>;
   @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
 
-
-  // TODO: Why is a tooltip shown onhover of Tile??
-
   ngOnDestroy(): void {
     this._timers.forEach(t => t.unsubscribe());
   }
@@ -50,18 +47,18 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
 
       // pagination
       if((!this.pageSize() && i >= this.currentPage() * this.maxItems() && i < this.currentPage() *this.maxItems() + this.maxItems())
-      || (this.pageSize() > 0 && i >= this.currentPage() * this.pageSize() && i < this.currentPage() * this.pageSize() + this.pageSize())) 
+      || (this.pageSize()! > 0 && i >= this.currentPage() * this.pageSize()! && i < this.currentPage() * this.pageSize()! + this.pageSize()!)) 
       {
-        this.items.get(i).hidden.set(false);
+        this.items.get(i)?.hidden.set(false);
       } else {
-        this.items.get(i).hidden.set(true);
+        this.items.get(i)?.hidden.set(true);
       }
 
       // check for item.header grouping
-      if (i > 0 && this.items.get(i-1).header() == this.items.get(i).header() && this.items.get(i-1).hidden() == false) {
-        this.items.get(i).showTitle.set(false);
+      if (i > 0 && this.items.get(i-1)?.header() == this.items.get(i)?.header() && this.items.get(i-1)?.hidden() == false) {
+        this.items.get(i)?.showTitle.set(false);
       } else {
-        this.items.get(i).showTitle.set(true);
+        this.items.get(i)?.showTitle.set(true);
       }
       
     }
@@ -109,8 +106,8 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
   public currentPage = signal(0);
 
   public noOfPages = computed(() => {
-    if (this.pageSize() && this.pageSize() > 0) {
-      const p = this.calcPagesNeeded(this.items.length, this.pageSize())
+    if (this.pageSize() && this.pageSize()! > 0) {
+      const p = this.calcPagesNeeded(this.items.length, this.pageSize()!)
       return p;
     } else {
       return 0;
@@ -157,17 +154,17 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
   })
 
   /** Optional (but recommended): Tile header */
-  header = input<string>(null);
+  header = input<string>();
 
   /** Optional: Tile header icon  */
-  titleIcon = input<string>(null);
+  titleIcon = input<string>();
 
   /**
    * Optional: If you want to show a button a the bottom of the tile you can set the label of it here.  
    * If the label is not set, there will be no button shown.  
    * The button, if you specify a label, will trigger the `onShowMoreClick` output.
    */
-  moreButtonLabel = input<string>(null);
+  moreButtonLabel = input<string>();
 
   /**
    * Optional: The page size of the tile
@@ -175,7 +172,7 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
    * **Important:** The maximum item count applies to each page! If `pageSize` is set higher than the maximum, it will be reduced to the maximum!   
    * Maximum: 5
    */
-  pageSize = input<number>(null);
+  pageSize = input<number>();
 
   // OUTPUTS
   /**

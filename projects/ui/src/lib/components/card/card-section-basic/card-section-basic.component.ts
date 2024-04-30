@@ -20,6 +20,7 @@ export class CardSectionBasicComponent extends UIBaseComponent {
     super.limitContentChildren<ButtonComponent>(this.buttons, 2);
   }
   
+  /** INTERNAL - do not modify */
   isLast = signal<boolean>(false);
 
   /** Simple unformattted string showed as text content */

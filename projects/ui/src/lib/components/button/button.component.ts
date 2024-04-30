@@ -88,7 +88,7 @@ export class ButtonComponent extends UIBaseComponent implements AfterContentInit
       _popOutIcon_,
       _copyIcon_
    */
-  icon = input<string>(null);
+  icon = input<string>();
 
   /**
    * Use this to disable the button

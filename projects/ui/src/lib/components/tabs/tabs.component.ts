@@ -57,7 +57,9 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
       () => {
         if (this.activeIndex() > -1) {
           const tab = this.tabs.get(this.activeIndex());
-          this.selectTab(tab);
+          if (tab) {
+            this.selectTab(tab);
+          }
         }
       },
       { allowSignalWrites: true },
@@ -119,10 +121,10 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
       if (newIdx == this.tabs.length) { newIdx = this.tabs.length - 1; }
 
       let tab = this.tabs.get(newIdx);
-      if (tab.disabled() == true) {
+      if (tab?.disabled() == true) {
         tab = handleIndex(newIdx);
       }
-      return tab;
+      return tab!;
     }
 
     const idx = this.getActiveTabIndex();

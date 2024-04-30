@@ -1,6 +1,16 @@
 @if(hidden() == false) {
-    <div class="ui-card">
-        <div class="ui-card-header">
+    <div 
+        class="ui-card"
+        [class.attention]="style() == 1"
+        [class.error]="style() == 2"
+        [class.success]="style() == 3"
+    >
+        <div 
+            class="ui-card-header"
+            [class.attention]="style() == 1"
+            [class.error]="style() == 2"
+            [class.success]="style() == 3"
+        >
             @if(isLoading() == false) {
                 {{ header() }}
                 <div class="ui-card-header-right">
@@ -17,34 +27,5 @@
         </div>
         
         <ng-content select="ui-card-section-basic"></ng-content>
-
-        <!--
-        <div class="ui-card-content">
-            @if(isLoading() == false) {
-                {{ text() }}
-            } @else {
-                <div class="loading pulse">
-                    @for (_ of [].constructor(7); track $index) {
-                        {{ placeholder }}
-                    }
-                </div>
-                <div class="loading pulse">
-                    @for (_ of [].constructor(6); track $index) {
-                        {{ placeholder }}
-                    }
-                </div>
-            }
-        </div>
-        @if(isLoading() == false) {
-            <div class="ui-card-footer">
-                <ng-content select="ui-switch[slot=footer-left]"></ng-content>
-                <ng-content select="ui-button[slot=footer-left]"></ng-content>
-                <div style="margin-left: auto;">
-                    <ng-content select="ui-switch[slot=footer-right]"></ng-content>
-                    <ng-content select="ui-button[slot=footer-right]"></ng-content>
-                </div>
-            </div>
-        }
-        -->
     </div>
 }

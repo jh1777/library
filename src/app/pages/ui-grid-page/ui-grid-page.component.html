@@ -1,5 +1,6 @@
 
-<div class="page-header">GRID</div>
+<div class="page-header">GRID
+</div>
 
 <div class="item">
     <div class="title">
@@ -11,7 +12,8 @@
     <ui-grid [columns]="3">
         <ui-card 
             header="Card Example #2" 
-            grid-column="1"
+            [style]="cardStyle()"
+            grid-column="2"
             >
             <ui-card-section-basic text="1) Enable the basic feature flag in this application.">
               <ui-switch label="Basic" slot="footer-left"></ui-switch>
@@ -21,8 +23,8 @@
               <ui-switch label="Advanced" slot="footer-left"></ui-switch>
             </ui-card-section-basic>
             
-            <ui-card-section-basic text="3) Enable the admin mode for this application.">
-              <ui-switch label="Admin" slot="footer-left"></ui-switch>
+            <ui-card-section-basic text="3) Cycle through the styles">
+              <ui-button [label]="'Next Card Style'" slot="footer-left" (onClick)="setNextCardStyle()"></ui-button>
             </ui-card-section-basic>
             
 
@@ -78,7 +80,7 @@
           [isLoading]="true"
         ></ui-entry-item>
       </ui-entry-tile>
-      <ui-metric-tile header="Test Metrics" grid-column="2">
+      <ui-metric-tile header="Test Metrics" grid-column="1">
         <ui-entry-container>
           <ui-entry-key-value label="None" value="14%" [state]="1"></ui-entry-key-value>
           <ui-entry-metric [percent]="14" [style]="1" [isLoading]="false"> </ui-entry-metric>
