@@ -1,1 +1,35 @@
-<p>card-section-basic works!</p>
+@if(hidden() == false) {
+
+    <div 
+        class="ui-card-section"
+        [class.last-section]="isLast() == true"
+    >
+        <div class="ui-card-section-content">
+            @if(isLoading() == false) {
+                {{ text() }}
+            } @else {
+                <div class="loading pulse">
+                    @for (_ of [].constructor(7); track $index) {
+                        {{ placeholder }}
+                    }
+                </div>
+                <div class="loading pulse">
+                    @for (_ of [].constructor(6); track $index) {
+                        {{ placeholder }}
+                    }
+                </div>
+            }
+        </div>
+
+        @if(isLoading() == false) {
+            <div class="ui-card-section-footer">
+                <ng-content select="ui-switch[slot=footer-left]"></ng-content>
+                <ng-content select="ui-button[slot=footer-left]"></ng-content>
+                <div style="margin-left: auto;">
+                    <ng-content select="ui-switch[slot=footer-right]"></ng-content>
+                    <ng-content select="ui-button[slot=footer-right]"></ng-content>
+                </div>
+            </div>
+        }
+    </div>  
+}

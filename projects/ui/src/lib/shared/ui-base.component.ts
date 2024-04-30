@@ -38,7 +38,7 @@ import { Component, QueryList, input, signal } from "@angular/core";
         console.error(`Maximum child elements of type ${items.first.constructor.name} is ${max}!`);
         for (let index = max; index < items.length; index++) {
           const element = items.get(index);
-          element.hidden.set(true);
+          element?.hidden.set(true);
         }
         return true;
       }

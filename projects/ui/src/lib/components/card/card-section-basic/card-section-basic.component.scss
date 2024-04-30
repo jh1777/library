@@ -1,0 +1,85 @@
+:host {
+    @import '../../../styles/ui.styles.scss';
+
+    position: relative;
+    display: contents;
+
+    .loading {
+        color: $ui-alternative-standard-color;
+        line-height: 25px;
+    }
+
+    .ui-card-section {
+        margin: 0 3px 0 3px;
+        border-bottom: 1px solid $ui-alternative-standard-color;
+
+        &.last-section {
+            border-bottom: 0px solid $ui-alternative-standard-color;
+        }
+        
+        &-content {
+            padding: 10px 15px;
+            font-size: .7rem;
+            display: flex;
+            flex-direction: column;
+        }
+        &-footer {
+            padding: 0px 15px;
+            display: flex;
+            flex-direction: row;
+            gap: .4rem;
+            margin-bottom: 15px;
+        }
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 1;
+      }
+  
+      50% {
+        opacity: 0.5;
+      }
+  
+      100% {
+        opacity: 1;
+      }
+    }
+  
+    @-moz-keyframes pulse {
+      0% {
+        opacity: 1;
+      }
+  
+      50% {
+        opacity: 0.5;
+      }
+  
+      100% {
+        opacity: 1;
+      }
+    }
+  
+    @-webkit-keyframes pulse {
+      0% {
+        opacity: 1;
+      }
+  
+      50% {
+        opacity: 0.5;
+      }
+  
+      100% {
+        opacity: 1;
+      }
+    }
+  
+    .pulse {
+      -webkit-animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      -webkit-animation-delay: 0.5s;
+      -moz-animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      -moz-animation-delay: 0.5s;
+      animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      animation-delay: 0.5s;
+    }
+}

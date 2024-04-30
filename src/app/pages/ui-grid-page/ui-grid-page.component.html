@@ -11,14 +11,25 @@
     <ui-grid [columns]="3">
         <ui-card 
             header="Card Example #2" 
-            text="Enable the advanced feature flag in this application."
-            column="1"
+            grid-column="1"
             >
+            <ui-card-section-basic text="1) Enable the basic feature flag in this application.">
+              <ui-switch label="Basic" slot="footer-left"></ui-switch>
+            </ui-card-section-basic>
+
+            <ui-card-section-basic text="2) Enable the advanced feature flag in this application." [isLoading]=false>
+              <ui-switch label="Advanced" slot="footer-left"></ui-switch>
+            </ui-card-section-basic>
+            
+            <ui-card-section-basic text="3) Enable the admin mode for this application.">
+              <ui-switch label="Admin" slot="footer-left"></ui-switch>
+            </ui-card-section-basic>
+            
+
             <ui-button icon="pop-out" [style]="0" slot="header-right"></ui-button>
-            <ui-switch label="Advanced" slot="footer-left"></ui-switch>
         </ui-card>
 
-      <ui-entry-tile header="Slotted Empty Tile" collapseMode="1" column="1">
+      <ui-entry-tile header="Slotted Empty Tile" collapseMode="1" grid-column="1">
         <ui-entry-key-value
           label="Updated"
           value="50 mins ago"
@@ -33,7 +44,7 @@
           secondaryValue="Updated"
         ></ui-entry-item>
       </ui-entry-tile>
-      <ui-entry-tile header="Tile at Col 3" collapseMode="1" column="3">
+      <ui-entry-tile header="Tile at Col 3" collapseMode="1" grid-column="3">
         <ui-entry-item
           primaryValue="Secondary"
           secondaryValue="Subtitle"
@@ -42,7 +53,7 @@
         >
         </ui-entry-item>
       </ui-entry-tile>
-      <ui-entry-tile header="Another Col 3" collapseMode="1" column="3">
+      <ui-entry-tile header="Another Col 3" collapseMode="1" grid-column="3">
         <ui-entry-item
           primaryValue="Connected"
           secondaryValue="Yes"
@@ -60,14 +71,14 @@
           slot="left"
         ></ui-button>
       </ui-entry-tile>
-      <ui-entry-tile header="Loading Demo" collapseMode="1" column="2">
+      <ui-entry-tile header="Loading Demo" collapseMode="1" grid-column="2">
         <ui-entry-item
           primaryValue="Attributes"
           secondaryValue="Updated"
           [isLoading]="true"
         ></ui-entry-item>
       </ui-entry-tile>
-      <ui-metric-tile header="Test Metrics" column="2">
+      <ui-metric-tile header="Test Metrics" grid-column="2">
         <ui-entry-container>
           <ui-entry-key-value label="None" value="14%" [state]="1"></ui-entry-key-value>
           <ui-entry-metric [percent]="14" [style]="1" [isLoading]="false"> </ui-entry-metric>

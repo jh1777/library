@@ -2,29 +2,29 @@
     @for(_ of [].constructor(calcColumns()); track $index) {
         <div class="ui-grid-column">
             @if($index == 0) {
-                <ng-content select="ui-entry-tile[column=1]"></ng-content>
-                <ng-content select="ui-metric-tile[column=1]"></ng-content>
-                <ng-content select="ui-card[column=1]"></ng-content>
+                <ng-content select="ui-entry-tile[grid-column=1]"></ng-content>
+                <ng-content select="ui-metric-tile[grid-column=1]"></ng-content>
+                <ng-content select="ui-card[grid-column=1]"></ng-content>
             }
             @if($index == 1) {
-                <ng-content select="ui-entry-tile[column=2]"></ng-content>
-                <ng-content select="ui-metric-tile[column=2]"></ng-content>
-                <ng-content select="ui-card[column=2]"></ng-content>
+                <ng-content select="ui-entry-tile[grid-column=2]"></ng-content>
+                <ng-content select="ui-metric-tile[grid-column=2]"></ng-content>
+                <ng-content select="ui-card[grid-column=2]"></ng-content>
             }
             @if($index == 2) {
-                <ng-content select="ui-entry-tile[column=3]"></ng-content>
-                <ng-content select="ui-metric-tile[column=3]"></ng-content>
-                <ng-content select="ui-card[column=3]"></ng-content>
+                <ng-content select="ui-entry-tile[grid-column=3]"></ng-content>
+                <ng-content select="ui-metric-tile[grid-column=3]"></ng-content>
+                <ng-content select="ui-card[grid-column=3]"></ng-content>
             }
             @if($index == 3) {
-                <ng-content select="ui-entry-tile[column=4]"></ng-content>
-                <ng-content select="ui-metric-tile[column=4]"></ng-content>
-                <ng-content select="ui-card[column=4]"></ng-content>
+                <ng-content select="ui-entry-tile[grid-column=4]"></ng-content>
+                <ng-content select="ui-metric-tile[grid-column=4]"></ng-content>
+                <ng-content select="ui-card[grid-column=4]"></ng-content>
             }
             @if($index == 4) {
-                <ng-content select="ui-entry-tile[column=5]"></ng-content>
-                <ng-content select="ui-metric-tile[column=5]"></ng-content>
-                <ng-content select="ui-card[column=5]"></ng-content>
+                <ng-content select="ui-entry-tile[grid-column=5]"></ng-content>
+                <ng-content select="ui-metric-tile[grid-column=5]"></ng-content>
+                <ng-content select="ui-card[grid-column=5]"></ng-content>
             }
         </div>
     }
