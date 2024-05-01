@@ -2,12 +2,25 @@ import { ChangeDetectionStrategy, Component, ContentChildren, QueryList, input, 
 import { UIBaseComponent } from '../../../shared/ui-base.component';
 import { ButtonComponent } from '../../button';
 import { SwitchComponent } from '../../switch';
+import { ClarityModule } from '@clr/angular';
+import { CardStyle } from '../card.models';
+import {
+  ClarityIcons,
+  angleIcon, errorStandardIcon, infoStandardIcon, 
+  successStandardIcon, warningStandardIcon, ellipsisVerticalIcon, 
+  ellipsisHorizontalIcon, popOutIcon, infoCircleIcon
+} from "@cds/core/icon";
+import '@cds/core/icon/register.js';
+ClarityIcons.addIcons(
+  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, infoCircleIcon,
+  warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
+);
 
 @Component({
   selector: 'ui-card-section-basic',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+  imports: [ClarityModule],
   templateUrl: './card-section-basic.component.html',
   styleUrl: './card-section-basic.component.scss'
 })
@@ -24,9 +37,27 @@ export class CardSectionBasicComponent extends UIBaseComponent {
   isLast = signal<boolean>(false);
 
   /** Simple unformattted string showed as text content */
-  text = input<string>();
+  text = input.required<string>();
+
+  /** Header / Title for this section (optional) */
+  header = input<string>();
 
   /** Set isLoading property which hides content and shows pulsing placeholders */
   isLoading = input<boolean>(false);
-    
+
+  /** 
+   * Style of the card (optional)  
+   *  The section gets an colorized icon  
+   * - `None` = grey (default), 
+   * - `Attention` = orange
+   * - `Error` = red
+   * - `Success` = green 
+   * - `Information` = grey
+   * 
+   * See {@link CardStyle}
+   */
+  style = input<CardStyle>(CardStyle.None);
+
+  /** Tooltip message (simple) wich is displayed on mouse over as html title (optional) */
+  tooltip = input<string>();
 }

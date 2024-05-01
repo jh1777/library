@@ -4,8 +4,45 @@
         class="ui-card-section"
         [class.last-section]="isLast() == true"
     >
+        
         <div class="ui-card-section-content">
             @if(isLoading() == false) {
+                <div class="ui-card-section-header">
+                    {{ header() }}
+                    @if(style() != 0) {
+                        <div 
+                            class="ui-card-section-header-right" 
+                            [attr.title]="tooltip()"
+                        >
+                            <cds-icon
+                                solid
+                                [style.color]="
+                                    style() == 1
+                                    ? 'var(--attention-color)'
+                                    : style() == 2
+                                        ? 'var(--error-color)'
+                                        : style() == 3
+                                            ? 'var(--success-color)'
+                                            : style() == 4
+                                                ? 'var(--info-color)'
+                                                : ''
+                                "
+                                [attr.shape]="
+                                    style() == 1
+                                    ? 'warning-standard'
+                                    : style() == 2
+                                        ? 'error-standard'
+                                        : style() == 3
+                                            ? 'success-standard'
+                                            : style() == 4
+                                                ? 'info-standard'
+                                                : ''
+                                "
+                                size="17"
+                                ></cds-icon>
+                        </div>
+                    }
+                </div>
                 {{ text() }}
             } @else {
                 <div class="loading pulse">

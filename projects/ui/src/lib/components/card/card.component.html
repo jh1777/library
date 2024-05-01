@@ -26,7 +26,7 @@
             }
         </div>
 
-        @if(isLoading() == true && sections.length == 0) {
+        @if(isLoading() == true && sections?.length == 0) {
             <div class="ui-card-content">
                 <div class="loading pulse">
                     @for (_ of [].constructor(7); track $index) {

@@ -71,6 +71,8 @@ export class EntryItemComponent extends UIBaseComponent implements AfterContentI
    */
   header = input<string>();
 
+  //TODO: Change to style
+  
   /** Optional: State `EntryState` of the Item (`none`, `attention`, `error` or `success`)
    * By default or if unset, it is none.
    * The item will get colorized in:

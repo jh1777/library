@@ -3,6 +3,11 @@
 
     position: relative;
     display: contents;
+    
+    --attention-color: #{$ui-attention-color};  
+    --error-color: #{$ui-error-color};;  
+    --success-color: #{$ui-success-color};
+    --info-color: #{$ui-standard-color};
 
     .loading {
         color: $ui-alternative-standard-color;
@@ -17,6 +22,18 @@
             border-bottom: 0px solid $ui-alternative-standard-color;
         }
         
+        &-header {
+            display: flex;
+            color: $ui-standard-text-color;
+            font-weight: 600;
+            align-items: center;
+            margin-bottom: 5px;
+            &-right {
+                margin-left: auto;
+                display: flex;
+            }
+        }
+
         &-content {
             padding: 10px 15px;
             font-size: .7rem;

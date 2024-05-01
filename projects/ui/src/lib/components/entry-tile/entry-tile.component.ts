@@ -123,6 +123,9 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
    */
   collapseMode = input<EntryTileCollapseMode>(EntryTileCollapseMode.Disabled);
 
+  //TODO: Change to style
+
+  
   /**
    * Optional: State of the tile controls the color of the background  
    * The tile background will get colorized in:

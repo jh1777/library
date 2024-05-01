@@ -24,7 +24,12 @@
               <ui-switch label="Advanced" slot="footer-left"></ui-switch>
             </ui-card-section-basic>
             
-            <ui-card-section-basic text="3) Cycle through the styles">
+            <ui-card-section-basic 
+              header="Settings" 
+              [style]=0 
+              text="3) Cycle through the styles"
+              title="This is just a test tooltip!"
+              >
               <ui-button [label]="'Next Card Style'" slot="footer-left" (onClick)="setNextCardStyle()"></ui-button>
             </ui-card-section-basic>
             
