@@ -114,12 +114,16 @@
 <div class="item">
   <div class="title">CARD (containing BUTTON)</div>
   <div class="instances">
-    <ui-card header="Card Example" text="Sample Card">
-      <ui-button label="Okay" slot="footer-left"></ui-button>
+    <ui-card header="Card Example" >
+        <ui-card-section-basic text="Sample Card">
+          <ui-button label="Okay" slot="footer-left"></ui-button>
+        </ui-card-section-basic>
     </ui-card>
-    <ui-card header="Card Example #2" text="Enable the advanced feature flag in this application.">
-      <ui-button icon="pop-out" [style]="0" slot="header-right"></ui-button>
-      <ui-switch label="Advanced" slot="footer-left"></ui-switch>
+    <ui-card header="Card Example #2">
+        <ui-button icon="pop-out" [style]="0" slot="header-right"></ui-button>
+        <ui-card-section-basic text="Enable the advanced feature flag in this application.">
+          <ui-switch label="Advanced" slot="footer-left"></ui-switch>
+      </ui-card-section-basic>
     </ui-card>
     <ui-card header="Card Example #2" [isLoading]=true>
     </ui-card>

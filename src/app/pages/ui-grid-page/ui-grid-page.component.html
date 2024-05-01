@@ -13,13 +13,14 @@
         <ui-card 
             header="Card Example #2" 
             [style]="cardStyle()"
+            [isLoading]=false
             grid-column="2"
             >
             <ui-card-section-basic text="1) Enable the basic feature flag in this application.">
               <ui-switch label="Basic" slot="footer-left"></ui-switch>
             </ui-card-section-basic>
 
-            <ui-card-section-basic text="2) Enable the advanced feature flag in this application." [isLoading]=false>
+            <ui-card-section-basic text="2) Enable the advanced feature flag in this application." [isLoading]=true>
               <ui-switch label="Advanced" slot="footer-left"></ui-switch>
             </ui-card-section-basic>
             

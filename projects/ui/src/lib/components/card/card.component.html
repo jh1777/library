@@ -18,14 +18,28 @@
                     <ng-content select="ui-switch[slot=header-right]"></ng-content>
                 </div>
             } @else {
-                <div class="loading pulse">
+                <div class="loading pulse" style="color: var(--ui-card-header-loading-color) !important;">
                     @for (_ of [].constructor(4); track $index) {
                         {{ placeholder }}
                     }
                 </div>
             }
         </div>
-        
+
+        @if(isLoading() == true && sections.length == 0) {
+            <div class="ui-card-content">
+                <div class="loading pulse">
+                    @for (_ of [].constructor(7); track $index) {
+                        {{ placeholder }}
+                    }
+                </div>
+                <div class="loading pulse">
+                    @for (_ of [].constructor(6); track $index) {
+                        {{ placeholder }}
+                    }
+                </div>
+            </div>
+        }
         <ng-content select="ui-card-section-basic"></ng-content>
     </div>
 }

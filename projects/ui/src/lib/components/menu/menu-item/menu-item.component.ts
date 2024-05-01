@@ -1,4 +1,5 @@
 import { Component, input, signal } from '@angular/core';
+import { UIBaseComponent } from '../../../shared';
 
 @Component({
   selector: 'uic-menu-item',
@@ -6,7 +7,7 @@ import { Component, input, signal } from '@angular/core';
   imports: [],
   template: '',
 })
-export class MenuItemComponent {
+export class MenuItemComponent extends UIBaseComponent {
 
   label = input<string>();
 

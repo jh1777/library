@@ -60,57 +60,6 @@
     }
   }
 
-  @keyframes pulse {
-    0% {
-      opacity: 1;
-    }
-
-    50% {
-      opacity: 0.5;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-moz-keyframes pulse {
-    0% {
-      opacity: 1;
-    }
-
-    50% {
-      opacity: 0.5;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-webkit-keyframes pulse {
-    0% {
-      opacity: 1;
-    }
-
-    50% {
-      opacity: 0.5;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-
-  .pulse {
-    -webkit-animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    -webkit-animation-delay: 0.5s;
-    -moz-animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    -moz-animation-delay: 0.5s;
-    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    animation-delay: 0.5s;
-  }
-
   .loading {
     color: $ui-standard-color;
     line-height: 1rem;

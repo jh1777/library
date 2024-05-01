@@ -25,7 +25,7 @@ export class ValueTileComponent extends UIBaseComponent implements AfterContentI
     for (let i = 0; i < this.buttons.length; i++) {
       // Set white mode for any child button if state > 0
       if (this.state() > 0) {
-        this.buttons.get(i).whiteMode.set(true);
+        this.buttons.get(i)?.whiteMode.set(true);
       }
     }    
   }

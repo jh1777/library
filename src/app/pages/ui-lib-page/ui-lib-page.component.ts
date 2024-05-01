@@ -2,7 +2,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, signal } from "@angular/core";
 import { BadgeComponent, ButtonComponent, 
-  CardComponent, EntryTileComponent, TabComponent, TabsComponent,
+  CardComponent, EntryTileComponent, TabComponent, TabsComponent, CardSectionBasicComponent,
   EntryKeyValueComponent, EntryItemComponent, SwitchComponent, MenuBarComponent,
   EntryContainerComponent, EntryMetricComponent, InputComponent, MenuItemComponent,
   ToolbarComponent, ValueTileComponent, GridComponent, MetricTileComponent
@@ -11,7 +11,7 @@ import { BadgeComponent, ButtonComponent,
 @Component({
     selector: 'ui-lib-page',
     standalone: true,
-    imports: [CommonModule, BadgeComponent, SwitchComponent, MenuItemComponent, MenuBarComponent, InputComponent, TabComponent, TabsComponent, GridComponent, ValueTileComponent, MetricTileComponent, ToolbarComponent, ButtonComponent, CardComponent, EntryTileComponent, EntryKeyValueComponent, EntryItemComponent, EntryContainerComponent, EntryMetricComponent],
+    imports: [CommonModule, BadgeComponent, SwitchComponent, CardSectionBasicComponent, MenuItemComponent, MenuBarComponent, InputComponent, TabComponent, TabsComponent, GridComponent, ValueTileComponent, MetricTileComponent, ToolbarComponent, ButtonComponent, CardComponent, EntryTileComponent, EntryKeyValueComponent, EntryItemComponent, EntryContainerComponent, EntryMetricComponent],
     templateUrl: './ui-lib-page.component.html',
     styleUrls: ['./ui-lib-page.component.scss']
   })
