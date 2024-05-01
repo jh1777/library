@@ -29,7 +29,7 @@ import {
 import '@cds/core/icon/register.js';
 import { ButtonComponent } from '../../button';
 import { UIBaseComponent } from '../../../shared';
-import { EntryItemState } from './entry-item.models';
+import { EntryItemStyle } from './entry-item.models';
 ClarityIcons.addIcons(
   angleIcon,
   errorStandardIcon,
@@ -71,8 +71,6 @@ export class EntryItemComponent extends UIBaseComponent implements AfterContentI
    */
   header = input<string>();
 
-  //TODO: Change to style
-  
   /** Optional: State `EntryState` of the Item (`none`, `attention`, `error` or `success`)
    * By default or if unset, it is none.
    * The item will get colorized in:
@@ -81,7 +79,7 @@ export class EntryItemComponent extends UIBaseComponent implements AfterContentI
    * - `Error` = red
    * - `Success` = green
    */
-  state = input<EntryItemState>(EntryItemState.None);
+  style = input<EntryItemStyle>(EntryItemStyle.None);
 
   /** Is the Item clickable? If yes, it has a hover and action style and emits the `onItemClick` output */
   clickable = input<boolean>(false);

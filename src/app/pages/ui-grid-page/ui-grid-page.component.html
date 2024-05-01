@@ -26,9 +26,9 @@
             
             <ui-card-section-basic 
               header="Settings" 
-              [style]=0 
+              [style]=4 
               text="3) Cycle through the styles"
-              title="This is just a test tooltip!"
+              tooltip="This is just a test tooltip!"
               >
               <ui-button [label]="'Next Card Style'" slot="footer-left" (onClick)="setNextCardStyle()"></ui-button>
             </ui-card-section-basic>
@@ -88,7 +88,7 @@
       </ui-entry-tile>
       <ui-metric-tile header="Test Metrics" grid-column="1">
         <ui-entry-container>
-          <ui-entry-key-value label="None" value="14%" [state]="1"></ui-entry-key-value>
+          <ui-entry-key-value label="None" value="14%" [style]="1"></ui-entry-key-value>
           <ui-entry-metric [percent]="14" [style]="1" [isLoading]="false"> </ui-entry-metric>
         </ui-entry-container>
       </ui-metric-tile>

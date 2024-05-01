@@ -12,7 +12,7 @@ import { EntryItemComponent } from './entry-item/entry-item.component';
 import { EntryKeyValueComponent } from './entry-key-value/entry-key-value.component';
 import { ButtonComponent } from '../button';
 import { UIBaseComponent } from '../../shared';
-import { EntryTileCollapseMode, EntryTileState } from './entry-tile.models';
+import { EntryTileCollapseMode, EntryTileStyle } from './entry-tile.models';
 ClarityIcons.addIcons(
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
 );
@@ -123,36 +123,33 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
    */
   collapseMode = input<EntryTileCollapseMode>(EntryTileCollapseMode.Disabled);
 
-  //TODO: Change to style
-
-  
   /**
-   * Optional: State of the tile controls the color of the background  
+   * Optional: Style of the tile controls the color of the background  
    * The tile background will get colorized in:
    * - `None` = grey (default), 
    * - `Attention` = orange
    * - `Error` = red
    * - `Success` = green  
    * - `Automatic` = based on the item.state it will be calculated
-   * See {@link EntryTileState}
+   * See {@link EntryTileStyle}
    */
-  state = input<EntryTileState>(EntryTileState.None);
+  style = input<EntryTileStyle>(EntryTileStyle.None);
 
   /**
-   * Computed state if `state` == `automatic`  
-   * Uses `titles.state` to grab the worst state found
+   * Computed style if `style` == `automatic`  
+   * Uses `titles.style` to grab the worst state found
    */
-  calcState = computed(() => {
-    if (this.state() == EntryTileState.Automatic) {
+  calcStyle = computed(() => {
+    if (this.style() == EntryTileStyle.Automatic) {
       const itemMax = this.items.reduce((highest, current) => {
-        return current.state() > highest ? current.state() : highest;
+        return current.style() > highest ? current.style() : highest;
       }, 0);
       const titleMax = this.titles.reduce((highest, current) => {
-        return current.state() > highest ? current.state() : highest;
+        return current.style() > highest ? current.style() : highest;
       }, 0);
       return titleMax;
     } else {
-      return this.state();
+      return this.style();
     }
   })
 

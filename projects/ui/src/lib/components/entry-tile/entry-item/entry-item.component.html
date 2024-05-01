@@ -42,9 +42,9 @@
       <div
         class="ui-entry-tile-item"
         [class.clickable]="clickable()"
-        [class.attention-item]="state() == 1"
-        [class.error-item]="state() == 2"
-        [class.success-item]="state() == 3"
+        [class.attention-item]="style() == 1"
+        [class.error-item]="style() == 2"
+        [class.success-item]="style() == 3"
         [attr.title]="tooltip()"
         (click)="onItemClick.emit(id())"
       >
@@ -81,25 +81,25 @@
                 </div>
               }
             }
-            @if (showStateIcon() && state() > 0) {
+            @if (showStateIcon() && style() > 0) {
               <div class="ui-entry-tile-item-icon">
                 <cds-icon
                   solid
                   [style.color]="
-                    state() == 1
+                    style() == 1
                       ? 'var(--attention-item-border-color)'
-                      : state() == 2
+                      : style() == 2
                         ? 'var(--error-item-border-color)'
-                        : state() == 3
+                        : style() == 3
                           ? 'var(--success-item-border-color)'
                           : ''
                   "
                   [attr.shape]="
-                    state() == 1
+                    style() == 1
                       ? 'warning-standard'
-                      : state() == 2
+                      : style() == 2
                         ? 'error-standard'
-                        : state() == 3
+                        : style() == 3
                           ? 'success-standard'
                           : ''
                   "

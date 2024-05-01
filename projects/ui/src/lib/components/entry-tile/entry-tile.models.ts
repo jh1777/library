@@ -1,12 +1,12 @@
 /**
- * Generic State that is used in tiles and items
+ * Generic Style that is used in tiles and items
  */
-export enum EntryTileState {
+export enum EntryTileStyle {
     None = 0,
     Attention = 1,
     Error = 2,
     Success = 3,
-    Automatic = 4 // only applies to while entry tile state, not working for title, items
+    Automatic = 4 // only applies to while entry tile style, not working for title, items
 }
 
 export enum EntryTileCollapseMode {

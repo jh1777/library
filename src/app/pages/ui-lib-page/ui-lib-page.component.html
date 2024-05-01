@@ -141,7 +141,7 @@
         <ui-entry-key-value
           label="State"
           value="Okay"
-          [state]="3"
+          [style]="3"
           [big]=true
         ></ui-entry-key-value>
 
@@ -166,13 +166,13 @@
         titleIcon="cpu"
         collapseMode="1"
         moreButtonLabel="More"
-        [state]="0"
+        [style]="0"
         [pageSize]="3"
       >
         <ui-entry-key-value
           label="Onboarding"
           value="Started"
-          [state]="1"
+          [style]="1"
         ></ui-entry-key-value>
         <ui-entry-key-value
           label="Updated"
@@ -218,7 +218,7 @@
         <ui-entry-key-value
           label="State"
           value="Unhealthy"
-          [state]="2"
+          [style]="2"
         ></ui-entry-key-value>
         <ui-entry-key-value
           label="Updated"
@@ -271,7 +271,7 @@
         <ui-entry-key-value
           label="State"
           value="Completed"
-          [state]="3"
+          [style]="3"
         ></ui-entry-key-value>
         <ui-entry-key-value
           label="Timestamp"
@@ -377,7 +377,7 @@
     <div class="container">
       <ui-metric-tile header="Test Metrics">
         <ui-entry-container>
-          <ui-entry-key-value label="None" value="14%" [state]="1"></ui-entry-key-value>
+          <ui-entry-key-value label="None" value="14%" [style]="1"></ui-entry-key-value>
           <ui-entry-metric [percent]="14" [style]="1" [isLoading]="false"> </ui-entry-metric>
         </ui-entry-container>
 
@@ -387,7 +387,7 @@
         </ui-entry-container>
 
         <ui-entry-container>
-          <ui-entry-key-value label="Completed" value="53%" [state]="3"></ui-entry-key-value>
+          <ui-entry-key-value label="Completed" value="53%" [style]="3"></ui-entry-key-value>
           <ui-entry-metric [percent]="53" [style]="3" [isLoading]="false"> </ui-entry-metric>
         </ui-entry-container>
       </ui-metric-tile>

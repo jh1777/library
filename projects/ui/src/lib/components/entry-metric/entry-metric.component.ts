@@ -18,7 +18,7 @@ export class EntryMetricComponent extends UIBaseComponent {
   /** Value to show 0 - 100 */
   percent = input<number>(0);
   
-    /** Optional: State `EntryMetricStyle` of the metric (`none`, `attention`, `error` or `success`) 
+    /** Optional: Style `EntryMetricStyle` of the metric (`none`, `attention`, `error` or `success`) 
    * By default or if unset, it is none.
    * The bar will get colorized in:
    * - `None` = default, 

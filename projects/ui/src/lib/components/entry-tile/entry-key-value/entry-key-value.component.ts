@@ -7,7 +7,7 @@ import {
 } from "@cds/core/icon";
 import '@cds/core/icon/register.js';
 import { UIBaseComponent } from '../../../shared';
-import { EntryKeyValueState } from './entry-key-value.models';
+import { EntryKeyValueState as EntryKeyValueStyle } from './entry-key-value.models';
 ClarityIcons.addIcons(
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
 );
@@ -42,7 +42,7 @@ export class EntryKeyValueComponent extends UIBaseComponent {
    * - `Success` = green
    * - `Dimmed` = grey
   */
-  state = input<EntryKeyValueState>(EntryKeyValueState.None);
+  style = input<EntryKeyValueStyle>(EntryKeyValueStyle.None);
 
   /**
    * Makes the Key and Value of bigger font size, the icon as well if present
