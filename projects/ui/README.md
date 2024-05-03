@@ -1,4 +1,6 @@
 # Abstract
+TODO: Add Tooltip to base class??!?!
+
 
 Welcome to the documentation of this project, a comprehensive and modular library designed to streamline the development of user interfaces in Angular applications. This documentation serves as a guide to help you leverage the power and flexibility of our UI components effectively in your projects.
 
@@ -17,100 +19,107 @@ It offers a rich collection of reUseable components that are carefully crafted t
 Short description about the purpose and content of the component.  
 
 ## Badge
-> Useable standalone: **Yes**
+> Useable standalone: **Yes**  
+> Selector: `ui-badge`
 
 #### Useable inside 
-- Button 
+- Button
 - Entry Item
+- Toolbar
+- Value Tile
 
 ## Button
-> Useable standalone: **Yes**
+> Useable standalone: **Yes**  
+> Selector: `ui-button`
 
 #### Useable inside
-
 - Entry Tile
 - Entry Item
-- Card Section
+- Card
+- Card Section Basic
+- Toolbar
+- Value Tile
 
 ## Switch
-> Useable standalone: **Yes**
+> Useable standalone: **Yes**  
+> Selector: `ui-switch`
 
 #### Useable inside
-
+- Entry Item
 - Card
-- Card Section
-
+- Card Section Basic
+- Toolbar
 
 ## Card
-> Useable standalone: **Yes**
+> Useable standalone: **Yes**  
+> Selector: `ui-card`
 
+## Card Section Basic
+> Useable standalone: **No**   
+> Selector: `ui-card-section-basic`  
+
+#### Useable inside
+- Card
 
 ## Entry Container
-> Useable standalone: **Yes**
+> Useable standalone: **Yes**  
+> Selector: `ui-entry-container`  
 
 #### Useable inside
-
 - Entry Tile (todo: to be implemented/adjusted)
+- Metric Tile
 
 ## Entry Key Value 
-> Useable standalone: **No**
-
+> Useable standalone: **No**  
+> Selector: `ui-entry-key-value`  
 #### Useable inside
-
 - Entry Container
 
 ## Entry Metric
-> Useable standalone: **Yes**
-
+> Useable standalone: **No**  
+> Selector: `ui-entry-metric`  
 #### Useable inside
-
 - Entry Container
 
 ## Entry Item --> new name: Entry Tile Item
 > Useable standalone: **No**
-
+> Selector: `ui-entry-item`  
 #### Useable inside
-
 - Entry Tile
 
 ## Grid
-
-> Useable standalone: **Yes**
+> Useable standalone: **Yes**  
+> Selector: `ui-grid`  
 
 ## Entry Tile
-
-> Useable standalone: **Yes**
-
+> Useable standalone: **Yes**  
+> Selector: `ui-entry-tile`  
 #### Useable inside
-
 - Grid
 
 ## Metric Tile
-> Useable standalone: **Yes**
-
+> Useable standalone: **Yes**  
+> Selector: `ui-metric-tile`  
 #### Useable inside
-
 - Grid
- 
 
 ## Tabs
-> Useable standalone: **Yes**
+> Useable standalone: **Yes**  
+> Selector: `ui-tabs`  
 
 ## Tab
-> Useable standalone: **No**
+> Useable standalone: **No**  
+> Selector: `ui-tab`  
 #### Useable inside
-
 - Tabs
 
 ## Toolbar
-
-> Useable standalone: **Yes**
-
+> Useable standalone: **Yes**  
+> Selector: `ui-toolbar`  
 
 ## Value Tile
-
-> Useable standalone: **Yes**
-
+> Useable standalone: **Yes**  
+> Selector: `ui-value-tile`  
 
 # Component Usage
 

@@ -48,9 +48,10 @@
           secondaryValue="Subtitle"
         ></ui-entry-item>
         <ui-entry-item
-          primaryValue="Attributes"
-          secondaryValue="Updated"
-        ></ui-entry-item>
+          primaryValue="Primary" secondaryValue="Subtitle" [style]=1
+          [showStateIcon]=true [isLoading]=false>
+          <ui-switch label="On/Off"></ui-switch>
+        </ui-entry-item>
       </ui-entry-tile>
       <ui-entry-tile header="Tile at Col 3" collapseMode="1" grid-column="3">
         <ui-entry-item

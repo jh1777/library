@@ -146,13 +146,17 @@
         ></ui-entry-key-value>
 
         <ui-entry-item
-          primaryValue="Primary"
-          secondaryValue="Subtitle"
-          state="0"
-          showStateIcon="true"
-          [isLoading]="false"
-        >
+          primaryValue="Primary" secondaryValue="Subtitle" [style]=1
+          [showStateIcon]=true [isLoading]=false>
+          <ui-switch label="On/Off"></ui-switch>
         </ui-entry-item>
+        
+        <ui-entry-item
+          primaryValue="13 Messages" secondaryValue="Last received 2 min ago" [style]=0
+          [showStateIcon]=false [isLoading]=false>
+          <ui-button label="Activate"></ui-button>
+        </ui-entry-item>
+        
         <ui-entry-item
           primaryValue="Primary"
           [isLoading]=true
@@ -352,7 +356,7 @@
   <div class="title">VALUE TILE (containing BADGE & BUTTON)</div>
   <div class="instances">
     <ui-value-tile key="Vin" value="WDB0101010110" [isLoading]=false>
-      <ui-button icon="copy" [style]="0"></ui-button>
+      <ui-button icon="copy" label="test"></ui-button>
       <ui-button icon="pop-out" [style]="0"></ui-button>
     </ui-value-tile>
     <ui-value-tile key="Vin" value="NONE" state="2"> </ui-value-tile>

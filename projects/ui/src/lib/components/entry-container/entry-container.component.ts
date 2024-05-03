@@ -21,6 +21,10 @@ export class EntryContainerComponent extends UIBaseComponent {
   /** Is the entry container clickable? If yes, it has a hover and action style and emits the `onItemClick` output */
   clickable = input<boolean>(false);
 
+  /**
+   * Output Event onClick
+   * Emmits id() of the component
+   */
   onClick = output<string>();
 
   ngAfterContentInit(): void {

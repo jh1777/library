@@ -7,7 +7,7 @@ import {
 } from "@cds/core/icon";
 import '@cds/core/icon/register.js';
 import { UIBaseComponent } from '../../../shared';
-import { EntryKeyValueState as EntryKeyValueStyle } from './entry-key-value.models';
+import { EntryKeyValueStyle } from './entry-key-value.models';
 ClarityIcons.addIcons(
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
 );
@@ -31,8 +31,9 @@ export class EntryKeyValueComponent extends UIBaseComponent {
   /** Value for the header item - shown right */
   value = input.required<string>();
 
-  /** Optional: State `EntryKeyValueState` of the Key Value Item 
-   * By default or if unset, it is none.
+  /** 
+   * Style `EntryKeyValueState` of the Key Value Item 
+   * Optional; By default or if unset = `None`
    * The item will get colorized in:
    * - `None` = black (default), 
    * - `Attention` = orange

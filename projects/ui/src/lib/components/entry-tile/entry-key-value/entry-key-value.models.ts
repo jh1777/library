@@ -1,7 +1,7 @@
 /**
- *  State that is used in key value entry component
+ *  Style that is used in key value entry component
  */
-export enum EntryKeyValueState {
+export enum EntryKeyValueStyle {
     None = 0,
     Attention = 1,
     Error = 2,

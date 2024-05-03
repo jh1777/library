@@ -40,13 +40,16 @@
     }
 
     .ui-value-tile-key {
+        display: flex;
         background-color: var(--ui-value-tile-key-background);
         border-radius: $ui-border-radius 0 0 $ui-border-radius;
         padding: var(--padding);
         color: var(--ui-value-tile-text-color);
         font-weight: 700;
         z-index: 22;
+        align-items: center;
     }
+    
     .ui-value-tile-value {
         background-color: var(--ui-value-tile-value-background);
         border-radius: 0 $ui-border-radius $ui-border-radius 0;

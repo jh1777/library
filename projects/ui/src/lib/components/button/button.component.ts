@@ -51,6 +51,14 @@ export class ButtonComponent extends UIBaseComponent implements AfterContentInit
     super.limitContentChildren(this.badges, 1);
   }
 
+
+  /**
+   * INTERNAL USE  
+   * If the button is used in another component this can be set to true if needed to enable the
+   * styles needed for an icon only simple button.   
+   */
+  iconOnlySimpleStyle = signal<boolean>(false);
+
   /**
    * If the button is in "Simple_XXX" `style` but on a dark background, set this to `true`
    */

@@ -57,12 +57,12 @@ ClarityIcons.addIcons(
 export class EntryItemComponent extends UIBaseComponent implements AfterContentInit {
   @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
   @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
-  @ContentChildren(SwitchComponent) switch: QueryList<SwitchComponent>;
+  @ContentChildren(SwitchComponent) switches: QueryList<SwitchComponent>;
 
   ngAfterContentInit(): void {
     super.limitContentChildren(this.badges, 1);
     super.limitContentChildren(this.buttons, 2);
-    super.limitContentChildren(this.switch, 1);
+    super.limitContentChildren(this.switches, 1);
   }
 
   showTitle = signal<boolean>(true);

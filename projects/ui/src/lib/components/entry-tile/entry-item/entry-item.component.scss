@@ -121,9 +121,10 @@
     &-right {
       display: flex;
       flex-direction: row;
-      gap: .3rem;
+      gap: 10px;
       margin-left: auto;
       line-height: normal;
+      align-items: center;
     }
   }
 

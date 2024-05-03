@@ -67,10 +67,10 @@
           </div>
 
           <div class="ui-generic-container-right">
-            
-            <ng-content select="ui-button"></ng-content>
-            <ng-content select="ui-switch"></ng-content>
-            
+            @if(this.buttons.length > 0 || this.switches.length > 0) {
+              <ng-content select="ui-button"></ng-content>
+              <ng-content select="ui-switch"></ng-content>
+            } 
             @else {
               @if (!showStateIcon() && icon()) {
                 <div class="ui-entry-tile-item-icon">

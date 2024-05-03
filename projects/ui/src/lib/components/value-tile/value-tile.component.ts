@@ -21,9 +21,15 @@ export class ValueTileComponent extends UIBaseComponent implements AfterContentI
     super.limitContentChildren(this.badges, 1);
 
     for (let i = 0; i < this.buttons.length; i++) {
-      // Set white mode for any child button if state > 0
-      if (this.state() > 0) {
-        this.buttons.get(i)?.whiteMode.set(true);
+      const button = this.buttons.get(i);
+      if (button) {
+        // Set style of the button accordingly and remove label
+        button.iconOnlySimpleStyle.set(true);
+        console.log("iconOnlySimpleStyle");
+        // Set white mode for any child button if state > 0
+        if (this.state() > 0) {
+          button.whiteMode.set(true);
+        }
       }
     }    
   }

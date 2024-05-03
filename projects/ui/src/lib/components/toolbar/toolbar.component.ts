@@ -2,6 +2,7 @@ import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, 
 import { ButtonComponent } from '../button';
 import { UIBaseComponent } from '../../shared';
 import { BadgeComponent } from '../badge/badge.component';
+import { SwitchComponent } from '../switch';
 
 @Component({
   selector: 'ui-toolbar',
@@ -14,12 +15,15 @@ import { BadgeComponent } from '../badge/badge.component';
 export class ToolbarComponent extends UIBaseComponent implements AfterContentInit {
   @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
   @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
+  @ContentChildren(SwitchComponent) switches: QueryList<SwitchComponent>;
 
   maxButtons = input<number>(10);
   maxBadges = input<number>(3);
+  maxSwitches = input<number>(3);
 
   ngAfterContentInit(): void {
     super.limitContentChildren(this.badges, this.maxBadges());
     super.limitContentChildren(this.buttons, this.maxButtons());
+    super.limitContentChildren(this.switches, this.maxSwitches());
   }
 }
