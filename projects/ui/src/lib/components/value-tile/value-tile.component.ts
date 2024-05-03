@@ -16,8 +16,6 @@ export class ValueTileComponent extends UIBaseComponent implements AfterContentI
   @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
   @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
 
-// TODO: Implement isLoading!!
-
   ngAfterContentInit(): void {
     super.limitContentChildren(this.buttons, 2);
     super.limitContentChildren(this.badges, 1);
@@ -39,13 +37,15 @@ export class ValueTileComponent extends UIBaseComponent implements AfterContentI
   /** The content / value - shown right */
   value = input.required<string>();
 
-  /** Optional: State `ValueState` of the Item (`none`, `attention`, `error` or `success`)
-   * By default or if unset, it is none.
-   * The item will get colorized in:
-   * - `None` = grey (default),
-   * - `Attention` = orange
-   * - `Error` = red
-   * - `Success` = green
+  /**  
+   * State `ValueState` of the Item  
+   * Optional; By default or no set = `None`  
+   * The item will get colorized in:  
+   * - `None` = grey (default),  
+   * - `Attention` = orange  
+   * - `Error` = red  
+   * - `Success` = green  
+   * Ref. {@link ValueState}
    */
   state = input<ValueState>(ValueState.None);
 }

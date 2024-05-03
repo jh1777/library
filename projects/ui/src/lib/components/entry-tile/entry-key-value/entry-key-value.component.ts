@@ -31,8 +31,6 @@ export class EntryKeyValueComponent extends UIBaseComponent {
   /** Value for the header item - shown right */
   value = input.required<string>();
 
-  //TODO: Change to style
-
   /** Optional: State `EntryKeyValueState` of the Key Value Item 
    * By default or if unset, it is none.
    * The item will get colorized in:

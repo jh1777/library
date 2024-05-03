@@ -1,24 +1,117 @@
-# Ui
+# Abstract
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+Welcome to the documentation of this project, a comprehensive and modular library designed to streamline the development of user interfaces in Angular applications. This documentation serves as a guide to help you leverage the power and flexibility of our UI components effectively in your projects.
 
-## Code scaffolding
+It offers a rich collection of reUseable components that are carefully crafted to enhance the user experience while promoting consistency and scalability across applications. Whether you are building a simple web application or a complex enterprise-grade solution, our library provides the building blocks you need to create modern and visually appealing interfaces with ease.
 
-Run `ng generate component component-name --project ui` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ui`.
-> Note: Don't forget to add `--project ui` or else it will be added to the default project in your `angular.json` file. 
+### Key Features:
 
-## Build
+**Modular Architecture**: Our library follows a modular architecture, allowing you to pick and choose the components you need for your specific project requirements. Each component is self-contained and can be easily integrated into your Angular application, promoting code reusability and maintainability.
 
-Run `ng build ui` to build the project. The build artifacts will be stored in the `dist/` directory.
+**Customizability**: We understand that every aoolication has unique requirements. That's why our components are structured in a flexible way so a majority of use-cases can be fulfilled.
 
-## Publishing
+**State-of-the-Art**: The library is developed to leverage current best practices and features for optimal maintainability and performance.
 
-After building your library with `ng build ui`, go to the dist folder `cd dist/ui` and run `npm publish`.
+# Components
 
-## Running unit tests
+Short description about the purpose and content of the component.  
 
-Run `ng test ui` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Badge
+> Useable standalone: **Yes**
 
-## Further help
+#### Useable inside 
+- Button 
+- Entry Item
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Button
+> Useable standalone: **Yes**
+
+#### Useable inside
+
+- Entry Tile
+- Entry Item
+- Card Section
+
+## Switch
+> Useable standalone: **Yes**
+
+#### Useable inside
+
+- Card
+- Card Section
+
+
+## Card
+> Useable standalone: **Yes**
+
+
+## Entry Container
+> Useable standalone: **Yes**
+
+#### Useable inside
+
+- Entry Tile (todo: to be implemented/adjusted)
+
+## Entry Key Value 
+> Useable standalone: **No**
+
+#### Useable inside
+
+- Entry Container
+
+## Entry Metric
+> Useable standalone: **Yes**
+
+#### Useable inside
+
+- Entry Container
+
+## Entry Item --> new name: Entry Tile Item
+> Useable standalone: **No**
+
+#### Useable inside
+
+- Entry Tile
+
+## Grid
+
+> Useable standalone: **Yes**
+
+## Entry Tile
+
+> Useable standalone: **Yes**
+
+#### Useable inside
+
+- Grid
+
+## Metric Tile
+> Useable standalone: **Yes**
+
+#### Useable inside
+
+- Grid
+ 
+
+## Tabs
+> Useable standalone: **Yes**
+
+## Tab
+> Useable standalone: **No**
+#### Useable inside
+
+- Tabs
+
+## Toolbar
+
+> Useable standalone: **Yes**
+
+
+## Value Tile
+
+> Useable standalone: **Yes**
+
+
+# Component Usage
+
+tbd

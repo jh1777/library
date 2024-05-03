@@ -30,7 +30,6 @@ ClarityIcons.addIcons(
 })
 export class TabsComponent extends UIBaseComponent implements AfterContentInit {
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
-// TODO: add goto-next/goto-prev tab buttons on the right of the tabbar
 
   /**
    * Optional way to control the active tab of this bar.  

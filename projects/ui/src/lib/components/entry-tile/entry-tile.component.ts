@@ -68,7 +68,7 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
     this.prepareItems();
     let errorMessage = '';
 
-    // TODO: Show errors in component is not strategy! Remove?
+    // Question:: Show errors in component is not strategy! Remove?
 
     if(this.items.length > this.maxItems() && !this.pageSize())
     {

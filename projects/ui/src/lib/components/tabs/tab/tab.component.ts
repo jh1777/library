@@ -11,7 +11,6 @@ import { UIBaseComponent } from '../../../shared';
 })
 export class TabComponent extends UIBaseComponent {
 
-  // TODO: Add a disabled input !!!
   /**
    * Label for this Tab
    */
@@ -23,5 +22,9 @@ export class TabComponent extends UIBaseComponent {
    */
   active = model<boolean>();
 
+  /**
+   * Use this switch to disable a tab. It will be shown in lighter color and is not clickable.  
+   * Optional; Default = `false`  
+   */
   disabled = input<boolean>(false);
 }

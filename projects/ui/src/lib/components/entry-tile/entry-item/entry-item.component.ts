@@ -28,6 +28,7 @@ import {
 } from '@cds/core/icon';
 import '@cds/core/icon/register.js';
 import { ButtonComponent } from '../../button';
+import { SwitchComponent } from '../../switch';
 import { UIBaseComponent } from '../../../shared';
 import { EntryItemStyle } from './entry-item.models';
 ClarityIcons.addIcons(
@@ -56,10 +57,12 @@ ClarityIcons.addIcons(
 export class EntryItemComponent extends UIBaseComponent implements AfterContentInit {
   @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
   @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
+  @ContentChildren(SwitchComponent) switch: QueryList<SwitchComponent>;
 
   ngAfterContentInit(): void {
     super.limitContentChildren(this.badges, 1);
     super.limitContentChildren(this.buttons, 2);
+    super.limitContentChildren(this.switch, 1);
   }
 
   showTitle = signal<boolean>(true);
