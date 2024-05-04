@@ -19,6 +19,7 @@
     display: inline-flex;
     position: relative;
     flex-direction: row;
+    min-width: max-content;
     color: $ui-standard-text-color;
 
     .success {
@@ -55,10 +56,9 @@
         border-radius: 0 $ui-border-radius $ui-border-radius 0;
         padding: var(--padding);
         color: var(--ui-value-tile-text-color);
-        font-weight: 300;
+        font-weight: 400;
         display: flex;
         gap: .3rem;
-        font-size: medium;
         align-items: center;
     }
 

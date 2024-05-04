@@ -14,7 +14,7 @@ It offers a rich collection of reUseable components that are carefully crafted t
 
 **State-of-the-Art**: The library is developed to leverage current best practices and features for optimal maintainability and performance.
 
-# Components
+# Default Components
 
 Short description about the purpose and content of the component.  
 
@@ -87,10 +87,6 @@ Short description about the purpose and content of the component.
 #### Useable inside
 - Entry Tile
 
-## Grid
-> Useable standalone: **Yes**  
-> Selector: `ui-grid`  
-
 ## Entry Tile
 > Useable standalone: **Yes**  
 > Selector: `ui-entry-tile`  
@@ -120,6 +116,43 @@ Short description about the purpose and content of the component.
 ## Value Tile
 > Useable standalone: **Yes**  
 > Selector: `ui-value-tile`  
+#### Useable inside
+- Toolbar
+
+# Content and Navigation Components
+
+## Grid
+> Useable standalone: **Yes**  
+> Selector: `ui-grid`  
+#### Accepts
+- Entry Tile
+- Metric Tile
+
+## Menu Bar
+> Useable standalone: **Yes**  
+> Selector: `ui-menu-bar`
+
+#### Accepts
+- Menu Item
+## Menu Item (config only)
+> Useable standalone: **No**  
+> Selector: `uic-menu-item`
+
+#### Useable inside
+- Menu Bar
+
+## Window
+> Useable standalone: **Yes**  
+> Selector: `ui-window`
+#### Accepts
+- Content
+- Menu Bar
+
+## Content
+> Useable standalone: **Yes**  
+> Selector: `ui-content`
+#### Useable inside
+- Window
 
 # Component Usage
 

@@ -1,7 +1,7 @@
 
 <div class="page-header">UI Library (v2) with ng17, Signals etc.</div>
 
-
+<!--
 <div class="item">
   <div class="title">
     INPUT
@@ -16,6 +16,7 @@
     </div>
   </div>
 </div>
+-->
 
 <div class="item">
   <div class="title">
@@ -329,7 +330,8 @@
     </div>
   </div>
 
-  <ui-toolbar>
+  <ui-toolbar text="Headline">
+    
     <ui-button
       slot="left"
       label="Left Simple #1"
@@ -342,6 +344,11 @@
       [style]="0"
       [disabled]="true"
     ></ui-button>
+    <ui-value-tile key="Vin" value="WDB0101010110" [isLoading]=false slot="right">
+      <ui-button icon="copy" label="test"></ui-button>
+      <ui-button icon="pop-out" [style]="0"></ui-button>
+    </ui-value-tile>
+
     <ui-badge [style]="0" label="CTP2" slot="left"></ui-badge>
 
     <ui-button label="Right #1" slot="right">

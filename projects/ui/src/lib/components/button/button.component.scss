@@ -107,19 +107,12 @@
         display: flex;
         align-items: center;
         width: fit-content;
-        font-size: var(--ui-button-font-size, .65rem);
+        //font-size: var(--ui-button-font-size, .65rem);
         font-weight: 500;
         gap: .3rem;
         line-height: normal;
         cursor: pointer;
-        text-decoration: none;
-        -webkit-touch-callout: none; /* iOS Safari */
-        -webkit-user-select: none; /* Safari */
-            -khtml-user-select: none; /* Konqueror HTML */
-            -moz-user-select: none; /* Old versions of Firefox */
-            -ms-user-select: none; /* Internet Explorer/Edge */
-                user-select: none; /* Non-prefixed version, currently
-                                        supported by Chrome, Edge, Opera and Firefox */
+        pointer-events: all;
         color: var(--ui-button-text-color) !important;
     }
 

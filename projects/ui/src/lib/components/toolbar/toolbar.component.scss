@@ -10,6 +10,12 @@
         gap: .5rem;
         align-items: center;
 
+        &-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: $ui-standard-text-color;
+        }
+
     }
     .ui-toolbar-right {
         margin-left: auto;

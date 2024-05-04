@@ -53,6 +53,8 @@ $ui-menu-bar-height: 50px;
   user-select: none;
   text-decoration: none;
   pointer-events: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+
 }
 
 .loading {
