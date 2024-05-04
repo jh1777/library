@@ -5,10 +5,6 @@
     display: contents;
 
     --ui-card-header-loading-color: #{$ui-light-standard-color};
-    .loading {
-        color: $ui-alternative-standard-color;
-        line-height: 1rem;
-    }
 
     .ui-card {
         background-color: $ui-inverted-text-color;

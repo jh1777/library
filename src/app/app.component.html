@@ -1,8 +1,11 @@
-<ui-menu-bar>
-  <uic-menu-item label="Overview" route="/" [exactMatch]=true></uic-menu-item>
-  <uic-menu-item label="Grid" route="/grid"></uic-menu-item>
-</ui-menu-bar>
-<router-outlet></router-outlet>
+<ui-window [isLoading]=false>
+  <ui-menu-bar>
+    <uic-menu-item label="Overview" route="/" [exactMatch]=true></uic-menu-item>
+    <uic-menu-item label="Grid" route="/grid"></uic-menu-item>
+  </ui-menu-bar>
+  <ui-content>
+    <router-outlet></router-outlet>
+  </ui-content>
 <!-- 
 <div style="padding: 2rem">
   <div class="page-header">
@@ -83,3 +86,4 @@
   </clr-tabs>
 </div>
 -->
+</ui-window>

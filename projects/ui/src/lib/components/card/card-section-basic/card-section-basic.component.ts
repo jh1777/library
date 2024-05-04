@@ -42,9 +42,6 @@ export class CardSectionBasicComponent extends UIBaseComponent {
   /** Header / Title for this section (optional) */
   header = input<string>();
 
-  /** Set isLoading property which hides content and shows pulsing placeholders */
-  isLoading = input<boolean>(false);
-
   /** 
    * Style of the card (optional)  
    *  The section gets an colorized icon  

@@ -59,17 +59,4 @@
       line-height: normal;
     }
   }
-
-  .loading {
-    color: $ui-standard-color;
-    line-height: 1rem;
-  }
-
-  .no-select {
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    text-decoration: none;
-    pointer-events: none;
-  }
 }

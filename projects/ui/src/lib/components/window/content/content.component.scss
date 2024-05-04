@@ -1,0 +1,19 @@
+:host {
+
+    @import '../../../styles/ui.styles.scss';
+
+    display: block;
+    height: 100vh;
+    overflow: auto;
+    
+
+    .ui-content {
+        display: block;
+        position: relative;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        margin: 0;
+    }
+
+}

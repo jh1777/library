@@ -65,10 +65,11 @@ export class EntryItemComponent extends UIBaseComponent implements AfterContentI
     super.limitContentChildren(this.switches, 1);
   }
 
+  /** 
+   * INTERNAL  
+   */
   showTitle = signal<boolean>(true);
 
-  /** Indicates whether the content is still loading */
-  isLoading = input<boolean>(false);
   /**
    * Optional: Group header to be shown at the top of the item itself
    */

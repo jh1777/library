@@ -30,7 +30,7 @@ import {
 } from "@cds/core/icon";
 import '@cds/core/icon/register.js';
 import { UiLibPageComponent } from './pages/ui-lib-page/ui-lib-page.component';
-import { MenuBarComponent, MenuItemComponent } from 'projects/ui/src/public-api';
+import { WindowComponent, MenuBarComponent, MenuItemComponent, ContentComponent } from '../../projects/ui/src/public-api';
 
 ClarityIcons.addIcons(
   unknownStatusIcon, homeIcon, cogIcon, checkIcon, timesIcon, exclamationTriangleIcon, exclamationCircleIcon, checkCircleIcon, infoCircleIcon, infoStandardIcon, successStandardIcon, errorStandardIcon,
@@ -82,7 +82,9 @@ ClarityIcons.addIcons(
     EntryTileGridComponent,
     UiLibPageComponent,
     MenuBarComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    WindowComponent,
+    ContentComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,11 +9,6 @@
     --success-color: #{$ui-success-color};
     --info-color: #{$ui-standard-color};
 
-    .loading {
-        color: $ui-alternative-standard-color;
-        line-height: 25px;
-    }
-
     .ui-card-section {
         margin: 0 3px 0 3px;
         border-bottom: 1px solid $ui-alternative-standard-color;

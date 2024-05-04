@@ -10,6 +10,9 @@ import { Component, QueryList, input, signal } from "@angular/core";
 
     // TODO: MAybe add tooltip as global input?
     
+    /** Indicates whether the content is still loading */
+    isLoading = input<boolean>(false);
+    
     /**
      * Generic data object (optional)  
      * (tpye `any`)

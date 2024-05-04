@@ -59,9 +59,6 @@ export class CardComponent extends UIBaseComponent implements AfterContentInit {
   /** Simple unformattted string showed as text content */
   text = input<string>();
 
-  /** Set isLoading property which hides content and shows pulsing placeholders */
-  isLoading = input<boolean>(false);
-
   /** 
    * Style of the card (optional)  
    *  The header background and border will get colorized in:  

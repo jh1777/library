@@ -1,0 +1,9 @@
+@if(hidden() == false) {
+    <div 
+        class="ui-content"
+        [class.no-scroll]="isLoading() == true"
+        [class.no-select]="isLoading() == true"
+    >   
+        <ng-content></ng-content>
+    </div>
+}

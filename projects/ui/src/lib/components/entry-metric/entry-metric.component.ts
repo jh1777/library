@@ -12,9 +12,6 @@ import { EntryMetricStyle } from './entry-metric.models';
 })
 export class EntryMetricComponent extends UIBaseComponent {
 
-  /** Indicates whether the content is still loading */
-  isLoading = input<boolean>(false);
-
   /** Value to show 0 - 100 */
   percent = input<number>(0);
   

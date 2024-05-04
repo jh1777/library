@@ -1,0 +1,18 @@
+@if(hidden() == false) {
+     @if(isLoading() == true) {
+        <div 
+            class="ui-window-loading no-select no-scroll"
+        >
+            <div class="ui-spinner"></div>
+            {{ loadingText() }}
+        </div>
+        }
+    <div 
+        class="ui-window"
+        [class.no-scroll]="isLoading() == true"
+        [class.no-select]="isLoading() == true"
+    >   
+        <ng-content select="ui-menu-bar"></ng-content>
+        <ng-content select="ui-content"></ng-content>
+    </div>
+}

@@ -21,9 +21,6 @@ ClarityIcons.addIcons(
   styleUrl: './entry-key-value.component.scss'
 })
 export class EntryKeyValueComponent extends UIBaseComponent {
- 
-  /** Indicates whether the content is still loading */
-  isLoading = input<boolean>(false);
 
   /** Label for the header item - shown left */
   label = input.required<string>();

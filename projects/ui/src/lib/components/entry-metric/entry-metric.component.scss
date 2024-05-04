@@ -3,9 +3,6 @@
 
     position: relative;
 
-    .loading {
-        background-color: $ui-standard-color !important;
-    }
     .attention-bar {
         background-color: var(--attention-bar-bg-color, #{$ui-attention-color}) !important;
     }

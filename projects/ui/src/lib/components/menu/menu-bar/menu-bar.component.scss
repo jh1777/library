@@ -8,7 +8,7 @@
     z-index: 1000;
     backdrop-filter: blur(3px);
     margin: 0;
-
+    overflow: hidden;
     $ui-menu-bar-background-color: rgb(247, 247, 247);
     $ui-menu-item-active-background-color: #efefef;
     
@@ -16,11 +16,12 @@
     .main-menu {
         //background-color: $ui-menu-bar-background-color;
         background: rgba(247,247,247,0.92);
-        height: 50px;
+        height: $ui-menu-bar-height;
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center; 
+        overflow: hidden;
       }
       
     .main-menu ul {
