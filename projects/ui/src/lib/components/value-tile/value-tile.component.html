@@ -21,17 +21,17 @@
         </div>
         <div 
             class="ui-value-tile-key"
-            [class.attention]="state() == 1"
-            [class.error]="state() == 2"
-            [class.success]="state() == 3"
+            [class.attention]="style() == 1"
+            [class.error]="style() == 2"
+            [class.success]="style() == 3"
         >
             {{ key() }}
         </div>
         <div
             class="ui-value-tile-value"
-            [class.attention]="state() == 1"
-            [class.error]="state() == 2"
-            [class.success]="state() == 3"
+            [class.attention]="style() == 1"
+            [class.error]="style() == 2"
+            [class.success]="style() == 3"
         >
             {{ value() }}
             <ng-content 

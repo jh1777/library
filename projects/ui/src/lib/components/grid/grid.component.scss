@@ -11,7 +11,7 @@
     
     .ui-grid-column {
         width: 100%;
-        min-width: max-content;
+        flex-grow: 1;
         display: flex;
         gap: var(--ui-grid-hspacing, 0.5rem);
         flex-direction: column;
@@ -19,5 +19,6 @@
             padding-left: var(--ui-grid-vspacing);
         }
     }
+
 
 }

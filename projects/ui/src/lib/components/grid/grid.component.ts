@@ -21,8 +21,8 @@ export class GridComponent extends UIBaseComponent implements AfterContentInit {
    * Internally used: Max overflow for columns
    */
   calcColumns = computed(() => {
-    if (this.columns() > 5) {
-      return 5
+    if (this.columns() > 6) {
+      return 6
     } else {
       return this.columns();
     }
@@ -30,8 +30,8 @@ export class GridComponent extends UIBaseComponent implements AfterContentInit {
 
 
   ngAfterContentInit(): void {
-    if (this.columns() > 5) {
-      console.error('There are only 5 columns supported currently!');
+    if (this.columns() > 6) {
+      console.error('There are only 6 columns supported currently!');
     }
   }
 }

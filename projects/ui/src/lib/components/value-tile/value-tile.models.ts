@@ -1,7 +1,7 @@
 /**
- * Generic State that is used in tiles and items
+ * Value Tile Style that is used in tiles and items
  */
-export enum ValueState {
+export enum ValueTileStyle {
     None = 0,
     Attention = 1,
     Error = 2,

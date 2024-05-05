@@ -1,0 +1,40 @@
+<div class="example-page">
+    <ui-toolbar text="Example Page" [maxValueTiles]=3>
+
+        <ui-badge label="CTP 2" [style]="badgeStyle.None" slot="left"></ui-badge>
+
+        <ui-value-tile key="Vin" value="WDB0101010110" [style]=0 [isLoading]=false slot="left">
+            <ui-button icon="copy"></ui-button>
+            <ui-button icon="pop-out" [style]=0></ui-button>
+        </ui-value-tile>
+
+        <ui-value-tile key="Streaming" value="ENABLED" [style]=3 [isLoading]=false slot="right"></ui-value-tile>
+
+        <ui-button label="New Command" icon="upload-cloud" [style]=0 slot="right"></ui-button>
+        <ui-button label="Refresh" icon="refresh" [style]=0 slot="right"></ui-button>
+        
+    </ui-toolbar>
+
+
+    <ui-grid [columns]=4>
+
+        <ui-card header="Overall Status" grid-column="1">
+            <ui-card-section-basic text="The device is a good state. Just the device twin is missing 1 property to be ready for onboarding!" [style]=1>
+
+            </ui-card-section-basic>
+        </ui-card>
+        <ui-entry-tile header="Onboarding" collapseMode="1" [style]=4 grid-column="1">
+            <ui-entry-key-value label="State" value="Started" [style]=1  [isLoading]="false"></ui-entry-key-value>
+            <ui-entry-key-value label="Updated" value="50 mins ago" [isLoading]="false"></ui-entry-key-value>
+
+            <ui-entry-item primaryValue="TLS Registration" secondaryValue="34 mins ago" [style]=0></ui-entry-item>
+
+            <ui-entry-item primaryValue="IoT Hub Setup" secondaryValue="32 mins ago" [style]=0></ui-entry-item>
+
+
+            <ui-entry-item primaryValue="Twin" secondaryValue="Incomplete, SoftwareVersion missing" [style]=1 [isLoading]=false></ui-entry-item>
+
+        </ui-entry-tile>
+
+    </ui-grid>
+</div>

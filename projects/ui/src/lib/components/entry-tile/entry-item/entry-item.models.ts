@@ -1,5 +1,5 @@
 /**
- *  State that is used in entry item component
+ *  Style that is used in entry item component
  */
 export enum EntryItemStyle {
     None = 0,

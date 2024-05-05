@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
+import { BadgeStyle } from './badge.models';
 
 @Component({
   selector: 'ui-badge',
@@ -23,12 +24,12 @@ export class BadgeComponent extends UIBaseComponent {
   value = input<number>();
   
   /**
-   * 0 - Grey
-   * 1 - Warning
-   * 2 - Red
-   * 3 - Green
+   * None = 0 (Grey)
+   * Attention = 1
+   * Error = 2 (default)
+   * Success = 3
    */
-  style = input<number>(2);
+  style = input<BadgeStyle>(BadgeStyle.Error);
 
   /**
    * Size of badge

@@ -7,44 +7,19 @@
         
         <div class="ui-card-section-content">
             @if(isLoading() == false) {
-                <div class="ui-card-section-header">
-                    {{ header() }}
-                    @if(style() != 0) {
-                        <div 
-                            class="ui-card-section-header-right" 
-                            [attr.title]="tooltip()"
-                            [class.cursor-pointer]="tooltip()"
-                        >
-                            <cds-icon
-                                solid
-                                [style.color]="
-                                    style() == 1
-                                    ? 'var(--attention-color)'
-                                    : style() == 2
-                                        ? 'var(--error-color)'
-                                        : style() == 3
-                                            ? 'var(--success-color)'
-                                            : style() == 4
-                                                ? 'var(--info-color)'
-                                                : ''
-                                "
-                                [attr.shape]="
-                                    style() == 1
-                                    ? 'warning-standard'
-                                    : style() == 2
-                                        ? 'error-standard'
-                                        : style() == 3
-                                            ? 'success-standard'
-                                            : style() == 4
-                                                ? 'info-standard'
-                                                : ''
-                                "
-                                size="17"
-                                ></cds-icon>
-                        </div>
-                    }
-                </div>
-                {{ text() }}
+                @if(header()) {
+                    <div class="ui-card-section-header">
+                        {{ header() }}
+                        <ng-container *ngTemplateOutlet="styleIcon"></ng-container>    
+                    </div>
+                    {{ text() }}
+                } @else {
+                    <div class="ui-card-section-container">
+                        {{ text() }}
+                        <ng-container *ngTemplateOutlet="styleIcon"></ng-container>
+                    </div>
+                }
+                
             } @else {
                 <div class="loading pulse">
                     @for (_ of [].constructor(7); track $index) {
@@ -59,7 +34,7 @@
             }
         </div>
 
-        @if(isLoading() == false) {
+        @if(isLoading() == false && (buttons.length > 0 || switches.length > 0)) {
             <div class="ui-card-section-footer">
                 <ng-content select="ui-switch[slot=footer-left]"></ng-content>
                 <ng-content select="ui-button[slot=footer-left]"></ng-content>
@@ -71,3 +46,39 @@
         }
     </div>  
 }
+<ng-template #styleIcon>
+    @if(style() != 0) {
+        <div 
+            class="ui-card-section-header-right" 
+            [attr.title]="tooltip()"
+            [class.cursor-pointer]="tooltip()"
+        >
+            <cds-icon
+                solid
+                [style.color]="
+                    style() == 1
+                    ? 'var(--attention-color)'
+                    : style() == 2
+                        ? 'var(--error-color)'
+                        : style() == 3
+                            ? 'var(--success-color)'
+                            : style() == 4
+                                ? 'var(--info-color)'
+                                : ''
+                "
+                [attr.shape]="
+                    style() == 1
+                    ? 'warning-standard'
+                    : style() == 2
+                        ? 'error-standard'
+                        : style() == 3
+                            ? 'success-standard'
+                            : style() == 4
+                                ? 'info-standard'
+                                : ''
+                "
+                size="17"
+                ></cds-icon>
+        </div>
+    }
+</ng-template>

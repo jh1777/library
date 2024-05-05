@@ -95,7 +95,7 @@ export class EntryItemComponent extends UIBaseComponent implements AfterContentI
   secondaryValue = input<string>();
 
   /** If yes, the item will show a state icon in addition to the background color */
-  showStateIcon = input<boolean>(false);
+  showStateIcon = input<boolean>(true);
 
   /** Optional: Tooltip message (simple) wich is displayed on mouse over as html title */
   tooltip = input<string>();

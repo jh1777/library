@@ -6,7 +6,7 @@ import { BadgeComponent, ButtonComponent,
   EntryKeyValueComponent, EntryItemComponent, SwitchComponent, MenuBarComponent,
   EntryContainerComponent, EntryMetricComponent, InputComponent, MenuItemComponent,
   ToolbarComponent, ValueTileComponent, GridComponent, MetricTileComponent
- } from "projects/ui/src/public-api";
+ } from "../../../../projects/ui/src/public-api";
 
 @Component({
     selector: 'ui-lib-page',

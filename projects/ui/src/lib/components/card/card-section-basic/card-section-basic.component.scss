@@ -32,12 +32,20 @@
                 }
             }
         }
+        &-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+        }
 
         &-content {
             padding: 10px 15px;
             font-size: .7rem;
             display: flex;
             flex-direction: column;
+            word-wrap: break-word;
+            width: initial !important;
         }
         &-footer {
             padding: 0px 15px;

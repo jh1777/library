@@ -57,7 +57,7 @@
     }
 
     .bordered {
-        padding: .35rem .45rem;
+        padding: .3rem .45rem;
         border-radius: $ui-border-radius;
         background-color: var(--ui-button-primary-color);
         color: var(--ui-button-text-color) !important;
@@ -74,7 +74,7 @@
     }
 
     .simple-primary {
-        --ui-button-primary-hover-color: #{$ui-alternative-petrol-color};
+        --ui-button-primary-hover-color: #{$ui-light-petrol-color};
         --ui-button-text-color: #{$ui-petrol-color};
     }
 

@@ -1,7 +1,7 @@
 import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, input } from '@angular/core';
 import { ButtonComponent } from '../button';
 import { UIBaseComponent } from '../../shared';
-import { ValueState } from './value-tile.models';
+import { ValueTileStyle } from './value-tile.models';
 import { BadgeComponent } from '../badge/badge.component';
 
 @Component({
@@ -27,7 +27,7 @@ export class ValueTileComponent extends UIBaseComponent implements AfterContentI
         button.iconOnlySimpleStyle.set(true);
         console.log("iconOnlySimpleStyle");
         // Set white mode for any child button if state > 0
-        if (this.state() > 0) {
+        if (this.style() > 0) {
           button.whiteMode.set(true);
         }
       }
@@ -41,14 +41,14 @@ export class ValueTileComponent extends UIBaseComponent implements AfterContentI
   value = input.required<string>();
 
   /**  
-   * State `ValueState` of the Item  
+   * State `ValueStyle` of the Item  
    * Optional; By default or no set = `None`  
    * The item will get colorized in:  
    * - `None` = grey (default),  
    * - `Attention` = orange  
    * - `Error` = red  
    * - `Success` = green  
-   * Ref. {@link ValueState}
+   * Ref. {@link ValueTileStyle}
    */
-  state = input<ValueState>(ValueState.None);
+  style = input<ValueTileStyle>(ValueTileStyle.None);
 }
