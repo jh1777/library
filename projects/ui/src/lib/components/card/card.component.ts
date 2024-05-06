@@ -1,10 +1,9 @@
 import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, effect, input } from '@angular/core';
-import { UIBaseComponent } from '../../shared';
+import { UIBaseComponent, UiErrorComponent } from '../../shared';
 import { ButtonComponent } from '../button';
 import { SwitchComponent } from '../switch';
 import { CardSectionBasicComponent } from './card-section-basic/card-section-basic.component';
 import { CardStyle } from './card.models';
-import { UiErrorComponent } from '../../shared/ui-error/ui-error.component';
 
 @Component({
   selector: 'ui-card',

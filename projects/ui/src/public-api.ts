@@ -1,8 +1,12 @@
 /*
- * Public API Surface of ui
+ * Public API Surface of ui project
  */
 
-export * from './lib/components/badge';
+export { 
+    BadgeComponent as BadgeComponent, 
+    BadgeStyle as BadgeStyle 
+} from './lib/components/badge';
+
 export * from './lib/components/button';
 export * from './lib/components/card';
 export * from './lib/components/entry-tile';

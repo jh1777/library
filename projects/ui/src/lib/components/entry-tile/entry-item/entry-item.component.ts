@@ -29,7 +29,7 @@ import {
 import '@cds/core/icon/register.js';
 import { ButtonComponent } from '../../button';
 import { SwitchComponent } from '../../switch';
-import { UIBaseComponent } from '../../../shared';
+import { UIBaseComponent, UiErrorComponent } from '../../../shared';
 import { EntryItemStyle } from './entry-item.models';
 ClarityIcons.addIcons(
   angleIcon,
@@ -49,7 +49,7 @@ ClarityIcons.addIcons(
 @Component({
   selector: 'ui-entry-item',
   standalone: true,
-  imports: [CommonModule, ClarityModule],
+  imports: [CommonModule, ClarityModule, UiErrorComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './entry-item.component.html',
   styleUrl: './entry-item.component.scss',

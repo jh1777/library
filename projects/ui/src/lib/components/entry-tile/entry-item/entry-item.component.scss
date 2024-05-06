@@ -18,6 +18,12 @@
 
   --dot-size: 9px;
 
+  .has-error {
+    min-height: 53px !important;
+    padding: 0 !important;
+
+  }
+
   .clickable:hover {
     cursor: pointer;
     border: 1px solid $ui-standard-color !important;

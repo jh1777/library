@@ -1,116 +1,121 @@
 @if (hidden() == false) {
-  @if (isLoading() == true) {
-    <div class="loading no-select pulse">
-      <div class="ui-entry-tile-item-header loading">
-        <div>
-          @for (_ of [].constructor(5); track $index) {
-            {{ placeholder }}
-          }
+  @if(hasError() == true) {
+      <ui-error class="ui-entry-tile-item has-error" [errorMessage]="errorMessage()"></ui-error>
+  } @else {
+
+    @if (isLoading() == true) {
+      <div class="loading no-select pulse">
+        <div class="ui-entry-tile-item-header loading">
+          <div>
+            @for (_ of [].constructor(5); track $index) {
+              {{ placeholder }}
+            }
+          </div>
         </div>
-      </div>
-      <div class="ui-entry-tile-item">
-        <div class="ui-generic-container">
-          <div class="ui-generic-container-left">
-            <div class="ui-entry-tile-item-primary loading">
-              <div>
-                @for (_ of [].constructor(5); track $index) {
-                  {{ placeholder }}
-                }
+        <div class="ui-entry-tile-item">
+          <div class="ui-generic-container">
+            <div class="ui-generic-container-left">
+              <div class="ui-entry-tile-item-primary loading">
+                <div>
+                  @for (_ of [].constructor(5); track $index) {
+                    {{ placeholder }}
+                  }
+                </div>
               </div>
-            </div>
-            <div class="ui-entry-tile-item-secondary loading">
-              <div>
-                @for (_ of [].constructor(3); track $index) {
-                  {{ placeholder }}
-                }
+              <div class="ui-entry-tile-item-secondary loading">
+                <div>
+                  @for (_ of [].constructor(3); track $index) {
+                    {{ placeholder }}
+                  }
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  }
+    }
 
-  @if (isLoading() == false) {
-    <div>
-      @if(showTitle() == true) {
-        <div class="ui-entry-tile-item-header">
-          {{ header() }}
-        </div>
-      }
+    @if (isLoading() == false) {
+      <div>
+        @if(showTitle() == true) {
+          <div class="ui-entry-tile-item-header">
+            {{ header() }}
+          </div>
+        }
 
-      <div
-        class="ui-entry-tile-item"
-        [class.clickable]="clickable()"
-        [class.attention-item]="style() == 1"
-        [class.error-item]="style() == 2"
-        [class.success-item]="style() == 3"
-        [attr.title]="tooltip()"
-        (click)="onItemClick.emit(id())"
-      >
-        <div class="ui-badge">
-          <ng-content select="ui-badge"></ng-content>
-        </div>
-
-        <div class="ui-generic-container">
-          <div class="ui-generic-container-left">
-            @if (primaryValue()) {
-              <div class="ui-entry-tile-item-primary">
-                {{ primaryValue() }}
-              </div>
-            }
-            @if (secondaryValue()) {
-              <div class="ui-entry-tile-item-secondary">
-                {{ secondaryValue() }}
-              </div>
-            }
+        <div
+          class="ui-entry-tile-item"
+          [class.clickable]="clickable()"
+          [class.attention-item]="style() == 1"
+          [class.error-item]="style() == 2"
+          [class.success-item]="style() == 3"
+          [attr.title]="tooltip()"
+          (click)="onItemClick.emit(id())"
+        >
+          <div class="ui-badge">
+            <ng-content select="ui-badge"></ng-content>
           </div>
 
-          <div class="ui-generic-container-right">
-            @if(this.buttons.length > 0 || this.switches.length > 0) {
-              <ng-content select="ui-button"></ng-content>
-              <ng-content select="ui-switch"></ng-content>
-            } 
-            @else {
-              @if (!showStateIcon() && icon()) {
+          <div class="ui-generic-container">
+            <div class="ui-generic-container-left">
+              @if (primaryValue()) {
+                <div class="ui-entry-tile-item-primary">
+                  {{ primaryValue() }}
+                </div>
+              }
+              @if (secondaryValue()) {
+                <div class="ui-entry-tile-item-secondary">
+                  {{ secondaryValue() }}
+                </div>
+              }
+            </div>
+
+            <div class="ui-generic-container-right">
+              @if(this.buttons.length > 0 || this.switches.length > 0) {
+                <ng-content select="ui-button"></ng-content>
+                <ng-content select="ui-switch"></ng-content>
+              } 
+              @else {
+                @if (!showStateIcon() && icon()) {
+                  <div class="ui-entry-tile-item-icon">
+                    <cds-icon
+                      [style.color]="clickable() ? 'var(--action-color)' : 'grey'"
+                      [attr.shape]="icon()"
+                      size="22"
+                    ></cds-icon>
+                  </div>
+                }
+              }
+              @if (showStateIcon() && style() > 0) {
                 <div class="ui-entry-tile-item-icon">
                   <cds-icon
-                    [style.color]="clickable() ? 'var(--action-color)' : 'grey'"
-                    [attr.shape]="icon()"
-                    size="22"
+                    solid
+                    [style.color]="
+                      style() == 1
+                        ? 'var(--attention-item-border-color)'
+                        : style() == 2
+                          ? 'var(--error-item-border-color)'
+                          : style() == 3
+                            ? 'var(--success-item-border-color)'
+                            : ''
+                    "
+                    [attr.shape]="
+                      style() == 1
+                        ? 'warning-standard'
+                        : style() == 2
+                          ? 'error-standard'
+                          : style() == 3
+                            ? 'success-standard'
+                            : ''
+                    "
+                    size="26"
                   ></cds-icon>
                 </div>
               }
-            }
-            @if (showStateIcon() && style() > 0) {
-              <div class="ui-entry-tile-item-icon">
-                <cds-icon
-                  solid
-                  [style.color]="
-                    style() == 1
-                      ? 'var(--attention-item-border-color)'
-                      : style() == 2
-                        ? 'var(--error-item-border-color)'
-                        : style() == 3
-                          ? 'var(--success-item-border-color)'
-                          : ''
-                  "
-                  [attr.shape]="
-                    style() == 1
-                      ? 'warning-standard'
-                      : style() == 2
-                        ? 'error-standard'
-                        : style() == 3
-                          ? 'success-standard'
-                          : ''
-                  "
-                  size="26"
-                ></cds-icon>
-              </div>
-            }
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    }
   }
 }
