@@ -9,8 +9,12 @@
     --success-color: #{$ui-success-color};
     --info-color: #{$ui-standard-color};
 
+    .has-error {
+        min-height: 80px !important;
+    }
+
     .ui-card-section {
-        margin: 0 3px 0 3px;
+      //  margin: 0 3px 0 3px;
         border-bottom: 1px solid $ui-alternative-standard-color;
 
         &.last-section {

@@ -1,0 +1,26 @@
+:host {
+    @import '../../styles/ui.styles.scss';
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    background: repeating-linear-gradient(
+        45deg,
+        lighten($ui-light-error-color, 5%),
+        lighten($ui-light-error-color, 5%) 5px, // Height of each stripe
+        lighten($ui-alternative-error-color, 20%) 5px, // Alternate color for stripes
+        lighten($ui-alternative-error-color, 20%) 10px // Combined height of two stripes
+    );
+    z-index: 1200;
+
+    .ui-error {
+        overflow: auto;
+    }
+
+    .no-scrolling {
+        overflow: hidden !important;
+    }
+}

@@ -128,6 +128,8 @@
     </ui-card>
     <ui-card header="Card Example #2" [isLoading]=true>
     </ui-card>
+    <ui-card header="Card Example #2" errorMessage="This card has an error!">
+    </ui-card>
   </div>
 </div>
 <div class="item">
@@ -316,7 +318,11 @@
       <ui-entry-metric [percent]="33" [isLoading]="false"> </ui-entry-metric>
     </div>
     <div class="container">
-      <ui-entry-metric [percent]="10" [isLoading]="false" [style]="2">
+      <ui-entry-metric [percent]="70" [isLoading]="false" [style]="2">
+      </ui-entry-metric>
+    </div>
+    <div class="container">
+      <ui-entry-metric [percent]="52" [isLoading]="false" errorMessage="This has an error">
       </ui-entry-metric>
     </div>
   </div>

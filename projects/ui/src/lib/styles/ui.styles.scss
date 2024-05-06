@@ -35,8 +35,6 @@ $ui-shadow-color: #9a9a9a !default;
 $ui-alternative-shadow-color: #d0d0d0 !default;
 $ui-light-shadow-color: #ededed !default;
 
-
-
 // Special Variables 
 $ui-min-width: 250px;
 $ui-base-font-size: 12px;
@@ -44,17 +42,18 @@ $ui-border-radius: 4px;
 $ui-menu-bar-height: 50px;
 
 
+
 // Common CSS Classes
 // ------------------
+
+
 
 .no-select {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
   text-decoration: none;
-  pointer-events: none;
   -webkit-touch-callout: none; /* iOS Safari */
-
 }
 
 .loading {
@@ -62,7 +61,8 @@ $ui-menu-bar-height: 50px;
   line-height: 22px;
 }
 
-// Loading 
+// Pulse Animation
+// -----------------
 @keyframes pulse {
   0% {
     opacity: 1;

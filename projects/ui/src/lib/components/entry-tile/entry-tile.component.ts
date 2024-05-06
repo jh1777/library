@@ -68,8 +68,6 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
     this.prepareItems();
     let errorMessage = '';
 
-    // Question:: Show errors in component is not strategy! Remove?
-
     if(this.items.length > this.maxItems() && !this.pageSize())
     {
       const msg = `Too many items used! Max. ${this.maxItems()} allowed`;
@@ -82,7 +80,7 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
       errorMessage == '' ? errorMessage = msg : errorMessage = `${errorMessage}; ${msg}`;
     }
     
-    this.errorMessage.set(errorMessage);
+    console.warn(errorMessage);
   }
   
 
@@ -91,7 +89,6 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
   public maxTitles = signal(2);
   public maxItems = signal(5);
   public newPage = signal(0);
-  public errorMessage = signal<string>('');
   public paginationTooltip = signal<string>('Page ');
   
   /** Represents the collapsed (=true) or expanded (=false) state of the tile.     

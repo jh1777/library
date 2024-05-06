@@ -4,11 +4,12 @@ import { ButtonComponent } from '../button';
 import { SwitchComponent } from '../switch';
 import { CardSectionBasicComponent } from './card-section-basic/card-section-basic.component';
 import { CardStyle } from './card.models';
+import { UiErrorComponent } from '../../shared/ui-error/ui-error.component';
 
 @Component({
   selector: 'ui-card',
   standalone: true,
-  imports: [CardSectionBasicComponent],
+  imports: [CardSectionBasicComponent, UiErrorComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'

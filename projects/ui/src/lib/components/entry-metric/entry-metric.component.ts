@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
 import { EntryMetricStyle } from './entry-metric.models';
+import { UiErrorComponent } from '../../shared/ui-error/ui-error.component';
 
 @Component({
   selector: 'ui-entry-metric',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+  imports: [UiErrorComponent],
   templateUrl: './entry-metric.component.html',
   styleUrl: './entry-metric.component.scss'
 })

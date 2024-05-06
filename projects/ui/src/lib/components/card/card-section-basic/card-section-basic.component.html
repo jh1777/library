@@ -2,49 +2,55 @@
 
     <div 
         class="ui-card-section"
+        [class.has-error]="hasError() == true"
         [class.last-section]="isLast() == true"
     >
+        @if(hasError() == true) {
+            <ui-error [errorMessage]="errorMessage()"></ui-error>
+        } @else {
         
-        <div class="ui-card-section-content">
-            @if(isLoading() == false) {
-                @if(header()) {
-                    <div class="ui-card-section-header">
-                        {{ header() }}
-                        <ng-container *ngTemplateOutlet="styleIcon"></ng-container>    
-                    </div>
-                    {{ text() }}
-                } @else {
-                    <div class="ui-card-section-container">
+            <div class="ui-card-section-content">
+                @if(isLoading() == false) {
+                    @if(header()) {
+                        <div class="ui-card-section-header">
+                            {{ header() }}
+                            <ng-container *ngTemplateOutlet="styleIcon"></ng-container>    
+                        </div>
                         {{ text() }}
-                        <ng-container *ngTemplateOutlet="styleIcon"></ng-container>
+                    } @else {
+                        <div class="ui-card-section-container">
+                            {{ text() }}
+                            <ng-container *ngTemplateOutlet="styleIcon"></ng-container>
+                        </div>
+                    }
+                    
+                } @else {
+                    <div class="loading pulse">
+                        @for (_ of [].constructor(7); track $index) {
+                            {{ placeholder }}
+                        }
+                    </div>
+                    <div class="loading pulse">
+                        @for (_ of [].constructor(6); track $index) {
+                            {{ placeholder }}
+                        }
                     </div>
                 }
-                
-            } @else {
-                <div class="loading pulse">
-                    @for (_ of [].constructor(7); track $index) {
-                        {{ placeholder }}
-                    }
-                </div>
-                <div class="loading pulse">
-                    @for (_ of [].constructor(6); track $index) {
-                        {{ placeholder }}
-                    }
+            </div>
+
+            @if(isLoading() == false && (buttons.length > 0 || switches.length > 0)) {
+                <div class="ui-card-section-footer">
+                    <ng-content select="ui-switch[slot=footer-left]"></ng-content>
+                    <ng-content select="ui-button[slot=footer-left]"></ng-content>
+                    <div style="margin-left: auto;">
+                        <ng-content select="ui-switch[slot=footer-right]"></ng-content>
+                        <ng-content select="ui-button[slot=footer-right]"></ng-content>
+                    </div>
                 </div>
             }
-        </div>
-
-        @if(isLoading() == false && (buttons.length > 0 || switches.length > 0)) {
-            <div class="ui-card-section-footer">
-                <ng-content select="ui-switch[slot=footer-left]"></ng-content>
-                <ng-content select="ui-button[slot=footer-left]"></ng-content>
-                <div style="margin-left: auto;">
-                    <ng-content select="ui-switch[slot=footer-right]"></ng-content>
-                    <ng-content select="ui-button[slot=footer-right]"></ng-content>
-                </div>
-            </div>
         }
-    </div>  
+    </div>
+    
 }
 <ng-template #styleIcon>
     @if(style() != 0) {

@@ -1,4 +1,4 @@
-import { Component, QueryList, input, signal } from "@angular/core";
+import { Component, QueryList, computed, input, signal } from "@angular/core";
 
 @Component({
     standalone: true,
@@ -8,7 +8,12 @@ import { Component, QueryList, input, signal } from "@angular/core";
   export class UIBaseComponent {
     public readonly placeholder = '⏹⏹ ';
 
-    // TODO: MAybe add tooltip as global input?
+    errorMessage = input<string>();
+
+    hasError = computed((): boolean => {
+      return this.errorMessage() != null && this.errorMessage() != '' && this.errorMessage() != undefined;
+    });
+
     /** Tooltip message (simple) wich is displayed on mouse over as html title (optional) */
     tooltip = input<string>();
 
@@ -40,7 +45,7 @@ import { Component, QueryList, input, signal } from "@angular/core";
      */
     protected limitContentChildren<T extends UIBaseComponent>(items: QueryList<T>, max: number): boolean {
       if (items.length > max) {
-        console.error(`Maximum child elements of type ${items.first.constructor.name} is ${max}!`);
+        console.warn(`Maximum child elements of type ${items.first.constructor.name} is ${max}!`);
         for (let index = max; index < items.length; index++) {
           const element = items.get(index);
           element?.hidden.set(true);

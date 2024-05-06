@@ -5,41 +5,45 @@
         [class.error]="style() == 2"
         [class.success]="style() == 3"
     >
-        <div 
-            class="ui-card-header"
-            [class.attention]="style() == 1"
-            [class.error]="style() == 2"
-            [class.success]="style() == 3"
-        >
-            @if(isLoading() == false) {
-                {{ header() }}
-                <div class="ui-card-header-right">
-                    <ng-content select="ui-button[slot=header-right]"></ng-content>
-                    <ng-content select="ui-switch[slot=header-right]"></ng-content>
-                </div>
-            } @else {
-                <div class="loading pulse" style="color: var(--ui-card-header-loading-color) !important;">
-                    @for (_ of [].constructor(4); track $index) {
-                        {{ placeholder }}
-                    }
+        @if(hasError() == true) {
+            <ui-error [errorMessage]="errorMessage()" [class.has-error]="hasError() == true"></ui-error>
+        } @else {
+            <div 
+                class="ui-card-header"
+                [class.attention]="style() == 1"
+                [class.error]="style() == 2"
+                [class.success]="style() == 3"
+            >
+                @if(isLoading() == false) {
+                    {{ header() }}
+                    <div class="ui-card-header-right">
+                        <ng-content select="ui-button[slot=header-right]"></ng-content>
+                        <ng-content select="ui-switch[slot=header-right]"></ng-content>
+                    </div>
+                } @else {
+                    <div class="loading pulse" style="color: var(--ui-card-header-loading-color) !important;">
+                        @for (_ of [].constructor(4); track $index) {
+                            {{ placeholder }}
+                        }
+                    </div>
+                }
+            </div>
+
+            @if(isLoading() == true && sections?.length == 0) {
+                <div class="ui-card-content">
+                    <div class="loading pulse">
+                        @for (_ of [].constructor(7); track $index) {
+                            {{ placeholder }}
+                        }
+                    </div>
+                    <div class="loading pulse">
+                        @for (_ of [].constructor(6); track $index) {
+                            {{ placeholder }}
+                        }
+                    </div>
                 </div>
             }
-        </div>
-
-        @if(isLoading() == true && sections?.length == 0) {
-            <div class="ui-card-content">
-                <div class="loading pulse">
-                    @for (_ of [].constructor(7); track $index) {
-                        {{ placeholder }}
-                    }
-                </div>
-                <div class="loading pulse">
-                    @for (_ of [].constructor(6); track $index) {
-                        {{ placeholder }}
-                    }
-                </div>
-            </div>
+            <ng-content select="ui-card-section-basic"></ng-content>
         }
-        <ng-content select="ui-card-section-basic"></ng-content>
     </div>
 }

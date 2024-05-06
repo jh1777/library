@@ -12,6 +12,7 @@ import {
 } from "@cds/core/icon";
 import '@cds/core/icon/register.js';
 import { CommonModule } from '@angular/common';
+import { UiErrorComponent } from '../../../shared/ui-error/ui-error.component';
 ClarityIcons.addIcons(
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, infoCircleIcon,
   warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
@@ -21,7 +22,7 @@ ClarityIcons.addIcons(
   selector: 'ui-card-section-basic',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ClarityModule, CommonModule],
+  imports: [ClarityModule, CommonModule, UiErrorComponent],
   templateUrl: './card-section-basic.component.html',
   styleUrl: './card-section-basic.component.scss'
 })
