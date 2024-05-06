@@ -30,10 +30,4 @@ export class SwitchComponent extends UIBaseComponent {
    * Default: false
    */
   state = model<boolean>(false);
-
-  /**
-   * Tooltip shown as usual html title (optional)
-   */
-  tooltip = input<string>();
-
 }

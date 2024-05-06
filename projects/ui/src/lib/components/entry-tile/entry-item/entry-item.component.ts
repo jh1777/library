@@ -97,9 +97,6 @@ export class EntryItemComponent extends UIBaseComponent implements AfterContentI
   /** If yes, the item will show a state icon in addition to the background color */
   showStateIcon = input<boolean>(true);
 
-  /** Optional: Tooltip message (simple) wich is displayed on mouse over as html title */
-  tooltip = input<string>();
-
   /** Optional: Icon to show at the right inside the item (clarity design icon name)
    * Only works if `showStateIcon == false`!
    * Intended mostly for usage as a clickable item to show that this is a link

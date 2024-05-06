@@ -55,7 +55,4 @@ export class CardSectionBasicComponent extends UIBaseComponent {
    * See {@link CardStyle}
    */
   style = input<CardStyle>(CardStyle.None);
-
-  /** Tooltip message (simple) wich is displayed on mouse over as html title (optional) */
-  tooltip = input<string>();
 }

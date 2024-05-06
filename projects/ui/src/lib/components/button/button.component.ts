@@ -104,11 +104,6 @@ export class ButtonComponent extends UIBaseComponent implements AfterContentInit
   disabled = input<boolean>(false);
 
   /**
-   * Set a basic tooltip for the button (HTML title) (optional)
-   */
-  tooltip = input<string>();
-
-  /**
    * OnClick Event  
    * (event emits the `id()` property. if this is null it emits the button `label()`)
    */

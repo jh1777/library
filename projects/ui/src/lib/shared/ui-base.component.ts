@@ -9,7 +9,9 @@ import { Component, QueryList, input, signal } from "@angular/core";
     public readonly placeholder = '⏹⏹ ';
 
     // TODO: MAybe add tooltip as global input?
-    
+    /** Tooltip message (simple) wich is displayed on mouse over as html title (optional) */
+    tooltip = input<string>();
+
     /** Indicates whether the content is still loading */
     isLoading = input<boolean>(false);
     
