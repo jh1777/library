@@ -6,7 +6,7 @@ import {
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisVerticalIcon, ellipsisHorizontalIcon, popOutIcon
 } from "@cds/core/icon";
 import '@cds/core/icon/register.js';
-import { UIBaseComponent } from '../../../shared';
+import { UIBaseComponent } from '../../shared';
 import { EntryKeyValueStyle } from './entry-key-value.models';
 ClarityIcons.addIcons(
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon

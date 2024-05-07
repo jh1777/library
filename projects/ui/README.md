@@ -1,6 +1,4 @@
 # Abstract
-TODO: Add Tooltip to base class??!?!
-
 
 Welcome to the documentation of this project, a comprehensive and modular library designed to streamline the development of user interfaces in Angular applications. This documentation serves as a guide to help you leverage the power and flexibility of our UI components effectively in your projects.
 
@@ -10,9 +8,46 @@ It offers a rich collection of reUseable components that are carefully crafted t
 
 **Modular Architecture**: Our library follows a modular architecture, allowing you to pick and choose the components you need for your specific project requirements. Each component is self-contained and can be easily integrated into your Angular application, promoting code reusability and maintainability.
 
-**Customizability**: We understand that every aoolication has unique requirements. That's why our components are structured in a flexible way so a majority of use-cases can be fulfilled.
+**Customizability**: We understand that every application has unique requirements. That's why our components are structured in a flexible way so a majority of use-cases can be fulfilled.
 
 **State-of-the-Art**: The library is developed to leverage current best practices and features for optimal maintainability and performance.
+
+# Common Input Properties
+
+### `isLoading`
+
+> boolean
+
+Indicates whether the content is still loading. If set to `true` the component will show a loading indicator.  
+Default is `false`. When use building blocks consider using `isLoading` on most granular components.  
+
+### `tooltip`
+
+> string
+
+Tooltip is an optional text that can be shown on mouse over for applicable components.  
+In each component it is defined if this supports tooltips or not.
+
+### `data`
+
+> any
+
+This property can be optionally set to any value for further / future use.
+
+### `id`
+
+> string
+
+The Id can uniquely indentify the current item. All output events will emit this id (for example onClick events).  
+
+### `errorMessage`
+
+> string
+
+If set the component will fallback in its error state and will show an overlay with the provided `errorMessage`.  
+Any content or loading states will be overriden / hidden.  
+Please make sure that this is understandable and short.
+
 
 # Default Components
 
@@ -20,7 +55,27 @@ Short description about the purpose and content of the component.
 
 ## Badge
 > Useable standalone: **Yes**  
+> Supports loading indicator: **No**  
+> Supports tooltip: **Yes**  
+> Supports error message: **No**  
 > Selector: `ui-badge`
+
+### Inputs
+#### `value`
+> Type: *number*  
+> Optional: **Yes** (in case `label` is used, this can be omitted)  
+
+Represents the number that is shown in the badge circle.   Maximum is 99. Everything bigger is shown as 99+.  
+
+#### `label`
+> Type: *string*   
+> Optional: **Yes** (in case `value` is used, this can be omitted)  
+
+Displays text on the left to the badge `value`. Can also be used without setting a `value`.  
+
+...
+
+**HINT: Maybe rewrite all _Useable inside_ to _Accepts_ perspective??**
 
 #### Useable inside 
 - Button
@@ -30,6 +85,8 @@ Short description about the purpose and content of the component.
 
 ## Button
 > Useable standalone: **Yes**  
+> Supports loading indicator: **No**  
+> Supports tooltip: **Yes**  
 > Selector: `ui-button`
 
 #### Useable inside
@@ -42,6 +99,8 @@ Short description about the purpose and content of the component.
 
 ## Switch
 > Useable standalone: **Yes**  
+> Supports loading indicator: **No**  
+> Supports tooltip: **Yes**  
 > Selector: `ui-switch`
 
 #### Useable inside
@@ -52,69 +111,91 @@ Short description about the purpose and content of the component.
 
 ## Card
 > Useable standalone: **Yes**  
+> Supports loading indicator: **Yes**  
+> Supports tooltip: **Yes** (on header)  
 > Selector: `ui-card`
 
 ## Card Section Basic
 > Useable standalone: **No**   
+> Supports loading indicator: **Yes**  
+> Supports tooltip: **No**  
 > Selector: `ui-card-section-basic`  
-
 #### Useable inside
 - Card
 
 ## Entry Container
 > Useable standalone: **Yes**  
+> Supports loading indicator: **No**  
+> Supports tooltip: **No**  
 > Selector: `ui-entry-container`  
-
 #### Useable inside
 - Entry Tile (todo: to be implemented/adjusted)
 - Metric Tile
 
-## Entry Key Value 
-> Useable standalone: **No**  
-> Selector: `ui-entry-key-value`  
-#### Useable inside
-- Entry Container
-
 ## Entry Metric
 > Useable standalone: **No**  
+> Supports loading indicator: **Yes**  
+> Supports tooltip: **Yes**  
 > Selector: `ui-entry-metric`  
 #### Useable inside
 - Entry Container
 
-## Entry Item --> new name: Entry Tile Item
+## Entry Key Value 
+> Useable standalone: **No**  
+> Supports loading indicator: **Yes**  
+> Supports tooltip: **Yes** (right side)  
+> Selector: `ui-entry-key-value`  
+#### Useable inside
+- Entry Container
+
+## Entry Tile Item
 > Useable standalone: **No**
+> Supports loading indicator: **Yes**  
+> Supports tooltip: **Yes**  
 > Selector: `ui-entry-item`  
 #### Useable inside
 - Entry Tile
 
 ## Entry Tile
 > Useable standalone: **Yes**  
+> Supports loading indicator: **Yes**  
+> Supports tooltip: **No**  
 > Selector: `ui-entry-tile`  
 #### Useable inside
 - Grid
 
 ## Metric Tile
 > Useable standalone: **Yes**  
+> Supports loading indicator: **No**  (TODO:)
+> Supports tooltip: **No**  
 > Selector: `ui-metric-tile`  
 #### Useable inside
 - Grid
 
 ## Tabs
 > Useable standalone: **Yes**  
+> Supports loading indicator: **No**  
+> Supports tooltip: **No**  
 > Selector: `ui-tabs`  
 
 ## Tab
 > Useable standalone: **No**  
+> Supports loading indicator: **No**  
+> Supports tooltip: **Yes**  
 > Selector: `ui-tab`  
 #### Useable inside
 - Tabs
 
 ## Toolbar
 > Useable standalone: **Yes**  
+> Supports loading indicator: **No**  
+> Supports tooltip: **No**  
 > Selector: `ui-toolbar`  
 
 ## Value Tile
 > Useable standalone: **Yes**  
+> Supports loading indicator: **Yes**  
+> Supports tooltip: **Yes**  
 > Selector: `ui-value-tile`  
 #### Useable inside
 - Toolbar
@@ -123,6 +204,8 @@ Short description about the purpose and content of the component.
 
 ## Grid
 > Useable standalone: **Yes**  
+> Supports loading indicator: **No**  
+> Supports tooltip: **No**  
 > Selector: `ui-grid`  
 #### Accepts
 - Entry Tile
@@ -130,19 +213,24 @@ Short description about the purpose and content of the component.
 
 ## Menu Bar
 > Useable standalone: **Yes**  
+> Supports loading indicator: **No**  
+> Supports tooltip: **No**  
 > Selector: `ui-menu-bar`
-
 #### Accepts
 - Menu Item
+
 ## Menu Item (config only)
 > Useable standalone: **No**  
+> Supports loading indicator: **No**  
+> Supports tooltip: **Yes**  
 > Selector: `uic-menu-item`
-
 #### Useable inside
 - Menu Bar
 
 ## Window
 > Useable standalone: **Yes**  
+> Supports loading indicator: **Yes**  
+> Supports tooltip: **No**  
 > Selector: `ui-window`
 #### Accepts
 - Content
@@ -150,6 +238,8 @@ Short description about the purpose and content of the component.
 
 ## Content
 > Useable standalone: **Yes**  
+> Supports loading indicator: **Yes**  
+> Supports tooltip: **No**  
 > Selector: `ui-content`
 #### Useable inside
 - Window

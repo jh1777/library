@@ -8,8 +8,8 @@ import {
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisVerticalIcon, ellipsisHorizontalIcon, popOutIcon
 } from "@cds/core/icon";
 import '@cds/core/icon/register.js';
-import { EntryItemComponent } from './entry-item/entry-item.component';
-import { EntryKeyValueComponent } from './entry-key-value/entry-key-value.component';
+import { EntryTileItemComponent } from './entry-tile-item/entry-tile-item.component';
+import { EntryKeyValueComponent } from '../entry-key-value/entry-key-value.component';
 import { ButtonComponent } from '../button';
 import { UIBaseComponent } from '../../shared';
 import { EntryTileCollapseMode, EntryTileStyle } from './entry-tile.models';
@@ -34,7 +34,7 @@ ClarityIcons.addIcons(
   ]
 })
 export class EntryTileComponent extends UIBaseComponent implements AfterContentInit {
-  @ContentChildren(EntryItemComponent) items: QueryList<EntryItemComponent>;
+  @ContentChildren(EntryTileItemComponent) items: QueryList<EntryTileItemComponent>;
   @ContentChildren(EntryKeyValueComponent) titles: QueryList<EntryKeyValueComponent>;
   @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
 

@@ -44,31 +44,31 @@
           value="50 mins ago"
           [isLoading]="false"
         ></ui-entry-key-value>
-        <ui-entry-item
+        <ui-entry-tile-item
           primaryValue="Primary"
           secondaryValue="Subtitle"
-        ></ui-entry-item>
-        <ui-entry-item
+        ></ui-entry-tile-item>
+        <ui-entry-tile-item
           primaryValue="Primary" secondaryValue="Subtitle" [style]=1
           [showStateIcon]=true [isLoading]=false>
           <ui-switch label="On/Off"></ui-switch>
-        </ui-entry-item>
+        </ui-entry-tile-item>
       </ui-entry-tile>
       <ui-entry-tile header="Tile at Col 3" collapseMode="1" grid-column="3">
-        <ui-entry-item
+        <ui-entry-tile-item
           primaryValue="Secondary"
           secondaryValue="Subtitle"
           icon="pop-out"
           clickable="true"
         >
-        </ui-entry-item>
+        </ui-entry-tile-item>
       </ui-entry-tile>
       <ui-entry-tile header="Another Col 3" collapseMode="1" grid-column="3">
-        <ui-entry-item
+        <ui-entry-tile-item
           primaryValue="Connected"
           secondaryValue="Yes"
           errorMessage="Unhandled Exception occured"
-        ></ui-entry-item>
+        ></ui-entry-tile-item>
         <ui-button
           label="Delete"
           [style]="4"
@@ -83,11 +83,11 @@
         ></ui-button>
       </ui-entry-tile>
       <ui-entry-tile header="Loading Demo" collapseMode="1" grid-column="2">
-        <ui-entry-item
+        <ui-entry-tile-item
           primaryValue="Attributes"
           secondaryValue="Updated"
           [isLoading]="true"
-        ></ui-entry-item>
+        ></ui-entry-tile-item>
       </ui-entry-tile>
       <ui-metric-tile header="Test Metrics" grid-column="1">
         <ui-entry-container>

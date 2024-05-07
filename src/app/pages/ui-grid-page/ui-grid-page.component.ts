@@ -1,13 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { EntryTileComponent, GridComponent, EntryKeyValueComponent, 
-  EntryMetricComponent, EntryItemComponent, EntryContainerComponent, CardStyle,
+  EntryMetricComponent, EntryTileItemComponent, EntryContainerComponent, CardStyle,
   ButtonComponent, SwitchComponent, MetricTileComponent, CardComponent, CardSectionBasicComponent
-} from 'projects/ui/src/public-api';
+} from "../../../../projects/ui/src/public-api";
 
 @Component({
   selector: 'app-ui-grid-page',
   standalone: true,
-  imports: [GridComponent, CardComponent, EntryTileComponent, CardSectionBasicComponent, EntryKeyValueComponent, ButtonComponent, SwitchComponent, MetricTileComponent, EntryMetricComponent, EntryItemComponent, EntryContainerComponent ],
+  imports: [GridComponent, CardComponent, EntryTileComponent, CardSectionBasicComponent, EntryKeyValueComponent, ButtonComponent, SwitchComponent, MetricTileComponent, EntryMetricComponent, EntryTileItemComponent, EntryContainerComponent ],
   templateUrl: './ui-grid-page.component.html',
   styleUrl: './ui-grid-page.component.scss'
 })

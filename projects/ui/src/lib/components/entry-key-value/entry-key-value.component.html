@@ -27,6 +27,7 @@
       </div>
       <div 
         class="ui-generic-container-right ui-generic-flex-row" 
+        [attr.title]="tooltip()"
         [class.big-style]="big() == true">
         @if (style() > 0 && style() < 4) {
           <cds-icon

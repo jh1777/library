@@ -2,8 +2,11 @@
     <nav class="main-menu">
         <ul>
             @for (item of menuItems; track $index) {
-                <li><a [routerLink]="item.route()" routerLinkActive="active" [routerLinkActiveOptions]="item.exactMatch() ? { exact: true } : { exact: false }">{{ item.label() }}</a></li>
+                <li [attr.title]="item.tooltip()">
+                    <a [routerLink]="item.route()" routerLinkActive="active" [routerLinkActiveOptions]="item.exactMatch() ? { exact: true } : { exact: false }">
+                    {{ item.label() }}</a>
+                </li>
             }
         </ul>
-      </nav>
+    </nav>
 }

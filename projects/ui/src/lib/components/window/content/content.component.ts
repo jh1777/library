@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { UIBaseComponent } from '../../../shared';
 
 @Component({
@@ -10,5 +10,7 @@ import { UIBaseComponent } from '../../../shared';
   styleUrl: './content.component.scss'
 })
 export class ContentComponent extends UIBaseComponent {
+
+  loadingText = input<string>('Loading');
 
 }

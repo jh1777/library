@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { BadgeComponent, ButtonComponent, 
   CardComponent, EntryTileComponent, TabComponent, TabsComponent, CardSectionBasicComponent,
-  EntryKeyValueComponent, EntryItemComponent, SwitchComponent, MenuBarComponent,
-  EntryContainerComponent, EntryMetricComponent, InputComponent, MenuItemComponent,
+  EntryKeyValueComponent, EntryTileItemComponent, SwitchComponent, MenuBarComponent,
+  EntryContainerComponent, EntryMetricComponent, MenuItemComponent,
   ToolbarComponent, ValueTileComponent, GridComponent, MetricTileComponent, BadgeStyle
  } from "../../../../projects/ui/src/public-api";
 import { ClarityModule } from '@clr/angular';
@@ -16,7 +16,7 @@ ClarityIcons.addIcons(uploadCloudIcon);
 
 @Component({
   selector: 'ui-example-page',
-  imports: [ClarityModule, CardComponent, ToolbarComponent, CardSectionBasicComponent, EntryContainerComponent, EntryItemComponent, EntryKeyValueComponent, EntryMetricComponent, GridComponent, ButtonComponent, SwitchComponent, BadgeComponent, ValueTileComponent, EntryTileComponent],
+  imports: [ClarityModule, CardComponent, ToolbarComponent, CardSectionBasicComponent, EntryContainerComponent, EntryTileItemComponent, EntryKeyValueComponent, EntryMetricComponent, GridComponent, ButtonComponent, SwitchComponent, BadgeComponent, ValueTileComponent, EntryTileComponent],
   standalone: true,
   templateUrl: './ui-example-page.component.html',
   styleUrl: './ui-example-page.component.scss'

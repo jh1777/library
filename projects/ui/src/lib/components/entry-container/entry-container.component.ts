@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ContentChildren, QueryList, input, output, signal } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
-import { EntryKeyValueComponent } from '../entry-tile';
+import { EntryKeyValueComponent } from '../entry-key-value';
 import { EntryMetricComponent } from '../entry-metric';
 
 @Component({

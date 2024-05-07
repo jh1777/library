@@ -30,7 +30,7 @@ import '@cds/core/icon/register.js';
 import { ButtonComponent } from '../../button';
 import { SwitchComponent } from '../../switch';
 import { UIBaseComponent, UiErrorComponent } from '../../../shared';
-import { EntryItemStyle } from './entry-item.models';
+import { EntryItemStyle } from './entry-tile-item.models';
 ClarityIcons.addIcons(
   angleIcon,
   errorStandardIcon,
@@ -47,14 +47,14 @@ ClarityIcons.addIcons(
 );
 
 @Component({
-  selector: 'ui-entry-item',
+  selector: 'ui-entry-tile-item',
   standalone: true,
   imports: [CommonModule, ClarityModule, UiErrorComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './entry-item.component.html',
-  styleUrl: './entry-item.component.scss',
+  templateUrl: './entry-tile-item.component.html',
+  styleUrl: './entry-tile-item.component.scss',
 })
-export class EntryItemComponent extends UIBaseComponent implements AfterContentInit {
+export class EntryTileItemComponent extends UIBaseComponent implements AfterContentInit {
   @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
   @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
   @ContentChildren(SwitchComponent) switches: QueryList<SwitchComponent>;

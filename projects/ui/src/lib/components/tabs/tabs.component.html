@@ -3,6 +3,7 @@
     <div class="ui-tabs">
         @for (tab of tabs; track $index) {
             <div class="ui-tab" 
+                [attr.title]="tab.tooltip()"
                 [class.active]="tab.active() == true"
                 [class.filled]="style() == 0"
                 [class.flat]="style() == 1"

@@ -22,7 +22,7 @@ import { Component, QueryList, computed, input, signal } from "@angular/core";
     
     /**
      * Generic data object (optional)  
-     * (tpye `any`)
+     * (type `any`)
      */
     data = input<any>();
 

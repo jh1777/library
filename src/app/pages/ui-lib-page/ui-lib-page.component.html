@@ -1,23 +1,6 @@
 
 <div class="page-header">UI Library (v2) with ng17, Signals etc.</div>
 
-<!--
-<div class="item">
-  <div class="title">
-    INPUT
-    <div class="subtitle">
-      <ui-button [label]="'Set Value'" (onClick)="inputValue.set('New Value')"></ui-button>
-
-    </div>
-  </div>
-  <div class="columns" style="margin-top: 0.5rem">
-    <div class="container">
-      <ui-input [(value)]="inputValue"></ui-input>
-    </div>
-  </div>
-</div>
--->
-
 <div class="item">
   <div class="title">
     TABS (using TAB)
@@ -148,23 +131,23 @@
           [big]=true
         ></ui-entry-key-value>
 
-        <ui-entry-item
+        <ui-entry-tile-item
           primaryValue="Primary" secondaryValue="Subtitle" [style]=1
           [showStateIcon]=true [isLoading]=false>
           <ui-switch label="On/Off"></ui-switch>
-        </ui-entry-item>
+        </ui-entry-tile-item>
         
-        <ui-entry-item
+        <ui-entry-tile-item
           primaryValue="13 Messages" secondaryValue="Last received 2 min ago" [style]=0
           [showStateIcon]=false [isLoading]=false>
           <ui-button label="Activate"></ui-button>
-        </ui-entry-item>
+        </ui-entry-tile-item>
         
-        <ui-entry-item
+        <ui-entry-tile-item
           primaryValue="Primary"
           [isLoading]=true
         >
-        </ui-entry-item>
+        </ui-entry-tile-item>
       </ui-entry-tile>
     </div>
     <div class="container">
@@ -186,25 +169,25 @@
           value="50 mins ago"
           [isLoading]="false"
         ></ui-entry-key-value>
-        <ui-entry-item
+        <ui-entry-tile-item
           primaryValue="Primary"
           secondaryValue="Subtitle"
           state="0"
           showStateIcon="true"
           [isLoading]="false"
         >
-        </ui-entry-item>
+        </ui-entry-tile-item>
 
         @for (_ of [].constructor(4); track $index) {
-          <ui-entry-item
+          <ui-entry-tile-item
             header="TEST"
             [primaryValue]="'Registered'.concat(($index + 4).toString())"
           >
             <ui-button label="Delete" [style]="6" icon="trash"></ui-button>
-          </ui-entry-item>
+          </ui-entry-tile-item>
         }
 
-        <ui-entry-item
+        <ui-entry-tile-item
           header="Connectivity"
           primaryValue="Connected"
           secondaryValue="4 mins ago"
@@ -212,7 +195,7 @@
           [clickable]="true"
         >
           <ui-badge value="6" [style]="2" [size]="2"></ui-badge>
-        </ui-entry-item>
+        </ui-entry-tile-item>
       </ui-entry-tile>
     </div>
     <div class="container">
@@ -232,7 +215,7 @@
           value="50 mins ago"
           [isLoading]="false"
         ></ui-entry-key-value>
-        <ui-entry-item
+        <ui-entry-tile-item
           primaryValue="Messages"
           secondaryValue="1 Unread"
           state="2"
@@ -240,16 +223,16 @@
           [isLoading]="false"
         >
           <ui-badge value="1" [style]="2"></ui-badge>
-        </ui-entry-item>
+        </ui-entry-tile-item>
 
-        <ui-entry-item
+        <ui-entry-tile-item
           header="Connectivity"
           primaryValue="Connected"
           secondaryValue="4 mins ago"
           icon="pop-out"
           [clickable]="true"
         >
-        </ui-entry-item>
+        </ui-entry-tile-item>
 
         <ui-button label="Accept" [style]="5" icon="check" slot="left">
           <ui-badge value="3"></ui-badge>
