@@ -1,3 +1,5 @@
+[[ _TOC_ ]]
+
 # Abstract
 
 Welcome to the documentation of this project, a comprehensive and modular library designed to streamline the development of user interfaces in Angular applications. This documentation serves as a guide to help you leverage the power and flexibility of our UI components effectively in your projects.
@@ -77,17 +79,19 @@ Displays text on the left to the badge `value`. Can also be used without setting
 
 **HINT: Maybe rewrite all _Useable inside_ to _Accepts_ perspective??**
 
-#### Useable inside 
-- Button
-- Entry Item
-- Toolbar
-- Value Tile
+### Accepts as Sub-Component
+NONE
+
 
 ## Button
 > Useable standalone: **Yes**  
 > Supports loading indicator: **No**  
+> Supports error message: **No**  
 > Supports tooltip: **Yes**  
 > Selector: `ui-button`
+
+### Accepts as Sub-Component
+- [Badge](#badge)
 
 #### Useable inside
 - Entry Tile
@@ -100,97 +104,123 @@ Displays text on the left to the badge `value`. Can also be used without setting
 ## Switch
 > Useable standalone: **Yes**  
 > Supports loading indicator: **No**  
+> Supports error message: **No**  
 > Supports tooltip: **Yes**  
 > Selector: `ui-switch`
 
-#### Useable inside
-- Entry Item
-- Card
-- Card Section Basic
-- Toolbar
+### Accepts as Sub-Component
+NONE
 
 ## Card
 > Useable standalone: **Yes**  
 > Supports loading indicator: **Yes**  
+> Supports error message: **Yes**  
 > Supports tooltip: **Yes** (on header)  
 > Selector: `ui-card`
+
+### Accepts as Sub-Component
+- [Button](#button) (in header only)
+- [Switch](#switch) (in header only)
+- [Card Section Basic](#card-section-basic)
 
 ## Card Section Basic
 > Useable standalone: **No**   
 > Supports loading indicator: **Yes**  
+> Supports error message: **Yes**  
 > Supports tooltip: **No**  
 > Selector: `ui-card-section-basic`  
-#### Useable inside
-- Card
+
+### Accepts as Sub-Component
+- [Button](#button)
+- [Switch](#switch)
 
 ## Entry Container
 > Useable standalone: **Yes**  
 > Supports loading indicator: **No**  
+> Supports error message: **No**  
 > Supports tooltip: **No**  
 > Selector: `ui-entry-container`  
-#### Useable inside
-- Entry Tile (todo: to be implemented/adjusted)
-- Metric Tile
+### Accepts as Sub-Component
+- [Entry Metric](#entry-metric)
+- [Entry Key Value](#entry-key-value)
 
 ## Entry Metric
 > Useable standalone: **No**  
+> Supports error message: **Yes**  
 > Supports loading indicator: **Yes**  
 > Supports tooltip: **Yes**  
 > Selector: `ui-entry-metric`  
-#### Useable inside
-- Entry Container
+### Accepts as Sub-Component
+NONE
 
 ## Entry Key Value 
 > Useable standalone: **No**  
+> Supports error message: **Yes** (TODO:)  
 > Supports loading indicator: **Yes**  
 > Supports tooltip: **Yes** (right side)  
 > Selector: `ui-entry-key-value`  
-#### Useable inside
-- Entry Container
+### Accepts as Sub-Component
+NONE
 
 ## Entry Tile Item
-> Useable standalone: **No**
+> Useable standalone: **No**  
+> Supports error message: **Yes**  
 > Supports loading indicator: **Yes**  
 > Supports tooltip: **Yes**  
 > Selector: `ui-entry-item`  
-#### Useable inside
-- Entry Tile
+### Accepts as Sub-Component
+- [Badge](#badge)
+- [Button](#button)
+- [Switch](#switch)
 
 ## Entry Tile
 > Useable standalone: **Yes**  
+> Supports error message: **No** (TODO:?)  
 > Supports loading indicator: **Yes**  
 > Supports tooltip: **No**  
 > Selector: `ui-entry-tile`  
-#### Useable inside
-- Grid
+### Accepts as Sub-Component
+- [Entry Tile Item](#entry-tile-item)
+- [Entry Key Value](#entry-key-value)
 
 ## Metric Tile
 > Useable standalone: **Yes**  
-> Supports loading indicator: **No**  (TODO:)
+> Supports error message: **No** (TODO:?)  
+> Supports loading indicator: **No**  (TODO:?)
 > Supports tooltip: **No**  
 > Selector: `ui-metric-tile`  
-#### Useable inside
-- Grid
+### Accepts as Sub-Component
+- [Entry Container](#entry-container)
 
 ## Tabs
 > Useable standalone: **Yes**  
+> Supports error message: **No**   
 > Supports loading indicator: **No**  
 > Supports tooltip: **No**  
 > Selector: `ui-tabs`  
+### Accepts as Sub-Component
+- [Tab](#tab)
 
 ## Tab
 > Useable standalone: **No**  
+> Supports error message: **Yes** (TODO:!)   
 > Supports loading indicator: **No**  
 > Supports tooltip: **Yes**  
 > Selector: `ui-tab`  
-#### Useable inside
-- Tabs
+### Accepts as Sub-Component
+Everything
 
 ## Toolbar
 > Useable standalone: **Yes**  
+> Supports error message: **No**    
 > Supports loading indicator: **No**  
 > Supports tooltip: **No**  
 > Selector: `ui-toolbar`  
+### Accepts as Sub-Component
+- [Badge](#badge)
+- [Button](#button)
+- [Switch](#switch)
+- [Value Tile](#value-tile)
 
 ## Value Tile
 > Useable standalone: **Yes**  
