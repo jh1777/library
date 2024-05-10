@@ -14,7 +14,9 @@ import {
   trashIcon,
   popOutIcon,
   undoIcon,
-  copyIcon
+  copyIcon,
+  plusCircleIcon,
+  plusIcon
 } from '@cds/core/icon';
 import '@cds/core/icon/register.js';
 import { BadgeComponent } from '../badge/badge.component';
@@ -33,9 +35,10 @@ ClarityIcons.addIcons(
   trashIcon,
   undoIcon,
   popOutIcon,
-  copyIcon
+  copyIcon,
+  plusCircleIcon,
+  plusIcon
 );
-
 
 @Component({
   selector: 'ui-button',
@@ -94,7 +97,9 @@ export class ButtonComponent extends UIBaseComponent implements AfterContentInit
       _trashIcon_,
       _undoIcon_,
       _popOutIcon_,
-      _copyIcon_
+      _copyIcon_,
+      _plusIcon_,
+      _plusCircleIcon_
    */
   icon = input<string>();
 
