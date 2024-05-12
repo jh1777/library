@@ -1,77 +1,82 @@
 @if (hidden() == false) {
-  @if (isLoading() == true) {
-    <div class="ui-generic-container loading no-select pulse">
-      <div class="ui-generic-container-left">
-        <div>
-          @for (_ of [].constructor(3); track $index) {
-            {{ placeholder }}
-          }
-        </div>
-      </div>
-      <div class="ui-generic-container-right">
-        <div>
-          @for (_ of [].constructor(3); track $index) {
-            {{ placeholder }}
-          }
-        </div>
-      </div>
-    </div>
-  }
 
-  @if (isLoading() == false) {
-    <div class="ui-generic-container">
-      <div 
-        class="ui-generic-container-left"
-        [class.big-style]="big() == true">
-        {{ label() }}
-      </div>
-      <div 
-        class="ui-generic-container-right ui-generic-flex-row" 
-        [attr.title]="tooltip()"
-        [class.big-style]="big() == true">
-        @if (style() > 0 && style() < 4) {
-          <cds-icon
-            solid
-            [style.color]="
-              style() == 1
-                ? 'var(--attention-kv-entry-color)'
-                : style() == 2
-                  ? 'var(--error-kv-entry-color)'
-                  : style() == 3
-                    ? 'var(--success-kv-entry-color)'
-                    : ''
-            "
-            [attr.shape]="
-              style() == 1
-                ? 'warning-standard'
-                : style() == 2
-                  ? 'error-standard'
-                  : style() == 3
-                    ? 'success-standard'
-                    : ''
-            "
-            [attr.size]="big() == true ? 18 : 16"
-          >
-          </cds-icon>
-        }
-
-        <div
-          class="ui-entry-key-value"
-          [style.color]="
-            style() == 1
-              ? 'var(--attention-kv-entry-color)'
-              : style() == 2
-                ? 'var(--error-kv-entry-color)'
-                : style() == 3
-                  ? 'var(--success-kv-entry-color)'
-                  : style() == 4
-                    ? 'var(--dimmed-kv-entry-color)'
-                    : ''
-          "
-        >
-          {{ value() }}
+  @if(hasError() == true) {
+    <ui-error [errorMessage]="errorMessage()" [noScroll]=true></ui-error>
+  } @else {
+      @if (isLoading() == true) {
+        <div class="ui-generic-container loading no-select pulse">
+          <div class="ui-generic-container-left">
+            <div>
+              @for (_ of [].constructor(3); track $index) {
+                {{ placeholder }}
+              }
+            </div>
+          </div>
+          <div class="ui-generic-container-right">
+            <div>
+              @for (_ of [].constructor(3); track $index) {
+                {{ placeholder }}
+              }
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  }
+      }
+
+      @if (isLoading() == false) {
+        <div class="ui-generic-container">
+          <div 
+            class="ui-generic-container-left"
+            [class.big-style]="big() == true">
+            {{ label() }}
+          </div>
+          <div 
+            class="ui-generic-container-right ui-generic-flex-row" 
+            [attr.title]="tooltip()"
+            [class.big-style]="big() == true">
+            @if (style() > 0 && style() < 4) {
+              <cds-icon
+                solid
+                [style.color]="
+                  style() == 1
+                    ? 'var(--attention-kv-entry-color)'
+                    : style() == 2
+                      ? 'var(--error-kv-entry-color)'
+                      : style() == 3
+                        ? 'var(--success-kv-entry-color)'
+                        : ''
+                "
+                [attr.shape]="
+                  style() == 1
+                    ? 'warning-standard'
+                    : style() == 2
+                      ? 'error-standard'
+                      : style() == 3
+                        ? 'success-standard'
+                        : ''
+                "
+                [attr.size]="big() == true ? 18 : 16"
+              >
+              </cds-icon>
+            }
+
+            <div
+              class="ui-entry-key-value"
+              [style.color]="
+                style() == 1
+                  ? 'var(--attention-kv-entry-color)'
+                  : style() == 2
+                    ? 'var(--error-kv-entry-color)'
+                    : style() == 3
+                      ? 'var(--success-kv-entry-color)'
+                      : style() == 4
+                        ? 'var(--dimmed-kv-entry-color)'
+                        : ''
+              "
+            >
+              {{ value() }}
+            </div>
+          </div>
+        </div>
+      }
+    }
 }

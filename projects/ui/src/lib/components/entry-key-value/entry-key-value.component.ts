@@ -6,7 +6,7 @@ import {
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisVerticalIcon, ellipsisHorizontalIcon, popOutIcon
 } from "@cds/core/icon";
 import '@cds/core/icon/register.js';
-import { UIBaseComponent } from '../../shared';
+import { UIBaseComponent, UiErrorComponent } from '../../shared';
 import { EntryKeyValueStyle } from './entry-key-value.models';
 ClarityIcons.addIcons(
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
@@ -16,7 +16,7 @@ ClarityIcons.addIcons(
   selector: 'ui-entry-key-value',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, ClarityModule],
+  imports: [CommonModule, ClarityModule, UiErrorComponent],
   templateUrl: './entry-key-value.component.html',
   styleUrl: './entry-key-value.component.scss'
 })

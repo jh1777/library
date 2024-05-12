@@ -155,7 +155,7 @@ NONE
 
 ## Entry Key Value 
 > Useable standalone: **No**  
-> Supports error message: **Yes** (TODO:)  
+> Supports error message: **Yes**  
 > Supports loading indicator: **Yes**  
 > Supports tooltip: **Yes** (right side)  
 > Selector: `ui-entry-key-value`  
@@ -185,7 +185,7 @@ NONE
 
 ## Metric Tile
 > Useable standalone: **Yes**  
-> Supports error message: **No** (TODO:?)  
+> Supports error message: **No**  
 > Supports loading indicator: **No**  (TODO:?)
 > Supports tooltip: **No**  
 > Selector: `ui-metric-tile`  

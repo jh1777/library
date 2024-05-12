@@ -79,8 +79,8 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
       const msg = `Too many key-values used! Max. ${this.maxTitles()} allowed`;
       errorMessage == '' ? errorMessage = msg : errorMessage = `${errorMessage}; ${msg}`;
     }
-    
-    console.warn(errorMessage);
+    if (errorMessage.length > 0)
+      console.warn(errorMessage);
   }
   
 
