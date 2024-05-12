@@ -1,0 +1,2018 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>library documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">library documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  EntryTileComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/ui/src/lib/components/entry-tile/entry-tile.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="../components/UIBaseComponent.html" target="_self" >UIBaseComponent</a></code>
+    </p>
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>AfterContentInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ui-entry-tile</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">Standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>ClarityModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./entry-tile.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./entry-tile.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_timers" >_timers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#buttons" >buttons</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#calcPagesNeeded" >calcPagesNeeded</a>
+                            </li>
+                            <li>
+                                <a href="#calcStyle" >calcStyle</a>
+                            </li>
+                            <li>
+                                <a href="#collapseMode" >collapseMode</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#currentPage" >currentPage</a>
+                            </li>
+                            <li>
+                                <a href="#header" >header</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#isCollapsed" >isCollapsed</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#items" >items</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#maxItems" >maxItems</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#maxTitles" >maxTitles</a>
+                            </li>
+                            <li>
+                                <a href="#moreButtonLabel" >moreButtonLabel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#newPage" >newPage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#noOfPages" >noOfPages</a>
+                            </li>
+                            <li>
+                                <a href="#onShowMoreClick" >onShowMoreClick</a>
+                            </li>
+                            <li>
+                                <a href="#pageSize" >pageSize</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#paginationTooltip" >paginationTooltip</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#prepareItems" >prepareItems</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#selectPage" >selectPage</a>
+                            </li>
+                            <li>
+                                <a href="#style" >style</a>
+                            </li>
+                            <li>
+                                <a href="#titleIcon" >titleIcon</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#titles" >titles</a>
+                            </li>
+                            <li>
+                                <a href="#data" >data</a>
+                            </li>
+                            <li>
+                                <a href="#errorMessage" >errorMessage</a>
+                            </li>
+                            <li>
+                                <a href="#hasError" >hasError</a>
+                            </li>
+                            <li>
+                                <a href="#hidden" >hidden</a>
+                            </li>
+                            <li>
+                                <a href="#id" >id</a>
+                            </li>
+                            <li>
+                                <a href="#isLoading" >isLoading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#placeholder" >placeholder</a>
+                            </li>
+                            <li>
+                                <a href="#tooltip" >tooltip</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngAfterContentInit" >ngAfterContentInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#limitContentChildren" >limitContentChildren</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterContentInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterContentInit</b></span>
+                        <a href="#ngAfterContentInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterContentInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="limitContentChildren"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                        <span ><b>limitContentChildren</b></span>
+                        <a href="#limitContentChildren"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>limitContentChildren(items: QueryList<T>, max: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Inherited from         <code><a href="../components/UIBaseComponent.html" target="_self" >UIBaseComponent</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/UIBaseComponent.html#source" target="_self" >UIBaseComponent:46</a></code>
+</div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Type parameters :</b>
+                            <ul class="type-parameters">
+                                    <li>T</li>
+                            </ul>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Checks the given child elements in <code>items</code> if their count exceeds the given <code>max</code>
+If so, the additional components will be set to <code>hidden()</code></p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>items</td>
+                                            <td>
+                                                        <code>QueryList&lt;T&gt;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>QueryList<T> (<code>ContentChildren</code>)</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>max</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>number</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>boolean -&gt; <code>true</code> if max was exceeded, otherwise <code>false</code></p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_timers"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_timers</b></span>
+                        <a href="#_timers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Array&lt;Subscription&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:87</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buttons"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>buttons</b></span>
+                        <a href="#buttons"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>QueryList&lt;ButtonComponent&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ContentChildren(ButtonComponent)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calcPagesNeeded"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>calcPagesNeeded</b></span>
+                        <a href="#calcPagesNeeded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:182</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calcStyle"></a>
+                    <span class="name">
+                        <span ><b>calcStyle</b></span>
+                        <a href="#calcStyle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>computed(() &#x3D;&gt; {
+    if (this.style() &#x3D;&#x3D; EntryTileStyle.Automatic) {
+      const itemMax &#x3D; this.items.reduce((highest, current) &#x3D;&gt; {
+        return current.style() &gt; highest ? current.style() : highest;
+      }, 0);
+      const titleMax &#x3D; this.titles.reduce((highest, current) &#x3D;&gt; {
+        return current.style() &gt; highest ? current.style() : highest;
+      }, 0);
+      return titleMax;
+    } else {
+      return this.style();
+    }
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:139</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Computed style if <code>style</code> == <code>automatic</code>
+Uses <code>titles.style</code> to grab the worst state found</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="collapseMode"></a>
+                    <span class="name">
+                        <span ><b>collapseMode</b></span>
+                        <a href="#collapseMode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;EntryTileCollapseMode&gt;(EntryTileCollapseMode.Disabled)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:121</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Controls if the tile can be collapsed
+There are 3 modes:</p>
+<ul>
+<li><code>Disabled</code> = no expand or collapse (default)</li>
+<li><code>Autoexpanded</code> = only attention and error items shown</li>
+<li><code>Manual</code> = all items shown by default, but collapse button shown</li>
+</ul>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentPage"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>currentPage</b></span>
+                        <a href="#currentPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(0)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:103</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indicates the current shown page if pagination is used</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="header"></a>
+                    <span class="name">
+                        <span ><b>header</b></span>
+                        <a href="#header"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;string&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:154</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Optional (but recommended): Tile header</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isCollapsed"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>isCollapsed</b></span>
+                        <a href="#isCollapsed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:98</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Represents the collapsed (=true) or expanded (=false) state of the tile.
+<strong>Hint</strong>: only applicable if the <code>collapseMode</code> is not <code>disabled</code>
+(default is <code>false</code>)</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="items"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>items</b></span>
+                        <a href="#items"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/EntryTileItemComponent.html" target="_self" >QueryList&lt;EntryTileItemComponent&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ContentChildren(EntryTileItemComponent)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="maxItems"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>maxItems</b></span>
+                        <a href="#maxItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(5)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:90</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="maxTitles"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>maxTitles</b></span>
+                        <a href="#maxTitles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(2)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:89</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moreButtonLabel"></a>
+                    <span class="name">
+                        <span ><b>moreButtonLabel</b></span>
+                        <a href="#moreButtonLabel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;string&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:164</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Optional: If you want to show a button a the bottom of the tile you can set the label of it here.
+If the label is not set, there will be no button shown.
+The button, if you specify a label, will trigger the <code>onShowMoreClick</code> output.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="newPage"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>newPage</b></span>
+                        <a href="#newPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(0)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:91</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="noOfPages"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>noOfPages</b></span>
+                        <a href="#noOfPages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>computed(() &#x3D;&gt; {
+    if (this.pageSize() &amp;&amp; this.pageSize()! &gt; 0) {
+      const p &#x3D; this.calcPagesNeeded(this.items.length, this.pageSize()!)
+      return p;
+    } else {
+      return 0;
+    }
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:105</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onShowMoreClick"></a>
+                    <span class="name">
+                        <span ><b>onShowMoreClick</b></span>
+                        <a href="#onShowMoreClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>output&lt;string&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:179</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Click event on More Button (if present)
+Emits the tile <code>id()</code></p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pageSize"></a>
+                    <span class="name">
+                        <span ><b>pageSize</b></span>
+                        <a href="#pageSize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;number&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:172</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Optional: The page size of the tile
+If not set, no paging is done
+<strong>Important:</strong> The maximum item count applies to each page! If <code>pageSize</code> is set higher than the maximum, it will be reduced to the maximum!
+Maximum: 5</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginationTooltip"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>paginationTooltip</b></span>
+                        <a href="#paginationTooltip"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;string&gt;(&#x27;Page &#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:92</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="prepareItems"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>prepareItems</b></span>
+                        <a href="#prepareItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectPage"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>selectPage</b></span>
+                        <a href="#selectPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:201</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Action is called if pagination is enabled and the user
+switches the page.</p>
+</div>
+                </td>
+            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">
+                                <b>Parameters :</b>
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                    <td>event</td>
+                                                    <td>
+                                                            <code><p>{@link Event}</p>
+</code>
+                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                    <td>$item</td>
+                                                    <td>
+                                                            <code><p>Pagenumber</p>
+</code>
+                                                    </td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="style"></a>
+                    <span class="name">
+                        <span ><b>style</b></span>
+                        <a href="#style"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;EntryTileStyle&gt;(EntryTileStyle.None)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:133</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Optional: Style of the tile controls the color of the background
+The tile background will get colorized in:</p>
+<ul>
+<li><code>None</code> = grey (default),</li>
+<li><code>Attention</code> = orange</li>
+<li><code>Error</code> = red</li>
+<li><code>Success</code> = green</li>
+<li><code>Automatic</code> = based on the item.state it will be calculated
+See <a href="../miscellaneous/enumerations.html#EntryTileStyle">EntryTileStyle</a></li>
+</ul>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="titleIcon"></a>
+                    <span class="name">
+                        <span ><b>titleIcon</b></span>
+                        <a href="#titleIcon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;string&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:157</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Optional: Tile header icon</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="titles"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>titles</b></span>
+                        <a href="#titles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/EntryKeyValueComponent.html" target="_self" >QueryList&lt;EntryKeyValueComponent&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ContentChildren(EntryKeyValueComponent)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/ui/src/lib/components/entry-tile/entry-tile.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="data"></a>
+                    <span class="name">
+                        <span ><b>data</b></span>
+                        <a href="#data"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/UIBaseComponent.html" target="_self" >UIBaseComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/UIBaseComponent.html#source" target="_self" >UIBaseComponent:27</a></code>
+</div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Generic data object (optional)
+(type <code>any</code>)</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorMessage"></a>
+                    <span class="name">
+                        <span ><b>errorMessage</b></span>
+                        <a href="#errorMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;string&gt;()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/UIBaseComponent.html" target="_self" >UIBaseComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/UIBaseComponent.html#source" target="_self" >UIBaseComponent:11</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasError"></a>
+                    <span class="name">
+                        <span ><b>hasError</b></span>
+                        <a href="#hasError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>computed((): boolean &#x3D;&gt; {
+      return this.errorMessage() !&#x3D; null &amp;&amp; this.errorMessage() !&#x3D; &#x27;&#x27; &amp;&amp; this.errorMessage() !&#x3D; undefined;
+    })</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/UIBaseComponent.html" target="_self" >UIBaseComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/UIBaseComponent.html#source" target="_self" >UIBaseComponent:13</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hidden"></a>
+                    <span class="name">
+                        <span ><b>hidden</b></span>
+                        <a href="#hidden"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;boolean&gt;(false)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/UIBaseComponent.html" target="_self" >UIBaseComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/UIBaseComponent.html#source" target="_self" >UIBaseComponent:37</a></code>
+</div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Internal used to control overflow and visibility</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="id"></a>
+                    <span class="name">
+                        <span ><b>id</b></span>
+                        <a href="#id"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;string&gt;()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/UIBaseComponent.html" target="_self" >UIBaseComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/UIBaseComponent.html#source" target="_self" >UIBaseComponent:32</a></code>
+</div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Id (as <code>string</code>) to uniquely indentify the current item (optional)</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoading"></a>
+                    <span class="name">
+                        <span ><b>isLoading</b></span>
+                        <a href="#isLoading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;boolean&gt;(false)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/UIBaseComponent.html" target="_self" >UIBaseComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/UIBaseComponent.html#source" target="_self" >UIBaseComponent:21</a></code>
+</div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indicates whether the content is still loading</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="placeholder"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>placeholder</b></span>
+                        <a href="#placeholder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;⏹⏹ &#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/UIBaseComponent.html" target="_self" >UIBaseComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/UIBaseComponent.html#source" target="_self" >UIBaseComponent:9</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tooltip"></a>
+                    <span class="name">
+                        <span ><b>tooltip</b></span>
+                        <a href="#tooltip"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;string&gt;()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/UIBaseComponent.html" target="_self" >UIBaseComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/UIBaseComponent.html#source" target="_self" >UIBaseComponent:18</a></code>
+</div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Tooltip message (simple) wich is displayed on mouse over as html title (optional)</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { trigger, state, style, AUTO_STYLE, transition, animate } from &#x27;@angular/animations&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, computed, input, output, signal } from &#x27;@angular/core&#x27;;
+import { Subscription, timer } from &#x27;rxjs&#x27;;
+import { ClarityModule } from &#x27;@clr/angular&#x27;;
+import {
+  ClarityIcons,
+  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisVerticalIcon, ellipsisHorizontalIcon, popOutIcon
+} from &quot;@cds/core/icon&quot;;
+import &#x27;@cds/core/icon/register.js&#x27;;
+import { EntryTileItemComponent } from &#x27;./entry-tile-item/entry-tile-item.component&#x27;;
+import { EntryKeyValueComponent } from &#x27;../entry-key-value/entry-key-value.component&#x27;;
+import { ButtonComponent } from &#x27;../button&#x27;;
+import { UIBaseComponent } from &#x27;../../shared&#x27;;
+import { EntryTileCollapseMode, EntryTileStyle } from &#x27;./entry-tile.models&#x27;;
+ClarityIcons.addIcons(
+  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
+);
+
+
+@Component({
+  selector: &#x27;ui-entry-tile&#x27;,
+  standalone: true,
+  imports: [CommonModule, ClarityModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: &#x27;./entry-tile.component.html&#x27;,
+  styleUrl: &#x27;./entry-tile.component.scss&#x27;,
+  animations: [
+    trigger(&#x27;fade&#x27;, [
+      state(&#x27;false&#x27;, style({ width: AUTO_STYLE, visibility: AUTO_STYLE })),
+      state(&#x27;true&#x27;, style({ opacity: 0 })),
+      transition(&#x27;false &#x3D;&gt; true&#x27;,  animate(&#x27;170ms ease-out&#x27;))
+    ])
+  ]
+})
+export class EntryTileComponent extends UIBaseComponent implements AfterContentInit {
+  @ContentChildren(EntryTileItemComponent) items: QueryList&lt;EntryTileItemComponent&gt;;
+  @ContentChildren(EntryKeyValueComponent) titles: QueryList&lt;EntryKeyValueComponent&gt;;
+  @ContentChildren(ButtonComponent) buttons: QueryList&lt;ButtonComponent&gt;;
+
+  ngOnDestroy(): void {
+    this._timers.forEach(t &#x3D;&gt; t.unsubscribe());
+  }
+
+  private prepareItems &#x3D; () &#x3D;&gt; {
+    for (let i &#x3D; 0; i &lt; this.items.length; i++) {
+
+      // pagination
+      if((!this.pageSize() &amp;&amp; i &gt;&#x3D; this.currentPage() * this.maxItems() &amp;&amp; i &lt; this.currentPage() *this.maxItems() + this.maxItems())
+      || (this.pageSize()! &gt; 0 &amp;&amp; i &gt;&#x3D; this.currentPage() * this.pageSize()! &amp;&amp; i &lt; this.currentPage() * this.pageSize()! + this.pageSize()!)) 
+      {
+        this.items.get(i)?.hidden.set(false);
+      } else {
+        this.items.get(i)?.hidden.set(true);
+      }
+
+      // check for item.header grouping
+      if (i &gt; 0 &amp;&amp; this.items.get(i-1)?.header() &#x3D;&#x3D; this.items.get(i)?.header() &amp;&amp; this.items.get(i-1)?.hidden() &#x3D;&#x3D; false) {
+        this.items.get(i)?.showTitle.set(false);
+      } else {
+        this.items.get(i)?.showTitle.set(true);
+      }
+      
+    }
+  }
+
+  ngAfterContentInit(): void {
+    this.prepareItems();
+    let errorMessage &#x3D; &#x27;&#x27;;
+
+    if(this.items.length &gt; this.maxItems() &amp;&amp; !this.pageSize())
+    {
+      const msg &#x3D; &#x60;Too many items used! Max. ${this.maxItems()} allowed&#x60;;
+      errorMessage &#x3D;&#x3D; &#x27;&#x27; ? errorMessage &#x3D; msg : errorMessage &#x3D; &#x60;${errorMessage}; ${msg}&#x60;;
+    }
+
+    const overMax &#x3D; super.limitContentChildren(this.titles, this.maxTitles());
+    if (overMax) {
+      const msg &#x3D; &#x60;Too many key-values used! Max. ${this.maxTitles()} allowed&#x60;;
+      errorMessage &#x3D;&#x3D; &#x27;&#x27; ? errorMessage &#x3D; msg : errorMessage &#x3D; &#x60;${errorMessage}; ${msg}&#x60;;
+    }
+    
+    console.warn(errorMessage);
+  }
+  
+
+  private _timers: Array&lt;Subscription&gt; &#x3D; [];
+  
+  public maxTitles &#x3D; signal(2);
+  public maxItems &#x3D; signal(5);
+  public newPage &#x3D; signal(0);
+  public paginationTooltip &#x3D; signal&lt;string&gt;(&#x27;Page &#x27;);
+  
+  /** Represents the collapsed (&#x3D;true) or expanded (&#x3D;false) state of the tile.     
+   * **Hint**: only applicable if the &#x60;collapseMode&#x60; is not &#x60;disabled&#x60;  
+   * (default is &#x60;false&#x60;)  
+   * */
+  public isCollapsed &#x3D; signal(false);
+
+  /**
+   * Indicates the current shown page if pagination is used
+   */
+  public currentPage &#x3D; signal(0);
+
+  public noOfPages &#x3D; computed(() &#x3D;&gt; {
+    if (this.pageSize() &amp;&amp; this.pageSize()! &gt; 0) {
+      const p &#x3D; this.calcPagesNeeded(this.items.length, this.pageSize()!)
+      return p;
+    } else {
+      return 0;
+    }
+  });
+  
+
+  /** Controls if the tile can be collapsed  
+   * There are 3 modes:
+   * - &#x60;Disabled&#x60; &#x3D; no expand or collapse (default)
+   * - &#x60;Autoexpanded&#x60; &#x3D; only attention and error items shown
+   * - &#x60;Manual&#x60; &#x3D; all items shown by default, but collapse button shown
+   */
+  collapseMode &#x3D; input&lt;EntryTileCollapseMode&gt;(EntryTileCollapseMode.Disabled);
+
+  /**
+   * Optional: Style of the tile controls the color of the background  
+   * The tile background will get colorized in:
+   * - &#x60;None&#x60; &#x3D; grey (default), 
+   * - &#x60;Attention&#x60; &#x3D; orange
+   * - &#x60;Error&#x60; &#x3D; red
+   * - &#x60;Success&#x60; &#x3D; green  
+   * - &#x60;Automatic&#x60; &#x3D; based on the item.state it will be calculated
+   * See {@link EntryTileStyle}
+   */
+  style &#x3D; input&lt;EntryTileStyle&gt;(EntryTileStyle.None);
+
+  /**
+   * Computed style if &#x60;style&#x60; &#x3D;&#x3D; &#x60;automatic&#x60;  
+   * Uses &#x60;titles.style&#x60; to grab the worst state found
+   */
+  calcStyle &#x3D; computed(() &#x3D;&gt; {
+    if (this.style() &#x3D;&#x3D; EntryTileStyle.Automatic) {
+      const itemMax &#x3D; this.items.reduce((highest, current) &#x3D;&gt; {
+        return current.style() &gt; highest ? current.style() : highest;
+      }, 0);
+      const titleMax &#x3D; this.titles.reduce((highest, current) &#x3D;&gt; {
+        return current.style() &gt; highest ? current.style() : highest;
+      }, 0);
+      return titleMax;
+    } else {
+      return this.style();
+    }
+  })
+
+  /** Optional (but recommended): Tile header */
+  header &#x3D; input&lt;string&gt;();
+
+  /** Optional: Tile header icon  */
+  titleIcon &#x3D; input&lt;string&gt;();
+
+  /**
+   * Optional: If you want to show a button a the bottom of the tile you can set the label of it here.  
+   * If the label is not set, there will be no button shown.  
+   * The button, if you specify a label, will trigger the &#x60;onShowMoreClick&#x60; output.
+   */
+  moreButtonLabel &#x3D; input&lt;string&gt;();
+
+  /**
+   * Optional: The page size of the tile
+   * If not set, no paging is done  
+   * **Important:** The maximum item count applies to each page! If &#x60;pageSize&#x60; is set higher than the maximum, it will be reduced to the maximum!   
+   * Maximum: 5
+   */
+  pageSize &#x3D; input&lt;number&gt;();
+
+  // OUTPUTS
+  /**
+   * Click event on More Button (if present)   
+   * Emits the tile &#x60;id()&#x60;
+   */
+  onShowMoreClick &#x3D; output&lt;string&gt;();
+
+  // Helper
+  private calcPagesNeeded &#x3D; (itemCount: number, pageCount: number): number &#x3D;&gt; {
+    let result &#x3D; Math.floor(itemCount / pageCount);
+    if (itemCount % pageCount &gt; 0) {
+      result++;
+    }
+    if (result &#x3D;&#x3D; 0) {
+      result++
+    }
+    return result;
+  }
+
+  // BUTTON ACTIONS
+
+  /**
+   * Action is called if pagination is enabled and the user   
+   * switches the page.
+   * @param event {@link Event}
+   * @param $item Pagenumber
+   */
+  public selectPage &#x3D; (event: Event, $item: number) &#x3D;&gt; {
+    if ($item !&#x3D; this.currentPage()) {
+      this.newPage.set($item);
+      event?.preventDefault();
+      event?.stopPropagation();
+      this._timers.push(timer(170).subscribe({
+        next: () &#x3D;&gt; {
+          this.currentPage.set($item);
+          this.prepareItems();
+        }
+      }));
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">@if(hidden() &#x3D;&#x3D; false) {
+  &lt;div class&#x3D;&quot;ui-entry-tile&quot;&gt;
+    @if (header()) {
+      &lt;div class&#x3D;&quot;ui-entry-tile-titleheader&quot;&gt;
+        &lt;div class&#x3D;&quot;ui-generic-container-left ui-generic-flex-row&quot;&gt;
+          @if (titleIcon()) {
+            &lt;cds-icon [attr.shape]&#x3D;&quot;titleIcon()&quot; size&#x3D;&quot;20&quot;&gt;&lt;/cds-icon&gt;
+          }
+          {{ header() }}
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;ui-generic-container-right&quot;&gt;
+          @if (errorMessage()) {
+            &lt;span class&#x3D;&quot;ui-entry-tile-error&quot;&gt;
+              &lt;cds-icon solid shape&#x3D;&quot;warning-standard&quot; size&#x3D;&quot;14&quot;&gt;&lt;/cds-icon&gt;
+              {{ errorMessage() }}
+            &lt;/span&gt;
+          }
+          @if (collapseMode() &gt; 0 &amp;&amp; titles?.length &gt; 0) {
+            &lt;div
+              class&#x3D;&quot;ui-entry-tile-collapse-button&quot;
+              (click)&#x3D;&quot;isCollapsed.set(!this.isCollapsed())&quot;
+            &gt;
+              &lt;cds-icon
+                shape&#x3D;&quot;angle&quot;
+                [attr.size]&#x3D;13
+                [class.rotate]&#x3D;&quot;isCollapsed() &#x3D;&#x3D; true&quot;
+                [class.no-rotate]&#x3D;&quot;isCollapsed() &#x3D;&#x3D; false&quot;
+              &gt;&lt;/cds-icon&gt;
+            &lt;/div&gt;
+          }
+        &lt;/div&gt;
+      &lt;/div&gt;
+    }
+
+    &lt;div
+      class&#x3D;&quot;ui-entry-tile-base&quot;
+      [class.attention-tile]&#x3D;&quot;style() &#x3D;&#x3D; 1 || (style() &#x3D;&#x3D; 4 &amp;&amp; calcStyle() &#x3D;&#x3D; 1)&quot;
+      [class.error-tile]&#x3D;&quot;style() &#x3D;&#x3D; 2 || (style() &#x3D;&#x3D; 4 &amp;&amp; calcStyle() &#x3D;&#x3D; 2)&quot;
+      [class.success-tile]&#x3D;&quot;style() &#x3D;&#x3D; 3 || (style() &#x3D;&#x3D; 4 &amp;&amp; calcStyle() &#x3D;&#x3D; 3)&quot;
+    &gt;
+
+      &lt;div class&#x3D;&quot;ui-entry-tile-header&quot;&gt;
+        &lt;ng-content select&#x3D;&quot;ui-entry-key-value&quot;&gt;&lt;/ng-content&gt;
+        @if(titles?.length &#x3D;&#x3D; 0 &amp;&amp; items?.length &#x3D;&#x3D; 0) {
+          There is no content configured yet.
+        } 
+      &lt;/div&gt;
+    
+      &lt;div [@fade]&#x3D;&quot;newPage() !&#x3D; currentPage()&quot;&gt;
+        @if ((collapseMode() &#x3D;&#x3D; 1 &amp;&amp; !isCollapsed()) || collapseMode() !&#x3D; 1) {
+          &lt;div class&#x3D;&quot;ui-entry-tile-itemcontainer&quot;&gt;
+
+            &lt;ng-content select&#x3D;&quot;ui-entry-tile-item&quot;&gt;&lt;/ng-content&gt;
+
+            @if(buttons.length &gt; 0) {
+              
+              &lt;div class&#x3D;&quot;ui-entry-tile-buttons&quot;&gt;
+                &lt;ng-content select&#x3D;&quot;ui-button[slot&#x3D;left]&quot;&gt;&lt;/ng-content&gt;
+                &lt;div class&#x3D;&quot;ui-entry-tile-buttons-right&quot;&gt;
+                  &lt;ng-content select&#x3D;&quot;ui-button[slot&#x3D;right]&quot;&gt;&lt;/ng-content&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            }
+
+            @if (moreButtonLabel()) {
+              &lt;div class&#x3D;&quot;ui-entry-tile-more&quot; (click)&#x3D;&quot;onShowMoreClick.emit(id())&quot;&gt;
+                {{ moreButtonLabel() }}
+              &lt;/div&gt;
+            }
+
+            @if (pageSize() &gt; 0) {
+              &lt;div class&#x3D;&quot;ui-entry-tile-pages&quot;&gt;
+                @for (_ of [].constructor(noOfPages()); track $index) {
+                  &lt;div
+                    class&#x3D;&quot;ui-entry-tile-pages-dot&quot;
+                    [attr.title]&#x3D;&quot;paginationTooltip().concat(($index + 1).toString())&quot;
+                    [class.ui-entry-tile-pages-dot-active]&#x3D;&quot;
+                      currentPage() &#x3D;&#x3D; $index
+                    &quot;
+                    (click)&#x3D;&quot;selectPage($event, $index)&quot;
+                  &gt;&lt;/div&gt;
+                }
+              &lt;/div&gt;
+            }
+          &lt;/div&gt;
+        }
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+}</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div>@if(hidden() == false) {  <div class="ui-entry-tile">    @if (header()) {      <div class="ui-entry-tile-titleheader">        <div class="ui-generic-container-left ui-generic-flex-row">          @if (titleIcon()) {            <cds-icon [attr.shape]="titleIcon()" size="20"></cds-icon>          }          {{ header() }}        </div>        <div class="ui-generic-container-right">          @if (errorMessage()) {            <span class="ui-entry-tile-error">              <cds-icon solid shape="warning-standard" size="14"></cds-icon>              {{ errorMessage() }}            </span>          }          @if (collapseMode() > 0 && titles?.length > 0) {            <div              class="ui-entry-tile-collapse-button"              (click)="isCollapsed.set(!this.isCollapsed())"            >              <cds-icon                shape="angle"                [attr.size]=13                [class.rotate]="isCollapsed() == true"                [class.no-rotate]="isCollapsed() == false"              ></cds-icon>            </div>          }        </div>      </div>    }    <div      class="ui-entry-tile-base"      [class.attention-tile]="style() == 1 || (style() == 4 && calcStyle() == 1)"      [class.error-tile]="style() == 2 || (style() == 4 && calcStyle() == 2)"      [class.success-tile]="style() == 3 || (style() == 4 && calcStyle() == 3)"    >      <div class="ui-entry-tile-header">        <ng-content select="ui-entry-key-value"></ng-content>        @if(titles?.length == 0 && items?.length == 0) {          There is no content configured yet.        }       </div>          <div [@fade]="newPage() != currentPage()">        @if ((collapseMode() == 1 && !isCollapsed()) || collapseMode() != 1) {          <div class="ui-entry-tile-itemcontainer">            <ng-content select="ui-entry-tile-item"></ng-content>            @if(buttons.length > 0) {                            <div class="ui-entry-tile-buttons">                <ng-content select="ui-button[slot=left]"></ng-content>                <div class="ui-entry-tile-buttons-right">                  <ng-content select="ui-button[slot=right]"></ng-content>                </div>              </div>            }            @if (moreButtonLabel()) {              <div class="ui-entry-tile-more" (click)="onShowMoreClick.emit(id())">                {{ moreButtonLabel() }}              </div>            }            @if (pageSize() > 0) {              <div class="ui-entry-tile-pages">                @for (_ of [].constructor(noOfPages()); track $index) {                  <div                    class="ui-entry-tile-pages-dot"                    [attr.title]="paginationTooltip().concat(($index + 1).toString())"                    [class.ui-entry-tile-pages-dot-active]="                      currentPage() == $index                    "                    (click)="selectPage($event, $index)"                  ></div>                }              </div>            }          </div>        }      </div>    </div>  </div>}</div>'
+    var COMPONENTS = [{'name': 'BadgeComponent', 'selector': 'ui-badge'},{'name': 'ButtonComponent', 'selector': 'storybook-button'},{'name': 'ButtonComponent', 'selector': 'ui-button'},{'name': 'CardComponent', 'selector': 'ui-card'},{'name': 'CardSectionBasicComponent', 'selector': 'ui-card-section-basic'},{'name': 'ContentComponent', 'selector': 'ui-content'},{'name': 'EntryContainerComponent', 'selector': 'ui-entry-container'},{'name': 'EntryKeyValueComponent', 'selector': 'ui-entry-key-value'},{'name': 'EntryMetricComponent', 'selector': 'ui-entry-metric'},{'name': 'EntryTileComponent', 'selector': 'ui-entry-tile'},{'name': 'EntryTileItemComponent', 'selector': 'ui-entry-tile-item'},{'name': 'GridComponent', 'selector': 'ui-grid'},{'name': 'HeaderComponent', 'selector': 'storybook-header'},{'name': 'MenuBarComponent', 'selector': 'ui-menu-bar'},{'name': 'MenuItemComponent', 'selector': 'uic-menu-item'},{'name': 'MetricTileComponent', 'selector': 'ui-metric-tile'},{'name': 'PageComponent', 'selector': 'storybook-page'},{'name': 'SwitchComponent', 'selector': 'ui-switch'},{'name': 'TabComponent', 'selector': 'ui-tab'},{'name': 'TabsComponent', 'selector': 'ui-tabs'},{'name': 'ToolbarComponent', 'selector': 'ui-toolbar'},{'name': 'UIBaseComponent', 'selector': ''},{'name': 'UiErrorComponent', 'selector': 'ui-error'},{'name': 'ValueTileComponent', 'selector': 'ui-value-tile'},{'name': 'WindowComponent', 'selector': 'ui-window'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'EntryTileComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EntryTileComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
