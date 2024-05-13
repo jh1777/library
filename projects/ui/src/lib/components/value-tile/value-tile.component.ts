@@ -1,6 +1,6 @@
 import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, input } from '@angular/core';
 import { ButtonComponent } from '../button';
-import { UIBaseComponent } from '../../shared';
+import { UIBaseComponent, UiErrorComponent } from '../../shared';
 import { ValueTileStyle } from './value-tile.models';
 import { BadgeComponent } from '../badge/badge.component';
 
@@ -8,7 +8,7 @@ import { BadgeComponent } from '../badge/badge.component';
   selector: 'ui-value-tile',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [],
+  imports: [UiErrorComponent],
   templateUrl: './value-tile.component.html',
   styleUrl: './value-tile.component.scss'
 })

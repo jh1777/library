@@ -40,6 +40,16 @@
         --ui-value-tile-text-color: #{$ui-inverted-text-color};
     }
 
+    .ui-value-tile-error {
+        display: flex;
+        border-radius: $ui-border-radius;
+        padding: var(--padding);
+        color: var(--ui-value-tile-text-color);
+        font-weight: 400;
+        z-index: 22;
+        align-items: center;
+    }
+
     .ui-value-tile-key {
         display: flex;
         background-color: var(--ui-value-tile-key-background);
