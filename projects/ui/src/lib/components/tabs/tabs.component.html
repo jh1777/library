@@ -5,14 +5,12 @@
             <div class="ui-tab" 
                 [attr.title]="tab.tooltip()"
                 [class.active]="tab.active() == true"
-                [class.filled]="style() == 0"
-                [class.flat]="style() == 1"
                 [class.disabled]="tab.disabled() == true"
                 (click)="selectTab(tab)">
                 {{ tab.label() }}
             </div>
         }
-
+        <div class="ui-tabs-fill"></div>
         @if (showButtons() == true) {
             <div class="ui-tabs-buttons">
                 <div class="ui-tabs-button">

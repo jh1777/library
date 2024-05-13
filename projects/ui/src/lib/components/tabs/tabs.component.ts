@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
 import { TabComponent } from './tab/tab.component';
-import { TabStyle } from './tabs.models';
 import { ClarityModule } from '@clr/angular';
 import {
   ClarityIcons,
@@ -37,13 +36,6 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
    * (overides the ui-tab `active` boolean - so you can't use both!)  
   */
   activeIndex = model<number>(-1);
-
-  /**
-   * Style of the Tab Buttons  
-   * Filled = 0 (default)  
-   * Flat = 1  
-   */
-  style = input<TabStyle>(TabStyle.Filled);
   
   /**
    * Show previous/next tab buttons
