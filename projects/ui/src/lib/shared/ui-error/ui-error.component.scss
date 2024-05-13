@@ -16,7 +16,7 @@
         lighten($ui-alternative-error-color, 20%) 5px, // Alternate color for stripes
         lighten($ui-alternative-error-color, 20%) 10px // Combined height of two stripes
     );
-    z-index: 1200;
+    z-index: 100;
 
     .ui-error {
         overflow: auto;

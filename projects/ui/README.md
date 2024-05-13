@@ -82,7 +82,6 @@ Displays text on the left to the badge `value`. Can also be used without setting
 ### Accepts as Sub-Component
 NONE
 
-
 ## Button
 > Useable standalone: **Yes**  
 > Supports loading indicator: **No**  
@@ -175,7 +174,7 @@ NONE
 
 ## Entry Tile
 > Useable standalone: **Yes**  
-> Supports error message: **No** (TODO:?)  
+> Supports error message: **No**    
 > Supports loading indicator: **Yes**  
 > Supports tooltip: **No**  
 > Selector: `ui-entry-tile`  
@@ -186,7 +185,7 @@ NONE
 ## Metric Tile
 > Useable standalone: **Yes**  
 > Supports error message: **No**  
-> Supports loading indicator: **No**  (TODO:?)
+> Supports loading indicator: **No**  
 > Supports tooltip: **No**  
 > Selector: `ui-metric-tile`  
 ### Accepts as Sub-Component
@@ -203,7 +202,7 @@ NONE
 
 ## Tab
 > Useable standalone: **No**  
-> Supports error message: **Yes** (TODO:!)   
+> Supports error message: **No**     
 > Supports loading indicator: **No**  
 > Supports tooltip: **Yes**  
 > Selector: `ui-tab`  

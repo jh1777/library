@@ -26,7 +26,6 @@
             </div>
             <div 
                 class="ui-value-tile-key"
-                [attr.title]="tooltip()"
                 [class.attention]="style() == 1"
                 [class.error]="style() == 2"
                 [class.success]="style() == 3"
@@ -35,12 +34,19 @@
             </div>
             <div
                 class="ui-value-tile-value"
-                [attr.title]="tooltip()"
                 [class.attention]="style() == 1"
                 [class.error]="style() == 2"
                 [class.success]="style() == 3"
             >
                 {{ value() }}
+                @if(tooltip()) {
+                    <cds-icon shape="info-standard" size="13"
+                        [attr.title]="tooltip()"
+                        [class.attention]="style() == 1"
+                        [class.error]="style() == 2"
+                        [class.success]="style() == 3"
+                    ></cds-icon>
+                }
                 <ng-content 
                     select="ui-button"
                 ></ng-content>

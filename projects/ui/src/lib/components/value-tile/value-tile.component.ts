@@ -3,12 +3,25 @@ import { ButtonComponent } from '../button';
 import { UIBaseComponent, UiErrorComponent } from '../../shared';
 import { ValueTileStyle } from './value-tile.models';
 import { BadgeComponent } from '../badge/badge.component';
+import {
+  ClarityIcons,
+  infoStandardIcon,
+  popOutIcon,
+  copyIcon
+} from '@cds/core/icon';
+import '@cds/core/icon/register.js';
+import { ClarityModule } from '@clr/angular';
+ClarityIcons.addIcons(
+  infoStandardIcon,
+  popOutIcon,
+  copyIcon
+);
 
 @Component({
   selector: 'ui-value-tile',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [UiErrorComponent],
+  imports: [UiErrorComponent, ClarityModule],
   templateUrl: './value-tile.component.html',
   styleUrl: './value-tile.component.scss'
 })

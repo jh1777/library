@@ -40,7 +40,7 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
   /**
    * Show previous/next tab buttons
    */
-  showButtons = input<boolean>(true);
+  showPrevNextButtons = input<boolean>(true);
 
   constructor() {
     super();
