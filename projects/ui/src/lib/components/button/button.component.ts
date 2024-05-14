@@ -110,7 +110,7 @@ export class ButtonComponent extends UIBaseComponent implements AfterContentInit
 
   /**
    * OnClick Event  
-   * (event emits the `id()` property. if this is null it emits the button `label()`)
+   * (event emits the `id()` property)
    */
   onClick = output<string>();
 }

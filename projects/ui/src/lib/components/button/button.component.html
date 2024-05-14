@@ -16,7 +16,7 @@
         [class.destructive]="(style() == 4 || style() == 6) && iconOnlySimpleStyle() == false"
         [class.confirm]="style() == 5 && iconOnlySimpleStyle() == false"
         [class.white-mode]="whiteMode() == true"
-        (click)="onClick.emit(id() ?? label())"
+        (click)="onClick.emit(id())"
     >
     @if(icon() != null) {
         <cds-icon [attr.shape]="icon()" size="18"></cds-icon>
