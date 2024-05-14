@@ -3,6 +3,39 @@
 
 <div class="item">
   <div class="title">
+    ACCORDION
+    <div class="subtitle">
+      ...
+    </div>
+  </div>
+  <div class="columns" style="margin-top: 0.5rem">
+    <div class="container">
+      <ui-accordion>
+        <ui-accordion-panel header="Header #1">
+
+          <ui-card header="Card Example 1" >
+            <ui-card-section-basic text="Sample Card">
+              <ui-button label="Okay" slot="footer-left"></ui-button>
+            </ui-card-section-basic>
+          </ui-card>
+
+        </ui-accordion-panel>
+        <ui-accordion-panel header="Header #2">
+          
+          <ui-card header="Card Example 2" >
+            <ui-card-section-basic text="Sample Card">
+              <ui-button label="Okay" slot="footer-left"></ui-button>
+            </ui-card-section-basic>
+          </ui-card>
+          
+        </ui-accordion-panel>
+      </ui-accordion>
+    </div>
+  </div>
+</div>
+
+<div class="item">
+  <div class="title">
     TABS (using TAB)
     <div class="subtitle">
       Current active tab is index = {{ activeTabIndex() }}

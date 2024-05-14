@@ -30,10 +30,10 @@
     }
     
     .rotate {
-      -webkit-transform: rotateZ(180deg);
-      -moz-transform: rotateZ(180deg);
-      -o-transform: rotateZ(180deg);
-      -ms-transform: rotateZ(180deg);
+      -webkit-transform: rotateZ(180deg) translateY(-2%);
+      -moz-transform: rotateZ(180deg) translateY(-2%);
+      -o-transform: rotateZ(180deg) translateY(-2%);
+      -ms-transform: rotateZ(180deg) translateY(-2%);
       transform: rotateZ(180deg) translateY(-2%);
     }
   

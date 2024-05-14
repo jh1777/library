@@ -38,7 +38,6 @@ export class ValueTileComponent extends UIBaseComponent implements AfterContentI
       if (button) {
         // Set style of the button accordingly and remove label
         button.iconOnlySimpleStyle.set(true);
-        console.log("iconOnlySimpleStyle");
         // Set white mode for any child button if state > 0
         if (this.style() > 0) {
           button.whiteMode.set(true);

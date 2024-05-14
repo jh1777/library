@@ -2,6 +2,11 @@
  * Public API Surface of ui project
  */
 
+export {
+    AccordionComponent as AccordionComponent,
+    AccordionPanelComponent as AccordionPanelComponent
+} from './lib/components/accordion';
+
 export { 
     BadgeComponent as BadgeComponent, 
     BadgeStyle as BadgeStyle 
