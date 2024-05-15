@@ -14,7 +14,6 @@
     --success-item-border-color: #{$ui-success-color};
   
     --dot-size: 10px;
-    --collapse-button-size: 23px;
   
     .clickable:hover {
       cursor: pointer;
@@ -23,18 +22,6 @@
       &:active {
         border: 1px solid $ui-petrol-color !important;
       }
-    }
-  
-    .no-rotate {
-      transform: translateY(-1%);
-    }
-    
-    .rotate {
-      -webkit-transform: rotateZ(180deg) translateY(-2%);
-      -moz-transform: rotateZ(180deg) translateY(-2%);
-      -o-transform: rotateZ(180deg) translateY(-2%);
-      -ms-transform: rotateZ(180deg) translateY(-2%);
-      transform: rotateZ(180deg) translateY(-2%);
     }
   
     .attention-tile {
@@ -93,32 +80,6 @@
         }
       }
 
-      &-collapse-button {
-        display: flex;
-        border: 1px solid $ui-standard-color;
-        align-items: center;
-        padding: .1rem .2rem;
-        border-radius: 50%;
-        width: var(--collapse-button-size);
-        min-width: var(--collapse-button-size);
-        max-width: var(--collapse-button-size);
-        height: var(--collapse-button-size);
-        min-height: var(--collapse-button-size);
-        max-height: var(--collapse-button-size);
-        cursor: pointer;
-        user-select: none;
-  
-        &:hover {
-          color: $ui-petrol-color;
-          border: 1px solid $ui-petrol-color;
-  
-          &:active {
-            background-color: $ui-petrol-color;
-            color: $ui-inverted-text-color;
-          }
-        }
-      }
-  
       &-base {
         background-color: $ui-alternative-standard-color;
         display: flex;

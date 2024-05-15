@@ -1,0 +1,16 @@
+<div
+    class="ui-collapse-button"
+    [class.ui-collapse-button-direction-down]="collapsedDirection() == 0"
+    [class.ui-collapse-button-direction-up]="collapsedDirection() == 1"
+    [class.ui-collapse-button-direction-left]="collapsedDirection() == 2"
+    [class.ui-collapse-button-direction-right]="collapsedDirection() == 3"
+    (click)="isCollapsed.set(!this.isCollapsed())"
+    (click)="onClick.emit(this.isCollapsed())"
+>
+    <cds-icon
+        shape="angle"
+        [attr.size]="13"
+        [class.rotate]="isCollapsed() == true || noRotation()"
+        [class.no-rotate]="isCollapsed() == false && noRotation() == false"
+    ></cds-icon>
+</div>

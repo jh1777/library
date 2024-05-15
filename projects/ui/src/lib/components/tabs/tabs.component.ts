@@ -8,7 +8,7 @@ import {
   input,
   model,
 } from '@angular/core';
-import { UIBaseComponent } from '../../shared';
+import { UIBaseComponent, UiCollapseButtonComponent } from '../../shared';
 import { TabComponent } from './tab/tab.component';
 import { ClarityModule } from '@clr/angular';
 import {
@@ -23,7 +23,7 @@ ClarityIcons.addIcons(
   selector: 'ui-tabs',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ClarityModule],
+  imports: [ClarityModule, UiCollapseButtonComponent],
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.scss',
 })

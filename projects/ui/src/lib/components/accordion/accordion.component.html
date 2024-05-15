@@ -2,19 +2,12 @@
 
     <div class="ui-accordion">
         @for(panel of panels; track $index) {
-            <div class="ui-accordion-panel" 
+            <div class="ui-accordion-panel no-select" 
                 [class.active-panel]="panel.isCollapsed() == false"
                 (click)="panel.toggleCollapsed()"
                 (click)="toggleCollapsedPanel(panel)"
                 >
-                <div class="ui-collapse-button">
-                    <cds-icon
-                        shape="angle"
-                        [attr.size]=12
-                        [class.rotate]="panel.isCollapsed() == true"
-                        [class.no-rotate]="panel.isCollapsed() == false"
-                    ></cds-icon>
-                </div>
+                <ui-collapse-button [(isCollapsed)]="panel.isCollapsed"></ui-collapse-button>
                 {{ panel.header() }}
                 
             </div>

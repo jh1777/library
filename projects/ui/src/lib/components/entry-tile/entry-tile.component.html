@@ -10,17 +10,7 @@
         </div>
         <div class="ui-generic-left-right-container-right">
           @if (collapseMode() > 0 && titles?.length > 0) {
-            <div
-              class="ui-entry-tile-collapse-button"
-              (click)="isCollapsed.set(!this.isCollapsed())"
-            >
-              <cds-icon
-                shape="angle"
-                [attr.size]=13
-                [class.rotate]="isCollapsed() == true"
-                [class.no-rotate]="isCollapsed() == false"
-              ></cds-icon>
-            </div>
+            <ui-collapse-button [(isCollapsed)]="isCollapsed"></ui-collapse-button>
           }
         </div>
       </div>

@@ -13,20 +13,8 @@
         <div class="ui-tabs-fill"></div>
         @if (showPrevNextButtons() == true) {
             <div class="ui-tabs-buttons">
-                <div class="ui-tabs-button">
-                    <cds-icon shape="angle" 
-                            style="transform: rotateZ(-90deg) translateY(-10%);" 
-                            [attr.size]=13
-                            (click)="activateTab(-1)"
-                            ></cds-icon>
-                </div>
-                <div class="ui-tabs-button">
-                    <cds-icon shape="angle" 
-                            style="transform: rotateZ(90deg);" 
-                            [attr.size]=13
-                            (click)="activateTab(1)"
-                            ></cds-icon>
-                </div>
+                <ui-collapse-button [collapsedDirection]=2 [noRotation]=true (onClick)="activateTab(-1)"></ui-collapse-button>
+                <ui-collapse-button [collapsedDirection]=3 [noRotation]=true (onClick)="activateTab(1)"></ui-collapse-button>
             </div>
           }
     </div>

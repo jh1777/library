@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ContentChildren, QueryList } from '@angular/core';
-import { UIBaseComponent } from '../../shared';
+import { UIBaseComponent, UiCollapseButtonComponent } from '../../shared';
 import { AccordionPanelComponent } from './accordion-panel/accordion-panel.component';
 import {
   ClarityIcons,
@@ -13,7 +13,7 @@ ClarityIcons.addIcons(angleIcon);
   selector: 'ui-accordion',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ClarityModule],
+  imports: [ClarityModule, UiCollapseButtonComponent],
   templateUrl: './accordion.component.html',
   styleUrl: './accordion.component.scss'
 })

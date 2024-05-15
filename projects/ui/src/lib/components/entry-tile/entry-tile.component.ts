@@ -11,7 +11,7 @@ import '@cds/core/icon/register.js';
 import { EntryTileItemComponent } from './entry-tile-item/entry-tile-item.component';
 import { EntryKeyValueComponent } from '../entry-key-value/entry-key-value.component';
 import { ButtonComponent } from '../button';
-import { UIBaseComponent } from '../../shared';
+import { UIBaseComponent, UiCollapseButtonComponent } from '../../shared';
 import { EntryTileCollapseMode, EntryTileStyle } from './entry-tile.models';
 ClarityIcons.addIcons(
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
@@ -21,7 +21,7 @@ ClarityIcons.addIcons(
 @Component({
   selector: 'ui-entry-tile',
   standalone: true,
-  imports: [CommonModule, ClarityModule],
+  imports: [CommonModule, ClarityModule, UiCollapseButtonComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './entry-tile.component.html',
   styleUrl: './entry-tile.component.scss',
