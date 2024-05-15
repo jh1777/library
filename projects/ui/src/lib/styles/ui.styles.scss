@@ -37,7 +37,7 @@ $ui-light-shadow-color: #ededed !default;
 
 // Special Variables 
 $ui-min-width: 250px;
-$ui-base-font-size: 12px;
+$ui-base-font-size: 14px;
 $ui-border-radius: 4px;
 $ui-menu-bar-height: 50px;
 $ui-loading-spinner-size: 24px;
@@ -134,6 +134,31 @@ $ui-collapse-button-size: 22px;
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+// Left - Right Container
+.ui-generic-left-right-container {
+  min-width: $ui-min-width;
+  font-size: max(calc($ui-base-font-size - 3px), min($ui-base-font-size, calc(1vw)));
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+
+  &-left {
+    display: flex;
+    line-height: normal;
+    flex-direction: column;
+  }
+
+  &-right {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: auto;
+    line-height: normal;
+    align-items: center;
+  }
 }
 
 // Collapse Button

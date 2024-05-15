@@ -76,7 +76,10 @@
       }
 
       &-primary {
+        display: flex;
+        gap: 5px;
         font-weight: 400;
+        align-items: center;
       }
 
       &-secondary {
@@ -109,28 +112,6 @@
     flex-direction: row !important;
     gap: .25rem !important;
     align-items: center !important;
-  }
-
-  .ui-generic-container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
-
-    &-left {
-      display: flex;
-      line-height: normal;
-      flex-direction: column;
-    }
-
-    &-right {
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-      margin-left: auto;
-      line-height: normal;
-      align-items: center;
-    }
   }
 
   .loading {

@@ -2,19 +2,13 @@
   <div class="ui-entry-tile">
     @if (header()) {
       <div class="ui-entry-tile-titleheader">
-        <div class="ui-generic-container-left ui-generic-flex-row">
+        <div class="ui-generic-left-right-container-left ui-generic-flex-row">
           @if (titleIcon()) {
             <cds-icon [attr.shape]="titleIcon()" size="20"></cds-icon>
           }
           {{ header() }}
         </div>
-        <div class="ui-generic-container-right">
-          @if (errorMessage()) {
-            <span class="ui-entry-tile-error">
-              <cds-icon solid shape="warning-standard" size="14"></cds-icon>
-              {{ errorMessage() }}
-            </span>
-          }
+        <div class="ui-generic-left-right-container-right">
           @if (collapseMode() > 0 && titles?.length > 0) {
             <div
               class="ui-entry-tile-collapse-button"

@@ -4,15 +4,15 @@
     <ui-error [errorMessage]="errorMessage()" [noScroll]=true></ui-error>
   } @else {
       @if (isLoading() == true) {
-        <div class="ui-generic-container loading no-select pulse">
-          <div class="ui-generic-container-left">
+        <div class="ui-generic-left-right-container loading no-select pulse">
+          <div class="ui-generic-left-right-container-left">
             <div>
               @for (_ of [].constructor(3); track $index) {
                 {{ placeholder }}
               }
             </div>
           </div>
-          <div class="ui-generic-container-right">
+          <div class="ui-generic-left-right-container-right">
             <div>
               @for (_ of [].constructor(3); track $index) {
                 {{ placeholder }}
@@ -23,14 +23,14 @@
       }
 
       @if (isLoading() == false) {
-        <div class="ui-generic-container">
+        <div class="ui-generic-left-right-container">
           <div 
-            class="ui-generic-container-left"
+            class="ui-generic-left-right-container-left"
             [class.big-style]="big() == true">
             {{ label() }}
           </div>
           <div 
-            class="ui-generic-container-right ui-generic-flex-row" 
+            class="ui-generic-left-right-container-right ui-generic-flex-row" 
             [attr.title]="tooltip()"
             [class.big-style]="big() == true">
             @if (style() > 0 && style() < 4) {

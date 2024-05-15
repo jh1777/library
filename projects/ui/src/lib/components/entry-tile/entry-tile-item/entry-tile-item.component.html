@@ -13,8 +13,8 @@
           </div>
         </div>
         <div class="ui-entry-tile-item">
-          <div class="ui-generic-container">
-            <div class="ui-generic-container-left">
+          <div class="ui-generic-left-right-container">
+            <div class="ui-generic-left-right-container-left">
               <div class="ui-entry-tile-item-primary loading">
                 <div>
                   @for (_ of [].constructor(5); track $index) {
@@ -56,11 +56,18 @@
             <ng-content select="ui-badge"></ng-content>
           </div>
 
-          <div class="ui-generic-container">
-            <div class="ui-generic-container-left">
+          <div class="ui-generic-left-right-container">
+            <div class="ui-generic-left-right-container-left">
               @if (primaryValue()) {
                 <div class="ui-entry-tile-item-primary">
                   {{ primaryValue() }}
+                  @if(tooltip()) {
+                    <cds-icon
+                      shape="info-standard"
+                      size="14"
+                      [attr.title]="tooltip()"
+                    ></cds-icon>
+                  }
                 </div>
               }
               @if (secondaryValue()) {
@@ -70,7 +77,7 @@
               }
             </div>
 
-            <div class="ui-generic-container-right">
+            <div class="ui-generic-left-right-container-right">
               @if(this.buttons.length > 0 || this.switches.length > 0) {
                 <ng-content select="ui-button"></ng-content>
                 <ng-content select="ui-switch"></ng-content>

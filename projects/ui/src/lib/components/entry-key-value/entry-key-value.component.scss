@@ -26,6 +26,8 @@
   .ui-entry-key-value {
     font-weight: 700;
     color: $ui-standard-text-color;
+    word-wrap: normal;
+    text-align: right;
   }
 
   .ui-generic-flex-row {
@@ -34,28 +36,11 @@
     align-items: center !important;
   }
 
-  .ui-generic-container {
-    min-width: $ui-min-width;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
-
+  .ui-generic-left-right-container {
     &-left {
-      display: flex;
-      font-weight: 500;
-      line-height: normal;
-      flex-direction: column;
       ::before:not(.loading) {
         color: $ui-standard-text-color;
       }
-    }
-
-    &-right {
-      display: flex;
-      flex-direction: column;
-      margin-left: auto;
-      line-height: normal;
     }
   }
 }
