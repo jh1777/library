@@ -1,6 +1,6 @@
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, computed, input, output, signal } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, computed, input, model, output, signal } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { ClarityModule } from '@clr/angular';
 import {
@@ -95,7 +95,7 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
    * **Hint**: only applicable if the `collapseMode` is not `disabled`  
    * (default is `false`)  
    * */
-  public isCollapsed = signal(false);
+  public isCollapsed = model<boolean>(false);
 
   /**
    * Indicates the current shown page if pagination is used

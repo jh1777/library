@@ -139,7 +139,8 @@ $ui-collapse-button-size: 22px;
 // Left - Right Container
 .ui-generic-left-right-container {
   min-width: $ui-min-width;
-  font-size: max(calc($ui-base-font-size - 3px), min($ui-base-font-size, calc(1vw)));
+  // dynamic font tryout
+  // font-size: max(calc($ui-base-font-size - 3px), min($ui-base-font-size, calc(1vw)));
   display: flex;
   flex-direction: row;
   width: 100%;
