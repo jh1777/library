@@ -5,13 +5,14 @@
   <div class="title">
     ACCORDION
     <div class="subtitle">
-      ...
+      Simple collapsible accordion panels with free ng-content slot
     </div>
   </div>
   <div class="columns" style="margin-top: 0.5rem">
     <div class="container">
       <ui-accordion>
-        <ui-accordion-panel header="Header #1">
+        <ui-accordion-panel>
+          <ui-accordion-panel-header label="Header #1"></ui-accordion-panel-header>
 
           <ui-card header="Card Example 1" >
             <ui-card-section-basic text="Sample Card">
@@ -20,7 +21,12 @@
           </ui-card>
 
         </ui-accordion-panel>
-        <ui-accordion-panel header="Header #2">
+        <ui-accordion-panel>
+          <ui-accordion-panel-header label="Header #2">
+            <ui-badge [value]=7 [style]=1></ui-badge>
+            <ui-switch></ui-switch>
+          </ui-accordion-panel-header>
+
           
           <ui-card header="Card Example 2" >
             <ui-card-section-basic text="Sample Card">

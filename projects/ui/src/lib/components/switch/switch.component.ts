@@ -30,4 +30,14 @@ export class SwitchComponent extends UIBaseComponent {
    * Default: false
    */
   state = model<boolean>(false);
+
+  /**
+   * On click event to toggle the Switch
+   * @param $event MouseEvent
+   */
+  public handleClickEvent($event: MouseEvent) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    this.state.set(!this.state());
+  }
 }

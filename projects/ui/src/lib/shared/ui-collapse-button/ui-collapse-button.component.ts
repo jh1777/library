@@ -35,6 +35,7 @@ export class UiCollapseButtonComponent {
 
   /**
    * Optional `onClick` handler to trigger any additional actions on consumer  
+   * Emits the `isCollapsed` state  
    */
   onClick = output<boolean>();
 

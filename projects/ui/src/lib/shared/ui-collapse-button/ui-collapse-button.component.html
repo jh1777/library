@@ -8,6 +8,7 @@
     (click)="onClick.emit(this.isCollapsed())"
 >
     <cds-icon
+        [@rotate]="isCollapsed()"
         shape="angle"
         [attr.size]="13"
         [class.rotate]="isCollapsed() == true || noRotation()"

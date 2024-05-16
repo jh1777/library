@@ -1,0 +1,13 @@
+:host {
+    @import '../../../../styles/ui.styles.scss';
+    
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .ui-accordion-panel-header-right {
+        display: flex;
+        margin-left: auto;
+        gap: 10px;
+    }
+}

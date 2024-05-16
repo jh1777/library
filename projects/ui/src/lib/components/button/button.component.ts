@@ -112,5 +112,15 @@ export class ButtonComponent extends UIBaseComponent implements AfterContentInit
    * OnClick Event  
    * (event emits the `id()` property)
    */
-  onClick = output<string>();
+  onClick = output<string | null>();
+
+  /**
+   * On Click event for the Button
+   * @param $event MouseEvent
+   */
+  public handleClickEvent($event: MouseEvent) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    this.onClick.emit(this.id() ?? null);
+  }
 }

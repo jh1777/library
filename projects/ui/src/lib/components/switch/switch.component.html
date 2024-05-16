@@ -1,5 +1,7 @@
 @if(hidden() == false) {
-    <div class="ui-switch" [attr.title]="tooltip()" (click)="state.set(!state())">
+    <div class="ui-switch" 
+        [attr.title]="tooltip()" 
+        (click)="handleClickEvent($event)">
         <div class="ui-switch-toggle"
             [class.knob-on]="state() == true"
             [class.knob-off]="state() == false"

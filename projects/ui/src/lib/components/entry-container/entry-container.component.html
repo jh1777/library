@@ -2,7 +2,7 @@
     <div 
         class="ui-entry-container"
         [class.clickable]="clickable() == true"
-        (click)="onClick.emit(id())"
+        (click)="onClick.emit(id() ?? null)"
     >
         <ng-content select="ui-entry-key-value"></ng-content>
         <ng-content select="ui-entry-metric"></ng-content>

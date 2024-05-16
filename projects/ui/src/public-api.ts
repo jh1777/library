@@ -4,7 +4,8 @@
 
 export {
     AccordionComponent as AccordionComponent,
-    AccordionPanelComponent as AccordionPanelComponent
+    AccordionPanelComponent as AccordionPanelComponent,
+    AccordionPanelHeaderComponent as AccordionPanelHeaderComponent
 } from './lib/components/accordion';
 
 export { 

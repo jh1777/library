@@ -2,4 +2,60 @@
     @import '../../../styles/ui.styles.scss';
 
     display: contents;
+
+    .active-panel {
+        font-weight: 700;
+        background-color: $ui-alternative-standard-color;
+    }
+    
+    .first-panel {
+        border-top: 1px solid $ui-light-standard-color !important;
+        border-radius: $ui-border-radius $ui-border-radius 0 0 !important;
+    }
+
+    .last-panel {
+        border-radius: 0 0 $ui-border-radius $ui-border-radius !important;
+        &.active-panel {
+            border-radius: 0 !important;
+        }
+    }
+
+    .ui-accordion {
+        color: $ui-standard-text-color;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+
+        &-panel {
+            display: flex;
+            align-items: center;
+            padding: 6px 10px;
+            border: 1px solid $ui-light-standard-color;
+            border-top: 0px solid;
+            cursor: pointer;
+            gap: 6px;
+
+
+            &:hover {
+                background-color: lighten($ui-alternative-standard-color, 5%);
+                &:active {
+                    background-color: unset;
+                }
+            }
+
+            &:not(:first-child) {
+                border-top: 0px solid !important;
+            }
+
+            &-content {
+                display: flex;
+                padding: 15px;
+                border-left: 1px solid $ui-light-standard-color;
+                border-right: 1px solid $ui-light-standard-color;
+                border-bottom: 1px solid $ui-light-standard-color;
+            }
+        }
+    }
 }

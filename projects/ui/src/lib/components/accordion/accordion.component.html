@@ -1,21 +1,3 @@
 @if(hidden() == false) {
-
-    <div class="ui-accordion">
-        @for(panel of panels; track $index) {
-            <div class="ui-accordion-panel no-select" 
-                [class.active-panel]="panel.isCollapsed() == false"
-                (click)="panel.toggleCollapsed()"
-                (click)="toggleCollapsedPanel(panel)"
-                >
-                <ui-collapse-button [(isCollapsed)]="panel.isCollapsed"></ui-collapse-button>
-                {{ panel.header() }}
-                
-            </div>
-            @if(panel.isCollapsed() == false) {
-                <div class="ui-accordion-panel-content">
-                    <ng-content select="ui-accordion-panel"></ng-content>
-                </div>
-            }
-        }
-    </div>
+    <ng-content select="ui-accordion-panel"></ng-content>
 }

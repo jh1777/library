@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, ContentChildren, QueryList } from '@angular/core';
-import { UIBaseComponent, UiCollapseButtonComponent } from '../../shared';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList } from '@angular/core';
+import { UIBaseComponent } from '../../shared';
 import { AccordionPanelComponent } from './accordion-panel/accordion-panel.component';
 import {
   ClarityIcons,
@@ -13,22 +13,24 @@ ClarityIcons.addIcons(angleIcon);
   selector: 'ui-accordion',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ClarityModule, UiCollapseButtonComponent],
+  imports: [ClarityModule],
   templateUrl: './accordion.component.html',
   styleUrl: './accordion.component.scss'
 })
-export class AccordionComponent extends UIBaseComponent {
-
+export class AccordionComponent extends UIBaseComponent implements AfterViewInit {
   @ContentChildren(AccordionPanelComponent) panels: QueryList<AccordionPanelComponent>;
 
-
-  toggleCollapsedPanel(panel: AccordionPanelComponent) {
-    if (!panel.isCollapsed()) {
-      this.panels.toArray().forEach(p => {
-        if (p !== panel) {
-          p.isCollapsed.set(true);
-        }
-      });
+  ngAfterViewInit(): void {
+    // Set isLast & isFirst for styling purposes
+    for (let index = 0; index < this.panels.length; index++) {
+      const element = this.panels.get(index);
+      if (element && index == 0) {
+        element.isFirst.set(true);
+      }
+      if (element && index == this.panels.length - 1) {
+        element.isLast.set(true);
+      }
     }
   }
+
 }

@@ -1,7 +1,20 @@
 @if(hidden() == false) {
-    @if(isCollapsed() == false) {
-        <div>
-            <ng-content></ng-content>
+ 
+    <div class="ui-accordion">
+        <div class="ui-accordion-panel no-select" 
+            (click)="isCollapsed.set(!isCollapsed())"
+            [class.first-panel]="isFirst() == true"
+            [class.last-panel]="isLast() == true"
+            [class.active-panel]="isCollapsed() == false"
+            >
+            <ui-collapse-button [(isCollapsed)]="isCollapsed" (click)="isCollapsed.set(!isCollapsed())"></ui-collapse-button>
+            <ng-content select="ui-accordion-panel-header"></ng-content>
+            
         </div>
-    }
+        <div [@expandCollapse]="isCollapsed()" style="overflow: hidden; display: block;">
+            <div class="ui-accordion-panel-content">
+                <ng-content></ng-content>
+            </div>
+        </div>
+    </div>
 }

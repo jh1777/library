@@ -25,7 +25,7 @@ export class EntryContainerComponent extends UIBaseComponent {
    * Output Event onClick
    * Emmits id() of the component
    */
-  onClick = output<string>();
+  onClick = output<string | null>();
 
   ngAfterContentInit(): void {
     super.limitContentChildren(this.keyvalues, this.maxKeyValues());
