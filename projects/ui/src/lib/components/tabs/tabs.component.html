@@ -8,6 +8,9 @@
                 [class.disabled]="tab.disabled() == true"
                 (click)="selectTab(tab)">
                 {{ tab.label() }}
+                @if(tab.badgeValue()) {
+                    <ui-badge [value]="tab.badgeValue()" [style]="tab.badgeStyle()"></ui-badge>
+                }
             </div>
         }
         <div class="ui-tabs-fill"></div>

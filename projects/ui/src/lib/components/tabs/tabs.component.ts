@@ -15,6 +15,7 @@ import {
   ClarityIcons,
   angleIcon
 } from "@cds/core/icon";
+import { BadgeComponent } from '../badge';
 ClarityIcons.addIcons(
   angleIcon
 );
@@ -23,7 +24,7 @@ ClarityIcons.addIcons(
   selector: 'ui-tabs',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ClarityModule, UiCollapseButtonComponent],
+  imports: [ClarityModule, UiCollapseButtonComponent, BadgeComponent],
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.scss',
 })

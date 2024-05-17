@@ -30,6 +30,9 @@
         cursor: pointer;
         display: inline-block;
         word-wrap: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
         white-space: nowrap;
         border-bottom: none;
         margin-bottom: 0;
