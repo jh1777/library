@@ -54,7 +54,7 @@ export class ButtonComponent extends UIBaseComponent implements AfterContentInit
     super.limitContentChildren(this.badges, 1);
   }
 
-
+  simpleOnly = signal<boolean>(false);
   /**
    * INTERNAL USE  
    * If the button is used in another component this can be set to true if needed to enable the

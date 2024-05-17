@@ -11,6 +11,7 @@
   <div class="columns" style="margin-top: 0.5rem">
     <div class="container">
       <ui-accordion>
+
         <ui-accordion-panel>
           <ui-accordion-panel-header label="Header #1"></ui-accordion-panel-header>
 
@@ -21,8 +22,17 @@
           </ui-card>
 
         </ui-accordion-panel>
+
         <ui-accordion-panel>
           <ui-accordion-panel-header label="Header #2">
+            <ui-button label="Okay" icon="check" id="XB-1008" (onClick)="log($event)"></ui-button>
+            <ui-button label="Cancel" [style]=6 id="XB-1009" icon="times" (onClick)="log($event)"></ui-button>
+          </ui-accordion-panel-header>
+
+        </ui-accordion-panel>
+
+        <ui-accordion-panel>
+          <ui-accordion-panel-header label="Header #3">
             <ui-badge [value]=7 [style]=1></ui-badge>
             <ui-switch></ui-switch>
           </ui-accordion-panel-header>
