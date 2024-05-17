@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, input, model, signal } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, effect, input, model, signal } from '@angular/core';
 import { UIBaseComponent, UiCollapseButtonComponent } from '../../../shared';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { BadgeComponent } from '../../badge/badge.component';
@@ -22,6 +22,17 @@ import { AccordionPanelHeaderComponent } from './accordion-panel-header/accordio
 export class AccordionPanelComponent extends UIBaseComponent implements AfterContentInit {
   @ContentChildren(AccordionPanelHeaderComponent) headers: QueryList<AccordionPanelHeaderComponent>;
 
+  // TODO:  rename all ui lib "isCollapsed" to "collapsed"!
+  constructor() {
+    super();
+    effect(
+      () => {
+        this.headers.get(0)?.disabledPanel.set(this.disabled());
+      },
+      { allowSignalWrites: true },
+    );
+  }
+
   ngAfterContentInit(): void {
     super.limitContentChildren(this.headers, 1);
   }
@@ -32,6 +43,12 @@ export class AccordionPanelComponent extends UIBaseComponent implements AfterCon
    * Default: `true`
    */
   isCollapsed = model<boolean>(true);
+
+  /**
+   * If set to `true` this Accordion Panel is disabled and can't be clicked / collapsed / expanded (optional)  
+   * Default: `false`
+   */
+  disabled = model<boolean>(false);
 
   /**
    * INTERNAL USE

@@ -1,12 +1,19 @@
 import { ChangeDetectionStrategy, Component, input, model } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
+import { ClarityModule } from '@clr/angular';
+import {
+  ClarityIcons,
+  infoStandardIcon
+} from '@cds/core/icon';
+import '@cds/core/icon/register.js';
+ClarityIcons.addIcons(infoStandardIcon);
 
 @Component({
   selector: 'ui-switch',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [],
+  imports: [ClarityModule],
   templateUrl: './switch.component.html',
   styleUrl: './switch.component.scss',
   animations: [
@@ -26,10 +33,17 @@ export class SwitchComponent extends UIBaseComponent {
   label = input<string>();
 
   /**
-   * Switch state (true/false)  
-   * Default: false
+   * Switch state (boolean)  
+   * Input / Output  
+   * Default: `false`
    */
   state = model<boolean>(false);
+
+   /**
+   * If set to `true` this Switch is disabled and can't be clicked / toggled (optional)  
+   * Default: `false`  
+   */
+  disabled = model<boolean>(false);
 
   /**
    * On click event to toggle the Switch

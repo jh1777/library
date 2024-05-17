@@ -54,4 +54,14 @@ import { Component, QueryList, computed, input, signal } from "@angular/core";
       }
       return false;
     }
+
+    /**
+     * Hides all items in the given list using the UI Base Class `hidden` attribute  
+     * @param items QueryList<T> (`ContentChildren`)  
+     */
+    protected hideAll<T extends UIBaseComponent>(items: QueryList<T>): void {
+      items.toArray().forEach(item => {
+        item.hidden.set(true);
+      });
+    }
   }

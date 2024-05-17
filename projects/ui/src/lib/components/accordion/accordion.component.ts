@@ -20,6 +20,8 @@ ClarityIcons.addIcons(angleIcon);
 export class AccordionComponent extends UIBaseComponent implements AfterViewInit {
   @ContentChildren(AccordionPanelComponent) panels: QueryList<AccordionPanelComponent>;
 
+  // TODO: Support Error Message 
+
   ngAfterViewInit(): void {
     // Set isLast & isFirst for styling purposes
     for (let index = 0; index < this.panels.length; index++) {

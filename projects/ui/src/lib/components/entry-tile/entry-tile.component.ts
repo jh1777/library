@@ -83,7 +83,6 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
       console.warn(errorMessage);
   }
   
-
   private _timers: Array<Subscription> = [];
   
   public maxTitles = signal(2);
@@ -93,9 +92,9 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
   
   /** Represents the collapsed (=true) or expanded (=false) state of the tile.     
    * **Hint**: only applicable if the `collapseMode` is not `disabled`  
-   * (default is `false`)  
+   * Default: `false`  
    * */
-  public isCollapsed = model<boolean>(false);
+  public collapsed = model<boolean>(false);
 
   /**
    * Indicates the current shown page if pagination is used

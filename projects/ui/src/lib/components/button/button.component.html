@@ -4,6 +4,7 @@
         class="ui-button no-select"
         [attr.title]="tooltip()"
         [class.disabled]="disabled() == true"
+        [class.no-click]="disabled() == true"
         [class.simple-primary]="style() == 0 || iconOnlySimpleStyle() == true || simpleOnly() == true"
         [class.simple-destructive]="style() == 6"
         [class.simple]="style() == 0 || style() == 6 || iconOnlySimpleStyle() == true || simpleOnly() == true"
@@ -14,7 +15,7 @@
         [class.destructive]="(style() == 4 || style() == 6) && iconOnlySimpleStyle() == false && simpleOnly() == false"
         [class.confirm]="style() == 5 && iconOnlySimpleStyle() == false && simpleOnly() == false"
         [class.white-mode]="whiteMode() == true"
-        (click)="handleClickEvent($event)"
+        (click)="disabled() == true ? null : handleClickEvent($event)"
     >
     @if(icon() != null) {
         <cds-icon [attr.shape]="icon()" size="18"></cds-icon>

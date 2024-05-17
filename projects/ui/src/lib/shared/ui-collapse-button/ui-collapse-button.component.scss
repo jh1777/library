@@ -3,6 +3,7 @@
 
     
     .ui-collapse-button {
+        color: $ui-standard-text-color;
         display: flex;
         align-items: center;
         padding: .1rem .2rem;
@@ -16,11 +17,16 @@
         cursor: pointer;
         user-select: none;
   
-        &:hover {
+        :not(.disabled):hover {
           background-color: lighten($ui-alternative-standard-color, 6%);
           &:active {
             background-color: transparent;
           }
+        }
+          
+        &.disabled {
+          color: $ui-alternative-standard-color !important;
+          cursor: default;
         }
 
         &-direction {

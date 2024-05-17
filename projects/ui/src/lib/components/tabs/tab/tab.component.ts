@@ -24,10 +24,11 @@ export class TabComponent extends UIBaseComponent {
   active = model<boolean>();
 
   /**
-   * Use this switch to disable a tab. It will be shown in lighter color and is not clickable.  
-   * Optional; Default = `false`  
+   * Use this switch to disable a tab. It will be shown in lighter color and is not clickable (optional).  
+   * Input / Output  
+   * Default: `false`  
    */
-  disabled = input<boolean>(false);
+  disabled = model<boolean>(false);
 
   /**
    * Badge value that will be shown next to the tab label (optional).  

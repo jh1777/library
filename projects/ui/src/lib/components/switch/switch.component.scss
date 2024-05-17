@@ -7,18 +7,23 @@
     $ui-switch-knob-size: 18px;
 
     .knob-off {
-        background-color: $ui-light-standard-color !important;
-
+        background-color: $ui-light-standard-color;
+        &.disabled {
+            background-color: $ui-inverted-text-color !important;
+        }
     }
+    
     .knob-on {
-        background-color: $ui-success-color !important;
-
+        background-color: $ui-success-color;
+        &.disabled {
+            background-color: $ui-inverted-text-color !important;
+        }
     }
 
     .ui-switch {
         display: flex;
         flex-direction: row;
-        gap: .4rem;
+        gap: 6px;
         align-items: center;
         cursor: pointer;
         user-select: none;
@@ -56,13 +61,22 @@
                 -webkit-box-shadow: 0 0 3px 0 $ui-shadow-color;
                 -moz-box-shadow: 0 0 3px 0 $ui-shadow-color;
                 box-shadow: 0 0 3px 0 $ui-shadow-color;
+                &.disabled {
+                    background-color: $ui-alternative-standard-color !important;
+                }
             }
         }
         &-label {
             display: flex;
             flex-direction: row;
+            align-items: center;
+            gap: 6px;
             font-weight: 500;
             color: $ui-standard-text-color;
+            &.disabled {
+                color: $ui-alternative-standard-color !important;
+                cursor: default;
+            }
         }
     }
 }

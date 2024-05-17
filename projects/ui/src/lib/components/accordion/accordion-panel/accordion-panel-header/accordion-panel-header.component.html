@@ -1,6 +1,18 @@
 @if(hidden() == false) {
+    
    {{ label() }}
-    <div class="ui-accordion-panel-header-right">
+   @if(tooltip()) {
+    <cds-icon 
+        shape="info-standard" 
+        size="13"
+        [attr.title]="tooltip()"
+    ></cds-icon>
+   }
+    <div 
+        class="ui-accordion-panel-header-right"
+        [class.disabled]="disabledPanel() == true"
+        [class.no-click]="disabledPanel() == true"
+    >
         <ng-content select="ui-button"></ng-content>
         <ng-content select="ui-switch"></ng-content>
         <ng-content select="ui-badge"></ng-content>

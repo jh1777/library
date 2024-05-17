@@ -6,9 +6,13 @@
     [class.ui-collapse-button-direction-right]="collapsedDirection() == 3"
     (click)="isCollapsed.set(!this.isCollapsed())"
     (click)="onClick.emit(this.isCollapsed())"
+    [class.disabled]="disabled() == true"
+    [class.no-click]="disabled() == true"
 >
     <cds-icon
         shape="angle"
+        [class.no-click]="disabled() == true"
+        [class.disabled]="disabled() == true"
         [attr.size]="13"
         [class.rotate]="isCollapsed() == true || noRotation()"
         [class.no-rotate]="isCollapsed() == false && noRotation() == false"

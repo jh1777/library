@@ -2,12 +2,17 @@
  
     <div class="ui-accordion">
         <div class="ui-accordion-panel no-select" 
-            (click)="isCollapsed.set(!isCollapsed())"
+            (click)="disabled() == true ? null : isCollapsed.set(!isCollapsed())"
             [class.first-panel]="isFirst() == true"
             [class.last-panel]="isLast() == true"
             [class.active-panel]="isCollapsed() == false"
+            [class.disabled]="disabled() == true"
+            [class.no-click]="disabled() == true"
             >
-            <ui-collapse-button [(isCollapsed)]="isCollapsed" (click)="isCollapsed.set(!isCollapsed())"></ui-collapse-button>
+            <ui-collapse-button 
+                [disabled]="disabled()" [(isCollapsed)]="isCollapsed" 
+                (click)="disabled() ? null : isCollapsed.set(!isCollapsed())">
+            </ui-collapse-button>
             <ng-content select="ui-accordion-panel-header"></ng-content>
             
         </div>

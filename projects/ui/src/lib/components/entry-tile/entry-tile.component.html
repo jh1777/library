@@ -10,7 +10,7 @@
         </div>
         <div class="ui-generic-left-right-container-right">
           @if (collapseMode() > 0 && titles?.length > 0) {
-            <ui-collapse-button [(isCollapsed)]="isCollapsed"></ui-collapse-button>
+            <ui-collapse-button [(isCollapsed)]="collapsed"></ui-collapse-button>
           }
         </div>
       </div>
@@ -31,7 +31,7 @@
       </div>
     
       <div [@fade]="newPage() != currentPage()">
-        @if ((collapseMode() == 1 && !isCollapsed()) || collapseMode() != 1) {
+        @if ((collapseMode() == 1 && !collapsed()) || collapseMode() != 1) {
           <div class="ui-entry-tile-itemcontainer">
 
             <ng-content select="ui-entry-tile-item"></ng-content>

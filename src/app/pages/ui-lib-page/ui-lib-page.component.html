@@ -12,7 +12,7 @@
     <div class="container">
       <ui-accordion>
 
-        <ui-accordion-panel>
+        <ui-accordion-panel [disabled]=true>
           <ui-accordion-panel-header label="Header #1"></ui-accordion-panel-header>
 
           <ui-card header="Card Example 1" >
@@ -23,8 +23,10 @@
 
         </ui-accordion-panel>
 
-        <ui-accordion-panel>
-          <ui-accordion-panel-header label="Header #2">
+        <ui-accordion-panel [disabled]=false>
+          <ui-accordion-panel-header label="Header #2" tooltip="This Panel is for testing...">
+            <ui-switch label="Test" tooltip="this is a test" [state]=true></ui-switch>
+
             <ui-button label="Okay" icon="check" id="XB-1008" (onClick)="log($event)"></ui-button>
             <ui-button label="Cancel" [style]=6 id="XB-1009" icon="times" (onClick)="log($event)"></ui-button>
           </ui-accordion-panel-header>

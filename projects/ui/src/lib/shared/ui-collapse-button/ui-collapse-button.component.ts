@@ -44,4 +44,7 @@ export class UiCollapseButtonComponent {
    * Default: `false` 
    */
   noRotation = input<boolean>(false);
+
+  disabled = input<boolean>(false);
+
 }
