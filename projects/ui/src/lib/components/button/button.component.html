@@ -1,7 +1,5 @@
 @if(hidden() == false) {
-    <div class="ui-badge">
-        <ng-content select="ui-badge"></ng-content>
-    </div>
+   
     <div 
         class="ui-button no-select"
         [attr.title]="tooltip()"
@@ -24,5 +22,7 @@
     @if(iconOnlySimpleStyle() == false) {
         {{ label() }}
     }
+    <ng-content select="ui-badge"></ng-content>
+    
     </div>
 }
