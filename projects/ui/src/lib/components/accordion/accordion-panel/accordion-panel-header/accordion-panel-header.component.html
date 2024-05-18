@@ -16,5 +16,30 @@
         <ng-content select="ui-button"></ng-content>
         <ng-content select="ui-switch"></ng-content>
         <ng-content select="ui-badge"></ng-content>
+
+        @if(style() > 0 && style() < 4) {
+            <cds-icon
+                solid
+                [style.color]="
+                    style() == 1
+                    ? 'var(--attention-color)'
+                    : style() == 2
+                        ? 'var(--error-color)'
+                        : style() == 3
+                            ? 'var(--success-color)'
+                            : ''
+                "
+                [attr.shape]="
+                    style() == 1
+                    ? 'warning-standard'
+                    : style() == 2
+                        ? 'error-standard'
+                        : style() == 3
+                            ? 'success-standard'
+                            : ''
+                "
+                size="20"
+            ></cds-icon>
+        }
     </div>
 }

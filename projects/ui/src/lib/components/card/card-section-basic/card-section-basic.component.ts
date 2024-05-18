@@ -46,8 +46,8 @@ export class CardSectionBasicComponent extends UIBaseComponent {
 
   /** 
    * Style of the card (optional)  
-   *  The section gets an colorized icon  
-   * - `None` = grey (default), 
+   *  The section gets a colorized icon  
+   * - `None` = no icon (default), 
    * - `Attention` = orange
    * - `Error` = red
    * - `Success` = green 

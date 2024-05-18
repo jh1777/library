@@ -5,11 +5,20 @@ import { ButtonComponent } from '../../../button/button.component';
 import { SwitchComponent } from '../../../switch/switch.component';
 import {
   ClarityIcons,
-  infoStandardIcon
+  infoStandardIcon,
+  errorStandardIcon, 
+  successStandardIcon, 
+  warningStandardIcon
 } from '@cds/core/icon';
 import '@cds/core/icon/register.js';
 import { ClarityModule } from '@clr/angular';
-ClarityIcons.addIcons(infoStandardIcon);
+import { AccordionPanelHeaderStyle } from '../../accordion.models';
+ClarityIcons.addIcons(
+  infoStandardIcon,
+  errorStandardIcon,
+  successStandardIcon,
+  warningStandardIcon
+);
 
 @Component({
   selector: 'ui-accordion-panel-header',
@@ -59,6 +68,17 @@ export class AccordionPanelHeaderComponent extends UIBaseComponent implements Af
    */
    label = input.required<string>();
 
+  /** 
+   * Style of the Accordion Panel (optional)  
+   *  The section gets a colorized icon  
+   * - `None` = no icon (default), 
+   * - `Attention` = orange
+   * - `Error` = red
+   * - `Success` = green
+   * 
+   * See {@link AccordionPanelHeaderStyle}
+   */
+  style = input<AccordionPanelHeaderStyle>(AccordionPanelHeaderStyle.None);
  
    /**
     * INTERNAL USE   

@@ -90,11 +90,27 @@
           [isLoading]="true"
         ></ui-entry-tile-item>
       </ui-entry-tile>
+      
       <ui-metric-tile header="Test Metrics" grid-column="1">
         <ui-entry-container>
           <ui-entry-key-value label="None" value="14%" [style]="1"></ui-entry-key-value>
           <ui-entry-metric [percent]="14" [style]="1" [isLoading]="false"> </ui-entry-metric>
         </ui-entry-container>
       </ui-metric-tile>
+
+      <ui-card header="Accordion Card" grid-column="1">
+            <ui-card-section-basic text="Please select from following steps:">
+              <ui-accordion>
+                <ui-accordion-panel [disabled]=false>
+                  <ui-accordion-panel-header label="Step #1 - Create User" [style]=3></ui-accordion-panel-header>
+                    Please fill with some reasonable content!
+                </ui-accordion-panel>
+                <ui-accordion-panel [disabled]=false>
+                  <ui-accordion-panel-header label="Step #2 - Assign Roles"></ui-accordion-panel-header>
+                    Please fill with some reasonable content!
+                </ui-accordion-panel>
+              </ui-accordion>
+            </ui-card-section-basic>
+        </ui-card>
     </ui-grid>
   </div>

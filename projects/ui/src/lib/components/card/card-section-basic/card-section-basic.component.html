@@ -23,6 +23,9 @@
                             <ng-container *ngTemplateOutlet="styleIcon"></ng-container>
                         </div>
                     }
+                    <div class="ui-card-section-accordion-container">
+                        <ng-content select="ui-accordion"></ng-content>
+                    </div>
                     
                 } @else {
                     <div class="loading pulse">
@@ -53,7 +56,7 @@
     
 }
 <ng-template #styleIcon>
-    @if(style() != 0) {
+    @if(style() > 0 && style() < 5) {
         <div 
             class="ui-card-section-header-right" 
             [attr.title]="tooltip()"

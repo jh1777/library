@@ -10,11 +10,10 @@
     --info-color: #{$ui-standard-color};
 
     .has-error {
-        min-height: 80px !important;
+        min-height: 65px !important;
     }
 
     .ui-card-section {
-      //  margin: 0 3px 0 3px;
         border-bottom: 1px solid $ui-alternative-standard-color;
 
         &.last-section {
@@ -57,6 +56,11 @@
             flex-direction: row;
             gap: .4rem;
             margin-bottom: 15px;
+        }
+
+        &-accordion-container {
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
     }
 }

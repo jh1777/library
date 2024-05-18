@@ -10,11 +10,14 @@
     
     .first-panel {
         border-top: 1px solid $ui-light-standard-color !important;
-        border-radius: $ui-border-radius $ui-border-radius 0 0 !important;
+        border-top-left-radius: $ui-border-radius !important;
+        border-top-right-radius: $ui-border-radius !important;
+        
     }
 
     .last-panel {
-        border-radius: 0 0 $ui-border-radius $ui-border-radius !important;
+        border-bottom-left-radius: $ui-border-radius !important;
+        border-bottom-right-radius: $ui-border-radius !important;
         &.active-panel {
             border-radius: 0 !important;
         }
@@ -39,7 +42,6 @@
             border-top: 0px solid;
             cursor: pointer;
             gap: 6px;
-
 
             &:not(.disabled):hover {
                 background-color: lighten($ui-alternative-standard-color, 5%);
