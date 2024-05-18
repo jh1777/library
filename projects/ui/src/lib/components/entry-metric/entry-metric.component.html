@@ -2,7 +2,7 @@
     <div class="ui-property-metric-bar">
         
         @if(hasError() == true) {
-            <ui-error [errorMessage]="errorMessage()" [noScroll]=true></ui-error>
+            <ui-error style="padding: 0 !important; height: 13px;" [errorMessage]="errorMessage()"></ui-error>
             <div class="ui-property-metric-bar default-bar" [style.width.%]="0"></div>
         } @else {
             @if(isLoading() == true) {

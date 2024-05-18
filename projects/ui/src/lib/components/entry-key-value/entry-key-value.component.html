@@ -1,7 +1,7 @@
 @if (hidden() == false) {
 
   @if(hasError() == true) {
-    <ui-error [errorMessage]="errorMessage()" [noScroll]=true></ui-error>
+    <ui-error [errorMessage]="errorMessage()"></ui-error>
   } @else {
       @if (isLoading() == true) {
         <div class="ui-generic-left-right-container loading no-select pulse">

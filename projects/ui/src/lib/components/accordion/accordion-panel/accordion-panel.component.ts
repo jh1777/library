@@ -1,5 +1,5 @@
 import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, effect, input, model, signal } from '@angular/core';
-import { UIBaseComponent, UiCollapseButtonComponent } from '../../../shared';
+import { UIBaseComponent, UiCollapseButtonComponent, UiErrorComponent } from '../../../shared';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { BadgeComponent } from '../../badge/badge.component';
 import { AccordionPanelHeaderComponent } from './accordion-panel-header/accordion-panel-header.component';
@@ -8,7 +8,7 @@ import { AccordionPanelHeaderComponent } from './accordion-panel-header/accordio
   selector: 'ui-accordion-panel',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [UiCollapseButtonComponent, AccordionPanelHeaderComponent, BadgeComponent],
+  imports: [UiCollapseButtonComponent, AccordionPanelHeaderComponent, BadgeComponent, UiErrorComponent],
   templateUrl: './accordion-panel.component.html',
   styleUrl: './accordion-panel.component.scss',
   animations: [
