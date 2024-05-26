@@ -1,3 +1,30 @@
 :host {
     @import '../../styles/ui.styles.scss';
+
+    .bottom-margin {
+        margin-bottom: 4px;
+    }
+
+    .ui-accordion {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        
+        &-header {
+            display: flex;
+            flex-direction: column;
+            font-size: large;
+            color: $ui-standard-text-color;
+            line-height: normal;
+            font-weight: 700;
+        }
+        
+        &-description {
+            display: flex;
+            color: $ui-standard-text-color;
+            word-wrap: break-word;
+            margin-bottom: 6px;
+            line-height: normal;
+        }
+    }
 }

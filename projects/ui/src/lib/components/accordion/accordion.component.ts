@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, input } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
 import { AccordionPanelComponent } from './accordion-panel/accordion-panel.component';
 import {
@@ -20,8 +20,9 @@ ClarityIcons.addIcons(angleIcon);
 export class AccordionComponent extends UIBaseComponent implements AfterViewInit {
   @ContentChildren(AccordionPanelComponent) panels: QueryList<AccordionPanelComponent>;
 
-  // TODO: Support Error Message 
-
+  header = input<string>();
+  description = input<string>();
+  
   ngAfterViewInit(): void {
     // Set isLast & isFirst for styling purposes
     for (let index = 0; index < this.panels.length; index++) {
