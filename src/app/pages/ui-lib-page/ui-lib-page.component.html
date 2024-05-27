@@ -258,50 +258,20 @@
       </ui-entry-tile>
     </div>
     <div class="container">
-      <ui-entry-tile
-        header="Tile with Buttons"
-        titleIcon="cpu"
-        collapseMode="1"
-        state="2"
-      >
-        <ui-entry-key-value
-          label="State"
-          value="Unhealthy"
-          [style]="2"
-        ></ui-entry-key-value>
-        <ui-entry-key-value
-          label="Updated"
-          value="50 mins ago"
-          [isLoading]="false"
-        ></ui-entry-key-value>
-        <ui-entry-tile-item
-          primaryValue="Messages"
-          secondaryValue="1 Unread"
-          state="2"
-          showStateIcon="true"
-          [isLoading]="false"
-        >
+      <ui-entry-tile header="Tile with Buttons" titleIcon="cpu" [collapseMode]=1 [state]=2>
+        <ui-entry-key-value label="State"  value="Unhealthy" [style]=2></ui-entry-key-value>
+        <ui-entry-key-value label="Updated" value="50 mins ago"></ui-entry-key-value>
+
+        <ui-entry-tile-item primaryValue="Messages" secondaryValue="1 Unread" [state]=2 [showStateIcon]=true>
           <ui-badge value="1" [style]="2"></ui-badge>
         </ui-entry-tile-item>
 
-        <ui-entry-tile-item
-          header="Connectivity"
-          primaryValue="Connected"
-          secondaryValue="4 mins ago"
-          icon="pop-out"
-          [clickable]="true"
-        >
-        </ui-entry-tile-item>
+        <ui-entry-tile-item header="Connectivity" primaryValue="Connected" secondaryValue="4 mins ago" icon="pop-out" [clickable]=true></ui-entry-tile-item>
 
         <ui-button label="Accept" [style]="5" icon="check" slot="left">
           <ui-badge value="3"></ui-badge>
         </ui-button>
-        <ui-button
-          label="Delete"
-          [style]="4"
-          icon="trash"
-          slot="right"
-        ></ui-button>
+        <ui-button label="Delete" [style]=4 icon="trash" slot="right"></ui-button>
       </ui-entry-tile>
     </div>
   </div>

@@ -68,6 +68,8 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
     this.prepareItems();
     let errorMessage = '';
 
+    super.limitContentChildren(this.buttons, 2);
+
     if(this.items.length > this.maxItems() && !this.pageSize())
     {
       const msg = `Too many items used! Max. ${this.maxItems()} allowed`;
@@ -153,7 +155,7 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
   header = input<string>();
 
   /** Optional: Tile header icon  */
-  titleIcon = input<string>();
+  headerIcon = input<string>();
 
   /**
    * Optional: If you want to show a button a the bottom of the tile you can set the label of it here.  
