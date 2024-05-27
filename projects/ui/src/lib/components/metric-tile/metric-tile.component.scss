@@ -5,18 +5,31 @@
     display: flex;
     flex-direction: column;
 
-    .ui-metric-tile-header {
-        display: flex;
-        font-size: large;
-        color: $ui-standard-text-color;
-        font-weight: 700;
-        margin-bottom: 0.3rem;
+    .margin-bottom {
+        margin-bottom: 6px !important;
+    }
+
+    .ui-metric-tile {
+        &-header {
+            display: flex;
+            font-size: large;
+            color: $ui-standard-text-color;
+            font-weight: 700;
+            line-height: normal;
+            margin-bottom: 3px;
+        }
+
+        &-description {
+            display: flex;
+            color: $ui-standard-text-color;
+            line-height: normal;
+        }
     }
 
     .ui-metric-tile-container {
         min-width: $ui-min-width;
         background-color: $ui-inverted-text-color;
-        border: 3px solid $ui-alternative-standard-color;
+        border: 2px solid $ui-light-standard-color;
         display: flex;
         flex-direction: column;
         gap: .45rem;

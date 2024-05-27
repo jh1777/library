@@ -1,7 +1,15 @@
 @if(hidden() == false) {
-    <div class="ui-metric-tile-header">
+    <div 
+        class="ui-metric-tile-header"
+        [class.margin-bottom]="!description()"
+    >
         {{ header() }}
     </div>
+    @if(description()) {
+        <div class="ui-metric-tile-description margin-bottom">
+            {{ description() }}
+        </div>
+    }
     <div class="ui-metric-tile-container">
         <ng-content select="ui-entry-container"></ng-content>
     </div>

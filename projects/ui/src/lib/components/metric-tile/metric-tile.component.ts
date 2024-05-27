@@ -23,6 +23,16 @@ export class MetricTileComponent extends UIBaseComponent implements AfterContent
       metric.maxMetrics.set(1);
     });
   }
-
+  
+  /**
+   * Header of the Metrics Tile
+   */
   header = input.required<string>();
+
+  /**
+   * The description of this Metric Tile  
+   * It will be shown directly below the header, above the Tile content  
+   * (optional)
+   */
+  description = input<string>();
 }
