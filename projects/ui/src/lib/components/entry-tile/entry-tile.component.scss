@@ -57,21 +57,33 @@
       border: 1px solid var(--success-item-border-color) !important;
     }
   
+    .margin-bottom {
+      margin-bottom: 6px !important;
+    }
+
     .ui-entry-tile {
       min-width: $ui-min-width;
+      &-description {
+        display: flex;
+        color: $ui-standard-text-color;
+        line-height: normal;
+      }
+
       &-error {
         color: var(--attention-item-border-color); 
         font-size: small;
         margin-right: .6rem;
         font-weight: 200;
-
       }
+
       &-buttons {
+
         display: flex; 
         gap: .5rem; 
         flex-direction: row;
         flex-wrap: wrap;
         margin-bottom: .3rem;
+
         &-right {
           display: flex; 
           gap: .5rem; 
@@ -94,7 +106,7 @@
         font-size: large;
         color: $ui-standard-text-color;
         font-weight: 700;
-        margin-bottom: 0.3rem;
+        margin-bottom: 3px;
       }
   
       &-header {

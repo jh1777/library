@@ -1,18 +1,28 @@
 @if(hidden() == false) {
   <div class="ui-entry-tile">
     @if (header()) {
-      <div class="ui-entry-tile-titleheader">
+      <div 
+        class="ui-entry-tile-titleheader"
+        [class.margin-bottom]="!description()"
+      >
         <div class="ui-generic-left-right-container-left ui-generic-flex-row">
           @if (headerIcon()) {
             <cds-icon [attr.shape]="headerIcon()" size="20"></cds-icon>
           }
           {{ header() }}
+          
         </div>
+        
         <div class="ui-generic-left-right-container-right">
           @if (collapseMode() > 0 && titles?.length > 0) {
             <ui-collapse-button [(isCollapsed)]="collapsed"></ui-collapse-button>
           }
         </div>
+      </div>
+    }
+    @if(description()) {
+      <div class="ui-entry-tile-description margin-bottom">
+        {{ description() }}
       </div>
     }
 

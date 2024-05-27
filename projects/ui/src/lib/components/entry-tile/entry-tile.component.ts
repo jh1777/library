@@ -134,6 +134,13 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
   style = input<EntryTileStyle>(EntryTileStyle.None);
 
   /**
+   * The description of this Entry Tile  
+   * It will be shown directly below the header, above the Tile content  
+   * (optional)
+   */
+  description = input<string>();
+
+  /**
    * Computed style if `style` == `automatic`  
    * Uses `titles.style` to grab the worst state found
    */

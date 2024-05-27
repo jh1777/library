@@ -20,7 +20,18 @@ ClarityIcons.addIcons(angleIcon);
 export class AccordionComponent extends UIBaseComponent implements AfterViewInit {
   @ContentChildren(AccordionPanelComponent) panels: QueryList<AccordionPanelComponent>;
 
+  /**
+   * Header text  
+   * Shown on top of the Accordion  
+   * (optional)
+   */
   header = input<string>();
+  
+  /**
+   * The description of this Accordion  
+   * It will be shown directly below the header, above any Accordion Panels    
+   * (optional)
+   */
   description = input<string>();
   
   ngAfterViewInit(): void {
