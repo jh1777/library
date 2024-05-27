@@ -1,4 +1,4 @@
-import { Component, input, model, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, model, output } from '@angular/core';
 import { ClarityModule } from '@clr/angular';
 import { ClarityIcons, angleIcon } from "@cds/core/icon";
 import '@cds/core/icon/register.js';
@@ -7,6 +7,7 @@ ClarityIcons.addIcons(angleIcon);
 
 @Component({
   selector: 'ui-collapse-button',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [ClarityModule],
   templateUrl: './ui-collapse-button.component.html',
