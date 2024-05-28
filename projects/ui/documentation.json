@@ -98,7 +98,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ButtonComponent>",
-                "defaultValue": "{\n  title: 'UILib/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  args: { onClick: output() },\n}"
+                "defaultValue": "{\n  title: 'UILib/Button',\n  component: ButtonComponent,\n  \n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  args: { onClick: fn() },\n}"
             },
             {
                 "name": "Plain",
@@ -108,7 +108,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: input('Button'),\n    disabled: input(false),\n    style: input(0),\n    icon: input('check'),\n    hidden: signal(false)\n  },\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Button',\n    disabled: false,\n    style: 0,\n    icon: 'check',\n    hidden: signal(false)\n  },\n}"
             },
             {
                 "name": "preview",
@@ -118,7 +118,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Preview",
-                "defaultValue": "{\n  parameters: {\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n}"
+                "defaultValue": "{\n  decorators: [\n    moduleMetadata({\n      imports: [ClarityModule]\n    })\n  ],\n  parameters: {\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -325,7 +325,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ButtonComponent>",
-                    "defaultValue": "{\n  title: 'UILib/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  args: { onClick: output() },\n}"
+                    "defaultValue": "{\n  title: 'UILib/Button',\n  component: ButtonComponent,\n  \n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  args: { onClick: fn() },\n}"
                 },
                 {
                     "name": "Plain",
@@ -335,7 +335,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: input('Button'),\n    disabled: input(false),\n    style: input(0),\n    icon: input('check'),\n    hidden: signal(false)\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Button',\n    disabled: false,\n    style: 0,\n    icon: 'check',\n    hidden: signal(false)\n  },\n}"
                 }
             ],
             "projects/ui/.storybook/preview.ts": [
@@ -347,7 +347,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Preview",
-                    "defaultValue": "{\n  parameters: {\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n}"
+                    "defaultValue": "{\n  decorators: [\n    moduleMetadata({\n      imports: [ClarityModule]\n    })\n  ],\n  parameters: {\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n}"
                 }
             ]
         },
