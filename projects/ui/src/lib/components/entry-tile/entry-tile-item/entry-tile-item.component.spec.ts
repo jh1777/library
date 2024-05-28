@@ -71,7 +71,7 @@ describe('EntryTileItemComponent', () => {
 
     it('onItemClick should emit event with id', () => {
         const event = new MouseEvent('click');
-        jest.spyOn(component.onItemClick, 'emit');
+        spyOn(component.onItemClick, 'emit');
         component.handleClickEvent(event);
         expect(component.onItemClick.emit).toHaveBeenCalledWith(component.id());
     });

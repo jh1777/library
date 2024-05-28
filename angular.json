@@ -82,13 +82,23 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:jest",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": [
               "zone.js",
               "zone.js/testing"
             ],
-            "tsConfig": "tsconfig.spec.json"
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
           }
         }
       }
@@ -115,7 +125,7 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:jest",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/ui-lib/tsconfig.spec.json",
             "polyfills": [
@@ -178,9 +188,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:jest",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/ui/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
             "polyfills": [
               "zone.js",
               "zone.js/testing"

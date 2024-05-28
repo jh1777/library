@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  title = "Title"; // for testing
   public showBorders: boolean = false;
 
   public buttonsTabActive: boolean;

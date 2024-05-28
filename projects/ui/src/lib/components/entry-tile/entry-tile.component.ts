@@ -201,6 +201,16 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
   // BUTTON ACTIONS
 
   /**
+  * On Show More Click event
+  * @param $event MouseEvent
+  */
+  public handleShowMoreClickEvent($event: MouseEvent) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    this.onShowMoreClick.emit(this.id() ?? null);
+  }
+  
+  /**
    * Action is called if pagination is enabled and the user   
    * switches the page.
    * @param event {@link Event}

@@ -57,7 +57,7 @@
             }
 
             @if (moreButtonLabel()) {
-              <div class="ui-entry-tile-more" (click)="onShowMoreClick.emit(id())">
+              <div class="ui-entry-tile-more" (click)="handleShowMoreClickEvent($event)">
                 {{ moreButtonLabel() }}
               </div>
             }

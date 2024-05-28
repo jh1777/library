@@ -49,7 +49,7 @@
           [class.attention-item]="style() == 1"
           [class.error-item]="style() == 2"
           [class.success-item]="style() == 3"
-          (click)="onItemClick.emit(id())"
+          (click)="handleClickEvent($event)"
         >
           <div class="ui-badge">
             <ng-content select="ui-badge"></ng-content>

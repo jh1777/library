@@ -110,4 +110,14 @@ export class EntryTileItemComponent extends UIBaseComponent implements AfterCont
    * Emits the `id()` of the item
    */
   onItemClick = output<string>();
+
+  /**
+   * On Click event
+   * @param $event MouseEvent
+   */
+  public handleClickEvent($event: MouseEvent) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    this.onItemClick.emit(this.id() ?? null);
+  }
 }

@@ -6,11 +6,10 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": ["node"]
+    "esModuleInterop": true,
+    "types": [ "node"]
   },
-  "exclude": [
-    "**/*.spec.ts",
-    "cypress/**/*.ts",
-    "cypress.config.ts"
+  "include": [
+    "src/**/*.ts"
   ]
 }

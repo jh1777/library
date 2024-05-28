@@ -18,7 +18,7 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "types": ["cypress", "node", "cypress-real-events", "jest"],
+    "types": [ "jasmine", "node"],
     "useDefineForClassFields": false,
     "paths": {
       "ui-lib": [
@@ -41,7 +41,5 @@
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
-  },
-  "exclude": ["cypress.config.ts"],
-  "files": ["cypress.config.ts"]
+  }
 }

@@ -73,7 +73,7 @@ describe('EntryTileComponent', () => {
 
     it('onShowMoreClick should emit with id', () => {
         const event = new MouseEvent('click');
-        jest.spyOn(component.onShowMoreClick, 'emit');
+        spyOn(component.onShowMoreClick, 'emit');
         component.handleShowMoreClickEvent(event);
         expect(component.onShowMoreClick.emit).toHaveBeenCalledWith(component.id());
     });

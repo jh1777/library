@@ -30,8 +30,8 @@ describe('ButtonComponent', () => {
 
     it('handleClickEvent should prevent default and stop propagation', () => {
         const event = new MouseEvent('click');
-        jest.spyOn(event, 'preventDefault');
-        jest.spyOn(event, 'stopPropagation');
+        spyOn(event, 'preventDefault');
+        spyOn(event, 'stopPropagation');
         component.handleClickEvent(event);
         expect(event.preventDefault).toHaveBeenCalled();
         expect(event.stopPropagation).toHaveBeenCalled();
@@ -39,7 +39,7 @@ describe('ButtonComponent', () => {
 
     it('handleClickEvent should emit onClick event with id', () => {
         const event = new MouseEvent('click');
-        jest.spyOn(component.onClick, 'emit');
+        spyOn(component.onClick, 'emit');
         component.handleClickEvent(event);
         expect(component.onClick.emit).toHaveBeenCalledWith(component.id());
     });
