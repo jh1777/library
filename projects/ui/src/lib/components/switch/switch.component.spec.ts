@@ -12,9 +12,7 @@ describe('SwitchComponent', () => {
             imports: [SwitchComponent, NoopAnimationsModule]
         })
         .compileComponents();
-    });
 
-    beforeEach(() => {
         fixture = TestBed.createComponent(SwitchComponent);
         component = fixture.componentInstance;
         fixture.componentRef.setInput('id', '101010');
@@ -30,7 +28,7 @@ describe('SwitchComponent', () => {
     });
 
     it('should set disabled', () => {
-        fixture.componentRef.setInput('disabled', true);
+        fixture.componentRef.setInput('isDisabled', true);
         expect(component.isDisabled()).toBe(true);
     });
 
@@ -44,5 +42,12 @@ describe('SwitchComponent', () => {
         expect(component.label()).toBe("#Switch Label");
     });
 
-    // TODO: add test to switch the state
+    it('switch action should toggle state', () => {
+        const event = new MouseEvent('click');
+        fixture.componentRef.setInput('state', false);
+        component.handleClickEvent(event);
+        expect(component.state()).toBe(true);
+        component.handleClickEvent(event);
+        expect(component.state()).toBe(false);
+    });
 });

@@ -1,8 +1,7 @@
 @if(isHidden() == false) {
     @if(isLoading() == true) {
         <div class="ui-content-loading no-select no-scroll">
-            <div class="ui-spinner"></div>
-            {{ loadingText() }}
+            <ui-spinner [text]="loadingText()" [size]=2></ui-spinner>
         </div>
     }
     <div 

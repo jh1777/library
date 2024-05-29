@@ -1,0 +1,8 @@
+<div 
+    class="ui-spinner no-select"
+    [class.small]="size() == 0"
+    [class.large]="size() == 2"
+></div>
+@if(text()) {
+    <div class="ui-spinner-text">{{ text() }}</div>
+}

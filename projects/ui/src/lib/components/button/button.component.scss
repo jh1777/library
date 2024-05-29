@@ -4,6 +4,7 @@
     position: relative;
     display: inline-flex;
     min-width: max-content;
+    max-height: 32px;
 
     .disabled {
         --ui-button-primary-color: #{$ui-inverted-text-color} !important;
@@ -23,6 +24,7 @@
         --ui-button-primary-color: #{$ui-petrol-color};
         --ui-button-primary-hover-color: #{$ui-alternative-petrol-color};
         --ui-button-text-color: #{$ui-inverted-text-color};
+        border: 1px solid #{$ui-petrol-color};
     }
 
     .secondary {

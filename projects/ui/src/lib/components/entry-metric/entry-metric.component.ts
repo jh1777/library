@@ -22,6 +22,7 @@ export class EntryMetricComponent extends UIBaseComponent {
    * - `Attention` = orange
    * - `Error` = red
    * - `Success` = green
+   * See {@link EntryMetricStyle}
   */
   style = input<EntryMetricStyle>(EntryMetricStyle.None);
 }

@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { UIBaseComponent } from '../../../shared';
+import { UIBaseComponent, UiSpinnerComponent } from '../../../shared';
 
 @Component({
   selector: 'ui-content',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+  imports: [UiSpinnerComponent],
   templateUrl: './content.component.html',
   styleUrl: './content.component.scss'
 })

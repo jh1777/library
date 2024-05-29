@@ -369,10 +369,12 @@
 
     <ui-badge [style]="0" label="CTP2" slot="left"></ui-badge>
 
-    <ui-button label="Right #1" slot="right">
+    <ui-button label="Right #1" slot="right" [isLoading]=true>
       <ui-badge value="3"></ui-badge>
     </ui-button>
-    <ui-button label="Right #2" slot="right" [style]="3"> </ui-button>
+
+    <ui-button label="Right #2" slot="right" [style]=3> </ui-button>
+    <ui-button label="Loading..." slot="right" [style]=2 [isLoading]=true> </ui-button>
     <ui-button icon="play" slot="right" [style]="0"></ui-button>
     <ui-button icon="stop" slot="right" [style]="0"></ui-button>
   </ui-toolbar>

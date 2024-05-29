@@ -40,7 +40,6 @@ $ui-min-width: 250px;
 $ui-base-font-size: 14px;
 $ui-border-radius: 4px;
 $ui-menu-bar-height: 50px;
-$ui-loading-spinner-size: 24px;
 $ui-collapse-button-size: 24px;
 
 
@@ -119,21 +118,6 @@ $ui-collapse-button-size: 24px;
   -moz-animation-delay: 0.5s;
   animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   animation-delay: 0.5s;
-}
-
-// Spinner
-.ui-spinner {
-  border: 4px solid $ui-light-standard-color;
-  border-top: 4px solid $ui-petrol-color;
-  border-radius: 50%;
-  width: $ui-loading-spinner-size;
-  height: $ui-loading-spinner-size;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 // Left - Right Container

@@ -37,6 +37,8 @@ export class EntryKeyValueComponent extends UIBaseComponent {
    * - `Error` = red
    * - `Success` = green
    * - `Dimmed` = grey
+   * See {@link EntryKeyValueStyle}
+   * 
   */
   style = input<EntryKeyValueStyle>(EntryKeyValueStyle.None);
 

@@ -23,7 +23,11 @@
         @if(iconOnlySimpleStyle() == false) {
             {{ label() }}
         }
-        <ng-content select="ui-badge"></ng-content>
+        @if(isLoading() == false) {
+            <ng-content select="ui-badge"></ng-content>
+        } @else {
+            <ui-spinner [size]=0></ui-spinner>
+        }
     
     </div>
 }

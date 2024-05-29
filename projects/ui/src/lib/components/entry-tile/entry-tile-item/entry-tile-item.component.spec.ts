@@ -46,7 +46,7 @@ describe('EntryTileItemComponent', () => {
     });
 
     it('should set clickable', () => {
-        fixture.componentRef.setInput('clickable', true);
+        fixture.componentRef.setInput('isClickable', true);
         expect(component.isClickable()).toBe(true);
     });
 

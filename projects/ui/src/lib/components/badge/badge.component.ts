@@ -24,17 +24,20 @@ export class BadgeComponent extends UIBaseComponent {
   value = input<number>();
   
   /**
-   * None = 0 (Grey)
-   * Attention = 1
-   * Error = 2 (default)
-   * Success = 3
+   * Style of the Badge; changes the backgound color  
+   * `None` = 0 (Grey)
+   * `Attention` = 1
+   * `Error` = 2 (default)
+   * `Success` = 3
+   * See {@link BadgeStyle}
+   * 
    */
   style = input<BadgeStyle>(BadgeStyle.Error);
 
   /**
    * Size of badge
    * 1 - small
-   * 2 - medium
+   * 2 - medium (default)
    * 3 - large
    */
   size = input<number>(2);

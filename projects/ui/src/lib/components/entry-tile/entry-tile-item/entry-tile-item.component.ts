@@ -82,6 +82,7 @@ export class EntryTileItemComponent extends UIBaseComponent implements AfterCont
    * - `Attention` = orange
    * - `Error` = red
    * - `Success` = green
+   * See {@link EntryItemStyle}
    */
   style = input<EntryItemStyle>(EntryItemStyle.None);
 

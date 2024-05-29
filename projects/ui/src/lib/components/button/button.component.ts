@@ -20,7 +20,7 @@ import {
 } from '@cds/core/icon';
 import '@cds/core/icon/register.js';
 import { BadgeComponent } from '../badge/badge.component';
-import { UIBaseComponent } from '../../shared';
+import { UIBaseComponent, UiSpinnerComponent } from '../../shared';
 import { ButtonStyle } from './button.models';
 ClarityIcons.addIcons(
   angleIcon,
@@ -43,7 +43,7 @@ ClarityIcons.addIcons(
 @Component({
   selector: 'ui-button',
   standalone: true,
-  imports: [ClarityModule],
+  imports: [ClarityModule, UiSpinnerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss'
@@ -86,6 +86,7 @@ export class ButtonComponent extends UIBaseComponent implements AfterContentInit
    * `Outline = 3`: Blank outline style button with white fill color and petrol borders  
    * `Destructive = 4`: Destructive style button with red fill color and white fonts  
    * `Confirm = 5`: Confirmation style button with green fill color and white fonts  
+   * See {@link ButtonStyle}
    */
   style = input<ButtonStyle>(ButtonStyle.Primary);
 
