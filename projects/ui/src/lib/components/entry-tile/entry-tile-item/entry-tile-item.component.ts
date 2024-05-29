@@ -86,7 +86,7 @@ export class EntryTileItemComponent extends UIBaseComponent implements AfterCont
   style = input<EntryItemStyle>(EntryItemStyle.None);
 
   /** Is the Item clickable? If yes, it has a hover and action style and emits the `onItemClick` output */
-  clickable = input<boolean>(false);
+  isClickable = input<boolean>(false);
 
   /** Primary Value is shown on top (line 1) inside the item box */
   primaryValue = input.required<string>();

@@ -1,17 +1,17 @@
-@if(hidden() == false) {
+@if(isHidden() == false) {
     <div class="ui-switch" 
         [attr.title]="label() ? null : tooltip()" 
-        [class.disabled]="disabled() == true"
-        [class.no-click]="disabled() == true"
-        (click)="disabled() == true ? null : handleClickEvent($event)">
+        [class.disabled]="isDisabled() == true"
+        [class.no-click]="isDisabled() == true"
+        (click)="isDisabled() == true ? null : handleClickEvent($event)">
         <div class="ui-switch-toggle"
             [class.knob-on]="state() == true"
             [class.knob-off]="state() == false"
-            [class.disabled]="disabled() == true"
+            [class.disabled]="isDisabled() == true"
             >
             <div 
                 class="ui-switch-toggle-knob"
-                [class.disabled]="disabled() == true"
+                [class.disabled]="isDisabled() == true"
                 [@switchPosition]="state()" 
             >
             </div>
@@ -19,7 +19,7 @@
         @if(label()) {
             <div 
                 class="ui-switch-label"
-                [class.disabled]="disabled() == true"
+                [class.disabled]="isDisabled() == true"
             >
                 {{ label() }}
                 @if(tooltip()) {

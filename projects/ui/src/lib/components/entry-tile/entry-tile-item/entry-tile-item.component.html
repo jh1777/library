@@ -1,4 +1,4 @@
-@if (hidden() == false) {
+@if(isHidden() == false) {
   @if(hasError() == true) {
       <ui-error class="ui-entry-tile-item has-error" [errorMessage]="errorMessage()"></ui-error>
   } @else {
@@ -45,7 +45,7 @@
 
         <div
           class="ui-entry-tile-item"
-          [class.clickable]="clickable()"
+          [class.clickable]="isClickable()"
           [class.attention-item]="style() == 1"
           [class.error-item]="style() == 2"
           [class.success-item]="style() == 3"
@@ -85,7 +85,7 @@
                 @if (!showStateIcon() && icon()) {
                   <div class="ui-entry-tile-item-icon">
                     <cds-icon
-                      [style.color]="clickable() ? 'var(--action-color)' : 'grey'"
+                      [style.color]="isClickable() ? 'var(--action-color)' : 'grey'"
                       [attr.shape]="icon()"
                       size="22"
                     ></cds-icon>

@@ -33,23 +33,21 @@ export class AccordionPanelHeaderComponent extends UIBaseComponent implements Af
   @ContentChildren(SwitchComponent) switches: QueryList<SwitchComponent>;
   @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
 
-  
   constructor() {
     super();
     effect(
       () => {
         this.buttons.toArray().forEach(button => {
-          button.disabled.set(this.disabledPanel());
+          button.isDisabled.set(this.disabledPanel());
         });
 
         this.switches.toArray().forEach(switchItem => {
-          switchItem.disabled.set(this.disabledPanel());
+          switchItem.isDisabled.set(this.disabledPanel());
         });
       },
       { allowSignalWrites: true },
     );
   }
-  
 
   ngAfterContentInit(): void {
     super.limitContentChildren(this.badges, 1);

@@ -18,9 +18,9 @@ export class MenuBarComponent extends UIBaseComponent {
   setActive(item: MenuItemComponent) {
     this.menuItems.toArray().forEach(i => {
       if(i === item) {
-        i.active.set(true);
+        i.isActive.set(true);
       } else {
-        i.active.set(false);
+        i.isActive.set(false);
       }
     });
   }

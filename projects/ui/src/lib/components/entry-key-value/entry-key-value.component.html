@@ -1,4 +1,4 @@
-@if (hidden() == false) {
+@if(isHidden() == false) {
 
   @if(hasError() == true) {
     <ui-error [errorMessage]="errorMessage()"></ui-error>
@@ -26,13 +26,13 @@
         <div class="ui-generic-left-right-container">
           <div 
             class="ui-generic-left-right-container-left"
-            [class.big-style]="big() == true">
+            [class.big-style]="isBig() == true">
             {{ label() }}
           </div>
           <div 
             class="ui-generic-left-right-container-right ui-generic-flex-row" 
             [attr.title]="tooltip()"
-            [class.big-style]="big() == true">
+            [class.big-style]="isBig() == true">
             @if (style() > 0 && style() < 4) {
               <cds-icon
                 solid
@@ -54,7 +54,7 @@
                         ? 'success-standard'
                         : ''
                 "
-                [attr.size]="big() == true ? 18 : 16"
+                [attr.size]="isBig() == true ? 18 : 16"
               >
               </cds-icon>
             }

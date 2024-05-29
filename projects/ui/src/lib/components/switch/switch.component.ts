@@ -43,7 +43,7 @@ export class SwitchComponent extends UIBaseComponent {
    * If set to `true` this Switch is disabled and can't be clicked / toggled (optional)  
    * Default: `false`  
    */
-  disabled = model<boolean>(false);
+  isDisabled = model<boolean>(false);
 
   /**
    * On click event to toggle the Switch

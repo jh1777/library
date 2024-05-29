@@ -1,11 +1,11 @@
-@if(hidden() == false) {
+@if(isHidden() == false) {
 
     <div class="ui-tabs">
         @for (tab of tabs; track $index) {
             <div class="ui-tab" 
                 [attr.title]="tab.tooltip()"
-                [class.active]="tab.active() == true"
-                [class.disabled]="tab.disabled() == true"
+                [class.active]="tab.isActive() == true"
+                [class.disabled]="tab.isDisabled() == true"
                 (click)="selectTab(tab)">
                 {{ tab.label() }}
                 @if(tab.badgeValue()) {

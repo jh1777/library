@@ -34,7 +34,7 @@ import { Component, QueryList, computed, input, signal } from "@angular/core";
     /**
      * Internal used to control overflow and visibility
      */
-    hidden = signal<boolean>(false);
+    isHidden = signal<boolean>(false);
 
     /**
      * Checks the given child elements in `items` if their count exceeds the given `max`   
@@ -48,7 +48,7 @@ import { Component, QueryList, computed, input, signal } from "@angular/core";
         console.warn(`Maximum child elements of type ${items.first.constructor.name} is ${max}!`);
         for (let index = max; index < items.length; index++) {
           const element = items.get(index);
-          element?.hidden.set(true);
+          element?.isHidden.set(true);
         }
         return true;
       }
@@ -61,7 +61,7 @@ import { Component, QueryList, computed, input, signal } from "@angular/core";
      */
     protected hideAll<T extends UIBaseComponent>(items: QueryList<T>): void {
       items.toArray().forEach(item => {
-        item.hidden.set(true);
+        item.isHidden.set(true);
       });
     }
   }

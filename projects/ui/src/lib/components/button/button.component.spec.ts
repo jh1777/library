@@ -61,7 +61,7 @@ describe('ButtonComponent', () => {
 
 
     it('should set and get disabled', () => {
-        component.disabled.set(true);
-        expect(component.disabled()).toBe(true);
+        component.isDisabled.set(true);
+        expect(component.isDisabled()).toBe(true);
     });
 });

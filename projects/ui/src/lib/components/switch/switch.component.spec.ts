@@ -31,7 +31,7 @@ describe('SwitchComponent', () => {
 
     it('should set disabled', () => {
         fixture.componentRef.setInput('disabled', true);
-        expect(component.disabled()).toBe(true);
+        expect(component.isDisabled()).toBe(true);
     });
 
     it('should set state', () => {
@@ -43,4 +43,6 @@ describe('SwitchComponent', () => {
         fixture.componentRef.setInput('label', "#Switch Label");
         expect(component.label()).toBe("#Switch Label");
     });
+
+    // TODO: add test to switch the state
 });

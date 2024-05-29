@@ -15,7 +15,7 @@
         description="This is the description of the component (optional)"
       >
 
-        <ui-accordion-panel [disabled]=true>
+        <ui-accordion-panel [isDisabled]=true>
           <ui-accordion-panel-header label="Header #1"></ui-accordion-panel-header>
 
           <ui-card header="Card Example 1" >
@@ -26,7 +26,7 @@
 
         </ui-accordion-panel>
 
-        <ui-accordion-panel [disabled]=false>
+        <ui-accordion-panel [isDisabled]=false>
           <ui-accordion-panel-header label="Header #2" tooltip="This Panel is for testing...">
             <ui-switch label="Test" tooltip="this is a test" [state]=true></ui-switch>
 
@@ -76,11 +76,11 @@
           <li>Apple</li>
           <li>Lemon</li>
         </ui-tab>
-        <ui-tab label="Pizza" [active]=true>
+        <ui-tab label="Pizza" [isActive]=true>
           <li>Salami</li>
           <li>Funghi</li>
         </ui-tab>
-        <ui-tab label="Disabled" [disabled]=true>
+        <ui-tab label="Disabled" [isDisabled]=true>
           <li>Unreachable</li>
           <li>Content</li>
         </ui-tab>
@@ -140,7 +140,7 @@
       label="Simple disabled"
       icon="check"
       [style]="0"
-      [disabled]="true"
+      [isDisabled]="true"
     ></ui-button>
     <ui-button label="Apply" icon="check"></ui-button>
     <ui-button label="Cancel" icon="times" [style]="4"></ui-button>
@@ -187,7 +187,7 @@
           label="State"
           value="Okay"
           [style]="3"
-          [big]=true
+          [isBig]=true
         ></ui-entry-key-value>
 
         <ui-entry-tile-item
@@ -251,7 +251,7 @@
           primaryValue="Connected"
           secondaryValue="4 mins ago"
           icon="pop-out"
-          [clickable]="true"
+          [isClickable]="true"
         >
           <ui-badge value="6" [style]="2" [size]="2"></ui-badge>
         </ui-entry-tile-item>
@@ -266,7 +266,7 @@
           <ui-badge value="1" [style]="2"></ui-badge>
         </ui-entry-tile-item>
 
-        <ui-entry-tile-item header="Connectivity" primaryValue="Connected" secondaryValue="4 mins ago" icon="pop-out" [clickable]=true></ui-entry-tile-item>
+        <ui-entry-tile-item header="Connectivity" primaryValue="Connected" secondaryValue="4 mins ago" icon="pop-out" [isClickable]=true></ui-entry-tile-item>
 
         <ui-button label="Accept" [style]="5" icon="check" slot="left">
           <ui-badge value="3"></ui-badge>
@@ -317,7 +317,7 @@
           label="State"
           value="Warning"
           state="1"
-          [big]=true
+          [isBig]=true
         ></ui-entry-key-value>
       </ui-entry-container>
     </div>
@@ -360,7 +360,7 @@
       slot="left"
       label="Left Simple #2"
       [style]="0"
-      [disabled]="true"
+      [isDisabled]="true"
     ></ui-button>
     <ui-value-tile key="Vin" value="WDB0101010110" [isLoading]=false slot="right">
       <ui-button icon="copy" label="test"></ui-button>
@@ -412,7 +412,7 @@
           <ui-entry-metric [percent]="14" [style]="1" [isLoading]="false"> </ui-entry-metric>
         </ui-entry-container>
 
-        <ui-entry-container id="middle-metric-123" [clickable]=true (onClick)="log($event)">
+        <ui-entry-container id="middle-metric-123" [isClickable]=true (onClick)="log($event)">
           <ui-entry-key-value label="Started" value="33%"></ui-entry-key-value>
           <ui-entry-metric [percent]="33" [isLoading]="false"> </ui-entry-metric>
         </ui-entry-container>

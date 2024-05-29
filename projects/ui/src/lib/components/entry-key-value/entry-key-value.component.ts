@@ -43,5 +43,5 @@ export class EntryKeyValueComponent extends UIBaseComponent {
   /**
    * Makes the Key and Value of bigger font size, the icon as well if present
    */
-  big = input<boolean>(false);
+  isBig = input<boolean>(false);
 }

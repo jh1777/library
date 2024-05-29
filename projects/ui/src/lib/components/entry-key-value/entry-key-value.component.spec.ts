@@ -46,6 +46,6 @@ describe('EntryKeyValueComponent', () => {
 
     it('should set big = true', () => {
         fixture.componentRef.setInput('big', true);
-        expect(component.big()).toBe(true);
+        expect(component.isBig()).toBe(true);
     });
 });

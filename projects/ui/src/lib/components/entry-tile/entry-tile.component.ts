@@ -49,13 +49,13 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
       if((!this.pageSize() && i >= this.currentPage() * this.maxItems() && i < this.currentPage() *this.maxItems() + this.maxItems())
       || (this.pageSize()! > 0 && i >= this.currentPage() * this.pageSize()! && i < this.currentPage() * this.pageSize()! + this.pageSize()!)) 
       {
-        this.items.get(i)?.hidden.set(false);
+        this.items.get(i)?.isHidden.set(false);
       } else {
-        this.items.get(i)?.hidden.set(true);
+        this.items.get(i)?.isHidden.set(true);
       }
 
       // check for item.header grouping
-      if (i > 0 && this.items.get(i-1)?.header() == this.items.get(i)?.header() && this.items.get(i-1)?.hidden() == false) {
+      if (i > 0 && this.items.get(i-1)?.header() == this.items.get(i)?.header() && this.items.get(i-1)?.isHidden() == false) {
         this.items.get(i)?.showTitle.set(false);
       } else {
         this.items.get(i)?.showTitle.set(true);
@@ -96,7 +96,7 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
    * **Hint**: only applicable if the `collapseMode` is not `disabled`  
    * Default: `false`  
    * */
-  public collapsed = model<boolean>(false);
+  public isCollapsed = model<boolean>(false);
 
   /**
    * Indicates the current shown page if pagination is used

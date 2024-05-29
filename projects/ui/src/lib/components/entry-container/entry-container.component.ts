@@ -19,7 +19,7 @@ export class EntryContainerComponent extends UIBaseComponent {
   maxMetrics = signal(1);
 
   /** Is the entry container clickable? If yes, it has a hover and action style and emits the `onItemClick` output */
-  clickable = input<boolean>(false);
+  isClickable = input<boolean>(false);
 
   /**
    * Output Event onClick
@@ -30,5 +30,15 @@ export class EntryContainerComponent extends UIBaseComponent {
   ngAfterContentInit(): void {
     super.limitContentChildren(this.keyvalues, this.maxKeyValues());
     super.limitContentChildren(this.metrics, this.maxMetrics());
+  }
+  
+  /**
+   * On Click event for the Metric
+   * @param $event MouseEvent
+   */
+  public handleClickEvent($event: MouseEvent) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    this.onClick.emit(this.id() ?? null);
   }
 }

@@ -36,8 +36,8 @@ describe('EntryTileComponent', () => {
     });
 
     it('should set and get collapsed', () => {
-        component.collapsed.set(true);
-        expect(component.collapsed()).toBe(true);
+        component.isCollapsed.set(true);
+        expect(component.isCollapsed()).toBe(true);
     });
 
     it('should set and get collapseMode', () => {

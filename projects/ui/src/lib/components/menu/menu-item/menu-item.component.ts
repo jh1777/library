@@ -23,10 +23,10 @@ export class MenuItemComponent extends UIBaseComponent {
    * Is an exact match of route needed?   
    * Default = `true`
    */
-  exactMatch = input<boolean>(true);
+  exactMatchNeeded = input<boolean>(true);
 
   /**
    * INTERNAL
    */
-  active = signal<boolean>(false);
+  isActive = signal<boolean>(false);
 }

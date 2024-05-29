@@ -21,10 +21,10 @@ type Story = StoryObj<ButtonComponent>;
 export const Plain: Story = {
   args: {
     label: 'Button',
-    disabled: false,
+    isDisabled: false,
     style: 0,
     icon: 'check',
-    hidden: signal(false)
+    isHidden: signal(false)
   },
 };
 

@@ -59,7 +59,7 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
   }
 
   private getActiveTabs(): TabComponent[] {
-    return this.tabs.filter((tab) => tab.active() == true);
+    return this.tabs.filter((tab) => tab.isActive() == true);
   }
 
   private getActiveTabIndex(): number | null {
@@ -85,13 +85,13 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
    * @param tab TabComponent
    */
   selectTab(tab: TabComponent) {
-    if (!tab || tab.disabled() == true) {
+    if (!tab || tab.isDisabled() == true) {
       return;
     }
 
     const tabs = this.tabs.toArray();
-    tabs.forEach((t) => t.active.set(false));
-    tab.active.set(true);
+    tabs.forEach((t) => t.isActive.set(false));
+    tab.isActive.set(true);
 
     if (this.activeIndex() > -1) {
       const idx = tabs.findIndex((t) => t === tab);
@@ -113,7 +113,7 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
       if (newIdx == this.tabs.length) { newIdx = this.tabs.length - 1; }
 
       let tab = this.tabs.get(newIdx);
-      if (tab?.disabled() == true) {
+      if (tab?.isDisabled() == true) {
         tab = handleIndex(newIdx);
       }
       return tab!;

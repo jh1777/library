@@ -118,7 +118,7 @@ export class ButtonComponent extends UIBaseComponent implements AfterContentInit
    * Input / Output  
    * Default: `false`
    */
-  disabled = model<boolean>(false);
+  isDisabled = model<boolean>(false);
 
   /**
    * OnClick Event  

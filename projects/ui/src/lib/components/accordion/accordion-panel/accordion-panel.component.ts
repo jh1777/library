@@ -22,12 +22,11 @@ import { AccordionPanelHeaderComponent } from './accordion-panel-header/accordio
 export class AccordionPanelComponent extends UIBaseComponent implements AfterContentInit {
   @ContentChildren(AccordionPanelHeaderComponent) headers: QueryList<AccordionPanelHeaderComponent>;
 
-  // TODO:  rename all ui lib "isCollapsed" to "collapsed"!
   constructor() {
     super();
     effect(
       () => {
-        this.headers.get(0)?.disabledPanel.set(this.disabled());
+        this.headers.get(0)?.disabledPanel.set(this.isDisabled());
       },
       { allowSignalWrites: true },
     );
@@ -48,7 +47,7 @@ export class AccordionPanelComponent extends UIBaseComponent implements AfterCon
    * If set to `true` this Accordion Panel is disabled and can't be clicked / collapsed / expanded (optional)  
    * Default: `false`
    */
-  disabled = model<boolean>(false);
+  isDisabled = model<boolean>(false);
 
   /**
    * INTERNAL USE
