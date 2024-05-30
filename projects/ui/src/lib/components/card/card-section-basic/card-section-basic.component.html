@@ -18,14 +18,43 @@
                         </div>
                         {{ text() }}
                     } @else {
-                        <div class="ui-card-section-container">
-                            {{ text() }}
-                            <ng-container *ngTemplateOutlet="styleIcon"></ng-container>
+                        @if(text()) {
+                            <div class="ui-card-section-container">
+                                {{ text() }}
+                                <ng-container *ngTemplateOutlet="styleIcon"></ng-container>
+                            </div>
+                        }
+                    }
+                    @if(list()) {
+
+                        <ul class="ui-card-section-list">
+                            @for(item of list(); track $index) {
+                                <li>{{ item }}</li>
+                            }
+                        </ul>
+                    }
+                    @if(styledMessage() && style() > 0) {
+                        <div class="ui-card-section-styled-message" [style.color]="
+                            style() == 1
+                            ? 'var(--attention-color)'
+                            : style() == 2
+                                ? 'var(--error-color)'
+                                : style() == 3
+                                    ? 'var(--success-color)'
+                                    : style() == 4
+                                        ? 'var(--info-color)'
+                                        : ''
+                            "
+                        >
+                            {{ styledMessage() }}
                         </div>
                     }
-                    <div class="ui-card-section-accordion-container">
-                        <ng-content select="ui-accordion"></ng-content>
-                    </div>
+                    
+                    @if(this.accordions.length > 0) {
+                        <div class="ui-card-section-accordion-container">
+                            <ng-content select="ui-accordion"></ng-content>
+                        </div>
+                    }
                     
                 } @else {
                     <div class="loading pulse">

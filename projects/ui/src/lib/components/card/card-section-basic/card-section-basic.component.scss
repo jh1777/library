@@ -3,11 +3,37 @@
 
     position: relative;
     display: contents;
+
+    --attention-color: #{$ui-attention-color};
+    --error-color: #{$ui-error-color};
     
-    --attention-color: #{$ui-attention-color};  
-    --error-color: #{$ui-error-color};;  
     --success-color: #{$ui-success-color};
     --info-color: #{$ui-standard-color};
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        display: flex;
+        margin-left: 6px;
+        line-height: normal;
+
+        &:not(:last-child) {
+            margin-bottom: 5px;
+        }
+    }
+
+    li::before {
+        content: "\2022";
+        margin-right: 10px;
+    }
+
+    li span {
+        word-wrap: break-word;
+    }
+
 
     .has-error {
         min-height: 65px !important;
@@ -19,13 +45,13 @@
         &.last-section {
             border-bottom: 0px solid $ui-alternative-standard-color;
         }
-        
+
         &-header {
             display: flex;
             color: $ui-standard-text-color;
             font-weight: 600;
             align-items: center;
-            margin-bottom: 5px;
+
             &-right {
                 margin-left: auto;
                 display: flex;
@@ -35,10 +61,12 @@
                 }
             }
         }
+
         &-container {
             display: flex;
             flex-direction: row;
             align-items: center;
+            line-height: normal;
             gap: 10px;
         }
 
@@ -49,7 +77,9 @@
             flex-direction: column;
             word-wrap: break-word;
             width: initial !important;
+            gap: 6px;
         }
+
         &-footer {
             padding: 0px 15px;
             display: flex;
@@ -61,6 +91,11 @@
         &-accordion-container {
             margin-top: 5px;
             margin-bottom: 5px;
+        }
+
+
+        &-styled-message {
+            font-weight: 700;
         }
     }
 }

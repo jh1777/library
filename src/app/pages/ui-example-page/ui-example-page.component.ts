@@ -25,4 +25,6 @@ export class UiExamplePageComponent {
 
   badgeStyle = BadgeStyle;
 
+  liste = [ "Partner A", "Partner B - Which has a very long text in it because of testing the word breaks.", "Partner C"];
+
 }

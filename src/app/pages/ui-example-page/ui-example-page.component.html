@@ -64,5 +64,15 @@
             <ui-entry-tile-item primaryValue="IoT Hub Sync" secondaryValue="Sep 20, 2023, 11:19:00 AM GMT+2"></ui-entry-tile-item>
         </ui-entry-tile>
 
+        <ui-card header="Claims" grid-column="3" [style]=1>
+            <ui-card-section-basic 
+                text="Three claims were found, but one with problems." 
+                styledMessage="There is one claim not confirmed yet!"
+                [list]="liste" 
+                [style]=1>
+                <ui-button label="Show More Information" slot="footer-left" [style]=0></ui-button>
+            </ui-card-section-basic>
+        </ui-card>
+        
     </ui-grid>
 </div>
