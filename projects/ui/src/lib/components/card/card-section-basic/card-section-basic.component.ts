@@ -44,7 +44,7 @@ export class CardSectionBasicComponent extends UIBaseComponent {
   /** 
    * Simple unformattted string showed as text content. 
    */
-  text = input.required<string>();
+  text = input<string>();
 
   /** Header / Title for this section  
    * It will be shown on top - before `text`  
