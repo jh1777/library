@@ -65,6 +65,8 @@ export class EntryTileItemComponent extends UIBaseComponent implements AfterCont
     super.limitContentChildren(this.switches, 1);
   }
 
+  // TODO: resize: Icon steht über bei zu kleiner width!
+  // TODO: Icon sollte petrol sein, wenn isClickable == true
   /** 
    * INTERNAL  
    */

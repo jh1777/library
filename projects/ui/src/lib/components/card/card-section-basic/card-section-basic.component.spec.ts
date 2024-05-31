@@ -3,7 +3,7 @@ import { CardSectionBasicComponent } from './card-section-basic.component';
 import { CardStyle } from '../card.models';
 
 
-// RUN WITH `nx test --test-file src/lib/components/card-section-basic/card-section-basic.component.spec.ts` (from csgp-library folder)
+// RUN WITH `nx test --test-file src/lib/components/card/card-section-basic/card-section-basic.component.spec.ts` (from csgp-library folder)
 describe('CardSectionBasicComponent', () => {
     let component: CardSectionBasicComponent;
     let fixture: ComponentFixture<CardSectionBasicComponent>;
