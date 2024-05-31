@@ -41,7 +41,7 @@ describe('ButtonComponent', () => {
         const event = new MouseEvent('click');
         spyOn(component.onClick, 'emit');
         component.handleClickEvent(event);
-        expect(component.onClick.emit).toHaveBeenCalledWith(component.id());
+        expect(component.onClick.emit).toHaveBeenCalledWith(event);
     });
 
     it('should set and get simpleOnly', () => {
