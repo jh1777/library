@@ -4,6 +4,17 @@
         class="ui-card-section"
         [class.has-error]="hasError() == true"
         [class.last-section]="isLast() == true"
+        [style.background-color]="
+            style() == 1 && showStyledBackground() == true
+            ? 'var(--attention-background-color)'
+            : style() == 2 && showStyledBackground() == true
+                ? 'var(--error-background-color)'
+                : style() == 3 && showStyledBackground() == true
+                    ? 'var(--success-background-color)'
+                    : style() == 4 && showStyledBackground() == true
+                        ? 'var(--info-background-color)'
+                        : ''
+            "
     >
         @if(hasError() == true) {
             <ui-error [errorMessage]="errorMessage()"></ui-error>

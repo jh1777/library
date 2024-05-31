@@ -6,9 +6,13 @@
 
     --attention-color: #{$ui-attention-color};
     --error-color: #{$ui-error-color};
-    
     --success-color: #{$ui-success-color};
     --info-color: #{$ui-standard-color};
+
+    --attention-background-color: #{$ui-light-attention-color};
+    --error-background-color: #{$ui-light-error-color};
+    --success-background-color: #{$ui-light-success-color};
+    --info-background-color: #{$ui-light-standard-color};
 
     ul {
         list-style: none;

@@ -44,6 +44,11 @@ describe('CardSectionBasicComponent', () => {
         expect(component.header()).toBe('#Header');
     });
 
+    it('should set showStyledBackground', () => {
+        fixture.componentRef.setInput('showStyledBackground', true);
+        expect(component.showStyledBackground()).toBe(true);
+    });
+
     it('should set style', () => {
         fixture.componentRef.setInput('style', CardStyle.None);
         expect(component.style()).toBe(CardStyle.None);

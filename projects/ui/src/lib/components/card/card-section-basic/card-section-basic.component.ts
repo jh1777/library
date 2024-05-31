@@ -79,4 +79,7 @@ export class CardSectionBasicComponent extends UIBaseComponent {
    * (optional)
    */
   styledMessage = input<string>();
+
+
+  showStyledBackground = input<boolean>(false);
 }
