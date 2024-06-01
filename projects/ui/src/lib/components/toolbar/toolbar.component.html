@@ -1,6 +1,6 @@
 @if(isHidden() == false) {
     <div class="ui-toolbar-left">
-        @if(text()) {
+        @if(text() && showToolbarText() == true) {
             <div class="ui-toolbar-left-text">
                 {{ text() }}
             </div>

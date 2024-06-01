@@ -1,0 +1,67 @@
+:host {
+    @import '../../styles/ui.styles.scss';
+
+      
+
+    .ui-modal {
+
+        &-wrapper {
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba($color: $ui-standard-text-color, $alpha: 0.6);
+        }
+
+        &-container {
+            min-width: $ui-min-width;
+            min-height: max-content;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 9002;
+            padding: 20px;
+            background-color: $ui-inverted-text-color;
+            border-radius: $ui-border-radius;
+            -webkit-box-shadow: 0 0 10px 0 $ui-dark-shadow-color;
+            -moz-box-shadow: 0 0 10px 0 $ui-dark-shadow-color;
+            box-shadow: 0 0 10px 0 $ui-dark-shadow-color;
+        }
+
+        &-header {
+            font-size: 18px;
+            font-weight: 700;
+            color: $ui-standard-text-color;
+            display: flex;
+            flex-direction: row;
+
+            &-close-button {
+                color: $ui-standard-text-color;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                padding: .1rem .2rem;
+                border-radius: $ui-border-radius;
+                &:hover {
+                    background-color: lighten($ui-alternative-standard-color, 6%);
+                    &:active {
+                      background-color: transparent;
+                    }
+                  }
+            }
+        }
+
+        &-footer {
+            margin-top: auto;
+        }
+    }
+ 
+}

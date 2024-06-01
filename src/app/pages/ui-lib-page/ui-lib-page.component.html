@@ -1,6 +1,43 @@
 
 <div class="page-header">UI Library (v2) with ng17, Signals etc.</div>
 
+MODAL
+
+<!--
+  https://briantree.se/angular-cdk-overlay-tutorial-learn-the-basics/
+-->
+
+
+<ui-modal header="MODAL HEADER" [(isOpen)]="showModal" [height]=0 [width]=2 [closeOnBackdropClick]=false>
+  
+  <ui-card header="Claims" grid-column="1" [style]=0>
+    <ui-card-section-basic 
+        header="Partner A" 
+        [style]=3>
+    </ui-card-section-basic>
+    <ui-card-section-basic 
+        text="No confimation received within 30 seconds after sending the request." 
+        styledMessage="The confirmation is pending since 2 days."
+        header="Partner B"
+        [showStyledBackground]=true
+        [style]=1>
+    </ui-card-section-basic>
+    <ui-card-section-basic 
+        header="Partner C" 
+        [style]=3>
+    </ui-card-section-basic>
+  </ui-card>
+
+  <ui-toolbar>
+    <ui-button slot="right" label="Okay" icon="check" [style]="1"></ui-button>
+    <ui-button slot="right" icon="times" label="Cancel" (onClick)="showModal.set(false)" [style]="4"></ui-button>
+  </ui-toolbar>
+
+</ui-modal>
+<ui-button label="Show Modal" (onClick)="openModal()"></ui-button>
+
+
+
 <div class="item">
   <div class="title">
     ACCORDION

@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, input } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, input, signal } from '@angular/core';
 import { ButtonComponent } from '../button';
 import { UIBaseComponent } from '../../shared';
 import { BadgeComponent } from '../badge/badge.component';
@@ -20,7 +20,8 @@ export class ToolbarComponent extends UIBaseComponent implements AfterContentIni
   @ContentChildren(ValueTileComponent) valueTiles: QueryList<ValueTileComponent>;
 
   /**
-   * Text to show at the left side before any sub-components are shown (optional)  
+   * Text to show at the left side before any sub-components are shown  
+   * (optional)  
    */
   text = input<string>();
 
@@ -28,6 +29,9 @@ export class ToolbarComponent extends UIBaseComponent implements AfterContentIni
   maxBadges = input<number>(3);
   maxSwitches = input<number>(3);
   maxValueTiles = input<number>(2);
+
+  //** INTERNAL USE */
+  showToolbarText = signal<boolean>(true);
 
   ngAfterContentInit(): void {
     super.limitContentChildren(this.badges, this.maxBadges());

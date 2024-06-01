@@ -26,4 +26,6 @@ export * from './lib/components/tabs';
 export * from './lib/components/toolbar';
 export * from './lib/components/value-tile';
 export * from './lib/components/menu';
+export * from './lib/components/modal';
 export * from './lib/components/window';
+

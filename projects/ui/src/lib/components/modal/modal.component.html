@@ -1,0 +1,30 @@
+
+@if(isHidden() == false && isOpen() == true) {
+    <div class="ui-modal-wrapper no-select" 
+        (click)="onClickHandler($event)" 
+    >
+        <div class="ui-modal-container"
+            [style.min-height.px]="calcHeight()"
+            [style.min-width.px]="calcWidth()"
+            >
+            <div class="ui-modal-header">
+                {{ header() }}
+                @if(showCloseButton() == true) {
+                    <div 
+                        class="ui-generic-left-right-container-right ui-modal-header-close-button"
+                        (click)="onCloseClick($event)"
+                    >
+                        <cds-icon shape="times" size="16"></cds-icon>
+                    </div>
+                }
+            </div>
+            <div class="ui-modal-content">
+                <ng-content></ng-content>
+            </div>
+
+            <div class="ui-modal-footer">
+                <ng-content select="ui-toolbar"></ng-content>
+            </div>
+        </div>
+    </div>
+}
