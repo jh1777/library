@@ -114,6 +114,7 @@ export class ModalComponent extends UIBaseComponent implements AfterContentInit 
 
   /**
    * Controls if a close (x) button should be shown  
+   * This ONLY works if a `header` is set!  
    * Default: `true`  
    */
   showCloseButton = input<boolean>(true);

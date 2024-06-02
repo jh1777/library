@@ -27,11 +27,11 @@
                             {{ header() }}
                             <ng-container *ngTemplateOutlet="styleIcon"></ng-container>    
                         </div>
-                        {{ text() }}
+                        <div [innerHTML]="text()"></div>
                     } @else {
                         @if(text()) {
                             <div class="ui-card-section-container">
-                                {{ text() }}
+                                <div [innerHTML]="text()"></div>
                                 <ng-container *ngTemplateOutlet="styleIcon"></ng-container>
                             </div>
                         }

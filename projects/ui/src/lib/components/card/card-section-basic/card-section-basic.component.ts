@@ -42,11 +42,14 @@ export class CardSectionBasicComponent extends UIBaseComponent {
   isLast = signal<boolean>(false);
 
   /** 
-   * Simple unformattted string showed as text content. 
+   * Text shown as section content  
+   * Uses `innerHTML` so html formatting can be applied  
+   * (optional)  
    */
   text = input<string>();
 
-  /** Header / Title for this section  
+  /** 
+   * Header / Title for this section  
    * It will be shown on top - before `text`  
    * (optional) 
    */

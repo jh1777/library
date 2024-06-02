@@ -1,0 +1,20 @@
+<ui-modal
+    [header]="header()" 
+    [(isOpen)]="isOpen" 
+    [height]=0 
+    [width]=2 
+    [showCloseButton]=false
+    [closeOnBackdropClick]=false
+    >
+    @if(message()) {
+        <div [innerHTML]="message()"></div>
+    }
+    <ui-toolbar>
+        <ui-button slot="right" [label]="confirmLabel()" 
+            icon="check" 
+            (onClick)="onConfirmClickHandler($event)" [style]=1></ui-button>
+        <ui-button slot="right" [label]="cancelLabel()" 
+            icon="times" 
+            (onClick)="onCancelClickHandler($event)" [style]=4></ui-button>
+      </ui-toolbar>
+</ui-modal>

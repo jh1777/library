@@ -6,6 +6,17 @@ MODAL
 <!--
   https://briantree.se/angular-cdk-overlay-tutorial-learn-the-basics/
 -->
+<ui-confirmation-modal 
+  [(isOpen)]="showConfModal" 
+  header="Are you sure?"
+  showCloseButton="true"
+  confirmLabel="Yes"
+  cancelLabel="No"
+  (onCancelClick)="log('Cancelled')"
+  (onConfirmClick)="log('Confirmed')"
+  >
+</ui-confirmation-modal>
+<ui-button label="Show Confirmation Modal" (onClick)="openConfModal()"></ui-button>
 
 
 <ui-modal header="MODAL HEADER" [(isOpen)]="showModal" [height]=0 [width]=2 [closeOnBackdropClick]=false>
@@ -16,7 +27,7 @@ MODAL
         [style]=3>
     </ui-card-section-basic>
     <ui-card-section-basic 
-        text="No confimation received within 30 seconds after sending the request." 
+        text="No confimation received within <i>30 seconds</i> after sending the request." 
         styledMessage="The confirmation is pending since 2 days."
         header="Partner B"
         [showStyledBackground]=true
