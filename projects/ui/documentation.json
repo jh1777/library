@@ -11,6 +11,16 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "Destructive",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/lib/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: 'Destructive',\n    isDisabled: false,\n    style: 4,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
+            },
+            {
                 "name": "Large",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -98,7 +108,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ButtonComponent>",
-                "defaultValue": "{\n  title: 'UILib/Button',\n  component: ButtonComponent,\n  \n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  args: { onClick: fn() },\n}"
+                "defaultValue": "{\n  title: 'UI/Button',\n  component: ButtonComponent,\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule],\n    })\n  ],\n  \n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  argTypes: {\n    onClick: { action: fn() },\n  }\n}"
+            },
+            {
+                "name": "Outline",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/lib/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: 'Outlined',\n    isDisabled: false,\n    style: 3,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
             },
             {
                 "name": "Plain",
@@ -108,7 +128,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'Button',\n    disabled: false,\n    style: 0,\n    icon: 'check',\n    hidden: signal(false)\n  },\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Plain',\n    isDisabled: false,\n    style: 0,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
+            },
+            {
+                "name": "PlainDestructive",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/lib/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: 'Plain Destructive',\n    isDisabled: false,\n    style: 6,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
             },
             {
                 "name": "preview",
@@ -131,6 +161,16 @@
                 "defaultValue": "{\n  args: {\n    primary: true,\n    label: 'Button',\n  },\n}"
             },
             {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/lib/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: 'Primary',\n    isDisabled: false,\n    style: 1,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
+            },
+            {
                 "name": "Secondary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -141,6 +181,16 @@
                 "defaultValue": "{\n  args: {\n    label: 'Button',\n  },\n}"
             },
             {
+                "name": "Secondary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/lib/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: 'Secondary',\n    isDisabled: false,\n    style: 2,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
+            },
+            {
                 "name": "Small",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -149,6 +199,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    size: 'small',\n    label: 'Button',\n  },\n}"
+            },
+            {
+                "name": "Success",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/lib/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: 'Success',\n    isDisabled: false,\n    style: 5,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
             }
         ],
         "functions": [],
@@ -200,6 +260,88 @@
         ],
         "enumerations": [],
         "groupedVariables": {
+            "projects/ui/src/lib/components/button/button.stories.ts": [
+                {
+                    "name": "Destructive",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: 'Destructive',\n    isDisabled: false,\n    style: 4,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ButtonComponent>",
+                    "defaultValue": "{\n  title: 'UI/Button',\n  component: ButtonComponent,\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule],\n    })\n  ],\n  \n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  argTypes: {\n    onClick: { action: fn() },\n  }\n}"
+                },
+                {
+                    "name": "Outline",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: 'Outlined',\n    isDisabled: false,\n    style: 3,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
+                },
+                {
+                    "name": "Plain",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: 'Plain',\n    isDisabled: false,\n    style: 0,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
+                },
+                {
+                    "name": "PlainDestructive",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: 'Plain Destructive',\n    isDisabled: false,\n    style: 6,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: 'Primary',\n    isDisabled: false,\n    style: 1,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
+                },
+                {
+                    "name": "Secondary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: 'Secondary',\n    isDisabled: false,\n    style: 2,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
+                },
+                {
+                    "name": "Success",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: 'Success',\n    isDisabled: false,\n    style: 5,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
+                }
+            ],
             "projects/ui/src/stories/button.stories.ts": [
                 {
                     "name": "Large",
@@ -316,28 +458,6 @@
                     "defaultValue": "{\n  title: 'Example/Page',\n  component: PageComponent,\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n}"
                 }
             ],
-            "projects/ui/src/lib/components/button/button.stories.ts": [
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/lib/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<ButtonComponent>",
-                    "defaultValue": "{\n  title: 'UILib/Button',\n  component: ButtonComponent,\n  \n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  args: { onClick: fn() },\n}"
-                },
-                {
-                    "name": "Plain",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/lib/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'Button',\n    disabled: false,\n    style: 0,\n    icon: 'check',\n    hidden: signal(false)\n  },\n}"
-                }
-            ],
             "projects/ui/.storybook/preview.ts": [
                 {
                     "name": "preview",
@@ -428,6 +548,16 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "Destructive",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/lib/components/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "meta",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
@@ -438,7 +568,57 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "Outline",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/lib/components/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "Plain",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/lib/components/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "PlainDestructive",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/lib/components/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/lib/components/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/lib/components/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Success",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
