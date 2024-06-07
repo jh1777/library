@@ -83,6 +83,10 @@ export class CardSectionBasicComponent extends UIBaseComponent {
    */
   styledMessage = input<string>();
 
-
+  /**
+   * Shows a colored background if the style is != `None`  
+   * Default: `false`  
+   * (optional)  
+   */
   showStyledBackground = input<boolean>(false);
 }

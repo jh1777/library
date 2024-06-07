@@ -1,3 +1,5 @@
+import { UIBaseComponentInterface } from "../../shared/ui-base.models";
+
 export enum ButtonStyle {
     /** Small standard petrol button without any borders and backgrounds */
     Simple_primary = 0,
@@ -13,4 +15,11 @@ export enum ButtonStyle {
     Destructive = 4,
     /** Confirmation  style button with green fill color and white fonts */
     Confirm = 5
-  }
+}
+
+export interface ButtonInterface extends UIBaseComponentInterface {
+  label?: string;
+  style?: ButtonStyle;
+  icon?: string;
+  isDisabled?: boolean;
+}

@@ -56,9 +56,6 @@ export class CardComponent extends UIBaseComponent implements AfterContentInit {
   /** Main header title of the card - shown at the top */
   header = input.required<string>();
 
-  /** Simple unformattted string showed as text content */
-  text = input<string>();
-
   /** 
    * Style of the card (optional)  
    *  The header background and border will get colorized in:  
