@@ -1,7 +1,13 @@
 
 <div class="page-header">UI Library (v2) with ng17, Signals etc.</div>
 
+<ui-button label="Show Signpost" (onClick)="openSignpost($event)"></ui-button>
+<ui-signpost #signpost [offsetY]=-50 [offsetX]=0 text="This is the <strong>styled</strong> Text!">
+</ui-signpost>
+
+
 MODAL
+
 
 <!--
   https://briantree.se/angular-cdk-overlay-tutorial-learn-the-basics/
@@ -165,7 +171,7 @@ MODAL
   </div>
   <div class="instances" style="align-items: center;">
     <ui-badge value="14" [style]="1"></ui-badge>
-    <ui-badge value="99" [style]="2"></ui-badge>
+    <ui-badge value="1459" [style]="2"></ui-badge>
     <ui-badge value="4" [style]="3"></ui-badge>
     <ui-badge value="4" [style]="4"></ui-badge>
     <ui-badge value="18" size="1"></ui-badge>

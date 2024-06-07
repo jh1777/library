@@ -1,0 +1,18 @@
+:host {
+    @import '../../styles/ui.styles.scss';
+
+    z-index: 9001;
+      
+    .signpost {
+        position: absolute;
+        background-color: $ui-inverted-text-color;
+        border: 1px solid rgba($color: $ui-standard-text-color, $alpha: .11);
+        padding: 5px 9px;
+        border-radius: $ui-border-radius;
+        -webkit-box-shadow: 0 0 5px 0 $ui-standard-color;
+        -moz-box-shadow: 0 0 5px 0 $ui-standard-color;
+        box-shadow: 0 0 5px 0 rgba($color: $ui-standard-text-color, $alpha: .1);
+        line-height: normal;
+        display: block;
+      }
+}

@@ -1,0 +1,5 @@
+@if(isHidden() == false) {
+    <div class="signpost" [ngStyle]="{'top.px': top, 'left.px': left }">
+        <div [innerHTML]="text()"></div>
+    </div>
+}

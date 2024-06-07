@@ -28,5 +28,6 @@ export * from './lib/components/value-tile';
 export * from './lib/components/menu';
 export * from './lib/components/modal';
 export * from './lib/components/modal/confirmation-modal';
+export * from './lib/components/signpost';
 export * from './lib/components/window';
 
