@@ -1,3 +1,7 @@
+import { UIBaseComponentInterface } from "../../shared/ui-base.models";
+import { EntryKeyValueItemInterface } from "../entry-key-value";
+import { EntryTileItemInterface } from "./entry-tile-item/entry-tile-item.models";
+
 /**
  * Generic Style that is used in tiles and items
  */
@@ -18,3 +22,15 @@ export enum EntryTileCollapseMode {
     Autoexpanded = 2,
 }
   
+export interface EntryTileInterface extends UIBaseComponentInterface {
+    header?: string;
+    headerIcon?: string;
+    description?: string;
+    style?: EntryTileStyle;
+    collapseMode?: EntryTileCollapseMode;
+    keyValues?: EntryKeyValueItemInterface[];
+    items?: EntryTileItemInterface[];
+    isCollapsed?: boolean;
+    moreButtonLabel?: string;
+    pageSize?: number;
+}
