@@ -110,6 +110,10 @@
             "configDir": "projects/ui-lib/.storybook",
             "browserTarget": "ui-lib:build",
             "compodoc": true,
+            "styles": [
+              "node_modules/@clr/icons/clr-icons.min.css",
+              "node_modules/@clr/ui/clr-ui.min.css"
+            ],
             "compodocArgs": [
               "-e",
               "json",
@@ -125,6 +129,10 @@
             "configDir": "projects/ui-lib/.storybook",
             "browserTarget": "ui-lib:build",
             "compodoc": true,
+            "styles": [
+              "node_modules/@clr/icons/clr-icons.min.css",
+              "node_modules/@clr/ui/clr-ui.min.css"
+            ],
             "compodocArgs": [
               "-e",
               "json",
@@ -174,6 +182,10 @@
             "configDir": "projects/ui/.storybook",
             "browserTarget": "ui:build",
             "compodoc": true,
+            "styles": [
+              "node_modules/@clr/icons/clr-icons.min.css",
+              "node_modules/@clr/ui/clr-ui.min.css"
+            ],
             "compodocArgs": [
               "-e",
               "json",
@@ -189,6 +201,10 @@
             "configDir": "projects/ui/.storybook",
             "browserTarget": "ui:build",
             "compodoc": true,
+            "styles": [
+              "node_modules/@clr/icons/clr-icons.min.css",
+              "node_modules/@clr/ui/clr-ui.min.css"
+            ],
             "compodocArgs": [
               "-e",
               "json",
