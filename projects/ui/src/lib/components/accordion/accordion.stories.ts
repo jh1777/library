@@ -1,7 +1,5 @@
 import { Meta, StoryObj, argsToTemplate, componentWrapperDecorator, moduleMetadata } from '@storybook/angular';
 import { AccordionComponent } from './accordion.component';
-import { input, output, signal } from '@angular/core';
-import { fn } from '@storybook/test';
 import { ClarityModule } from '@clr/angular';
 import { CommonModule } from '@angular/common';
 import {
@@ -13,8 +11,10 @@ import '@cds/core/icon/register.js';
 import { AccordionPanelHeaderComponent } from './accordion-panel/accordion-panel-header/accordion-panel-header.component';
 import { AccordionPanelComponent } from './accordion-panel/accordion-panel.component';
 ClarityIcons.addIcons(checkIcon, timesIcon);
-
-import { AccordionPanel } from './accordion-panel/accordion-panel.stories';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { SwitchComponent } from '../switch';
+import { BadgeComponent } from '../badge';
+import { ButtonComponent } from '../button';
 
 // https://storybook.js.org/tutorials/intro-to-storybook/angular/en/composite-component/
 
@@ -26,40 +26,120 @@ const meta: Meta<AccordionComponent> = {
   decorators: [
     moduleMetadata({
       //👇 Imports both components to allow component composition with Storybook
-      imports: [ClarityModule, AccordionPanelComponent, AccordionPanelHeaderComponent, CommonModule],
+      imports: [ClarityModule, AccordionPanelComponent, AccordionPanelHeaderComponent, SwitchComponent, BadgeComponent, ButtonComponent, CommonModule],
+      providers: [provideAnimations()], 
     }),
-    componentWrapperDecorator(
-        (story) => `<div style="margin: 3em">${story}</div>`
-    ),
+    // componentWrapperDecorator(
+    //     (story) => `<div style="margin: 3em">${story}</div>`
+    // ),
   ],
   
-  tags: ['autodocs'],
+  tags: [],
+  
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
   argTypes: {
    
   }
 };
 
-
 export default meta;
 type Story = StoryObj<AccordionComponent>;
 
 
-export const Primary: Story = {
-    args: {
-        header: "The Accordion Header",
-        description: "This is the description of the component (optional)"
-        
-    },
-    render: (args) => ({
-        props: args,
-        template: `
-        <ui-accordion [header]="header" [description]="description">
-            <ui-accordion-panel>
-                <ui-accordion-panel-header label="Header #1"></ui-accordion-panel-header>
-                Some Content
-            </ui-accordion-panel>
-        </ui-accordion>
-    `,
-    }),
+
+
+export const Headers: Story = {
+  args: {
+      header: "The Accordion Header",
+      description: "This is the description of the component (optional)",        
+  },
+  render: (args) => ({
+      props: args,
+
+      template: `
+      <ui-accordion [header]="header" [description]="description">
+          <ui-accordion-panel>
+              <ui-accordion-panel-header label="Header #1"></ui-accordion-panel-header>
+              Some Content
+          </ui-accordion-panel>
+      </ui-accordion>
+  `,
+  }),
+};
+
+export const Simple: Story = {
+  render: (args) => ({
+      props: args,
+
+      template: `
+      <ui-accordion [header]="header" [description]="description">
+          <ui-accordion-panel>
+              <ui-accordion-panel-header label="Header #1"></ui-accordion-panel-header>
+              Some Content
+          </ui-accordion-panel>
+      </ui-accordion>
+  `,
+  }),
+};
+
+export const Panels: Story = {
+  args: {
+      header: "Some Panels",
+      description: "Variation of Panels",        
+  },
+  render: (args) => ({
+      props: args,
+      template: `
+      <ui-accordion [header]="header" [description]="description">
+          <ui-accordion-panel>
+              <ui-accordion-panel-header label="Default"></ui-accordion-panel-header>
+              Any Content
+          </ui-accordion-panel>
+          <ui-accordion-panel>
+              <ui-accordion-panel-header label="Attention Style" [style]=1></ui-accordion-panel-header>
+              Any Content
+          </ui-accordion-panel>
+          <ui-accordion-panel [isCollapsed]=false>
+              <ui-accordion-panel-header label="Expanded by default" ></ui-accordion-panel-header>
+              Any Content
+          </ui-accordion-panel>
+          <ui-accordion-panel [isDisabled]=true>
+              <ui-accordion-panel-header label="Disabled" ></ui-accordion-panel-header>
+              Any Content
+          </ui-accordion-panel>
+      </ui-accordion>
+  `,
+  }),
+};
+
+export const Nested: Story = {
+  args: {
+      header: "Nested Components",
+      description: "Panels with nested components",        
+  },
+  render: (args) => ({
+      props: args,
+      template: `
+      <ui-accordion [header]="header" [description]="description">
+          <ui-accordion-panel>
+              <ui-accordion-panel-header label="Button Component">
+                <ui-button label="Okay" icon="check" [style]=1></ui-button>
+              </ui-accordion-panel-header>
+              Any Content
+          </ui-accordion-panel>
+          <ui-accordion-panel>
+              <ui-accordion-panel-header label="Badge Component">
+                <ui-badge value="7"></ui-badge>
+              </ui-accordion-panel-header>
+              Any Content
+          </ui-accordion-panel>
+          <ui-accordion-panel>
+              <ui-accordion-panel-header label="Switch Component">
+                <ui-switch label="Activated"></ui-switch>
+              </ui-accordion-panel-header>
+              Any Content
+          </ui-accordion-panel>
+      </ui-accordion>
+  `,
+  }),
 };

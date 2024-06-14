@@ -6,6 +6,10 @@
     gap: 6px;
     width: 100%;
 
+    --attention-color: #{$ui-attention-color};
+    --error-color: #{$ui-error-color};  
+    --success-color:  #{$ui-success-color};
+
     .ui-accordion-panel-header-right {
         display: flex;
         margin-left: auto;

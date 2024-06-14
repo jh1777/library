@@ -21,14 +21,15 @@ import {
   plusIcon
 } from '@cds/core/icon';
 import '@cds/core/icon/register.js';
-import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 setCompodocJson(docJson);
 ClarityIcons.addIcons(checkIcon, timesIcon, trashIcon, popOutIcon, undoIcon, copyIcon, plusCircleIcon, plusIcon, angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisVerticalIcon, ellipsisHorizontalIcon);
+
 
 const preview: Preview = {
   decorators: [
     moduleMetadata({
-      imports: [ClarityModule, BrowserModule]
+      imports: [ClarityModule, BrowserAnimationsModule]
     })
   ],
   parameters: {

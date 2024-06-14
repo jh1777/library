@@ -11,26 +11,6 @@
     "miscellaneous": {
         "variables": [
             {
-                "name": "AccordionPanel",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n    args: {\n\n    },\n    render: (args) => ({\n        props: args,\n        template: `\n\n            <ui-accordion-panel>\n                <ui-accordion-panel-header [label]=\"AccordionPanelHeader.args.label\"></ui-accordion-panel-header>\n                Some Content\n            </ui-accordion-panel>\n\n    `,\n    }),\n}"
-            },
-            {
-                "name": "AccordionPanelHeader",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel-header/accordion-panel-header.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n    args: {\n      label: \"Accordion Item\"\n    }\n}"
-            },
-            {
                 "name": "Destructive",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -39,6 +19,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    label: 'Destructive',\n    isDisabled: false,\n    style: 4,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
+            },
+            {
+                "name": "Headers",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n      header: \"The Accordion Header\",\n      description: \"This is the description of the component (optional)\",        \n  },\n  render: (args) => ({\n      props: args,\n\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Header #1\"></ui-accordion-panel-header>\n              Some Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n}"
             },
             {
                 "name": "Large",
@@ -128,7 +118,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<AccordionComponent>",
-                "defaultValue": "{\n  title: 'UI/Accordion',\n  component: AccordionComponent,\n  subcomponents: { AccordionPanelComponent, AccordionPanelHeaderComponent },\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule, AccordionPanelComponent, AccordionPanelHeaderComponent, CommonModule],\n    }),\n    componentWrapperDecorator(\n        (story) => `<div style=\"margin: 3em\">${story}</div>`\n    ),\n  ],\n  \n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  argTypes: {\n    \n  }\n}"
+                "defaultValue": "{\n  title: 'UI/Accordion',\n  component: AccordionComponent,\n  subcomponents: { AccordionPanelComponent, AccordionPanelHeaderComponent },\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule, AccordionPanelComponent, AccordionPanelHeaderComponent, CommonModule],\n      providers: [provideAnimations()], \n    }),\n    componentWrapperDecorator(\n        (story) => `<div style=\"margin: 3em\">${story}</div>`\n    ),\n  ],\n  \n  tags: [],\n  \n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  argTypes: {\n   \n  }\n}"
             },
             {
                 "name": "meta",
@@ -141,26 +131,6 @@
                 "defaultValue": "{\n  title: 'UI/Button',\n  component: ButtonComponent,\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule],\n    })\n  ],\n  \n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  argTypes: {\n    onClick: { action: fn() },\n  }\n}"
             },
             {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<AccordionPanelComponent>",
-                "defaultValue": "{\n  title: 'UI/Accordion/Panel',\n  component: AccordionPanelComponent,\n  subcomponents: { AccordionPanelHeaderComponent },\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule, AccordionPanelHeaderComponent, CommonModule],\n    })\n  ],\n  \n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  argTypes: {\n    \n  }\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel-header/accordion-panel-header.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<AccordionPanelHeaderComponent>",
-                "defaultValue": "{\n  title: 'UI/Accordion/Panel/Header',\n  component: AccordionPanelHeaderComponent,\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule, CommonModule],\n    })\n  ],\n  \n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  argTypes: {\n    \n  }\n}"
-            },
-            {
                 "name": "Outline",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -169,6 +139,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    label: 'Outlined',\n    isDisabled: false,\n    style: 3,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
+            },
+            {
+                "name": "Panels",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n      header: \"Some Panels\",\n      description: \"Variation of Panels\",        \n  },\n  render: (args) => ({\n      props: args,\n      styles: [\n        \"../../styles/ui.styles.scss\"\n      ],\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Default\"></ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Attention Style\" [style]=1></ui-accordion-panel-header>\n              Ayn Content\n          </ui-accordion-panel>\n          <ui-accordion-panel [isCollapsed]=false>\n              <ui-accordion-panel-header label=\"Expanded by default\" ></ui-accordion-panel-header>\n              Ayn Content\n          </ui-accordion-panel>\n          <ui-accordion-panel [isDisabled]=true>\n              <ui-accordion-panel-header label=\"Disabled\" ></ui-accordion-panel-header>\n              Ayn Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n}"
             },
             {
                 "name": "Plain",
@@ -198,7 +178,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Preview",
-                "defaultValue": "{\n  decorators: [\n    moduleMetadata({\n      imports: [ClarityModule]\n    })\n  ],\n  parameters: {\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n}"
+                "defaultValue": "{\n  decorators: [\n    moduleMetadata({\n      imports: [ClarityModule, BrowserAnimationsModule]\n    })\n  ],\n  parameters: {\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -209,16 +189,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    primary: true,\n    label: 'Button',\n  },\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n    args: {\n        header: \"The Accordion Header\",\n        description: \"This is the description of the component (optional)\"\n        \n    },\n    render: (args) => ({\n        props: args,\n        template: `\n        <ui-accordion [header]=\"header\" [description]=\"description\">\n            <ui-accordion-panel>\n                <ui-accordion-panel-header  label=\"Header #1\"></ui-accordion-panel-header>\n                Some Content\n            </ui-accordion-panel>\n        </ui-accordion>\n    `,\n    }),\n}"
             },
             {
                 "name": "Primary",
@@ -249,6 +219,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    label: 'Secondary',\n    isDisabled: false,\n    style: 2,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
+            },
+            {
+                "name": "Simple",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: (args) => ({\n      props: args,\n\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Header #1\"></ui-accordion-panel-header>\n              Some Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n}"
             },
             {
                 "name": "Small",
@@ -327,76 +307,10 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<AccordionPanelComponent>",
-                "file": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<AccordionPanelHeaderComponent>",
-                "file": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel-header/accordion-panel-header.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
             }
         ],
         "enumerations": [],
         "groupedVariables": {
-            "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel.stories.ts": [
-                {
-                    "name": "AccordionPanel",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {\n\n    },\n    render: (args) => ({\n        props: args,\n        template: `\n\n            <ui-accordion-panel>\n                <ui-accordion-panel-header [label]=\"AccordionPanelHeader.args.label\"></ui-accordion-panel-header>\n                Some Content\n            </ui-accordion-panel>\n\n    `,\n    }),\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<AccordionPanelComponent>",
-                    "defaultValue": "{\n  title: 'UI/Accordion/Panel',\n  component: AccordionPanelComponent,\n  subcomponents: { AccordionPanelHeaderComponent },\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule, AccordionPanelHeaderComponent, CommonModule],\n    })\n  ],\n  \n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  argTypes: {\n    \n  }\n}"
-                }
-            ],
-            "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel-header/accordion-panel-header.stories.ts": [
-                {
-                    "name": "AccordionPanelHeader",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel-header/accordion-panel-header.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {\n      label: \"Accordion Item\"\n    }\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel-header/accordion-panel-header.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<AccordionPanelHeaderComponent>",
-                    "defaultValue": "{\n  title: 'UI/Accordion/Panel/Header',\n  component: AccordionPanelHeaderComponent,\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule, CommonModule],\n    })\n  ],\n  \n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  argTypes: {\n    \n  }\n}"
-                }
-            ],
             "projects/ui/src/lib/components/button/button.stories.ts": [
                 {
                     "name": "Destructive",
@@ -477,6 +391,48 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {\n    label: 'Success',\n    isDisabled: false,\n    style: 5,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
+                }
+            ],
+            "projects/ui/src/lib/components/accordion/accordion.stories.ts": [
+                {
+                    "name": "Headers",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n      header: \"The Accordion Header\",\n      description: \"This is the description of the component (optional)\",        \n  },\n  render: (args) => ({\n      props: args,\n\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Header #1\"></ui-accordion-panel-header>\n              Some Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<AccordionComponent>",
+                    "defaultValue": "{\n  title: 'UI/Accordion',\n  component: AccordionComponent,\n  subcomponents: { AccordionPanelComponent, AccordionPanelHeaderComponent },\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule, AccordionPanelComponent, AccordionPanelHeaderComponent, CommonModule],\n      providers: [provideAnimations()], \n    }),\n    componentWrapperDecorator(\n        (story) => `<div style=\"margin: 3em\">${story}</div>`\n    ),\n  ],\n  \n  tags: [],\n  \n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  argTypes: {\n   \n  }\n}"
+                },
+                {
+                    "name": "Panels",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n      header: \"Some Panels\",\n      description: \"Variation of Panels\",        \n  },\n  render: (args) => ({\n      props: args,\n      styles: [\n        \"../../styles/ui.styles.scss\"\n      ],\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Default\"></ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Attention Style\" [style]=1></ui-accordion-panel-header>\n              Ayn Content\n          </ui-accordion-panel>\n          <ui-accordion-panel [isCollapsed]=false>\n              <ui-accordion-panel-header label=\"Expanded by default\" ></ui-accordion-panel-header>\n              Ayn Content\n          </ui-accordion-panel>\n          <ui-accordion-panel [isDisabled]=true>\n              <ui-accordion-panel-header label=\"Disabled\" ></ui-accordion-panel-header>\n              Ayn Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n}"
+                },
+                {
+                    "name": "Simple",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: (args) => ({\n      props: args,\n\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Header #1\"></ui-accordion-panel-header>\n              Some Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n}"
                 }
             ],
             "projects/ui/src/stories/button.stories.ts": [
@@ -595,28 +551,6 @@
                     "defaultValue": "{\n  title: 'Example/Page',\n  component: PageComponent,\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n}"
                 }
             ],
-            "projects/ui/src/lib/components/accordion/accordion.stories.ts": [
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<AccordionComponent>",
-                    "defaultValue": "{\n  title: 'UI/Accordion',\n  component: AccordionComponent,\n  subcomponents: { AccordionPanelComponent, AccordionPanelHeaderComponent },\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule, AccordionPanelComponent, AccordionPanelHeaderComponent, CommonModule],\n    }),\n    componentWrapperDecorator(\n        (story) => `<div style=\"margin: 3em\">${story}</div>`\n    ),\n  ],\n  \n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  argTypes: {\n    \n  }\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {\n        header: \"The Accordion Header\",\n        description: \"This is the description of the component (optional)\"\n        \n    },\n    render: (args) => ({\n        props: args,\n        template: `\n        <ui-accordion [header]=\"header\" [description]=\"description\">\n            <ui-accordion-panel>\n                <ui-accordion-panel-header  label=\"Header #1\"></ui-accordion-panel-header>\n                Some Content\n            </ui-accordion-panel>\n        </ui-accordion>\n    `,\n    }),\n}"
-                }
-            ],
             "projects/ui/.storybook/preview.ts": [
                 {
                     "name": "preview",
@@ -626,7 +560,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Preview",
-                    "defaultValue": "{\n  decorators: [\n    moduleMetadata({\n      imports: [ClarityModule]\n    })\n  ],\n  parameters: {\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n}"
+                    "defaultValue": "{\n  decorators: [\n    moduleMetadata({\n      imports: [ClarityModule, BrowserAnimationsModule]\n    })\n  ],\n  parameters: {\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n}"
                 }
             ]
         },
@@ -697,32 +631,6 @@
                     "description": "",
                     "kind": 183
                 }
-            ],
-            "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<AccordionPanelComponent>",
-                    "file": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel-header/accordion-panel-header.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<AccordionPanelHeaderComponent>",
-                    "file": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel-header/accordion-panel-header.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
             ]
         }
     },
@@ -742,41 +650,11 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel-header/accordion-panel-header.stories.ts",
+                "filePath": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "AccordionPanelHeader",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel-header/accordion-panel-header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "AccordionPanel",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ui/src/lib/components/accordion/accordion-panel/accordion-panel.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
+                "name": "Headers",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -796,7 +674,17 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Primary",
+                "name": "Panels",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Simple",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
