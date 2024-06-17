@@ -120,12 +120,12 @@ MODAL
     <div class="subtitle">
       Current active tab is index = {{ activeTabIndex() }}
       <ui-button [label]="'Switch to 0'" (onClick)="activeTabIndex.set(0)"></ui-button>
-      <ui-button [label]="'Switch to 1'" (onClick)="activeTabIndex.set(1)"></ui-button>
+      <ui-button [label]="'Switch to 1'" (onClick)="activeTabIndex.set(1)" [isDisabled]=true></ui-button>
     </div>
   </div>
   <div class="columns" style="margin-top: 0.5rem">
     <div class="container">
-      <ui-tabs [(activeIndex)]="activeTabIndex" [showPrevNextButtons]=true>
+      <ui-tabs [(activeIndex)]="activeTabIndex" [showPrevNextButtons]="'false'">
         <ui-tab label="Fruits" badgeValue="2" badgeStyle="3">
           <li>Apple</li>
           <li>Lemon</li>
@@ -170,7 +170,7 @@ MODAL
     </div>
   </div>
   <div class="instances" style="align-items: center;">
-    <ui-badge value="14" [style]="1"></ui-badge>
+    <ui-badge value="14" [style]="'Success'"></ui-badge>
     <ui-badge value="1459" [style]="2"></ui-badge>
     <ui-badge value="4" [style]="3"></ui-badge>
     <ui-badge value="4" [style]="4"></ui-badge>

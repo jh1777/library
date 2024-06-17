@@ -1,6 +1,40 @@
 {
     "pipes": [],
-    "interfaces": [],
+    "interfaces": [
+        {
+            "name": "AccordionArgs",
+            "id": "interface-AccordionArgs-744c5945968ca502f4b8d92d8b00634ef35590e9427c10432eac1c87632f2f628bba79fb339747397c7c34f377df039e49e311884668f7148361a38f285f6e72",
+            "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { Meta, StoryObj, argsToTemplate, componentWrapperDecorator, moduleMetadata } from '@storybook/angular';\nimport { AccordionComponent } from './accordion.component';\nimport { ClarityModule } from '@clr/angular';\nimport { CommonModule } from '@angular/common';\nimport {\n  ClarityIcons,\n  checkIcon,\n  timesIcon,\n} from '@cds/core/icon';\nimport '@cds/core/icon/register.js';\nimport { AccordionPanelHeaderComponent } from './accordion-panel/accordion-panel-header/accordion-panel-header.component';\nimport { AccordionPanelComponent } from './accordion-panel/accordion-panel.component';\nClarityIcons.addIcons(checkIcon, timesIcon);\nimport { provideAnimations } from '@angular/platform-browser/animations';\nimport { SwitchComponent } from '../switch';\nimport { BadgeComponent } from '../badge';\nimport { ButtonComponent } from '../button';\nimport * as x from './accordion2';\n\ninterface AccordionArgs {\n  header?: string;\n  panelLabel?: string;\n}\n\n// https://storybook.js.org/tutorials/intro-to-storybook/angular/en/composite-component/\n\n// More on how to set up stories at: https://storybook.js.org/docs/writing-stories\nconst meta: Meta = {\n  title: 'UI/Accordion',\n  component: AccordionComponent,\n  //subcomponents: { AccordionPanelComponent, AccordionPanelHeaderComponent },\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule, AccordionPanelComponent, AccordionPanelHeaderComponent, SwitchComponent, BadgeComponent, ButtonComponent, CommonModule],\n      providers: [provideAnimations()], \n    }),\n    // componentWrapperDecorator(\n    //     (story) => `<div style=\"margin: 3em\">${story}</div>`\n    // ),\n  ],\n  \n  tags: [],\n  \n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  args: {\n    header: \"The Accordion Header\",\n    panelLabel: \"Header #1\"\n  },\n  argTypes: {\n   header: { control: 'text' },\n    panelLabel: { control: 'text' }\n  },\n  render: (args: AccordionArgs) => ButtonWebComponentWithBadge(args)\n\n} satisfies Meta<AccordionArgs>;\n\nconst AccordionPanelComponentTemplate = (args: AccordionArgs) => {\n  return `<ui-accordion-panel>\n              <ui-accordion-panel-header label=\"${args.panelLabel}\">\n              </ui-accordion-panel-header>\n              Some Content\n          </ui-accordion-panel>`;\n} \n\nexport const ButtonWebComponentWithBadge = (args: AccordionArgs) => {\n\n  return { args: args, template: `\n    <ui-accordion header=\"${args.header}\" description=\"${args.header}\">\n          ${AccordionPanelComponentTemplate(args)}\n      </ui-accordion>\n  `};\n};\n\nexport default meta;\ntype Story = StoryObj<AccordionArgs>;\n\n\n\nexport const Headers: Story = {\n  args: {\n      header: \"The Accordion Header\"\n  },\n};\n\n/*\nexport const Simple: Story = {\n  render: (args) => ({\n      props: args,\n\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Header #1\"></ui-accordion-panel-header>\n              Some Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n};\n\nexport const Panels: Story = {\n  args: {\n      header: \"Some Panels\",\n      description: \"Variation of Panels\",        \n  },\n  render: (args) => ({\n      props: args,\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Default\"></ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Attention Style\" [style]=1></ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel [isCollapsed]=false>\n              <ui-accordion-panel-header label=\"Expanded by default\" ></ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel [isDisabled]=true>\n              <ui-accordion-panel-header label=\"Disabled\" ></ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n};\n\nexport const Nested: Story = {\n  args: {\n      header: \"Nested Components\",\n      description: \"Panels with nested components\",        \n  },\n  render: (args) => ({\n      props: args,\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Button Component\">\n                <ui-button label=\"Okay\" icon=\"check\" [style]=1></ui-button>\n              </ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Badge Component\">\n                <ui-badge value=\"7\"></ui-badge>\n              </ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Switch Component\">\n                <ui-switch label=\"Activated\"></ui-switch>\n              </ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n  \n};\n*/",
+            "properties": [
+                {
+                    "name": "header",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "panelLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 22
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        }
+    ],
     "injectables": [],
     "guards": [],
     "interceptors": [],
@@ -10,6 +44,26 @@
     "modules": [],
     "miscellaneous": {
         "variables": [
+            {
+                "name": "AccordionPanelComponentTemplate",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(args: AccordionArgs) => {\n  return `<ui-accordion-panel>\n              <ui-accordion-panel-header label=\"${args.panelLabel}\">\n              </ui-accordion-panel-header>\n              Some Content\n          </ui-accordion-panel>`;\n}"
+            },
+            {
+                "name": "ButtonWebComponentWithBadge",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(args: AccordionArgs) => {\n\n  return { args: args, template: `\n    <ui-accordion header=\"${args.header}\" description=\"${args.header}\">\n          ${AccordionPanelComponentTemplate(args)}\n      </ui-accordion>\n  `};\n}"
+            },
             {
                 "name": "Destructive",
                 "ctype": "miscellaneous",
@@ -28,7 +82,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n      header: \"The Accordion Header\",\n      description: \"This is the description of the component (optional)\",        \n  },\n  render: (args) => ({\n      props: args,\n\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Header #1\"></ui-accordion-panel-header>\n              Some Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n}"
+                "defaultValue": "{\n  args: {\n      header: \"The Accordion Header\"\n  },\n}"
             },
             {
                 "name": "Large",
@@ -117,8 +171,8 @@
                 "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<AccordionComponent>",
-                "defaultValue": "{\n  title: 'UI/Accordion',\n  component: AccordionComponent,\n  subcomponents: { AccordionPanelComponent, AccordionPanelHeaderComponent },\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule, AccordionPanelComponent, AccordionPanelHeaderComponent, SwitchComponent, BadgeComponent, ButtonComponent, CommonModule],\n      providers: [provideAnimations()], \n    }),\n    // componentWrapperDecorator(\n    //     (story) => `<div style=\"margin: 3em\">${story}</div>`\n    // ),\n  ],\n  \n  tags: [],\n  \n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  argTypes: {\n   \n  }\n}"
+                "type": "Meta",
+                "defaultValue": "{\n  title: 'UI/Accordion',\n  component: AccordionComponent,\n  //subcomponents: { AccordionPanelComponent, AccordionPanelHeaderComponent },\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule, AccordionPanelComponent, AccordionPanelHeaderComponent, SwitchComponent, BadgeComponent, ButtonComponent, CommonModule],\n      providers: [provideAnimations()], \n    }),\n    // componentWrapperDecorator(\n    //     (story) => `<div style=\"margin: 3em\">${story}</div>`\n    // ),\n  ],\n  \n  tags: [],\n  \n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  args: {\n    header: \"The Accordion Header\",\n    panelLabel: \"Header #1\"\n  },\n  argTypes: {\n   header: { control: 'text' },\n    panelLabel: { control: 'text' }\n  },\n  render: (args: AccordionArgs) => ButtonWebComponentWithBadge(args)\n\n} satisfies Meta<AccordionArgs>"
             },
             {
                 "name": "meta",
@@ -131,16 +185,6 @@
                 "defaultValue": "{\n  title: 'UI/Button',\n  component: ButtonComponent,\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule],\n    })\n  ],\n  \n  tags: ['autodocs'],\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  argTypes: {\n    onClick: { action: fn() },\n  }\n}"
             },
             {
-                "name": "Nested",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n      header: \"Nested Components\",\n      description: \"Panels with nested components\",        \n  },\n  render: (args) => ({\n      props: args,\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Button Component\">\n                <ui-button label=\"Okay\" icon=\"check\" [style]=1></ui-button>\n              </ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Badge Component\">\n                <ui-badge value=\"7\"></ui-badge>\n              </ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Switch Component\">\n                <ui-switch label=\"Activated\"></ui-switch>\n              </ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n}"
-            },
-            {
                 "name": "Outline",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -149,16 +193,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    label: 'Outlined',\n    isDisabled: false,\n    style: 3,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
-            },
-            {
-                "name": "Panels",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n      header: \"Some Panels\",\n      description: \"Variation of Panels\",        \n  },\n  render: (args) => ({\n      props: args,\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Default\"></ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Attention Style\" [style]=1></ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel [isCollapsed]=false>\n              <ui-accordion-panel-header label=\"Expanded by default\" ></ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel [isDisabled]=true>\n              <ui-accordion-panel-header label=\"Disabled\" ></ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n}"
             },
             {
                 "name": "Plain",
@@ -231,16 +265,6 @@
                 "defaultValue": "{\n  args: {\n    label: 'Secondary',\n    isDisabled: false,\n    style: 2,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
             },
             {
-                "name": "Simple",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  render: (args) => ({\n      props: args,\n\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Header #1\"></ui-accordion-panel-header>\n              Some Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n}"
-            },
-            {
                 "name": "Small",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -300,7 +324,7 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<AccordionComponent>",
+                "rawtype": "StoryObj<AccordionArgs>",
                 "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -321,6 +345,48 @@
         ],
         "enumerations": [],
         "groupedVariables": {
+            "projects/ui/src/lib/components/accordion/accordion.stories.ts": [
+                {
+                    "name": "AccordionPanelComponentTemplate",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(args: AccordionArgs) => {\n  return `<ui-accordion-panel>\n              <ui-accordion-panel-header label=\"${args.panelLabel}\">\n              </ui-accordion-panel-header>\n              Some Content\n          </ui-accordion-panel>`;\n}"
+                },
+                {
+                    "name": "ButtonWebComponentWithBadge",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(args: AccordionArgs) => {\n\n  return { args: args, template: `\n    <ui-accordion header=\"${args.header}\" description=\"${args.header}\">\n          ${AccordionPanelComponentTemplate(args)}\n      </ui-accordion>\n  `};\n}"
+                },
+                {
+                    "name": "Headers",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n      header: \"The Accordion Header\"\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta",
+                    "defaultValue": "{\n  title: 'UI/Accordion',\n  component: AccordionComponent,\n  //subcomponents: { AccordionPanelComponent, AccordionPanelHeaderComponent },\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule, AccordionPanelComponent, AccordionPanelHeaderComponent, SwitchComponent, BadgeComponent, ButtonComponent, CommonModule],\n      providers: [provideAnimations()], \n    }),\n    // componentWrapperDecorator(\n    //     (story) => `<div style=\"margin: 3em\">${story}</div>`\n    // ),\n  ],\n  \n  tags: [],\n  \n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  args: {\n    header: \"The Accordion Header\",\n    panelLabel: \"Header #1\"\n  },\n  argTypes: {\n   header: { control: 'text' },\n    panelLabel: { control: 'text' }\n  },\n  render: (args: AccordionArgs) => ButtonWebComponentWithBadge(args)\n\n} satisfies Meta<AccordionArgs>"
+                }
+            ],
             "projects/ui/src/lib/components/button/button.stories.ts": [
                 {
                     "name": "Destructive",
@@ -401,58 +467,6 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {\n    label: 'Success',\n    isDisabled: false,\n    style: 5,\n    icon: 'check',\n    isHidden: signal(false)\n  },\n}"
-                }
-            ],
-            "projects/ui/src/lib/components/accordion/accordion.stories.ts": [
-                {
-                    "name": "Headers",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n      header: \"The Accordion Header\",\n      description: \"This is the description of the component (optional)\",        \n  },\n  render: (args) => ({\n      props: args,\n\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Header #1\"></ui-accordion-panel-header>\n              Some Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<AccordionComponent>",
-                    "defaultValue": "{\n  title: 'UI/Accordion',\n  component: AccordionComponent,\n  subcomponents: { AccordionPanelComponent, AccordionPanelHeaderComponent },\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      imports: [ClarityModule, AccordionPanelComponent, AccordionPanelHeaderComponent, SwitchComponent, BadgeComponent, ButtonComponent, CommonModule],\n      providers: [provideAnimations()], \n    }),\n    // componentWrapperDecorator(\n    //     (story) => `<div style=\"margin: 3em\">${story}</div>`\n    // ),\n  ],\n  \n  tags: [],\n  \n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  argTypes: {\n   \n  }\n}"
-                },
-                {
-                    "name": "Nested",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n      header: \"Nested Components\",\n      description: \"Panels with nested components\",        \n  },\n  render: (args) => ({\n      props: args,\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Button Component\">\n                <ui-button label=\"Okay\" icon=\"check\" [style]=1></ui-button>\n              </ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Badge Component\">\n                <ui-badge value=\"7\"></ui-badge>\n              </ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Switch Component\">\n                <ui-switch label=\"Activated\"></ui-switch>\n              </ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n}"
-                },
-                {
-                    "name": "Panels",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n      header: \"Some Panels\",\n      description: \"Variation of Panels\",        \n  },\n  render: (args) => ({\n      props: args,\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Default\"></ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Attention Style\" [style]=1></ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel [isCollapsed]=false>\n              <ui-accordion-panel-header label=\"Expanded by default\" ></ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n          <ui-accordion-panel [isDisabled]=true>\n              <ui-accordion-panel-header label=\"Disabled\" ></ui-accordion-panel-header>\n              Any Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n}"
-                },
-                {
-                    "name": "Simple",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  render: (args) => ({\n      props: args,\n\n      template: `\n      <ui-accordion [header]=\"header\" [description]=\"description\">\n          <ui-accordion-panel>\n              <ui-accordion-panel-header label=\"Header #1\"></ui-accordion-panel-header>\n              Some Content\n          </ui-accordion-panel>\n      </ui-accordion>\n  `,\n  }),\n}"
                 }
             ],
             "projects/ui/src/stories/button.stories.ts": [
@@ -631,7 +645,7 @@
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<AccordionComponent>",
+                    "rawtype": "StoryObj<AccordionArgs>",
                     "file": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -671,6 +685,35 @@
             },
             {
                 "filePath": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "AccordionArgs",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AccordionPanelComponentTemplate",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ButtonWebComponentWithBadge",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -685,36 +728,6 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Nested",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Panels",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ui/src/lib/components/accordion/accordion.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Simple",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

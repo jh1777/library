@@ -55,14 +55,14 @@ export class ButtonComponent extends UIBaseComponent implements AfterContentInit
   }
 
   /**
-   * INTERNAL USE  
    * Used to set the button used in another component to simple only styles (overrides others)  
+   * @internal
    */
   simpleOnly = signal<boolean>(false);
   /**
-   * INTERNAL USE   
    * If the button is used in another component this can be set to true if needed to enable the
    * styles needed for an icon only simple button (overrides others).   
+   * @internal
    */
   iconOnlySimpleStyle = signal<boolean>(false);
 

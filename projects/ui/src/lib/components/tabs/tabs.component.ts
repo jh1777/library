@@ -4,6 +4,7 @@ import {
   Component,
   ContentChildren,
   QueryList,
+  booleanAttribute,
   effect,
   input,
   model,
@@ -41,7 +42,7 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
   /**
    * Show previous/next tab buttons
    */
-  showPrevNextButtons = input<boolean>(true);
+  showPrevNextButtons = input(true, { transform: booleanAttribute });
 
   constructor() {
     super();

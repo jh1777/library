@@ -16,13 +16,19 @@ import { SwitchComponent } from '../switch';
 import { BadgeComponent } from '../badge';
 import { ButtonComponent } from '../button';
 
+
+interface AccordionArgs {
+  header?: string;
+  panelLabel?: string;
+}
+
 // https://storybook.js.org/tutorials/intro-to-storybook/angular/en/composite-component/
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-const meta: Meta<AccordionComponent> = {
+const meta: Meta = {
   title: 'UI/Accordion',
   component: AccordionComponent,
-  subcomponents: { AccordionPanelComponent, AccordionPanelHeaderComponent },
+  //subcomponents: { AccordionPanelComponent, AccordionPanelHeaderComponent },
   decorators: [
     moduleMetadata({
       //👇 Imports both components to allow component composition with Storybook
@@ -37,36 +43,51 @@ const meta: Meta<AccordionComponent> = {
   tags: [],
   
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
+  args: {
+    header: "The Accordion Header",
+    panelLabel: "Header #1"
+  },
   argTypes: {
-   
-  }
+    
+    header: { control: 'text' },
+    panelLabel: { control: 'text', name: 'Label', description: 'The label of the accordion panel', }
+  },
+  render: (args: AccordionArgs) => ButtonWebComponentWithBadge(args)
+
+} satisfies Meta<AccordionArgs>;
+
+const AccordionPanelComponentTemplate = (args: AccordionArgs) => {
+  return `<ui-accordion-panel>
+              <ui-accordion-panel-header label="${args.panelLabel}">
+              </ui-accordion-panel-header>
+              Some Content
+          </ui-accordion-panel>`;
+} 
+
+export const ButtonWebComponentWithBadge = (args: AccordionArgs) => {
+
+  return { args: args, template: `
+    <ui-accordion header="${args.header}" description="${args.header}">
+          ${AccordionPanelComponentTemplate(args)}
+      </ui-accordion>
+  `};
 };
 
 export default meta;
-type Story = StoryObj<AccordionComponent>;
-
+type Story = StoryObj<AccordionArgs>;
 
 
 
 export const Headers: Story = {
-  args: {
-      header: "The Accordion Header",
-      description: "This is the description of the component (optional)",        
+  argTypes: {
+    header: { control: 'text' },
   },
-  render: (args) => ({
-      props: args,
-
-      template: `
-      <ui-accordion [header]="header" [description]="description">
-          <ui-accordion-panel>
-              <ui-accordion-panel-header label="Header #1"></ui-accordion-panel-header>
-              Some Content
-          </ui-accordion-panel>
-      </ui-accordion>
-  `,
-  }),
+  args: {
+      header: "The Accordion Header"
+  },
 };
 
+/*
 export const Simple: Story = {
   render: (args) => ({
       props: args,
@@ -142,4 +163,6 @@ export const Nested: Story = {
       </ui-accordion>
   `,
   }),
+  
 };
+*/
