@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { BadgeComponent, ButtonComponent, 
   CardComponent, EntryTileComponent, TabComponent, TabsComponent, CardSectionBasicComponent,
-  EntryKeyValueComponent, EntryTileItemComponent, SwitchComponent, MenuBarComponent,
-  EntryContainerComponent, EntryMetricComponent, MenuItemComponent,
+  EntryKeyValueComponent, EntryTileItemComponent, SwitchComponent, MenuBarComponent, NavigationSectionComponent,
+  NavigationSectionItemComponent, EntryContainerComponent, EntryMetricComponent, MenuItemComponent, NavigationComponent,
   ToolbarComponent, ValueTileComponent, GridComponent, MetricTileComponent, BadgeStyle
  } from "../../../../projects/ui/src/public-api";
 import { ClarityModule } from '@clr/angular';
@@ -16,7 +16,7 @@ ClarityIcons.addIcons(uploadCloudIcon);
 
 @Component({
   selector: 'ui-example-page',
-  imports: [ClarityModule, CardComponent, ToolbarComponent, CardSectionBasicComponent, EntryContainerComponent, EntryTileItemComponent, EntryKeyValueComponent, EntryMetricComponent, GridComponent, ButtonComponent, SwitchComponent, BadgeComponent, ValueTileComponent, EntryTileComponent],
+  imports: [ClarityModule, CardComponent, ToolbarComponent, NavigationSectionItemComponent, NavigationComponent, NavigationSectionComponent, CardSectionBasicComponent, EntryContainerComponent, EntryTileItemComponent, EntryKeyValueComponent, EntryMetricComponent, GridComponent, ButtonComponent, SwitchComponent, BadgeComponent, ValueTileComponent, EntryTileComponent],
   standalone: true,
   templateUrl: './ui-example-page.component.html',
   styleUrl: './ui-example-page.component.scss'
@@ -27,4 +27,11 @@ export class UiExamplePageComponent {
 
   liste = [ "Partner A", "Partner B - Which has a very long text in it because of testing the word breaks.", "Partner C"];
 
+  itemClickedEventHandler(itemName: string) {
+    console.log("item was clicked:", itemName);
+  }
+
+  deleteItemClickedEventHandler(itemName: string) {
+    console.log("item was deleted (clicked):", itemName);
+  }
 }

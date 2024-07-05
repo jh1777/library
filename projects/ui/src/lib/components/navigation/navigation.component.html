@@ -1,0 +1,21 @@
+@if(isHidden() == false) {
+    <div class="ui-nav">
+        <div class="ui-nav-header">
+            <div class="ui-generic-left-right-container">
+                
+                <div class="ui-generic-left-right-container-left">
+                    @if(logoPath()) {
+                        <img [attr.src]="logoPath()" height="50px" />
+                    }
+                </div>
+
+                <div class="ui-generic-left-right-container-right">
+                    {{ header() }}
+                </div>
+                
+            </div>
+        </div>
+
+        <ng-content select="ui-navigation-section"></ng-content>
+    </div>
+}

@@ -1,0 +1,37 @@
+:host {
+
+    @import '../../../styles/ui.styles.scss';
+
+    .ui-nav-section {
+        &-title {
+            font-weight: 500;
+            font-size: 14px;
+            color: $ui-dark-standard-color;
+            margin-bottom: 10px;
+        }
+
+        &-item {
+            font-weight: 300;
+            cursor: pointer;
+            font-size: 16px;
+            color: $ui-standard-text-color;
+            padding: 7px 12px;
+            border-radius: $ui-border-radius;
+
+            &:hover {
+                background-color: lighten($ui-alternative-standard-color, 5%);
+                &:active {
+                    background-color: $ui-alternative-standard-color;
+                }
+            }
+
+            &:not(:last-child) {
+                margin-bottom: 5px;
+            }
+
+            &.active {
+                background-color: lighten($ui-alternative-standard-color, 5%);
+            }
+        }
+    }
+}

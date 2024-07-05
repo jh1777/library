@@ -1,4 +1,23 @@
 <div class="example-page">
+    <ui-navigation 
+        header="CSG Platform Portal"
+        logoPath="assets/CSGP-Logo-Color.png">
+        <ui-navigation-section label="DEFAULT">
+            <uic-navigation-section-item
+                label="Home"
+                [isActive]=true
+                (itemClicked)="itemClickedEventHandler('Home')"
+                (deleteItemClicked)="deleteItemClickedEventHandler('Home')"
+            ></uic-navigation-section-item>
+            <uic-navigation-section-item
+                label="Vehicle Overview"
+                [isActive]=false
+                (itemClicked)="itemClickedEventHandler('Vehicle Overview')"
+                (deleteItemClicked)="deleteItemClickedEventHandler('Vehicle Overview')"
+            ></uic-navigation-section-item>
+        </ui-navigation-section>
+    </ui-navigation>
+    
     <ui-toolbar text="Example Page" [maxValueTiles]=3>
 
         <ui-badge label="CTP 2" [style]="badgeStyle.None" slot="left"></ui-badge>

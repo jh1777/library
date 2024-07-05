@@ -30,4 +30,5 @@ export * from './lib/components/modal';
 export * from './lib/components/modal/confirmation-modal';
 export * from './lib/components/signpost';
 export * from './lib/components/window';
+export * from './lib/components/navigation';
 

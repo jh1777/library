@@ -1,0 +1,29 @@
+:host {
+
+    @import '../../styles/ui.styles.scss';
+
+    .ui-nav {
+        height: 100vh;
+        z-index: 1000;
+        position: fixed;
+        flex-direction: column;
+        left: 0;
+        top: 0;
+        width: 320px;
+        display: flex;
+        padding: 30px;
+        background-color: $ui-inverted-text-color;
+        border-right: 1px solid #eaeaea;
+        border-radius: 0 12px 12px 0;
+        box-shadow: 5px 0 3px -3px $ui-light-shadow-color;
+        -webkit-box-shadow: 5px 0 3px -3px $ui-light-shadow-color;
+
+        &-header {
+            display: flex;
+            font-size: 20px;
+            font-weight: 700;
+            height: fit-content;
+            margin-bottom: 20px;
+        }
+    }
+}
