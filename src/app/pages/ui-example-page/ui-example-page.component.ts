@@ -27,11 +27,7 @@ export class UiExamplePageComponent {
 
   liste = [ "Partner A", "Partner B - Which has a very long text in it because of testing the word breaks.", "Partner C"];
 
-  itemClickedEventHandler(itemName: string) {
-    console.log("item was clicked:", itemName);
-  }
-
-  deleteItemClickedEventHandler(itemName: string) {
-    console.log("item was deleted (clicked):", itemName);
+  log(message: string, object: any = null) {
+    console.log(`LOG: ${message}`, object)
   }
 }

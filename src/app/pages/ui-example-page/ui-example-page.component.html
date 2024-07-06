@@ -2,20 +2,43 @@
     <ui-navigation 
         header="CSG Platform Portal"
         logoPath="assets/CSGP-Logo-Color.png">
-        <ui-navigation-section label="DEFAULT">
+
+        <ui-navigation-section 
+            label="DEFAULT"
+            addItemButtonLabel="New Item"
+            (onAddItemClick)="log('DEFAULT: add new item clicked', $event)"
+        >
             <uic-navigation-section-item
                 label="Home"
                 [isActive]=true
-                (itemClicked)="itemClickedEventHandler('Home')"
-                (deleteItemClicked)="deleteItemClickedEventHandler('Home')"
+                (onItemClick)="log('DEFAULT: Home clicked')"
+                (onDeleteItemClick)="log('DEFAULT: Delete Home clicked')"
             ></uic-navigation-section-item>
             <uic-navigation-section-item
                 label="Vehicle Overview"
                 [isActive]=false
-                (itemClicked)="itemClickedEventHandler('Vehicle Overview')"
-                (deleteItemClicked)="deleteItemClickedEventHandler('Vehicle Overview')"
+                (onItemClick)="log('DEFAULT: Vehicle Overview clicked')"
+                (onDeleteItemClick)="log('DEFAULT: Delete Vehicle Overview clicked')"
             ></uic-navigation-section-item>
         </ui-navigation-section>
+
+        <ui-navigation-section 
+            label="ANALYZE"
+            addItemButtonLabel="New Item"
+            (onAddItemClick)="log('ANALYZE: add new item clicked', $event)"
+        >
+            <uic-navigation-section-item
+                label="Overview"
+                (onItemClick)="log('ANALYZE: Overview clicked')"
+                (onDeleteItemClick)="log('ANALYZE: Delete Overview clicked')"
+            ></uic-navigation-section-item>
+            <uic-navigation-section-item
+                label="Health"
+                (onItemClick)="log('ANALYZE: Health clicked')"
+                (onDeleteItemClick)="log('ANALYZE: Delete Health clicked')"
+            ></uic-navigation-section-item>
+        </ui-navigation-section>
+
     </ui-navigation>
     
     <ui-toolbar text="Example Page" [maxValueTiles]=3>

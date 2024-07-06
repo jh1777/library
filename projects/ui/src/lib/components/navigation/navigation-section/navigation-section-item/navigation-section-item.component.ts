@@ -12,8 +12,8 @@ export class NavigationSectionItemComponent {
 
   isActive = input<boolean>(false);
 
-  itemClicked = output();
+  onItemClick = output<MouseEvent>();
 
-  deleteItemClicked = output();
+  onDeleteItemClick = output<MouseEvent>();
 
 }

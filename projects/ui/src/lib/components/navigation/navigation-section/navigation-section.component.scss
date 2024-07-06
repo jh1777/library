@@ -3,10 +3,13 @@
     @import '../../../styles/ui.styles.scss';
 
     .ui-nav-section {
+        margin-top: 20px;
+
         &-title {
             font-weight: 500;
             font-size: 14px;
             color: $ui-dark-standard-color;
+            letter-spacing: .5px;
             margin-bottom: 10px;
         }
 
@@ -21,6 +24,10 @@
                         color: $ui-alternative-error-color;
                     }
                 }
+            }
+            &-addbutton {
+                margin-left: 12px;
+                margin-top: 13px;
             }
             
             font-weight: 300;
