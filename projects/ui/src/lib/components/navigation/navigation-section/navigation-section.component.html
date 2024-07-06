@@ -7,11 +7,20 @@
         @for (item of sectionItems(); track $index) {
         <div class="ui-nav-section-item no-select"
             [class.active]="item.isActive"
-            (click)="itemClicked(item)"
+            (click)="itemClicked($event, item)"
         >
-            
-                {{ item.label }}
-            
+            <div class="ui-generic-left-right-container">
+                <div class="ui-generic-left-right-container-left">
+                    {{ item.label }}
+                </div>
+                <div class="ui-generic-left-right-container-right">
+                    <div class="ui-nav-section-item-icon"
+                        (click)="itemRemoveClicked($event, item)"
+                    >
+                        <cds-icon shape="trash" size="18"></cds-icon>
+                    </div>
+                </div>
+            </div>
         </div>
         }
     </div>

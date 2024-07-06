@@ -10,8 +10,11 @@
         left: 0;
         top: 0;
         width: 320px;
+        max-width: 320px;
         display: flex;
         padding: 30px;
+        min-height: min-content;
+
         background-color: $ui-inverted-text-color;
         border-right: 1px solid #eaeaea;
         border-radius: 0 12px 12px 0;

@@ -11,6 +11,18 @@
         }
 
         &-item {
+            &-icon {
+                margin-right: 15px;
+                display: flex;
+                color: $ui-standard-color;
+                &:hover {
+                    color: $ui-error-color;
+                    &:active {
+                        color: $ui-alternative-error-color;
+                    }
+                }
+            }
+            
             font-weight: 300;
             cursor: pointer;
             font-size: 16px;
@@ -32,6 +44,8 @@
             &.active {
                 background-color: lighten($ui-alternative-standard-color, 5%);
             }
+
+            
         }
     }
 }
