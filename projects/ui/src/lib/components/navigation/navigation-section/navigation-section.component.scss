@@ -2,8 +2,15 @@
 
     @import '../../../styles/ui.styles.scss';
 
+    .ui-nav-section-separator {
+        border-bottom: 1px solid lighten($ui-alternative-standard-color, 5%);
+    }
+    
     .ui-nav-section {
         margin-top: 20px;
+        padding-bottom: 10px;
+
+      
 
         &-title {
             font-weight: 500;

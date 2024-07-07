@@ -28,9 +28,9 @@ interface NavigationSectionItemExchange {
 export class NavigationSectionComponent extends UIBaseComponent implements AfterViewInit {
   @ContentChildren(NavigationSectionItemComponent) items: QueryList<NavigationSectionItemComponent>;
 
-  s
+
   constructor() {
-    super()
+    super();
     ClarityIcons.addIcons(trashIcon, plusIcon);
   }
 
