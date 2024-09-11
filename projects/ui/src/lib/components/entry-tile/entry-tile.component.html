@@ -1,0 +1,84 @@
+@if(isHidden() == false) {
+  <div class="ui-entry-tile">
+    @if (header()) {
+      <div 
+        class="ui-entry-tile-titleheader"
+        [class.margin-bottom]="!description()"
+      >
+        <div class="ui-generic-left-right-container-left ui-generic-flex-row">
+          @if (headerIcon()) {
+            <cds-icon [attr.shape]="headerIcon()" size="20"></cds-icon>
+          }
+          {{ header() }}
+          
+        </div>
+        
+        <div class="ui-generic-left-right-container-right">
+          @if (collapseMode() > 0 && titles?.length > 0) {
+            <ui-collapse-button [(isCollapsed)]="isCollapsed"></ui-collapse-button>
+          }
+        </div>
+      </div>
+    }
+    @if(description()) {
+      <div class="ui-entry-tile-description margin-bottom">
+        {{ description() }}
+      </div>
+    }
+
+    <div
+      class="ui-entry-tile-base"
+      [class.attention-tile]="style() == 1 || (style() == 4 && calcStyle() == 1)"
+      [class.error-tile]="style() == 2 || (style() == 4 && calcStyle() == 2)"
+      [class.success-tile]="style() == 3 || (style() == 4 && calcStyle() == 3)"
+    >
+
+      <div class="ui-entry-tile-header">
+        <ng-content select="ui-entry-key-value"></ng-content>
+        @if(titles?.length == 0 && items?.length == 0) {
+          There is no content configured yet.
+        } 
+      </div>
+    
+      <div [@fade]="newPage() != currentPage()">
+        @if ((collapseMode() == 1 && !isCollapsed()) || collapseMode() != 1) {
+          <div class="ui-entry-tile-itemcontainer">
+
+            <ng-content select="ui-entry-tile-item"></ng-content>
+
+            @if(buttons.length > 0) {
+              
+              <div class="ui-entry-tile-buttons">
+                <ng-content select="ui-button[slot=left]"></ng-content>
+                <div class="ui-entry-tile-buttons-right">
+                  <ng-content select="ui-button[slot=right]"></ng-content>
+                </div>
+              </div>
+            }
+
+            @if (moreButtonLabel()) {
+              <div class="ui-entry-tile-more" (click)="handleShowMoreClickEvent($event)">
+                {{ moreButtonLabel() }}
+              </div>
+            }
+
+            @if (pageSize() > 0) {
+              <div class="ui-entry-tile-pages">
+                @for (_ of [].constructor(noOfPages()); track $index) {
+                  <div
+                    class="ui-entry-tile-pages-dot"
+                    [attr.title]="paginationTooltip().concat(($index + 1).toString())"
+                    [class.ui-entry-tile-pages-dot-active]="
+                      currentPage() == $index
+                    "
+                    (click)="selectPage($event, $index)"
+                  ></div>
+                }
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}

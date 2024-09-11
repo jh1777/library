@@ -1,0 +1,58 @@
+import { Meta, Controls, Canvas } from '@storybook/blocks';
+import * as AccordionStories from './accordion.stories';
+
+<Meta of={AccordionStories} />
+
+# Accordion Component
+
+The `AccordionComponent` is a collapsible container that holds multiple `AccordionPanelComponent` subcomponents.  
+
+Each `AccordionPanelComponent` must have an `AccordionPanelHeaderComponent`.  
+<br/>
+
+## `AccordionPanelHeaderComponent`
+
+Represents a header or basically the visual panel that can be clicked on.  
+It has the following inputs:
+- `label`: Label that is shown for this accordion panel
+- `style`: An optional style `AccordionPanelHeaderStyle` can be set. According to it an icon will be shown as well.
+  - `None` = no icon (default), 
+  - `Attention` = orange
+  - `Error` = red
+  - `Success` = green
+
+
+## `AccordionPanelComponent`
+
+Contains a _ng-content_ for the respective accordion section / panel.  
+
+It has the following inputs:  
+- `isCollapsed`: Indicates / Emits if this Accordion Panel is collapsed (two-way)  
+- `isDisabled`: Indicates / Emits if this Accordion Panel is disabled (two-way)  
+
+
+## `AccordionComponent`
+
+It has the following inputs:  
+- `header`: An optional header label for the whole accordion  
+- `description`: An optional description of the accordion. It will be shown directly below the header, above any Accordion Panels  
+
+The controls for these inputs shown below:
+
+<br/>
+
+<Controls />
+
+The real content (shown as _"Some Content"_) for each `AccordionPanelComponent` is specified inside those. Refer to the code for examples.
+
+<Canvas of={AccordionStories.Headers} />
+
+## Nested Components
+
+A variety of nested components can be used inside the `AccordionPanelHeaderComponent`.
+- `BadgeComponent`
+- `ButtonComponent`
+- `SwitchComponent`
+
+Examples of the usages:
+

@@ -1,0 +1,28 @@
+:host {
+    @import '../../styles/ui.styles.scss';
+
+    position: relative;
+
+    .attention-bar {
+        background-color: var(--attention-bar-bg-color, #{$ui-attention-color}) !important;
+    }
+    .error-bar {
+        background-color: var(--error-bar-bg-color, #{$ui-error-color}) !important;
+    }
+    .success-bar {
+        background-color: var(--success-bar-bg-color, #{$ui-success-color}) !important;
+    }
+    .default-bar {
+        background-color: var(--default-bar-bg-color, #{$ui-petrol-color}) !important;
+    }
+
+    .ui-property-metric-bar {
+        height: var(--metric-bar-item-bar-height, .45rem);
+        width: 100%;
+        margin-top: .25rem;
+        border-radius: 2px;
+        margin-bottom: 0.17rem;
+        transition: all 300ms;
+        background-color: $ui-light-standard-color;
+    }
+}

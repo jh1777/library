@@ -1,5 +1,14 @@
+<ui-window [isLoading]=false>
+  <ui-menu-bar>
+    <uic-menu-item label="Overview" route="/" [exactMatchNeeded]=true></uic-menu-item>
+    <uic-menu-item label="Grid" route="/grid"></uic-menu-item>
+    <uic-menu-item label="Example Page" route="/example"></uic-menu-item>
+  </ui-menu-bar>
+  <ui-content [isLoading]=false>
+    <router-outlet></router-outlet>
+  </ui-content>
+<!-- 
 <div style="padding: 2rem">
-
   <div class="page-header">
     <div style="font-weight: 800; font-size: large;">Components Overview</div>
     <div class="header-button" (click)="showBorders = !showBorders">
@@ -10,24 +19,21 @@
   <p></p>
 
   <clr-tabs>
+
     <clr-tab>
-      <button clrTabLink>Entry Tile</button>
+      <button clrTabLink>UI Library (v2)</button>
+      <ng-template [(clrIfActive)]="uiLibTabActive">
+          <clr-tab-content>
+            <ui-lib-page [showComponentBorder]="showBorders"></ui-lib-page>
+          </clr-tab-content>
+      </ng-template>
+    </clr-tab>
+  
+    <clr-tab>
+      <button clrTabLink>Entry Tile V3 etc.</button>
       <ng-template [(clrIfActive)]="entryTileTabActive">
         <clr-tab-content>
           <entry-tile-page [showComponentBorder]="showBorders"></entry-tile-page>
-          <!-- 
-          <div class="columns">
-            <div class="container">
-              <p></p>
-              <csgp-v2-entry-tile></csgp-v2-entry-tile>
-            </div>
-            <div class="container">
-              <p></p>
-              <csgp-v2-entry-tile isLoading="true"></csgp-v2-entry-tile>
-            </div>
-            <div class="container">&nbsp;</div>
-          </div>
-          -->
         </clr-tab-content>
       </ng-template>
     </clr-tab>
@@ -77,5 +83,8 @@
       </ng-template>
     </clr-tab>
 
+    
   </clr-tabs>
 </div>
+-->
+</ui-window>

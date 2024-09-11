@@ -1,0 +1,148 @@
+@import './font.metropolis.scss';
+
+*, html {
+  font-family: 'Metropolis';
+}
+
+$ui-black: #000000 !default;
+$ui-white: #ffffff !default;
+
+$ui-success-color: #2cd345 !default;
+$ui-attention-color: #dea035 !default;
+$ui-error-color: #e45048 !default;
+$ui-standard-color: #cacaca !default;
+$ui-petrol-color: #007A93 !default;
+
+$ui-alternative-success-color: #6ae67d !default;
+$ui-alternative-attention-color: #eab65d !default;
+$ui-alternative-error-color: #ef7777 !default;
+$ui-alternative-standard-color: #eaeaea !default;
+$ui-alternative-petrol-color: #5097AB !default;
+
+$ui-light-success-color: #b2eebb !default;
+$ui-light-attention-color: #fff0d6 !default;
+$ui-light-error-color: #fad6d5 !default;
+$ui-light-standard-color: #dedede !default;
+$ui-light-petrol-color: #69BAC9 !default;
+
+$ui-hover-standard-color: #f7f7f7 !default;
+$ui-dark-standard-color: #999999 !default;
+
+$ui-standard-text-color: $ui-black !default;
+$ui-inverted-text-color: $ui-white !default;
+
+$ui-shadow-color: #9a9a9a !default;
+$ui-alternative-shadow-color: #d0d0d0 !default;
+$ui-light-shadow-color: #ededed !default;
+$ui-dark-shadow-color: #444444 !default;
+
+// Special Variables 
+$ui-min-width: 250px;
+$ui-base-font-size: 14px;
+$ui-border-radius: 4px;
+$ui-menu-bar-height: 50px;
+$ui-collapse-button-size: 24px;
+
+
+// Common CSS Classes
+// ------------------
+
+.no-select {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-decoration: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+}
+
+.no-scroll {
+  overflow: hidden !important;
+}
+
+.no-click {
+  pointer-events: none !important;
+}
+
+.loading {
+  color: $ui-standard-color;
+  line-height: 22px;
+}
+
+// Pulse Animation
+// -----------------
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.pulse {
+  -webkit-animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  -moz-animation-delay: 0.5s;
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation-delay: 0.5s;
+}
+
+// Left - Right Container
+.ui-generic-left-right-container {
+  min-width: $ui-min-width;
+  // dynamic font tryout
+  // font-size: max(calc($ui-base-font-size - 3px), min($ui-base-font-size, calc(1vw)));
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+
+  &-left {
+    display: flex;
+    line-height: normal;
+    flex-direction: column;
+  }
+
+  &-right {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: auto;
+    line-height: normal;
+    align-items: center;
+  }
+}

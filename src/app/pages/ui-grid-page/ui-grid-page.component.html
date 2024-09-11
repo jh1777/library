@@ -1,0 +1,116 @@
+
+<div class="page-header">GRID
+</div>
+
+<div class="item">
+    <div class="title">
+      GRID (containing ENTRY TILE / METRIC TILE and others)
+      <div class="subtitle">
+        used for layouting several ENTRY TILE / METRIC TILE etc. components in columns
+      </div>
+    </div>
+    <ui-grid [columns]="3">
+        <ui-card 
+            header="Card Example #2" 
+            [style]="cardStyle()"
+            [isLoading]=false
+            grid-column="2"
+            >
+            <ui-card-section-basic text="1) Enable the basic feature flag in this application." 
+            errorMessage="Error: Cannot read property 'name' of undefined">
+              <ui-switch label="Basic" slot="footer-left"></ui-switch>
+            </ui-card-section-basic>
+
+            <ui-card-section-basic text="2) Enable the advanced feature flag in this application." [isLoading]=true>
+              <ui-switch label="Advanced" slot="footer-left"></ui-switch>
+            </ui-card-section-basic>
+            
+            <ui-card-section-basic 
+              header="Settings" 
+              [style]=4 
+              text="3) Cycle through the styles"
+              tooltip="This is just a test tooltip!"
+              >
+              <ui-button [label]="'Next Card Style'" slot="footer-left" (onClick)="setNextCardStyle()"></ui-button>
+            </ui-card-section-basic>
+            
+
+            <ui-button icon="pop-out" [style]="0" slot="header-right"></ui-button>
+        </ui-card>
+
+      <ui-entry-tile header="Slotted Empty Tile" collapseMode="1" grid-column="1">
+        <ui-entry-key-value
+          label="Updated"
+          value="50 mins ago"
+          
+          [isLoading]="false"
+        ></ui-entry-key-value>
+        <ui-entry-tile-item
+          primaryValue="Primary"
+          secondaryValue="Subtitle"
+        ></ui-entry-tile-item>
+        <ui-entry-tile-item
+          primaryValue="Primary" secondaryValue="Subtitle" [style]=1
+          [showStateIcon]=true [isLoading]=false>
+          <ui-switch label="On/Off"></ui-switch>
+        </ui-entry-tile-item>
+      </ui-entry-tile>
+      <ui-entry-tile header="Tile at Col 3" collapseMode="1" grid-column="3">
+        <ui-entry-tile-item
+          primaryValue="Secondary"
+          secondaryValue="Subtitle"
+          icon="pop-out"
+          clickable="true"
+        >
+        </ui-entry-tile-item>
+      </ui-entry-tile>
+      <ui-entry-tile header="Another Col 3" collapseMode="1" grid-column="3">
+        <ui-entry-tile-item
+          primaryValue="Connected"
+          secondaryValue="Yes"
+          errorMessage="Unhandled Exception occured"
+        ></ui-entry-tile-item>
+        <ui-button
+          label="Delete"
+          [style]="4"
+          icon="trash"
+          slot="right"
+        ></ui-button>
+        <ui-button
+          label="Accept"
+          [style]="5"
+          icon="check"
+          slot="left"
+        ></ui-button>
+      </ui-entry-tile>
+      <ui-entry-tile header="Loading Demo" collapseMode="1" grid-column="2">
+        <ui-entry-tile-item
+          primaryValue="Attributes"
+          secondaryValue="Updated"
+          [isLoading]="true"
+        ></ui-entry-tile-item>
+      </ui-entry-tile>
+      
+      <ui-metric-tile header="Test Metrics" grid-column="1">
+        <ui-entry-container>
+          <ui-entry-key-value label="None" value="14%" [style]="1"></ui-entry-key-value>
+          <ui-entry-metric [percent]="14" [style]="1" [isLoading]="false"> </ui-entry-metric>
+        </ui-entry-container>
+      </ui-metric-tile>
+
+      <ui-card header="Accordion Card" grid-column="1">
+            <ui-card-section-basic text="">
+              <ui-accordion header="Steps" description="Please select from following steps that are very long to be described but its just a test and thatswhy ...">
+                <ui-accordion-panel [isDisabled]=false>
+                  <ui-accordion-panel-header label="Step #1 - Create User" [style]=3></ui-accordion-panel-header>
+                    Please fill with some reasonable content!
+                </ui-accordion-panel>
+                <ui-accordion-panel [isDisabled]=false>
+                  <ui-accordion-panel-header label="Step #2 - Assign Roles"></ui-accordion-panel-header>
+                    Please fill with some reasonable content!
+                </ui-accordion-panel>
+              </ui-accordion>
+            </ui-card-section-basic>
+        </ui-card>
+    </ui-grid>
+  </div>

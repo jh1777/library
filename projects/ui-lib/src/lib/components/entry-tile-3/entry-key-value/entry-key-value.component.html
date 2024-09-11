@@ -24,16 +24,16 @@
         {{ label() }}
       </div>
       <div class="csgp-generic-container-right csgp-generic-flex-row">
-        @if (state()) {
+        @if (state() > 0 && state() < 4) {
           <cds-icon
             solid
             [style.color]="
               state() == 1
-                ? 'var(--attention-item-border-color)'
+                ? 'var(--attention-kv-entry-color)'
                 : state() == 2
-                  ? 'var(--error-item-border-color)'
+                  ? 'var(--error-kv-entry-color)'
                   : state() == 3
-                    ? 'var(--success-item-border-color)'
+                    ? 'var(--success-kv-entry-color)'
                     : ''
             "
             [attr.shape]="
@@ -51,15 +51,17 @@
         }
 
         <div
-          class="csgp-entry-tile-header-value"
+          class="csgp-entry-key-value"
           [style.color]="
             state() == 1
-              ? 'var(--attention-item-border-color)'
+              ? 'var(--attention-kv-entry-color)'
               : state() == 2
-                ? 'var(--error-item-border-color)'
+                ? 'var(--error-kv-entry-color)'
                 : state() == 3
-                  ? 'var(--success-item-border-color)'
-                  : ''
+                  ? 'var(--success-kv-entry-color)'
+                  : state() == 4
+                    ? 'var(--dimmed-kv-entry-color)'
+                    : ''
           "
         >
           {{ value() }}

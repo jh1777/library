@@ -53,7 +53,10 @@
           @if(buttons.length > 0) {
             
             <div class="csgp-entry-tile-buttons">
-              <ng-content select="ui-button-v2"></ng-content>
+              <ng-content select="ui-button-v2[position=left]"></ng-content>
+              <div class="csgp-entry-tile-buttons-right">
+                <ng-content select="ui-button-v2[position=right]"></ng-content>
+              </div>
             </div>
           }
 

@@ -1,0 +1,33 @@
+@if(isHidden() == false) {
+   
+    <div 
+        class="ui-button no-select"
+        [attr.title]="tooltip()"
+        [class.disabled]="isDisabled() == true"
+        [class.no-click]="isDisabled() == true"
+        [class.simple-primary]="style() == 0 || iconOnlySimpleStyle() == true || simpleOnly() == true"
+        [class.simple-destructive]="style() == 6"
+        [class.simple]="style() == 0 || style() == 6 || iconOnlySimpleStyle() == true || simpleOnly() == true"
+        [class.bordered]="style() > 0 && style() < 6 && iconOnlySimpleStyle() == false && simpleOnly() == false"
+        [class.primary]="style() == 1 && iconOnlySimpleStyle() == false && simpleOnly() == false"
+        [class.secondary]="style() == 2 && iconOnlySimpleStyle() == false && simpleOnly() == false"
+        [class.outline]="style() == 3 && iconOnlySimpleStyle() == false && simpleOnly() == false"
+        [class.destructive]="(style() == 4 || style() == 6) && iconOnlySimpleStyle() == false && simpleOnly() == false"
+        [class.confirm]="style() == 5 && iconOnlySimpleStyle() == false && simpleOnly() == false"
+        [class.white-mode]="whiteMode() == true"
+        (click)="isDisabled() == true ? null : handleClickEvent($event)"
+    >
+        @if(icon() != null) {
+            <cds-icon [attr.shape]="icon()" size="18"></cds-icon>
+        }
+        @if(iconOnlySimpleStyle() == false) {
+            {{ label() }}
+        }
+        @if(isLoading() == false) {
+            <ng-content select="ui-badge"></ng-content>
+        } @else {
+            <ui-spinner [size]=0></ui-spinner>
+        }
+    
+    </div>
+}

@@ -1,0 +1,13 @@
+@if(isHidden() == false) {
+    <nav class="main-menu">
+        <ul>
+            @for (item of menuItems; track $index) {
+                <li [attr.title]="item.tooltip()">
+                    <a [routerLink]="item.route()" routerLinkActive="active" 
+                    [routerLinkActiveOptions]="item.exactMatchNeeded() ? { exact: true } : { exact: false }">
+                    {{ item.label() }}</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}

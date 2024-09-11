@@ -1,0 +1,56 @@
+@if(isHidden() == false) {
+    <div class="ui-nav">
+        <div class="ui-nav-header no-select">
+            <div class="ui-generic-left-right-container">
+                @if(logoPath()) {
+                    <div class="ui-generic-left-right-container-left">        
+                        <img [attr.src]="logoPath()" height="50px" />
+                    </div>
+                }
+
+                <div [class]="'ui-generic-left-right-container-'+ logoPath() ? 'right' : 'left'">
+                    {{ logoHeader() }}
+                </div>
+                
+            </div>
+        </div>
+
+        <ng-content select="ui-navigation-section"></ng-content>
+
+        <div class="ui-nav-user no-select">
+
+            <div class="ui-generic-left-right-container">
+                <div class="ui-generic-left-right-container-left">
+                    <div class="ui-generic-left-right-container">
+
+                        @if(userImagePath()) {
+                            <div class="ui-generic-left-right-container-left">
+                                <img [attr.src]="userImagePath()" height="40px" />
+                            </div>
+                        }
+        
+                        <div [class]="'ui-generic-left-right-container-'+ userImagePath() ? 'right' : 'left'">
+                            <div style="display: flex; flex-direction: column;">
+                                <div class="ui-nav-user-name">
+                                    {{ userName() }}
+                                </div>
+                                <div class="ui-nav-user-subtitle">
+                                    {{ userSubtitle() }}
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+                <div class="ui-generic-left-right-container-right">
+                    <div class="ui-nav-user-button"
+                        (click)="userClicked($event)"
+                    >
+                        <cds-icon shape="angle" style="transform: rotateZ(90deg);"></cds-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -18,14 +18,20 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "types": ["cypress", "node", "cypress-real-events"],
+    "types": [ "jasmine", "node"],
     "useDefineForClassFields": false,
     "paths": {
       "ui-lib": [
         "dist/ui-lib"
       ],
-      "@ui" : [
+      "ui": [
+        "./dist/ui"
+      ],
+      "@ui": [
         "projects/ui-lib/src/lib"
+      ],
+      "@uiv2": [
+        "projects/ui/src/lib"
       ]
     },
     "lib": [

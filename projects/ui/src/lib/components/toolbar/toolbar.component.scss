@@ -1,0 +1,26 @@
+:host {
+    @import '../../styles/ui.styles.scss';
+
+    display: flex;
+    position: relative;
+    width: 100%;
+
+    .ui-toolbar-left {
+        display: flex;
+        gap: .5rem;
+        align-items: center;
+
+        &-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: $ui-standard-text-color;
+        }
+
+    }
+    .ui-toolbar-right {
+        margin-left: auto;
+        display: flex;
+        gap: .5rem;
+        align-items: center;
+    }
+}

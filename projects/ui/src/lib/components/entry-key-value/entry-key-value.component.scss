@@ -1,0 +1,46 @@
+:host {
+  @import '../../styles/ui.styles.scss';
+
+  display: contents;
+
+  --attention-kv-entry-color: #{$ui-attention-color};
+  --error-kv-entry-color: #{$ui-error-color};
+  --success-kv-entry-color: #{$ui-success-color};
+  --dimmed-kv-entry-color: #{$ui-light-standard-color};
+
+  --dot-size: 9px;
+
+  .big-style {
+    font-size: .85rem;
+  }
+
+  .clickable:hover {
+    cursor: pointer;
+    border: 1px solid $ui-standard-color !important;
+
+    &:active {
+      border: 1px solid $ui-petrol-color !important;
+    }
+  }
+
+  .ui-entry-key-value {
+    font-weight: 700;
+    color: $ui-standard-text-color;
+    word-wrap: normal;
+    text-align: right;
+  }
+
+  .ui-generic-flex-row {
+    flex-direction: row !important;
+    gap: .25rem !important;
+    align-items: center !important;
+  }
+
+  .ui-generic-left-right-container {
+    &-left {
+      ::before:not(.loading) {
+        color: $ui-standard-text-color;
+      }
+    }
+  }
+}

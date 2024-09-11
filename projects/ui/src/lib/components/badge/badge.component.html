@@ -1,0 +1,34 @@
+@if(isHidden() == false) {
+    @if(label()) {
+        <div class="ui-badge-container"
+            [attr.title]="tooltip()"
+            [class.ui-badge-container-error]="style() == 2"
+            [class.ui-badge-container-attention]="style() == 1"
+            [class.ui-badge-container-success]="style() == 3"
+        >
+            {{ label() }}
+            @if (value()) {
+                <ng-container *ngTemplateOutlet="badgevalue"></ng-container>
+            }
+        </div>
+    } @else {
+        @if (value()) {
+            <ng-container *ngTemplateOutlet="badgevalue"></ng-container>
+        }
+    }
+
+    <ng-template #badgevalue>
+        <div class="ui-badge"
+            [attr.title]="tooltip()"
+            [class.ui-badge-error]="style() == 2"
+            [class.ui-badge-warning]="style() == 1"
+            [class.ui-badge-success]="style() == 3"
+            [class.ui-badge-small]="size() == 1"
+            [class.ui-badge-medium]="size() == 2"
+            [class.ui-badge-large]="size() == 3"
+            [class.overflow]="value() > 9"
+        >
+            {{ value() }}
+        </div>
+    </ng-template>
+}

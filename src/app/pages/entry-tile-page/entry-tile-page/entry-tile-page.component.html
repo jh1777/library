@@ -41,6 +41,15 @@
 </div>
 
 -->
+PROPERTY ENTRY 2
+<br/>
+<div class="item">
+    <ui-property-entry>
+        <ui-entry-key-value label="State" value="Unhealthy" [state]=1></ui-entry-key-value>
+        <ui-property-metric [percent]=33 [isLoading]="false" [style]=1> </ui-property-metric>
+    </ui-property-entry>
+</div>
+<br/>
 TOOLBAR
 <br/>
 <div class="item">
@@ -135,7 +144,7 @@ TOOLBAR
                 [state]="entryTile2State"
                 [pageSize]="itemsPerPage"
                 >
-                <ui-button-v2 label="Long Button #2" [style]=1></ui-button-v2>
+                <ui-button-v2 label="Long Button #2" [style]=1 position="left"></ui-button-v2>
                 <ui-entry-key-value label="State" value="Unhealthy" [state]="entryTile2TitleState"></ui-entry-key-value>
                 <ui-entry-key-value label="Updated" value="50 mins ago" [isLoading]="false"></ui-entry-key-value>
                 <ui-entry-item 
@@ -172,10 +181,10 @@ TOOLBAR
                     <ui-badge value=33 [state]=2></ui-badge>
                 </ui-entry-item>
 
-                <ui-button-v2 label="Accept" [style]=5 icon="check">
+                <ui-button-v2 label="Accept" [style]=5 icon="check" position="left">
                     <ui-badge value="3"></ui-badge>
                 </ui-button-v2>
-                <ui-button-v2 label="Delete" [style]=4 icon="trash"></ui-button-v2>
+                <ui-button-v2 label="Delete" [style]=4 icon="trash" position="left"></ui-button-v2>
 
             </ui-entry-tile-3>
         </div>
@@ -201,12 +210,34 @@ TOOLBAR
         CARD
 
         <div class="item">
-            <ui-card title="Simple Card" text="This is the content of this card.">
+            <ui-card title="Simple Card" text="This is the content of this card." [isLoading]=false>
                 
                 <ui-button-v2 btnHeader label="Top Left"></ui-button-v2>
                 <ui-button-v2 btnFooter label="Footer Left"></ui-button-v2>
                 <ui-button-v2 label="Footer Right" slot="footer-right"></ui-button-v2>
             </ui-card>
         </div>
+
+        
     </div>
 </div>
+ENTRY TILE GRID
+<ui-entry-tile-grid [columns]=3>
+    <ui-entry-tile-3 title="Slotted Empty Tile" collapseMode=1 column="1">
+        <ui-entry-item primaryValue="Primary" secondaryValue="Subtitle"></ui-entry-item>
+        <ui-entry-item primaryValue="Attributes" secondaryValue="Updated"></ui-entry-item>
+    </ui-entry-tile-3>
+    <ui-entry-tile-3 title="Tile at Col 3" collapseMode=1 column="3">
+        <ui-entry-item primaryValue="Secondary" secondaryValue="Subtitle"></ui-entry-item>
+    </ui-entry-tile-3>
+    <ui-entry-tile-3 title="Another Col 3" collapseMode=1 column="3">
+        <ui-entry-item primaryValue="Connected" secondaryValue="Yes"></ui-entry-item>
+        <ui-button-v2 label="Delete" [style]=4 icon="trash" position="right"></ui-button-v2>
+        <ui-button-v2 label="Accept" [style]=5 icon="check" position="left"></ui-button-v2>
+
+    </ui-entry-tile-3>
+    <ui-entry-tile-3 title="Tile 001" collapseMode=1 column="2">
+        <ui-entry-item primaryValue="Attributes" secondaryValue="Updated"></ui-entry-item>
+    </ui-entry-tile-3>
+
+</ui-entry-tile-grid>

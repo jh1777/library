@@ -1,0 +1,66 @@
+:host {
+    @import '../../../styles/ui.styles.scss';
+
+    position: sticky;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+    margin: 0;
+    overflow: hidden;
+    $ui-menu-bar-background-color: rgb(247, 247, 247);
+    $ui-menu-item-active-background-color: #efefef;
+    
+
+    .main-menu {
+        //background-color: $ui-menu-bar-background-color;
+        background: rgba(247,247,247,0.92);
+        height: $ui-menu-bar-height;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center; 
+        overflow: hidden;
+      }
+      
+    .main-menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: inline-flex;
+        gap: 10px;
+    }
+    
+    .main-menu ul li {
+        display: inline;
+    }
+    
+    .main-menu ul li a {
+        display: inline-block;
+        color: $ui-dark-standard-color;
+        text-decoration: none;
+        padding: 2px 15px;
+        border-radius: $ui-border-radius;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 500;
+        user-select: none;
+
+        &:hover {
+            background-color: $ui-menu-item-active-background-color;
+            color: $ui-standard-text-color;
+
+            &:active {
+                color: $ui-dark-standard-color;
+                background-color: $ui-menu-bar-background-color;
+            }
+        }
+    }
+
+    .main-menu ul li a.active {
+        background-color: $ui-menu-item-active-background-color;
+        color: $ui-standard-text-color;
+    }
+
+}

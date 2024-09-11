@@ -1,0 +1,8 @@
+:host {
+    @import '../../../styles/ui.styles.scss';
+
+    position: relative;
+    .ui-tab-content {
+        color: $ui-standard-text-color;
+    }
+}

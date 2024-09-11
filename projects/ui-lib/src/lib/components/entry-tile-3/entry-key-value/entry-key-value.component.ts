@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { EntryState } from '../models/entryState.model';
 import { ClarityModule } from '@clr/angular';
 import {
   ClarityIcons,
@@ -8,6 +7,7 @@ import {
 } from "@cds/core/icon";
 import '@cds/core/icon/register.js';
 import { UIBaseComponent } from '../../../base/ui-base.component';
+import { EntryKeyValueState } from './entry-key-value.models';
 ClarityIcons.addIcons(
   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
 );
@@ -35,10 +35,11 @@ export class EntryKeyValueComponent extends UIBaseComponent {
   /** Optional: State `EntryState` of the Item (`none`, `attention`, `error` or `success`) 
    * By default or if unset, it is none.
    * The item will get colorized in:
-   * - `none` = grey (default), 
+   * - `none` = black (default), 
    * - `attention` = orange
    * - `error` = red
    * - `success` = green
+   * - `dimmed` = grey
   */
-  state = input<EntryState>(EntryState.none);
+  state = input<EntryKeyValueState>(EntryKeyValueState.none);
 }

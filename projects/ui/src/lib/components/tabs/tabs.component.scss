@@ -1,0 +1,72 @@
+:host {
+    @import '../../styles/ui.styles.scss';
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+ 
+
+    .ui-tabs {
+        display: flex;
+
+        &-fill {
+            width: 100%;
+            border-bottom: 1px solid $ui-alternative-standard-color;
+        }
+
+        &-buttons {
+            display: flex;
+            flex-direction: row;
+            gap: .3rem;
+            align-items: center;
+            margin-left: auto;
+            border-bottom: 1px solid $ui-alternative-standard-color;
+        }
+    }
+      
+    .ui-tab {
+        padding: .2rem .65rem;
+        cursor: pointer;
+        display: inline-block;
+        word-wrap: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+        border-bottom: none;
+        margin-bottom: 0;
+        border-radius: $ui-border-radius $ui-border-radius 0 0;
+        color: $ui-standard-text-color;
+        border-bottom: 1px solid $ui-alternative-standard-color;
+        border-top: 1px solid rgba($color: #000000, $alpha: 0.0);
+        border-left: 1px solid rgba($color: #000000, $alpha: 0.0);
+        border-right: 1px solid rgba($color: #000000, $alpha: 0.0);
+        background-color: $ui-inverted-text-color;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+
+        &:not(.disabled, .active):hover {
+            border-bottom: 1px solid $ui-petrol-color !important;
+        }
+    }
+      
+    .ui-tab.active {
+        border-top: 1px solid $ui-alternative-standard-color !important;
+        border-left: 1px solid $ui-alternative-standard-color !important;
+        border-right: 1px solid $ui-alternative-standard-color !important;
+        border-bottom: 1px solid rgba($color: #000000, $alpha: 0.0) !important;
+        cursor: default;
+    }
+
+    .ui-tab.disabled {
+        color: $ui-alternative-standard-color !important;
+        cursor: default;
+    }
+
+    .ui-tab-content {
+        // Future use
+    }
+      
+}

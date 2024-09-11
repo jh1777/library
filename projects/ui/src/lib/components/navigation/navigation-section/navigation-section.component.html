@@ -1,0 +1,36 @@
+@if(isHidden() == false) {
+    <div class="ui-nav-section ui-nav-section-separator">
+        <div class="ui-nav-section-title no-select">
+            {{ label() }}
+        </div>
+
+        @for (item of sectionItems(); track $index) {
+            <div class="ui-nav-section-item no-select"
+                [class.active]="item.isActive"
+                (mouseenter)="item.showDelete = true"
+                (mouseleave)="item.showDelete = false"
+                (click)="itemClicked($event, item)"
+            >
+                <div class="ui-generic-left-right-container">
+                    <div class="ui-generic-left-right-container-left">
+                        {{ item.label }}
+                    </div>
+                    <div class="ui-generic-left-right-container-right">
+                        @if(item.showDelete == true) {
+                            <div class="ui-nav-section-item-icon"
+                                (click)="itemRemoveClicked($event, item)"
+                            >
+                                <cds-icon shape="trash" size="18"></cds-icon>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+        @if(addItemButtonLabel()) {
+            <div class="ui-nav-section-item-addbutton no-select">
+                <ui-button [style]=0 [label]="addItemButtonLabel()" icon="plus" (onClick)="addItemClicked($event)"></ui-button>
+            </div>
+        }
+    </div>
+}

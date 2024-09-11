@@ -1,0 +1,27 @@
+@if(isHidden() == false) {
+
+    <div class="ui-tabs">
+        @for (tab of tabs; track $index) {
+            <div class="ui-tab" 
+                [attr.title]="tab.tooltip()"
+                [class.active]="tab.isActive() == true"
+                [class.disabled]="tab.isDisabled() == true"
+                (click)="selectTab(tab)">
+                {{ tab.label() }}
+                @if(tab.badgeValue()) {
+                    <ui-badge [value]="tab.badgeValue()" [style]="tab.badgeStyle()"></ui-badge>
+                }
+            </div>
+        }
+        <div class="ui-tabs-fill"></div>
+        @if (showPrevNextButtons() == true) {
+            <div class="ui-tabs-buttons">
+                <ui-collapse-button [collapsedDirection]=2 [noRotation]=true (onClick)="activateTab(-1)"></ui-collapse-button>
+                <ui-collapse-button [collapsedDirection]=3 [noRotation]=true (onClick)="activateTab(1)"></ui-collapse-button>
+            </div>
+          }
+    </div>
+    <div class="ui-tab-content">
+        <ng-content select="ui-tab"></ng-content>
+    </div>
+}

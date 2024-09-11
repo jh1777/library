@@ -1,0 +1,24 @@
+:host {
+    @import '../../styles/ui.styles.scss';
+
+    --ui-grid-vspacing: .5rem;
+    --ui-grid-hspacing: .8rem;
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: var(--ui-grid-vspacing, 0.5rem);
+    
+    .ui-grid-column {
+        width: 100%;
+        flex-grow: 1;
+        display: flex;
+        gap: var(--ui-grid-hspacing, 0.5rem);
+        flex-direction: column;
+        &:not(:first-child) {
+            padding-left: var(--ui-grid-vspacing);
+        }
+    }
+
+
+}

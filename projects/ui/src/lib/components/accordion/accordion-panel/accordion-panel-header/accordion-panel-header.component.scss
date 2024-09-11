@@ -1,0 +1,23 @@
+:host {
+    @import '../../../../styles/ui.styles.scss';
+    
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+
+    --attention-color: #{$ui-attention-color};
+    --error-color: #{$ui-error-color};  
+    --success-color:  #{$ui-success-color};
+
+    .ui-accordion-panel-header-right {
+        display: flex;
+        margin-left: auto;
+        gap: 10px;
+
+        &.disabled {
+            color: $ui-alternative-standard-color !important;
+            cursor: default;
+        }
+    }
+}

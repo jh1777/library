@@ -1,0 +1,133 @@
+@if(isHidden() == false) {
+
+    <div 
+        class="ui-card-section"
+        [class.has-error]="hasError() == true"
+        [class.last-section]="isLast() == true"
+        [style.background-color]="
+            style() == 1 && showStyledBackground() == true
+            ? 'var(--attention-background-color)'
+            : style() == 2 && showStyledBackground() == true
+                ? 'var(--error-background-color)'
+                : style() == 3 && showStyledBackground() == true
+                    ? 'var(--success-background-color)'
+                    : style() == 4 && showStyledBackground() == true
+                        ? 'var(--info-background-color)'
+                        : ''
+            "
+    >
+        @if(hasError() == true) {
+            <ui-error [errorMessage]="errorMessage()"></ui-error>
+        } @else {
+        
+            <div class="ui-card-section-content">
+                @if(isLoading() == false) {
+                    @if(header()) {
+                        <div class="ui-card-section-header">
+                            {{ header() }}
+                            <ng-container *ngTemplateOutlet="styleIcon"></ng-container>    
+                        </div>
+                        <div [innerHTML]="text()"></div>
+                    } @else {
+                        @if(text()) {
+                            <div class="ui-card-section-container">
+                                <div [innerHTML]="text()"></div>
+                                <ng-container *ngTemplateOutlet="styleIcon"></ng-container>
+                            </div>
+                        }
+                    }
+                    @if(list()) {
+
+                        <ul class="ui-card-section-list">
+                            @for(item of list(); track $index) {
+                                <li>{{ item }}</li>
+                            }
+                        </ul>
+                    }
+                    @if(styledMessage() && style() > 0) {
+                        <div class="ui-card-section-styled-message" [style.color]="
+                            style() == 1
+                            ? 'var(--attention-color)'
+                            : style() == 2
+                                ? 'var(--error-color)'
+                                : style() == 3
+                                    ? 'var(--success-color)'
+                                    : style() == 4
+                                        ? 'var(--info-color)'
+                                        : ''
+                            "
+                        >
+                            {{ styledMessage() }}
+                        </div>
+                    }
+                    
+                    @if(this.accordions.length > 0) {
+                        <div class="ui-card-section-accordion-container">
+                            <ng-content select="ui-accordion"></ng-content>
+                        </div>
+                    }
+                    
+                } @else {
+                    <div class="loading pulse">
+                        @for (_ of [].constructor(7); track $index) {
+                            {{ placeholder }}
+                        }
+                    </div>
+                    <div class="loading pulse">
+                        @for (_ of [].constructor(6); track $index) {
+                            {{ placeholder }}
+                        }
+                    </div>
+                }
+            </div>
+
+            @if(isLoading() == false && (buttons.length > 0 || switches.length > 0)) {
+                <div class="ui-card-section-footer">
+                    <ng-content select="ui-switch[slot=footer-left]"></ng-content>
+                    <ng-content select="ui-button[slot=footer-left]"></ng-content>
+                    <div style="margin-left: auto;">
+                        <ng-content select="ui-switch[slot=footer-right]"></ng-content>
+                        <ng-content select="ui-button[slot=footer-right]"></ng-content>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    
+}
+<ng-template #styleIcon>
+    @if(style() > 0 && style() < 5) {
+        <div 
+            class="ui-card-section-header-right" 
+            [attr.title]="tooltip()"
+            [class.cursor-pointer]="tooltip()"
+        >
+            <cds-icon
+                solid
+                [style.color]="
+                    style() == 1
+                    ? 'var(--attention-color)'
+                    : style() == 2
+                        ? 'var(--error-color)'
+                        : style() == 3
+                            ? 'var(--success-color)'
+                            : style() == 4
+                                ? 'var(--info-color)'
+                                : ''
+                "
+                [attr.shape]="
+                    style() == 1
+                    ? 'warning-standard'
+                    : style() == 2
+                        ? 'error-standard'
+                        : style() == 3
+                            ? 'success-standard'
+                            : style() == 4
+                                ? 'info-standard'
+                                : ''
+                "
+                size="17"
+                ></cds-icon>
+        </div>
+    }
+</ng-template>

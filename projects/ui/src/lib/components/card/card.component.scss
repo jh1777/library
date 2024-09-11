@@ -1,0 +1,81 @@
+:host {
+    @import '../../styles/ui.styles.scss';
+
+    position: relative;
+    display: contents;
+
+    --ui-card-header-loading-color: #{$ui-light-standard-color};
+    
+    .has-error {
+      min-height: 120px !important;
+    }
+
+    .ui-card {
+      background-color: $ui-inverted-text-color;
+      color: $ui-standard-text-color;
+      display: flex;
+      flex-direction: column;
+      min-width: $ui-min-width;
+      border-radius: $ui-border-radius;
+      border: 2px solid $ui-light-standard-color;
+
+      &.attention {
+        border: 2px solid $ui-attention-color !important;
+      }
+
+      &.error {
+        border: 2px solid $ui-error-color !important;
+      }
+
+      &.success {
+        border: 2px solid $ui-success-color !important;
+      }
+
+      &-header {
+        font-weight: 700;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: .5rem;
+        padding: 15px 15px;
+        background-color: $ui-alternative-standard-color;
+
+        &.attention {
+          background-color: $ui-alternative-attention-color !important;
+          color: $ui-inverted-text-color !important;
+        }
+
+        &.error {
+          background-color: $ui-alternative-error-color !important;
+          color: $ui-inverted-text-color !important;
+        }
+
+        &.success {
+          background-color: $ui-alternative-success-color !important;
+          color: $ui-inverted-text-color !important;
+        }
+
+        &-right {
+          margin-left: auto;
+          display: flex;
+          align-items: center;
+        }
+      }
+      
+      &-content {
+          padding: 10px 15px;
+          font-size: .7rem;
+          display: flex;
+          flex-direction: column;
+      }
+      &-footer {
+          padding: 0px 15px;
+          display: flex;
+          flex-direction: row;
+          gap: .4rem;
+          margin-bottom: 15px;
+      }
+    }
+
+    
+}

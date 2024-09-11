@@ -1,0 +1,212 @@
+@import '../../styles/ui.styles.scss';
+
+:host {    
+
+    display: contents;  
+  
+    --attention-item-bg-color: #{$ui-light-attention-color};
+    --attention-item-border-color: #{$ui-attention-color};
+  
+    --error-item-bg-color: #{$ui-light-error-color};
+    --error-item-border-color: #{$ui-error-color};;
+  
+    --success-item-bg-color:  #{$ui-light-success-color};
+    --success-item-border-color: #{$ui-success-color};
+  
+    --dot-size: 10px;
+  
+    .clickable:hover {
+      cursor: pointer;
+      border: 1px solid $ui-standard-color !important;
+  
+      &:active {
+        border: 1px solid $ui-petrol-color !important;
+      }
+    }
+  
+    .attention-tile {
+      background-color: mix(white, $ui-light-attention-color, 20%) !important;
+    }
+  
+    .error-tile {
+      background-color: mix(white, $ui-light-error-color, 20%) !important;
+      /* tryout:
+      background: linear-gradient(45deg, 
+        mix(white, $ui-light-error-color, 80%),
+        mix($ui-error-color, $ui-light-error-color, 20%), 
+        mix(white, $ui-light-error-color, 80%)) !important;
+        */
+    }
+  
+    .success-tile {
+      background-color: mix(white, $ui-light-success-color, 20%) !important;
+    }
+  
+    .attention-item {
+      background-color: var(--attention-item-bg-color) !important;
+      border: 1px solid var(--attention-item-border-color) !important;
+    }
+  
+    .error-item {
+      background-color: var(--error-item-bg-color) !important;
+      border: 1px solid var(--error-item-border-color) !important;
+    }
+  
+    .success-item {
+      background-color: var(--success-item-bg-color) !important;
+      border: 1px solid var(--success-item-border-color) !important;
+    }
+  
+    .margin-bottom {
+      margin-bottom: 6px !important;
+    }
+
+    .ui-entry-tile {
+      min-width: $ui-min-width;
+      &-description {
+        display: flex;
+        color: $ui-standard-text-color;
+        line-height: normal;
+      }
+
+      &-error {
+        color: var(--attention-item-border-color); 
+        font-size: small;
+        margin-right: .6rem;
+        font-weight: 200;
+      }
+
+      &-buttons {
+
+        display: flex; 
+        gap: .5rem; 
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: .3rem;
+
+        &-right {
+          display: flex; 
+          gap: .5rem; 
+          flex-direction: row;
+          margin-left: auto;
+        }
+      }
+
+      &-base {
+        background-color: $ui-alternative-standard-color;
+        display: flex;
+        flex-direction: column;
+        border-radius: $ui-border-radius;
+        padding: .3rem .6rem;
+        color: $ui-standard-text-color;
+      }
+  
+      &-titleheader {
+        display: flex;
+        font-size: large;
+        color: $ui-standard-text-color;
+        font-weight: 700;
+        margin-bottom: 3px;
+      }
+  
+      &-header {
+        margin-top: 0.1rem;
+        margin-bottom: .2rem;
+  
+        &-value {
+          font-weight: 700;
+        }
+  
+        &-label {
+          font-weight: 500;
+        }
+      }
+  
+      &-itemcontainer {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+  
+      &-more {
+        display: flex;
+        margin-top: 0rem;
+        margin-bottom: .3rem;
+        justify-content: center;
+        font-size: small;
+        width: 100%;
+        text-align: center;
+        line-height: normal;
+        cursor: pointer;
+        text-decoration: none;
+        -webkit-touch-callout: none;
+        /* iOS Safari */
+        -webkit-user-select: none;
+        /* Safari */
+        -khtml-user-select: none;
+        /* Konqueror HTML */
+        -moz-user-select: none;
+        /* Old versions of Firefox */
+        -ms-user-select: none;
+        /* Internet Explorer/Edge */
+        user-select: none;
+        /* Non-prefixed version, currently
+                                          supported by Chrome, Edge, Opera and Firefox */
+        color: var(--ui-entry-tile-more-button-color, $ui-petrol-color);
+  
+        &:not(.disabled):hover {
+          color: var(--ui-entry-tile-more-button-hover-color, $ui-alternative-petrol-color);
+  
+          &:active {
+            color: var(--ui-entry-tile-more-button-color, $ui-petrol-color);
+          }
+        }
+      }
+  
+      &-pages {
+        display: flex;
+        margin-top: 0rem;
+        margin-bottom: .3rem;
+        justify-content: center;
+        user-select: none;
+        gap: calc(var(--dot-size) /2);
+  
+        &-dot {
+          display: flex;
+          width: var(--dot-size);
+          height: var(--dot-size);
+          cursor: pointer;
+          border-radius: 50%;
+          border: solid 2px var(--ui-entry-tile-pages-dot-border-color, $ui-standard-color);
+  
+          &:hover {
+            border: solid 2px var(--ui-entry-tile-pages-dot-hover-bg-color, $ui-petrol-color);
+  
+            &:active {
+              background-color: var(--ui-entry-tile-pages-dot-hover-active-bg-color, $ui-petrol-color);
+            }
+          }
+  
+          &-active {
+            background-color: var(--ui-entry-tile-pages-dot-active-bg-color, $ui-standard-color);
+            cursor: auto;
+  
+            &:hover {
+              border: solid 2px var(--ui-entry-tile-pages-dot-border-color, $ui-standard-color);
+              background-color: var(--ui-entry-tile-pages-dot-active-hover-bg-color, $ui-standard-color);
+  
+              &:active {
+                background-color: var(--ui-entry-tile-pages-dot-active-hover-active-bg-color, $ui-standard-color);
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    .ui-generic-flex-row {
+      flex-direction: row !important;
+      gap: .25rem !important;
+      align-items: center !important;
+    }
+  }

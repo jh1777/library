@@ -1,0 +1,10 @@
+@if(isHidden() == false) {
+    <div 
+        class="ui-entry-container"
+        [class.clickable]="isClickable() == true"
+        (click)="handleClickEvent($event)"
+    >
+        <ng-content select="ui-entry-key-value"></ng-content>
+        <ng-content select="ui-entry-metric"></ng-content>
+    </div>
+}

@@ -1,0 +1,127 @@
+:host {
+    @import '../../styles/ui.styles.scss';
+
+    position: relative;
+    display: inline-flex;
+    min-width: max-content;
+    max-height: 32px;
+
+    .disabled {
+        --ui-button-primary-color: #{$ui-inverted-text-color} !important;
+        --ui-button-primary-hover-color: #{$ui-inverted-text-color} !important;
+        --ui-button-text-color: #{$ui-standard-color} !important;
+        border: 1px solid var(--ui-button-text-color) !important;
+        &:not(.bordered) {
+            border: 0px !important;
+        }
+        cursor: default !important;
+        &:not(.bordered) > cds-icon {
+            color: var(--ui-button-text-color) !important;
+        }
+    }
+
+    .primary {
+        --ui-button-primary-color: #{$ui-petrol-color};
+        --ui-button-primary-hover-color: #{$ui-alternative-petrol-color};
+        --ui-button-text-color: #{$ui-inverted-text-color};
+        border: 1px solid #{$ui-petrol-color};
+    }
+
+    .secondary {
+        --ui-button-primary-color: #{$ui-dark-standard-color};
+        --ui-button-primary-hover-color: #{$ui-standard-color};
+        --ui-button-text-color: #{$ui-inverted-text-color};;
+    }
+
+    .destructive {
+        --ui-button-primary-color: #{$ui-error-color};
+        --ui-button-primary-hover-color: #{$ui-alternative-error-color};
+        --ui-button-text-color: #{$ui-inverted-text-color};
+    }
+
+    .confirm {
+        --ui-button-primary-color: #{$ui-success-color};
+        --ui-button-primary-hover-color: #{$ui-alternative-success-color};
+        --ui-button-text-color: #{$ui-inverted-text-color};
+    }
+    
+    .outline {
+        --ui-button-primary-color: #{$ui-inverted-text-color};
+        --ui-button-primary-hover-color: #{$ui-alternative-standard-color};
+        --ui-button-text-color: #{$ui-petrol-color};
+        border: 1px solid #{$ui-petrol-color};
+    }
+
+    .white-mode {
+        --ui-button-primary-color: #{$ui-inverted-text-color} !important;
+        --ui-button-primary-hover-color: #{$ui-alternative-standard-color} !important;
+        --ui-button-text-color: #{$ui-inverted-text-color} !important;
+    }
+
+    .bordered {
+        padding: .3rem .45rem;
+        border-radius: $ui-border-radius;
+        background-color: var(--ui-button-primary-color);
+        color: var(--ui-button-text-color) !important;
+        > cds-icon {
+            color: var(--ui-button-text-color) !important;
+        }
+
+        &:not(.disabled):hover {
+            background-color: var(--ui-button-primary-hover-color) !important;
+            &:active {
+                background-color: var(--ui-button-primary-color) !important;
+            }
+        }
+    }
+
+    .simple-primary {
+        --ui-button-primary-hover-color: #{$ui-light-petrol-color};
+        --ui-button-text-color: #{$ui-petrol-color};
+    }
+
+    .simple-destructive {
+        --ui-button-primary-hover-color: #{$ui-alternative-error-color};
+        --ui-button-text-color: #{$ui-error-color};
+    }
+
+    .simple {
+        &:not(.disabled):hover {
+            color: var(--ui-button-primary-hover-color) !important;
+            > cds-icon {
+                color: var(--ui-button-primary-hover-color) !important;
+            }
+
+            &:active {
+                color: var(--ui-button-text-color) !important;
+                > cds-icon {
+                    color: var(--ui-button-text-color) !important;
+                }
+            }
+        }
+
+        > cds-icon {
+            color: var(--ui-button-text-color) !important;
+        }
+    }
+
+    .ui-button {
+        display: flex;
+        align-items: center;
+        width: fit-content;
+        //font-size: var(--ui-button-font-size, .65rem);
+        font-weight: 500;
+        gap: .3rem;
+        line-height: normal;
+        cursor: pointer;
+        pointer-events: all;
+        color: var(--ui-button-text-color) !important;
+    }
+
+    .ui-badge {
+        position: absolute;
+        top: 0%; // Align vertically centered
+        right: -8px; // Adjust as needed for desired distance from the button edge
+        transform: translateY(-50%); // Center vertically
+    }
+}

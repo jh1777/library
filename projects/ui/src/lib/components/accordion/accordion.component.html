@@ -1,0 +1,17 @@
+@if(isHidden() == false) {
+    <div class="ui-accordion">
+        @if(header()) {
+            <div class="ui-accordion-header"
+                [class.bottom-margin]="!description()"
+            >
+                {{ header() }}
+            </div>
+        }
+        @if(description()) {
+            <div class="ui-accordion-description">
+                {{ description() }}
+            </div>
+        }
+    </div>
+    <ng-content select="ui-accordion-panel"></ng-content>
+}

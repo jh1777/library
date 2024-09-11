@@ -5,7 +5,7 @@ import { BaseViewModel } from "../base.view.model";
 export interface EntryTileViewModel extends BaseViewModel {
     id?: any;
     isLoading: boolean;
-    errorData?: ComponentErrorModel; // TODO!
+    errorData?: ComponentErrorModel;
     title?: string,
     collapseMode?: EntryTileCollapseMode;
     header?: Array<EntryTileHeader>;

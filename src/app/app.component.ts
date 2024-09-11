@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  title = "Title"; // for testing
   public showBorders: boolean = false;
 
   public buttonsTabActive: boolean;
@@ -14,5 +16,6 @@ export class AppComponent {
   public entriesTabActive: boolean;
   public entryGridTabActive: boolean;
   public entryTileTabActive: boolean;
+  public uiLibTabActive: boolean;
   
 }

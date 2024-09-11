@@ -1,0 +1,82 @@
+:host {
+    position: relative;
+
+
+    .loading {
+        background-color: #e9e9e9 !important;
+    }
+    .attention-bar {
+        background-color: var(--attention-bar-bg-color, #dea035) !important;
+    }
+    .error-bar {
+        background-color: var(--error-bar-bg-color, #e45048) !important;
+    }
+    .success-bar {
+        background-color: var(--success-bar-bg-color, #2cd345) !important;
+    }
+    .default-bar {
+        background-color: var(--default-bar-bg-color, #007A93) !important;
+    }
+
+    .csgp-property-metric-bar {
+        height: var(--metric-bar-item-bar-height, .45rem);
+        width: 100%;
+        margin-top: .25rem;
+        border-radius: .1rem;
+        margin-bottom: 0.17rem;
+        transition: all 300ms;
+        background-color: lightgray;
+    }
+
+    @keyframes pulse {
+        0% {
+          opacity: 1;
+        }
+    
+        50% {
+          opacity: 0.5;
+        }
+    
+        100% {
+          opacity: 1;
+        }
+      }
+    
+      @-moz-keyframes pulse {
+        0% {
+          opacity: 1;
+        }
+    
+        50% {
+          opacity: 0.5;
+        }
+    
+        100% {
+          opacity: 1;
+        }
+      }
+    
+      @-webkit-keyframes pulse {
+        0% {
+          opacity: 1;
+        }
+    
+        50% {
+          opacity: 0.5;
+        }
+    
+        100% {
+          opacity: 1;
+        }
+      }
+    
+      .pulse {
+        -webkit-animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        -webkit-animation-delay: 0.5s;
+        -moz-animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        -moz-animation-delay: 0.5s;
+        animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        animation-delay: 0.5s;
+      }
+    
+}

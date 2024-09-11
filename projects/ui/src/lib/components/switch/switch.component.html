@@ -1,0 +1,33 @@
+@if(isHidden() == false) {
+    <div class="ui-switch" 
+        [attr.title]="label() ? null : tooltip()" 
+        [class.disabled]="isDisabled() == true"
+        [class.no-click]="isDisabled() == true"
+        (click)="isDisabled() == true ? null : handleClickEvent($event)">
+        <div class="ui-switch-toggle"
+            [class.knob-on]="state() == true"
+            [class.knob-off]="state() == false"
+            [class.disabled]="isDisabled() == true"
+            >
+            <div 
+                class="ui-switch-toggle-knob"
+                [class.disabled]="isDisabled() == true"
+                [@switchPosition]="state()" 
+            >
+            </div>
+        </div>
+        @if(label()) {
+            <div 
+                class="ui-switch-label"
+                [class.disabled]="isDisabled() == true"
+            >
+                {{ label() }}
+                @if(tooltip()) {
+                    <cds-icon shape="info-standard" size="13"
+                        [attr.title]="tooltip()"
+                    ></cds-icon>
+                }
+            </div>
+        }
+    </div>
+}

@@ -1,0 +1,82 @@
+:host {
+    @import '../../styles/ui.styles.scss';
+
+    --ui-value-tile-key-background: #{$ui-light-standard-color};
+    --ui-value-tile-value-background: #{$ui-alternative-standard-color};
+    --ui-value-tile-text-color: #{$ui-standard-text-color};
+
+    --attention-item-value-color: #{$ui-alternative-attention-color};
+    --attention-item-key-color: #{$ui-attention-color};
+
+    --success-item-value-color: #{$ui-alternative-success-color};
+    --success-item-key-color: #{$ui-success-color};
+
+    --error-item-value-color: #{$ui-alternative-error-color};
+    --error-item-key-color: #{$ui-error-color};
+
+    --padding: .165rem .5rem;
+
+    display: inline-flex;
+    position: relative;
+    flex-direction: row;
+    min-width: max-content;
+    color: $ui-standard-text-color;
+
+    .success {
+        --ui-value-tile-key-background: var(--success-item-key-color);
+        --ui-value-tile-value-background: var(--success-item-value-color);
+        --ui-value-tile-text-color: #{$ui-inverted-text-color};
+    }
+
+    .error {
+        --ui-value-tile-key-background: var(--error-item-key-color);
+        --ui-value-tile-value-background: var(--error-item-value-color);
+        --ui-value-tile-text-color: #{$ui-inverted-text-color};
+    }
+
+    .attention {
+        --ui-value-tile-key-background: var(--attention-item-key-color);
+        --ui-value-tile-value-background: var(--attention-item-value-color);
+        --ui-value-tile-text-color: #{$ui-inverted-text-color};
+    }
+
+    .ui-value-tile-error {
+        display: flex;
+        border-radius: $ui-border-radius;
+        padding: var(--padding);
+        color: var(--ui-value-tile-text-color);
+        font-weight: 400;
+        z-index: 22;
+        align-items: center;
+    }
+
+    .ui-value-tile-key {
+        display: flex;
+        background-color: var(--ui-value-tile-key-background);
+        border-radius: $ui-border-radius 0 0 $ui-border-radius;
+        padding: var(--padding);
+        color: var(--ui-value-tile-text-color);
+        font-weight: 700;
+        z-index: 22;
+        align-items: center;
+    }
+    
+    .ui-value-tile-value {
+        background-color: var(--ui-value-tile-value-background);
+        border-radius: 0 $ui-border-radius $ui-border-radius 0;
+        padding: var(--padding);
+        color: var(--ui-value-tile-text-color);
+        font-weight: 400;
+        display: flex;
+        gap: .3rem;
+        align-items: center;
+    }
+
+    .ui-badge {
+        position: absolute;
+        top: 0%; // Align vertically centered
+        right: -8px; // Adjust as needed for desired distance from the button edge
+        transform: translateY(-50%); // Center vertically
+        z-index: 999;
+    }
+}

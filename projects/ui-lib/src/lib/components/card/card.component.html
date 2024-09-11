@@ -1,22 +1,42 @@
 @if(hidden() == false) {
     <div class="csgp-card">
         <div class="csgp-card-header">
-            {{ title() }}
-
-            <div style="margin-left: auto;">
-                <ng-content select="ui-button-v2[btnHeader]"></ng-content>
-            </div>
-            <!-- <ng-content select="ui-button-v2[slot=btn01]"></ng-content> -->
+            @if(isLoading() == false) {
+                {{ title() }}
+                <div style="margin-left: auto;">
+                    <ng-content select="ui-button-v2[btnHeader]"></ng-content>
+                </div>
+            } @else {
+                <div class="loading pulse">
+                    @for (_ of [].constructor(4); track $index) {
+                        {{ placeholder }}
+                    }
+                </div>
+            }
         </div>
         <div class="csgp-card-content">
-            {{ text() }}
+            @if(isLoading() == false) {
+                {{ text() }}
+            } @else {
+                <div class="loading pulse">
+                    @for (_ of [].constructor(7); track $index) {
+                        {{ placeholder }}
+                    }
+                </div>
+                <div class="loading pulse">
+                    @for (_ of [].constructor(6); track $index) {
+                        {{ placeholder }}
+                    }
+                </div>
+            }
         </div>
-        <div class="csgp-card-footer">
-            <!-- <ng-content select="ui-button-v2[slot=btn02]"></ng-content> -->
-            <ng-content select="[btnFooter]"></ng-content>
-            <div style="margin-left: auto;">
-                <ng-content select="ui-button-v2[slot=footer-right]"></ng-content>
+        @if(isLoading() == false) {
+            <div class="csgp-card-footer">
+                <ng-content select="[btnFooter]"></ng-content>
+                <div style="margin-left: auto;">
+                    <ng-content select="ui-button-v2[slot=footer-right]"></ng-content>
+                </div>
             </div>
-        </div>
+        }
     </div>
 }

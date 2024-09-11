@@ -1,0 +1,490 @@
+
+<div class="page-header">UI Library (v2) with ng17, Signals etc.</div>
+
+<ui-button label="Show Signpost" (onClick)="openSignpost($event)"></ui-button>
+<ui-signpost #signpost [offsetY]=-50 [offsetX]=0 text="This is the <strong>styled</strong> Text!">
+</ui-signpost>
+
+
+MODAL
+
+
+<!--
+  https://briantree.se/angular-cdk-overlay-tutorial-learn-the-basics/
+-->
+<ui-confirmation-modal 
+  [(isOpen)]="showConfModal" 
+  header="Are you sure?"
+  showCloseButton="true"
+  confirmLabel="Yes"
+  cancelLabel="No"
+  (onCancelClick)="log('Cancelled')"
+  (onConfirmClick)="log('Confirmed')"
+  >
+</ui-confirmation-modal>
+<ui-button label="Show Confirmation Modal" (onClick)="openConfModal()"></ui-button>
+
+
+<ui-modal header="MODAL HEADER" [(isOpen)]="showModal" [height]=0 [width]=2 [closeOnBackdropClick]=false>
+  
+  <ui-card header="Claims" grid-column="1" [style]=0>
+    <ui-card-section-basic 
+        header="Partner A" 
+        [style]=3>
+    </ui-card-section-basic>
+    <ui-card-section-basic 
+        text="No confimation received within <i>30 seconds</i> after sending the request." 
+        styledMessage="The confirmation is pending since 2 days."
+        header="Partner B"
+        [showStyledBackground]=true
+        [style]=1>
+    </ui-card-section-basic>
+    <ui-card-section-basic 
+        header="Partner C" 
+        [style]=3>
+    </ui-card-section-basic>
+  </ui-card>
+
+  <ui-toolbar>
+    <ui-button slot="right" label="Okay" icon="check" [style]="1"></ui-button>
+    <ui-button slot="right" icon="times" label="Cancel" (onClick)="showModal.set(false)" [style]="4"></ui-button>
+  </ui-toolbar>
+
+</ui-modal>
+<ui-button label="Show Modal" (onClick)="openModal()"></ui-button>
+
+
+
+<div class="item">
+  <div class="title">
+    ACCORDION
+    <div class="subtitle">
+      Simple collapsible accordion panels with free ng-content slot
+    </div>
+  </div>
+  <div class="columns" style="margin-top: 0.5rem">
+    <div class="container">
+      <ui-accordion
+        header="The Accordion Header"
+        description="This is the description of the component (optional)"
+      >
+
+        <ui-accordion-panel [isDisabled]=true>
+          <ui-accordion-panel-header label="Header #1"></ui-accordion-panel-header>
+
+          <ui-card header="Card Example 1" >
+            <ui-card-section-basic text="Sample Card">
+              <ui-button label="Okay" slot="footer-left"></ui-button>
+            </ui-card-section-basic>
+          </ui-card>
+
+        </ui-accordion-panel>
+
+        <ui-accordion-panel [isDisabled]=false>
+          <ui-accordion-panel-header label="Header #2" tooltip="This Panel is for testing...">
+            <ui-switch label="Test" tooltip="this is a test" [state]=true></ui-switch>
+
+            <ui-button label="Okay" icon="check" id="XB-1008" (onClick)="log($event)"></ui-button>
+            <ui-button label="Cancel" [style]=6 id="XB-1009" icon="times" (onClick)="log($event)"></ui-button>
+          </ui-accordion-panel-header>
+
+          <ui-card header="Card Example xx" >
+            <ui-card-section-basic text="Sample Card">
+              <ui-button label="Okay" slot="footer-left"></ui-button>
+            </ui-card-section-basic>
+          </ui-card>
+        </ui-accordion-panel>
+
+        <ui-accordion-panel>
+          <ui-accordion-panel-header label="Header #3">
+            <ui-badge [value]=7 [style]=1></ui-badge>
+            <ui-switch></ui-switch>
+          </ui-accordion-panel-header>
+
+          
+          <ui-card header="Card Example 2" >
+            <ui-card-section-basic text="Sample Card">
+              <ui-button label="Okay" slot="footer-left"></ui-button>
+            </ui-card-section-basic>
+          </ui-card>
+          
+        </ui-accordion-panel>
+      </ui-accordion>
+    </div>
+  </div>
+</div>
+
+<div class="item">
+  <div class="title">
+    TABS (using TAB)
+    <div class="subtitle">
+      Current active tab is index = {{ activeTabIndex() }}
+      <ui-button [label]="'Switch to 0'" (onClick)="activeTabIndex.set(0)"></ui-button>
+      <ui-button [label]="'Switch to 1'" (onClick)="activeTabIndex.set(1)" [isDisabled]=true></ui-button>
+    </div>
+  </div>
+  <div class="columns" style="margin-top: 0.5rem">
+    <div class="container">
+      <ui-tabs [(activeIndex)]="activeTabIndex" [showPrevNextButtons]="'false'">
+        <ui-tab label="Fruits" badgeValue="2" badgeStyle="3">
+          <li>Apple</li>
+          <li>Lemon</li>
+        </ui-tab>
+        <ui-tab label="Pizza" [isActive]=true>
+          <li>Salami</li>
+          <li>Funghi</li>
+        </ui-tab>
+        <ui-tab label="Disabled" [isDisabled]=true>
+          <li>Unreachable</li>
+          <li>Content</li>
+        </ui-tab>
+        <ui-tab label="More Fruits">
+          <li>Kiwi</li>
+          <li>Banana</li>
+        </ui-tab>
+      </ui-tabs>
+    </div>
+  </div>
+</div>
+
+<div class="item">
+  <div class="title">
+    SWITCH
+    <div class="subtitle">
+      Simple toggle switch -> Current state: <strong>{{ toggleState().toString().toUpperCase() }}</strong> / Modify: 
+      <ui-button [label]="'Switch to '+(!toggleState()).toString().toUpperCase()" (onClick)="toggleState.set(!toggleState())"></ui-button>
+
+    </div>
+  </div>
+  <div class="columns" style="margin-top: 0.5rem">
+    <div class="container">
+      <ui-switch label="Switch" [(state)]="toggleState"></ui-switch>
+    </div>
+  </div>
+</div>
+
+<div class="item">
+  <div class="title">BADGE
+    <div class="subtitle">
+      Overflow > 99; Supports three sizes and four styles (colors); Supports text content as well
+    </div>
+  </div>
+  <div class="instances" style="align-items: center;">
+    <ui-badge value="14" [style]="'Success'"></ui-badge>
+    <ui-badge value="1459" [style]="2"></ui-badge>
+    <ui-badge value="4" [style]="3"></ui-badge>
+    <ui-badge value="4" [style]="4"></ui-badge>
+    <ui-badge value="18" size="1"></ui-badge>
+    <ui-badge value="96" size="3"></ui-badge>
+    <ui-badge label="CTP2" [style]="4"></ui-badge>
+    <ui-badge label="CTP3" value="45" [style]="3"></ui-badge>
+  </div>
+</div>
+
+<div class="item">
+  <div class="title">BUTTON (containing BADGE)</div>
+  <div class="instances">
+    <ui-button label="Simple button" [style]="0"></ui-button>
+    <ui-button
+      label="Simple + Icon"
+      icon="check"
+      [style]="0"
+    ></ui-button>
+    <ui-button
+      label="Simple disabled"
+      icon="check"
+      [style]="0"
+      [isDisabled]="true"
+    ></ui-button>
+    <ui-button label="Apply" icon="check"></ui-button>
+    <ui-button label="Cancel" icon="times" [style]="4"></ui-button>
+    <ui-button label="Ok" [style]="5"></ui-button>
+    <ui-button label="None" [style]="2"></ui-button>
+
+    <ui-button label="Notifications">
+      <ui-badge value="4" [style]="2"></ui-badge>
+    </ui-button>
+    <ui-button label="Outline" [style]="3"></ui-button>
+    
+  </div>
+</div>
+<div class="item">
+  <div class="title">CARD (containing BUTTON)</div>
+  <div class="instances">
+    <ui-card header="Card Example" >
+        <ui-card-section-basic text="Sample Card">
+          <ui-button label="Okay" slot="footer-left"></ui-button>
+        </ui-card-section-basic>
+    </ui-card>
+    <ui-card header="Card Example #2">
+        <ui-button icon="pop-out" [style]="0" slot="header-right"></ui-button>
+        <ui-card-section-basic text="Enable the advanced feature flag in this application.">
+          <ui-switch label="Advanced" slot="footer-left"></ui-switch>
+      </ui-card-section-basic>
+    </ui-card>
+    <ui-card header="Card Example #2" [isLoading]=true>
+    </ui-card>
+    <ui-card header="Card Example #2" errorMessage="This card has an error!">
+    </ui-card>
+  </div>
+</div>
+<div class="item">
+  <div class="title">ENTRY TILE (containing ENTRY KEY VALUE & ENTRY ITEM)
+    <div class="subtitle">
+      main tile to show kay-value pairs or property data (with or without states); several config options available
+    </div>
+  </div>
+  <div class="columns" style="margin-top: 0.5rem">
+    <div class="container">
+      <ui-entry-tile header="Simple Tile" description="This tile is just very simple. Main tile to show kay-value pairs or property data (with or without states); several config options available.">
+        <ui-entry-key-value
+          label="State"
+          value="Okay"
+          [style]="3"
+          [isBig]=true
+        ></ui-entry-key-value>
+
+        <ui-entry-tile-item
+          primaryValue="Primary" secondaryValue="Subtitle" [style]=1
+          [showStateIcon]=true [isLoading]=false>
+          <ui-switch label="On/Off"></ui-switch>
+        </ui-entry-tile-item>
+        
+        <ui-entry-tile-item
+          primaryValue="13 Messages" secondaryValue="Last received 2 min ago" [style]=0
+          [showStateIcon]=false [isLoading]=false>
+          <ui-button label="Activate"></ui-button>
+        </ui-entry-tile-item>
+        
+        <ui-entry-tile-item
+          primaryValue="Primary"
+          [isLoading]=true
+        >
+        </ui-entry-tile-item>
+      </ui-entry-tile>
+    </div>
+    <div class="container">
+      <ui-entry-tile
+        header="Paged Tile"
+        titleIcon="cpu"
+        collapseMode="1"
+        moreButtonLabel="More"
+        [style]="0"
+        [pageSize]="3"
+      >
+        <ui-entry-key-value
+          label="Onboarding"
+          value="Started"
+          [style]="1"
+        ></ui-entry-key-value>
+        <ui-entry-key-value
+          label="Updated"
+          value="50 mins ago"
+          [isLoading]="false"
+        ></ui-entry-key-value>
+        <ui-entry-tile-item
+          primaryValue="Primary"
+          secondaryValue="Subtitle"
+          state="0"
+          showStateIcon="true"
+          [isLoading]="false"
+        >
+        </ui-entry-tile-item>
+
+        @for (_ of [].constructor(4); track $index) {
+          <ui-entry-tile-item
+            header="TEST"
+            [primaryValue]="'Registered'.concat(($index + 4).toString())"
+          >
+            <ui-button label="Delete" [style]="6" icon="trash"></ui-button>
+          </ui-entry-tile-item>
+        }
+
+        <ui-entry-tile-item
+          header="Connectivity"
+          primaryValue="Connected"
+          secondaryValue="4 mins ago"
+          icon="pop-out"
+          [isClickable]="true"
+        >
+          <ui-badge value="6" [style]="2" [size]="2"></ui-badge>
+        </ui-entry-tile-item>
+      </ui-entry-tile>
+    </div>
+    <div class="container">
+      <ui-entry-tile header="Tile with Buttons" titleIcon="cpu" [collapseMode]=1 [style]=2>
+        <ui-entry-key-value label="State"  value="Unhealthy" [style]=2></ui-entry-key-value>
+        <ui-entry-key-value label="Updated" value="50 mins ago"></ui-entry-key-value>
+
+        <ui-entry-tile-item primaryValue="Messages" secondaryValue="1 Unread" [style]=2 [showStateIcon]=true>
+          <ui-badge value="1" [style]="2"></ui-badge>
+        </ui-entry-tile-item>
+
+        <ui-entry-tile-item header="Connectivity" primaryValue="Connected" secondaryValue="4 mins ago" icon="pop-out" [isClickable]=true></ui-entry-tile-item>
+
+        <ui-button label="Accept" [style]="5" icon="check" slot="left">
+          <ui-badge value="3"></ui-badge>
+        </ui-button>
+        <ui-button label="Delete" [style]=4 icon="trash" slot="right"></ui-button>
+      </ui-entry-tile>
+    </div>
+  </div>
+</div>
+
+<div class="item">
+  <div class="title">
+    ENTRY CONTAINER (containing ENTRY KEY VALUE & ENTRY METRIC)
+    <div class="subtitle">
+      used for layouting several ENTRY KEY VALUE & ENTRY METRIC components in columns; can be made clickable
+    </div>
+  </div>
+  <div class="columns" style="margin-top: 0.5rem">
+    <div class="container">
+      <ui-entry-container>
+        <ui-entry-key-value
+          label="State"
+          value="Completed"
+          [style]="3"
+        ></ui-entry-key-value>
+        <ui-entry-key-value
+          label="Timestamp"
+          value="10.04.2024 07:22 PM"
+        ></ui-entry-key-value>
+      </ui-entry-container>
+    </div>
+    <div class="container">
+      <ui-entry-container>
+        <ui-entry-key-value label="Completed" value="33%"></ui-entry-key-value>
+        <ui-entry-metric [percent]="33" [isLoading]="false"> </ui-entry-metric>
+      </ui-entry-container>
+    </div>
+    <div class="container">
+      <ui-entry-container>
+        <ui-entry-key-value label="State" value="Loading"></ui-entry-key-value>
+        <ui-entry-metric [percent]="10" [isLoading]="true" [style]="2">
+        </ui-entry-metric>
+      </ui-entry-container>
+    </div>
+    <div class="container">
+      <ui-entry-container>
+        <ui-entry-key-value
+          label="State"
+          value="Warning"
+          state="1"
+          [isBig]=true
+        ></ui-entry-key-value>
+      </ui-entry-container>
+    </div>
+  </div>
+</div>
+<div class="item">
+  <div class="title">ENTRY METRIC</div>
+  <div class="columns" style="margin-top: 0.5rem">
+    <div class="container">
+      <ui-entry-metric [percent]="33" [isLoading]="false"> </ui-entry-metric>
+    </div>
+    <div class="container">
+      <ui-entry-metric [percent]="70" [isLoading]="false" [style]="2">
+      </ui-entry-metric>
+    </div>
+    <div class="container">
+      <ui-entry-metric [percent]="52" [isLoading]="false" errorMessage="This has an error">
+      </ui-entry-metric>
+    </div>
+  </div>
+</div>
+<div class="item">
+  <div class="title">
+    TOOLBAR (containing BADGE & BUTTON)
+    <div class="subtitle">
+      used to layout BUTTON and / or BADGE in a bar (aling left or right using
+      slot attribute)
+    </div>
+  </div>
+
+  <ui-toolbar text="Headline">
+    
+    <ui-button
+      slot="left"
+      label="Left Simple #1"
+      icon="check"
+      [style]="0"
+    ></ui-button>
+    <ui-button
+      slot="left"
+      label="Left Simple #2"
+      [style]="0"
+      [isDisabled]="true"
+    ></ui-button>
+    <ui-value-tile key="Vin" value="WDB0101010110" [isLoading]=false slot="right">
+      <ui-button icon="copy" label="test"></ui-button>
+      <ui-button icon="pop-out" [style]="0"></ui-button>
+    </ui-value-tile>
+
+    <ui-badge [style]="0" label="CTP2" slot="left"></ui-badge>
+
+    <ui-button label="Right #1" slot="right" [isLoading]=true>
+      <ui-badge value="3"></ui-badge>
+    </ui-button>
+
+    <ui-button label="Right #2" slot="right" [style]=3> </ui-button>
+    <ui-button label="Loading..." slot="right" [style]=2 [isLoading]=true> </ui-button>
+    <ui-button icon="play" slot="right" [style]="0"></ui-button>
+    <ui-button icon="stop" slot="right" [style]="0"></ui-button>
+  </ui-toolbar>
+</div>
+<div class="item">
+  <div class="title">VALUE TILE (containing BADGE & BUTTON)</div>
+  <div class="instances">
+    <ui-value-tile key="Vin" value="WDB0101010110" [isLoading]=false>
+      <ui-button icon="copy" label="test"></ui-button>
+      <ui-button icon="pop-out" [style]="0"></ui-button>
+    </ui-value-tile>
+    <ui-value-tile key="Vin" value="NONE" [style]=2> </ui-value-tile>
+    <ui-value-tile key="Streaming" value="ENABLED" [style]=3> </ui-value-tile>
+    <ui-value-tile key="Notifications" value="Pending">
+      <ui-badge [style]="1" value="12"></ui-badge>
+    </ui-value-tile>
+    <ui-value-tile key="xx" value="xx" [isLoading]=true>
+    </ui-value-tile>
+    <ui-value-tile key="xx" value="xx" [isLoading]=true errorMessage="There was an error loading the data!">
+    </ui-value-tile>
+  </div>
+</div>
+
+
+<div class="item">
+  <div class="title">
+    METRIC TILE (containing ENTRY CONTAINER)
+    <div class="subtitle">
+      used to show several ENTRY CONTAINERS (each with 1 KEY VALUE and 1 METRIC inside)
+    </div>
+  </div>
+  <div class="columns" style="margin-top: 0.5rem">
+    <div class="container">
+      <ui-metric-tile header="Test Metrics" >
+        <ui-entry-container>
+          <ui-entry-key-value label="None" value="14%" [style]="1"></ui-entry-key-value>
+          <ui-entry-metric [percent]="14" [style]="1" [isLoading]="false"> </ui-entry-metric>
+        </ui-entry-container>
+
+        <ui-entry-container id="middle-metric-123" [isClickable]=true (onClick)="log($event)">
+          <ui-entry-key-value label="Started" value="33%"></ui-entry-key-value>
+          <ui-entry-metric [percent]="33" [isLoading]="false"> </ui-entry-metric>
+        </ui-entry-container>
+
+        <ui-entry-container>
+          <ui-entry-key-value label="Completed" value="53%" [style]="3"></ui-entry-key-value>
+          <ui-entry-metric [percent]="53" [style]="3" [isLoading]="false"> </ui-entry-metric>
+        </ui-entry-container>
+      </ui-metric-tile>
+    </div>
+    <div class="container">
+      &nbsp;
+    </div>
+    <div class="container">
+      &nbsp;
+    </div>
+  </div>
+
+

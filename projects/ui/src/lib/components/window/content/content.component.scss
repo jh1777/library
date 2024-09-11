@@ -1,0 +1,62 @@
+:host {
+
+    @import '../../../styles/ui.styles.scss';
+
+
+    box-sizing: border-box;
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    .ui-content {
+        padding: 20px;
+
+
+        &-loading {
+            display: flex;
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(3px);
+            background: rgba(247,247,247,0.6);
+            gap: 10px;
+            z-index: 9999;
+            pointer-events: auto !important;
+        }
+    }
+/*
+    display: block;
+        width: 100%;
+    height: 100vh;
+    overflow: auto;
+    position: relative;
+    // TODO: height not correct!
+    left: 0;
+    top:0;
+
+    .ui-content {
+        display: block;
+        margin: 0;
+
+        &-loading {
+            display: flex;
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(3px);
+            background: rgba(247,247,247,0.6);
+            gap: 10px;
+            z-index: 9999;
+        }
+    }
+    */
+}

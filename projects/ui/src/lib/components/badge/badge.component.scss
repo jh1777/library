@@ -1,0 +1,116 @@
+:host {
+    @import '../../styles/ui.styles.scss';
+    
+    display: contents;
+
+
+    .ui-badge-error {
+        background-color: var(--ui-badge-error-background-color, $ui-error-color) !important;
+        color: $ui-inverted-text-color !important;
+    }
+
+    .ui-badge-warning {
+        background-color: var(--ui-badge-warning-background-color, $ui-attention-color) !important;
+        color: $ui-inverted-text-color !important;
+    }
+
+    .ui-badge-success {
+        background-color: var(--ui-badge-success-background-color, $ui-success-color) !important;
+        color: $ui-inverted-text-color !important;
+    }
+
+    .ui-badge-container-error {
+        background-color: var(--ui-badge-container-error-background-color, $ui-light-error-color) !important;
+        border: 1px solid var(--ui-badge-container-error-background-color, $ui-light-error-color) !important;
+        color: $ui-standard-text-color !important;
+    }
+
+    .ui-badge-container-attention {
+        background-color: var(--ui-badge-container-warning-background-color, $ui-light-attention-color) !important;
+        border: 1px solid var(--ui-badge-container-warning-background-color, $ui-light-attention-color) !important;
+        color: $ui-standard-text-color !important;
+    }
+
+    .ui-badge-container-success {
+        background-color: var(--ui-badge-container-success-background-color, $ui-light-success-color) !important;
+        border: 1px solid var(--ui-badge-container-success-background-color, $ui-light-success-color) !important;
+        color: $ui-standard-text-color !important;
+    }
+
+    .ui-badge-small {
+        --size-value: 18px;
+        height: var(--size-value);
+        min-height: var(--size-value);
+        max-height: var(--size-value);
+        min-width: var(--size-value);
+        //max-width: var(--size-value);
+        width: var(--size-value);
+        font-size: 10px;
+        &.overflow {
+            font-size: 9px !important;
+        }
+    }
+
+    .ui-badge-medium {
+        --size-value: 20px;
+        height: var(--size-value);
+        min-height: var(--size-value);
+        max-height: var(--size-value);
+        min-width: var(--size-value);
+        //max-width: var(--size-value);
+        width: var(--size-value);
+        font-size: 12px;
+
+        &.overflow {
+            font-size: 10px !important;
+        }
+    }
+
+    .ui-badge-large {
+        --size-value: 22px;
+        height: var(--size-value);
+        min-height: var(--size-value);
+        max-height: var(--size-value);
+        min-width: var(--size-value);
+        //max-width: var(--size-value);
+        width: var(--size-value);
+        font-size: 14px;
+        border-radius: calc(var(--size-value) / 2) !important;
+        &.overflow {
+            font-size: 12px !important;
+        }
+    }
+
+    .ui-badge {
+        display: flex;
+        width: fit-content;
+        border-radius: .5rem;
+        background-color: $ui-dark-standard-color;
+        color: $ui-inverted-text-color;
+        padding: 0.1rem 0.2rem;
+        align-items: center; 
+        justify-content: center;
+        text-decoration: none;
+        cursor: default;
+        -moz-text-decoration: none;
+        -webkit-text-decoration: none;
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none;
+
+        &-container {
+            padding: 0.1rem 0.35rem;
+            gap: .25rem;
+            background-color: var(--ui-badge-background-color, $ui-inverted-text-color);
+            align-items: center; 
+            justify-content: center;
+            display: flex;
+            width: fit-content;
+            border-radius: .3rem;
+            border: 1px solid $ui-standard-color;
+        }
+    }
+}

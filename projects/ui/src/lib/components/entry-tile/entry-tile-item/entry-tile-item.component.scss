@@ -1,0 +1,129 @@
+:host {
+  @import '../../../styles/ui.styles.scss';
+
+  display: contents;
+  position: relative;
+
+  --attention-tile-bg-color: #{$ui-light-attention-color};
+  --attention-item-bg-color: #{$ui-light-attention-color};
+  --attention-item-border-color: #{$ui-attention-color};
+
+  --error-tile-bg-color: #{$ui-light-error-color};
+  --error-item-bg-color: #{$ui-light-error-color};
+  --error-item-border-color: #{$ui-error-color};
+
+  --success-tile-bg-color: #{$ui-light-success-color};
+  --success-item-bg-color: #{$ui-light-success-color};
+  --success-item-border-color: #{$ui-success-color};
+
+  --dot-size: 9px;
+
+  .has-error {
+    min-height: 53px !important;
+    padding: 5px !important;
+  }
+
+  .clickable:hover {
+    cursor: pointer;
+    border: 1px solid $ui-standard-color !important;
+
+    &:active {
+      border: 1px solid $ui-petrol-color !important;
+    }
+  }
+
+  .rotate {
+    -webkit-transform: rotateZ(180deg);
+    -moz-transform: rotateZ(180deg);
+    -o-transform: rotateZ(180deg);
+    -ms-transform: rotateZ(180deg);
+    transform: rotateZ(180deg);
+  }
+
+  .attention-tile {
+    background-color: var(--attention-tile-bg-color) !important;
+  }
+
+  .error-tile {
+    background-color: var(--error-tile-bg-color) !important;
+  }
+
+  .success-tile {
+    background-color: var(--success-tile-bg-color) !important;
+  }
+
+  .attention-item {
+    background-color: var(--attention-item-bg-color) !important;
+    border: 1px solid var(--attention-item-border-color) !important;
+  }
+
+  .error-item {
+    background-color: var(--error-item-bg-color) !important;
+    border: 1px solid var(--error-item-border-color) !important;
+  }
+
+  .success-item {
+    background-color: var(--success-item-bg-color) !important;
+    border: 1px solid var(--success-item-border-color) !important;
+  }
+
+  .ui-entry-tile {
+    &-item {
+      &-header {
+        font-weight: 600;
+        font-size: small;
+        margin-bottom: .15rem;
+      }
+
+      &-primary {
+        display: flex;
+        gap: 5px;
+        font-weight: 400;
+        align-items: center;
+      }
+
+      &-secondary {
+        font-weight: 200;
+        color: $ui-dark-standard-color;
+      }
+
+      &-icon {
+        align-self: flex-end;
+      }
+
+      line-height: normal;
+      min-width: $ui-min-width;
+      position: relative;
+      border: 1px solid $ui-inverted-text-color;
+      background-color: $ui-inverted-text-color;
+      -webkit-box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, $ui-alternative-shadow-color);
+      -moz-box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, $ui-alternative-shadow-color);
+      box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, $ui-alternative-shadow-color);
+      padding: .4rem .6rem;
+      border-radius: $ui-border-radius;
+
+      &:last-child {
+        margin-bottom: .5rem;
+      }
+    }
+  }
+
+  .ui-generic-flex-row {
+    flex-direction: row !important;
+    gap: .25rem !important;
+    align-items: center !important;
+  }
+
+  .loading {
+    color: $ui-standard-color;
+    line-height: 1rem;
+  }
+
+  .ui-badge {
+      position: absolute;
+      top: 0%; // Align vertically centered
+      right: -8px; // Adjust as needed for desired distance from the button edge
+      transform: translateY(-50%); // Center vertically
+      z-index: 999;
+  }
+}

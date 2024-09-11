@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ClarityModule } from '@clr/angular';
-import { BadgeComponent, ButtonV2Component, CardComponent, EntryItemComponent, EntryKeyValueComponent, EntryTile2Component, EntryTile2ItemConfigComponent, EntryTile2TitleConfigComponent, EntryTile3Component, TestButtonComponent, ToolbarComponent, UiLibModule, ValueTileComponent } from 'projects/ui-lib/src/public-api';
+import { BadgeComponent, ButtonV2Component, CardComponent, EntryItemComponent, EntryKeyValueComponent, EntryTile2Component, EntryTile2ItemConfigComponent, EntryTile2TitleConfigComponent, EntryTile3Component, EntryTileGridComponent, PropertyEntry2Component, PropertyMetricComponent, TestButtonComponent, ToolbarComponent, UiLibModule, ValueTileComponent } from 'projects/ui-lib/src/public-api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -29,6 +29,10 @@ import {
 
 } from "@cds/core/icon";
 import '@cds/core/icon/register.js';
+import { UiLibPageComponent } from './pages/ui-lib-page/ui-lib-page.component';
+import { WindowComponent, MenuBarComponent, MenuItemComponent, ContentComponent } from '../../projects/ui/src/public-api';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { PortalModule } from '@angular/cdk/portal';
 
 ClarityIcons.addIcons(
   unknownStatusIcon, homeIcon, cogIcon, checkIcon, timesIcon, exclamationTriangleIcon, exclamationCircleIcon, checkCircleIcon, infoCircleIcon, infoStandardIcon, successStandardIcon, errorStandardIcon,
@@ -60,18 +64,30 @@ ClarityIcons.addIcons(
     ClarityModule,
     AppRoutingModule,
     UiLibModule,
+
+
+    // ols components from 'ui-lib' project
     EntryTile2Component,
     EntryTile2ItemConfigComponent,
     EntryTile2TitleConfigComponent,
     BadgeComponent,
     TestButtonComponent,
+    // new components from 'ui-lib' project
     EntryTile3Component,
     EntryKeyValueComponent,
     EntryItemComponent,
     ButtonV2Component,
     ValueTileComponent,
     CardComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    PropertyEntry2Component,
+    PropertyMetricComponent,
+    EntryTileGridComponent,
+    UiLibPageComponent,
+    MenuBarComponent,
+    MenuItemComponent,
+    WindowComponent,
+    ContentComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

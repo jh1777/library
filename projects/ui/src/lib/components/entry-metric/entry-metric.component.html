@@ -1,0 +1,25 @@
+@if(isHidden() == false) {
+    <div class="ui-property-metric-bar">
+        
+        @if(hasError() == true) {
+            <ui-error style="padding: 0 !important; height: 13px;" [errorMessage]="errorMessage()"></ui-error>
+            <div class="ui-property-metric-bar default-bar" [style.width.%]="0"></div>
+        } @else {
+            @if(isLoading() == true) {
+                <div class="ui-property-metric-bar loading pulse"
+                    [style.width.%]="100">
+                </div>
+            }
+            @if(isLoading() == false && percent() > 0) {
+                <div class="ui-property-metric-bar"
+                    [attr.title]="tooltip()"
+                    [class.default-bar]="style() == 0"
+                    [class.attention-bar]="style() == 1"
+                    [class.error-bar]="style() == 2"
+                    [class.success-bar]="style() == 3"
+                    [style.width.%]="percent()">
+                </div>
+            }
+        }
+    </div>
+}

@@ -1,0 +1,38 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+
+    .page-header {
+        font-size: 19px;
+        font-weight: 700;
+        margin-left: 1rem;
+        margin-top: 1rem;
+    }
+
+    .title {
+        font-size: .8rem;
+        font-weight: 700;
+        color: black;
+        line-height: normal;
+        &:not(.subtitle) {
+            margin-bottom: 1rem;
+        }
+    }
+    .subtitle {
+        font-size: .7rem;
+        font-weight: 300;
+        color: #454545;
+        line-height: normal;
+    }
+    .container {
+        gap: 1rem;
+    }
+    .instances {
+        margin-top: .4rem;
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        align-items: top;
+    }
+}

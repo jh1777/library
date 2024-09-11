@@ -1,0 +1,67 @@
+import { Component, QueryList, computed, input, signal } from "@angular/core";
+
+@Component({
+    standalone: true,
+    imports: [],
+    template: ""
+  })
+  export class UIBaseComponent {
+    public readonly placeholder = '⏹⏹ ';
+
+    errorMessage = input<string>();
+
+    hasError = computed((): boolean => {
+      return this.errorMessage() != null && this.errorMessage() != '' && this.errorMessage() != undefined;
+    });
+
+    /** Tooltip message (simple) wich is displayed on mouse over as html title (optional) */
+    tooltip = input<string>();
+
+    /** Indicates whether the content is still loading */
+    isLoading = input<boolean>(false);
+    
+    /**
+     * Generic data object (optional)  
+     * (type `any`)
+     */
+    data = input<any>();
+
+    /**
+     * Id (as `string`) to uniquely indentify the current item (optional)  
+     */
+    id = input<string>();
+
+    /**
+     * Internal used to control overflow and visibility
+     */
+    isHidden = signal<boolean>(false);
+
+    /**
+     * Checks the given child elements in `items` if their count exceeds the given `max`   
+     * If so, the additional components will be set to `hidden()`  
+     * @param items QueryList<T> (`ContentChildren`)  
+     * @param max number  
+     * @returns boolean -> `true` if max was exceeded, otherwise `false`  
+     */
+    protected limitContentChildren<T extends UIBaseComponent>(items: QueryList<T>, max: number): boolean {
+      if (items.length > max) {
+        console.warn(`Maximum child elements of type ${items.first.constructor.name} is ${max}!`);
+        for (let index = max; index < items.length; index++) {
+          const element = items.get(index);
+          element?.isHidden.set(true);
+        }
+        return true;
+      }
+      return false;
+    }
+
+    /**
+     * Hides all items in the given list using the UI Base Class `hidden` attribute  
+     * @param items QueryList<T> (`ContentChildren`)  
+     */
+    protected hideAll<T extends UIBaseComponent>(items: QueryList<T>): void {
+      items.toArray().forEach(item => {
+        item.isHidden.set(true);
+      });
+    }
+  }

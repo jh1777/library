@@ -1,0 +1,83 @@
+:host {
+    @import '../../styles/ui.styles.scss';
+
+    position: relative;
+    $ui-switch-width: 35px;
+    $ui-switch-height: 20px;
+    $ui-switch-knob-size: 18px;
+
+    .knob-off {
+        background-color: $ui-light-standard-color;
+        &.disabled {
+            background-color: $ui-inverted-text-color !important;
+        }
+    }
+    
+    .knob-on {
+        background-color: $ui-success-color;
+        &.disabled {
+            background-color: $ui-inverted-text-color !important;
+        }
+    }
+
+    .ui-switch {
+        display: flex;
+        flex-direction: row;
+        gap: 6px;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        width: fit-content;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+
+        &-toggle {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border-radius: calc($ui-switch-width - $ui-switch-height);
+            min-width: $ui-switch-width;
+            width: $ui-switch-width;
+            max-width: $ui-switch-width;
+            min-height: $ui-switch-height;
+            height: $ui-switch-height;
+            max-height: $ui-switch-height;
+            
+            box-shadow: inset 0 0 4px 0 $ui-shadow-color;
+            -webkit-box-shadow: inset 0 0 4px 0 $ui-shadow-color;
+            -moz-box-shadow: inset 0 0 4px 0 $ui-shadow-color;
+
+            &-knob {
+                display: flex;
+                flex-direction: row;
+                margin-left: 1px;
+                height: $ui-switch-knob-size;
+                width: $ui-switch-knob-size;
+                min-width: $ui-switch-knob-size;
+                max-width: $ui-switch-knob-size;
+                min-height: $ui-switch-knob-size;
+                max-height: $ui-switch-knob-size;
+                border-radius: 50%;
+                background-color: $ui-inverted-text-color;
+                -webkit-box-shadow: 0 0 3px 0 $ui-shadow-color;
+                -moz-box-shadow: 0 0 3px 0 $ui-shadow-color;
+                box-shadow: 0 0 3px 0 $ui-shadow-color;
+                &.disabled {
+                    background-color: $ui-alternative-standard-color !important;
+                }
+            }
+        }
+        &-label {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            color: $ui-standard-text-color;
+            &.disabled {
+                color: $ui-alternative-standard-color !important;
+                cursor: default;
+            }
+        }
+    }
+}
