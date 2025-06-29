@@ -8,7 +8,7 @@
   "peerDependencies": {
     "@angular/common": "^19.1.0",
     "@angular/core": "^19.1.0",
-    "@fortawesome/angular-fontawesome": "^0.8.0",
+    "@fortawesome/angular-fontawesome": "^1.0.0",
     "@fortawesome/free-solid-svg-icons": "^6.7.2"
   },
   "dependencies": {
