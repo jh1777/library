@@ -31,8 +31,7 @@ import {
 import '@cds/core/icon/register.js';
 import { UiLibPageComponent } from './pages/ui-lib-page/ui-lib-page.component';
 import { WindowComponent, MenuBarComponent, MenuItemComponent, ContentComponent } from '../../projects/ui/src/public-api';
-import { OverlayModule } from '@angular/cdk/overlay';
-import { PortalModule } from '@angular/cdk/portal';
+
 
 ClarityIcons.addIcons(
   unknownStatusIcon, homeIcon, cogIcon, checkIcon, timesIcon, exclamationTriangleIcon, exclamationCircleIcon, checkCircleIcon, infoCircleIcon, infoStandardIcon, successStandardIcon, errorStandardIcon,
