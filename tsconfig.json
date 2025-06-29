@@ -14,7 +14,7 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
@@ -26,9 +26,6 @@
       ],
       "ui": [
         "./dist/ui"
-      ],
-      "@ui": [
-        "projects/ui-lib/src/lib"
       ],
       "@uiv2": [
         "projects/ui/src/lib"

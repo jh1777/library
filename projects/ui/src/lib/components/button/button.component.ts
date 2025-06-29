@@ -5,24 +5,6 @@ import { ButtonStyle } from './button.models';
 import { IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
 
-// ClarityIcons.addIcons(
-//   angleIcon,
-//   errorStandardIcon,
-//   infoStandardIcon,
-//   successStandardIcon,
-//   warningStandardIcon,
-//   ellipsisHorizontalIcon,
-//   ellipsisVerticalIcon,
-//   checkIcon,
-//   timesIcon,
-//   trashIcon,
-//   undoIcon,
-//   popOutIcon,
-//   copyIcon,
-//   plusCircleIcon,
-//   plusIcon
-// );
-
 @Component({
   selector: 'ui-button',
   standalone: true,

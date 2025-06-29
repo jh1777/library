@@ -4,6 +4,9 @@ import { EntryTileComponent, GridComponent, EntryKeyValueComponent,
   AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent,
   ButtonComponent, SwitchComponent, MetricTileComponent, CardComponent, CardSectionBasicComponent
 } from "../../../../projects/ui/src/public-api";
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { faCircleCheck, faCircleExclamation, faInfoCircle, faTriangleExclamation, faTrash, faExternalLink } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-ui-grid-page',
@@ -13,6 +16,14 @@ import { EntryTileComponent, GridComponent, EntryKeyValueComponent,
   styleUrl: './ui-grid-page.component.scss'
 })
 export class UiGridPageComponent {
+
+  faCheck = signal<IconDefinition>(faCircleCheck);
+  faError = signal<IconDefinition>(faCircleExclamation);
+  faInfo = signal<IconDefinition>(faInfoCircle);
+  faWarning = signal<IconDefinition>(faTriangleExclamation);
+  faTrash = signal<IconDefinition>(faTrash);
+  faExternalLink = signal<IconDefinition>(faExternalLink);
+  
 
   cardStyle = signal<CardStyle>(CardStyle.None);
 

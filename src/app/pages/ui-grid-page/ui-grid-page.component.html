@@ -35,7 +35,7 @@
             </ui-card-section-basic>
             
 
-            <ui-button icon="pop-out" [style]="0" slot="header-right"></ui-button>
+            <ui-button [icon]="faExternalLink()" [style]="0" slot="header-right"></ui-button>
         </ui-card>
 
       <ui-entry-tile header="Slotted Empty Tile" collapseMode="1" grid-column="1">
@@ -59,7 +59,7 @@
         <ui-entry-tile-item
           primaryValue="Secondary"
           secondaryValue="Subtitle"
-          icon="pop-out"
+          [icon]="faExternalLink()"
           clickable="true"
         >
         </ui-entry-tile-item>
@@ -73,13 +73,13 @@
         <ui-button
           label="Delete"
           [style]="4"
-          icon="trash"
+          [icon]="faTrash()"
           slot="right"
         ></ui-button>
         <ui-button
           label="Accept"
           [style]="5"
-          icon="check"
+          [icon]="faCheck()"
           slot="left"
         ></ui-button>
       </ui-entry-tile>
