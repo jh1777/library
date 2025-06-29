@@ -1,5 +1,7 @@
+@use '../../styles/ui.styles' as *;
+@use 'sass:color';
+
 :host {
-    @import '../../styles/ui.styles.scss';
     width: 100%;
     height: 100%;
     display: block;
@@ -9,12 +11,12 @@
     padding: 5px;
     font-size: 12px;
     font-weight: 500;
+    z-index: 100;
     background: repeating-linear-gradient(
         45deg,
-        lighten($ui-light-error-color, 5%),
-        lighten($ui-light-error-color, 5%) 5px, // Height of each stripe
-        lighten($ui-alternative-error-color, 20%) 5px, // Alternate color for stripes
-        lighten($ui-alternative-error-color, 20%) 10px // Combined height of two stripes
+        color.adjust($ui-light-error-color, $lightness: 5%),
+        color.adjust($ui-light-error-color, $lightness: 5%) 5px, // Height of each stripe
+        color.adjust($ui-alternative-error-color, $lightness: 20%) 5px, // Alternate color for stripes
+        color.adjust($ui-alternative-error-color, $lightness: 20%) 10px // Combined height of two stripes
     );
-    z-index: 100;
 }

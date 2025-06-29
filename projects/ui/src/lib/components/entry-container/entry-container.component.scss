@@ -1,11 +1,11 @@
+@use '../../styles/ui.styles' as *;
 :host {
-    @import '../../styles/ui.styles.scss';
 
     min-width: $ui-min-width;
     position: relative;
     display: flex;
     flex-direction: column;
-    
+
     .ui-entry-container {
         padding: .1rem .15rem;
     }
@@ -13,8 +13,13 @@
     .clickable:hover {
         background-color: $ui-hover-standard-color;
         cursor: pointer;
+        
         &:active {
             background-color: $ui-inverted-text-color;
         }
+    }
+
+    .selected {
+        background-color: $ui-hover-standard-color;
     }
 }

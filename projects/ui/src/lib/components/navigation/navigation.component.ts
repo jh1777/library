@@ -1,26 +1,19 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output, signal } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
-import {
-  ClarityIcons,
-  angleIcon,
-} from "@cds/core/icon";
-import '@cds/core/icon/register.js';
-import { ClarityModule } from '@clr/angular';
+import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'ui-navigation',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ClarityModule],
+  imports: [FontAwesomeModule],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent extends UIBaseComponent {
   
-  constructor() {
-    super();
-    ClarityIcons.addIcons(angleIcon);
-  }
+  angleIcon = signal(faAngleDown);
 
   // LOGO
   logoPath = input<string>();

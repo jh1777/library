@@ -1,0 +1,75 @@
+@if(isHidden() == false) {
+    @if(header()) {
+        <div class="ui-table-label-header"
+            [class.bottom-margin]="!description()"
+        >
+            {{ header() }}
+        </div>
+    }
+    @if(description()) {
+        <div class="ui-table-label-description">
+            {{ description() }}
+        </div>
+    }
+    <div class="ui-table">
+    <table>
+        <thead>
+            <tr class="ui-table-header">
+                @for (col of tableData()?.columns; track $index) {
+                    <th scope="col" class="ui-table-header-cell" [width]="col.widthPercent+'%'">
+                        {{ col.label }}
+                    
+                        @if (col.isSortable == true) {
+                            <div 
+                                class="ui-table-header-icon"
+                                [style]="sortedColum() == col ? 'color: black' : 'color: lightgray'"
+                            >
+                                <fa-icon 
+                                    [icon]="sortIcon().icon || 'default-icon'" 
+                                    style="font-size: 14px;"
+                                    (click)="sortColumnClickEventHandler(col)"
+                                ></fa-icon>
+                            </div>
+                        }
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @for (row of tableData()?.rows; track $index) {
+                <tr class="ui-table-row" 
+                    [class.ui-table-row-selection]="row.isSelected == true"
+                    (click)="onRowClickEventHandler(row, $index)">
+                    @for (cell of row.cells; track $index) {
+                        <td class="ui-table-row-cell" [style]="cell.style">
+                            {{ cell.value }}
+                            @if(cell.hasFilterButton) {
+                                <div class="ui-table-row-cell-right"> 
+                                    <fa-icon 
+                                    (click)="filterIconClickEventHandler($event, cell, $index)"
+                                    [icon]="filterIcon" 
+                                    style="font-size: 14px; cursor: pointer;"
+                                ></fa-icon>
+                                </div>
+                            }
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            @if(tableData()?.footer) {
+                @for (row of tableData()?.footer; track $index) {
+                    <tr class="ui-table-footer-row">
+                        @for (cell of row.cells; track $index) {
+                            <td class="ui-table-footer">
+                                {{ cell.value }}
+                            </td>
+                        }
+                    </tr>
+                }
+            }
+        </tfoot>
+    </table>
+</div>
+}

@@ -1,5 +1,5 @@
+@use '../../styles/ui.styles' as *;
 :host {
-    @import '../../styles/ui.styles.scss';
 
     .bottom-margin {
         margin-bottom: 4px;
@@ -8,7 +8,7 @@
     .ui-accordion {
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: 0px;
         
         &-header {
             display: flex;

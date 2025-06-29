@@ -14,10 +14,10 @@ import { ValueTileComponent } from '../value-tile';
   styleUrl: './toolbar.component.scss'
 })
 export class ToolbarComponent extends UIBaseComponent implements AfterContentInit {
-  @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
-  @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
-  @ContentChildren(SwitchComponent) switches: QueryList<SwitchComponent>;
-  @ContentChildren(ValueTileComponent) valueTiles: QueryList<ValueTileComponent>;
+  @ContentChildren(ButtonComponent) buttons!: QueryList<ButtonComponent>;
+  @ContentChildren(BadgeComponent) badges!: QueryList<BadgeComponent>;
+  @ContentChildren(SwitchComponent) switches!: QueryList<SwitchComponent>;
+  @ContentChildren(ValueTileComponent) valueTiles!: QueryList<ValueTileComponent>;
 
   /**
    * Text to show at the left side before any sub-components are shown  

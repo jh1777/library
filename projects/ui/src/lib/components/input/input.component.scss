@@ -1,0 +1,31 @@
+:host {
+    
+    .ui-input {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    
+        .input-label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+    
+        .input-box {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border 0.2s;
+        
+            &:focus {
+                border-color: #007bff;
+                outline: none;
+            }
+        
+            &:disabled {
+                background-color: #f5f5f5;
+                cursor: not-allowed;
+            }
+        }
+   }
+}

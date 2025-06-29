@@ -26,7 +26,7 @@
             [class.ui-badge-small]="size() == 1"
             [class.ui-badge-medium]="size() == 2"
             [class.ui-badge-large]="size() == 3"
-            [class.overflow]="value() > 9"
+            [class.overflow]="value()! > 9"
         >
             {{ value() }}
         </div>

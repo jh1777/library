@@ -1,5 +1,5 @@
+@use '../../styles/ui.styles' as *;
 :host {
-    @import '../../styles/ui.styles.scss';
 
     position: relative;
     $ui-switch-width: 35px;
@@ -28,8 +28,6 @@
         cursor: pointer;
         user-select: none;
         width: fit-content;
-        -webkit-user-select: none;
-        -moz-user-select: none;
 
         &-toggle {
             display: flex;
@@ -59,8 +57,6 @@
                 max-height: $ui-switch-knob-size;
                 border-radius: 50%;
                 background-color: $ui-inverted-text-color;
-                -webkit-box-shadow: 0 0 3px 0 $ui-shadow-color;
-                -moz-box-shadow: 0 0 3px 0 $ui-shadow-color;
                 box-shadow: 0 0 3px 0 $ui-shadow-color;
                 &.disabled {
                     background-color: $ui-alternative-standard-color !important;

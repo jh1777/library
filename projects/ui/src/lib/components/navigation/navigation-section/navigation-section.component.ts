@@ -1,14 +1,9 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, computed, ContentChildren, input, output, QueryList } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, computed, ContentChildren, input, output, QueryList, signal } from '@angular/core';
 import { UIBaseComponent } from '../../../shared';
 import { NavigationSectionItemComponent } from './navigation-section-item/navigation-section-item.component';
-import { ClarityModule } from '@clr/angular';
-import {
-  ClarityIcons,
-  trashIcon,
-  plusIcon
-} from "@cds/core/icon";
-import '@cds/core/icon/register.js';
 import { ButtonComponent } from '../../button';
+import { faCirclePlus, faTrash, IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
 
 interface NavigationSectionItemExchange {
   label: string;
@@ -21,18 +16,15 @@ interface NavigationSectionItemExchange {
   selector: 'ui-navigation-section',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ClarityModule, ButtonComponent],
+  imports: [ButtonComponent, FontAwesomeModule],
   templateUrl: './navigation-section.component.html',
   styleUrl: './navigation-section.component.scss'
 })
-export class NavigationSectionComponent extends UIBaseComponent implements AfterViewInit {
-  @ContentChildren(NavigationSectionItemComponent) items: QueryList<NavigationSectionItemComponent>;
+export class NavigationSectionComponent extends UIBaseComponent {
+  @ContentChildren(NavigationSectionItemComponent) items!: QueryList<NavigationSectionItemComponent>;
 
-
-  constructor() {
-    super();
-    ClarityIcons.addIcons(trashIcon, plusIcon);
-  }
+  plusIcon = signal(faCirclePlus);
+  trashIcon = signal(faTrash);
 
   sectionItems = computed(()=> {
     let result: Array<NavigationSectionItemExchange> = [];
@@ -49,18 +41,14 @@ export class NavigationSectionComponent extends UIBaseComponent implements After
     return result;
   });
 
-  ngAfterViewInit(): void {
-    
-  }
-
   itemClicked($event: MouseEvent, item: NavigationSectionItemExchange): void {
-    this.items.get(item.index).onItemClick.emit($event);
+    this.items.get(item.index)?.onItemClick.emit($event);
   }
 
   itemRemoveClicked($event: MouseEvent, item: NavigationSectionItemExchange): void {
     $event.preventDefault();
     $event.stopPropagation();
-    this.items.get(item.index).onDeleteItemClick.emit($event);
+    this.items.get(item.index)?.onDeleteItemClick.emit($event);
   }
   
   addItemClicked($event: MouseEvent): void {

@@ -1,5 +1,8 @@
+@use '../../../styles/ui.styles' as *;
+
 :host {
-    @import '../../../styles/ui.styles.scss';
+
+    --ui-menu-bar-border-bottom: 0px solid white;
 
     position: sticky;
     left: 0;
@@ -11,6 +14,7 @@
     overflow: hidden;
     $ui-menu-bar-background-color: rgb(247, 247, 247);
     $ui-menu-item-active-background-color: #efefef;
+    border-bottom: var(--ui-menu-bar-border-bottom);
     
 
     .main-menu {

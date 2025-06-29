@@ -1,5 +1,5 @@
+@use '../../styles/ui.styles' as *;
 :host {
-  @import '../../styles/ui.styles.scss';
 
   display: contents;
 
@@ -7,11 +7,10 @@
   --error-kv-entry-color: #{$ui-error-color};
   --success-kv-entry-color: #{$ui-success-color};
   --dimmed-kv-entry-color: #{$ui-light-standard-color};
-
   --dot-size: 9px;
 
   .big-style {
-    font-size: .85rem;
+    font-size: 1.2rem;
   }
 
   .clickable:hover {

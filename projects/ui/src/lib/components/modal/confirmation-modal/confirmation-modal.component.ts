@@ -4,25 +4,28 @@ import {
   input,
   model,
   output,
+  signal,
 } from '@angular/core';
 import { ModalComponent } from '../modal.component';
-import { ClarityModule } from '@clr/angular';
-import { ClarityIcons, timesIcon, checkIcon } from '@cds/core/icon';
-import '@cds/core/icon/register.js';
 import { ToolbarComponent } from '../../toolbar';
 import { ButtonComponent } from '../../button';
 import { UIBaseComponent } from '../../../shared';
-ClarityIcons.addIcons(timesIcon, checkIcon);
+import { faCheck, faTimes, IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
+//ClarityIcons.addIcons(timesIcon, checkIcon);
 
 @Component({
   selector: 'ui-confirmation-modal',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ClarityModule, ModalComponent, ToolbarComponent, ButtonComponent],
+  imports: [ModalComponent, ToolbarComponent, ButtonComponent, FontAwesomeModule],
   templateUrl: './confirmation-modal.component.html',
   styleUrl: './confirmation-modal.component.scss',
 })
 export class ConfirmationModalComponent extends UIBaseComponent {
+  
+  cancelIcon = signal(faTimes);
+  okayIcon = signal(faCheck);
   
   /**
    * Main bi-directional boolean to indicate if modal should be visible or not  

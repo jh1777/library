@@ -7,14 +7,14 @@
       >
         <div class="ui-generic-left-right-container-left ui-generic-flex-row">
           @if (headerIcon()) {
-            <cds-icon [attr.shape]="headerIcon()" size="20"></cds-icon>
+            <fa-icon [icon]="headerIcon() || 'default-icon'" style="font-size: 20px;"></fa-icon>
           }
           {{ header() }}
           
         </div>
         
         <div class="ui-generic-left-right-container-right">
-          @if (collapseMode() > 0 && titles?.length > 0) {
+          @if (collapseMode() > 0 && titles.length > 0) {
             <ui-collapse-button [(isCollapsed)]="isCollapsed"></ui-collapse-button>
           }
         </div>
@@ -35,7 +35,7 @@
 
       <div class="ui-entry-tile-header">
         <ng-content select="ui-entry-key-value"></ng-content>
-        @if(titles?.length == 0 && items?.length == 0) {
+        @if(titles.length == 0 && items.length == 0) {
           There is no content configured yet.
         } 
       </div>
@@ -62,7 +62,7 @@
               </div>
             }
 
-            @if (pageSize() > 0) {
+            @if (pageSize()! > 0) {
               <div class="ui-entry-tile-pages">
                 @for (_ of [].constructor(noOfPages()); track $index) {
                   <div

@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, ViewChild, effect, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, ViewChild, effect, input } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
 import { CommonModule } from '@angular/common';
 import { SignpostPosition } from './signpost.models';
@@ -60,7 +60,7 @@ export class SignpostComponent extends UIBaseComponent  {
     
     if (event) {
       this.isHidden.set(false);
-      const pos = this.calcPosition(event, null);
+      const pos = this.calcPosition(event);
 
       this.top = pos.y;
       this.left = pos.x;
@@ -89,7 +89,7 @@ export class SignpostComponent extends UIBaseComponent  {
    * @param position SignpostPosition (NOT supported yet)
    * @returns { x: number, y: number }
    */
-  private calcPosition(event: MouseEvent, position: SignpostPosition): { x: number, y: number } {
+  private calcPosition(event: MouseEvent): { x: number, y: number } {
     const targetRect = (event.target as HTMLElement).getBoundingClientRect();
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const scrollLeft = window.scrollX || document.documentElement.scrollLeft;

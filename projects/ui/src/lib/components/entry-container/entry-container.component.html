@@ -2,6 +2,7 @@
     <div 
         class="ui-entry-container"
         [class.clickable]="isClickable() == true"
+        [class.selected]="toggleSelect() == true && isSelected() == true"
         (click)="handleClickEvent($event)"
     >
         <ng-content select="ui-entry-key-value"></ng-content>

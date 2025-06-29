@@ -1,55 +1,40 @@
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, input, model, output, signal } from '@angular/core';
-import { ClarityModule } from '@clr/angular';
-import {
-  ClarityIcons,
-  angleIcon,
-  errorStandardIcon,
-  infoStandardIcon,
-  successStandardIcon,
-  warningStandardIcon,
-  ellipsisVerticalIcon,
-  ellipsisHorizontalIcon,
-  checkIcon,
-  timesIcon,
-  trashIcon,
-  popOutIcon,
-  undoIcon,
-  copyIcon,
-  plusCircleIcon,
-  plusIcon
-} from '@cds/core/icon';
-import '@cds/core/icon/register.js';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, computed, input, model, output, signal } from '@angular/core';
 import { BadgeComponent } from '../badge/badge.component';
 import { UIBaseComponent, UiSpinnerComponent } from '../../shared';
 import { ButtonStyle } from './button.models';
-ClarityIcons.addIcons(
-  angleIcon,
-  errorStandardIcon,
-  infoStandardIcon,
-  successStandardIcon,
-  warningStandardIcon,
-  ellipsisHorizontalIcon,
-  ellipsisVerticalIcon,
-  checkIcon,
-  timesIcon,
-  trashIcon,
-  undoIcon,
-  popOutIcon,
-  copyIcon,
-  plusCircleIcon,
-  plusIcon
-);
+import { IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
+
+// ClarityIcons.addIcons(
+//   angleIcon,
+//   errorStandardIcon,
+//   infoStandardIcon,
+//   successStandardIcon,
+//   warningStandardIcon,
+//   ellipsisHorizontalIcon,
+//   ellipsisVerticalIcon,
+//   checkIcon,
+//   timesIcon,
+//   trashIcon,
+//   undoIcon,
+//   popOutIcon,
+//   copyIcon,
+//   plusCircleIcon,
+//   plusIcon
+// );
 
 @Component({
   selector: 'ui-button',
   standalone: true,
-  imports: [ClarityModule, UiSpinnerComponent],
+  imports: [ UiSpinnerComponent, FontAwesomeModule ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss'
 })
 export class ButtonComponent extends UIBaseComponent implements AfterContentInit {
-  @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
+
+
+  @ContentChildren(BadgeComponent) badges!: QueryList<BadgeComponent>;
   ngAfterContentInit(): void {
     super.limitContentChildren(this.badges, 1);
   }
@@ -91,28 +76,9 @@ export class ButtonComponent extends UIBaseComponent implements AfterContentInit
   style = input<ButtonStyle>(ButtonStyle.Primary);
 
   /**
-   * Icon Name (from Clarity - optional)  
-   * Internally embedded Clariy Icons:  <i>  
-   *  _angleIcon_,
-      _errorStandardIcon_,
-      _infoStandardIcon_,
-      _successStandardIcon_,
-      _warningStandardIcon_,
-      _ellipsisHorizontalIcon_,
-      _ellipsisVerticalIcon_,
-      _checkIcon_,
-      _timesIcon_,
-      _trashIcon_,
-      _undoIcon_,
-      _popOutIcon_,
-      _copyIcon_,
-      _plusIcon_,
-      _plusCircleIcon_
-      </i>  
-   *
-   * See [Clarity Icon Shapes](https://clarity.design/documentation/icons/shapes) for more information.
+   * Icon Name (from Font Awesome - optional)  
    */
-  icon = input<string>();
+  icon = input<IconDefinition>();
 
   /**
    * Use this to disable the button (optional)   

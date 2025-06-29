@@ -8,12 +8,12 @@ import { RouterModule } from '@angular/router';
   selector: 'ui-menu-bar',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MenuItemComponent, CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './menu-bar.component.html',
   styleUrl: './menu-bar.component.scss'
 })
 export class MenuBarComponent extends UIBaseComponent {
-  @ContentChildren(MenuItemComponent) menuItems: QueryList<MenuItemComponent>;
+  @ContentChildren(MenuItemComponent) menuItems!: QueryList<MenuItemComponent>;
 
   setActive(item: MenuItemComponent) {
     this.menuItems.toArray().forEach(i => {

@@ -1,6 +1,6 @@
+@use '../../styles/ui.styles' as *;
+@use 'sass:color';
 :host {
-    @import '../../styles/ui.styles.scss';
-
     
     .ui-collapse-button {
         color: $ui-standard-text-color;
@@ -18,7 +18,7 @@
         user-select: none;
   
         &:not(.disabled):hover {
-          background-color: lighten($ui-alternative-standard-color, 6%);
+          background-color: color.adjust($ui-alternative-standard-color, $lightness: 6%);
           &:active {
             background-color: transparent;
           }
@@ -40,21 +40,21 @@
             }
             
             .rotate {
-                -webkit-transform: rotateZ(180deg) translateY(-3%) translateX(-10%);
-                -moz-transform: rotateZ(180deg) translateY(-3%) translateX(-10%);
-                -o-transform: rotateZ(180deg) translateY(-3%) translateX(-10%);
-                -ms-transform: rotateZ(180deg) translateY(-3%) translateX(-10%);
-                transform: rotateZ(180deg) translateY(-3%) translateX(-10%);
+                -webkit-transform: rotateZ(180deg) translateY(-1%) translateX(-10%);
+                -moz-transform: rotateZ(180deg) translateY(-1%) translateX(-10%);
+                -o-transform: rotateZ(180deg) translateY(-1%) translateX(-10%);
+                -ms-transform: rotateZ(180deg) translateY(-1%) translateX(-10%);
+                transform: rotateZ(180deg) translateY(-1%) translateX(-10%);
             }
           }
 
           &-up {
             .no-rotate {
-              -webkit-transform: rotateZ(180deg) translateY(-3%) translateX(-10%);
-              -moz-transform: rotateZ(180deg) translateY(-3%) translateX(-10%);
-              -o-transform: rotateZ(180deg) translateY(-3%) translateX(-10%);
-              -ms-transform: rotateZ(180deg) translateY(-3%) translateX(-10%);
-              transform: rotateZ(180deg) translateY(-3%) translateX(-10%);
+              -webkit-transform: rotateZ(180deg) translateY(-1%) translateX(-10%);
+              -moz-transform: rotateZ(180deg) translateY(-1%) translateX(-10%);
+              -o-transform: rotateZ(180deg) translateY(-1%) translateX(-10%);
+              -ms-transform: rotateZ(180deg) translateY(-1%) translateX(-10%);
+              transform: rotateZ(180deg) translateY(-1%) translateX(-10%);
             }
             
             .rotate {

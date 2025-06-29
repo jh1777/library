@@ -1,8 +1,7 @@
+@use '../../styles/ui.styles' as *;
+@use 'sass:color';
+
 :host {
-    @import '../../styles/ui.styles.scss';
-
-      
-
     .ui-modal {
 
         &-wrapper {
@@ -51,7 +50,7 @@
                 padding: .1rem .2rem;
                 border-radius: $ui-border-radius;
                 &:hover {
-                    background-color: lighten($ui-alternative-standard-color, 6%);
+                    background-color: color.adjust($ui-alternative-standard-color, $lightness: 6%);
                     &:active {
                       background-color: transparent;
                     }
@@ -63,5 +62,4 @@
             margin-top: auto;
         }
     }
- 
 }

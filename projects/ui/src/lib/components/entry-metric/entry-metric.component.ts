@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, input, model } from '@angular/core';
 import { UIBaseComponent, UiErrorComponent } from '../../shared';
 import { EntryMetricStyle } from './entry-metric.models';
 
@@ -12,8 +12,17 @@ import { EntryMetricStyle } from './entry-metric.models';
 })
 export class EntryMetricComponent extends UIBaseComponent {
 
+  constructor() {
+    super();
+    effect(() => {
+      if (this.percent() > 100) {
+        this.percent.set(100);
+      }
+    });
+  }
+
   /** Value to show 0 - 100 */
-  percent = input<number>(0);
+  percent = model<number>(0);
   
     /** Optional: Style `EntryMetricStyle` of the metric (`none`, `attention`, `error` or `success`) 
    * By default or if unset, it is none.

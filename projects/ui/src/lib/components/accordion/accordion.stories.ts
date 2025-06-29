@@ -1,16 +1,8 @@
 import { Meta, StoryObj, argsToTemplate, componentWrapperDecorator, moduleMetadata } from '@storybook/angular';
 import { AccordionComponent } from './accordion.component';
-import { ClarityModule } from '@clr/angular';
 import { CommonModule } from '@angular/common';
-import {
-  ClarityIcons,
-  checkIcon,
-  timesIcon,
-} from '@cds/core/icon';
-import '@cds/core/icon/register.js';
 import { AccordionPanelHeaderComponent } from './accordion-panel/accordion-panel-header/accordion-panel-header.component';
 import { AccordionPanelComponent } from './accordion-panel/accordion-panel.component';
-ClarityIcons.addIcons(checkIcon, timesIcon);
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { SwitchComponent } from '../switch';
 import { BadgeComponent } from '../badge';
@@ -32,7 +24,7 @@ const meta: Meta = {
   decorators: [
     moduleMetadata({
       //👇 Imports both components to allow component composition with Storybook
-      imports: [ClarityModule, AccordionPanelComponent, AccordionPanelHeaderComponent, SwitchComponent, BadgeComponent, ButtonComponent, CommonModule],
+      imports: [AccordionPanelComponent, AccordionPanelHeaderComponent, SwitchComponent, BadgeComponent, ButtonComponent, CommonModule],
       providers: [provideAnimations()], 
     }),
     // componentWrapperDecorator(

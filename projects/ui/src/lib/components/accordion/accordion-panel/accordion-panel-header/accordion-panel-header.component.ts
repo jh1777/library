@@ -3,49 +3,40 @@ import { UIBaseComponent } from '../../../../shared';
 import { BadgeComponent } from '../../../badge/badge.component';
 import { ButtonComponent } from '../../../button/button.component';
 import { SwitchComponent } from '../../../switch/switch.component';
-import {
-  ClarityIcons,
-  infoStandardIcon,
-  errorStandardIcon, 
-  successStandardIcon, 
-  warningStandardIcon
-} from '@cds/core/icon';
-import '@cds/core/icon/register.js';
-import { ClarityModule } from '@clr/angular';
 import { AccordionPanelHeaderStyle } from '../../accordion.models';
-ClarityIcons.addIcons(
-  infoStandardIcon,
-  errorStandardIcon,
-  successStandardIcon,
-  warningStandardIcon
-);
+import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
+import { faCircleCheck, faCircleExclamation, faInfoCircle, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'ui-accordion-panel-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ClarityModule],
+  imports: [ FontAwesomeModule ],
   templateUrl: './accordion-panel-header.component.html',
   styleUrl: './accordion-panel-header.component.scss'
 })
 export class AccordionPanelHeaderComponent extends UIBaseComponent implements AfterContentInit {
-  @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
-  @ContentChildren(SwitchComponent) switches: QueryList<SwitchComponent>;
-  @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
+  @ContentChildren(BadgeComponent) badges!: QueryList<BadgeComponent>;
+  @ContentChildren(SwitchComponent) switches!: QueryList<SwitchComponent>;
+  @ContentChildren(ButtonComponent) buttons!: QueryList<ButtonComponent>;
+
+  infoIcon = signal(faInfoCircle);
+  successIcon = signal(faCircleCheck);
+  warningIcon = signal(faTriangleExclamation);
+  errorIcon = signal(faCircleExclamation);
 
   constructor() {
     super();
     effect(
       () => {
-        this.buttons.toArray().forEach(button => {
+        this.buttons?.toArray().forEach(button => {
           button.isDisabled.set(this.disabledPanel());
         });
 
-        this.switches.toArray().forEach(switchItem => {
+        this.switches?.toArray().forEach(switchItem => {
           switchItem.isDisabled.set(this.disabledPanel());
         });
-      },
-      { allowSignalWrites: true },
+      }
     );
   }
 

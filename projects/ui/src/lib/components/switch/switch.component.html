@@ -23,9 +23,11 @@
             >
                 {{ label() }}
                 @if(tooltip()) {
-                    <cds-icon shape="info-standard" size="13"
+                    <fa-icon 
+                        [icon]="infoIcon()" 
                         [attr.title]="tooltip()"
-                    ></cds-icon>
+                        style="font-size: 13px;"
+                    ></fa-icon> 
                 }
             </div>
         }

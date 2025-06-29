@@ -11,10 +11,10 @@
     }
     <ui-toolbar>
         <ui-button slot="right" [label]="confirmLabel()" 
-            icon="check" 
+            [icon]="okayIcon()" 
             (onClick)="onConfirmClickHandler($event)" [style]=1></ui-button>
         <ui-button slot="right" [label]="cancelLabel()" 
-            icon="times" 
+            [icon]="cancelIcon()" 
             (onClick)="onCancelClickHandler($event)" [style]=4></ui-button>
       </ui-toolbar>
 </ui-modal>

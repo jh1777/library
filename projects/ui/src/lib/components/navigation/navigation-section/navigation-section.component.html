@@ -20,7 +20,7 @@
                             <div class="ui-nav-section-item-icon"
                                 (click)="itemRemoveClicked($event, item)"
                             >
-                                <cds-icon shape="trash" size="18"></cds-icon>
+                            <fa-icon [icon]="trashIcon()" style="font-size: 18px;"></fa-icon>
                             </div>
                         }
                     </div>
@@ -29,7 +29,7 @@
         }
         @if(addItemButtonLabel()) {
             <div class="ui-nav-section-item-addbutton no-select">
-                <ui-button [style]=0 [label]="addItemButtonLabel()" icon="plus" (onClick)="addItemClicked($event)"></ui-button>
+                <ui-button [style]=0 [label]="addItemButtonLabel()" [icon]="plusIcon()" (onClick)="addItemClicked($event)"></ui-button>
             </div>
         }
     </div>

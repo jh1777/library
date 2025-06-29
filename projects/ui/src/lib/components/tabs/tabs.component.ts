@@ -11,26 +11,21 @@ import {
 } from '@angular/core';
 import { UIBaseComponent, UiCollapseButtonComponent } from '../../shared';
 import { TabComponent } from './tab/tab.component';
-import { ClarityModule } from '@clr/angular';
-import {
-  ClarityIcons,
-  angleIcon
-} from "@cds/core/icon";
 import { BadgeComponent } from '../badge';
-ClarityIcons.addIcons(
-  angleIcon
-);
+// ClarityIcons.addIcons(
+//   angleIcon
+// );
 
 @Component({
   selector: 'ui-tabs',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ClarityModule, UiCollapseButtonComponent, BadgeComponent],
+  imports: [UiCollapseButtonComponent, BadgeComponent],
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.scss',
 })
 export class TabsComponent extends UIBaseComponent implements AfterContentInit {
-  @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
+  @ContentChildren(TabComponent) tabs!: QueryList<TabComponent>;
 
   /**
    * Optional way to control the active tab of this bar.  
@@ -54,8 +49,7 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
             this.selectTab(tab);
           }
         }
-      },
-      { allowSignalWrites: true },
+      }
     );
   }
 

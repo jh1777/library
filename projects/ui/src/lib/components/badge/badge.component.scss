@@ -1,8 +1,7 @@
-:host {
-    @import '../../styles/ui.styles.scss';
-    
-    display: contents;
+@use '../../styles/ui.styles.scss' as *;
 
+:host {
+    display: contents;
 
     .ui-badge-error {
         background-color: var(--ui-badge-error-background-color, $ui-error-color) !important;
@@ -92,13 +91,7 @@
         justify-content: center;
         text-decoration: none;
         cursor: default;
-        -moz-text-decoration: none;
-        -webkit-text-decoration: none;
         -webkit-touch-callout: none; /* iOS Safari */
-        -webkit-user-select: none; /* Safari */
-        -khtml-user-select: none; /* Konqueror HTML */
-        -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
         user-select: none;
 
         &-container {

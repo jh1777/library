@@ -33,9 +33,9 @@
             class="ui-generic-left-right-container-right ui-generic-flex-row" 
             [attr.title]="tooltip()"
             [class.big-style]="isBig() == true">
-            @if (style() > 0 && style() < 4) {
-              <cds-icon
-                solid
+            @if (style() > 0 && style() < 4 && showIcon()) {
+
+              <fa-icon
                 [style.color]="
                   style() == 1
                     ? 'var(--attention-kv-entry-color)'
@@ -45,18 +45,18 @@
                         ? 'var(--success-kv-entry-color)'
                         : ''
                 "
-                [attr.shape]="
-                  style() == 1
-                    ? 'warning-standard'
+                [icon]="
+                    style() == 1
+                    ? warningIcon()
                     : style() == 2
-                      ? 'error-standard'
-                      : style() == 3
-                        ? 'success-standard'
-                        : ''
+                        ? errorIcon()
+                        : style() == 3
+                            ? successIcon()
+                            : ''
                 "
-                [attr.size]="isBig() == true ? 18 : 16"
+                [attr.style]="isBig() == true ? 'font-size: 18px;': 'font-size: 16px;'"
               >
-              </cds-icon>
+              </fa-icon>
             }
 
             <div

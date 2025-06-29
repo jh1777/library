@@ -1,4 +1,5 @@
-@import '../../styles/ui.styles.scss';
+@use '../../styles/ui.styles' as *;
+@use 'sass:color';
 
 :host {    
 
@@ -25,21 +26,15 @@
     }
   
     .attention-tile {
-      background-color: mix(white, $ui-light-attention-color, 20%) !important;
+      background-color: color.adjust($ui-light-attention-color, $lightness: 20%) !important;
     }
   
     .error-tile {
-      background-color: mix(white, $ui-light-error-color, 20%) !important;
-      /* tryout:
-      background: linear-gradient(45deg, 
-        mix(white, $ui-light-error-color, 80%),
-        mix($ui-error-color, $ui-light-error-color, 20%), 
-        mix(white, $ui-light-error-color, 80%)) !important;
-        */
+      background-color: color.adjust($ui-light-error-color, $lightness: 20%) !important;
     }
   
     .success-tile {
-      background-color: mix(white, $ui-light-success-color, 20%) !important;
+      background-color: color.adjust($ui-light-success-color, $lightness: 20%) !important;
     }
   
     .attention-item {
@@ -140,18 +135,7 @@
         cursor: pointer;
         text-decoration: none;
         -webkit-touch-callout: none;
-        /* iOS Safari */
-        -webkit-user-select: none;
-        /* Safari */
-        -khtml-user-select: none;
-        /* Konqueror HTML */
-        -moz-user-select: none;
-        /* Old versions of Firefox */
-        -ms-user-select: none;
-        /* Internet Explorer/Edge */
         user-select: none;
-        /* Non-prefixed version, currently
-                                          supported by Chrome, Edge, Opera and Firefox */
         color: var(--ui-entry-tile-more-button-color, $ui-petrol-color);
   
         &:not(.disabled):hover {

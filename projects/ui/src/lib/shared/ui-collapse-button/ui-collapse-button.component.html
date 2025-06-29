@@ -9,12 +9,11 @@
     [class.disabled]="disabled() == true"
     [class.no-click]="disabled() == true"
 >
-    <cds-icon
-        shape="angle"
+    <fa-icon 
+        [icon]="angleUpIcon() || 'default-icon'"
         [class.no-click]="disabled() == true"
         [class.disabled]="disabled() == true"
-        [attr.size]="13"
         [class.rotate]="isCollapsed() == true || noRotation()"
         [class.no-rotate]="isCollapsed() == false && noRotation() == false"
-    ></cds-icon>
+    ></fa-icon>
 </div>
