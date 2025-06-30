@@ -21,7 +21,6 @@
     "@fortawesome/angular-fontawesome": "^1.0.0",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@angular/router": "^19.2.14",
-    "@ngrx/component-store": "17.1.1",
     "deepmerge": "^4.3.1",
     "deepmerge-ts": "^5.1.0",
     "immer": "^9.0.21",
