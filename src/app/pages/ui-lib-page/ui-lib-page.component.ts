@@ -1,5 +1,5 @@
 
-import { CommonModule } from "@angular/common";
+
 import { AfterContentInit, Component, OnInit, ViewChild, signal } from "@angular/core";
 import { BadgeComponent, ButtonComponent, ModalComponent, ConfirmationModalComponent,
   CardComponent, EntryTileComponent, TabComponent, TabsComponent, CardSectionBasicComponent,
@@ -14,7 +14,7 @@ import { faPlay, faStop, faCircleCheck, faCircleExclamation, faInfoCircle, faTri
 @Component({
     selector: 'ui-lib-page',
     standalone: true,
-    imports: [CommonModule, ConfirmationModalComponent, SignpostComponent, BadgeComponent, SwitchComponent, ModalComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, CardSectionBasicComponent, MenuItemComponent, MenuBarComponent, TabComponent, TabsComponent, GridComponent, ValueTileComponent, MetricTileComponent, ToolbarComponent, ButtonComponent, CardComponent, EntryTileComponent, EntryKeyValueComponent, EntryTileItemComponent, EntryContainerComponent, EntryMetricComponent],
+    imports: [ConfirmationModalComponent, SignpostComponent, BadgeComponent, SwitchComponent, ModalComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, CardSectionBasicComponent, MenuItemComponent, MenuBarComponent, TabComponent, TabsComponent, GridComponent, ValueTileComponent, MetricTileComponent, ToolbarComponent, ButtonComponent, CardComponent, EntryTileComponent, EntryKeyValueComponent, EntryTileItemComponent, EntryContainerComponent, EntryMetricComponent],
     templateUrl: './ui-lib-page.component.html',
     styleUrls: ['./ui-lib-page.component.scss']
   })

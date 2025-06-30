@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, ContentChildren, QueryList } from '@angular/core';
 import { UIBaseComponent } from '../../../shared';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'ui-menu-bar',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterModule],
+  imports: [RouterModule],
   templateUrl: './menu-bar.component.html',
   styleUrl: './menu-bar.component.scss'
 })

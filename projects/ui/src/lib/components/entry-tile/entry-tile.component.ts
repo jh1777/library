@@ -1,5 +1,5 @@
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
-import { CommonModule } from '@angular/common';
+
 import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, computed, input, model, output, signal } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { EntryTileItemComponent } from './entry-tile-item/entry-tile-item.component';
@@ -17,7 +17,7 @@ import { FontAwesomeModule, IconDefinition  } from '@fortawesome/angular-fontawe
 @Component({
   selector: 'ui-entry-tile',
   standalone: true,
-  imports: [CommonModule, UiCollapseButtonComponent, FontAwesomeModule],
+  imports: [UiCollapseButtonComponent, FontAwesomeModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './entry-tile.component.html',
   styleUrl: './entry-tile.component.scss',

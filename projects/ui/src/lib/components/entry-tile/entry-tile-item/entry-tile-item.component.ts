@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -20,7 +20,7 @@ import { faCircleCheck, faCircleExclamation, faInfoCircle, faTriangleExclamation
 @Component({
   selector: 'ui-entry-tile-item',
   standalone: true,
-  imports: [CommonModule, UiErrorComponent, FontAwesomeModule],
+  imports: [UiErrorComponent, FontAwesomeModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './entry-tile-item.component.html',
   styleUrl: './entry-tile-item.component.scss',

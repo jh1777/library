@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 
 import { UIBaseComponent, UiErrorComponent } from '../../shared';
@@ -11,7 +11,7 @@ import { faCircleCheck, faCircleExclamation, faInfoCircle, faTriangleExclamation
   selector: 'ui-entry-key-value',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, UiErrorComponent, FontAwesomeModule],
+  imports: [UiErrorComponent, FontAwesomeModule],
   templateUrl: './entry-key-value.component.html',
   styleUrl: './entry-key-value.component.scss'
 })
