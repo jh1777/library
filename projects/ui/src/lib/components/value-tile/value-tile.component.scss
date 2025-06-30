@@ -16,10 +16,11 @@
 
     --padding: .165rem .5rem;
 
-    display: inline-flex;
+    display: flex;
     position: relative;
     flex-direction: row;
     min-width: max-content;
+    min-height: 30px;
     color: $ui-standard-text-color;
 
     .success {

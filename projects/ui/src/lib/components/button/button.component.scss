@@ -84,11 +84,13 @@
     .simple-primary {
         --ui-button-primary-hover-color: #{$ui-light-petrol-color};
         --ui-button-text-color: #{$ui-petrol-color};
+        border: 0px;
     }
 
     .simple-destructive {
         --ui-button-primary-hover-color: #{$ui-alternative-error-color};
         --ui-button-text-color: #{$ui-error-color};
+        border: 0px;
     }
 
     .simple {

@@ -14,7 +14,7 @@
     --success-item-bg-color:  #{$ui-light-success-color};
     --success-item-border-color: #{$ui-success-color};
   
-    --dot-size: 10px;
+    --dot-size: 7px;
   
     .clickable:hover {
       cursor: pointer;
@@ -26,15 +26,15 @@
     }
   
     .attention-tile {
-      background-color: color.adjust($ui-light-attention-color, $lightness: 20%) !important;
+      background-color: color.adjust($ui-light-attention-color, $lightness: 5%) !important;
     }
   
     .error-tile {
-      background-color: color.adjust($ui-light-error-color, $lightness: 20%) !important;
+      background-color: color.adjust($ui-light-error-color, $lightness: 5%) !important;
     }
   
     .success-tile {
-      background-color: color.adjust($ui-light-success-color, $lightness: 20%) !important;
+      background-color: color.adjust($ui-light-success-color, $lightness: 5%) !important;
     }
   
     .attention-item {
@@ -92,7 +92,7 @@
         display: flex;
         flex-direction: column;
         border-radius: $ui-border-radius;
-        padding: .3rem .6rem;
+        padding: .6rem .9rem;
         color: $ui-standard-text-color;
       }
   

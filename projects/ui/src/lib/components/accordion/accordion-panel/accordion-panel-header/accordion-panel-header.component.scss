@@ -11,6 +11,11 @@
     --error-color: #{$ui-error-color};  
     --success-color:  #{$ui-success-color};
 
+    .tooltip-icon {
+        font-size: 13px;
+        color: $ui-standard-color;
+    }
+    
     .ui-accordion-panel-header-right {
         display: flex;
         margin-left: auto;

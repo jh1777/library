@@ -83,10 +83,12 @@
     .ui-badge {
         display: flex;
         width: fit-content;
-        border-radius: .5rem;
+        border-radius: 1rem;
+
+        box-sizing: content-box;
         background-color: $ui-dark-standard-color;
         color: $ui-inverted-text-color;
-        padding: 0.1rem 0.2rem;
+
         align-items: center; 
         justify-content: center;
         text-decoration: none;

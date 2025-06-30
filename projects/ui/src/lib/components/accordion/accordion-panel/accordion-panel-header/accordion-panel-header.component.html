@@ -2,7 +2,7 @@
     
    {{ label() }}
    @if(tooltip()) {
-    <fa-icon [icon]="infoIcon()" [attr.title]="tooltip()"></fa-icon>
+    <fa-icon [icon]="infoIcon()" class="tooltip-icon" [attr.title]="tooltip()"></fa-icon>
    }
     <div 
         class="ui-accordion-panel-header-right"

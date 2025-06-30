@@ -43,7 +43,7 @@ export class TabsComponent extends UIBaseComponent implements AfterContentInit {
     super();
     effect(
       () => {
-        if (this.activeIndex() > -1) {
+        if (this.activeIndex() > -1 && this.tabs && this.tabs.length > 0) {
           const tab = this.tabs.get(this.activeIndex());
           if (tab) {
             this.selectTab(tab);
