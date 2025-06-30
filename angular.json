@@ -78,67 +78,6 @@
         }
       }
     },
-    "ui-lib": {
-      "projectType": "library",
-      "root": "projects/ui-lib",
-      "sourceRoot": "projects/ui-lib/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:ng-packagr",
-          "options": {
-            "project": "projects/ui-lib/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/ui-lib/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/ui-lib/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "storybook": {
-          "builder": "@storybook/angular:start-storybook",
-          "options": {
-            "configDir": "projects/ui-lib/.storybook",
-            "browserTarget": "ui-lib:build",
-            "compodoc": true,
-            "styles": [
-              "node_modules/@clr/icons/clr-icons.min.css",
-              "node_modules/@clr/ui/clr-ui.min.css"
-            ],
-            "compodocArgs": [
-              "-e",
-              "json",
-              "-d",
-              "projects/ui-lib"
-            ],
-            "port": 6006
-          }
-        },
-        "build-storybook": {
-          "builder": "@storybook/angular:build-storybook",
-          "options": {
-            "configDir": "projects/ui-lib/.storybook",
-            "browserTarget": "ui-lib:build",
-            "compodoc": true,
-            "styles": [
-              "node_modules/@clr/icons/clr-icons.min.css",
-              "node_modules/@clr/ui/clr-ui.min.css"
-            ],
-            "compodocArgs": [
-              "-e",
-              "json",
-              "-d",
-              "projects/ui-lib"
-            ],
-            "outputDir": "dist/storybook/ui-lib"
-          }
-        }
-      }
-    },
     "ui": {
       "projectType": "library",
       "root": "projects/ui",
@@ -207,6 +146,36 @@
               "projects/ui"
             ],
             "outputDir": "dist/storybook/ui"
+          }
+        }
+      }
+    },
+    "test": {
+      "projectType": "library",
+      "root": "projects/test",
+      "sourceRoot": "projects/test/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/test/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/test/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/test/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         }
       }
