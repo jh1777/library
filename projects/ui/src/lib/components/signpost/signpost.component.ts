@@ -1,13 +1,11 @@
 import { ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, ViewChild, effect, input } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
-import { CommonModule } from '@angular/common';
-import { SignpostPosition } from './signpost.models';
 
 @Component({
   selector: 'ui-signpost',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './signpost.component.html',
   styleUrl: './signpost.component.scss'
 })

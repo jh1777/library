@@ -1,0 +1,8 @@
+# .npmignore
+**/*.ts
+**/*.map
+src/
+stories/
+dist/
+node_modules/
+.angular/
