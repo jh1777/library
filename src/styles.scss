@@ -1,12 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @use 'sass:color';  
-@use './projects/ui/src/lib/styles/ui.styles.scss' as *;
+
 
 * {
     --daimler-petrol4: #007A93;
     --daimler-petrol3: #00677F;
     --grey-light1: #E6E6E6;
     --grey-medium: #C8C8C8;
+    font-family: 'Inter';
 }
 
 .columns {
