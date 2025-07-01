@@ -8,7 +8,7 @@ import { AccordionPanelHeaderComponent } from './accordion-panel-header/accordio
   selector: 'ui-accordion-panel',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [UiCollapseButtonComponent, AccordionPanelHeaderComponent, BadgeComponent, UiErrorComponent],
+  imports: [UiCollapseButtonComponent, UiErrorComponent],
   templateUrl: './accordion-panel.component.html',
   styleUrl: './accordion-panel.component.scss',
   animations: [
@@ -20,15 +20,16 @@ import { AccordionPanelHeaderComponent } from './accordion-panel-header/accordio
   ]
 })
 export class AccordionPanelComponent extends UIBaseComponent implements AfterContentInit {
-  @ContentChildren(AccordionPanelHeaderComponent) headers: QueryList<AccordionPanelHeaderComponent>;
+  @ContentChildren(AccordionPanelHeaderComponent) headers!: QueryList<AccordionPanelHeaderComponent>;
 
   constructor() {
     super();
     effect(
       () => {
-        this.headers.get(0)?.disabledPanel.set(this.isDisabled());
-      },
-      { allowSignalWrites: true },
+        if (this.headers && this.headers.length > 0) {
+          this.headers.get(0)?.disabledPanel.set(this.isDisabled());
+        }
+      }
     );
   }
 

@@ -24,7 +24,6 @@ MODAL
 </ui-confirmation-modal>
 <ui-button label="Show Confirmation Modal" (onClick)="openConfModal()"></ui-button>
 
-
 <ui-modal header="MODAL HEADER" [(isOpen)]="showModal" [height]=0 [width]=2 [closeOnBackdropClick]=false>
   
   <ui-card header="Claims" grid-column="1" [style]=0>
@@ -46,13 +45,14 @@ MODAL
   </ui-card>
 
   <ui-toolbar>
-    <ui-button slot="right" label="Okay" icon="check" [style]="1"></ui-button>
-    <ui-button slot="right" icon="times" label="Cancel" (onClick)="showModal.set(false)" [style]="4"></ui-button>
+    <ui-button slot="right" label="Okay" [icon]="faCheck()" [style]="1"></ui-button>
+    <ui-button slot="right" [icon]="faTimes()" label="Cancel" (onClick)="showModal.set(false)" [style]="4"></ui-button>
   </ui-toolbar>
 
 </ui-modal>
-<ui-button label="Show Modal" (onClick)="openModal()"></ui-button>
 
+
+<ui-button label="Show Modal" (onClick)="openModal()"></ui-button>
 
 
 <div class="item">
@@ -84,8 +84,8 @@ MODAL
           <ui-accordion-panel-header label="Header #2" tooltip="This Panel is for testing...">
             <ui-switch label="Test" tooltip="this is a test" [state]=true></ui-switch>
 
-            <ui-button label="Okay" icon="check" id="XB-1008" (onClick)="log($event)"></ui-button>
-            <ui-button label="Cancel" [style]=6 id="XB-1009" icon="times" (onClick)="log($event)"></ui-button>
+            <ui-button label="Okay" [icon]="faCheck()" id="XB-1008" (onClick)="log($event)"></ui-button>
+            <ui-button label="Cancel" [style]=6 id="XB-1009" [icon]="faTimes()" (onClick)="log($event)"></ui-button>
           </ui-accordion-panel-header>
 
           <ui-card header="Card Example xx" >
@@ -113,6 +113,7 @@ MODAL
     </div>
   </div>
 </div>
+
 
 <div class="item">
   <div class="title">
@@ -187,17 +188,17 @@ MODAL
     <ui-button label="Simple button" [style]="0"></ui-button>
     <ui-button
       label="Simple + Icon"
-      icon="check"
+      [icon]="faCheck()"
       [style]="0"
     ></ui-button>
     <ui-button
       label="Simple disabled"
-      icon="check"
+      [icon]="faCheck()"
       [style]="0"
       [isDisabled]="true"
     ></ui-button>
-    <ui-button label="Apply" icon="check"></ui-button>
-    <ui-button label="Cancel" icon="times" [style]="4"></ui-button>
+    <ui-button label="Apply" [icon]="faCheck()"></ui-button>
+    <ui-button label="Cancel" [icon]="faTimes()" [style]="4"></ui-button>
     <ui-button label="Ok" [style]="5"></ui-button>
     <ui-button label="None" [style]="2"></ui-button>
 
@@ -217,7 +218,7 @@ MODAL
         </ui-card-section-basic>
     </ui-card>
     <ui-card header="Card Example #2">
-        <ui-button icon="pop-out" [style]="0" slot="header-right"></ui-button>
+        <ui-button [icon]="faExternalLink()" [style]="0" slot="header-right"></ui-button>
         <ui-card-section-basic text="Enable the advanced feature flag in this application.">
           <ui-switch label="Advanced" slot="footer-left"></ui-switch>
       </ui-card-section-basic>
@@ -296,7 +297,7 @@ MODAL
             header="TEST"
             [primaryValue]="'Registered'.concat(($index + 4).toString())"
           >
-            <ui-button label="Delete" [style]="6" icon="trash"></ui-button>
+            <ui-button label="Delete" [style]="6" [icon]="faTrash()"></ui-button>
           </ui-entry-tile-item>
         }
 
@@ -304,7 +305,7 @@ MODAL
           header="Connectivity"
           primaryValue="Connected"
           secondaryValue="4 mins ago"
-          icon="pop-out"
+          [icon]="faExternalLink()"
           [isClickable]="true"
         >
           <ui-badge value="6" [style]="2" [size]="2"></ui-badge>
@@ -312,7 +313,7 @@ MODAL
       </ui-entry-tile>
     </div>
     <div class="container">
-      <ui-entry-tile header="Tile with Buttons" titleIcon="cpu" [collapseMode]=1 [style]=2>
+      <ui-entry-tile header="Tile with Buttons" titleIcon="cpu" [collapseMode]=1 [style]="4">
         <ui-entry-key-value label="State"  value="Unhealthy" [style]=2></ui-entry-key-value>
         <ui-entry-key-value label="Updated" value="50 mins ago"></ui-entry-key-value>
 
@@ -320,12 +321,12 @@ MODAL
           <ui-badge value="1" [style]="2"></ui-badge>
         </ui-entry-tile-item>
 
-        <ui-entry-tile-item header="Connectivity" primaryValue="Connected" secondaryValue="4 mins ago" icon="pop-out" [isClickable]=true></ui-entry-tile-item>
+        <ui-entry-tile-item header="Connectivity" primaryValue="Connected" secondaryValue="4 mins ago" [icon]="faExternalLink()" [isClickable]=true></ui-entry-tile-item>
 
-        <ui-button label="Accept" [style]="5" icon="check" slot="left">
+        <ui-button label="Accept" [style]="5" [icon]="faCheck()" slot="left">
           <ui-badge value="3"></ui-badge>
         </ui-button>
-        <ui-button label="Delete" [style]=4 icon="trash" slot="right"></ui-button>
+        <ui-button label="Delete" [style]=4 [icon]="faTrash()" slot="right"></ui-button>
       </ui-entry-tile>
     </div>
   </div>
@@ -407,7 +408,7 @@ MODAL
     <ui-button
       slot="left"
       label="Left Simple #1"
-      icon="check"
+      [icon]="faCheck()"
       [style]="0"
     ></ui-button>
     <ui-button
@@ -417,8 +418,8 @@ MODAL
       [isDisabled]="true"
     ></ui-button>
     <ui-value-tile key="Vin" value="WDB0101010110" [isLoading]=false slot="right">
-      <ui-button icon="copy" label="test"></ui-button>
-      <ui-button icon="pop-out" [style]="0"></ui-button>
+      <ui-button [icon]="faCopy()" label="test"></ui-button>
+      <ui-button [icon]="faExternalLink()" [style]="0"></ui-button>
     </ui-value-tile>
 
     <ui-badge [style]="0" label="CTP2" slot="left"></ui-badge>
@@ -429,16 +430,16 @@ MODAL
 
     <ui-button label="Right #2" slot="right" [style]=3> </ui-button>
     <ui-button label="Loading..." slot="right" [style]=2 [isLoading]=true> </ui-button>
-    <ui-button icon="play" slot="right" [style]="0"></ui-button>
-    <ui-button icon="stop" slot="right" [style]="0"></ui-button>
+    <ui-button [icon]="faPlay()" slot="right" [style]="0"></ui-button>
+    <ui-button [icon]="faStop()" slot="right" [style]="0"></ui-button>
   </ui-toolbar>
 </div>
 <div class="item">
   <div class="title">VALUE TILE (containing BADGE & BUTTON)</div>
   <div class="instances">
     <ui-value-tile key="Vin" value="WDB0101010110" [isLoading]=false>
-      <ui-button icon="copy" label="test"></ui-button>
-      <ui-button icon="pop-out" [style]="0"></ui-button>
+      <ui-button [icon]="faCopy()" label="test"></ui-button>
+      <ui-button [icon]="faExternalLink()" [style]="0"></ui-button>
     </ui-value-tile>
     <ui-value-tile key="Vin" value="NONE" [style]=2> </ui-value-tile>
     <ui-value-tile key="Streaming" value="ENABLED" [style]=3> </ui-value-tile>

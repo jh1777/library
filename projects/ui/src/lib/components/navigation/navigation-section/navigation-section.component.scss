@@ -1,16 +1,15 @@
+@use '../../../styles/ui.styles' as *;
+@use 'sass:color';
+
 :host {
 
-    @import '../../../styles/ui.styles.scss';
-
     .ui-nav-section-separator {
-        border-bottom: 1px solid lighten($ui-alternative-standard-color, 5%);
+        border-bottom: 1px solid color.adjust($ui-alternative-standard-color, $lightness: 5%);
     }
     
     .ui-nav-section {
         margin-top: 20px;
         padding-bottom: 10px;
-
-      
 
         &-title {
             font-weight: 500;
@@ -21,6 +20,13 @@
         }
 
         &-item {
+            font-weight: 300;
+            cursor: pointer;
+            font-size: 16px;
+            color: $ui-standard-text-color;
+            padding: 7px 12px;
+            border-radius: $ui-border-radius;
+
             &-icon {
                 margin-right: 15px;
                 display: flex;
@@ -36,16 +42,9 @@
                 margin-left: 12px;
                 margin-top: 13px;
             }
-            
-            font-weight: 300;
-            cursor: pointer;
-            font-size: 16px;
-            color: $ui-standard-text-color;
-            padding: 7px 12px;
-            border-radius: $ui-border-radius;
 
             &:hover {
-                background-color: lighten($ui-alternative-standard-color, 5%);
+                background-color: color.adjust($ui-alternative-standard-color, $lightness: 5%);
                 &:active {
                     background-color: $ui-alternative-standard-color;
                 }
@@ -56,10 +55,8 @@
             }
 
             &.active {
-                background-color: lighten($ui-alternative-standard-color, 5%);
-            }
-
-            
+                background-color: color.adjust($ui-alternative-standard-color, $lightness: 5%);
+            }            
         }
     }
 }

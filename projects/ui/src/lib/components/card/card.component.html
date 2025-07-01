@@ -4,6 +4,9 @@
         [class.attention]="style() == 1"
         [class.error]="style() == 2"
         [class.success]="style() == 3"
+        [class.highlight]="style() == 4 || (isClickable() == true && isSelected() == true && toggleSelect() == true)"
+        [class.is-clickable]="isClickable() == true"
+        (click)="handleClickEvent($event)"
     >
         @if(hasError() == true) {
             <ui-error [errorMessage]="errorMessage()" [class.has-error]="hasError() == true"></ui-error>
@@ -14,12 +17,24 @@
                 [class.attention]="style() == 1"
                 [class.error]="style() == 2"
                 [class.success]="style() == 3"
+                [class.highlight]="style() == 4"
             >
                 @if(isLoading() == false) {
                     {{ header() }}
                     <div class="ui-card-header-right">
+                        
+                        <div 
+                            [class.attention]="style() == 1"
+                            [class.error]="style() == 2"
+                            [class.success]="style() == 3"
+                            [class.highlight]="style() == 4"
+                        >{{ headerRight() }}</div>
+
+                        <ng-content select="ui-toolbar"></ng-content>
                         <ng-content select="ui-button[slot=header-right]"></ng-content>
                         <ng-content select="ui-switch[slot=header-right]"></ng-content>
+                        <ng-content select="ui-badge[slot=header-right]"></ng-content>
+
                     </div>
                 } @else {
                     <div class="loading pulse" style="color: var(--ui-card-header-loading-color) !important;">
@@ -30,8 +45,8 @@
                 }
             </div>
 
-            @if(isLoading() == true && sections?.length == 0) {
-                <div class="ui-card-content">
+            @if(isLoading() == true && sections.length == 0) {
+                <div class="ui-card-loading">
                     <div class="loading pulse">
                         @for (_ of [].constructor(7); track $index) {
                             {{ placeholder }}
@@ -44,7 +59,9 @@
                     </div>
                 </div>
             }
-            <ng-content select="ui-card-section-basic"></ng-content>
+            <div class="ui-card-content">
+                <ng-content select="ui-card-section-basic"></ng-content>
+            </div>
         }
     </div>
 }

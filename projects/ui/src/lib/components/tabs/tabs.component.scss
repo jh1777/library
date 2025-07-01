@@ -1,11 +1,10 @@
+@use '../../styles/ui.styles' as *;
 :host {
-    @import '../../styles/ui.styles.scss';
 
     position: relative;
     display: flex;
     flex-direction: column;
     gap: .8rem;
- 
 
     .ui-tabs {
         display: flex;
@@ -68,5 +67,4 @@
     .ui-tab-content {
         // Future use
     }
-      
 }

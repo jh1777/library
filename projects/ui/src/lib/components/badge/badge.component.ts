@@ -32,7 +32,7 @@ export class BadgeComponent extends UIBaseComponent {
    * See {@link BadgeStyle}
    * 
    */
-  style = input(BadgeStyle.Error, { transform: (value) => BadgeStyle[value as keyof typeof BadgeStyle]});
+  style = input(BadgeStyle.Error);
 
   /**
    * Size of badge

@@ -1,19 +1,15 @@
-import { ChangeDetectionStrategy, Component, input, model } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, model, signal } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
-import { ClarityModule } from '@clr/angular';
-import {
-  ClarityIcons,
-  infoStandardIcon
-} from '@cds/core/icon';
-import '@cds/core/icon/register.js';
-ClarityIcons.addIcons(infoStandardIcon);
+import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'ui-switch',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ClarityModule],
+  imports: [FontAwesomeModule],
   templateUrl: './switch.component.html',
   styleUrl: './switch.component.scss',
   animations: [
@@ -26,7 +22,7 @@ ClarityIcons.addIcons(infoStandardIcon);
   ]
 })
 export class SwitchComponent extends UIBaseComponent {
-
+  infoIcon = signal(faInfoCircle);
   /**
    * Label for the switch (optional)
    */

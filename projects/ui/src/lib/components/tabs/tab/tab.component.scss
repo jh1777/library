@@ -1,5 +1,5 @@
+@use '../../../styles/ui.styles' as *;
 :host {
-    @import '../../../styles/ui.styles.scss';
 
     position: relative;
     .ui-tab-content {

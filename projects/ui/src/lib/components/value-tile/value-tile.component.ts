@@ -1,33 +1,24 @@
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, input } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, input, signal } from '@angular/core';
 import { ButtonComponent } from '../button';
 import { UIBaseComponent, UiErrorComponent } from '../../shared';
 import { ValueTileStyle } from './value-tile.models';
 import { BadgeComponent } from '../badge/badge.component';
-import {
-  ClarityIcons,
-  infoStandardIcon,
-  popOutIcon,
-  copyIcon
-} from '@cds/core/icon';
-import '@cds/core/icon/register.js';
-import { ClarityModule } from '@clr/angular';
-ClarityIcons.addIcons(
-  infoStandardIcon,
-  popOutIcon,
-  copyIcon
-);
+import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'ui-value-tile',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [UiErrorComponent, ClarityModule],
+  imports: [UiErrorComponent, FontAwesomeModule],
   templateUrl: './value-tile.component.html',
   styleUrl: './value-tile.component.scss'
 })
 export class ValueTileComponent extends UIBaseComponent implements AfterContentInit {
-  @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
-  @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
+  @ContentChildren(ButtonComponent) buttons!: QueryList<ButtonComponent>;
+  @ContentChildren(BadgeComponent) badges!: QueryList<BadgeComponent>;
+
+  infoIcon = signal(faInfoCircle);
 
   ngAfterContentInit(): void {
     super.limitContentChildren(this.buttons, 2);

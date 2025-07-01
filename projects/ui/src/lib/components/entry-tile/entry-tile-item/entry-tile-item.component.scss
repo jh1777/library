@@ -1,5 +1,5 @@
+@use '../../../styles/ui.styles' as *;
 :host {
-  @import '../../../styles/ui.styles.scss';
 
   display: contents;
   position: relative;
@@ -69,6 +69,18 @@
 
   .ui-entry-tile {
     &-item {
+
+      line-height: normal;
+      min-width: $ui-min-width;
+      position: relative;
+      border: 1px solid $ui-inverted-text-color;
+      background-color: $ui-inverted-text-color;
+      -webkit-box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, $ui-alternative-shadow-color);
+      -moz-box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, $ui-alternative-shadow-color);
+      box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, $ui-alternative-shadow-color);
+      padding: .4rem .6rem;
+      border-radius: $ui-border-radius;
+
       &-header {
         font-weight: 600;
         font-size: small;
@@ -91,17 +103,6 @@
         align-self: flex-end;
       }
 
-      line-height: normal;
-      min-width: $ui-min-width;
-      position: relative;
-      border: 1px solid $ui-inverted-text-color;
-      background-color: $ui-inverted-text-color;
-      -webkit-box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, $ui-alternative-shadow-color);
-      -moz-box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, $ui-alternative-shadow-color);
-      box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, $ui-alternative-shadow-color);
-      padding: .4rem .6rem;
-      border-radius: $ui-border-radius;
-
       &:last-child {
         margin-bottom: .5rem;
       }
@@ -120,10 +121,10 @@
   }
 
   .ui-badge {
-      position: absolute;
-      top: 0%; // Align vertically centered
-      right: -8px; // Adjust as needed for desired distance from the button edge
-      transform: translateY(-50%); // Center vertically
-      z-index: 999;
+    position: absolute;
+    top: 0%; // Align vertically centered
+    right: -8px; // Adjust as needed for desired distance from the button edge
+    transform: translateY(-50%); // Center vertically
+    z-index: 999;
   }
 }

@@ -5,7 +5,7 @@ export enum CardStyle {
     Attention = 1,
     Error = 2,
     Success = 3,
-    Information = 4
+    Highlight = 4
 }
 
 export interface CardInterface extends UIBaseComponentInterface {

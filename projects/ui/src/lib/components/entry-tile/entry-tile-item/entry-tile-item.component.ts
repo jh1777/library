@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -10,54 +10,30 @@ import {
   signal,
 } from '@angular/core';
 import { BadgeComponent } from '../../badge';
-import { ClarityModule } from '@clr/angular';
-import {
-  ClarityIcons,
-  angleIcon,
-  errorStandardIcon,
-  infoStandardIcon,
-  successStandardIcon,
-  warningStandardIcon,
-  ellipsisVerticalIcon,
-  ellipsisHorizontalIcon,
-  popOutIcon,
-  playIcon,
-  stopIcon,
-  pauseIcon,
-  refreshIcon
-} from '@cds/core/icon';
-import '@cds/core/icon/register.js';
 import { ButtonComponent } from '../../button';
 import { SwitchComponent } from '../../switch';
 import { UIBaseComponent, UiErrorComponent } from '../../../shared';
 import { EntryItemStyle } from './entry-tile-item.models';
-ClarityIcons.addIcons(
-  angleIcon,
-  errorStandardIcon,
-  infoStandardIcon,
-  successStandardIcon,
-  warningStandardIcon,
-  ellipsisHorizontalIcon,
-  ellipsisVerticalIcon,
-  popOutIcon,
-  playIcon,
-  stopIcon,
-  pauseIcon,
-  refreshIcon
-);
+import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
+import { faCircleCheck, faCircleExclamation, faInfoCircle, faTriangleExclamation, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'ui-entry-tile-item',
   standalone: true,
-  imports: [CommonModule, ClarityModule, UiErrorComponent],
+  imports: [UiErrorComponent, FontAwesomeModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './entry-tile-item.component.html',
   styleUrl: './entry-tile-item.component.scss',
 })
 export class EntryTileItemComponent extends UIBaseComponent implements AfterContentInit {
-  @ContentChildren(BadgeComponent) badges: QueryList<BadgeComponent>;
-  @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
-  @ContentChildren(SwitchComponent) switches: QueryList<SwitchComponent>;
+  @ContentChildren(BadgeComponent) badges!: QueryList<BadgeComponent>;
+  @ContentChildren(ButtonComponent) buttons!: QueryList<ButtonComponent>;
+  @ContentChildren(SwitchComponent) switches!: QueryList<SwitchComponent>;
+
+  infoIcon = signal(faInfoCircle);
+  successIcon = signal(faCircleCheck);
+  warningIcon = signal(faTriangleExclamation);
+  errorIcon = signal(faCircleExclamation);
 
   ngAfterContentInit(): void {
     super.limitContentChildren(this.badges, 1);
@@ -106,7 +82,7 @@ export class EntryTileItemComponent extends UIBaseComponent implements AfterCont
    * Will be colorized grey by default. If the item has `clickable == true` its shown in default action color
    *
    */
-  icon = input<string>();
+  icon = input<IconDefinition>();
 
   /**
    * Click event on the Item  
@@ -121,6 +97,6 @@ export class EntryTileItemComponent extends UIBaseComponent implements AfterCont
   public handleClickEvent($event: MouseEvent) {
     $event.preventDefault();
     $event.stopPropagation();
-    this.onItemClick.emit(this.id() ?? null);
+    this.onItemClick.emit(this.id() ?? "");
   }
 }

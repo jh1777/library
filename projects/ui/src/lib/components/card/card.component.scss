@@ -1,10 +1,11 @@
+@use '../../styles/ui.styles' as *;
 :host {
-    @import '../../styles/ui.styles.scss';
 
     position: relative;
     display: contents;
 
     --ui-card-header-loading-color: #{$ui-light-standard-color};
+    --ui-card-height: auto;
     
     .has-error {
       min-height: 120px !important;
@@ -14,21 +15,31 @@
       background-color: $ui-inverted-text-color;
       color: $ui-standard-text-color;
       display: flex;
+      flex-grow: 1;
       flex-direction: column;
       min-width: $ui-min-width;
       border-radius: $ui-border-radius;
       border: 2px solid $ui-light-standard-color;
 
       &.attention {
-        border: 2px solid $ui-attention-color !important;
+        border: 2px solid $ui-attention-color;
       }
 
       &.error {
-        border: 2px solid $ui-error-color !important;
+        border: 2px solid $ui-error-color;
       }
 
       &.success {
-        border: 2px solid $ui-success-color !important;
+        border: 2px solid $ui-success-color;
+      }
+
+      &.highlight {
+          border: 2px solid $ui-petrol-color;
+          box-shadow: 0px 0px 3px 0px $ui-petrol-color;
+      }
+
+      &.is-clickable {
+        cursor: pointer;
       }
 
       &-header {
@@ -59,23 +70,35 @@
           margin-left: auto;
           display: flex;
           align-items: center;
+          gap: .5rem;
+          color: unset;
         }
       }
       
       &-content {
-          padding: 10px 15px;
-          font-size: .7rem;
+          min-width: $ui-min-width;
           display: flex;
+          flex-grow: 1;
           flex-direction: column;
+          overflow-y: auto;
+          height: var(--ui-card-height);
       }
+
+      &-loading {
+        padding: 10px 15px;
+        font-size: .7rem;
+        min-width: $ui-min-width;
+        display: flex;
+        flex-direction: column;
+      }
+    
       &-footer {
           padding: 0px 15px;
+          min-width: $ui-min-width;
           display: flex;
           flex-direction: row;
           gap: .4rem;
           margin-bottom: 15px;
       }
     }
-
-    
 }

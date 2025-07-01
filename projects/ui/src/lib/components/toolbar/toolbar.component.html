@@ -5,12 +5,14 @@
                 {{ text() }}
             </div>
         }
+        <ng-content select="div[slot=left]"></ng-content>
         <ng-content select="ui-badge[slot=left]"></ng-content>
         <ng-content select="ui-value-tile[slot=left]"></ng-content>
         <ng-content select="ui-button[slot=left]"></ng-content>
         <ng-content select="ui-switch[slot=left]"></ng-content>
     </div>
     <div class="ui-toolbar-right">
+        <ng-content select="div[slot=right]"></ng-content>
         <ng-content select="ui-badge[slot=right]"></ng-content>
         <ng-content select="ui-value-tile[slot=right]"></ng-content>
         <ng-content select="ui-switch[slot=right]"></ng-content>

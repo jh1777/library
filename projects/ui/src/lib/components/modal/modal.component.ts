@@ -1,27 +1,26 @@
 import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, 
-  QueryList, computed, input, model } from '@angular/core';
+  QueryList, computed, input, model, 
+  signal} from '@angular/core';
 import { UIBaseComponent } from '../../shared';
 import { ModalSize } from './modal.models';
 import { ToolbarComponent } from '../toolbar';
-import { ClarityModule } from '@clr/angular';
-import {
-  ClarityIcons,
-  timesIcon
-} from "@cds/core/icon";
-import '@cds/core/icon/register.js';
-ClarityIcons.addIcons(timesIcon);
+import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
+//ClarityIcons.addIcons(timesIcon);
 
 @Component({
   selector: 'ui-modal',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ClarityModule],
+  imports: [FontAwesomeModule],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss'
 })
 export class ModalComponent extends UIBaseComponent implements AfterContentInit {
-  @ContentChildren(ToolbarComponent) toolbar: QueryList<ToolbarComponent>;
+  @ContentChildren(ToolbarComponent) toolbar!: QueryList<ToolbarComponent>;
 
+  closeIcon = signal(faTimes);
   /**
    * Internally used for the modal height
    */
@@ -65,7 +64,7 @@ export class ModalComponent extends UIBaseComponent implements AfterContentInit 
   ngAfterContentInit(): void {
     super.limitContentChildren(this.toolbar, 1);
     if (this.toolbar.length == 1) {
-      this.toolbar.get(0).showToolbarText.set(false);
+      this.toolbar.get(0)?.showToolbarText.set(false);
     }
   }
 
@@ -125,10 +124,13 @@ export class ModalComponent extends UIBaseComponent implements AfterContentInit 
    * @param event MouseEvent  
    */
   onClickHandler(event: MouseEvent): void {
+    /* TODO: Implement this - not working with strict
+
     if (this.closeOnBackdropClick() == true &&
-      (event?.target['className'] as string).includes("ui-modal-wrapper")) {
+      (event.target['className'] as string).includes("ui-modal-wrapper")) {
       this.isOpen.set(false);
     }
+      */
   }
 
   /**

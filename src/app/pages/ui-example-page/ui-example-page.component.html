@@ -50,8 +50,8 @@
         <ui-badge label="CTP 2" [style]="badgeStyle.None" slot="left"></ui-badge>
 
         <ui-value-tile key="Vin" value="WDB0101010110" [style]=0 [isLoading]=false slot="left">
-            <ui-button icon="copy"></ui-button>
-            <ui-button icon="pop-out" [style]=0></ui-button>
+            <ui-button [icon]="faCopy()"></ui-button>
+            <ui-button [icon]="faExternalLink()" [style]=0></ui-button>
         </ui-value-tile>
 
         <ui-value-tile key="Partners" value="3" [isLoading]=false slot="right" [style]=0 tooltip="partner1, partner2">
@@ -60,8 +60,8 @@
 
         <ui-value-tile key="Streaming" value="ENABLED" [style]=3 [isLoading]=false slot="right"></ui-value-tile>
 
-        <ui-button label="New Command" icon="upload-cloud" [style]=0 slot="right"></ui-button>
-        <ui-button label="Refresh" icon="refresh" [style]=0 slot="right"></ui-button>
+        <ui-button label="New Command" [icon]="faExternalLink()" [style]=0 slot="right"></ui-button>
+        <ui-button label="Refresh" [icon]="faRefresh()" [style]=0 slot="right"></ui-button>
         
     </ui-toolbar>
 

@@ -1,27 +1,23 @@
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
-import { CommonModule } from '@angular/common';
+
 import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList, computed, input, model, output, signal } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
-import { ClarityModule } from '@clr/angular';
-import {
-  ClarityIcons,
-  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisVerticalIcon, ellipsisHorizontalIcon, popOutIcon
-} from "@cds/core/icon";
-import '@cds/core/icon/register.js';
 import { EntryTileItemComponent } from './entry-tile-item/entry-tile-item.component';
 import { EntryKeyValueComponent } from '../entry-key-value/entry-key-value.component';
 import { ButtonComponent } from '../button';
 import { UIBaseComponent, UiCollapseButtonComponent } from '../../shared';
 import { EntryTileCollapseMode, EntryTileStyle } from './entry-tile.models';
-ClarityIcons.addIcons(
-  angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
-);
+import { FontAwesomeModule, IconDefinition  } from '@fortawesome/angular-fontawesome';
+
+// ClarityIcons.addIcons(
+//   angleIcon, errorStandardIcon, infoStandardIcon, successStandardIcon, warningStandardIcon, ellipsisHorizontalIcon, ellipsisVerticalIcon, popOutIcon
+// );
 
 
 @Component({
   selector: 'ui-entry-tile',
   standalone: true,
-  imports: [CommonModule, ClarityModule, UiCollapseButtonComponent],
+  imports: [UiCollapseButtonComponent, FontAwesomeModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './entry-tile.component.html',
   styleUrl: './entry-tile.component.scss',
@@ -34,9 +30,9 @@ ClarityIcons.addIcons(
   ]
 })
 export class EntryTileComponent extends UIBaseComponent implements AfterContentInit {
-  @ContentChildren(EntryTileItemComponent) items: QueryList<EntryTileItemComponent>;
-  @ContentChildren(EntryKeyValueComponent) titles: QueryList<EntryKeyValueComponent>;
-  @ContentChildren(ButtonComponent) buttons: QueryList<ButtonComponent>;
+  @ContentChildren(EntryTileItemComponent) items!: QueryList<EntryTileItemComponent>;
+  @ContentChildren(EntryKeyValueComponent) titles!: QueryList<EntryKeyValueComponent>;
+  @ContentChildren(ButtonComponent) buttons!: QueryList<ButtonComponent>;
 
   ngOnDestroy(): void {
     this._timers.forEach(t => t.unsubscribe());
@@ -162,7 +158,7 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
   header = input<string>();
 
   /** Optional: Tile header icon  */
-  headerIcon = input<string>();
+  headerIcon = input<IconDefinition>();
 
   /**
    * Optional: If you want to show a button a the bottom of the tile you can set the label of it here.  
@@ -207,7 +203,7 @@ export class EntryTileComponent extends UIBaseComponent implements AfterContentI
   public handleShowMoreClickEvent($event: MouseEvent) {
     $event.preventDefault();
     $event.stopPropagation();
-    this.onShowMoreClick.emit(this.id() ?? null);
+    this.onShowMoreClick.emit(this.id() ?? "");
   }
   
   /**

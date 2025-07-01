@@ -11,7 +11,7 @@ import { EntryContainerComponent } from '../entry-container';
   styleUrl: './metric-tile.component.scss'
 })
 export class MetricTileComponent extends UIBaseComponent implements AfterContentInit {
-  @ContentChildren(EntryContainerComponent) metrics: QueryList<EntryContainerComponent>;
+  @ContentChildren(EntryContainerComponent) metrics!: QueryList<EntryContainerComponent>;
 
   maxMetrics = signal(5);
   

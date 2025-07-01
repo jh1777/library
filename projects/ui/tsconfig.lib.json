@@ -11,5 +11,11 @@
   },
   "include": [
     "src/**/*.ts"
+  ],
+  "exclude": [
+    "**/*.stories.ts",
+    "**/*.stories.js",
+    "**/*.spec.ts",
+    "**/*.mdx"
   ]
 }

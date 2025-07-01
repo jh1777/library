@@ -1,9 +1,12 @@
 @if(isHidden() == false) {
 
-    <div 
+    <div
         class="ui-card-section"
-        [class.has-error]="hasError() == true"
-        [class.last-section]="isLast() == true"
+        [class.has-error]="hasError()"
+        [class.last-section]="isLast()"
+        [class.clickable]="isClickable()"
+        [class.selected]="toggleSelect() && isSelected()"
+        (click)="handleClickEvent($event)"
         [style.background-color]="
             style() == 1 && showStyledBackground() == true
             ? 'var(--attention-background-color)'
@@ -19,13 +22,15 @@
         @if(hasError() == true) {
             <ui-error [errorMessage]="errorMessage()"></ui-error>
         } @else {
-        
+
             <div class="ui-card-section-content">
                 @if(isLoading() == false) {
+                <ng-content select="ui-toolbar"></ng-content>
+
                     @if(header()) {
                         <div class="ui-card-section-header">
                             {{ header() }}
-                            <ng-container *ngTemplateOutlet="styleIcon"></ng-container>    
+                            <ng-container *ngTemplateOutlet="styleIcon"></ng-container>
                         </div>
                         <div [innerHTML]="text()"></div>
                     } @else {
@@ -60,13 +65,17 @@
                             {{ styledMessage() }}
                         </div>
                     }
-                    
+
                     @if(this.accordions.length > 0) {
                         <div class="ui-card-section-accordion-container">
                             <ng-content select="ui-accordion"></ng-content>
                         </div>
                     }
-                    
+
+                    <ng-content select="ui-entry-container"></ng-content>
+                    <ng-content select="ui-entry-key-value"></ng-content>
+                    <ng-content select="ui-entry-metric"></ng-content>
+
                 } @else {
                     <div class="loading pulse">
                         @for (_ of [].constructor(7); track $index) {
@@ -93,17 +102,16 @@
             }
         }
     </div>
-    
+
 }
 <ng-template #styleIcon>
     @if(style() > 0 && style() < 5) {
-        <div 
-            class="ui-card-section-header-right" 
+        <div
+            class="ui-card-section-header-right"
             [attr.title]="tooltip()"
             [class.cursor-pointer]="tooltip()"
         >
-            <cds-icon
-                solid
+            <fa-icon
                 [style.color]="
                     style() == 1
                     ? 'var(--attention-color)'
@@ -115,19 +123,19 @@
                                 ? 'var(--info-color)'
                                 : ''
                 "
-                [attr.shape]="
+                [icon]="
                     style() == 1
-                    ? 'warning-standard'
+                    ? warningIcon()
                     : style() == 2
-                        ? 'error-standard'
+                        ? errorIcon()
                         : style() == 3
-                            ? 'success-standard'
+                            ? successIcon()
                             : style() == 4
-                                ? 'info-standard'
+                                ? infoIcon()
                                 : ''
                 "
-                size="17"
-                ></cds-icon>
+                style="font-size: 14px;"
+                ></fa-icon>
         </div>
     }
 </ng-template>

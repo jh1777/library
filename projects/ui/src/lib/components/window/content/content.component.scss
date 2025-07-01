@@ -1,7 +1,8 @@
 :host {
-
-    @import '../../../styles/ui.styles.scss';
-
+    --ui-content-padding-top: 20px;
+    --ui-content-padding-right: 20px;
+    --ui-content-padding-bottom: 20px;
+    --ui-content-padding-left: 20px;
 
     box-sizing: border-box;
     position: relative;
@@ -14,8 +15,10 @@
     grid-template-rows: 1fr;
 
     .ui-content {
-        padding: 20px;
-
+        padding-top: var(--ui-content-padding-top);
+        padding-right: var(--ui-content-padding-right);
+        padding-bottom: var(--ui-content-padding-bottom);
+        padding-left: var(--ui-content-padding-left);
 
         &-loading {
             display: flex;
@@ -31,32 +34,4 @@
             pointer-events: auto !important;
         }
     }
-/*
-    display: block;
-        width: 100%;
-    height: 100vh;
-    overflow: auto;
-    position: relative;
-    // TODO: height not correct!
-    left: 0;
-    top:0;
-
-    .ui-content {
-        display: block;
-        margin: 0;
-
-        &-loading {
-            display: flex;
-            position: fixed;
-            height: 100vh;
-            width: 100vw;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(3px);
-            background: rgba(247,247,247,0.6);
-            gap: 10px;
-            z-index: 9999;
-        }
-    }
-    */
 }

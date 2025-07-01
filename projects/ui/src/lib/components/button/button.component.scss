@@ -1,20 +1,22 @@
+@use '../../styles/ui.styles.scss' as *;
 :host {
-    @import '../../styles/ui.styles.scss';
 
-    position: relative;
-    display: inline-flex;
-    min-width: max-content;
-    max-height: 32px;
+    & { 
+        position: relative;
+        display: inline-flex;
+        min-width: max-content;
+        max-height: 31px;
+    }
 
     .disabled {
         --ui-button-primary-color: #{$ui-inverted-text-color} !important;
         --ui-button-primary-hover-color: #{$ui-inverted-text-color} !important;
         --ui-button-text-color: #{$ui-standard-color} !important;
         border: 1px solid var(--ui-button-text-color) !important;
+        cursor: default !important;
         &:not(.bordered) {
             border: 0px !important;
         }
-        cursor: default !important;
         &:not(.bordered) > cds-icon {
             color: var(--ui-button-text-color) !important;
         }
@@ -31,18 +33,21 @@
         --ui-button-primary-color: #{$ui-dark-standard-color};
         --ui-button-primary-hover-color: #{$ui-standard-color};
         --ui-button-text-color: #{$ui-inverted-text-color};;
+        border: 1px solid #{$ui-dark-standard-color};
     }
 
     .destructive {
         --ui-button-primary-color: #{$ui-error-color};
         --ui-button-primary-hover-color: #{$ui-alternative-error-color};
         --ui-button-text-color: #{$ui-inverted-text-color};
+        border: 1px solid #{$ui-error-color};
     }
 
     .confirm {
         --ui-button-primary-color: #{$ui-success-color};
         --ui-button-primary-hover-color: #{$ui-alternative-success-color};
         --ui-button-text-color: #{$ui-inverted-text-color};
+        border: 1px solid #{$ui-success-color};
     }
     
     .outline {
@@ -56,6 +61,7 @@
         --ui-button-primary-color: #{$ui-inverted-text-color} !important;
         --ui-button-primary-hover-color: #{$ui-alternative-standard-color} !important;
         --ui-button-text-color: #{$ui-inverted-text-color} !important;
+        border: 1px solid #{$ui-inverted-text-color};
     }
 
     .bordered {
@@ -78,11 +84,13 @@
     .simple-primary {
         --ui-button-primary-hover-color: #{$ui-light-petrol-color};
         --ui-button-text-color: #{$ui-petrol-color};
+        border: 0px;
     }
 
     .simple-destructive {
         --ui-button-primary-hover-color: #{$ui-alternative-error-color};
         --ui-button-text-color: #{$ui-error-color};
+        border: 0px;
     }
 
     .simple {

@@ -1,8 +1,7 @@
-:host {
-    @import '../../styles/ui.styles.scss';
-    
-    display: contents;
+@use '../../styles/ui.styles.scss' as *;
 
+:host {
+    display: contents;
 
     .ui-badge-error {
         background-color: var(--ui-badge-error-background-color, $ui-error-color) !important;
@@ -84,21 +83,17 @@
     .ui-badge {
         display: flex;
         width: fit-content;
-        border-radius: .5rem;
+        border-radius: 1rem;
+
+        box-sizing: content-box;
         background-color: $ui-dark-standard-color;
         color: $ui-inverted-text-color;
-        padding: 0.1rem 0.2rem;
+
         align-items: center; 
         justify-content: center;
         text-decoration: none;
         cursor: default;
-        -moz-text-decoration: none;
-        -webkit-text-decoration: none;
         -webkit-touch-callout: none; /* iOS Safari */
-        -webkit-user-select: none; /* Safari */
-        -khtml-user-select: none; /* Konqueror HTML */
-        -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
         user-select: none;
 
         &-container {

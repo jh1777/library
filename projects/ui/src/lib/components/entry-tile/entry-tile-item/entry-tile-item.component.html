@@ -61,11 +61,7 @@
                 <div class="ui-entry-tile-item-primary">
                   {{ primaryValue() }}
                   @if(tooltip()) {
-                    <cds-icon
-                      shape="info-standard"
-                      size="14"
-                      [attr.title]="tooltip()"
-                    ></cds-icon>
+                    <fa-icon [icon]="infoIcon()" [attr.title]="tooltip()" style="font-size: 14px;"></fa-icon>
                   }
                 </div>
               }
@@ -84,18 +80,16 @@
               @else {
                 @if (!showStateIcon() && icon()) {
                   <div class="ui-entry-tile-item-icon">
-                    <cds-icon
+                    <fa-icon 
+                      [icon]="icon() || 'default-icon'" 
                       [style.color]="isClickable() ? 'var(--action-color)' : 'grey'"
-                      [attr.shape]="icon()"
-                      size="22"
-                    ></cds-icon>
+                      style="font-size: 22px;"></fa-icon>
                   </div>
                 }
               }
               @if (showStateIcon() && style() > 0) {
                 <div class="ui-entry-tile-item-icon">
-                  <cds-icon
-                    solid
+                  <fa-icon
                     [style.color]="
                       style() == 1
                         ? 'var(--attention-item-border-color)'
@@ -105,17 +99,17 @@
                             ? 'var(--success-item-border-color)'
                             : ''
                     "
-                    [attr.shape]="
+                    [icon]="
                       style() == 1
-                        ? 'warning-standard'
-                        : style() == 2
-                          ? 'error-standard'
+                      ? warningIcon()
+                      : style() == 2
+                          ? errorIcon()
                           : style() == 3
-                            ? 'success-standard'
-                            : ''
+                              ? successIcon()
+                              : ''
                     "
-                    size="26"
-                  ></cds-icon>
+                    style="font-size: 26px;"
+                  ></fa-icon>
                 </div>
               }
             </div>

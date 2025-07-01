@@ -1,0 +1,84 @@
+@use '../../styles/ui.styles' as *;
+:host {
+
+    --cell-padding: 7px;
+    --cell-padding-left: 10px;
+
+    table {
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+
+    .ui-table {
+        width: 100%;
+        overflow-y: auto;
+        height: 60vh;
+        &-label-header {
+            display: flex;
+            flex-direction: column;
+            font-size: large;
+            color: $ui-standard-text-color;
+            line-height: normal;
+            font-weight: 700;
+        }
+        
+        &-label-description {
+            display: flex;
+            color: $ui-standard-text-color;
+            word-wrap: break-word;
+            margin-bottom: 6px;
+            line-height: normal;
+        }
+
+        &-header {
+            background-color: #e9e9e9;
+            font-weight: 700;
+            &-cell {
+                padding-top: var(--cell-padding);
+                padding-bottom: var(--cell-padding);
+                padding-left: var(--cell-padding-left);
+                text-align: left;
+            }
+            &-icon {
+                float: inline-end;
+                cursor: pointer;
+            }
+        }
+
+        &-row {
+            &-cell {
+                padding-top: var(--cell-padding);
+                padding-bottom: var(--cell-padding);
+                padding-left: var(--cell-padding-left);
+                
+                text-align: left;
+                border-bottom: 1px solid #e8e8e8;
+                &-right {
+                    float: inline-end;
+                }
+            }
+            &:hover {
+                background-color: #e8e8e8;
+                &:active {
+                    background-color: #f1f2f3;
+                }
+            }
+
+            &-selection {
+                background-color: #f1f2f3;
+            }
+
+        }
+
+        &-footer {
+            padding-top: var(--cell-padding);
+            padding-bottom: var(--cell-padding);
+            padding-left: var(--cell-padding-left);
+            background-color: #e8e8e8;
+            text-align: left;
+            &-row {
+                background-color: #e9e9e9;
+            }
+        }
+    }
+}

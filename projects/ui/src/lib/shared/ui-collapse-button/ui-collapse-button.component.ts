@@ -1,20 +1,23 @@
-import { ChangeDetectionStrategy, Component, input, model, output } from '@angular/core';
-import { ClarityModule } from '@clr/angular';
-import { ClarityIcons, angleIcon } from "@cds/core/icon";
-import '@cds/core/icon/register.js';
+import { ChangeDetectionStrategy, Component, input, model, output, signal } from '@angular/core';
 import { CollapsedDirection } from './ui-collapse-button.models';
-ClarityIcons.addIcons(angleIcon);
+import { IconDefinition, faAngleDown, faAngleUp} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
+
+//ClarityIcons.addIcons(angleIcon);
 
 @Component({
   selector: 'ui-collapse-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ClarityModule],
+  imports: [FontAwesomeModule],
   templateUrl: './ui-collapse-button.component.html',
   styleUrl: './ui-collapse-button.component.scss'
 })
 export class UiCollapseButtonComponent {
   
+  angleUpIcon = signal(faAngleUp);
+  angleDownIcon = signal(faAngleDown);
+
   /**
    * Indicates the collapsed state (Input / Ouput)  
    * Default: `false`  

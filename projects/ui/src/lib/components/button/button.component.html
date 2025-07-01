@@ -17,8 +17,8 @@
         [class.white-mode]="whiteMode() == true"
         (click)="isDisabled() == true ? null : handleClickEvent($event)"
     >
-        @if(icon() != null) {
-            <cds-icon [attr.shape]="icon()" size="18"></cds-icon>
+        @if(icon() != null && icon() != undefined) {
+            <fa-icon [icon]="icon() || 'default-icon'" style="font-size: 14px;"></fa-icon>
         }
         @if(iconOnlySimpleStyle() == false) {
             {{ label() }}

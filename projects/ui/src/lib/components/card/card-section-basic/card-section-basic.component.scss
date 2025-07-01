@@ -1,5 +1,5 @@
+@use '../../../styles/ui.styles' as *;
 :host {
-    @import '../../../styles/ui.styles.scss';
 
     position: relative;
     display: contents;
@@ -38,6 +38,17 @@
         word-wrap: break-word;
     }
 
+    .clickable:hover {
+        background-color: $ui-hover-standard-color;
+        cursor: pointer;
+        &:active {
+            background-color: $ui-inverted-text-color;
+        }
+    }
+
+    .selected {
+        background-color: $ui-hover-standard-color;
+    }
 
     .has-error {
         min-height: 65px !important;
@@ -76,7 +87,6 @@
 
         &-content {
             padding: 10px 15px;
-            font-size: .7rem;
             display: flex;
             flex-direction: column;
             word-wrap: break-word;
@@ -96,7 +106,6 @@
             margin-top: 5px;
             margin-bottom: 5px;
         }
-
 
         &-styled-message {
             font-weight: 700;

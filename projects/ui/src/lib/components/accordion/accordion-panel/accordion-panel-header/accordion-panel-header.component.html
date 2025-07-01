@@ -2,11 +2,7 @@
     
    {{ label() }}
    @if(tooltip()) {
-    <cds-icon 
-        shape="info-standard" 
-        size="13"
-        [attr.title]="tooltip()"
-    ></cds-icon>
+    <fa-icon [icon]="infoIcon()" class="tooltip-icon" [attr.title]="tooltip()"></fa-icon>
    }
     <div 
         class="ui-accordion-panel-header-right"
@@ -18,8 +14,8 @@
         <ng-content select="ui-badge"></ng-content>
 
         @if(style() > 0 && style() < 4) {
-            <cds-icon
-                solid
+
+            <fa-icon
                 [style.color]="
                     style() == 1
                     ? 'var(--attention-color)'
@@ -29,17 +25,17 @@
                             ? 'var(--success-color)'
                             : ''
                 "
-                [attr.shape]="
+                [icon]="
                     style() == 1
-                    ? 'warning-standard'
+                    ? warningIcon()
                     : style() == 2
-                        ? 'error-standard'
+                        ? errorIcon()
                         : style() == 3
-                            ? 'success-standard'
+                            ? successIcon()
                             : ''
                 "
-                size="20"
-            ></cds-icon>
+                style="font-size: 20px;"
+            ></fa-icon> 
         }
     </div>
 }
