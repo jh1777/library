@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EntryTileComponent } from './entry-tile.component';
 import { EntryTileCollapseMode, EntryTileStyle } from './entry-tile.models';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 // RUN WITH `nx test --test-file src/lib/components/entry-tile/entry-tile.component.spec.ts` (from csgp-library folder)
 describe('EntryTileComponent', () => {
@@ -62,8 +63,9 @@ describe('EntryTileComponent', () => {
     });
 
     it('should set headerIcon', () => {
-        fixture.componentRef.setInput('headerIcon', "cpu");
-        expect(component.headerIcon()).toBe("cpu");
+        let icon = faCheckCircle
+        fixture.componentRef.setInput('headerIcon', icon);
+        expect(component.headerIcon()).toBe(icon);
     });
 
     it('should set moreButtonLabel', () => {

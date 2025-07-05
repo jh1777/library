@@ -21,9 +21,6 @@
     "types": [ "jasmine", "node"],
     "useDefineForClassFields": false,
     "paths": {
-      "ui-lib": [
-        "dist/ui-lib"
-      ],
       "ui": [
         "./dist/ui"
       ],

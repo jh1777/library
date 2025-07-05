@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EntryTileItemComponent } from './entry-tile-item.component';
 import { EntryItemStyle } from './entry-tile-item.models';
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
 // RUN WITH `nx test --test-file src/lib/components/entry-tile/entry-tile-item/entry-tile-item.component.spec.ts` (from csgp-library folder)
 describe('EntryTileItemComponent', () => {
@@ -65,8 +66,9 @@ describe('EntryTileItemComponent', () => {
     });
 
     it('should set icon', () => {
-        fixture.componentRef.setInput('icon', 'check');
-        expect(component.icon()).toBe('check');
+        let icon = faCircle
+        fixture.componentRef.setInput('icon', icon);
+        expect(component.icon()).toBe(icon);
     });
 
     it('onItemClick should emit event with id', () => {

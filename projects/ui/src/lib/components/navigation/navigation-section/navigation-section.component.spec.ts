@@ -14,6 +14,7 @@ describe('NavigationSectionComponent', () => {
     
     fixture = TestBed.createComponent(NavigationSectionComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('label', 'Label');
     fixture.detectChanges();
   });
 

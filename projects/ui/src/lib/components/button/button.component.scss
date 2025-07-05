@@ -65,7 +65,7 @@
     }
 
     .bordered {
-        padding: .3rem .45rem;
+        padding: .4rem .6rem;
         border-radius: $ui-border-radius;
         background-color: var(--ui-button-primary-color);
         color: var(--ui-button-text-color) !important;
@@ -118,7 +118,6 @@
         align-items: center;
         width: fit-content;
         //font-size: var(--ui-button-font-size, .65rem);
-        font-weight: 500;
         gap: .3rem;
         line-height: normal;
         cursor: pointer;

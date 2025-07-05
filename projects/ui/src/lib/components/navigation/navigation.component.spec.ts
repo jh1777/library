@@ -14,6 +14,8 @@ describe('NavigationComponent', () => {
     
     fixture = TestBed.createComponent(NavigationComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('logoHeader', 'Header');
+
     fixture.detectChanges();
   });
 

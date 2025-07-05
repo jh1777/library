@@ -25,8 +25,8 @@ describe('CardComponent', () => {
     });
 
     it('should set text', () => {
-        fixture.componentRef.setInput('text', "#Text");
-        expect(component.text()).toBe('#Text');
+        fixture.componentRef.setInput('header', "#Text");
+        expect(component.header()).toBe('#Text');
     });
 
     it('should set style', () => {
