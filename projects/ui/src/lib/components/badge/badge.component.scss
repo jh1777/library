@@ -88,7 +88,6 @@
         box-sizing: content-box;
         background-color: $ui-dark-standard-color;
         color: $ui-inverted-text-color;
-
         align-items: center; 
         justify-content: center;
         text-decoration: none;
@@ -97,7 +96,7 @@
         user-select: none;
 
         &-container {
-            padding: 0.1rem 0.35rem;
+            padding: 0.2rem 0.5rem;
             gap: .25rem;
             background-color: var(--ui-badge-background-color, $ui-inverted-text-color);
             align-items: center; 
@@ -105,6 +104,7 @@
             display: flex;
             width: fit-content;
             border-radius: .3rem;
+            font-size: small;
             border: 1px solid $ui-standard-color;
         }
     }
