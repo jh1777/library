@@ -6,18 +6,15 @@
     left: 0;
     padding: 0;
     margin: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    overflow-x: hidden;
 
     .ui-window {
         top: 0;
         left: 0;
         padding: 0;
         margin: 0;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
+        max-width: max-content;
+        overflow-x: hidden;
 
         &-loading {
             display: flex;

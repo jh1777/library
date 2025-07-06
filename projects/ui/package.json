@@ -15,5 +15,19 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "exports": {
+    "./styles": {
+      "sass": "./styles/ui.styles.scss"
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "bundles/",
+    "fesm2022/",
+    "styles/",
+    "assets/",
+    "package.json",
+    "index.d.ts",
+    "public-api.d.ts"
+  ]
 }
