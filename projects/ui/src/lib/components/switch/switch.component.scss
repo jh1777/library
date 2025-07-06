@@ -73,7 +73,8 @@
             flex-direction: row;
             align-items: center;
             gap: 6px;
-            font-weight: 500;
+            font-weight: 400;
+            font-size: small;
             color: $ui-standard-text-color;
             &.disabled {
                 color: $ui-alternative-standard-color !important;

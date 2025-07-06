@@ -1,0 +1,1 @@
+ng build ui && cd dist/ui && npm version patch && npm pack && cd ../..

@@ -25,19 +25,20 @@
     }
       
     .ui-tab {
-        padding: .2rem .65rem;
+        padding: .4rem .7rem;
         cursor: pointer;
         display: inline-block;
         word-wrap: none;
         display: flex;
         align-items: center;
+        align-items: center;
         gap: 8px;
         white-space: nowrap;
         border-bottom: none;
         margin-bottom: 0;
-        border-radius: $ui-border-radius $ui-border-radius 0 0;
+        border-radius: $ui-border-radius $ui-border-radius 0px 0px;
         color: $ui-standard-text-color;
-        border-bottom: 1px solid $ui-alternative-standard-color;
+        border-bottom: 1px solid $ui-standard-color;
         border-top: 1px solid rgba($color: #000000, $alpha: 0.0);
         border-left: 1px solid rgba($color: #000000, $alpha: 0.0);
         border-right: 1px solid rgba($color: #000000, $alpha: 0.0);
@@ -52,15 +53,16 @@
     }
       
     .ui-tab.active {
-        border-top: 1px solid $ui-alternative-standard-color !important;
-        border-left: 1px solid $ui-alternative-standard-color !important;
-        border-right: 1px solid $ui-alternative-standard-color !important;
+        border-top: 1px solid $ui-standard-color !important;
+        border-left: 1px solid $ui-standard-color !important;
+        border-right: 1px solid $ui-standard-color !important;
         border-bottom: 1px solid rgba($color: #000000, $alpha: 0.0) !important;
         cursor: default;
+        background-color: $ui-alternative-standard-color;
     }
 
     .ui-tab.disabled {
-        color: $ui-alternative-standard-color !important;
+        color: $ui-standard-color !important;
         cursor: default;
     }
 

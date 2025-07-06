@@ -78,13 +78,13 @@
       -webkit-box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, $ui-alternative-shadow-color);
       -moz-box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, $ui-alternative-shadow-color);
       box-shadow: 0 0 5px 0 var(--entry-tile-item-shadow-color, $ui-alternative-shadow-color);
-      padding: .4rem .6rem;
+      padding: .7rem .85rem;
       border-radius: $ui-border-radius;
 
       &-header {
         font-weight: 600;
         font-size: small;
-        margin-bottom: .15rem;
+        margin-bottom: .4rem;
       }
 
       &-primary {
