@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CardComponent } from './card.component';
 import { CardStyle } from './card.models';
 
-// RUN WITH `nx test --test-file src/lib/components/card/card.component.spec.ts` (from csgp-library folder)
+// RUN WITH `nx test --test-file src/lib/components/card/card.component.spec.ts` 
 describe('CardComponent', () => {
     let component: CardComponent;
     let fixture: ComponentFixture<CardComponent>;

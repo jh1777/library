@@ -1,8 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
-import { ContentComponent, MenuBarComponent, MenuItemComponent, WindowComponent } from 'projects/ui/src/public-api';
-import { Router, RouterModule } from '@angular/router';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -24,12 +22,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('Title');
   });
 
-  /*
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, jest-testing');
-  });
-  */
 });

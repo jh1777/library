@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EntryKeyValueComponent } from './entry-key-value.component';
 import { EntryKeyValueStyle } from './entry-key-value.models';
 
-// RUN WITH `nx test --test-file src/lib/components/entry-key-value/entry-key-value.component.spec.ts` (from csgp-library folder)
+// RUN WITH `nx test --test-file src/lib/components/entry-key-value/entry-key-value.component.spec.ts` 
 describe('EntryKeyValueComponent', () => {
     let component: EntryKeyValueComponent;
     let fixture: ComponentFixture<EntryKeyValueComponent>;

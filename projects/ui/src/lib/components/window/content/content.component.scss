@@ -13,18 +13,15 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-
-    .ui-content {
-        padding-top: var(--ui-content-padding-top);
-        padding-right: var(--ui-content-padding-right);
-        padding-bottom: var(--ui-content-padding-bottom);
-        padding-left: var(--ui-content-padding-left);
-
-        &-loading {
+    overflow-x: hidden;
+    padding-top: var(--ui-content-padding-top);
+    padding-right: var(--ui-content-padding-right);
+    padding-bottom: var(--ui-content-padding-bottom);
+    padding-left: var(--ui-content-padding-left);
+    .ui-content-loading {
             display: flex;
             position: fixed;
-            height: 100vh;
-            width: 100vw;
+            inset: 0;
             align-items: center;
             justify-content: center;
             backdrop-filter: blur(3px);
@@ -32,6 +29,6 @@
             gap: 10px;
             z-index: 9999;
             pointer-events: auto !important;
-        }
+        
     }
 }

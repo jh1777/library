@@ -4,7 +4,7 @@ import { EntryTileCollapseMode, EntryTileStyle } from './entry-tile.models';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
-// RUN WITH `nx test --test-file src/lib/components/entry-tile/entry-tile.component.spec.ts` (from csgp-library folder)
+// RUN WITH `nx test --test-file src/lib/components/entry-tile/entry-tile.component.spec.ts` 
 describe('EntryTileComponent', () => {
     let component: EntryTileComponent;
     let fixture: ComponentFixture<EntryTileComponent>;

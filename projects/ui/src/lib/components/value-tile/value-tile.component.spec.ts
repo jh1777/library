@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ValueTileComponent } from './value-tile.component';
 import { ValueTileStyle } from './value-tile.models';
 
-// RUN WITH `nx test --test-file src/lib/components/value-tile/value-tile.component.spec.ts` (from csgp-library folder)
+// RUN WITH `nx test --test-file src/lib/components/value-tile/value-tile.component.spec.ts` 
 describe('ValueTileComponent', () => {
     let component: ValueTileComponent;
     let fixture: ComponentFixture<ValueTileComponent>;

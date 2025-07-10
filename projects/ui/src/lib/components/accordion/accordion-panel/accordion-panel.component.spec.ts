@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AccordionPanelComponent } from './accordion-panel.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-// RUN WITH `nx test --test-file src/lib/components/accordion/accordion-panel/accordion-panel.component.spec.ts` (from csgp-library folder)
+// RUN WITH `nx test --test-file src/lib/components/accordion/accordion-panel/accordion-panel.component.spec.ts` 
 describe('AccordionPanelComponent', () => {
     let component: AccordionPanelComponent;
     let fixture: ComponentFixture<AccordionPanelComponent>;

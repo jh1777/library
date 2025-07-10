@@ -2,89 +2,8 @@
   <ui-menu-bar>
     <uic-menu-item label="Overview" route="/" [exactMatchNeeded]=true></uic-menu-item>
     <uic-menu-item label="Grid" route="/grid"></uic-menu-item>
-    <uic-menu-item label="Example Page" route="/example"></uic-menu-item>
   </ui-menu-bar>
   <ui-content [isLoading]=false>
     <router-outlet></router-outlet>
   </ui-content>
-<!-- 
-<div style="padding: 2rem">
-  <div class="page-header">
-    <div style="font-weight: 800; font-size: large;">Components Overview</div>
-    <div class="header-button" (click)="showBorders = !showBorders">
-      <clr-icon size="18" shape="bug"></clr-icon>
-      {{ !showBorders ? 'Show' : 'Hide' }} Component borders
-    </div>
-  </div>
-  <p></p>
-
-  <clr-tabs>
-
-    <clr-tab>
-      <button clrTabLink>UI Library (v2)</button>
-      <ng-template [(clrIfActive)]="uiLibTabActive">
-          <clr-tab-content>
-            <ui-lib-page [showComponentBorder]="showBorders"></ui-lib-page>
-          </clr-tab-content>
-      </ng-template>
-    </clr-tab>
-  
-    <clr-tab>
-      <button clrTabLink>Entry Tile V3 etc.</button>
-      <ng-template [(clrIfActive)]="entryTileTabActive">
-        <clr-tab-content>
-          <entry-tile-page [showComponentBorder]="showBorders"></entry-tile-page>
-        </clr-tab-content>
-      </ng-template>
-    </clr-tab>
-
-    <clr-tab>
-        <button clrTabLink>Buttons</button>
-        <ng-template [(clrIfActive)]="buttonsTabActive">
-            <clr-tab-content>
-                <buttons-page [showComponentBorder]="showBorders"></buttons-page>
-            </clr-tab-content>
-        </ng-template>
-    </clr-tab>
-
-    <clr-tab>
-        <button clrTabLink>Tags</button>
-        <ng-template [(clrIfActive)]="tagsTabActive">
-            <clr-tab-content>
-              <tags-page [showComponentBorder]="showBorders"></tags-page>
-            </clr-tab-content>
-        </ng-template>
-    </clr-tab>
-
-    <clr-tab>
-      <button clrTabLink>Drawer</button>
-      <ng-template [(clrIfActive)]="drawerTabActive">
-          <clr-tab-content>
-            <drawer-page [showComponentBorder]="showBorders"></drawer-page>
-          </clr-tab-content>
-      </ng-template>
-    </clr-tab>
-
-    <clr-tab>
-      <button clrTabLink>Entries</button>
-      <ng-template [(clrIfActive)]="entriesTabActive">
-          <clr-tab-content>
-            <entries-page [showComponentBorder]="showBorders"></entries-page>
-          </clr-tab-content>
-      </ng-template>
-    </clr-tab>
-
-    <clr-tab>
-      <button clrTabLink>Entry Grid</button>
-      <ng-template [(clrIfActive)]="entryGridTabActive">
-          <clr-tab-content>
-            <entry-grid-page [showComponentBorder]="showBorders"></entry-grid-page>
-          </clr-tab-content>
-      </ng-template>
-    </clr-tab>
-
-    
-  </clr-tabs>
-</div>
--->
 </ui-window>
