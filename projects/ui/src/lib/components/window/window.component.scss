@@ -1,21 +1,18 @@
 :host {
-  display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  box-sizing: border-box;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
   position: relative;
+  overflow-y: scroll;
+  height: 100vh;
+
 
   & .ui-window-loading {
-    display: flex;
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
-    width: 100vw;
+    inset: 0;
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(3px);

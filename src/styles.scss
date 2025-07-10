@@ -3,11 +3,15 @@
 
 
 * {
-    --daimler-petrol4: #007A93;
-    --daimler-petrol3: #00677F;
     --grey-light1: #E6E6E6;
     --grey-medium: #C8C8C8;
     font-family: 'Inter';
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    overflow-y: scroll;
 }
 
 .columns {
@@ -34,7 +38,6 @@
 }
 
 .item {
-    width: 100%;
     padding: 1rem;
     border: 1px dotted lightgray;
 }

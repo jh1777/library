@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AccordionPanelHeaderComponent } from './accordion-panel-header.component';
 import { AccordionPanelHeaderStyle } from '../../accordion.models';
 
-// RUN WITH `nx test --test-file src/lib/components/accordion/accordion-panel/accordion-panel-header/accordion-panel-header.component.spec.ts` (from csgp-library folder)
+// RUN WITH `nx test --test-file src/lib/components/accordion/accordion-panel/accordion-panel-header/accordion-panel-header.component.spec.ts` 
 describe('AccordionPanelHeaderComponent', () => {
     let component: AccordionPanelHeaderComponent;
     let fixture: ComponentFixture<AccordionPanelHeaderComponent>;

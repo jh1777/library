@@ -3,7 +3,7 @@ import { EntryTileItemComponent } from './entry-tile-item.component';
 import { EntryItemStyle } from './entry-tile-item.models';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
-// RUN WITH `nx test --test-file src/lib/components/entry-tile/entry-tile-item/entry-tile-item.component.spec.ts` (from csgp-library folder)
+// RUN WITH `nx test --test-file src/lib/components/entry-tile/entry-tile-item/entry-tile-item.component.spec.ts` 
 describe('EntryTileItemComponent', () => {
     let component: EntryTileItemComponent;
     let fixture: ComponentFixture<EntryTileItemComponent>;

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
 
-// RUN WITH `nx test --test-file src/lib/components/button/button.component.spec.ts` (from csgp-library folder)
+// RUN WITH `nx test --test-file src/lib/components/button/button.component.spec.ts` 
 describe('ButtonComponent', () => {
     let component: ButtonComponent;
     let fixture: ComponentFixture<ButtonComponent>;

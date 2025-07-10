@@ -19,8 +19,6 @@ import { WindowComponent, MenuBarComponent, MenuItemComponent, ContentComponent 
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-
-
     UiLibPageComponent,
     MenuBarComponent,
     MenuItemComponent,

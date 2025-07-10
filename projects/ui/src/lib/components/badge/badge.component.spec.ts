@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BadgeComponent } from './badge.component';
 import { BadgeStyle } from './badge.models';
 
-// RUN WITH `nx test --test-file src/lib/components/badge/badge.component.spec.ts` (from csgp-library folder)
+// RUN WITH `nx test --test-file src/lib/components/badge/badge.component.spec.ts` 
 describe('BadgeComponent', () => {
     let component: BadgeComponent;
     let fixture: ComponentFixture<BadgeComponent>;

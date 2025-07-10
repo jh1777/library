@@ -2,18 +2,8 @@
  * Public API Surface of ui project
  */
 
-
-export {
-    AccordionComponent as AccordionComponent,
-    AccordionPanelComponent as AccordionPanelComponent,
-    AccordionPanelHeaderComponent as AccordionPanelHeaderComponent
-} from './lib/components/accordion';
-
-export { 
-    BadgeComponent as BadgeComponent, 
-    BadgeStyle as BadgeStyle 
-} from './lib/components/badge';
-
+export * from './lib/components/accordion';
+export * from './lib/components/badge';
 export * from './lib/components/button';
 export * from './lib/components/card';
 export * from './lib/components/entry-tile';
@@ -34,5 +24,3 @@ export * from './lib/components/window';
 export * from './lib/components/navigation';
 export * from './lib/components/input';
 export * from './lib/components/table';
-
-

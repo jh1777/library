@@ -1,6 +1,6 @@
 {
   "name": "@jh1777/jh-ui",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "scripts": {
     "ng": "ng",
     "test": "jest"
@@ -21,6 +21,7 @@
     }
   },
   "sideEffects": false,
+  "license": "MIT",
   "files": [
     "bundles/",
     "fesm2022/",
@@ -28,6 +29,7 @@
     "assets/",
     "package.json",
     "index.d.ts",
-    "public-api.d.ts"
+    "public-api.d.ts",
+    "LICENSE"
   ]
 }

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AccordionComponent } from './accordion.component';
 
-// RUN WITH `nx test --test-file src/lib/components/accordion/accordion.component.spec.ts` (from csgp-library folder)
+// RUN WITH `nx test --test-file src/lib/components/accordion/accordion.component.spec.ts` 
 describe('AccordionComponent', () => {
     let component: AccordionComponent;
     let fixture: ComponentFixture<AccordionComponent>;

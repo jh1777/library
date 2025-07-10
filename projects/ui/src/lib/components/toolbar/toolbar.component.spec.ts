@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToolbarComponent } from './toolbar.component';
 
-// RUN WITH `nx test --test-file src/lib/components/toolbar/toolbar.component.spec.ts` (from csgp-library folder)
+// RUN WITH `nx test --test-file src/lib/components/toolbar/toolbar.component.spec.ts` 
 describe('ToolbarComponent', () => {
     let component: ToolbarComponent;
     let fixture: ComponentFixture<ToolbarComponent>;
