@@ -121,7 +121,7 @@ NONE
 `<ui-badge value="4" [style]="3"></ui-badge>`
 
 ### Screenshot
-![alt text](./assets/docs/badge.jpg){width=50%}
+![alt text](src/lib/assets/docs/badge.jpg){width=50%}
 
 ---
 
@@ -196,7 +196,7 @@ Use for simple styles on dark backgrounds.
 `<ui-button label="Apply" [icon]="faCheck()" [style]="1">`
 
 ### Screenshot
-![alt text](./assets/docs/button.jpg){width=75%}
+![alt text](src/lib/assets/docs/button.jpg){width=75%}
 
 ---
 
@@ -237,8 +237,8 @@ NONE
 
 ### Screenshot
 
-![alt text](./assets/docs/switch-off.jpg){width=25%}
-![alt text](./assets/docs/switch-on.jpg){width=25%}
+![alt text](src/lib/assets/docs/switch-off.jpg){width=25%}
+![alt text](src/lib/assets/docs/switch-on.jpg){width=25%}
 
 --- 
 
@@ -384,7 +384,7 @@ If `true`, the section is clickable and emits the `onClick` event.
 </ui-card>
 ```
 ### Screenshot
-![alt text](./assets/docs/card.jpg){width=100%}
+![alt text](src/lib/assets/docs/card.jpg){width=100%}
 
 ---
 TODO: update docs from here...
