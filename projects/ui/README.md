@@ -626,7 +626,6 @@ Possible values:
 - Entry Tile
 
 ---
-TODO: Continue here
 
 ## Metric Tile
 > Useable standalone: **Yes**  
@@ -634,8 +633,50 @@ TODO: Continue here
 > Supports loading indicator: **No**  
 > Supports tooltip: **No**  
 > Selector: `ui-metric-tile`  
+
+A container component for displaying multiple metric entries, each represented by an [Entry Container](#entry-container) with a single key-value and a single metric. Useful for dashboards and summary views.
+
+### Inputs
+
+#### `header`
+> Type: *string*  
+> Required: **Yes**  
+Header of the metric tile, shown at the top.
+
+#### `description`
+> Type: *string*  
+> Optional: **Yes**  
+Description text shown below the header and above the tile content.
+
 ### Accepts as Sub-Component
-- [Entry Container](#entry-container)
+- [Entry Container](#entry-container) (max 5, each with max 1 key-value and 1 metric)
+
+#### Useable inside
+NONE
+
+### Usage
+
+```html
+<ui-metric-tile header="Test Metrics" description="Overview of current metrics">
+  <ui-entry-container>
+    <ui-entry-key-value label="None" value="14%" [style]="1"></ui-entry-key-value>
+    <ui-entry-metric [percent]="14" [style]="1"></ui-entry-metric>
+  </ui-entry-container>
+  <ui-entry-container>
+    <ui-entry-key-value label="Started" value="33%"></ui-entry-key-value>
+    <ui-entry-metric [percent]="33"></ui-entry-metric>
+  </ui-entry-container>
+  <ui-entry-container>
+    <ui-entry-key-value label="Completed" value="53%" [style]="3"></ui-entry-key-value>
+    <ui-entry-metric [percent]="53" [style]="3"></ui-entry-metric>
+  </ui-entry-container>
+</ui-metric-tile>
+```
+
+### Screenshot
+![alt text](src/lib/assets/docs/metric-tile.jpg)
+
+---
 
 ## Tabs
 > Useable standalone: **Yes**  
@@ -643,17 +684,99 @@ TODO: Continue here
 > Supports loading indicator: **No**  
 > Supports tooltip: **No**  
 > Selector: `ui-tabs`  
+
+A container component for organizing content into multiple tabbed panels. Handles tab switching, active state, and navigation controls.
+
+### Inputs
+
+#### `activeIndex`
+> Type: *number*  
+> Optional: **Yes** (default: `-1`)  
+Controls the active tab by index (0-based). Overrides the `isActive` property of child tabs.
+
+#### `showPrevNextButtons`
+> Type: *boolean*  
+> Optional: **Yes** (default: `true`)  
+If `true`, shows previous/next tab navigation buttons.
+
 ### Accepts as Sub-Component
 - [Tab](#tab)
 
-## Tab
+#### Useable inside
+- Any container
+
+### Usage
+
+```html
+<ui-tabs [(activeIndex)]="activeTabIndex" [showPrevNextButtons]="true">
+  <ui-tab label="Fruits" badgeValue="2" badgeStyle="3">
+    <li>Apple</li>
+    <li>Lemon</li>
+  </ui-tab>
+  <ui-tab label="Pizza" [isActive]="true">
+    <li>Salami</li>
+    <li>Funghi</li>
+  </ui-tab>
+  <ui-tab label="Disabled" [isDisabled]="true">
+    <li>Unreachable</li>
+    <li>Content</li>
+  </ui-tab>
+  <ui-tab label="More Fruits">
+    <li>Kiwi</li>
+    <li>Banana</li>
+  </ui-tab>
+</ui-tabs>
+```
+
+### Screenshot
+![alt text](src/lib/assets/docs/tabs.jpg)
+
+## Tabs:: Tab
 > Useable standalone: **No**  
 > Supports error message: **No**     
 > Supports loading indicator: **No**  
 > Supports tooltip: **Yes**  
 > Selector: `ui-tab`  
+
+Represents a single tab within a `ui-tabs` container. Can display a label, badge, and any content.
+
+### Inputs
+
+#### `label`
+> Type: *string*  
+> Optional: **Yes**  
+Label for this tab, shown in the tab header.
+
+#### `isActive`
+> Type: *boolean*  
+> Optional: **Yes**  
+Controls whether this tab is currently active. Managed by the parent `ui-tabs` if `activeIndex` is used.
+
+#### `isDisabled`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+If `true`, the tab is disabled and cannot be selected.
+
+#### `badgeValue`
+> Type: *number*  
+> Optional: **Yes**  
+Shows a badge with the given value next to the tab label.
+
+#### `badgeStyle`
+> Type: *BadgeStyle*  
+> Optional: **Yes** (default: `None`)  
+Defines the style of the badge if `badgeValue` is set.
+
 ### Accepts as Sub-Component
-Everything
+Everything (any content can be placed inside a tab)
+
+#### Useable inside
+- [Tabs](#tabs)
+
+### Usage
+see [Tabs](#tabs) Component
+
+---
 
 ## Toolbar
 > Useable standalone: **Yes**  
@@ -661,30 +784,157 @@ Everything
 > Supports loading indicator: **No**  
 > Supports tooltip: **No**  
 > Selector: `ui-toolbar`  
+
+A horizontal bar for arranging buttons, badges, switches, and value tiles. Supports left/right alignment via the `slot` attribute on sub-components.
+
+### Inputs
+
+#### `text`
+> Type: *string*  
+> Optional: **Yes**  
+Text shown at the left side before any sub-components.
+
+#### `maxButtons`
+> Type: *number*  
+> Optional: **Yes** (default: `10`)  
+Maximum number of buttons allowed in the toolbar.
+
+#### `maxBadges`
+> Type: *number*  
+> Optional: **Yes** (default: `3`)  
+Maximum number of badges allowed in the toolbar.
+
+#### `maxSwitches`
+> Type: *number*  
+> Optional: **Yes** (default: `3`)  
+Maximum number of switches allowed in the toolbar.
+
+#### `maxValueTiles`
+> Type: *number*  
+> Optional: **Yes** (default: `2`)  
+Maximum number of value tiles allowed in the toolbar.
+
 ### Accepts as Sub-Component
 - [Badge](#badge)
 - [Button](#button)
 - [Switch](#switch)
 - [Value Tile](#value-tile)
 
+#### Useable inside
+- Modal
+- Window
+
+### Usage
+
+```html
+<ui-toolbar text="Headline">
+  <ui-button slot="left" label="Left Simple #1" [icon]="faCheck()" [style]="0"></ui-button>
+  <ui-badge [style]="0" label="CTP2" slot="left"></ui-badge>
+  <ui-value-tile key="Vin" value="WDB0101010110" slot="right">
+    <ui-button [icon]="faCopy()" label="test"></ui-button>
+    <ui-button [icon]="faExternalLink()" [style]="0"></ui-button>
+  </ui-value-tile>
+  <ui-button label="Right #1" slot="right" [isLoading]="true">
+    <ui-badge value="3"></ui-badge>
+  </ui-button>
+</ui-toolbar>
+```
+
+### Screenshot
+With other components as example content in left and right slots.
+
+![alt text](src/lib/assets/docs/toolbar.jpg)
+
+---
+
 ## Value Tile
 > Useable standalone: **Yes**  
 > Supports loading indicator: **Yes**  
 > Supports tooltip: **Yes**  
 > Selector: `ui-value-tile`  
+
+Displays a key/value pair with optional color state, badges, and buttons. Designed for use in toolbars and dashboards.
+
+### Inputs
+
+#### `key`
+> Type: *string*  
+> Required: **Yes**  
+The key (or label) shown on the left.
+
+#### `value`
+> Type: *string*  
+> Required: **Yes**  
+The value/content shown on the right.
+
+#### `style`
+> Type: *ValueTileStyle*  
+> Optional: **Yes** (default: `None`)  
+Defines the color style of the tile.  
+Possible values:  
+- `None` = grey (default)  
+- `Attention` = orange  
+- `Error` = red  
+- `Success` = green  
+
+### Accepts as Sub-Component
+- [Badge](#badge) (max 1)
+- [Button](#button) (max 2)
+
 #### Useable inside
-- Toolbar
+- [Toolbar](#toolbar)
+
+### Usage
+
+```html
+<ui-value-tile key="Vin" value="WDB0101010110">
+  <ui-button [icon]="faCopy()" label="Copy"></ui-button>
+  <ui-button [icon]="faExternalLink()" [style]="0"></ui-button>
+</ui-value
+```
+
+### Screenshot
+![alt text](src/lib/assets/docs/value-tile.jpg)
 
 # Content and Navigation Components
 
 ## Grid
 > Useable standalone: **Yes**  
+> Supports error message: **No**  
 > Supports loading indicator: **No**  
 > Supports tooltip: **No**  
 > Selector: `ui-grid`  
-#### Accepts
-- Entry Tile
-- Metric Tile
+
+A responsive container component for arranging cards, entry tiles, and metric tiles in a multi-column grid layout.  
+You can specify the number of columns (up to 6), and assign components to specific columns using the `grid-column` attribute.  
+The grid automatically distributes its content into columns and adapts to the available width.
+
+### Inputs
+
+#### `columns`
+> Type: *number*  
+> Required: **Yes**  
+Number of columns to display (maximum: 6).
+
+### Accepts as Sub-Component
+- [Card](#card)
+- [Entry Tile](#entry-tile)
+- [Metric Tile](#metric-tile)
+
+#### Useable inside
+- Any container
+
+### Usage
+
+```html
+<ui-grid [columns]="3">
+  <ui-card grid-column="1" header="Card 1"></ui-card>
+  <ui-entry-tile grid-column="2"></ui-entry-tile>
+  <ui-metric-tile grid-column="3"></ui-metric-tile>
+</ui-grid>
+```
+
+---
 
 ## Menu Bar
 > Useable standalone: **Yes**  
