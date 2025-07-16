@@ -237,7 +237,6 @@ NONE
 `<ui-switch label="Enable feature" [(state)]="featureEnabled">`
 
 ### Screenshot
-
 ![alt text](src/lib/assets/docs/switch-off.jpg)
 ![alt text](src/lib/assets/docs/switch-on.jpg)
 
@@ -297,7 +296,8 @@ If `true`, the card is clickable and emits the `onClick` event.
 - [Switch](#switch) (in header only)
 - [Card Section Basic](#card-section-basic)
 
-
+### Screenshot
+![alt text](src/lib/assets/docs/card.jpg)
 
 ## Card :: Card Section Basic
 > Useable standalone: **No**  
@@ -385,9 +385,6 @@ If `true`, the section is clickable and emits the `onClick` event.
   </ui-card-section-basic>
 </ui-card>
 ```
-### Screenshot
-![alt text](src/lib/assets/docs/card.jpg)
-
 ---
 
 ## Entry Container
