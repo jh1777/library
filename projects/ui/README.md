@@ -47,7 +47,8 @@ It offers a rich collection of reUseable components that are carefully crafted t
 
 # Common Input Properties
 
-These properties are supported in each component and so only described once in this section.
+These properties are supported in each component and so only described once in this section.  
+In this documentation there is a property '_Useable standalone_' for each component. Some components are only designed to be nested inside another one. Those would have a 'No' here!
 
 ### `isLoading`
 
@@ -121,7 +122,7 @@ NONE
 `<ui-badge value="4" [style]="3"></ui-badge>`
 
 ### Screenshot
-![alt text](./assets/docs/badge.jpg){width=50%}
+![alt text](src/lib/assets/docs/badge.jpg)
 
 ---
 
@@ -196,7 +197,7 @@ Use for simple styles on dark backgrounds.
 `<ui-button label="Apply" [icon]="faCheck()" [style]="1">`
 
 ### Screenshot
-![alt text](./assets/docs/button.jpg){width=75%}
+![alt text](src/lib/assets/docs/button.jpg)
 
 ---
 
@@ -236,9 +237,8 @@ NONE
 `<ui-switch label="Enable feature" [(state)]="featureEnabled">`
 
 ### Screenshot
-
-![alt text](./assets/docs/switch-off.jpg){width=25%}
-![alt text](./assets/docs/switch-on.jpg){width=25%}
+![alt text](src/lib/assets/docs/switch-off.jpg)
+![alt text](src/lib/assets/docs/switch-on.jpg)
 
 --- 
 
@@ -296,7 +296,8 @@ If `true`, the card is clickable and emits the `onClick` event.
 - [Switch](#switch) (in header only)
 - [Card Section Basic](#card-section-basic)
 
-
+### Screenshot
+![alt text](src/lib/assets/docs/card.jpg)
 
 ## Card :: Card Section Basic
 > Useable standalone: **No**  
@@ -365,6 +366,7 @@ If `true`, the section is clickable and emits the `onClick` event.
 ### Accepts as Sub-Component
 - [Button](#button)
 - [Switch](#switch)
+- [Entry Key Value](#entry-key-value)
 
 ### Usage Example
 
@@ -383,60 +385,244 @@ If `true`, the section is clickable and emits the `onClick` event.
   </ui-card-section-basic>
 </ui-card>
 ```
-### Screenshot
-![alt text](./assets/docs/card.jpg){width=100%}
-
 ---
-TODO: update docs from here...
 
 ## Entry Container
 > Useable standalone: **Yes**  
 > Supports loading indicator: **No**  
 > Supports error message: **No**  
 > Supports tooltip: **No**  
-> Selector: `ui-entry-container`  
+> Selector: `ui-entry-container`
+
+This component is just a wrapper around the _Entry Key Value_ component and _Entry Metric_ component. They will be layouted and there is some event handling on top. Both of them are designed to be used inside this _Entry Container_ but they can also be used inside others and the _Entry Key Value_ component also standalone.
+
+### Inputs
+
+#### `isClickable`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+If `true`, the entry container is clickable and emits the `onClick` event.
+
+#### `toggleSelect`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+If `true` and `isClickable` is `true`, the selection of the component is retained until the next click (toggles).
+
+#### `isSelected`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+Selection state of the component. If `isClickable` and `toggleSelect` are `true`, the selection is retained until the next click.
+
+#### `onClick`
+> Type: *EventEmitter&lt;string | null&gt;*  
+> Emits the `id` of the component when clicked.
+
 ### Accepts as Sub-Component
-- [Entry Metric](#entry-metric)
-- [Entry Key Value](#entry-key-value)
+- [Entry Key Value](#entry-key-value) (max 2)
+- [Entry Metric](#entry-metric) (max 1)
+
+#### Useable inside
+- [Metric Tile](#metric-tile)
+
+### Usage
+`<ui-entry-container [isClickable]="true" (onClick)="handleClick($event)">
+  <ui-entry-key-value label="State" value="Completed"></ui-entry-key-value>
+  <ui-entry-metric [percent]="33"></ui-entry-metric>
+</ui-entry-container>`
+
+
+### Screenshot
+![alt text](src/lib/assets/docs/entry-container.jpg)
+
+--- 
 
 ## Entry Metric
 > Useable standalone: **No**  
-> Supports error message: **Yes**  
 > Supports loading indicator: **Yes**  
+> Supports error message: **Yes**  
 > Supports tooltip: **Yes**  
-> Selector: `ui-entry-metric`  
+> Selector: `ui-entry-metric`
+
+This is just a very simple bar to show percentage values (0-100) as a colored bar. If uses just scss, no other library needed.
+
+### Inputs
+
+#### `percent`
+> Type: *number*  
+> Optional: **No** (default: `0`)  
+Value to show, from 0 to 100. Values above 100 are capped at 100.
+
+#### `style`
+> Type: *EntryMetricStyle*  
+> Optional: **Yes** (default: `None`)  
+Defines the color style of the metric bar.  
+Possible values:  
+- `None` = default  
+- `Attention` = orange  
+- `Error` = red  
+- `Success` = green  
+
 ### Accepts as Sub-Component
 NONE
 
+#### Useable inside
+- [Entry Container](#entry-container)
+- [Card Section Basic](#card--card-section-basic)
+
+### Usage
+`<ui-entry-metric [percent]="70" [style]="2"></ui-entry-metric>`
+
+### Screenshot
+![alt text](src/lib/assets/docs/entry-metric.jpg)
+
+---
+
 ## Entry Key Value 
-> Useable standalone: **No**  
+> Useable standalone: **Yes**  
 > Supports error message: **Yes**  
 > Supports loading indicator: **Yes**  
 > Supports tooltip: **Yes** (right side)  
 > Selector: `ui-entry-key-value`  
+
+The standard component to show simple key/value pairs in this library. It can be used everywhere and as well it is designed to be used inside several other components inside this lib.
+
+### Inputs
+
+#### `label`
+> Type: *string*  
+> Required: **Yes**  
+Label for the key/value pair, shown on the left.
+
+#### `value`
+> Type: *string*  
+> Required: **Yes**  
+Value for the key/value pair, shown on the right.
+
+#### `style`
+> Type: *EntryKeyValueStyle*  
+> Optional: **Yes** (default: `None`)  
+Defines the color style of the item.  
+Possible values:  
+- `None` = black (default)  
+- `Attention` = orange  
+- `Error` = red  
+- `Success` = green  
+- `Dimmed` = grey  
+
+#### `isBig`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+If `true`, increases the font size of the key and value (and icon, if present).
+
+#### `showIcon`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+If `true`, displays a style-based icon next to the value.
+
 ### Accepts as Sub-Component
 NONE
 
-## Entry Tile Item
+#### Useable inside
+- [Entry Container](#entry-container)
+- [Entry Tile](#entry-tile)
+- [Card Section Basic](#card--card-section-basic)
+
+### Usage
+`<ui-entry-key-value label="Status" value="Completed" [style]="3" [isBig]="true" [showIcon]="true"></ui-entry-key-value>`
+
+### Screenshot
+![alt text](src/lib/assets/docs/entry-key-value-big.jpg)
+
+---
+
+## Entry Tile
+> Useable standalone: **Yes**  
+> Supports error message: **No**  
+> Supports loading indicator: **Yes**  
+> Supports tooltip: **No**  
+> Selector: `ui-entry-tile`  
+
+A container component for grouping multiple entry tile items and/or key-value pairs, often used for displaying lists or paginated data.
+
+### Inputs
+
+#### `isCollapsed`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+Controls whether the tile is collapsed (hides content).
+
+#### `currentPage`
+> Type: *number*  
+> Optional: **Yes** (default: `0`)  
+Current page index for paginated content.
+
+#### `paginationTooltip`
+> Type: *string*  
+> Optional: **Yes** (default: `'Page '`)  
+Tooltip text for pagination controls.
+
+### Accepts as Sub-Component
+- [Entry Tile Item](#entry-tile-item) (max 5)
+- [Entry Key Value](#entry-key-value) (max 2)
+- [Button](#button) (max 2)
+
+#### Useable inside
+NONE
+
+### Usage
+
+```html
+<ui-entry-tile>
+  <ui-entry-key-value label="Order" value="12345"></ui-entry-key-value>
+  <ui-entry-tile-item header="Details" [style]="2">
+    <ui-badge value="2"></ui-badge>
+    <ui-button label="Edit"></ui-button>
+    <ui-switch label="Active"></ui-switch>
+  </ui-entry-tile-item>
+  <ui-entry-tile-item header="Shipping" [style]="1">
+    <ui-badge value="1"></ui-badge>
+  </ui-entry-tile-item>
+</ui-entry-tile>
+```
+
+### Screenshot
+![alt text](src/lib/assets/docs/entry-tile.jpg)
+
+## Entry Tile:: Entry Tile Item
 > Useable standalone: **No**  
 > Supports error message: **Yes**  
 > Supports loading indicator: **Yes**  
 > Supports tooltip: **Yes**  
-> Selector: `ui-entry-item`  
+> Selector: `ui-entry-tile-item`  
+
+Represents a single item within an entry tile, supporting badges, buttons, and switches as sub-components.
+
+### Inputs
+
+#### `header`
+> Type: *string*  
+> Optional: **Yes**  
+Group header to be shown at the top of the item.
+
+#### `style`
+> Type: *EntryItemStyle*  
+> Optional: **Yes** (default: `None`)  
+Defines the color style of the item.  
+Possible values:  
+- `None` = grey (default)  
+- `Attention` = orange  
+- `Error` = red  
+- `Success` = green  
+
 ### Accepts as Sub-Component
 - [Badge](#badge)
 - [Button](#button)
 - [Switch](#switch)
 
-## Entry Tile
-> Useable standalone: **Yes**  
-> Supports error message: **No**    
-> Supports loading indicator: **Yes**  
-> Supports tooltip: **No**  
-> Selector: `ui-entry-tile`  
-### Accepts as Sub-Component
-- [Entry Tile Item](#entry-tile-item)
-- [Entry Key Value](#entry-key-value)
+#### Useable inside
+- Entry Tile
+
+---
 
 ## Metric Tile
 > Useable standalone: **Yes**  
@@ -444,8 +630,50 @@ NONE
 > Supports loading indicator: **No**  
 > Supports tooltip: **No**  
 > Selector: `ui-metric-tile`  
+
+A container component for displaying multiple metric entries, each represented by an [Entry Container](#entry-container) with a single key-value and a single metric. Useful for dashboards and summary views.
+
+### Inputs
+
+#### `header`
+> Type: *string*  
+> Required: **Yes**  
+Header of the metric tile, shown at the top.
+
+#### `description`
+> Type: *string*  
+> Optional: **Yes**  
+Description text shown below the header and above the tile content.
+
 ### Accepts as Sub-Component
-- [Entry Container](#entry-container)
+- [Entry Container](#entry-container) (max 5, each with max 1 key-value and 1 metric)
+
+#### Useable inside
+NONE
+
+### Usage
+
+```html
+<ui-metric-tile header="Test Metrics" description="Overview of current metrics">
+  <ui-entry-container>
+    <ui-entry-key-value label="None" value="14%" [style]="1"></ui-entry-key-value>
+    <ui-entry-metric [percent]="14" [style]="1"></ui-entry-metric>
+  </ui-entry-container>
+  <ui-entry-container>
+    <ui-entry-key-value label="Started" value="33%"></ui-entry-key-value>
+    <ui-entry-metric [percent]="33"></ui-entry-metric>
+  </ui-entry-container>
+  <ui-entry-container>
+    <ui-entry-key-value label="Completed" value="53%" [style]="3"></ui-entry-key-value>
+    <ui-entry-metric [percent]="53" [style]="3"></ui-entry-metric>
+  </ui-entry-container>
+</ui-metric-tile>
+```
+
+### Screenshot
+![alt text](src/lib/assets/docs/metric-tile.jpg)
+
+---
 
 ## Tabs
 > Useable standalone: **Yes**  
@@ -453,17 +681,99 @@ NONE
 > Supports loading indicator: **No**  
 > Supports tooltip: **No**  
 > Selector: `ui-tabs`  
+
+A container component for organizing content into multiple tabbed panels. Handles tab switching, active state, and navigation controls.
+
+### Inputs
+
+#### `activeIndex`
+> Type: *number*  
+> Optional: **Yes** (default: `-1`)  
+Controls the active tab by index (0-based). Overrides the `isActive` property of child tabs.
+
+#### `showPrevNextButtons`
+> Type: *boolean*  
+> Optional: **Yes** (default: `true`)  
+If `true`, shows previous/next tab navigation buttons.
+
 ### Accepts as Sub-Component
 - [Tab](#tab)
 
-## Tab
+#### Useable inside
+- Any container
+
+### Usage
+
+```html
+<ui-tabs [(activeIndex)]="activeTabIndex" [showPrevNextButtons]="true">
+  <ui-tab label="Fruits" badgeValue="2" badgeStyle="3">
+    <li>Apple</li>
+    <li>Lemon</li>
+  </ui-tab>
+  <ui-tab label="Pizza" [isActive]="true">
+    <li>Salami</li>
+    <li>Funghi</li>
+  </ui-tab>
+  <ui-tab label="Disabled" [isDisabled]="true">
+    <li>Unreachable</li>
+    <li>Content</li>
+  </ui-tab>
+  <ui-tab label="More Fruits">
+    <li>Kiwi</li>
+    <li>Banana</li>
+  </ui-tab>
+</ui-tabs>
+```
+
+### Screenshot
+![alt text](src/lib/assets/docs/tabs.jpg)
+
+## Tabs:: Tab
 > Useable standalone: **No**  
 > Supports error message: **No**     
 > Supports loading indicator: **No**  
 > Supports tooltip: **Yes**  
 > Selector: `ui-tab`  
+
+Represents a single tab within a `ui-tabs` container. Can display a label, badge, and any content.
+
+### Inputs
+
+#### `label`
+> Type: *string*  
+> Optional: **Yes**  
+Label for this tab, shown in the tab header.
+
+#### `isActive`
+> Type: *boolean*  
+> Optional: **Yes**  
+Controls whether this tab is currently active. Managed by the parent `ui-tabs` if `activeIndex` is used.
+
+#### `isDisabled`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+If `true`, the tab is disabled and cannot be selected.
+
+#### `badgeValue`
+> Type: *number*  
+> Optional: **Yes**  
+Shows a badge with the given value next to the tab label.
+
+#### `badgeStyle`
+> Type: *BadgeStyle*  
+> Optional: **Yes** (default: `None`)  
+Defines the style of the badge if `badgeValue` is set.
+
 ### Accepts as Sub-Component
-Everything
+Everything (any content can be placed inside a tab)
+
+#### Useable inside
+- [Tabs](#tabs)
+
+### Usage
+see [Tabs](#tabs) Component
+
+---
 
 ## Toolbar
 > Useable standalone: **Yes**  
@@ -471,30 +781,157 @@ Everything
 > Supports loading indicator: **No**  
 > Supports tooltip: **No**  
 > Selector: `ui-toolbar`  
+
+A horizontal bar for arranging buttons, badges, switches, and value tiles. Supports left/right alignment via the `slot` attribute on sub-components.
+
+### Inputs
+
+#### `text`
+> Type: *string*  
+> Optional: **Yes**  
+Text shown at the left side before any sub-components.
+
+#### `maxButtons`
+> Type: *number*  
+> Optional: **Yes** (default: `10`)  
+Maximum number of buttons allowed in the toolbar.
+
+#### `maxBadges`
+> Type: *number*  
+> Optional: **Yes** (default: `3`)  
+Maximum number of badges allowed in the toolbar.
+
+#### `maxSwitches`
+> Type: *number*  
+> Optional: **Yes** (default: `3`)  
+Maximum number of switches allowed in the toolbar.
+
+#### `maxValueTiles`
+> Type: *number*  
+> Optional: **Yes** (default: `2`)  
+Maximum number of value tiles allowed in the toolbar.
+
 ### Accepts as Sub-Component
 - [Badge](#badge)
 - [Button](#button)
 - [Switch](#switch)
 - [Value Tile](#value-tile)
 
+#### Useable inside
+- Modal
+- Window
+
+### Usage
+
+```html
+<ui-toolbar text="Headline">
+  <ui-button slot="left" label="Left Simple #1" [icon]="faCheck()" [style]="0"></ui-button>
+  <ui-badge [style]="0" label="CTP2" slot="left"></ui-badge>
+  <ui-value-tile key="Vin" value="WDB0101010110" slot="right">
+    <ui-button [icon]="faCopy()" label="test"></ui-button>
+    <ui-button [icon]="faExternalLink()" [style]="0"></ui-button>
+  </ui-value-tile>
+  <ui-button label="Right #1" slot="right" [isLoading]="true">
+    <ui-badge value="3"></ui-badge>
+  </ui-button>
+</ui-toolbar>
+```
+
+### Screenshot
+With other components as example content in left and right slots.
+
+![alt text](src/lib/assets/docs/toolbar.jpg)
+
+---
+
 ## Value Tile
 > Useable standalone: **Yes**  
 > Supports loading indicator: **Yes**  
 > Supports tooltip: **Yes**  
 > Selector: `ui-value-tile`  
+
+Displays a key/value pair with optional color state, badges, and buttons. Designed for use in toolbars and dashboards.
+
+### Inputs
+
+#### `key`
+> Type: *string*  
+> Required: **Yes**  
+The key (or label) shown on the left.
+
+#### `value`
+> Type: *string*  
+> Required: **Yes**  
+The value/content shown on the right.
+
+#### `style`
+> Type: *ValueTileStyle*  
+> Optional: **Yes** (default: `None`)  
+Defines the color style of the tile.  
+Possible values:  
+- `None` = grey (default)  
+- `Attention` = orange  
+- `Error` = red  
+- `Success` = green  
+
+### Accepts as Sub-Component
+- [Badge](#badge) (max 1)
+- [Button](#button) (max 2)
+
 #### Useable inside
-- Toolbar
+- [Toolbar](#toolbar)
+
+### Usage
+
+```html
+<ui-value-tile key="Vin" value="WDB0101010110">
+  <ui-button [icon]="faCopy()" label="Copy"></ui-button>
+  <ui-button [icon]="faExternalLink()" [style]="0"></ui-button>
+</ui-value
+```
+
+### Screenshot
+![alt text](src/lib/assets/docs/value-tile.jpg)
 
 # Content and Navigation Components
 
 ## Grid
 > Useable standalone: **Yes**  
+> Supports error message: **No**  
 > Supports loading indicator: **No**  
 > Supports tooltip: **No**  
 > Selector: `ui-grid`  
-#### Accepts
-- Entry Tile
-- Metric Tile
+
+A responsive container component for arranging cards, entry tiles, and metric tiles in a multi-column grid layout.  
+You can specify the number of columns (up to 6), and assign components to specific columns using the `grid-column` attribute.  
+The grid automatically distributes its content into columns and adapts to the available width.
+
+### Inputs
+
+#### `columns`
+> Type: *number*  
+> Required: **Yes**  
+Number of columns to display (maximum: 6).
+
+### Accepts as Sub-Component
+- [Card](#card)
+- [Entry Tile](#entry-tile)
+- [Metric Tile](#metric-tile)
+
+#### Useable inside
+- Any container
+
+### Usage
+
+```html
+<ui-grid [columns]="3">
+  <ui-card grid-column="1" header="Card 1"></ui-card>
+  <ui-entry-tile grid-column="2"></ui-entry-tile>
+  <ui-metric-tile grid-column="3"></ui-metric-tile>
+</ui-grid>
+```
+
+---
 
 ## Menu Bar
 > Useable standalone: **Yes**  
