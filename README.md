@@ -1,7 +1,9 @@
 # Library
 
 This project is for personal tryouts and component development playground.
-It is not a fully maintained UI Library at all. Use at own risk.
+It is not a fully maintained UI Library at all. Use at own risk!
+
+[UI Project Readme](./projects/ui/README.md)
 
 ## Pages
 
