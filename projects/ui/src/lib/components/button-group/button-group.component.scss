@@ -1,0 +1,50 @@
+@use '../../styles/ui.styles.scss' as *;
+@use 'sass:color';
+
+:host {
+
+    & { 
+        position: relative;
+        display: flex;
+        min-width: max-content;
+        max-height: 31px;
+    }
+
+    .active {
+        background-color: color.adjust($ui-standard-color, $lightness: 6%);
+
+    }
+    
+    .ui-button-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $ui-light-standard-color;
+        background-color: color.adjust($ui-light-standard-color, $lightness: 6%);
+        border-radius: calc($ui-border-radius + 1px);
+
+        &-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: .3rem .7rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:last-child {
+                border-radius: 0 $ui-border-radius $ui-border-radius 0;
+            }
+            &:first-child {
+                border-radius: $ui-border-radius 0 0 $ui-border-radius;
+            }
+            &:hover {
+                background-color: color.adjust($ui-standard-color, $lightness: 6%);
+            }
+
+            &:active {
+                background-color:  $ui-light-standard-color;
+            }
+        }
+    }
+}

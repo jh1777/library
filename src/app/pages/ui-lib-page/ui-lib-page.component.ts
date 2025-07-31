@@ -1,12 +1,7 @@
 
 
 import { AfterContentInit, Component, OnInit, ViewChild, signal } from "@angular/core";
-import { BadgeComponent, ButtonComponent, ModalComponent, ConfirmationModalComponent,
-  CardComponent, EntryTileComponent, TabComponent, TabsComponent, CardSectionBasicComponent,
-  EntryKeyValueComponent, EntryTileItemComponent, SwitchComponent, MenuBarComponent, SignpostComponent,
-  EntryContainerComponent, EntryMetricComponent, MenuItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent,
-  ToolbarComponent, ValueTileComponent, GridComponent, MetricTileComponent
- } from "../../../../projects/ui/src/public-api";
+import { BadgeComponent, ButtonComponent, ModalComponent, ConfirmationModalComponent, CardComponent, EntryTileComponent, TabComponent, TabsComponent, CardSectionBasicComponent, EntryKeyValueComponent, EntryTileItemComponent, SwitchComponent, MenuBarComponent, SignpostComponent, EntryContainerComponent, EntryMetricComponent, MenuItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ToolbarComponent, ValueTileComponent, GridComponent, MetricTileComponent, ButtonGroupComponent } from "../../../../projects/ui/src/public-api";
 
  import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faPlay, faStop, faCircleCheck, faCircleExclamation, faInfoCircle, faTriangleExclamation, faTrash, faExternalLink, faCopy, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -14,13 +9,25 @@ import { faPlay, faStop, faCircleCheck, faCircleExclamation, faInfoCircle, faTri
 @Component({
     selector: 'ui-lib-page',
     standalone: true,
-    imports: [ConfirmationModalComponent, SignpostComponent, BadgeComponent, SwitchComponent, ModalComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, CardSectionBasicComponent, MenuItemComponent, MenuBarComponent, TabComponent, TabsComponent, GridComponent, ValueTileComponent, MetricTileComponent, ToolbarComponent, ButtonComponent, CardComponent, EntryTileComponent, EntryKeyValueComponent, EntryTileItemComponent, EntryContainerComponent, EntryMetricComponent],
+    imports: [ConfirmationModalComponent, SignpostComponent, BadgeComponent, SwitchComponent, 
+      ModalComponent, 
+      AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, CardSectionBasicComponent, 
+      MenuItemComponent, MenuBarComponent, TabComponent, TabsComponent, GridComponent, ValueTileComponent, 
+      MetricTileComponent, ToolbarComponent, ButtonComponent, CardComponent, EntryTileComponent, EntryKeyValueComponent, 
+      EntryTileItemComponent, EntryContainerComponent, EntryMetricComponent, ButtonGroupComponent],
     templateUrl: './ui-lib-page.component.html',
     styleUrls: ['./ui-lib-page.component.scss']
   })
   export class UiLibPageComponent  {
+
+    selectedItemsDebug =signal<string[]>([]);
+    selectedItemsUpdate($event: string[]) {
+      this.selectedItemsDebug.set($event);
+      console.log("Selected Items Updated:", $event);
+    }
     @ViewChild('signpost') signpost!: SignpostComponent;
 
+    buttonGroupItems = signal<Array<string>>(['Button 1', 'Button 2', 'Button 3']);
 
     faCheck = signal<IconDefinition>(faCircleCheck);
     faError = signal<IconDefinition>(faCircleExclamation);
