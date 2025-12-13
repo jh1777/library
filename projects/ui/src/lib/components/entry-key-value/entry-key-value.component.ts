@@ -1,10 +1,12 @@
 
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, input, QueryList, signal } from '@angular/core';
 
 import { UIBaseComponent, UiErrorComponent } from '../../shared';
 import { EntryKeyValueStyle } from './entry-key-value.models';
 import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
 import { faCircleCheck, faCircleExclamation, faInfoCircle, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { BadgeComponent } from '../badge';
+import { ButtonComponent } from '../button';
 
 
 @Component({
@@ -16,6 +18,8 @@ import { faCircleCheck, faCircleExclamation, faInfoCircle, faTriangleExclamation
   styleUrl: './entry-key-value.component.scss'
 })
 export class EntryKeyValueComponent extends UIBaseComponent {
+  @ContentChildren(BadgeComponent) badges!: QueryList<BadgeComponent>;
+  @ContentChildren(ButtonComponent) buttons!: QueryList<ButtonComponent>;
 
   infoIcon = signal(faInfoCircle);
   successIcon = signal(faCircleCheck);
@@ -51,4 +55,11 @@ export class EntryKeyValueComponent extends UIBaseComponent {
    * Controls whether to show a style based icon
    */
   showIcon = input<boolean>(false);
+
+  ngAfterContentInit(): void {
+    super.limitContentChildren(this.badges, 3);
+    this.buttons.forEach(button => {
+      button.simpleOnly.set(true);
+    });
+  }
 }

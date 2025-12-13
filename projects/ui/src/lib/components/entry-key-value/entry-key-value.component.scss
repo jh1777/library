@@ -27,6 +27,9 @@
     color: $ui-standard-text-color;
     word-wrap: normal;
     text-align: right;
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
   }
 
   .ui-generic-flex-row {

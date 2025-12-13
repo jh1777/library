@@ -1,6 +1,6 @@
 {
   "name": "@jh1777/jh-ui",
-  "version": "0.2.3",
+  "version": "0.2.8",
   "scripts": {
     "ng": "ng",
     "test": "jest"
@@ -10,9 +10,9 @@
     "url": "https://github.com/jh1777/library.git"
   },
   "peerDependencies": {
-    "@angular/common": ">=19.1.0 <21.0.0",
-    "@angular/core": ">=19.1.0 <21.0.0",
-    "@angular/animations": ">=19.1.0 <21.0.0",
+    "@angular/common": ">=19.1.0",
+    "@angular/core": ">=19.1.0",
+    "@angular/animations": ">=19.1.0",
     "@fortawesome/angular-fontawesome": "^1.0.0",
     "@fortawesome/free-solid-svg-icons": "^6.7.2"
   },

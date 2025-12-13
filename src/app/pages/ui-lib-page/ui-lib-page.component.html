@@ -368,7 +368,9 @@ MODAL
           label="State"
           value="Completed"
           [style]="3"
-        ></ui-entry-key-value>
+        >
+          <ui-button [style]="6" slot="right" [icon]="faTrash()"></ui-button>
+        </ui-entry-key-value>
         <ui-entry-key-value
           label="Timestamp"
           value="10.04.2024 07:22 PM"
