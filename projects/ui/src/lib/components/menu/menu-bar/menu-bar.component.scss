@@ -3,24 +3,25 @@
 :host {
 
     --ui-menu-bar-border-bottom: 0px solid white;
-
-    position: sticky;
-    left: 0;
-    top: 0;
+flex: 0 0 auto;
+    //position: sticky;
+    //left: 0;
+    //top: 0;
     width: 100%;
     z-index: 1000;
     backdrop-filter: blur(3px);
     margin: 0;
     overflow: hidden;
-    $ui-menu-bar-background-color: rgb(247, 247, 247);
-    $ui-menu-item-active-background-color: #efefef;
+    $ui-menu-bar-background-color: rgb(241, 242, 243);
+    $ui-menu-item-active-background-color: #fefefe;
     border-bottom: var(--ui-menu-bar-border-bottom);
     
 
     .main-menu {
-        //background-color: $ui-menu-bar-background-color;
-        background: rgba(247,247,247,0.92);
+        background-color: $ui-menu-bar-background-color;
+        //background: rgba(243,243,243,0.92);
         height: $ui-menu-bar-height;
+        border: 1px solid $ui-light-standard-color;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -44,7 +45,7 @@
         display: inline-block;
         color: $ui-dark-standard-color;
         text-decoration: none;
-        padding: 2px 15px;
+        padding: 4px 15px;
         border-radius: $ui-border-radius;
         cursor: pointer;
         text-decoration: none;

@@ -1,9 +1,5 @@
 @if(isHidden() == false) {
-    @if(isLoading() == true) {
-        <div class="ui-content-loading no-select no-scroll">
-            <ui-spinner [text]="loadingText()" [size]=2></ui-spinner>
-        </div>
-    }
+    
     <div 
         class="ui-content"
         [class.no-scroll]="isLoading() == true"
@@ -11,4 +7,9 @@
     >   
         <ng-content></ng-content>
     </div>
+    @if(isLoading() == true) {
+        <div class="ui-content-loading no-select no-scroll">
+            <ui-spinner [text]="loadingText()" [size]=2></ui-spinner>
+        </div>
+    }
 }
