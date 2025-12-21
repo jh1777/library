@@ -5,6 +5,7 @@ WORK IN PROGRESS
 
 - [Disclaimer](#disclaimer)
 - [Abstract](#abstract)
+- [NPM Lib Change History](#npm-lib-change-history)
 - [Key Features](#key-features)
 - [Common Input Properties](#common-input-properties)
 - [Default Components](#default-components)
@@ -40,6 +41,15 @@ This is a private fun project which has no productive focus. It is not actively 
 Welcome to the documentation of this project, a comprehensive and modular library designed to streamline the development of user interfaces in Angular applications. This documentation serves as a guide to help you leverage the power and flexibility of our UI components effectively in your projects.
 
 It offers a rich collection of reUseable components that are carefully crafted to enhance the user experience while promoting consistency and scalability across applications. Whether you are building a simple web application or a complex enterprise-grade solution, our library provides the building blocks you need to create modern and visually appealing interfaces with ease.
+
+# NPM Lib Change History
+
+- **0.2.12** 
+  - Enhanced layout components `content` and `window` to better support menu headers
+  - added `ui-button-group` component
+  - improved button support in key-value component
+  - styling improvements on several components
+
 
 ### Key Features:
 
