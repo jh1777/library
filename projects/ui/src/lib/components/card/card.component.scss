@@ -34,8 +34,8 @@
       }
 
       &.highlight {
-          border: 2px solid $ui-petrol-color;
-          box-shadow: 0px 0px 3px 0px $ui-petrol-color;
+        border: 2px solid $ui-petrol-color;
+        box-shadow: 0px 0px 3px 0px $ui-petrol-color;
       }
 
       &.is-clickable {
@@ -50,6 +50,8 @@
         gap: .5rem;
         padding: 15px 15px;
         background-color: $ui-alternative-standard-color;
+        border-top-left-radius: calc($ui-border-radius - 2px);
+        border-top-right-radius: calc($ui-border-radius - 2px);
 
         &.attention {
           background-color: $ui-alternative-attention-color !important;

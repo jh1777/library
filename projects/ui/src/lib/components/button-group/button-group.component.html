@@ -1,0 +1,14 @@
+@if(isHidden() == false && items().length > 0) {
+    <div class="ui-button-group">
+        
+        @for(item of items(); track item) {
+            <div 
+                class="ui-button-group-item no-select"
+                [class.active]="selectedItems().includes(item)"
+                (click)="onItemClick(item)"
+            >
+                {{ item }}
+            </div>
+        }
+    </div>
+}

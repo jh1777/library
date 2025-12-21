@@ -36,8 +36,8 @@ export class CardComponent extends UIBaseComponent implements AfterContentInit {
   
   ngAfterContentInit(): void {
     super.limitContentChildren<SwitchComponent>(this.switches, 1);
-    super.limitContentChildren<ButtonComponent>(this.buttons, 1);
-    super.limitContentChildren<BadgeComponent>(this.badges, 1);
+    super.limitContentChildren<ButtonComponent>(this.buttons, 4);
+    super.limitContentChildren<BadgeComponent>(this.badges, 4);
 
     if (this.style() != CardStyle.None) {
       for (let index = 0; index < this.buttons.length; index++) {

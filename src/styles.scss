@@ -10,8 +10,10 @@
     padding: 0;
 }
 
-html {
-    overflow-y: scroll;
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; // wichtig!
 }
 
 .columns {

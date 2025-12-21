@@ -1,24 +1,25 @@
 :host {
+    display: block;
+    min-height: 0;
+    overflow-y: auto;
+
     --ui-content-padding-top: 20px;
     --ui-content-padding-right: 20px;
     --ui-content-padding-bottom: 20px;
     --ui-content-padding-left: 20px;
 
-    box-sizing: border-box;
-    position: relative;
-    top: 0;
-    left: 0;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    overflow-x: hidden;
     padding-top: var(--ui-content-padding-top);
     padding-right: var(--ui-content-padding-right);
     padding-bottom: var(--ui-content-padding-bottom);
     padding-left: var(--ui-content-padding-left);
-    .ui-content-loading {
+
+    .ui-content {
+        flex: 1 1 auto;
+        min-height: 0;     // KRITISCH
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        &-loading {
             display: flex;
             position: fixed;
             inset: 0;
@@ -30,5 +31,6 @@
             z-index: 9999;
             pointer-events: auto !important;
         
+        }
     }
 }

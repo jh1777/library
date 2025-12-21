@@ -1,9 +1,31 @@
 
-<div class="page-header">UI Library (v2) with ng17, Signals etc.</div>
+<div class="page-header">UI Library - Demo Page</div>
 
 <ui-button label="Show Signpost" (onClick)="openSignpost($event)"></ui-button>
 <ui-signpost #signpost [offsetY]=-50 [offsetX]=0 text="This is the <strong>styled</strong> Text!">
 </ui-signpost>
+
+
+
+<div class="item">
+  <div class="title">
+    BUTTON GROUP
+    <div class="subtitle">
+      Group of buttons with different styles; can be used to group several buttons together
+    </div>
+  </div>
+  <div class="columns" style="margin-top: 0.5rem">
+    <div class="container">
+      <ui-button-group [items]="buttonGroupItems()" 
+        [multiselect]="false"
+        (selectedItemsChange)="selectedItemsUpdate($event)"
+        ></ui-button-group>
+
+    </div>
+  </div>
+  <br/>
+  Selected Items: <strong>{{ selectedItemsDebug().length > 0 ? selectedItemsDebug() : 'None' }}</strong>
+</div>
 
 
 MODAL
@@ -346,7 +368,9 @@ MODAL
           label="State"
           value="Completed"
           [style]="3"
-        ></ui-entry-key-value>
+        >
+          <ui-button [style]="6" slot="right" [icon]="faTrash()"></ui-button>
+        </ui-entry-key-value>
         <ui-entry-key-value
           label="Timestamp"
           value="10.04.2024 07:22 PM"
