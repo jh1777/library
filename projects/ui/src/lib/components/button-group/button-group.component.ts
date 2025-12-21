@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, model } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
-import { signal } from '@angular/core';
 
 @Component({
   selector: 'ui-button-group',
