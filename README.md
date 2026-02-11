@@ -17,4 +17,4 @@ Demo of the grid layout component which is just a tryout.
 
 ## Storybook
 
-Is not setuped yet - maybe this will be introduced later.
+Storybook is configured for the UI library. Run `npm run storybook` to start it.
