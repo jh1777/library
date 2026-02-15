@@ -1,0 +1,32 @@
+@if(isHidden() == false) {
+    <div class="ui-select-container">
+        @if(label()) {
+            <label class="ui-select-label">{{ label() }}</label>
+        }
+        <select
+            class="ui-select"
+            [attr.title]="tooltip()"
+            [disabled]="isDisabled()"
+            [value]="value()"
+            (change)="handleChange($event)"
+            [class.ui-select-attention]="style() == 1"
+            [class.ui-select-error]="style() == 2"
+            [class.ui-select-success]="style() == 3"
+        >
+            @if(placeholderText()) {
+                <option value="" disabled [selected]="value() === undefined">
+                    {{ placeholderText() }}
+                </option>
+            }
+            @for(option of options(); track option.value) {
+                <option 
+                    [value]="option.value" 
+                    [disabled]="option.disabled"
+                    [selected]="option.value === value()"
+                >
+                    {{ option.label }}
+                </option>
+            }
+        </select>
+    </div>
+}

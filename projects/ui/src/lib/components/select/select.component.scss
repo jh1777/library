@@ -1,0 +1,74 @@
+@use '../../styles/ui.styles.scss' as *;
+
+:host {
+    display: contents;
+
+    .ui-select-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        width: 100%;
+    }
+
+    .ui-select-label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: $ui-standard-text-color;
+        margin-bottom: 0.125rem;
+    }
+
+    .ui-select {
+        padding: 0.5rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: $ui-standard-text-color;
+        background-color: $ui-inverted-text-color;
+        border: 1px solid $ui-standard-color;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+        &:hover:not(:disabled) {
+            border-color: $ui-dark-standard-color;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $ui-petrol-color;
+            box-shadow: 0 0 0 0.2rem rgba($ui-petrol-color, 0.25);
+        }
+
+        &:disabled {
+            background-color: $ui-light-standard-color;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        &-attention {
+            border-color: $ui-attention-color;
+
+            &:focus {
+                border-color: $ui-attention-color;
+                box-shadow: 0 0 0 0.2rem rgba($ui-attention-color, 0.25);
+            }
+        }
+
+        &-error {
+            border-color: $ui-error-color;
+
+            &:focus {
+                border-color: $ui-error-color;
+                box-shadow: 0 0 0 0.2rem rgba($ui-error-color, 0.25);
+            }
+        }
+
+        &-success {
+            border-color: $ui-success-color;
+
+            &:focus {
+                border-color: $ui-success-color;
+                box-shadow: 0 0 0 0.2rem rgba($ui-success-color, 0.25);
+            }
+        }
+    }
+}
