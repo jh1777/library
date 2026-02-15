@@ -81,6 +81,9 @@ For more details, see the [Quick Start Guide](./QUICK_START.md).
 
 # NPM Lib Change History
 
+- **0.2.13**
+  - added `ui-switch-button` component
+
 - **0.2.12** 
   - Enhanced layout components `content` and `window` to better support menu headers
   - added `ui-button-group` component
@@ -952,6 +955,8 @@ Maximum number of value tiles allowed in the toolbar.
 - [Button](#button)
 - [Switch](#switch)
 - [Value Tile](#value-tile)
+- [Button Group](#button-group)
+- [Switch Button](#switch-button)
 
 #### Useable inside
 - Modal
