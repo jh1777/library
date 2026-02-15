@@ -5,14 +5,12 @@
         [class.disabled]="isDisabled() == true"
     >
         @for (option of options(); track option.value; let i = $index) {
-            @if (i < 2) {
+            @if (i < 10) {
                 <div 
                     class="ui-switch-button-option"
                     [class.selected]="selectedValue() === option.value"
                     [class.disabled]="isDisabled() == true"
                     [class.no-click]="isDisabled() == true"
-                    [class.first]="i === 0"
-                    [class.second]="i === 1"
                     (click)="handleOptionClick(option, $event)"
                 >
                     @if(option.icon) {

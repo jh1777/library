@@ -14,7 +14,7 @@ import { SwitchButtonOption } from './switch-button.models';
 export class SwitchButtonComponent extends UIBaseComponent {
   
   /**
-   * Array of exactly two options for the switch button (required)  
+   * Array of options for the switch button (required, max 10)  
    * Each option should have a label, optional icon, and a value
    */
   options = input.required<SwitchButtonOption[]>();
