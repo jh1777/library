@@ -8,6 +8,8 @@ Welcome to the UI Library Developer Guide! This document provides an overview of
 - **[Component Structure](./COMPONENT_STRUCTURE.md)** - Detailed guide on component architecture
 - **[Contributing](./CONTRIBUTING.md)** - How to contribute to the project
 - **[Component Templates](./.templates/)** - Ready-to-use template files
+- **[Project Structure](./PROJECT_STRUCTURE.md)** - Complete project directory reference
+- **[Build and Test](./BUILD_AND_TEST.md)** - Building, testing, and troubleshooting guide
 
 ## Getting Started
 
