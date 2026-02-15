@@ -1,7 +1,7 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { SwitchButtonComponent } from './switch-button.component';
 import { signal } from '@angular/core';
-import { fn } from '@storybook/test';
+import { fn } from 'storybook/test';
 import { faList, faThLarge, faCheck, faTimes, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 const meta: Meta<SwitchButtonComponent> = {
