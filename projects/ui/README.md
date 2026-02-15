@@ -1,10 +1,13 @@
 
 WORK IN PROGRESS
 
+> **📚 [View Complete Documentation Index](./DOCUMENTATION_INDEX.md)** - Central navigation for all developer documentation
+
 # Table of Contents
 
 - [Disclaimer](#disclaimer)
 - [Abstract](#abstract)
+- [Developer Resources](#developer-resources)
 - [NPM Lib Change History](#npm-lib-change-history)
 - [Key Features](#key-features)
 - [Common Input Properties](#common-input-properties)
@@ -41,6 +44,39 @@ This is a private fun project which has no productive focus. It is not actively 
 Welcome to the documentation of this project, a comprehensive and modular library designed to streamline the development of user interfaces in Angular applications. This documentation serves as a guide to help you leverage the power and flexibility of our UI components effectively in your projects.
 
 It offers a rich collection of reUseable components that are carefully crafted to enhance the user experience while promoting consistency and scalability across applications. Whether you are building a simple web application or a complex enterprise-grade solution, our library provides the building blocks you need to create modern and visually appealing interfaces with ease.
+
+# Developer Resources
+
+For developers contributing to or using this library:
+
+## Quick Start
+
+- **[Developer Guide](./DEVELOPER_GUIDE.md)** - Complete developer overview with quick links
+- **[Quick Start Guide](./QUICK_START.md)** - Get started creating components in minutes
+- **[Component Creation Script](../../create-component.sh)** - Automated component scaffolding
+
+## Detailed Documentation
+
+- **[Component Structure Guide](./COMPONENT_STRUCTURE.md)** - Comprehensive guide on component architecture, naming conventions, and best practices
+- **[Contributing Guide](./CONTRIBUTING.md)** - How to contribute to the project
+- **[Component Templates](./.templates/)** - Ready-to-use template files for quick component creation
+
+## Creating a New Component
+
+The fastest way to create a new component:
+
+```bash
+# From project root
+./create-component.sh my-component
+```
+
+This automatically:
+- Creates all necessary files with proper structure
+- Renames files to match your component name
+- Updates file contents with correct naming
+- Adds export to public-api.ts
+
+For more details, see the [Quick Start Guide](./QUICK_START.md).
 
 # NPM Lib Change History
 
