@@ -1,0 +1,24 @@
+@if(isHidden() == false) {
+    <div 
+        class="ui-switch-button no-select"
+        [attr.title]="tooltip()"
+        [class.disabled]="isDisabled() == true"
+    >
+        @for (option of options(); track option.value; let i = $index) {
+            @if (i < 10) {
+                <div 
+                    class="ui-switch-button-option"
+                    [class.selected]="selectedValue() === option.value"
+                    [class.disabled]="isDisabled() == true"
+                    [class.no-click]="isDisabled() == true"
+                    (click)="handleOptionClick(option, $event)"
+                >
+                    @if(option.icon) {
+                        <fa-icon [icon]="option.icon" class="option-icon"></fa-icon>
+                    }
+                    <span class="option-label">{{ option.label }}</span>
+                </div>
+            }
+        }
+    </div>
+}

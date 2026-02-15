@@ -1,7 +1,7 @@
 
 
 import { AfterContentInit, Component, OnInit, ViewChild, signal } from "@angular/core";
-import { BadgeComponent, ButtonComponent, ModalComponent, ConfirmationModalComponent, CardComponent, EntryTileComponent, TabComponent, TabsComponent, CardSectionBasicComponent, EntryKeyValueComponent, EntryTileItemComponent, SwitchComponent, MenuBarComponent, SignpostComponent, EntryContainerComponent, EntryMetricComponent, MenuItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ToolbarComponent, ValueTileComponent, GridComponent, MetricTileComponent, ButtonGroupComponent } from "../../../../projects/ui/src/public-api";
+import { BadgeComponent, ButtonComponent, ModalComponent, ConfirmationModalComponent, CardComponent, EntryTileComponent, TabComponent, TabsComponent, CardSectionBasicComponent, EntryKeyValueComponent, EntryTileItemComponent, SwitchComponent, MenuBarComponent, SignpostComponent, EntryContainerComponent, EntryMetricComponent, MenuItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ToolbarComponent, ValueTileComponent, GridComponent, MetricTileComponent, ButtonGroupComponent, SwitchButtonComponent } from "../../../../projects/ui/src/public-api";
 
  import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faPlay, faStop, faCircleCheck, faCircleExclamation, faInfoCircle, faTriangleExclamation, faTrash, faExternalLink, faCopy, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +12,7 @@ import { faPlay, faStop, faCircleCheck, faCircleExclamation, faInfoCircle, faTri
     imports: [ConfirmationModalComponent, SignpostComponent, BadgeComponent, SwitchComponent, 
       ModalComponent, 
       AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, CardSectionBasicComponent, 
-      MenuItemComponent, MenuBarComponent, TabComponent, TabsComponent, GridComponent, ValueTileComponent, 
+      MenuItemComponent, MenuBarComponent, TabComponent, TabsComponent, GridComponent, ValueTileComponent, SwitchButtonComponent,
       MetricTileComponent, ToolbarComponent, ButtonComponent, CardComponent, EntryTileComponent, EntryKeyValueComponent, 
       EntryTileItemComponent, EntryContainerComponent, EntryMetricComponent, ButtonGroupComponent],
     templateUrl: './ui-lib-page.component.html',
