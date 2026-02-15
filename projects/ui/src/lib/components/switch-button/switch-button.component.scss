@@ -1,0 +1,75 @@
+@use '../../styles/ui.styles.scss' as *;
+
+:host {
+    display: inline-flex;
+    width: max-content;
+    
+    .ui-switch-button {
+        display: flex;
+        border-radius: $ui-border-radius;
+        border: 1px solid $ui-petrol-color;
+        background-color: $ui-inverted-text-color;
+        overflow: hidden;
+        
+        &.disabled {
+            border-color: $ui-standard-color;
+            opacity: 0.6;
+            cursor: default;
+        }
+
+        .ui-switch-button-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            transition: all 150ms ease-in-out;
+            color: $ui-petrol-color;
+            background-color: $ui-inverted-text-color;
+            min-width: 80px;
+            
+            &.first {
+                border-right: 1px solid $ui-petrol-color;
+            }
+
+            &.disabled {
+                cursor: default;
+                color: $ui-standard-color;
+                
+                &.first {
+                    border-right-color: $ui-standard-color;
+                }
+            }
+
+            &.selected {
+                background-color: $ui-petrol-color;
+                color: $ui-inverted-text-color;
+                font-weight: 500;
+
+                &.disabled {
+                    background-color: $ui-standard-color;
+                }
+            }
+
+            &:not(.disabled):not(.selected):hover {
+                background-color: $ui-light-petrol-color;
+                color: $ui-inverted-text-color;
+            }
+
+            &:not(.disabled):not(.selected):active {
+                background-color: $ui-alternative-petrol-color;
+            }
+
+            .option-icon {
+                font-size: 14px;
+            }
+
+            .option-label {
+                font-size: 14px;
+                line-height: 1;
+                white-space: nowrap;
+            }
+        }
+    }
+}
