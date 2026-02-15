@@ -15,6 +15,7 @@ WORK IN PROGRESS
   - [Badge](#badge)
   - [Button](#button)
   - [Switch](#switch)
+  - [Switch Button](#switch-button)
   - [Card](#card)
     - [Card Section Basic](#card--card-section-basic)
   - [Entry Container](#entry-container)
@@ -285,6 +286,95 @@ NONE
 ### Screenshot
 ![alt text](src/lib/assets/docs/switch-off.jpg)
 ![alt text](src/lib/assets/docs/switch-on.jpg)
+
+--- 
+
+## Switch Button
+> Useable standalone: **Yes**  
+> Supports loading indicator: **No**  
+> Supports error message: **No**  
+> Supports tooltip: **Yes**  
+> Selector: `ui-switch-button`
+
+### Description
+A multi-option toggle button component that allows users to switch between multiple choices (up to 10 options). Each option can include a label and an optional icon. The component provides a modern, visually appealing alternative to traditional radio buttons or select dropdowns.
+
+### Inputs
+
+#### `options`
+> Type: *SwitchButtonOption[]*  
+> Required: **Yes**  
+Array of options for the switch button (maximum 10 options).  
+Each option must have:
+- `label` (string): Display text for the option
+- `value` (any): Value associated with this option
+- `icon` (IconDefinition, optional): Font Awesome icon to display
+
+#### `selectedValue`
+> Type: *any*  
+> Optional: **Yes**  
+> Two-way binding supported  
+The currently selected value. When not set, defaults to the first option's value.
+
+#### `isDisabled`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+> Two-way binding supported  
+Disables the switch button if set to `true`.
+
+### Outputs
+
+#### `onSelectionChange`
+> Type: *EventEmitter&lt;any&gt;*  
+Emits the newly selected value when the selection changes.
+
+### Computed Properties
+
+#### `isFirstSelected`
+> Type: *Signal&lt;boolean&gt;*  
+Computed signal that returns `true` if the first option is selected.
+
+#### `isSecondSelected`
+> Type: *Signal&lt;boolean&gt;*  
+Computed signal that returns `true` if the second option is selected.
+
+### Accepts as Sub-Component
+NONE
+
+#### Useable inside
+- Card
+- Toolbar
+- Entry Tile
+- Entry Tile Item
+
+### Usage
+```typescript
+// In component class
+import { faList, faGrip } from '@fortawesome/free-solid-svg-icons';
+
+options = [
+  { label: 'List', icon: faList, value: 'list' },
+  { label: 'Grid', icon: faGrip, value: 'grid' }
+];
+
+viewMode = 'list';
+
+onViewChange(value: any) {
+  console.log('View changed to:', value);
+}
+```
+
+```html
+<!-- In template -->
+<ui-switch-button 
+  [options]="options" 
+  [(selectedValue)]="viewMode"
+  (onSelectionChange)="onViewChange($event)">
+</ui-switch-button>
+```
+
+### Screenshot
+![Screenshot](src/lib/assets/docs/switch-button.png)
 
 --- 
 
