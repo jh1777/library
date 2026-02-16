@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, computed, inject, input, output } f
 import { UIBaseComponent } from '../../../shared';
 import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { SideMenuItem } from '../side-menu.models';
 import { SideMenuComponent } from '../side-menu.component';
 
 @Component({
@@ -33,7 +32,7 @@ export class SideMenuEntryComponent extends UIBaseComponent {
   /** Manual override for standalone usage (without parent ui-side-menu) */
   isSelectedInput = input<boolean>(false, { alias: 'isSelected' });
 
-  onSelectionChange = output<SideMenuItem>();
+  onSelectionChange = output<string | number | boolean>();
 
   /** 
    * Computed selected state: if inside a parent ui-side-menu, derives from 
@@ -45,16 +44,6 @@ export class SideMenuEntryComponent extends UIBaseComponent {
     }
     return this.isSelectedInput();
   });
-
-  /** Builds the SideMenuItem from the individual inputs */
-  private toItem(): SideMenuItem {
-    return {
-      label: this.label(),
-      value: this.value(),
-      icon: this.icon(),
-      isDisabled: this.isDisabled()
-    };
-  }
 
   /**
    * Handle click on an option
@@ -68,13 +57,11 @@ export class SideMenuEntryComponent extends UIBaseComponent {
       return;
     }
 
-    const item = this.toItem();
-
     // Coordinate via parent if available
     if (this.parentMenu) {
-      this.parentMenu.selectItem(item);
+      this.parentMenu.selectItem(this.value());
     }
 
-    this.onSelectionChange.emit(item);
+    this.onSelectionChange.emit(this.value());
   }
 }

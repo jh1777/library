@@ -538,24 +538,8 @@ MODAL
     </div>
   </div>
   <div class="columns" style="margin-top: 0.5rem">
-    <div class="container">
-      <!--
-      <ui-side-menu 
-      [showSectionDivider]="true"
-      [sections]="[
-        { title: 'Section 1', items: [
-            { label: 'List', value: 'list', icon: faTrash() },
-            { label: 'Grid', value: 'grid', icon: faCheck() }
-          ]
-        },
-        { title: 'Section 2', items: [
-            { label: 'Table', value: 'table', icon: faExternalLink() },
-            { label: 'Timeline', value: 'timeline', icon: faError(), isDisabled: true }
-          ]
-        }
-      ]"></ui-side-menu>
-      -->
-      <ui-side-menu [(selectedValue)]="sideMenuSelectedValue" (onSelectionChange)="updateSideMenuSelection($event)">
+    <div class="container" style="width: 25%;">
+      <ui-side-menu [(selectedValue)]="sideMenuSelectedValue" [showBorder]="false" (onSelectionChange)="log($event)">
           <ui-side-menu-section title="Navigation">
               <ui-side-menu-entry label="List" value="list" [icon]="faTrash()">
                   <ui-switch label="Advanced"></ui-switch>
@@ -567,7 +551,12 @@ MODAL
                 <ui-button label="Delete" [style]=6 [icon]="faTrash()"></ui-button>
                 <ui-badge value="3" [style]="2"></ui-badge>
               </ui-side-menu-entry>
-              <ui-side-menu-entry label="Timeline" value="timeline" [icon]="faError()" [isDisabled]="true"></ui-side-menu-entry>
+              <ui-side-menu-entry label="Disabled" value="disabled" [icon]="faError()" [isDisabled]="true"></ui-side-menu-entry>
+          </ui-side-menu-section>
+           <ui-side-menu-section>
+              <ui-side-menu-entry label="Test" value="test" [icon]="faExternalLink()">
+              </ui-side-menu-entry>
+              <ui-side-menu-entry label="Nice" value="nice" [icon]="faCopy()"></ui-side-menu-entry>
           </ui-side-menu-section>
       </ui-side-menu>
       <br/>

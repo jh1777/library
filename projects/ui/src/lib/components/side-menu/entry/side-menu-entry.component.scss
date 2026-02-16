@@ -14,6 +14,13 @@
         cursor: pointer;
         transition: background-color 0.2s;
 
+        &-icon {
+            display: flex;
+            color: $ui-dark-standard-color;
+            width: 15px;
+            height: 15px;
+        }
+
         .align-right {
             display: flex;
             align-items: center;

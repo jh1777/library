@@ -1,5 +1,7 @@
 @if(isHidden() == false) {
-    <div class="ui-side-menu">
+    <div class="ui-side-menu"
+        [class.border]="showBorder() == true"
+    >
         <!-- Supports both direct entries and sections -->
         <ng-content select="ui-side-menu-section"></ng-content>
         <ng-content select="ui-side-menu-entry"></ng-content>
