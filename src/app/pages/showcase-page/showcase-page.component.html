@@ -74,6 +74,13 @@
           <ui-badge label="v2.1" [style]="1"></ui-badge>
         </div>
       </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-badge value="14" [style]="'Success'"&gt;&lt;/ui-badge&gt;
+&lt;ui-badge label="NEW" [style]="3"&gt;&lt;/ui-badge&gt;
+&lt;ui-badge value="120" size="3"&gt;&lt;/ui-badge&gt;</code></pre>
+      </div>
     </section>
     }
 
@@ -132,6 +139,18 @@
           <span class="demo-value">Selected: <strong>{{ selectedGroupItems().length > 0 ? selectedGroupItems() : 'None' }}</strong></span>
         </div>
       </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-button label="Primary" [icon]="faCheck()" [style]="1"
+  (onClick)="doSomething()"&gt;
+&lt;/ui-button&gt;
+
+&lt;!-- With nested badge --&gt;
+&lt;ui-button label="Notifications"&gt;
+  &lt;ui-badge value="4" [style]="2"&gt;&lt;/ui-badge&gt;
+&lt;/ui-button&gt;</code></pre>
+      </div>
     </section>
     }
 
@@ -163,6 +182,22 @@
           <span class="demo-value">Selected: <strong>{{ switchButtonValue() }}</strong></span>
         </div>
       </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-switch label="Enable Feature" [(state)]="isEnabled"&gt;&lt;/ui-switch&gt;
+
+&lt;ui-switch-button label="View"
+  [options]="switchOptions"
+  [(selectedValue)]="viewMode"&gt;
+&lt;/ui-switch-button&gt;
+
+// In your component:
+switchOptions = [
+  {{ '{' }} label: 'List', value: 'list', icon: faList() {{ '}' }},
+  {{ '{' }} label: 'Grid', value: 'grid', icon: faGrip() {{ '}' }}
+];</code></pre>
+      </div>
     </section>
     }
 
@@ -183,6 +218,14 @@
           <ui-input label="Password" valuePlaceholder="••••••" type="password"></ui-input>
           <ui-input label="Disabled" valuePlaceholder="Can't edit this" [isDisabled]="true"></ui-input>
         </div>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-input label="Username"
+  valuePlaceholder="Enter your name..."
+  type="text"&gt;
+&lt;/ui-input&gt;</code></pre>
       </div>
     </section>
     }
@@ -232,6 +275,21 @@
 
           <ui-card header="Error Card" errorMessage="Failed to load component data."></ui-card>
         </div>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-card header="My Card" [style]="3"&gt;
+  &lt;ui-button [icon]="faLink()" [style]="0" slot="header-right"&gt;&lt;/ui-button&gt;
+  &lt;ui-card-section-basic
+    header="Section Title"
+    text="Content goes here."
+    styledMessage="Status: OK"
+    [showStyledBackground]="true"
+    [style]="3"&gt;
+    &lt;ui-button label="Action" slot="footer-left"&gt;&lt;/ui-button&gt;
+  &lt;/ui-card-section-basic&gt;
+&lt;/ui-card&gt;</code></pre>
       </div>
     </section>
     }
@@ -290,6 +348,20 @@
             </ui-entry-tile>
           </div>
         </div>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-entry-tile header="Service" description="Status overview"&gt;
+  &lt;ui-entry-key-value label="Status" value="Healthy" [style]="3"&gt;
+  &lt;/ui-entry-key-value&gt;
+  &lt;ui-entry-tile-item
+    primaryValue="API Gateway"
+    secondaryValue="Responding"
+    [style]="3"
+    [showStateIcon]="true"&gt;
+  &lt;/ui-entry-tile-item&gt;
+&lt;/ui-entry-tile&gt;</code></pre>
       </div>
     </section>
     }
@@ -368,6 +440,15 @@
           </div>
         </div>
       </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-entry-container&gt;
+  &lt;ui-entry-key-value label="CPU" value="34%" [style]="3"&gt;
+  &lt;/ui-entry-key-value&gt;
+  &lt;ui-entry-metric [percent]="34" [style]="3"&gt;&lt;/ui-entry-metric&gt;
+&lt;/ui-entry-container&gt;</code></pre>
+      </div>
     </section>
     }
 
@@ -396,6 +477,13 @@
           <ui-value-tile key="Data" value="Error" [isLoading]="true" errorMessage="Connection timeout"></ui-value-tile>
         </div>
       </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-value-tile key="Engine" value="OFF" [style]="2"&gt;
+  &lt;ui-button [icon]="faCopy()" label="Copy"&gt;&lt;/ui-button&gt;
+&lt;/ui-value-tile&gt;</code></pre>
+      </div>
     </section>
     }
 
@@ -417,6 +505,17 @@
           (onRowClick)="log($event)"
           (onSortClick)="log($event)">
         </ui-table>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-table
+  header="Services"
+  description="Click a row to select it."
+  [tableData]="tableData"
+  (onRowClick)="onRow($event)"
+  (onSortClick)="onSort($event)"&gt;
+&lt;/ui-table&gt;</code></pre>
       </div>
     </section>
     }
@@ -446,6 +545,15 @@
           <ui-button [icon]="faPlay()" slot="right" [style]="0"></ui-button>
           <ui-button [icon]="faStop()" slot="right" [style]="0"></ui-button>
         </ui-toolbar>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-toolbar text="Operations"&gt;
+  &lt;ui-button slot="left" label="Deploy" [style]="5"&gt;&lt;/ui-button&gt;
+  &lt;ui-value-tile slot="right" key="Build" value="#1247"&gt;
+  &lt;/ui-value-tile&gt;
+&lt;/ui-toolbar&gt;</code></pre>
       </div>
     </section>
     }
@@ -491,6 +599,18 @@
           </ui-tabs>
         </div>
       </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-tabs [(activeIndex)]="activeTab"&gt;
+  &lt;ui-tab label="Overview" badgeValue="3" badgeStyle="3"&gt;
+    &lt;p&gt;Tab content here.&lt;/p&gt;
+  &lt;/ui-tab&gt;
+  &lt;ui-tab label="Settings"&gt;
+    &lt;p&gt;More content.&lt;/p&gt;
+  &lt;/ui-tab&gt;
+&lt;/ui-tabs&gt;</code></pre>
+      </div>
     </section>
     }
 
@@ -535,6 +655,18 @@
           </ui-accordion-panel>
         </ui-accordion>
       </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-accordion header="Settings"&gt;
+  &lt;ui-accordion-panel&gt;
+    &lt;ui-accordion-panel-header label="General"&gt;
+      &lt;ui-badge [value]="3" [style]="3"&gt;&lt;/ui-badge&gt;
+    &lt;/ui-accordion-panel-header&gt;
+    &lt;p&gt;Panel content here.&lt;/p&gt;
+  &lt;/ui-accordion-panel&gt;
+&lt;/ui-accordion&gt;</code></pre>
+      </div>
     </section>
     }
 
@@ -565,6 +697,15 @@
             <ui-entry-tile-item primaryValue="Build #1247" secondaryValue="Production" [style]="3" [showStateIcon]="true"></ui-entry-tile-item>
           </ui-entry-tile>
         </ui-grid>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-grid [columns]="3"&gt;
+  &lt;ui-card grid-column="1" header="Col 1"&gt;...&lt;/ui-card&gt;
+  &lt;ui-card grid-column="2" header="Col 2"&gt;...&lt;/ui-card&gt;
+  &lt;ui-card grid-column="3" header="Col 3"&gt;...&lt;/ui-card&gt;
+&lt;/ui-grid&gt;</code></pre>
       </div>
     </section>
     }
@@ -605,6 +746,22 @@
         (onConfirmClick)="log('Deployed!')"
         (onCancelClick)="log('Cancelled')">
       </ui-confirmation-modal>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-modal header="Details" [(isOpen)]="showModal"
+  [width]="2" [height]="2"&gt;
+  &lt;p&gt;Modal content here.&lt;/p&gt;
+&lt;/ui-modal&gt;
+
+&lt;ui-confirmation-modal
+  [(isOpen)]="showConfirm"
+  header="Are you sure?"
+  message="This action cannot be undone."
+  (onConfirmClick)="onConfirm()"
+  (onCancelClick)="onCancel()"&gt;
+&lt;/ui-confirmation-modal&gt;</code></pre>
+      </div>
     </section>
     }
 
@@ -623,6 +780,17 @@
         <ui-signpost #demoSignpost [offsetY]="-50" [offsetX]="0"
           text="Build <strong>#1247</strong> deployed to <em>Production EU-West</em> at 12:04 PM.">
         </ui-signpost>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-button label="Info" (onClick)="sp.show($event)"&gt;
+&lt;/ui-button&gt;
+
+&lt;ui-signpost #sp
+  text="Contextual info here."
+  [offsetY]="-50"&gt;
+&lt;/ui-signpost&gt;</code></pre>
       </div>
     </section>
     }

@@ -19,6 +19,10 @@
             color: $ui-dark-standard-color;
             width: 15px;
             height: 15px;
+
+            &.selected {
+                color: $ui-standard-text-color;
+            }
         }
 
         .align-right {

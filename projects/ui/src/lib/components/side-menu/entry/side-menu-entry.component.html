@@ -6,7 +6,11 @@
 
         @if(icon()) {
             
-            <fa-icon class="menu-item-icon" [icon]="icon()!"></fa-icon>
+            <fa-icon class="menu-item-icon" 
+                [class.selected]="isSelected()"
+            
+            [icon]="icon()!"
+            ></fa-icon>
         }
         <span>{{ label() }}</span>
 
