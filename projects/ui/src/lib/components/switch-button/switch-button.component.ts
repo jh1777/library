@@ -24,7 +24,7 @@ export class SwitchButtonComponent extends UIBaseComponent {
    * Input / Output  
    * Default: First option's value
    */
-  selectedValue = model<any>();
+  selectedValue = model<string | number | boolean>();
 
   /**
    * If set to `true` this SwitchButton is disabled and can't be clicked (optional)  

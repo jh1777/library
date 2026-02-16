@@ -10,7 +10,7 @@ export interface SwitchButtonOption {
   /** Optional icon for the option (Font Awesome icon) */
   icon?: IconDefinition;
   /** Value associated with this option */
-  value: any;
+  value: string | number | boolean;
 }
 
 /**
@@ -20,7 +20,7 @@ export interface SwitchButtonInterface extends UIBaseComponentInterface {
   /** Array of two options for the switch button */
   options?: SwitchButtonOption[];
   /** Currently selected value */
-  selectedValue?: any;
+  selectedValue?: string | number | boolean;
   /** Whether the component is disabled */
   isDisabled?: boolean;
 }
