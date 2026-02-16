@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, model, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
 import { UIBaseComponent } from '../../../shared';
 import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { SideMenuItem } from '../side-menu.models';
 import { SideMenuComponent } from '../side-menu.component';
 
@@ -17,7 +18,17 @@ export class SideMenuEntryComponent extends UIBaseComponent {
   /** Optional reference to the parent SideMenuComponent (if used inside one) */
   private parentMenu = inject(SideMenuComponent, { optional: true });
 
-  item = input.required<SideMenuItem>();
+  /** Label text for the menu item */
+  label = input.required<string>();
+
+  /** Value associated with this menu item */
+  value = input.required<string | number | boolean>();
+
+  /** Optional icon for the menu item (Font Awesome icon) */
+  icon = input<IconDefinition>();
+
+  /** If set to `true` this menu item is disabled and can't be clicked (optional) */
+  isDisabled = input<boolean>(false);
 
   /** Manual override for standalone usage (without parent ui-side-menu) */
   isSelectedInput = input<boolean>(false, { alias: 'isSelected' });
@@ -30,10 +41,20 @@ export class SideMenuEntryComponent extends UIBaseComponent {
    */
   isSelected = computed(() => {
     if (this.parentMenu) {
-      return this.parentMenu.selectedValue() === this.item().value;
+      return this.parentMenu.selectedValue() === this.value();
     }
     return this.isSelectedInput();
   });
+
+  /** Builds the SideMenuItem from the individual inputs */
+  private toItem(): SideMenuItem {
+    return {
+      label: this.label(),
+      value: this.value(),
+      icon: this.icon(),
+      isDisabled: this.isDisabled()
+    };
+  }
 
   /**
    * Handle click on an option
@@ -43,15 +64,17 @@ export class SideMenuEntryComponent extends UIBaseComponent {
     $event.preventDefault();
     $event.stopPropagation();
     
-    if (this.item().isDisabled) {
+    if (this.isDisabled()) {
       return;
     }
 
+    const item = this.toItem();
+
     // Coordinate via parent if available
     if (this.parentMenu) {
-      this.parentMenu.selectItem(this.item());
+      this.parentMenu.selectItem(item);
     }
 
-    this.onSelectionChange.emit(this.item());
+    this.onSelectionChange.emit(item);
   }
 }

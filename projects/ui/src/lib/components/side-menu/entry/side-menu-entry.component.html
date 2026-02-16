@@ -1,16 +1,18 @@
 @if(isHidden() == false) {
     <div class="menu-item" 
         [class.selected]="isSelected()"
-        [class.disabled]="item().isDisabled"
+        [class.disabled]="isDisabled()"
         (click)="handleOptionClick($event)">
 
-        @if(item().icon) {
-            <fa-icon [icon]="item().icon"></fa-icon>
+        @if(icon()) {
+            <fa-icon [icon]="icon()!"></fa-icon>
         }
-        <span>{{ item().label }}</span>
+        <span>{{ label() }}</span>
 
         <div class="align-right">
             <ng-content select="ui-button"></ng-content>
+            <ng-content select="ui-switch"></ng-content>
+            <ng-content select="ui-badge"></ng-content>
         </div>
     </div>
 }
