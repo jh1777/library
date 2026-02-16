@@ -32,6 +32,9 @@ WORK IN PROGRESS
   - [Grid](#grid)
   - [Menu Bar](#menu-bar)
   - [Menu Item (config only)](#menu-item-config-only)
+  - [Side Menu](#side-menu)
+    - [Side Menu Section](#side-menu--side-menu-section)
+    - [Side Menu Entry](#side-menu--side-menu-entry)
   - [Window](#window)
   - [Content](#content)
 - [Component Usage](#component-usage)
@@ -1085,6 +1088,149 @@ Number of columns to display (maximum: 6).
 > Selector: `uic-menu-item`
 #### Useable inside
 - Menu Bar
+
+---
+
+## Side Menu
+> Useable standalone: **Yes**  
+> Supports loading indicator: **No**  
+> Supports tooltip: **No**  
+> Selector: `ui-side-menu`
+
+### Description
+A vertical navigation menu component that supports both direct menu entries and grouped sections. Uses parent injection for selection coordination — entries communicate with their parent side menu to manage selection state automatically.
+
+### Inputs
+
+#### `showSectionDivider`
+> Type: *boolean*  
+> Optional: **Yes** (default: `true`)  
+Controls whether divider lines are shown between sections.
+
+#### `showBorder`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+If `true`, displays a border around the side menu.
+
+#### `selectedValue`
+> Type: *string | number | boolean*  
+> Optional: **Yes**  
+> Two-way binding supported  
+The currently selected menu entry value.
+
+### Accepts as Sub-Component
+- [Side Menu Section](#side-menu--side-menu-section)
+- [Side Menu Entry](#side-menu--side-menu-entry)
+
+#### Useable inside
+Any container
+
+### Usage
+
+```html
+<ui-side-menu [(selectedValue)]="selectedMenuItem">
+  <ui-side-menu-section title="Navigation">
+    <ui-side-menu-entry label="Dashboard" value="dashboard" [icon]="faHome()">
+    </ui-side-menu-entry>
+    <ui-side-menu-entry label="Settings" value="settings" [icon]="faCog()">
+    </ui-side-menu-entry>
+  </ui-side-menu-section>
+  
+  <ui-side-menu-section title="Admin">
+    <ui-side-menu-entry label="Users" value="users" [icon]="faUsers()">
+      <ui-badge value="5"></ui-badge>
+    </ui-side-menu-entry>
+  </ui-side-menu-section>
+</ui-side-menu>
+```
+
+### Screenshot
+![Side Menu](src/lib/assets/docs/side-menu.jpg)
+
+---
+
+## Side Menu :: Side Menu Section
+> Useable standalone: **No** (requires `ui-side-menu` parent)  
+> Supports loading indicator: **No**  
+> Supports tooltip: **No**  
+> Selector: `ui-side-menu-section`
+
+### Description
+Groups related menu entries together under an optional section title. Provides visual organization within the side menu.
+
+### Inputs
+
+#### `title`
+> Type: *string*  
+> Optional: **Yes**  
+Optional section title displayed above the entries.
+
+### Accepts as Sub-Component
+- [Side Menu Entry](#side-menu--side-menu-entry)
+
+#### Useable inside
+- [Side Menu](#side-menu)
+
+### Usage
+See [Side Menu](#side-menu) usage example.
+
+---
+
+## Side Menu :: Side Menu Entry
+> Useable standalone: **Yes** (can be used with or without parent `ui-side-menu`)  
+> Supports loading indicator: **No**  
+> Supports tooltip: **No**  
+> Selector: `ui-side-menu-entry`
+
+### Description
+Individual menu item that can be used directly in a side menu or within a section. Automatically coordinates with parent side menu for selection state, or can be used standalone with manual `isSelected` control.
+
+### Inputs
+
+#### `label`
+> Type: *string*  
+> Required: **Yes**  
+Label text for the menu item.
+
+#### `value`
+> Type: *string | number | boolean*  
+> Required: **Yes**  
+Value associated with this menu item.
+
+#### `icon`
+> Type: *IconDefinition*  
+> Optional: **Yes**  
+Font Awesome icon displayed beside the label.
+
+#### `isDisabled`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+If `true`, the menu item is disabled and cannot be clicked.
+
+#### `isSelected`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+Manual override for standalone usage (without parent `ui-side-menu`). When used inside a parent side menu, selection is automatically managed.
+
+### Outputs
+
+#### `onSelectionChange`
+> Type: *OutputEmitterRef&lt;string | number | boolean&gt;*  
+Emits the entry's value when it is clicked and selected.
+
+### Accepts as Sub-Component
+- [Badge](#badge)
+- [Button](#button)
+- [Switch](#switch)
+
+#### Useable inside
+- [Side Menu](#side-menu)
+- [Side Menu Section](#side-menu--side-menu-section)
+
+### Usage
+See [Side Menu](#side-menu) usage example.
+
+---
 
 ## Window
 > Useable standalone: **Yes**  
