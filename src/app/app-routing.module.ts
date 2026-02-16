@@ -5,7 +5,7 @@ import { UiGridPageComponent } from './pages/ui-grid-page/ui-grid-page.component
 import { ShowcasePageComponent } from './pages/showcase-page/showcase-page.component';
 
 const routes: Routes = [
-  { path: '', component: UiLibPageComponent },
+  { path: '', redirectTo: '/showcase', pathMatch: 'full' },
   { path: 'grid', component: UiGridPageComponent },
   { path: 'showcase', component: ShowcasePageComponent }
 ];
