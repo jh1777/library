@@ -27,4 +27,4 @@ export * from './lib/components/table';
 
 export * from './lib/components/button-group';
 export * from './lib/components/switch-button';
-
+export * from './lib/components/side-menu';

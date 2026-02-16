@@ -1,0 +1,69 @@
+@use '../../styles/ui.styles' as *;
+:host {
+    display: flex;
+    flex-direction: column;
+
+
+    .selector {
+                width: 6px;
+                height: 15px;
+                transform: translateX(-10px);
+                border-radius: 5px;
+                background-color: $ui-petrol-color;
+            }
+
+            
+    .ui-side-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+
+        .menu-section {
+            display: flex;
+            flex-direction: column;
+            padding: 0.4rem 0;
+
+            .section-title {
+                font-size: 0.75rem;
+                font-weight: 600;
+                color: $ui-dark-standard-color;
+                text-transform: uppercase;
+                padding: 0.5rem 1rem;
+            }
+
+            .divider {
+                height: 1px;
+                background-color: $ui-alternative-standard-color;
+                margin-top: 0.6rem;
+            }
+        }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: $ui-standard-text-color;
+            padding: 0.5rem 1rem;
+            border-radius: $ui-border-radius;
+            cursor: pointer;
+            transition: background-color 0.2s;
+
+            
+            &:not(.disabled):not(.selected):hover {
+                background-color: $ui-alternative-standard-color;
+            }
+
+            &.disabled {
+                cursor: default;
+                opacity: 0.4;
+            }
+
+            &.active {
+                background-color: $ui-alternative-standard-color;
+            }
+
+            &.selected {
+                background-color: $ui-alternative-standard-color;
+            }
+        }
+    }
+}

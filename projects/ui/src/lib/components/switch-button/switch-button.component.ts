@@ -38,23 +38,6 @@ export class SwitchButtonComponent extends UIBaseComponent {
    */
   onSelectionChange = output<any>();
 
-  /**
-   * Computed property to check if first option is selected
-   */
-  isFirstSelected = computed(() => {
-    const opts = this.options();
-    const selected = this.selectedValue();
-    return opts.length > 0 && selected === opts[0].value;
-  });
-
-  /**
-   * Computed property to check if second option is selected
-   */
-  isSecondSelected = computed(() => {
-    const opts = this.options();
-    const selected = this.selectedValue();
-    return opts.length > 1 && selected === opts[1].value;
-  });
 
   /**
    * Handle click on an option

@@ -1,0 +1,28 @@
+@if(isHidden() == false) {
+    <div class="ui-side-menu">
+        @for(section of sections(); track section.title; let j = $index) {
+            <div class="menu-section">
+                @if(section.title) {
+                    <div class="section-title">{{ section.title }}</div>
+                }
+
+                @for(item of section.items; track item.value; let i = $index) {
+                    <div class="menu-item" 
+                    [class.selected]="selectedValue() === item.value"
+                    [class.disabled]="item.isDisabled"
+                    (click)="handleOptionClick(item, $event)">
+
+                        @if(item.icon) {
+                            <fa-icon [icon]="item.icon"></fa-icon>
+                        }
+                        <span>{{ item.label }}</span>
+                    </div>
+                }
+                @if (j < sections().length - 1 && showSectionDivider()) {
+                    <span class="divider"></span>
+                }
+            </div>
+    }
+        
+    </div>
+}

@@ -530,4 +530,30 @@ MODAL
   </div>
 </div>
 
+<div class="item">
+  <div class="title">
+    SIDE MENU (NEW!)
+    <div class="subtitle">
+      Simple side menu to show additional content; can be used in combination with ENTRY TILES for example
+    </div>
+  </div>
+  <div class="columns" style="margin-top: 0.5rem">
+    <div class="container">
+      <ui-side-menu 
+      [showSectionDivider]="true"
+      [sections]="[
+        { title: 'Section 1', items: [
+            { label: 'List', value: 'list', icon: faTrash() },
+            { label: 'Grid', value: 'grid', icon: faCheck() }
+          ]
+        },
+        { title: 'Section 2', items: [
+            { label: 'Table', value: 'table', icon: faExternalLink() },
+            { label: 'Timeline', value: 'timeline', icon: faError(), isDisabled: true }
+          ]
+        }
+      ]"></ui-side-menu>
+    </div>
+  </div>
+</div>
 
