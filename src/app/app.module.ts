@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 
 import { UiLibPageComponent } from './pages/ui-lib-page/ui-lib-page.component';
+import { ShowcasePageComponent } from './pages/showcase-page/showcase-page.component';
 import { WindowComponent, MenuBarComponent, MenuItemComponent, ContentComponent } from '../../projects/ui/src/public-api';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { WindowComponent, MenuBarComponent, MenuItemComponent, ContentComponent 
     BrowserAnimationsModule,
     AppRoutingModule,
     UiLibPageComponent,
+    ShowcasePageComponent,
     MenuBarComponent,
     MenuItemComponent,
     WindowComponent,
