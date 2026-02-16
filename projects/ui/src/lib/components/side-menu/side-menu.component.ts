@@ -16,7 +16,7 @@ import { SideMenuItem, SideMenuSection } from './side-menu.models';
 })
 export class SideMenuComponent extends UIBaseComponent {
 
-  sections = input.required<SideMenuSection[]>();
+  //sections = input.required<SideMenuSection[]>();
 
   showSectionDivider = input<boolean>(true);
   
@@ -24,26 +24,15 @@ export class SideMenuComponent extends UIBaseComponent {
   
   selectedValue = model<string | number | boolean>();
   
-  onSelectionChange = output<string | number | boolean>();
-
+  onSelectionChange = output<SideMenuItem>();
 
   /**
-   * Handle click on an option
-   * @param option The clicked option
-   * @param $event MouseEvent
+   * Called by child SideMenuEntryComponent to update the selection.
+   * Updates the selected value and emits the selection change event.
    */
-  public handleOptionClick(item: SideMenuItem, $event: MouseEvent) {
-    $event.preventDefault();
-    $event.stopPropagation();
-    
-    if (item.isDisabled) {
-      return;
-    }
-
-    // Only change if it's a different value
-    if (this.selectedValue() !== item.value) {
-      this.selectedValue.set(item.value);
-      this.onSelectionChange.emit(item.value);
-    }
+  selectItem(item: SideMenuItem) {
+    this.selectedValue.set(item.value);
+    this.onSelectionChange.emit(item);
   }
+
 }

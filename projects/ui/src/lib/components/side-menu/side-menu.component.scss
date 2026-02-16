@@ -12,7 +12,7 @@
                 background-color: $ui-petrol-color;
             }
 
-            
+
     .ui-side-menu {
         display: flex;
         flex-direction: column;
@@ -47,6 +47,9 @@
             cursor: pointer;
             transition: background-color 0.2s;
 
+            .align-right {
+                margin-left: auto;
+            }
             
             &:not(.disabled):not(.selected):hover {
                 background-color: $ui-alternative-standard-color;

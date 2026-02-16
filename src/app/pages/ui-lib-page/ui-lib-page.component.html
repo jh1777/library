@@ -539,6 +539,7 @@ MODAL
   </div>
   <div class="columns" style="margin-top: 0.5rem">
     <div class="container">
+      <!--
       <ui-side-menu 
       [showSectionDivider]="true"
       [sections]="[
@@ -553,6 +554,19 @@ MODAL
           ]
         }
       ]"></ui-side-menu>
+      -->
+      <ui-side-menu [(selectedValue)]="sideMenuSelectedValue" (onSelectionChange)="updateSideMenuSelection($event)">
+          <ui-side-menu-section title="Navigation">
+              <ui-side-menu-entry [item]="{ label: 'List', value: 'list', icon: faTrash() }"></ui-side-menu-entry>
+              <ui-side-menu-entry [item]="{ label: 'Grid', value: 'grid', icon: faCheck() }"></ui-side-menu-entry>
+          </ui-side-menu-section>
+          <ui-side-menu-section title="Advanced">
+              <ui-side-menu-entry [item]="{ label: 'Table', value: 'table', icon: faExternalLink() }"></ui-side-menu-entry>
+              <ui-side-menu-entry [item]="{ label: 'Timeline', value: 'timeline', icon: faError(), isDisabled: true }"></ui-side-menu-entry>
+          </ui-side-menu-section>
+      </ui-side-menu>
+      <br/>
+      Selected: <strong>{{ sideMenuSelectedValue() || 'None' }}</strong>
     </div>
   </div>
 </div>

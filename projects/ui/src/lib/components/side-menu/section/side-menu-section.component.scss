@@ -1,0 +1,24 @@
+
+@use '../../../styles/ui.styles' as *;
+:host {
+    display: flex;
+    flex-direction: column;
+
+    .menu-section {
+        display: flex;
+        flex-direction: column;
+        padding: 0.4rem 0;
+
+        .section-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: $ui-dark-standard-color;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+        }
+    }
+
+    &:not(:last-child) {
+        border-bottom: 1px solid $ui-alternative-standard-color;
+    }
+}
