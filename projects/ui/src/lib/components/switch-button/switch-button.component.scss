@@ -13,56 +13,10 @@
         gap: 0.5rem;
         padding: 0.4rem 0.4rem;
         
-        
         &.disabled {
             border-color: $ui-standard-color;
             opacity: 0.6;
             cursor: default;
-        }
-
-        .ui-switch-button-option {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.4rem 0.6rem;
-            cursor: pointer;
-            transition: all 150ms ease-in-out;
-            color: $ui-dark-standard-color;
-            border-radius: calc($ui-border-radius - 3px);
-            background-color: $ui-light-standard-color;
-            min-width: 80px;
-
-
-            &.disabled {
-                cursor: default;
-                color: $ui-standard-color;
-                
-            }
-
-            &.selected {
-                background-color: $ui-white;
-                color: $ui-black;
-                font-weight: 500;
-
-                &.disabled {
-                    background-color: $ui-standard-color;
-                }
-            }
-
-            &:not(.disabled):not(.selected):hover {
-                color: $ui-black;
-            }
-
-            .option-icon {
-                font-size: 14px;
-            }
-
-            .option-label {
-                font-size: 14px;
-                line-height: 1;
-                white-space: nowrap;
-            }
         }
     }
 }

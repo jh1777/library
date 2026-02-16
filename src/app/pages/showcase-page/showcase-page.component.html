@@ -175,10 +175,10 @@
       <div class="demo-group">
         <div class="demo-label">Switch Button (Multi-Option Toggle)</div>
         <div class="demo-row-col">
-          <ui-switch-button label="View Mode" [options]="[
-            { label: 'List', value: 'list', icon: faList() },
-            { label: 'Grid', value: 'grid', icon: faGrip() }
-          ]" [(selectedValue)]="switchButtonValue"></ui-switch-button>
+          <ui-switch-button label="View Mode" [(selectedValue)]="switchButtonValue">
+            <ui-switch-button-option label="List" value="list" [icon]="faList()"></ui-switch-button-option>
+            <ui-switch-button-option label="Grid" value="grid" [icon]="faGrip()"></ui-switch-button-option>
+          </ui-switch-button>
           <span class="demo-value">Selected: <strong>{{ switchButtonValue() }}</strong></span>
         </div>
       </div>
@@ -188,15 +188,12 @@
         <pre><code>&lt;ui-switch label="Enable Feature" [(state)]="isEnabled"&gt;&lt;/ui-switch&gt;
 
 &lt;ui-switch-button label="View"
-  [options]="switchOptions"
   [(selectedValue)]="viewMode"&gt;
-&lt;/ui-switch-button&gt;
-
-// In your component:
-switchOptions = [
-  {{ '{' }} label: 'List', value: 'list', icon: faList() {{ '}' }},
-  {{ '{' }} label: 'Grid', value: 'grid', icon: faGrip() {{ '}' }}
-];</code></pre>
+  &lt;ui-switch-button-option label="List" value="list" [icon]="faList()"&gt;
+  &lt;/ui-switch-button-option&gt;
+  &lt;ui-switch-button-option label="Grid" value="grid" [icon]="faGrip()"&gt;
+  &lt;/ui-switch-button-option&gt;
+&lt;/ui-switch-button&gt;</code></pre>
       </div>
     </section>
     }

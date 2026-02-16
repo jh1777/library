@@ -8,7 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
-  BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent,
+  BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, SwitchButtonOptionComponent,
   CardComponent, CardSectionBasicComponent,
   EntryContainerComponent, EntryKeyValueComponent, EntryMetricComponent,
   EntryTileComponent, EntryTileItemComponent,
@@ -29,7 +29,7 @@ import {
   selector: 'app-showcase-page',
   standalone: true,
   imports: [
-    BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent,
+    BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, SwitchButtonOptionComponent,
     CardComponent, CardSectionBasicComponent,
     EntryContainerComponent, EntryKeyValueComponent, EntryMetricComponent,
     EntryTileComponent, EntryTileItemComponent,

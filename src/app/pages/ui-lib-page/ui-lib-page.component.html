@@ -522,10 +522,10 @@ MODAL
   </div>
   <div class="columns" style="margin-top: 0.5rem">
     <div class="container">
-      <ui-switch-button label="Switch Button" [options]="[
-        { label: 'List', value: 'list', icon: faTrash() },
-        { label: 'Grid', value: 'grid', icon: faCheck() }
-      ]"></ui-switch-button>
+      <ui-switch-button label="Switch Button">
+        <ui-switch-button-option label="List" value="list" [icon]="faTrash()"></ui-switch-button-option>
+        <ui-switch-button-option label="Grid" value="grid" [icon]="faCheck()"></ui-switch-button-option>
+      </ui-switch-button>
     </div>
   </div>
 </div>
