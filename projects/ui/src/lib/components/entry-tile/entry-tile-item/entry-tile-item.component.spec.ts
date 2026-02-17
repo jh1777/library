@@ -75,6 +75,6 @@ describe('EntryTileItemComponent', () => {
         const event = new MouseEvent('click');
         spyOn(component.onItemClick, 'emit');
         component.handleClickEvent(event);
-        expect(component.onItemClick.emit).toHaveBeenCalledWith(component.id());
+        expect(component.onItemClick.emit).toHaveBeenCalledWith(component.id() ?? '');
     });
 });
