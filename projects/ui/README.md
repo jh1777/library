@@ -35,6 +35,7 @@ WORK IN PROGRESS
   - [Side Menu](#side-menu)
     - [Side Menu Section](#side-menu--side-menu-section)
     - [Side Menu Entry](#side-menu--side-menu-entry)
+    - [Side Menu Sub Entry](#side-menu--side-menu-sub-entry)
   - [Window](#window)
   - [Content](#content)
 - [Component Usage](#component-usage)
@@ -1212,6 +1213,12 @@ If `true`, the menu item is disabled and cannot be clicked.
 > Optional: **Yes** (default: `false`)  
 Manual override for standalone usage (without parent `ui-side-menu`). When used inside a parent side menu, selection is automatically managed.
 
+#### `isExpanded`
+> Type: *boolean*  
+> Optional: **Yes** (default: `true`)  
+> Two-way binding supported  
+Controls whether sub-entries are expanded or collapsed. Only relevant if the entry has sub-entries.
+
 ### Outputs
 
 #### `onSelectionChange`
@@ -1222,6 +1229,7 @@ Emits the entry's value when it is clicked and selected.
 - [Badge](#badge)
 - [Button](#button)
 - [Switch](#switch)
+- [Side Menu Sub Entry](#side-menu--side-menu-sub-entry)
 
 #### Useable inside
 - [Side Menu](#side-menu)
@@ -1229,6 +1237,65 @@ Emits the entry's value when it is clicked and selected.
 
 ### Usage
 See [Side Menu](#side-menu) usage example.
+
+---
+
+## Side Menu :: Side Menu Sub Entry
+> Useable standalone: **No** (requires `ui-side-menu-entry` parent)  
+> Supports loading indicator: **No**  
+> Supports tooltip: **No**  
+> Selector: `ui-side-menu-sub-entry`
+
+### Description
+Sub-menu item that nests under a `ui-side-menu-entry` to create hierarchical navigation. Automatically coordinates with the parent side menu for selection state management. Displayed indented under its parent entry.
+
+### Inputs
+
+#### `label`
+> Type: *string*  
+> Required: **Yes**  
+Label text for the sub-menu item.
+
+#### `value`
+> Type: *string | number | boolean*  
+> Required: **Yes**  
+Value associated with this sub-menu item.
+
+#### `isDisabled`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+If `true`, the sub-menu item is disabled and cannot be clicked.
+
+#### `isSelected`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+Manual override for standalone usage. When used inside a parent side menu, selection is automatically managed by comparing the parent's `selectedValue` with this item's `value`.
+
+### Outputs
+
+#### `onSelectionChange`
+> Type: *OutputEmitterRef&lt;string | number | boolean&gt;*  
+Emits the sub-entry's value when it is clicked and selected.
+
+### Accepts as Sub-Component
+NONE
+
+#### Useable inside
+- [Side Menu Entry](#side-menu--side-menu-entry)
+
+### Usage
+
+```html
+<ui-side-menu [(selectedValue)]="selectedMenuItem">
+  <ui-side-menu-section title="Navigation">
+    <ui-side-menu-entry label="Settings" value="settings" [icon]="faCog()">
+      <ui-side-menu-sub-entry label="Profile" value="settings-profile"></ui-side-menu-sub-entry>
+      <ui-side-menu-sub-entry label="Security" value="settings-security"></ui-side-menu-sub-entry>
+      <ui-side-menu-sub-entry label="Notifications" value="settings-notifications"></ui-side-menu-sub-entry>
+    </ui-side-menu-entry>
+  </ui-side-menu-section>
+</ui-side-menu>
+```
 
 ---
 
