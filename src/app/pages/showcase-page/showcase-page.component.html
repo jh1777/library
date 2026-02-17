@@ -45,6 +45,14 @@
     <!-- ════════════════════════════════════════════════════════════
          SECTION: Badge
          ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'sub1') {
+    <section id="basics" class="section">
+      <div class="section-header">Nothing</div>
+      <div class="section-description">
+        There is nothing here, this is just a sub-entry to demonstrate the side menu functionality. You can click on the "Badge" entry to see the badge component demo.
+      </div>
+    </section>
+    }
     @if (activeSection() === 'basics') {
     <section id="basics" class="section">
       <div class="section-header">Badge</div>
