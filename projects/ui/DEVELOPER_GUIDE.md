@@ -323,16 +323,6 @@ npm test -- --coverage
 npm test -- component-name.component.spec.ts
 ```
 
-### Storybook
-
-```bash
-# Start Storybook
-npm run storybook
-
-# Build Storybook
-ng run ui:build-storybook
-```
-
 ## Troubleshooting
 
 ### Build Errors

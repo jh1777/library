@@ -142,8 +142,7 @@ ng generate component projects/ui/src/lib/components/my-component
 ✅ Development environment setup  
 ✅ Building instructions  
 ✅ Testing guide  
-✅ Running application  
-✅ Storybook setup  
+✅ Running application. 
 ✅ Common tasks  
 ✅ Comprehensive troubleshooting  
 ✅ Quick reference  

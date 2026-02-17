@@ -15,7 +15,6 @@ projects/ui/src/lib/components/
     ├── component-name.component.scss      # Component styles
     ├── component-name.component.spec.ts   # Component tests
     ├── component-name.models.ts           # Models, enums, and interfaces
-    └── component-name.stories.ts          # Storybook stories (optional)
 ```
 
 ### Sub-components

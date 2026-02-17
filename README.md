@@ -44,6 +44,3 @@ All components (mostly) are shown here so you can infer the usage.
 
 Demo of the grid layout component which is just a tryout.
 
-## Storybook
-
-Is not setuped yet - maybe this will be introduced later.

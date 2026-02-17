@@ -36,7 +36,6 @@ The `projects/` directory contains the Angular library projects:
 projects/
 ├── ui/                        # Main UI component library ⭐
 │   ├── .templates/            # Component templates
-│   ├── .storybook/            # Storybook configuration
 │   ├── .npmignore             # NPM publish ignore
 │   ├── src/                   # Library source code
 │   ├── ng-package.json        # Angular package config
@@ -63,7 +62,6 @@ projects/ui/src/
 │   ├── components/            # All UI components ⭐
 │   ├── shared/                # Shared utilities ⭐
 │   └── styles/                # Global styles
-├── stories/                   # Storybook stories
 └── public-api.ts              # Public API exports ⭐
 ```
 
@@ -197,7 +195,6 @@ documentation/
 | `*.component.spec.ts` | Unit tests |
 | `*.models.ts` | TypeScript models, enums, interfaces |
 | `index.ts` | Barrel export file |
-| `*.stories.ts` | Storybook stories (optional) |
 
 ### Configuration Files
 
@@ -295,18 +292,8 @@ dist/
 ```
 node_modules/                  # Installed dependencies
 ├── @angular/                  # Angular framework
-├── @storybook/                # Storybook
 ├── typescript/                # TypeScript
 └── ... (other dependencies)
-```
-
-## Temporary Files (Not Committed)
-
-```
-.angular/                      # Angular cache
-tmp/                           # Temporary files
-coverage/                      # Test coverage reports
-.storybook-static/             # Built Storybook
 ```
 
 ## Important Locations for Developers
@@ -341,7 +328,6 @@ coverage/                      # Test coverage reports
 | Add to public API | `projects/ui/src/public-api.ts` | - |
 | Build library | Root | `npm run build` |
 | Run tests | Root | `npm test` |
-| Start Storybook | Root | `npm run storybook` |
 | View docs | `projects/ui/DEVELOPER_GUIDE.md` | - |
 
 ## Related Documentation

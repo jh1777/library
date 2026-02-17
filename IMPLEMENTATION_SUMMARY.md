@@ -264,7 +264,6 @@ Next steps:
    - Building
    - Testing
    - Running application
-   - Storybook
 
 4. **Contributing** (100%)
    - Code standards

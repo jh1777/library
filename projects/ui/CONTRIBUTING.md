@@ -52,11 +52,6 @@ Thank you for your interest in contributing to this UI library! This guide will 
    npm test
    ```
 
-4. **Start Storybook (optional):**
-   ```bash
-   npm run storybook
-   ```
-
 ## Creating Components
 
 We have multiple methods for creating new components:
@@ -302,7 +297,6 @@ When adding a new component:
 
 2. **Update COMPONENT_STRUCTURE.md** if adding new patterns
 
-3. **Create Storybook stories** (optional but recommended)
 
 ## Questions?
 

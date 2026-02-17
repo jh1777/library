@@ -8,7 +8,6 @@ This document provides comprehensive information about building, testing, and de
 - [Building](#building)
 - [Testing](#testing)
 - [Running the Application](#running-the-application)
-- [Storybook](#storybook)
 - [Common Tasks](#common-tasks)
 - [Troubleshooting](#troubleshooting)
 
@@ -241,62 +240,6 @@ ng serve --configuration production
 ng serve --host 0.0.0.0
 ```
 
-## Storybook
-
-Storybook provides an isolated environment for developing and testing components.
-
-### Start Storybook
-
-```bash
-npm run storybook
-```
-
-Storybook will be available at `http://localhost:6006/`
-
-### Build Storybook
-
-Build static Storybook for deployment:
-
-```bash
-ng run ui:build-storybook
-```
-
-Output is generated in `dist/storybook/ui/`
-
-### Creating Stories
-
-Example story file (`button.stories.ts`):
-
-```typescript
-import type { Meta, StoryObj } from '@storybook/angular';
-import { ButtonComponent } from './button.component';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-
-const meta: Meta<ButtonComponent> = {
-  title: 'Components/Button',
-  component: ButtonComponent,
-  tags: ['autodocs'],
-};
-
-export default meta;
-type Story = StoryObj<ButtonComponent>;
-
-export const Primary: Story = {
-  args: {
-    label: 'Button',
-    style: 1,
-  },
-};
-
-export const WithIcon: Story = {
-  args: {
-    label: 'Submit',
-    icon: faCheck,
-    style: 1,
-  },
-};
-```
-
 ## Common Tasks
 
 ### Create a New Component
@@ -497,7 +440,6 @@ npm start                    # Start dev server
 npm run build               # Build library
 npm run watch              # Build in watch mode
 npm test                   # Run tests
-npm run storybook          # Start Storybook
 
 # Component Creation
 ./create-component.sh name # Create new component
