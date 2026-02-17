@@ -282,9 +282,6 @@ npm test
 # Run tests in watch mode
 npm test -- --watch
 
-# Run Storybook
-npm run storybook
-
 # Lint code
 npm run lint  # (if configured)
 ```
@@ -293,6 +290,5 @@ npm run lint  # (if configured)
 
 After creating your component:
 1. Add it to the UI README documentation
-2. Create Storybook stories (optional)
-3. Test it in the demo application
-4. Create a pull request with your changes
+2. Test it in the demo application
+3. Create a pull request with your changes

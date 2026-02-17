@@ -1,0 +1,799 @@
+<!-- ═══════════════════════════════════════════════════════════════
+     SHOWCASE PAGE — Component Library Demo
+     ═══════════════════════════════════════════════════════════════ -->
+
+<div class="showcase">
+
+  <!-- ── LEFT: Side Menu Navigation ── -->
+  <aside class="showcase-nav">
+    <div class="nav-header">Component Showcase</div>
+    <ui-side-menu [(selectedValue)]="activeSection">
+      <ui-side-menu-section title="Fundamentals">
+        <ui-side-menu-entry label="Badge" value="basics" [icon]="faShapes()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Button" value="buttons" [icon]="faShapes()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Switch &amp; Toggle" value="toggles" [icon]="faToggleOn()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Input" value="input" [icon]="faPencil()"></ui-side-menu-entry>
+      </ui-side-menu-section>
+      <ui-side-menu-section title="Data Display">
+        <ui-side-menu-entry label="Cards" value="cards" [icon]="faLayerGroup()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Entry Tiles" value="tiles" [icon]="faLayerGroup()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Key-Value &amp; Metrics" value="metrics" [icon]="faGauge()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Value Tile" value="valuetile" [icon]="faGauge()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Table" value="table" [icon]="faTable()"></ui-side-menu-entry>
+      </ui-side-menu-section>
+      <ui-side-menu-section title="Layout &amp; Navigation">
+        <ui-side-menu-entry label="Toolbar" value="toolbar" [icon]="faBars()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Tabs" value="tabs" [icon]="faBars()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Accordion" value="accordion" [icon]="faBars()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Grid Layout" value="grid" [icon]="faGrip()"></ui-side-menu-entry>
+      </ui-side-menu-section>
+      <ui-side-menu-section title="Overlays">
+        <ui-side-menu-entry label="Modal" value="modal" [icon]="faWindowMaximize()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Signpost" value="signpost" [icon]="faWindowMaximize()"></ui-side-menu-entry>
+      </ui-side-menu-section>
+    </ui-side-menu>
+    <div class="nav-description">
+      This side-menu as well is part of the component library and demonstrates the <code>ui-side-menu</code>, <code>ui-side-menu-section</code>, and <code>ui-side-menu-entry</code> components with icons, selection state, and value binding. 
+    </div>
+  </aside>
+
+  <!-- ── RIGHT: Content Area ── -->
+  <main class="showcase-content">
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION: Badge
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'basics') {
+    <section id="basics" class="section">
+      <div class="section-header">Badge</div>
+      <div class="section-description">
+        Compact status indicators with numbers or text labels. Supports multiple sizes, styles, and overflow handling (99+).
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-label">Styles</div>
+        <div class="demo-row">
+          <ui-badge value="14" [style]="'Success'"></ui-badge>
+          <ui-badge value="7" [style]="2"></ui-badge>
+          <ui-badge value="4" [style]="3"></ui-badge>
+          <ui-badge value="2" [style]="4"></ui-badge>
+        </div>
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-label">Sizes &amp; Overflow</div>
+        <div class="demo-row" style="align-items: center;">
+          <ui-badge value="5" size="1"></ui-badge>
+          <ui-badge value="42" size="2"></ui-badge>
+          <ui-badge value="120" size="3"></ui-badge>
+        </div>
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-label">Text Labels</div>
+        <div class="demo-row">
+          <ui-badge label="NEW" [style]="3"></ui-badge>
+          <ui-badge label="BETA" value="3" [style]="4"></ui-badge>
+          <ui-badge label="v2.1" [style]="1"></ui-badge>
+        </div>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-badge value="14" [style]="'Success'"&gt;&lt;/ui-badge&gt;
+&lt;ui-badge label="NEW" [style]="3"&gt;&lt;/ui-badge&gt;
+&lt;ui-badge value="120" size="3"&gt;&lt;/ui-badge&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION: Buttons
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'buttons') {
+    <section id="buttons" class="section">
+      <div class="section-header">Button</div>
+      <div class="section-description">
+        Versatile button component with multiple visual styles, icon support, loading states, and badge integration.
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-label">Button Styles</div>
+        <div class="demo-row">
+          <ui-button label="Simple" [style]="0"></ui-button>
+          <ui-button label="Primary" [icon]="faCheck()" [style]="1"></ui-button>
+          <ui-button label="Secondary" [style]="2"></ui-button>
+          <ui-button label="Outline" [style]="3"></ui-button>
+          <ui-button label="Destructive" [icon]="faTrash()" [style]="4"></ui-button>
+          <ui-button label="Confirm" [icon]="faCheck()" [style]="5"></ui-button>
+        </div>
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-label">States</div>
+        <div class="demo-row">
+          <ui-button label="Disabled" [icon]="faCheck()" [style]="1" [isDisabled]="true"></ui-button>
+          <ui-button label="Loading..." [style]="2" [isLoading]="true"></ui-button>
+          <ui-button [icon]="faPlay()" [style]="0"></ui-button>
+          <ui-button [icon]="faStop()" [style]="0"></ui-button>
+        </div>
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-label">Button with Badge</div>
+        <div class="demo-row">
+          <ui-button label="Notifications">
+            <ui-badge value="4" [style]="2"></ui-badge>
+          </ui-button>
+          <ui-button label="Messages" [style]="3">
+            <ui-badge value="12" [style]="1"></ui-badge>
+          </ui-button>
+        </div>
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-label">Button Group</div>
+        <div class="demo-row-col">
+          <ui-button-group
+            [items]="buttonGroupItems()"
+            [multiselect]="false"
+            (selectedItemsChange)="onGroupItemsChange($event)">
+          </ui-button-group>
+          <span class="demo-value">Selected: <strong>{{ selectedGroupItems().length > 0 ? selectedGroupItems() : 'None' }}</strong></span>
+        </div>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-button label="Primary" [icon]="faCheck()" [style]="1"
+  (onClick)="doSomething()"&gt;
+&lt;/ui-button&gt;
+
+&lt;!-- With nested badge --&gt;
+&lt;ui-button label="Notifications"&gt;
+  &lt;ui-badge value="4" [style]="2"&gt;&lt;/ui-badge&gt;
+&lt;/ui-button&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION: Switch & Toggle
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'toggles') {
+    <section id="toggles" class="section">
+      <div class="section-header">Switch &amp; Toggle</div>
+      <div class="section-description">
+        Toggle controls for boolean states and multi-option switches with icon support.
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-label">Switch (Two-Way Binding)</div>
+        <div class="demo-row-col">
+          <ui-switch label="Enable Feature" [(state)]="toggleState"></ui-switch>
+          <span class="demo-value">State: <strong>{{ toggleState().toString().toUpperCase() }}</strong></span>
+        </div>
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-label">Switch Button (Multi-Option Toggle)</div>
+        <div class="demo-row-col">
+          <ui-switch-button label="View Mode" [(selectedValue)]="switchButtonValue">
+            <ui-switch-button-option label="List" value="list" [icon]="faList()"></ui-switch-button-option>
+            <ui-switch-button-option label="Grid" value="grid" [icon]="faGrip()"></ui-switch-button-option>
+          </ui-switch-button>
+          <span class="demo-value">Selected: <strong>{{ switchButtonValue() }}</strong></span>
+        </div>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-switch label="Enable Feature" [(state)]="isEnabled"&gt;&lt;/ui-switch&gt;
+
+&lt;ui-switch-button label="View"
+  [(selectedValue)]="viewMode"&gt;
+  &lt;ui-switch-button-option label="List" value="list" [icon]="faList()"&gt;
+  &lt;/ui-switch-button-option&gt;
+  &lt;ui-switch-button-option label="Grid" value="grid" [icon]="faGrip()"&gt;
+  &lt;/ui-switch-button-option&gt;
+&lt;/ui-switch-button&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION: Input
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'input') {
+    <section id="input" class="section">
+      <div class="section-header">Input</div>
+      <div class="section-description">
+        Text input with label, placeholder, and Angular Forms integration (ControlValueAccessor).
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-label">Basic Input</div>
+        <div class="demo-row-col" style="max-width: 320px;">
+          <ui-input label="Username" valuePlaceholder="Enter your name..." type="text"></ui-input>
+          <ui-input label="Password" valuePlaceholder="••••••" type="password"></ui-input>
+          <ui-input label="Disabled" valuePlaceholder="Can't edit this" [isDisabled]="true"></ui-input>
+        </div>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-input label="Username"
+  valuePlaceholder="Enter your name..."
+  type="text"&gt;
+&lt;/ui-input&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION: Cards
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'cards') {
+    <section id="cards" class="section">
+      <div class="section-header">Card</div>
+      <div class="section-description">
+        Container component with header, style variants, loading/error states, and sub-component support (buttons, switches, sections).
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-row" style="flex-wrap: wrap;">
+          <ui-card header="Default Card">
+            <ui-card-section-basic text="A simple card with basic text content and a footer button.">
+              <ui-button label="Action" slot="footer-left"></ui-button>
+            </ui-card-section-basic>
+          </ui-card>
+
+          <ui-card header="Success Card" [style]="3">
+            <ui-button [icon]="faExternalLink()" [style]="0" slot="header-right"></ui-button>
+            <ui-card-section-basic
+              header="Deployment"
+              text="All services deployed successfully."
+              styledMessage="Last deployment: 5 minutes ago"
+              [showStyledBackground]="true"
+              [style]="3">
+            </ui-card-section-basic>
+          </ui-card>
+
+          <ui-card header="Warning Card" [style]="1">
+            <ui-card-section-basic
+              header="Attention Required"
+              styledMessage="Certificate expires in 7 days"
+              [showStyledBackground]="true"
+              [style]="1">
+            </ui-card-section-basic>
+            <ui-card-section-basic text="Please renew the SSL certificate.">
+              <ui-switch label="Auto-Renew" slot="footer-left"></ui-switch>
+            </ui-card-section-basic>
+          </ui-card>
+
+          <ui-card header="Loading Card" [isLoading]="true"></ui-card>
+
+          <ui-card header="Error Card" errorMessage="Failed to load component data."></ui-card>
+        </div>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-card header="My Card" [style]="3"&gt;
+  &lt;ui-button [icon]="faLink()" [style]="0" slot="header-right"&gt;&lt;/ui-button&gt;
+  &lt;ui-card-section-basic
+    header="Section Title"
+    text="Content goes here."
+    styledMessage="Status: OK"
+    [showStyledBackground]="true"
+    [style]="3"&gt;
+    &lt;ui-button label="Action" slot="footer-left"&gt;&lt;/ui-button&gt;
+  &lt;/ui-card-section-basic&gt;
+&lt;/ui-card&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION: Entry Tiles
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'tiles') {
+    <section id="tiles" class="section">
+      <div class="section-header">Entry Tile</div>
+      <div class="section-description">
+        Rich data tiles combining key-value pairs, status indicators, pagination, and interactive elements.
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-columns">
+          <div class="demo-col">
+            <ui-entry-tile header="Service Overview" description="Current service status and connectivity information.">
+              <ui-entry-key-value label="Status" value="Healthy" [style]="3" [isBig]="true"></ui-entry-key-value>
+              <ui-entry-tile-item primaryValue="API Gateway" secondaryValue="Responding" [style]="3" [showStateIcon]="true">
+                <ui-switch label="Active"></ui-switch>
+              </ui-entry-tile-item>
+              <ui-entry-tile-item primaryValue="Database" secondaryValue="Connected, 3ms latency" [style]="1" [showStateIcon]="true">
+                <ui-badge value="3" [style]="1"></ui-badge>
+              </ui-entry-tile-item>
+              <ui-entry-tile-item primaryValue="Cache" secondaryValue="Redis 7.2" [style]="0">
+                <ui-button label="Flush" [style]="6" [icon]="faTrash()"></ui-button>
+              </ui-entry-tile-item>
+            </ui-entry-tile>
+          </div>
+
+          <div class="demo-col">
+            <ui-entry-tile header="Event Log" [collapseMode]="1" [pageSize]="3" [style]="0">
+              <ui-entry-key-value label="Total Events" value="1,247"></ui-entry-key-value>
+              @for (_ of [].constructor(5); track $index) {
+                <ui-entry-tile-item
+                  [primaryValue]="'Event #' + ($index + 1)"
+                  [secondaryValue]="($index + 1) + ' min ago'"
+                  [icon]="faExternalLink()"
+                  [isClickable]="true">
+                </ui-entry-tile-item>
+              }
+            </ui-entry-tile>
+          </div>
+
+          <div class="demo-col">
+            <ui-entry-tile header="Alerts" [collapseMode]="1" [style]="4">
+              <ui-entry-key-value label="Critical" value="2 Active" [style]="2"></ui-entry-key-value>
+              <ui-entry-tile-item primaryValue="Memory Limit" secondaryValue="Exceeded threshold" [style]="2" [showStateIcon]="true">
+                <ui-badge value="!" [style]="2"></ui-badge>
+              </ui-entry-tile-item>
+              <ui-entry-tile-item primaryValue="Disk Space" secondaryValue="85% used" [style]="1" [showStateIcon]="true">
+              </ui-entry-tile-item>
+              <ui-button label="Acknowledge" [style]="5" [icon]="faCheck()" slot="left"></ui-button>
+              <ui-button label="Dismiss" [style]="4" [icon]="faTimes()" slot="right"></ui-button>
+            </ui-entry-tile>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-entry-tile header="Service" description="Status overview"&gt;
+  &lt;ui-entry-key-value label="Status" value="Healthy" [style]="3"&gt;
+  &lt;/ui-entry-key-value&gt;
+  &lt;ui-entry-tile-item
+    primaryValue="API Gateway"
+    secondaryValue="Responding"
+    [style]="3"
+    [showStateIcon]="true"&gt;
+  &lt;/ui-entry-tile-item&gt;
+&lt;/ui-entry-tile&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION: Key-Value & Metrics
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'metrics') {
+    <section id="metrics" class="section">
+      <div class="section-header">Key-Value, Entry Metric &amp; Metric Tile</div>
+      <div class="section-description">
+        Building blocks for displaying data: key-value pairs with status colors, percentage bars, and metric dashboards.
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-label">Entry Key Value (standalone)</div>
+        <div class="demo-columns">
+          <div class="demo-col">
+            <ui-entry-container>
+              <ui-entry-key-value label="Region" value="EU-West-1"></ui-entry-key-value>
+              <ui-entry-key-value label="Uptime" value="99.97%" [style]="3"></ui-entry-key-value>
+            </ui-entry-container>
+          </div>
+          <div class="demo-col">
+            <ui-entry-container>
+              <ui-entry-key-value label="Status" value="Warning" [style]="1" [isBig]="true"></ui-entry-key-value>
+            </ui-entry-container>
+          </div>
+          <div class="demo-col">
+            <ui-entry-container [isClickable]="true" (onClick)="log($event)">
+              <ui-entry-key-value label="Throughput" value="1,420 req/s">
+                <ui-button [style]="6" slot="right" [icon]="faCopy()"></ui-button>
+              </ui-entry-key-value>
+              <ui-entry-metric [percent]="71" [isLoading]="false"></ui-entry-metric>
+            </ui-entry-container>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-label">Entry Metric Bars</div>
+        <div class="demo-columns">
+          <div class="demo-col">
+            <ui-entry-metric [percent]="25" [style]="1"></ui-entry-metric>
+          </div>
+          <div class="demo-col">
+            <ui-entry-metric [percent]="68" [style]="0"></ui-entry-metric>
+          </div>
+          <div class="demo-col">
+            <ui-entry-metric [percent]="92" [style]="3"></ui-entry-metric>
+          </div>
+          <div class="demo-col">
+            <ui-entry-metric [percent]="50" [isLoading]="true" [style]="2"></ui-entry-metric>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-label">Metric Tile (Dashboard)</div>
+        <div class="demo-columns">
+          <div class="demo-col">
+            <ui-metric-tile header="System Health">
+              <ui-entry-container>
+                <ui-entry-key-value label="CPU" value="34%" [style]="3"></ui-entry-key-value>
+                <ui-entry-metric [percent]="34" [style]="3"></ui-entry-metric>
+              </ui-entry-container>
+              <ui-entry-container>
+                <ui-entry-key-value label="Memory" value="67%"></ui-entry-key-value>
+                <ui-entry-metric [percent]="67"></ui-entry-metric>
+              </ui-entry-container>
+              <ui-entry-container>
+                <ui-entry-key-value label="Disk" value="85%" [style]="1"></ui-entry-key-value>
+                <ui-entry-metric [percent]="85" [style]="1"></ui-entry-metric>
+              </ui-entry-container>
+            </ui-metric-tile>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-entry-container&gt;
+  &lt;ui-entry-key-value label="CPU" value="34%" [style]="3"&gt;
+  &lt;/ui-entry-key-value&gt;
+  &lt;ui-entry-metric [percent]="34" [style]="3"&gt;&lt;/ui-entry-metric&gt;
+&lt;/ui-entry-container&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION: Value Tile
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'valuetile') {
+    <section id="valuetile" class="section">
+      <div class="section-header">Value Tile</div>
+      <div class="section-description">
+        Compact key-value display with color states, used standalone or inside toolbars. Supports badges and action buttons.
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-row" style="flex-wrap: wrap;">
+          <ui-value-tile key="VIN" value="WDB0101010110">
+            <ui-button [icon]="faCopy()" label="Copy"></ui-button>
+            <ui-button [icon]="faExternalLink()" [style]="0"></ui-button>
+          </ui-value-tile>
+          <ui-value-tile key="Engine" value="OFF" [style]="2"></ui-value-tile>
+          <ui-value-tile key="Streaming" value="ACTIVE" [style]="3"></ui-value-tile>
+          <ui-value-tile key="Alerts" value="Pending">
+            <ui-badge [style]="1" value="5"></ui-badge>
+          </ui-value-tile>
+          <ui-value-tile key="Sync" value="Syncing..." [isLoading]="true"></ui-value-tile>
+          <ui-value-tile key="Data" value="Error" [isLoading]="true" errorMessage="Connection timeout"></ui-value-tile>
+        </div>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-value-tile key="Engine" value="OFF" [style]="2"&gt;
+  &lt;ui-button [icon]="faCopy()" label="Copy"&gt;&lt;/ui-button&gt;
+&lt;/ui-value-tile&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION: Table
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'table') {
+    <section id="table" class="section">
+      <div class="section-header">Table</div>
+      <div class="section-description">
+        Data table with sortable columns, clickable rows, filter icons, and footer support.
+      </div>
+
+      <div class="demo-group" style="max-width: 700px;">
+        <ui-table
+          header="Service Monitoring"
+          description="Click a row to select it. Column headers are sortable."
+          [tableData]="tableData()"
+          (onRowClick)="log($event)"
+          (onSortClick)="log($event)">
+        </ui-table>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-table
+  header="Services"
+  description="Click a row to select it."
+  [tableData]="tableData"
+  (onRowClick)="onRow($event)"
+  (onSortClick)="onSort($event)"&gt;
+&lt;/ui-table&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION: Toolbar
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'toolbar') {
+    <section id="toolbar" class="section">
+      <div class="section-header">Toolbar</div>
+      <div class="section-description">
+        Horizontal bar for arranging buttons, badges, switches, and value tiles with left/right alignment via the <code>slot</code> attribute.
+      </div>
+
+      <div class="demo-group">
+        <ui-toolbar text="Operations">
+          <ui-button slot="left" label="Deploy" [icon]="faCheck()" [style]="5"></ui-button>
+          <ui-button slot="left" label="Rollback" [icon]="faTimes()" [style]="4"></ui-button>
+          <ui-badge [style]="3" label="PROD" slot="left"></ui-badge>
+
+          <ui-value-tile key="Build" value="#1247" slot="right">
+            <ui-button [icon]="faCopy()" [style]="0"></ui-button>
+          </ui-value-tile>
+          <ui-button label="Refresh" slot="right" [style]="3">
+            <ui-badge value="2"></ui-badge>
+          </ui-button>
+          <ui-button [icon]="faPlay()" slot="right" [style]="0"></ui-button>
+          <ui-button [icon]="faStop()" slot="right" [style]="0"></ui-button>
+        </ui-toolbar>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-toolbar text="Operations"&gt;
+  &lt;ui-button slot="left" label="Deploy" [style]="5"&gt;&lt;/ui-button&gt;
+  &lt;ui-value-tile slot="right" key="Build" value="#1247"&gt;
+  &lt;/ui-value-tile&gt;
+&lt;/ui-toolbar&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION: Tabs
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'tabs') {
+    <section id="tabs" class="section">
+      <div class="section-header">Tabs</div>
+      <div class="section-description">
+        Tabbed content panels with active state management, badge indicators, and disabled tabs.
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-row-col">
+          <div class="demo-row" style="margin-bottom: 0.5rem;">
+            <ui-button [label]="'Go to Tab 0'" (onClick)="activeTabIndex.set(0)" [style]="0"></ui-button>
+            <ui-button [label]="'Go to Tab 1'" (onClick)="activeTabIndex.set(1)" [style]="0"></ui-button>
+            <span class="demo-value">Active: <strong>{{ activeTabIndex() }}</strong></span>
+          </div>
+          <ui-tabs [(activeIndex)]="activeTabIndex">
+            <ui-tab label="Overview" badgeValue="3" badgeStyle="3">
+              <ui-entry-container>
+                <ui-entry-key-value label="Services" value="12 Running" [style]="3"></ui-entry-key-value>
+                <ui-entry-key-value label="Alerts" value="2 Active" [style]="1"></ui-entry-key-value>
+              </ui-entry-container>
+            </ui-tab>
+            <ui-tab label="Logs">
+              <ui-entry-tile header="Recent Logs" [style]="0">
+                <ui-entry-tile-item primaryValue="INFO: Deployment started" secondaryValue="12:04 PM"></ui-entry-tile-item>
+                <ui-entry-tile-item primaryValue="WARN: High memory usage" secondaryValue="12:02 PM" [style]="1" [showStateIcon]="true"></ui-entry-tile-item>
+              </ui-entry-tile>
+            </ui-tab>
+            <ui-tab label="Disabled" [isDisabled]="true">
+              <p>This content is not accessible.</p>
+            </ui-tab>
+            <ui-tab label="Settings">
+              <div style="padding: 0.5rem 0;">
+                <ui-switch label="Notifications" [(state)]="toggleState"></ui-switch>
+              </div>
+            </ui-tab>
+          </ui-tabs>
+        </div>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-tabs [(activeIndex)]="activeTab"&gt;
+  &lt;ui-tab label="Overview" badgeValue="3" badgeStyle="3"&gt;
+    &lt;p&gt;Tab content here.&lt;/p&gt;
+  &lt;/ui-tab&gt;
+  &lt;ui-tab label="Settings"&gt;
+    &lt;p&gt;More content.&lt;/p&gt;
+  &lt;/ui-tab&gt;
+&lt;/ui-tabs&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION: Accordion
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'accordion') {
+    <section id="accordion" class="section">
+      <div class="section-header">Accordion</div>
+      <div class="section-description">
+        Collapsible panels with customizable headers supporting badges, switches, and buttons.
+      </div>
+
+      <div class="demo-group" style="max-width: 600px;">
+        <ui-accordion header="Infrastructure" description="Expand panels to view details">
+
+          <ui-accordion-panel>
+            <ui-accordion-panel-header label="Servers">
+              <ui-badge [value]="4" [style]="3"></ui-badge>
+            </ui-accordion-panel-header>
+            <ui-card header="Production Cluster">
+              <ui-card-section-basic text="4 nodes running, all healthy.">
+                <ui-button label="Scale Up" [style]="3" slot="footer-left"></ui-button>
+              </ui-card-section-basic>
+            </ui-card>
+          </ui-accordion-panel>
+
+          <ui-accordion-panel>
+            <ui-accordion-panel-header label="Networking" tooltip="Network configuration">
+              <ui-switch label="Firewall"></ui-switch>
+              <ui-button label="Edit" [icon]="faPencil()" [style]="0" (onClick)="log('edit networking')"></ui-button>
+            </ui-accordion-panel-header>
+            <ui-entry-container>
+              <ui-entry-key-value label="Ingress" value="Active" [style]="3"></ui-entry-key-value>
+              <ui-entry-key-value label="Egress" value="Restricted" [style]="1"></ui-entry-key-value>
+            </ui-entry-container>
+          </ui-accordion-panel>
+
+          <ui-accordion-panel [isDisabled]="true">
+            <ui-accordion-panel-header label="Secrets (Locked)"></ui-accordion-panel-header>
+            <p>You do not have access.</p>
+          </ui-accordion-panel>
+        </ui-accordion>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-accordion header="Settings"&gt;
+  &lt;ui-accordion-panel&gt;
+    &lt;ui-accordion-panel-header label="General"&gt;
+      &lt;ui-badge [value]="3" [style]="3"&gt;&lt;/ui-badge&gt;
+    &lt;/ui-accordion-panel-header&gt;
+    &lt;p&gt;Panel content here.&lt;/p&gt;
+  &lt;/ui-accordion-panel&gt;
+&lt;/ui-accordion&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION: Grid Layout
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'grid') {
+    <section id="grid" class="section">
+      <div class="section-header">Grid Layout</div>
+      <div class="section-description">
+        Responsive multi-column grid for arranging cards, entry tiles, and metric tiles.
+      </div>
+
+      <div class="demo-group">
+        <ui-grid [columns]="3">
+          <ui-card grid-column="1" header="Region: EU" [style]="3">
+            <ui-card-section-basic text="All systems operational." [style]="3">
+            </ui-card-section-basic>
+          </ui-card>
+
+          <ui-card grid-column="2" header="Region: US" [style]="1">
+            <ui-card-section-basic text="Minor latency increase detected." styledMessage="Avg response: 245ms" [style]="1" [showStyledBackground]="true">
+            </ui-card-section-basic>
+          </ui-card>
+
+          <ui-entry-tile grid-column="3" header="Deployments" [style]="0">
+            <ui-entry-key-value label="Last Deploy" value="10 min ago" [style]="3"></ui-entry-key-value>
+            <ui-entry-tile-item primaryValue="Build #1247" secondaryValue="Production" [style]="3" [showStateIcon]="true"></ui-entry-tile-item>
+          </ui-entry-tile>
+        </ui-grid>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-grid [columns]="3"&gt;
+  &lt;ui-card grid-column="1" header="Col 1"&gt;...&lt;/ui-card&gt;
+  &lt;ui-card grid-column="2" header="Col 2"&gt;...&lt;/ui-card&gt;
+  &lt;ui-card grid-column="3" header="Col 3"&gt;...&lt;/ui-card&gt;
+&lt;/ui-grid&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION: Modal
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'modal') {
+    <section id="modal" class="section">
+      <div class="section-header">Modal &amp; Confirmation Modal</div>
+      <div class="section-description">
+        Overlay dialogs for focused interactions. The confirmation modal provides a quick yes/no prompt.
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-row">
+          <ui-button label="Open Modal" [style]="1" (onClick)="showModal.set(true)"></ui-button>
+          <ui-button label="Open Confirmation" [style]="3" (onClick)="showConfModal.set(true)"></ui-button>
+        </div>
+      </div>
+
+      <ui-modal header="Service Details" [(isOpen)]="showModal" [width]="2" [height]="2">
+        <ui-card header="Deployment Info">
+          <ui-card-section-basic header="Environment" text="Production (EU-West-1)" [style]="3"></ui-card-section-basic>
+          <ui-card-section-basic header="Version" text="v2.4.1"></ui-card-section-basic>
+        </ui-card>
+        <ui-toolbar>
+          <ui-button slot="right" label="Close" [icon]="faTimes()" (onClick)="showModal.set(false)" [style]="4"></ui-button>
+        </ui-toolbar>
+      </ui-modal>
+
+      <ui-confirmation-modal
+        [(isOpen)]="showConfModal"
+        header="Confirm Deployment"
+        message="Deploy build #1247 to production?"
+        confirmLabel="Deploy"
+        cancelLabel="Cancel"
+        (onConfirmClick)="log('Deployed!')"
+        (onCancelClick)="log('Cancelled')">
+      </ui-confirmation-modal>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-modal header="Details" [(isOpen)]="showModal"
+  [width]="2" [height]="2"&gt;
+  &lt;p&gt;Modal content here.&lt;/p&gt;
+&lt;/ui-modal&gt;
+
+&lt;ui-confirmation-modal
+  [(isOpen)]="showConfirm"
+  header="Are you sure?"
+  message="This action cannot be undone."
+  (onConfirmClick)="onConfirm()"
+  (onCancelClick)="onCancel()"&gt;
+&lt;/ui-confirmation-modal&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION: Signpost
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'signpost') {
+    <section id="signpost" class="section">
+      <div class="section-header">Signpost</div>
+      <div class="section-description">
+        Click-triggered popover for contextual information. Positions relative to the trigger element.
+      </div>
+
+      <div class="demo-group">
+        <ui-button label="Show Signpost" (onClick)="openSignpost($event)"></ui-button>
+        <ui-signpost #demoSignpost [offsetY]="-50" [offsetX]="0"
+          text="Build <strong>#1247</strong> deployed to <em>Production EU-West</em> at 12:04 PM.">
+        </ui-signpost>
+      </div>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-button label="Info" (onClick)="sp.show($event)"&gt;
+&lt;/ui-button&gt;
+
+&lt;ui-signpost #sp
+  text="Contextual info here."
+  [offsetY]="-50"&gt;
+&lt;/ui-signpost&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+  </main>
+</div>

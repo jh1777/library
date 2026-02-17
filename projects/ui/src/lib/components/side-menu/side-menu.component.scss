@@ -1,0 +1,17 @@
+@use '../../styles/ui.styles' as *;
+:host {
+    display: flex;
+    flex-direction: column;
+
+    .ui-side-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+
+        &.border {
+            padding: 0.6rem;
+            border: 1px solid $ui-alternative-standard-color;
+            border-radius: $ui-border-radius;
+        }
+    }
+}

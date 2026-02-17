@@ -1,0 +1,165 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.showcase {
+  display: flex;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+// ── Left Navigation ──
+.showcase-nav {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  width: 220px;
+  min-width: 220px;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 1rem 0.5rem;
+  border-right: 1px solid #eaeaea;
+
+  .nav-header {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 0 1rem 1rem;
+    color: #333;
+  }
+
+  .nav-description {
+    font-size: 12px;
+    color: #999999;
+    line-height: 1.4;
+    margin-top: 1rem;
+    padding: 0 1rem 1rem;
+
+    code {
+      background: #f3f3f3;
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+  }
+}
+
+// ── Main Content ──
+.showcase-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem 2rem;
+}
+
+// ── Section ──
+.section {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.section-header {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.25rem;
+}
+
+.section-description {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  max-width: 700px;
+
+  code {
+    background: #f3f3f3;
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+}
+
+// ── Demo Groups ──
+.demo-group {
+  margin-bottom: 1.5rem;
+}
+
+.demo-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
+}
+
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+.demo-row-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.demo-columns {
+  display: flex;
+  flex-direction: row;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.demo-col {
+  flex: 1;
+  min-width: 220px;
+}
+
+.demo-value {
+  font-size: 13px;
+  color: #555;
+  line-height: 2;
+}
+
+// ── Code Example ──
+.code-example {
+  margin-top: 1.5rem;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  overflow: hidden;
+
+  .code-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888;
+    background: #fafafa;
+    padding: 0.4rem 0.75rem;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  pre {
+    margin: 0;
+    padding: 0.75rem 1rem;
+    background: #f7f7f8;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.6;
+
+    code {
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+      color: #2d2d2d;
+      white-space: pre;
+    }
+  }
+}

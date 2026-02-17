@@ -1,0 +1,52 @@
+
+@use '../../../styles/ui.styles' as *;
+:host {
+    display: flex;
+    flex-direction: column;
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: $ui-standard-text-color;
+        padding: 0.5rem 1rem;
+        border-radius: $ui-border-radius;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &-icon {
+            display: flex;
+            color: $ui-dark-standard-color;
+            width: 15px;
+            height: 15px;
+
+            &.selected {
+                color: $ui-standard-text-color;
+            }
+        }
+
+        .align-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+        
+        &:not(.disabled):not(.selected):hover {
+            background-color: $ui-alternative-standard-color;
+        }
+
+        &.disabled {
+            cursor: default;
+            opacity: 0.4;
+        }
+
+        &.active {
+            background-color: $ui-alternative-standard-color;
+        }
+
+        &.selected {
+            background-color: $ui-alternative-standard-color;
+        }
+    }
+}

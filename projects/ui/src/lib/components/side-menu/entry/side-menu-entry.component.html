@@ -1,0 +1,23 @@
+@if(isHidden() == false) {
+    <div class="menu-item" 
+        [class.selected]="isSelected()"
+        [class.disabled]="isDisabled()"
+        (click)="handleOptionClick($event)">
+
+        @if(icon()) {
+            
+            <fa-icon class="menu-item-icon" 
+                [class.selected]="isSelected()"
+            
+            [icon]="icon()!"
+            ></fa-icon>
+        }
+        <span>{{ label() }}</span>
+
+        <div class="align-right">
+            <ng-content select="ui-button"></ng-content>
+            <ng-content select="ui-switch"></ng-content>
+            <ng-content select="ui-badge"></ng-content>
+        </div>
+    </div>
+}

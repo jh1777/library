@@ -511,8 +511,57 @@ MODAL
       &nbsp;
     </div>
   </div>
-<br/>
-<ui-switch-button label="Switch Button" [options]="[
-        { label: 'List', value: 'list', icon: faTrash() },
-        { label: 'Grid', value: 'grid', icon: faCheck() }
-      ]"></ui-switch-button>
+</div>
+
+<div class="item">
+  <div class="title">
+    SWITCH BUTTON  (NEW!)
+    <div class="subtitle">
+      Toggle button to switch between two or more states; supports icons as well
+    </div>
+  </div>
+  <div class="columns" style="margin-top: 0.5rem">
+    <div class="container">
+      <ui-switch-button label="Switch Button">
+        <ui-switch-button-option label="List" value="list" [icon]="faTrash()"></ui-switch-button-option>
+        <ui-switch-button-option label="Grid" value="grid" [icon]="faCheck()"></ui-switch-button-option>
+      </ui-switch-button>
+    </div>
+  </div>
+</div>
+
+<div class="item">
+  <div class="title">
+    SIDE MENU (NEW!)
+    <div class="subtitle">
+      Simple side menu to show additional content; can be used in combination with ENTRY TILES for example
+    </div>
+  </div>
+  <div class="columns" style="margin-top: 0.5rem">
+    <div class="container" style="width: 25%;">
+      <ui-side-menu [(selectedValue)]="sideMenuSelectedValue" [showBorder]="false" (onSelectionChange)="log($event)">
+          <ui-side-menu-section title="Navigation">
+              <ui-side-menu-entry label="List" value="list" [icon]="faTrash()">
+                  <ui-switch label="Advanced"></ui-switch>
+              </ui-side-menu-entry>
+              <ui-side-menu-entry label="Grid" value="grid" [icon]="faCheck()"></ui-side-menu-entry>
+          </ui-side-menu-section>
+          <ui-side-menu-section title="Advanced">
+              <ui-side-menu-entry label="Table" value="table" [icon]="faExternalLink()">
+                <ui-button label="Delete" [style]=6 [icon]="faTrash()"></ui-button>
+                <ui-badge value="3" [style]="2"></ui-badge>
+              </ui-side-menu-entry>
+              <ui-side-menu-entry label="Disabled" value="disabled" [icon]="faError()" [isDisabled]="true"></ui-side-menu-entry>
+          </ui-side-menu-section>
+           <ui-side-menu-section>
+              <ui-side-menu-entry label="Test" value="test" [icon]="faExternalLink()">
+              </ui-side-menu-entry>
+              <ui-side-menu-entry label="Nice" value="nice" [icon]="faCopy()"></ui-side-menu-entry>
+          </ui-side-menu-section>
+      </ui-side-menu>
+      <br/>
+      Selected: <strong>{{ sideMenuSelectedValue() || 'None' }}</strong>
+    </div>
+  </div>
+</div>
+

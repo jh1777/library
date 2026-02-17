@@ -1,0 +1,12 @@
+<div
+  class="ui-switch-button-option"
+  [class.selected]="isSelected()"
+  [class.disabled]="isDisabled()"
+  [class.no-click]="isDisabled()"
+  (click)="handleClick($event)"
+>
+  @if (icon()) {
+    <fa-icon [icon]="icon()!" class="option-icon"></fa-icon>
+  }
+  <span class="option-label">{{ label() }}</span>
+</div>
