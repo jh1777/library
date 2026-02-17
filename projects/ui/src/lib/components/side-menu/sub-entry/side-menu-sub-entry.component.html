@@ -1,0 +1,10 @@
+@if(isHidden() == false) {
+    <div class="sub-menu-item" 
+        [class.selected]="isSelected()"
+        [class.disabled]="isDisabled()"
+        (click)="handleOptionClick($event)">
+
+        <span>{{ label() }}</span>
+
+    </div>
+}

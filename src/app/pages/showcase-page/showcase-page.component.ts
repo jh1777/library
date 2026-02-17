@@ -20,7 +20,7 @@ import {
   SignpostComponent,
   ButtonGroupComponent,
   GridComponent,
-  SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent,
+  SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent,
   TableComponent, ITableData,
   InputComponent
 } from '../../../../projects/ui/src/public-api';
@@ -41,7 +41,7 @@ import {
     SignpostComponent,
     ButtonGroupComponent,
     GridComponent,
-    SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent,
+    SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent,
     TableComponent,
     InputComponent
   ],

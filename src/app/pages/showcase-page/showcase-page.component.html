@@ -8,26 +8,28 @@
   <aside class="showcase-nav">
     <div class="nav-header">Component Showcase</div>
     <ui-side-menu [(selectedValue)]="activeSection">
-      <ui-side-menu-section title="Fundamentals">
-        <ui-side-menu-entry label="Badge" value="basics" [icon]="faShapes()"></ui-side-menu-entry>
+      <ui-side-menu-section label="Fundamentals">
+        <ui-side-menu-entry label="Badge" value="basics" [icon]="faShapes()">
+          <ui-side-menu-sub-entry label="Sub-Entry 1" value="sub1"></ui-side-menu-sub-entry>
+        </ui-side-menu-entry>
         <ui-side-menu-entry label="Button" value="buttons" [icon]="faShapes()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Switch &amp; Toggle" value="toggles" [icon]="faToggleOn()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Input" value="input" [icon]="faPencil()"></ui-side-menu-entry>
       </ui-side-menu-section>
-      <ui-side-menu-section title="Data Display">
+      <ui-side-menu-section label="Data Display">
         <ui-side-menu-entry label="Cards" value="cards" [icon]="faLayerGroup()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Entry Tiles" value="tiles" [icon]="faLayerGroup()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Key-Value &amp; Metrics" value="metrics" [icon]="faGauge()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Value Tile" value="valuetile" [icon]="faGauge()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Table" value="table" [icon]="faTable()"></ui-side-menu-entry>
       </ui-side-menu-section>
-      <ui-side-menu-section title="Layout &amp; Navigation">
+      <ui-side-menu-section label="Layout &amp; Navigation">
         <ui-side-menu-entry label="Toolbar" value="toolbar" [icon]="faBars()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Tabs" value="tabs" [icon]="faBars()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Accordion" value="accordion" [icon]="faBars()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Grid Layout" value="grid" [icon]="faGrip()"></ui-side-menu-entry>
       </ui-side-menu-section>
-      <ui-side-menu-section title="Overlays">
+      <ui-side-menu-section label="Overlays">
         <ui-side-menu-entry label="Modal" value="modal" [icon]="faWindowMaximize()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Signpost" value="signpost" [icon]="faWindowMaximize()"></ui-side-menu-entry>
       </ui-side-menu-section>

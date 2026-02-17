@@ -1,19 +1,21 @@
 @use '../../styles/ui.styles' as *;
 @use 'sass:color';
 :host {
+    width: $ui-collapse-button-size;
+    height: $ui-collapse-button-size;
+    min-width: $ui-collapse-button-size;
+    min-height: $ui-collapse-button-size;
+    max-width: $ui-collapse-button-size;
+    max-height: $ui-collapse-button-size;
     
     .ui-collapse-button {
         color: $ui-standard-text-color;
         display: flex;
         align-items: center;
-        padding: .1rem .2rem;
-        border-radius: $ui-border-radius;
-        width: $ui-collapse-button-size;
-        min-width: $ui-collapse-button-size;
-        max-width: $ui-collapse-button-size;
-        height: $ui-collapse-button-size;
-        min-height: $ui-collapse-button-size;
-        max-height: $ui-collapse-button-size;
+        justify-content: center;
+        font-size: 15px;
+        padding: .1rem .4rem .1rem .3rem;
+        border-radius: calc($ui-border-radius - 2px);
         cursor: pointer;
         user-select: none;
   

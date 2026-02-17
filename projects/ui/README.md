@@ -1160,10 +1160,10 @@ Groups related menu entries together under an optional section title. Provides v
 
 ### Inputs
 
-#### `title`
+#### `label`
 > Type: *string*  
 > Optional: **Yes**  
-Optional section title displayed above the entries.
+Optional section label displayed above the entries.
 
 ### Accepts as Sub-Component
 - [Side Menu Entry](#side-menu--side-menu-entry)
