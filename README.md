@@ -1,6 +1,6 @@
 # Library
 
-This project is for personal tryouts and component development playground.
+This project is for personal use and a component development playground.
 It is not a fully maintained UI Library at all. Use at own risk!
 
 ## Documentation
@@ -10,15 +10,22 @@ It is not a fully maintained UI Library at all. Use at own risk!
 - **[Developer Guide](./projects/ui/DEVELOPER_GUIDE.md)** - Complete guide for developers
 - **[Quick Start](./projects/ui/QUICK_START.md)** - Get started creating components quickly
 
+## Getting started
+
+Examine the ui-library:
+
+- Checkout the repo
+- Run `ng serve`
+- Look at the '**Showcase**' Page - it is also helpful if you need to know, how to use the components
+
 ## For Developers
 
-### Creating New Components
+### Package
 
-Use the component creation script for quick scaffolding:
+Install using `npm i @jh1777/jh-ui`. (Link to [NPM Package](https://www.npmjs.com/package/@jh1777/jh-ui))
 
-```bash
-./create-component.sh component-name
-```
+
+### More Guides
 
 For detailed instructions, see:
 - [Developer Guide](./projects/ui/DEVELOPER_GUIDE.md)
@@ -35,13 +42,12 @@ library/
 └── create-component.sh   # Component creation helper
 ```
 
-## Pages
+## Dev-Project Pages
 
-### Overview
+### Showcase
 
-All components (mostly) are shown here so you can infer the usage.
+Used this to see which components are in the libaray, how they look and how you can integrate them
 
 ### Grid
 
-Demo of the grid layout component which is just a tryout.
-
+Demo of the grid layout component (which is just a tryout and not really mature!).
