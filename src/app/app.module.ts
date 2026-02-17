@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
 
 import { UiLibPageComponent } from './pages/ui-lib-page/ui-lib-page.component';
 import { ShowcasePageComponent } from './pages/showcase-page/showcase-page.component';
@@ -12,8 +11,7 @@ import { WindowComponent, MenuBarComponent, MenuItemComponent, ContentComponent 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
+    AppComponent
  ],
   imports: [
     CommonModule,

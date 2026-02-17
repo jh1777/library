@@ -6,13 +6,13 @@
 
     table {
         border-spacing: 0;
+        width: 100%;
         border-collapse: collapse;
     }
 
     .ui-table {
         width: 100%;
         overflow-y: auto;
-        height: 60vh;
         &-label-header {
             display: flex;
             flex-direction: column;
@@ -42,6 +42,7 @@
             &-icon {
                 float: inline-end;
                 cursor: pointer;
+                margin-right: 0.3rem;
             }
         }
 

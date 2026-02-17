@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 @Component({
   selector: 'app-root',
   standalone: false,
@@ -10,13 +9,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = "Title"; // for testing
   public showBorders: boolean = false;
-
-  public buttonsTabActive: boolean;
-  public tagsTabActive: boolean;
-  public drawerTabActive: boolean;
-  public entriesTabActive: boolean;
-  public entryGridTabActive: boolean;
-  public entryTileTabActive: boolean;
-  public uiLibTabActive: boolean;
-  
 }
