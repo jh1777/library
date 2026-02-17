@@ -6,6 +6,7 @@ It is not a fully maintained UI Library at all. Use at own risk!
 ## Documentation
 
 - **[UI Library Documentation](./projects/ui/README.md)** - Component documentation and usage
+- **[Documentation Index](./projects/ui/DOCUMENTATION_INDEX.md)** - Starting point for Docs
 - **[Developer Guide](./projects/ui/DEVELOPER_GUIDE.md)** - Complete guide for developers
 - **[Quick Start](./projects/ui/QUICK_START.md)** - Get started creating components quickly
 
