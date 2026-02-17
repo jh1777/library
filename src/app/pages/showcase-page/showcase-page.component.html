@@ -251,7 +251,7 @@
       </div>
 
       <div class="demo-group">
-        <div class="demo-row" style="flex-wrap: wrap;">
+        <div class="demo-row demo-row-topalign" style="flex-wrap: wrap;">
           <ui-card header="Default Card">
             <ui-card-section-basic text="A simple card with basic text content and a footer button.">
               <ui-button label="Action" slot="footer-left"></ui-button>
@@ -502,12 +502,13 @@
          ════════════════════════════════════════════════════════════ -->
     @if (activeSection() === 'table') {
     <section id="table" class="section">
-      <div class="section-header">Table</div>
+      <div class="section-header">Table (wip)</div>
       <div class="section-description">
         Data table with sortable columns, clickable rows, filter icons, and footer support.
       </div>
 
-      <div class="demo-group" style="max-width: 700px;">
+      <div class="demo-group">
+
         <ui-table
           header="Service Monitoring"
           description="Click a row to select it. Column headers are sortable."
@@ -515,6 +516,7 @@
           (onRowClick)="log($event)"
           (onSortClick)="log($event)">
         </ui-table>
+
       </div>
 
       <div class="code-example">
@@ -527,6 +529,7 @@
   (onSortClick)="onSort($event)"&gt;
 &lt;/ui-table&gt;</code></pre>
       </div>
+
     </section>
     }
 

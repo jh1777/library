@@ -109,10 +109,10 @@ export class ShowcasePageComponent {
   // --- Demo State: Table ---
   tableData = signal<ITableData>({
     columns: [
-      { label: 'Name', widthPercent: 30, isSortable: true },
-      { label: 'Status', widthPercent: 20, isSortable: true },
-      { label: 'Updated', widthPercent: 25 },
-      { label: 'Value', widthPercent: 25, isSortable: true }
+      { label: 'Name',  isSortable: true },
+      { label: 'Status', isSortable: true },
+      { label: 'Updated', isSortable: true },
+      { label: 'Value', isSortable: true }
     ],
     rows: [
       { rowIndex: 0, isClickable: true, cells: [
