@@ -32,5 +32,45 @@ jobs:
         run: npm ci
       
       - name: Run tests
-        run: npm run ng -- test ui --watch=false --browsers=ChromeHeadless
+        run: npm run ng -- test ui --watch=false --code-coverage --browsers=ChromeHeadless
+
+      - name: Generate coverage report
+        if: always()
+        run: |
+          echo '## :bar_chart: Code Coverage Report' >> $GITHUB_STEP_SUMMARY
+          echo '' >> $GITHUB_STEP_SUMMARY
+
+          if [ -f ./coverage/library/lcov.info ]; then
+            # Parse lcov.info to extract coverage stats
+            LINES_FOUND=$(grep -c '^DA:' ./coverage/library/lcov.info || echo '0')
+            LINES_HIT=$(grep '^DA:' ./coverage/library/lcov.info | awk -F, '{if ($2 > 0) count++} END {print count+0}' || echo '0')
+            FUNCTIONS_FOUND=$(grep -c '^FN:' ./coverage/library/lcov.info || echo '0')
+            FUNCTIONS_HIT=$(grep '^FNDA:' ./coverage/library/lcov.info | awk -F, '{if ($1 ~ /^FNDA:/ ) { split($1,a,":"); if (a[2] > 0) count++ }} END {print count+0}' || echo '0')
+            BRANCHES_FOUND=$(grep -c '^BRDA:' ./coverage/library/lcov.info || echo '0')
+            BRANCHES_HIT=$(grep '^BRDA:' ./coverage/library/lcov.info | awk -F, '{if ($4 != "-" && $4 > 0) count++} END {print count+0}' || echo '0')
+
+            if [ "$LINES_FOUND" -gt 0 ]; then
+              LINE_PCT=$(awk "BEGIN {printf \"%.2f\", ($LINES_HIT/$LINES_FOUND)*100}")
+            else
+              LINE_PCT="0.00"
+            fi
+            if [ "$FUNCTIONS_FOUND" -gt 0 ]; then
+              FUNC_PCT=$(awk "BEGIN {printf \"%.2f\", ($FUNCTIONS_HIT/$FUNCTIONS_FOUND)*100}")
+            else
+              FUNC_PCT="0.00"
+            fi
+            if [ "$BRANCHES_FOUND" -gt 0 ]; then
+              BRANCH_PCT=$(awk "BEGIN {printf \"%.2f\", ($BRANCHES_HIT/$BRANCHES_FOUND)*100}")
+            else
+              BRANCH_PCT="0.00"
+            fi
+
+            echo '| Category | Covered | Total | Percentage |' >> $GITHUB_STEP_SUMMARY
+            echo '|----------|---------|-------|------------|' >> $GITHUB_STEP_SUMMARY
+            echo "| :page_facing_up: Lines | $LINES_HIT | $LINES_FOUND | **${LINE_PCT}%** |" >> $GITHUB_STEP_SUMMARY
+            echo "| :gear: Functions | $FUNCTIONS_HIT | $FUNCTIONS_FOUND | **${FUNC_PCT}%** |" >> $GITHUB_STEP_SUMMARY
+            echo "| :twisted_rightwards_arrows: Branches | $BRANCHES_HIT | $BRANCHES_FOUND | **${BRANCH_PCT}%** |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo ':warning: No coverage data found.' >> $GITHUB_STEP_SUMMARY
+          fi
 
