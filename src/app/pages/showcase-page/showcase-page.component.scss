@@ -6,7 +6,6 @@
 .showcase {
   display: flex;
   height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 // ── Left Navigation ──
@@ -14,7 +13,7 @@
   position: sticky;
   top: 0;
   align-self: flex-start;
-  width: 220px;
+  width: 20px;
   min-width: 220px;
   height: 100vh;
   overflow-y: auto;

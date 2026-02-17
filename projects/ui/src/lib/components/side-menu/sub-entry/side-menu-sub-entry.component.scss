@@ -8,18 +8,22 @@
         display: flex;
         align-items: center;
         font-size: small;
-        color: $ui-dark-standard-color;
+        color: $ui-standard-text-color;
         padding: 0.3rem 2.5rem;
-        overflow-x: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        -webkit-line-clamp: 1;
         border-radius: $ui-border-radius;
         cursor: pointer;
         transition: background-color 0.2s;
+        
+        .label {
+            -webkit-line-clamp: 1;
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
 
         &:not(.disabled):not(.selected):hover {
-            color: $ui-standard-text-color;
+            color: $ui-dark-standard-color;
         }
 
         &.disabled {

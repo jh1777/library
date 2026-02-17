@@ -84,7 +84,6 @@
         display: flex;
         width: fit-content;
         border-radius: 1rem;
-
         box-sizing: content-box;
         background-color: $ui-dark-standard-color;
         color: $ui-inverted-text-color;
@@ -95,6 +94,11 @@
         -webkit-touch-callout: none; /* iOS Safari */
         user-select: none;
 
+        &.long-value {
+            padding-left: 0.3rem;
+            padding-right: 0.3rem;
+        }
+
         &-container {
             padding: 0.2rem 0.5rem;
             gap: .25rem;
@@ -103,7 +107,7 @@
             justify-content: center;
             display: flex;
             width: fit-content;
-            border-radius: .3rem;
+            border-radius: $ui-border-radius;
             font-size: small;
             border: 1px solid $ui-standard-color;
         }

@@ -12,14 +12,18 @@
         font-weight: 400;
         color: $ui-standard-text-color;
         padding: 0.5rem 1rem;
-        overflow-x: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        -webkit-line-clamp: 1;
         border-radius: $ui-border-radius;
         cursor: pointer;
         transition: background-color 0.2s;
 
+        .label {
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            -webkit-line-clamp: 1;
+        }
+        
         &-icon {
             display: flex;
             color: $ui-dark-standard-color;
