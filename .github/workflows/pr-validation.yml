@@ -12,6 +12,7 @@ on:
       - 'angular.json'
       - 'tsconfig.json'
       - 'karma.conf.js'
+  workflow_dispatch:
 
 jobs:
   test:
