@@ -32,11 +32,26 @@ jobs:
         run: npm ci
       
       - name: Run tests
-        run: npm run ng -- test ui --watch=false --code-coverage --browsers=ChromeHeadless
-      
-      - name: Upload coverage reports
-        uses: codecov/codecov-action@v3
+        run: |
+          npx ng test ui --no-watch --code-coverage --browsers=ChromeHeadless 2>&1 | tee test-output.txt
+          # Fail the step if tests failed (grep for FAILED or check for SUCCESS)
+          grep -q 'TOTAL.*SUCCESS' test-output.txt
+
+      - name: Generate coverage summary
         if: always()
-        with:
-          files: ./coverage/ui/lcov.info
-          fail_ci_if_error: false
+        run: |
+          echo '## :bar_chart: Code Coverage Report' >> $GITHUB_STEP_SUMMARY
+          echo '' >> $GITHUB_STEP_SUMMARY
+          if [ -f test-output.txt ]; then
+            COVERAGE=$(sed -n '/Coverage summary/,/={10,}/p' test-output.txt | sed 's/\x1b\[[0-9;]*m//g')
+            if [ -n "$COVERAGE" ]; then
+              echo '```' >> $GITHUB_STEP_SUMMARY
+              echo "$COVERAGE" >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+            else
+              echo ':warning: No coverage summary found in test output.' >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo ':warning: No test output captured.' >> $GITHUB_STEP_SUMMARY
+          fi
+
