@@ -1,7 +1,7 @@
 @if(isHidden() == false) {
     <div class="menu-section">
-        @if(title()) {
-            <div class="section-title">{{ title() }}</div>
+        @if(label()) {
+            <div class="section-title">{{ label() }}</div>
         }
         <ng-content select="ui-side-menu-entry"></ng-content>
     </div>

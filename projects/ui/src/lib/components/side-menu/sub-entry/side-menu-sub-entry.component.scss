@@ -3,47 +3,27 @@
 :host {
     display: flex;
     flex-direction: column;
-    $icon-size: 14px;
 
-    .menu-item {
+    .sub-menu-item {
         display: flex;
         align-items: center;
-        gap: 0.7rem;
-        font-weight: 400;
+        font-size: small;
         color: $ui-standard-text-color;
-        padding: 0.5rem 1rem;
+        padding: 0.3rem 2.5rem;
         border-radius: $ui-border-radius;
         cursor: pointer;
         transition: background-color 0.2s;
-
+        
         .label {
+            -webkit-line-clamp: 1;
             display: inline-block;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            -webkit-line-clamp: 1;
-        }
-        
-        &-icon {
-            display: flex;
-            color: $ui-dark-standard-color;
-            width: $icon-size;
-            height: $icon-size;
-
-            &.selected {
-                color: $ui-standard-text-color;
-            }
         }
 
-        .align-right {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-left: auto;
-        }
-        
         &:not(.disabled):not(.selected):hover {
-            background-color: $ui-alternative-standard-color;
+            color: $ui-dark-standard-color;
         }
 
         &.disabled {
@@ -57,6 +37,7 @@
 
         &.selected {
             background-color: $ui-alternative-standard-color;
+            color: $ui-standard-text-color;
         }
     }
 }

@@ -11,7 +11,7 @@ import { UIBaseComponent } from '../../../shared';
 })
 export class SideMenuSectionComponent extends UIBaseComponent {
 
-  /** Optional section title displayed above the entries */
-  title = input<string>();
+  /** Optional section label displayed above the entries */
+  label = input<string>();
 
 }

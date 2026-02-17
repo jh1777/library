@@ -1,22 +1,25 @@
 :host {
   display: block;
-  height: 100%;
 }
 
+// height: 100% won't resolve because ui-content's inner .ui-content div
+// has height: auto (no explicit height). We bypass the broken %-chain by
+// calculating the exact remaining viewport space:
+//   100dvh  –  menu-bar (60px + 2px border)  –  ui-content padding (top + bottom)
+// The padding vars are inherited CSS custom-properties from the library.
 .showcase {
   display: flex;
-  height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  $menu-bar-outer: 62px;
+  height: calc(100dvh - #{$menu-bar-outer}
+               - var(--ui-content-padding-top, 20px)
+               - var(--ui-content-padding-bottom, 20px));
 }
 
 // ── Left Navigation ──
+// No position:sticky needed — .showcase is a fixed-height flex row,
+// so the nav never moves; only .showcase-content scrolls.
 .showcase-nav {
-  position: sticky;
-  top: 0;
-  align-self: flex-start;
-  width: 220px;
-  min-width: 220px;
-  height: 100vh;
+  flex: 0 0 220px;
   overflow-y: auto;
   padding: 1rem 0.5rem;
   border-right: 1px solid #eaeaea;
@@ -47,6 +50,7 @@
 // ── Main Content ──
 .showcase-content {
   flex: 1;
+  min-width: 0;
   overflow-y: auto;
   padding: 1.5rem 2rem;
 }

@@ -23,14 +23,14 @@ describe('SideMenuSectionComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should set title input', () => {
-        fixture.componentRef.setInput('title', 'Section Title');
+    it('should set label input', () => {
+        fixture.componentRef.setInput('label', 'Section Label');
         fixture.detectChanges();
-        expect(component.title()).toBe('Section Title');
+        expect(component.label()).toBe('Section Label');
     });
 
-    it('should handle optional title', () => {
-        // title is optional, so should work without it
-        expect(component.title()).toBeUndefined();
+    it('should handle optional label', () => {
+        // label is optional, so should work without it
+        expect(component.label()).toBeUndefined();
     });
 });

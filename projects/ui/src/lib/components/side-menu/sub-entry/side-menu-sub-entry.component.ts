@@ -1,33 +1,26 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, computed, ContentChildren, inject, input, model, output, QueryList } from '@angular/core';
-import { UIBaseComponent, UiCollapseButtonComponent } from '../../../shared';
+import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
+import { UIBaseComponent } from '../../../shared';
 import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { SideMenuComponent } from '../side-menu.component';
-import { SideMenuSubEntryComponent } from '../sub-entry/side-menu-sub-entry.component';
 
 @Component({
-  selector: 'ui-side-menu-entry',
+  selector: 'ui-side-menu-sub-entry',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [FontAwesomeModule, UiCollapseButtonComponent],
-  templateUrl: './side-menu-entry.component.html',
-  styleUrl: './side-menu-entry.component.scss'
+  imports: [FontAwesomeModule],
+  templateUrl: './side-menu-sub-entry.component.html',
+  styleUrl: './side-menu-sub-entry.component.scss'
 })
-export class SideMenuEntryComponent extends UIBaseComponent {
+export class SideMenuSubEntryComponent extends UIBaseComponent {
 
   /** Optional reference to the parent SideMenuComponent (if used inside one) */
   private parentMenu = inject(SideMenuComponent, { optional: true });
-
-  @ContentChildren(SideMenuSubEntryComponent) subEntries!: QueryList<SideMenuSubEntryComponent>;
 
   /** Label text for the menu item */
   label = input.required<string>();
 
   /** Value associated with this menu item */
   value = input.required<string | number | boolean>();
-
-  /** Optional icon for the menu item (Font Awesome icon) */
-  icon = input<IconDefinition>();
 
   /** If set to `true` this menu item is disabled and can't be clicked (optional) */
   isDisabled = input<boolean>(false);
@@ -36,17 +29,6 @@ export class SideMenuEntryComponent extends UIBaseComponent {
   isSelectedInput = input<boolean>(false, { alias: 'isSelected' });
 
   onSelectionChange = output<string | number | boolean>();
-
-  isExpanded = model<boolean>(true);
-
-  hasSubEntries = computed(() => this.subEntries && this.subEntries.length > 0);
-
-
-  handleExpandToggle($event: MouseEvent) {
-    $event.preventDefault();
-    $event.stopPropagation();
-    this.isExpanded.set(!this.isExpanded());
-  }
 
   /** 
    * Computed selected state: if inside a parent ui-side-menu, derives from 

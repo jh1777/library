@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input, model, output, signal } from '@angular/core';
 import { CollapsedDirection } from './ui-collapse-button.models';
-import { IconDefinition, faAngleDown, faAngleUp} from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleUp} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
 
 //ClarityIcons.addIcons(angleIcon);
