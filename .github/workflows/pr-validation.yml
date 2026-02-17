@@ -32,11 +32,5 @@ jobs:
         run: npm ci
       
       - name: Run tests
-        run: npm run ng -- test ui --watch=false --code-coverage --browsers=ChromeHeadless
-      
-      - name: Upload coverage reports
-        uses: codecov/codecov-action@v3
-        if: always()
-        with:
-          files: ./coverage/library/lcov.info
-          fail_ci_if_error: false
+        run: npm run ng -- test ui --watch=false --browsers=ChromeHeadless
+
