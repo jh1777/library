@@ -32,7 +32,7 @@ jobs:
         run: npm ci
       
       - name: Run tests
-        run: npm test -- --watch=false --code-coverage
+        run: npm run ng -- test ui --watch=false --code-coverage --browsers=ChromeHeadless
       
       - name: Upload coverage reports
         uses: codecov/codecov-action@v3
