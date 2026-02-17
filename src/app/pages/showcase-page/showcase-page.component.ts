@@ -4,7 +4,8 @@ import {
   faCircleCheck, faCircleExclamation, faInfoCircle, faTriangleExclamation,
   faTrash, faExternalLink, faCopy, faTimes, faPlay, faStop,
   faShapes, faToggleOn, faLayerGroup, faTable, faGauge, faBars,
-  faWindowMaximize, faSliders, faList, faGrip, faPencil
+  faWindowMaximize, faSliders, faList, faGrip, faPencil,
+  faCircleDot
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -74,7 +75,7 @@ export class ShowcasePageComponent {
   faBars = signal<IconDefinition>(faBars);
   faWindowMaximize = signal<IconDefinition>(faWindowMaximize);
   faSliders = signal<IconDefinition>(faSliders);
-
+  faCircleDot = signal<IconDefinition>(faCircleDot);
   // --- Navigation ---
   activeSection = signal<string | number | boolean>('basics');
 
