@@ -1,6 +1,6 @@
 
 
-$ui-black: #000000 !default;
+$ui-black: #000 !default;
 $ui-white: #ffffff !default;
 
 $ui-success-color: #2cd345 !default;
@@ -24,13 +24,13 @@ $ui-light-petrol-color: #69BAC9 !default;
 $ui-hover-standard-color: #f7f7f7 !default;
 $ui-dark-standard-color: #999999 !default;
 
-$ui-standard-text-color: $ui-black !default;
+$ui-standard-text-color: #444 !default;
 $ui-inverted-text-color: $ui-white !default;
 
 $ui-shadow-color: #9a9a9a !default;
 $ui-alternative-shadow-color: #d0d0d0 !default;
 $ui-light-shadow-color: #ededed !default;
-$ui-dark-shadow-color: #444444 !default;
+$ui-dark-shadow-color: #223344 !default;
 
 // Special Variables 
 $ui-min-width: 250px !default;

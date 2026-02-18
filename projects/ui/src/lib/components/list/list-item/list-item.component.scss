@@ -1,0 +1,19 @@
+@use '../../../styles/ui.styles' as *;
+
+:host {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 8px;
+  flex-direction: row;
+  height: 35px;;
+
+  .list-text-item-value {
+    // Text item value styles
+
+    :not(:last-child) {
+      border-bottom: 1px solid $ui-standard-color;
+    }
+  }
+
+}

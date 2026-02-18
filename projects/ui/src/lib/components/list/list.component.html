@@ -1,0 +1,11 @@
+@if(isHidden() == false) {
+    <div class="list-header">
+            {{ header() }}
+        </div>
+    <div class="list-item">
+        
+        
+        <ng-content select="ui-list-item"></ng-content>
+
+    </div>
+}

@@ -1,0 +1,28 @@
+@use '../../styles/ui.styles' as *;
+
+:host {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  border: 1px solid $ui-standard-color;
+  border-radius: $ui-border-radius;
+
+  .list-header {
+      background-color: $ui-light-standard-color;
+      height: 50px;
+      display: flex;
+      font-weight: 600;
+      color: $ui-standard-text-color;
+      align-items: center;
+      padding: 0 16px;
+      border-radius: $ui-border-radius $ui-border-radius 0 0;
+    }
+
+  .list-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 16px;
+
+  }
+}
