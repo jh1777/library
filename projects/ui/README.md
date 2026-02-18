@@ -1332,7 +1332,7 @@ NONE
 > Signature: showMessage(message: BannerMessage, duration: number)
 
 Shows a banner at the top of the page based on `BannerMessage` definition.
-Pre-requisite:  ContentComponent is injected in the component which is contained in the router outlet (e.g. `content = inject(ContentComponent, {optional: true});`).  
+Pre-requisite: `ContentComponent` is injected in the component which is contained in the router outlet (e.g. `content = inject(ContentComponent, {optional: true});`).  
 Then it can be used like: 
 
 ```ts
