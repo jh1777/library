@@ -5,6 +5,12 @@
     flex-direction: column;
     $icon-size: 14px;
 
+    .tooltip-icon {
+        display: flex;
+        color: $ui-standard-color;
+        font-size: small;
+    }
+
     .menu-item {
         display: flex;
         align-items: center;
@@ -15,6 +21,12 @@
         border-radius: $ui-border-radius;
         cursor: pointer;
         transition: background-color 0.2s;
+
+        &-container {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
 
         .label {
             display: inline-block;

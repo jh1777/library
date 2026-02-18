@@ -25,13 +25,14 @@
       </ui-side-menu-section>
       <ui-side-menu-section label="Layout &amp; Navigation">
         <ui-side-menu-entry label="Toolbar" value="toolbar" [icon]="faBars()"></ui-side-menu-entry>
-        <ui-side-menu-entry label="Tabs" value="tabs" [icon]="faBars()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Tabs" tooltip="This is an example tooltip" value="tabs" [icon]="faBars()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Accordion" value="accordion" [icon]="faBars()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Grid Layout" value="grid" [icon]="faGrip()"></ui-side-menu-entry>
       </ui-side-menu-section>
       <ui-side-menu-section label="Overlays">
         <ui-side-menu-entry label="Modal" value="modal" [icon]="faWindowMaximize()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Signpost" value="signpost" [icon]="faWindowMaximize()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Banner" value="banner" [icon]="faWindowMaximize()"></ui-side-menu-entry>
       </ui-side-menu-section>
     </ui-side-menu>
     <div class="nav-description">
@@ -280,7 +281,25 @@
               <ui-switch label="Auto-Renew" slot="footer-left"></ui-switch>
             </ui-card-section-basic>
           </ui-card>
-
+          <ui-card header="Metrics">
+            <ui-badge value="51%" [style]="0" slot="header-right"></ui-badge>
+            <ui-card-section-basic
+              header="Resource Usage"
+              text="Current CPU and Memory utilization."
+              tooltip="Updated every minute"
+              [style]="1">
+            </ui-card-section-basic>
+            <ui-card-section-basic>
+              <ui-entry-container>
+                <ui-entry-key-value label="CPU" value="34%" [style]="3"></ui-entry-key-value>
+                <ui-entry-metric [percent]="34" [style]="3"></ui-entry-metric>
+              </ui-entry-container>
+              <ui-entry-container>
+                <ui-entry-key-value label="Memory" value="67%"></ui-entry-key-value>
+                <ui-entry-metric [percent]="67"></ui-entry-metric>
+              </ui-entry-container>
+            </ui-card-section-basic>
+          </ui-card>
           <ui-card header="Loading Card" [isLoading]="true"></ui-card>
 
           <ui-card header="Error Card" errorMessage="Failed to load component data."></ui-card>
@@ -804,6 +823,31 @@
   text="Contextual info here."
   [offsetY]="-50"&gt;
 &lt;/ui-signpost&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
+          SECTION: Banner
+          ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'banner') {
+    <section id="banner" class="section">
+      <div class="section-header">Banner</div>
+      <div class="section-description">
+        Temporary notification messages that appear at the bottom of the screen. Supports auto-dismiss and manual close.
+      </div>
+      <div class="demo-row">
+        <ui-button label="Success Banner" (onClick)="content?.showMessage({ text: 'This is a success banner message!', type: 'success' })" [style]="5"></ui-button>
+        <ui-button label="Error Banner" (onClick)="content?.showMessage({ text: 'This is an error banner message.', type: 'error' })" [style]="4"></ui-button>
+        <ui-button label="Info Banner" (onClick)="content?.showMessage({ text: 'This is an informational banner.', type: 'info' })" [style]="2"></ui-button>
+        <ui-button label="Warning Banner" (onClick)="content?.showMessage({ text: 'This is a warning banner message.', type: 'warning' })" [style]="1"></ui-button>
+
+
+      </div>
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;ui-button label="Show Banner" (onClick)="showBanner()"&gt;
+&lt;/ui-button&gt;</code></pre>
       </div>
     </section>
     }

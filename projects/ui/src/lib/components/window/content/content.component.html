@@ -5,6 +5,13 @@
         [class.no-scroll]="isLoading() == true"
         [class.no-select]="isLoading() == true"
     >   
+        @if(bannerMessage()) {
+            <span class="ui-content-banner {{ bannerMessage().type }}">
+                <span class="text">
+                    {{ bannerMessage().text }}
+                </span>
+            </span>
+        }
         <ng-content></ng-content>
     </div>
     @if(isLoading() == true) {

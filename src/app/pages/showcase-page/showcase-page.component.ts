@@ -1,4 +1,4 @@
-import { Component, signal, ViewChild } from '@angular/core';
+import { Component, inject, signal, ViewChild } from '@angular/core';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   faCircleCheck, faCircleExclamation, faInfoCircle, faTriangleExclamation,
@@ -23,7 +23,8 @@ import {
   GridComponent,
   SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent,
   TableComponent, ITableData,
-  InputComponent
+  InputComponent,
+  ContentComponent
 } from '../../../../projects/ui/src/public-api';
 
 @Component({
@@ -50,6 +51,8 @@ import {
   styleUrls: ['./showcase-page.component.scss']
 })
 export class ShowcasePageComponent {
+
+  content = inject(ContentComponent, {optional: true});
 
   // --- Icons ---
   faCheck = signal<IconDefinition>(faCircleCheck);
