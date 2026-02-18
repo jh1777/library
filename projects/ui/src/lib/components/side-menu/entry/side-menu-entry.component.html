@@ -19,12 +19,12 @@
             <ng-content select="ui-switch"></ng-content>
             <ng-content select="ui-badge"></ng-content>
             @if(hasSubEntries()) {
-                <ui-collapse-button [(isCollapsed)]="isExpanded" (onClick)="handleExpandToggle($event)"></ui-collapse-button>
+                <ui-collapse-button [(isCollapsed)]="isCollapsed" (onClick)="handleExpandToggle($event)"></ui-collapse-button>
             }
         </div>
     </div>
 
-    @if (isExpanded()) {
+    @if (!isCollapsed()) {
         <div class="sub-menu">
             <ng-content select="ui-side-menu-sub-entry"></ng-content>
         </div>

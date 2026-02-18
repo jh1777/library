@@ -37,7 +37,7 @@ export class SideMenuEntryComponent extends UIBaseComponent {
 
   onSelectionChange = output<string | number | boolean>();
 
-  isExpanded = model<boolean>(true);
+  isCollapsed = model<boolean>(false);
 
   hasSubEntries = computed(() => this.subEntries && this.subEntries.length > 0);
 
@@ -45,7 +45,7 @@ export class SideMenuEntryComponent extends UIBaseComponent {
   handleExpandToggle($event: MouseEvent) {
     $event.preventDefault();
     $event.stopPropagation();
-    this.isExpanded.set(!this.isExpanded());
+    this.isCollapsed.set(!this.isCollapsed());
   }
 
   /** 
