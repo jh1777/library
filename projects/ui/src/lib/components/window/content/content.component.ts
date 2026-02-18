@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, input, signal } from '@angular/core';
 import { UIBaseComponent, UiSpinnerComponent } from '../../../shared';
 import { BannerMessage } from './content.models';
 
@@ -16,10 +16,32 @@ export class ContentComponent extends UIBaseComponent {
 
   bannerMessage = signal<BannerMessage | null>(null);
 
-  showMessage(message: BannerMessage) {
+  private dismissTimer: ReturnType<typeof setTimeout> | null = null;
+  private destroyRef = inject(DestroyRef);
+
+  constructor() {
+    super();
+    this.destroyRef.onDestroy(() => this.clearTimer());
+  }
+
+  showMessage(message: BannerMessage, duration = 3000) {
+    this.clearTimer();
     this.bannerMessage.set(message);
-    setTimeout(() => {
+    this.dismissTimer = setTimeout(() => {
       this.bannerMessage.set(null);
-    }, 3000); 
+      this.dismissTimer = null;
+    }, duration);
+  }
+
+  dismissMessage() {
+    this.clearTimer();
+    this.bannerMessage.set(null);
+  }
+
+  private clearTimer() {
+    if (this.dismissTimer !== null) {
+      clearTimeout(this.dismissTimer);
+      this.dismissTimer = null;
+    }
   }
 }

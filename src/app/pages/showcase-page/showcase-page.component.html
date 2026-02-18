@@ -834,7 +834,7 @@
     <section id="banner" class="section">
       <div class="section-header">Banner</div>
       <div class="section-description">
-        Temporary notification messages that appear at the bottom of the screen. Supports auto-dismiss and manual close.
+        Temporary notification messages that appear at the top of the screen. Supports different types (success, error, info, warning) and auto-dismiss after timeout.
       </div>
       <div class="demo-row">
         <ui-button label="Success Banner" (onClick)="content?.showMessage({ text: 'This is a success banner message!', type: 'success' })" [style]="5"></ui-button>
@@ -842,12 +842,6 @@
         <ui-button label="Info Banner" (onClick)="content?.showMessage({ text: 'This is an informational banner.', type: 'info' })" [style]="2"></ui-button>
         <ui-button label="Warning Banner" (onClick)="content?.showMessage({ text: 'This is a warning banner message.', type: 'warning' })" [style]="1"></ui-button>
 
-
-      </div>
-      <div class="code-example">
-        <div class="code-label">Usage</div>
-        <pre><code>&lt;ui-button label="Show Banner" (onClick)="showBanner()"&gt;
-&lt;/ui-button&gt;</code></pre>
       </div>
     </section>
     }
