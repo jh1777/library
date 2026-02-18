@@ -1,9 +1,10 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, computed, ContentChildren, inject, input, model, output, QueryList } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, computed, ContentChildren, inject, input, model, output, QueryList, signal } from '@angular/core';
 import { UIBaseComponent, UiCollapseButtonComponent } from '../../../shared';
 import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { SideMenuComponent } from '../side-menu.component';
 import { SideMenuSubEntryComponent } from '../sub-entry/side-menu-sub-entry.component';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'ui-side-menu-entry',
@@ -14,6 +15,7 @@ import { SideMenuSubEntryComponent } from '../sub-entry/side-menu-sub-entry.comp
   styleUrl: './side-menu-entry.component.scss'
 })
 export class SideMenuEntryComponent extends UIBaseComponent {
+  infoIcon = signal(faInfoCircle);
 
   /** Optional reference to the parent SideMenuComponent (if used inside one) */
   private parentMenu = inject(SideMenuComponent, { optional: true });
@@ -37,15 +39,14 @@ export class SideMenuEntryComponent extends UIBaseComponent {
 
   onSelectionChange = output<string | number | boolean>();
 
-  isExpanded = model<boolean>(true);
+  isCollapsed = model<boolean>(false);
 
   hasSubEntries = computed(() => this.subEntries && this.subEntries.length > 0);
-
 
   handleExpandToggle($event: MouseEvent) {
     $event.preventDefault();
     $event.stopPropagation();
-    this.isExpanded.set(!this.isExpanded());
+    this.isCollapsed.set(!this.isCollapsed());
   }
 
   /** 

@@ -1,3 +1,6 @@
+@use '../../../styles/ui.styles' as *;
+@use 'sass:color';
+
 :host {
     display: block;
     min-height: 0;
@@ -18,6 +21,59 @@
         min-height: 0;     // KRITISCH
         overflow-y: auto;
         overflow-x: hidden;
+
+        &-banner {
+            display: flex;
+            position: fixed;
+            align-items: center;
+            left: 0;
+            height: 50px;
+            transform: translateY(calc(-1 * var(--ui-content-padding-top)));
+            right: 0;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            -webkit-line-clamp: 2;
+            opacity: 0.95;
+            z-index: 1000;
+            &.info {
+                background-color: $ui-petrol-color;
+                color: $ui-inverted-text-color;
+            }
+            &.warning {
+                background-color: $ui-attention-color;
+                color: $ui-inverted-text-color;
+            }
+            &.error {
+                background-color: $ui-error-color;
+                color: $ui-inverted-text-color;
+            }
+            &.success {
+                background-color: $ui-success-color;
+                color: $ui-inverted-text-color;
+            }
+
+            .text {
+                padding: 0.5rem 1rem;
+                font-size: small;
+                font-weight: 600;
+            }
+
+            .right-aligned {
+                cursor: pointer;
+                margin-left: auto;
+                padding-right: 1rem;
+                color: $ui-inverted-text-color;
+
+                .close-button {
+                    padding: 0.1rem 0.3rem;
+                    border-radius: 4px;
+                    &:hover {
+                        background-color: color.adjust($ui-inverted-text-color, $alpha: -0.8);
+                    }
+                }
+            }
+        }
 
         &-loading {
             display: flex;
