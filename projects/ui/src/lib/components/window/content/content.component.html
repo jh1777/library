@@ -10,13 +10,20 @@
                 <span class="text">
                     {{ bannerMessage().text }}
                 </span>
-                @if(bannerMessage().showCloseButton) {
-                    <span class="right-aligned">
+                <span class="right-aligned">
+                    @if(bannerMessage().action) {
+                        <ui-button 
+                            (onClick)="onActionClick()"
+                            [label]="bannerMessage().actionLabel ?? 'Action'" 
+                            [style]="actionButtonStyle(bannerMessage())"
+                        ></ui-button>
+                    }
+                    @if(bannerMessage().showCloseButton) {
                         <span class="close-button" (click)="dismissMessage()">
                             <fa-icon [icon]="closeIcon()"></fa-icon>
                         </span>
-                    </span>
-                }
+                    }
+                </span>
             </span>
         }
         <ng-content></ng-content>

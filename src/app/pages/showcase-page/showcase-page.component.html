@@ -834,14 +834,14 @@
     <section id="banner" class="section">
       <div class="section-header">Banner</div>
       <div class="section-description">
-        Temporary notification messages that appear at the top of the screen. Supports different types (success, error, info, warning) and auto-dismiss after timeout.
+        Temporary notification message that appears at the top of the screen. It supports just one at a time and different types (success, error, info, warning) and auto-dismiss after configurable timeout.
       </div>
       <div class="demo-row">
-        <ui-button label="Success" (onClick)="content?.showMessage({ text: 'This is a success banner message!', type: 'success' })" [style]="5"></ui-button>
-        <ui-button label="Error" (onClick)="content?.showMessage({ text: 'This is an error banner message.', type: 'error', showCloseButton: true }, 9000)" [style]="4"></ui-button>
+        <ui-button label="Success with Action 3s" (onClick)="content?.showMessage({ text: 'This is a success banner message!', type: 'success' })" [style]="5"></ui-button>
+        <ui-button label="Error with Close 9s" (onClick)="content?.showMessage({ text: 'This is an error banner message.', type: 'error', showCloseButton: true, duration: 9000 })" [style]="4"></ui-button>
         <ui-button label="Info" (onClick)="content?.showMessage({ text: 'This is an informational banner.', type: 'info' })" [style]="2"></ui-button>
-        <ui-button label="Warning" (onClick)="content?.showMessage({ text: 'This is a warning banner message.', type: 'warning' })" [style]="1"></ui-button>
-
+        <ui-button label="Warning" (onClick)="content?.showMessage({ text: 'This is a warning banner message.', type: 'warning', duration: 4000 })" [style]="1"></ui-button>
+        <ui-button label="Info with Action" (onClick)="content?.showMessage({ text: 'Item deleted.', type: 'info', actionLabel: 'Undo', action: onBannerUndo, showCloseButton: true, duration: 5000 })" [style]="2"></ui-button>
       </div>
     </section>
     }

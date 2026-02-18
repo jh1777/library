@@ -134,6 +134,10 @@ export class ShowcasePageComponent {
   });
 
   // --- Utility ---
+  onBannerUndo = () => {
+    console.log('[ShowcasePage] Undo action triggered');
+  };
+
   log(event: any) {
     console.log('[ShowcasePage]', event);
   }

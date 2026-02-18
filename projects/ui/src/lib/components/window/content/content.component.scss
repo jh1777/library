@@ -37,8 +37,8 @@
             opacity: 0.95;
             z-index: 1000;
             &.info {
-                background-color: $ui-alternative-standard-color;
-                color: $ui-standard-text-color;
+                background-color: $ui-petrol-color;
+                color: $ui-inverted-text-color;
             }
             &.warning {
                 background-color: $ui-attention-color;

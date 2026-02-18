@@ -1329,14 +1329,14 @@ NONE
 ### Methods
 
 #### `showMessage`
-> Signature: showMessage(message: BannerMessage, duration: number)
+> Signature: showMessage(message: BannerMessage)
 
 Shows a banner at the top of the page based on `BannerMessage` definition.
 Pre-requisite: `ContentComponent` is injected in the component which is contained in the router outlet (e.g. `content = inject(ContentComponent, {optional: true});`).  
 Then it can be used like: 
 
 ```ts
-content?.showMessage({ text: 'This is an error banner message.', type: 'error', showCloseButton: true }, 9000);
+content?.showMessage({ text: 'This is an error banner message.', type: 'error', showCloseButton: true, duration: 9000 });
 ```
 
 ### Component Usage
