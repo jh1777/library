@@ -1,4 +1,6 @@
 @use '../../../styles/ui.styles' as *;
+@use 'sass:color';
+
 :host {
     display: block;
     min-height: 0;
@@ -32,11 +34,11 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             -webkit-line-clamp: 2;
-            opacity: 0.9;
+            opacity: 0.95;
             z-index: 1000;
             &.info {
-                background-color: $ui-standard-color;
-                color: $ui-inverted-text-color;
+                background-color: $ui-alternative-standard-color;
+                color: $ui-standard-text-color;
             }
             &.warning {
                 background-color: $ui-attention-color;
@@ -58,8 +60,18 @@
             }
 
             .right-aligned {
+                cursor: pointer;
                 margin-left: auto;
                 padding-right: 1rem;
+                color: $ui-inverted-text-color;
+
+                .close-button {
+                    padding: 0.1rem 0.3rem;
+                    border-radius: 4px;
+                    &:hover {
+                        background-color: color.adjust($ui-inverted-text-color, $alpha: -0.8);
+                    }
+                }
             }
         }
 
