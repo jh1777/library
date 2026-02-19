@@ -54,11 +54,12 @@
     }
 
     .list-text-item-value {
-      // Text item value styles
-
-      :not(:last-child) {
-        border-bottom: 1px solid $ui-standard-color;
-      }
+      color: $ui-standard-text-color;
+      -webkit-line-clamp: 1;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 

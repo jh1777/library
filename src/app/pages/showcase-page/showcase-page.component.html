@@ -860,11 +860,34 @@
         <div class="demo-row">
 
           <ui-list [showIndex]="'number'">
-            <ui-list-item text="First item" tooltip="This is the first item in the list.">
+            <ui-list-item text="First item" tooltip="This is the first item in the list." [isClickable]="true">
               <ui-badge value="New" [style]="3" slot="right"></ui-badge>
+              <ui-list-item-kpi 
+                [value]=229233 
+                [showDelta]="true" 
+                [showPercentage]="true"
+                [currency]="'none'"
+                [style]="'negative'"
+                [refValue]=312214></ui-list-item-kpi>
             </ui-list-item>
-            <ui-list-item text="Another Item" [isClickable]="true"></ui-list-item>
-            <ui-list-item text="Second item (clickable)" [isClickable]="true"></ui-list-item>
+            <ui-list-item text="Another Item" [isClickable]="true">
+              <ui-list-item-kpi 
+                [value]=253 
+                [showDelta]="true" 
+                [showPercentage]="false"
+                [currency]="'none'"
+                [style]="'negative'"
+                [refValue]=374></ui-list-item-kpi>
+            </ui-list-item>
+            <ui-list-item text="Second item (clickable)" [isClickable]="true">
+              <ui-list-item-kpi 
+                [value]=2625 
+                [showDelta]="false" 
+                [showPercentage]="true"
+                [currency]="'EUR'"
+                [style]="'positive'"
+                [refValue]=1324></ui-list-item-kpi>
+            </ui-list-item>
             <ui-list-item text="Third item"></ui-list-item>
           </ui-list>
 

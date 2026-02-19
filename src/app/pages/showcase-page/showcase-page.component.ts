@@ -8,24 +8,7 @@ import {
   faCircleDot
 } from '@fortawesome/free-solid-svg-icons';
 
-import {
-  BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, SwitchButtonOptionComponent,
-  CardComponent, CardSectionBasicComponent,
-  EntryContainerComponent, EntryKeyValueComponent, EntryMetricComponent,
-  EntryTileComponent, EntryTileItemComponent,
-  MetricTileComponent, ValueTileComponent,
-  TabComponent, TabsComponent,
-  ToolbarComponent, ListComponent, ListItemComponent,
-  AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent,
-  ModalComponent, ConfirmationModalComponent,
-  SignpostComponent,
-  ButtonGroupComponent,
-  GridComponent,
-  SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent,
-  TableComponent, ITableData,
-  InputComponent,
-  ContentComponent
-} from '../../../../projects/ui/src/public-api';
+import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, SwitchButtonOptionComponent, CardComponent, CardSectionBasicComponent, EntryContainerComponent, EntryKeyValueComponent, EntryMetricComponent, EntryTileComponent, EntryTileItemComponent, MetricTileComponent, ValueTileComponent, TabComponent, TabsComponent, ToolbarComponent, ListComponent, ListItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ModalComponent, ConfirmationModalComponent, SignpostComponent, ButtonGroupComponent, GridComponent, SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent, TableComponent, ITableData, InputComponent, ContentComponent, ListItemKpiComponent } from '../../../../projects/ui/src/public-api';
 
 @Component({
   selector: 'app-showcase-page',
@@ -37,7 +20,7 @@ import {
     EntryTileComponent, EntryTileItemComponent,
     MetricTileComponent, ValueTileComponent,
     TabComponent, TabsComponent,
-    ToolbarComponent, ListComponent, ListItemComponent,
+    ToolbarComponent, ListComponent, ListItemComponent, ListItemKpiComponent,
     AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent,
     ModalComponent, ConfirmationModalComponent,
     SignpostComponent,
@@ -45,8 +28,9 @@ import {
     GridComponent,
     SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent,
     TableComponent,
-    InputComponent
-  ],
+    InputComponent,
+    ListItemKpiComponent
+],
   templateUrl: './showcase-page.component.html',
   styleUrls: ['./showcase-page.component.scss']
 })
