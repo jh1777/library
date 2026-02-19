@@ -2,11 +2,10 @@ import { AfterContentInit, ChangeDetectionStrategy, Component, computed, Content
 import { CommonModule } from '@angular/common';
 import { UIBaseComponent } from '../../shared';
 import { ListItemComponent } from './list-item/list-item.component';
-import { ListComponentInterface } from './list.models';
 import { faSortAlphaAsc, faSortAlphaDesc, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InputComponent } from '../input';
-import { ButtonComponent } from "ui";
+import { ButtonComponent } from '../button';
 
 @Component({
   selector: 'ui-list',

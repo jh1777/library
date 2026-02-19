@@ -8,11 +8,14 @@ describe('ListItemKpiComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ListItemKpiComponent]
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ListItemKpiComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('value', 120);
+    fixture.componentRef.setInput('refValue', 100);
+    fixture.componentRef.setInput('label', 'Revenue');
+    fixture.componentRef.setInput('style', 'positive');
     fixture.detectChanges();
   });
 
@@ -20,13 +23,23 @@ describe('ListItemKpiComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have default property values', () => {
-    // Add assertions for default values
+  it('computes delta and percentage', () => {
+    expect(component.delta()).toBe(20);
+    expect(component.percentage()).toBe(20);
   });
 
-  it('should emit events when actions occur', () => {
-    // Add event testing
+  it('hydrates kpiData on init', () => {
+    const data = component.kpiData();
+    expect(data.label).toBe('Revenue');
+    expect(data.value).toBe(120);
+    expect(data.refValue).toBe(100);
+    expect(data.style).toBe('positive');
   });
 
-  // Add more tests here
+  it('returns null percentage when refValue is zero', () => {
+    fixture.componentRef.setInput('refValue', 0);
+    fixture.detectChanges();
+
+    expect(component.percentage()).toBeNull();
+  });
 });

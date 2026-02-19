@@ -1,7 +1,6 @@
-import { AfterContentInit, ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { UIBaseComponent } from '../../../../shared';
-import { ListComponent } from '../../list.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowUp, faArrowDown, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { ListItemKpiEntry } from '../../list.models';
@@ -27,8 +26,6 @@ export class ListItemKpiComponent extends UIBaseComponent implements AfterConten
        delta: this.delta()
      }));
     }
-
-    protected parentComponent = inject(ListComponent, { optional: true });
 
     kpiData = signal<ListItemKpiEntry>({
         label: null,
