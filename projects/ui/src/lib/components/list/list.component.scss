@@ -30,6 +30,9 @@
     padding-right: 16px;;
     background-color: color.scale($ui-light-standard-color, $lightness: 40%);
     color: $ui-dark-standard-color;
+    position: sticky;
+    top: 50px;
+    z-index: 1;
 
     .description-text {
       display: block;
@@ -54,6 +57,9 @@
       white-space: nowrap;
       text-overflow: ellipsis;
       border-radius: $ui-border-radius $ui-border-radius 0 0;
+      position: sticky;
+      top: 0;
+      z-index: 2;
 
       .align-right {
         margin-left: auto;
