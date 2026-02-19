@@ -13,10 +13,12 @@
         border-radius: $ui-border-radius;
         cursor: pointer;
         transition: background-color 0.2s;
+        min-width: 0;
         
         .label {
-            -webkit-line-clamp: 1;
-            display: inline-block;
+            display: block;
+            flex: 1;
+            min-width: 0;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;

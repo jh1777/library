@@ -21,19 +21,23 @@
         border-radius: $ui-border-radius;
         cursor: pointer;
         transition: background-color 0.2s;
+        min-width: 0;
 
         &-container {
             display: flex;
             align-items: center;
             gap: 0.4rem;
+            flex: 1;
+            min-width: 0;
         }
 
         .label {
-            display: inline-block;
+            display: block;
+            flex: 1;
+            min-width: 0;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            -webkit-line-clamp: 1;
         }
         
         &-icon {
