@@ -859,9 +859,12 @@
         </div>
         <div class="demo-row">
 
-          <ui-list>
-            <ui-list-item text="First item"></ui-list-item>
-            <ui-list-item text="Second item"></ui-list-item>
+          <ui-list [showIndex]="'number'">
+            <ui-list-item text="First item" tooltip="This is the first item in the list.">
+              <ui-badge value="New" [style]="3" slot="right"></ui-badge>
+            </ui-list-item>
+            <ui-list-item text="Another Item" [isClickable]="true"></ui-list-item>
+            <ui-list-item text="Second item (clickable)" [isClickable]="true"></ui-list-item>
             <ui-list-item text="Third item"></ui-list-item>
           </ui-list>
 

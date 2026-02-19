@@ -1,11 +1,18 @@
 @if(isHidden() == false) {
     <div class="list-header">
             {{ header() }}
+            <div class="align-right">
+                @if(isSortable()) {
+                    <fa-icon 
+                        [icon]="sortDirection() === 'desc' ? sortDescIcon() : sortAscIcon()" 
+                        class="header-button"
+                        [class.active]="sortDirection() !== null"
+                        (click)="sort()"
+                    ></fa-icon>
+                }
+            </div>
         </div>
-    <div class="list-item">
-        
-        
+    <div class="list-items">
         <ng-content select="ui-list-item"></ng-content>
-
     </div>
 }

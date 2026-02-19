@@ -1,2 +1,26 @@
-<div class="list-text-item-value">{{ text() }}</div>
-<ng-content select="ui-badge"></ng-content>
+<div class="item-marker" [class.active]="isHovered()"></div>
+<div class="item-container" 
+    (mouseout)="setMarker(false)"
+    (mousemove)="setMarker(true)"
+    (mouseenter)="setMarker(true)"
+    [class.index]="parentComponent?.showIndex() !== 'none'"
+    [class.clickable]="isClickable()"
+    (click)="itemClicked()"
+    >
+    @if(parentComponent?.showIndex() === 'number') {
+        <div class="list-text-item-index">{{ index() + 1 }}.</div>
+    } @else if(parentComponent?.showIndex() === 'bullet') {
+        <div class="list-text-item-index">&bull;</div>
+    } @else if(parentComponent?.showIndex() === 'dash') {
+        <div class="list-text-item-index">&ndash;</div>
+    }
+    <div class="list-text-item-value">{{ text() }}</div>
+    <ng-content select="ui-badge"></ng-content>
+    <div class="item-right">
+        @if(tooltip()) {
+            <span [attr.title]="tooltip()">
+                <fa-icon [icon]="infoIcon()" class="tooltip-icon"></fa-icon>
+            </span>
+        }
+    </div>
+</div>

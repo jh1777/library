@@ -7,6 +7,17 @@
   border: 1px solid $ui-standard-color;
   border-radius: $ui-border-radius;
 
+  .header-button {
+    color: $ui-dark-standard-color;
+    cursor: pointer;
+    &:hover {
+      color: $ui-standard-text-color;
+    }
+    &.active {
+      color: $ui-petrol-color;
+    }
+  }
+
   .list-header {
       background-color: $ui-light-standard-color;
       height: 50px;
@@ -16,12 +27,15 @@
       align-items: center;
       padding: 0 16px;
       border-radius: $ui-border-radius $ui-border-radius 0 0;
+
+      .align-right {
+        margin-left: auto;
+      }
     }
 
-  .list-item {
+  .list-items {
     display: flex;
     flex-direction: column;
-    width: 100%;
     padding: 16px;
 
   }
