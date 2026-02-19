@@ -23,11 +23,15 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
   isSortable = input<boolean>(true);
   header = input<string>('List Header');
   showIndex = input<'number' | 'bullet' | 'dash' | 'none'>('none');
+  showItemSeparator = input<boolean>(true);
+  showItemCount = input<boolean>(true);
 
   sortDirection = signal<'asc' | 'desc' | null>(null);
 
   isSearchable = input<boolean>(false);
   searchTerm = signal<string>('');
+
+
   
   private _data: ListComponentInterface = {};
 
@@ -45,24 +49,52 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
       const matches = !term || item.text().toLowerCase().includes(term);
       item.isHidden.set(!matches);
     });
+    this.applySortOrder();
   }
 
   ngAfterContentInit() {
-    this.updateIndices();
-    this.listItems.changes.subscribe(() => this.updateIndices());
+    this.applySortOrder();
+    this.listItems.changes.subscribe(() => this.applySortOrder());
   }
 
-  private updateIndices() {
+  /**
+   * Single source of truth: applies sort order, indices, and isLast
+   * taking both sort direction and search visibility into account.
+   */
+  private applySortOrder() {
+    const all = this.listItems.toArray();
+    const visible = all.filter(item => !item.isHidden());
+
+    // Reset all items
+    all.forEach(item => {
+      item.isLast.set(false);
+      item.hostEl.nativeElement.style.order = '';
+    });
+
     if (this.sortDirection() === null) {
-      // Original DOM order
-      this.listItems.forEach((item, i) => item.index.set(i));
+      // Original DOM order — just assign indices to visible items
+      visible.forEach((item, i) => item.index.set(i));
     } else {
-      // Sorted order — indices follow visual position
-      const sorted = [...this.listItems.toArray()].sort((a, b) => {
+      // Sort visible items
+      const sorted = [...visible].sort((a, b) => {
         const cmp = a.text().localeCompare(b.text());
         return this.sortDirection() === 'desc' ? -cmp : cmp;
       });
-      sorted.forEach((item, i) => item.index.set(i));
+      sorted.forEach((item, i) => {
+        item.index.set(i);
+        item.hostEl.nativeElement.style.order = i;
+      });
+    }
+
+    // Mark the last visible item
+    if (visible.length) {
+      const lastVisible = this.sortDirection() === null
+        ? visible[visible.length - 1]
+        : [...visible].sort((a, b) => {
+            const cmp = a.text().localeCompare(b.text());
+            return this.sortDirection() === 'desc' ? -cmp : cmp;
+          }).pop()!;
+      lastVisible.isLast.set(true);
     }
   }
 
@@ -87,24 +119,5 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
       this.sortDirection.set(null);
     }
     this.applySortOrder();
-  }
-
-  private applySortOrder() {
-    const items = this.listItems.toArray();
-    if (this.sortDirection() === null) {
-      // Reset to original DOM order
-      items.forEach((item, i) => {
-        item.hostEl.nativeElement.style.order = '';
-      });
-    } else {
-      const sorted = [...items].sort((a, b) => {
-        const cmp = a.text().localeCompare(b.text());
-        return this.sortDirection() === 'desc' ? -cmp : cmp;
-      });
-      sorted.forEach((item, i) => {
-        item.hostEl.nativeElement.style.order = i;
-      });
-    }
-    this.updateIndices();
   }
 }

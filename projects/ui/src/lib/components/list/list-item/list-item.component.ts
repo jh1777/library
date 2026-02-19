@@ -11,7 +11,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FontAwesomeModule],
   templateUrl: './list-item.component.html',
-  styleUrls: ['./list-item.component.scss']
+  styleUrls: ['./list-item.component.scss'],
+  host: {
+    '[class.bordered]': 'parentComponent?.showItemSeparator() && !isHidden()',
+    '[class.last]': 'isLast()'
+  }
 })
 export class ListItemComponent extends UIBaseComponent {
   protected parentComponent = inject(ListComponent, { optional: true });
@@ -23,6 +27,7 @@ export class ListItemComponent extends UIBaseComponent {
   private uuid: string = "";
   // Index assigned by parent ListComponent
   index = signal<number>(0);
+  isLast = signal<boolean>(false);
   // Input property for the text value of the list item
   text = input<string>('');
 

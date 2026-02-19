@@ -5,6 +5,10 @@
   align-items: center;
   gap: 6px;
 
+  &.bordered:not(.last) {
+    border-bottom: 1px solid $ui-light-standard-color;
+  }
+
   .item-marker {
       width: 5px;
       height: 30px;
