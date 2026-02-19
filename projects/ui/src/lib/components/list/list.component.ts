@@ -5,12 +5,13 @@ import { ListItemComponent } from './list-item/list-item.component';
 import { ListComponentInterface } from './list.models';
 import { faSortAlphaAsc, faSortAlphaDesc, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { InputComponent } from '../input';
 
 @Component({
   selector: 'ui-list',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, InputComponent],
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
@@ -24,10 +25,27 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
   showIndex = input<'number' | 'bullet' | 'dash' | 'none'>('none');
 
   sortDirection = signal<'asc' | 'desc' | null>(null);
+
+  isSearchable = input<boolean>(false);
+  searchTerm = signal<string>('');
   
   private _data: ListComponentInterface = {};
 
   @ContentChildren(ListItemComponent) listItems!: QueryList<ListItemComponent>;
+
+  setSearchTerm(term: string) {
+    this.searchTerm.set(term);
+    console.log('Search term set to:', term);
+    this.applySearchFilter();
+  }
+
+  private applySearchFilter() {
+    const term = this.searchTerm().toLowerCase();
+    this.listItems.forEach(item => {
+      const matches = !term || item.text().toLowerCase().includes(term);
+      item.isHidden.set(!matches);
+    });
+  }
 
   ngAfterContentInit() {
     this.updateIndices();

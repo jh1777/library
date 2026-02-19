@@ -2,6 +2,12 @@
     <div class="list-header">
             {{ header() }}
             <div class="align-right">
+                @if(isSearchable()) {
+                    <ui-input 
+                        valuePlaceholder="Search Text ..." 
+                        (valueChange)="setSearchTerm($event)" 
+                    />
+                }
                 @if(isSortable()) {
                     <fa-icon 
                         [icon]="sortDirection() === 'desc' ? sortDescIcon() : sortAscIcon()" 

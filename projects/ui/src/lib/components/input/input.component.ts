@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, effect, forwardRef, Input, input, model, signal, Signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, forwardRef, Input, input, model, output, signal, Signal, WritableSignal } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { UIBaseComponent } from '../../shared';
 
@@ -25,6 +25,9 @@ export class InputComponent extends UIBaseComponent implements ControlValueAcces
   type = input<string>('text');
   isDisabled = model<boolean>(false);
 
+  /** Emits the current value on every keystroke */
+  valueChange = output<string>();
+
   // Create a signal for the value
   private _value: WritableSignal<string> = signal('');
 
@@ -41,6 +44,7 @@ export class InputComponent extends UIBaseComponent implements ControlValueAcces
     if (val !== this._value()) {
       this._value.set(val);
       this.onChange(val); // Notify Angular Forms
+      this.valueChange.emit(val);
     }
   }
 

@@ -1,5 +1,5 @@
 @use '../../styles/ui.styles' as *;
-
+@use 'sass:color';
 :host {
   display: flex;
   width: 100%;
@@ -26,10 +26,24 @@
       color: $ui-standard-text-color;
       align-items: center;
       padding: 0 16px;
+      overflow-x: none;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       border-radius: $ui-border-radius $ui-border-radius 0 0;
 
       .align-right {
         margin-left: auto;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+
+        ui-input {
+          --ui-input-bg: #{color.scale($ui-light-standard-color, $lightness: 40%)};
+          --ui-input-radius: 1.5rem;
+          --ui-input-height: 16px;
+          --ui-input-padding: 6px 12px;
+          --ui-input-focus-border-color: #{$ui-inverted-text-color};
+        }
       }
     }
 
