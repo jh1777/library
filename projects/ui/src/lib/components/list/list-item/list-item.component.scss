@@ -34,13 +34,21 @@
     padding-left: 8px;
     height: 35px;
     &:hover {
-      background-color: color.scale($ui-light-standard-color, $lightness: 40%);
+      background-color: color.scale($ui-light-standard-color, $lightness: 80%);
     }
     &.index {
       padding-left: 0;
+
     }
+
     &.clickable {
       cursor: pointer;
+      &:hover {
+        background-color: color.scale($ui-light-standard-color, $lightness: 40%);
+      }
+    }
+    &.selected {
+      background-color: color.scale($ui-light-standard-color, $lightness: 40%);
     }
 
     .item-right {
@@ -52,7 +60,7 @@
     }
 
     .list-text-item-index {
-      color: $ui-standard-text-color;
+      color: $ui-standard-color;
       min-width: 20px;
       text-align: right;
     }

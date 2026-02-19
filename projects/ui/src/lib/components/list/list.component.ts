@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, input, output, QueryList, signal } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, computed, ContentChildren, input, output, QueryList, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UIBaseComponent } from '../../shared';
 import { ListItemComponent } from './list-item/list-item.component';
@@ -6,16 +6,18 @@ import { ListComponentInterface } from './list.models';
 import { faSortAlphaAsc, faSortAlphaDesc, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InputComponent } from '../input';
+import { ButtonComponent } from "ui";
 
 @Component({
   selector: 'ui-list',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, FontAwesomeModule, InputComponent],
+  imports: [CommonModule, FontAwesomeModule, InputComponent, ButtonComponent],
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent extends UIBaseComponent implements AfterContentInit {
+  @ContentChildren(ListItemComponent) listItems!: QueryList<ListItemComponent>;
 
   sortAscIcon = signal<IconDefinition>(faSortAlphaAsc);
   sortDescIcon = signal<IconDefinition>(faSortAlphaDesc);
@@ -25,21 +27,29 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
   showIndex = input<'number' | 'bullet' | 'dash' | 'none'>('none');
   showItemSeparator = input<boolean>(true);
   showItemCount = input<boolean>(true);
+  itemCount = signal<number>(0);
 
   sortDirection = signal<'asc' | 'desc' | null>(null);
 
   isSearchable = input<boolean>(false);
   searchTerm = signal<string>('');
+  preserveSelectedItem = input<boolean>(true);
 
+  onItemClick = output<{ id: string; text: string; data: any }>();
+  onDeselect = output<void>();
 
-  
-  private _data: ListComponentInterface = {};
+  selectedItem = computed(() => {
+    const selected = this.listItems.find(item => item.isSelected());
+    return selected?.text() || null;
+  });
 
-  @ContentChildren(ListItemComponent) listItems!: QueryList<ListItemComponent>;
+  deselectAll() {
+    this.listItems.forEach(item => item.isSelected.set(false));
+    this.onDeselect.emit();
+  }
 
   setSearchTerm(term: string) {
     this.searchTerm.set(term);
-    console.log('Search term set to:', term);
     this.applySearchFilter();
   }
 
@@ -49,11 +59,12 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
       const matches = !term || item.text().toLowerCase().includes(term);
       item.isHidden.set(!matches);
     });
+    this.itemCount.set(this.listItems.filter(item => !item.isHidden()).length);
     this.applySortOrder();
   }
 
   ngAfterContentInit() {
-    this.applySortOrder();
+    this.applySearchFilter();
     this.listItems.changes.subscribe(() => this.applySortOrder());
   }
 
@@ -96,17 +107,6 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
           }).pop()!;
       lastVisible.isLast.set(true);
     }
-  }
-
-  pushItem(key: string, value: string) {
-    if (!this._data.textValues) {
-      this._data.textValues = [];
-    }
-    if(this._data.textValues.some(record => record[key] === value)) {
-      return;
-    }
-    this._data.textValues.push({ [key]: value });
-    console.log('Item pushed:', this._data);  
   }
 
   sort() {

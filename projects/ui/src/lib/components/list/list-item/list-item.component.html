@@ -6,6 +6,7 @@
         (mouseenter)="setMarker(true)"
         [class.index]="parentComponent?.showIndex() !== 'none'"
         [class.clickable]="isClickable()"
+        [class.selected]="isSelected()"
         (click)="itemClicked()"
         >
 
@@ -24,6 +25,8 @@
             <div class="item-kpi">
                 <ng-content select="ui-list-item-kpi"></ng-content>
             </div>
+
+            <ng-content select="ui-button"></ng-content>
             @if(tooltip()) {
                 <span [attr.title]="tooltip()">
                     <fa-icon [icon]="infoIcon()" class="tooltip-icon"></fa-icon>

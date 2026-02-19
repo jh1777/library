@@ -2,8 +2,10 @@
 @use 'sass:color';
 :host {
   display: flex;
-  width: 100%;
+  width: var(--ui-list-width, 100%);
+  height: var(--ui-list-height, auto);
   flex-direction: column;
+  overflow-y: auto;
   border: 1px solid $ui-standard-color;
   border-radius: $ui-border-radius;
 
@@ -36,6 +38,16 @@
         display: flex;
         gap: 8px;
         align-items: center;
+
+        .deselected-item {
+          font-size: small;
+          font-weight: 400;
+        }
+
+        .item-count {
+          font-size: small;
+          font-weight: 400;
+        }
 
         ui-input {
           --ui-input-bg: #{color.scale($ui-light-standard-color, $lightness: 40%)};

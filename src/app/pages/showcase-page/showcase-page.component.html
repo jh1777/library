@@ -859,7 +859,13 @@
         </div>
         <div class="demo-row">
 
-          <ui-list [showIndex]="'number'" [isSearchable]="true">
+          <ui-list [showIndex]="'number'" 
+          [isSearchable]="true" 
+          (onItemClick)="onListItemClick($event)"
+          (onDeselect)="listData.set([])"
+          [showItemSeparator]="false"
+          [showItemCount]="true"
+          >
             <ui-list-item text="First item" tooltip="This is the first item in the list." [isClickable]="true">
               <ui-badge value="New" [style]="3" slot="right"></ui-badge>
               <ui-list-item-kpi 
@@ -885,12 +891,19 @@
                 [showDelta]="false" 
                 [showPercentage]="true"
                 [currency]="'EUR'"
+                label="Total"
                 [style]="'positive'"
                 [refValue]=1324></ui-list-item-kpi>
             </ui-list-item>
-            <ui-list-item text="Third item"></ui-list-item>
+            <ui-list-item text="Third item">
+              <ui-button label="Action" [icon]="faCheck()" [style]="3"></ui-button>
+            </ui-list-item>
           </ui-list>
 
+        </div>
+        <div class="code-example">
+          <div class="code-label">On Click Result</div>
+          <span><pre>{{ listData() }}</pre></span>
         </div>
       </section>
     }

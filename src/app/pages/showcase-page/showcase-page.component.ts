@@ -125,4 +125,11 @@ export class ShowcasePageComponent {
   log(event: any) {
     console.log('[ShowcasePage]', event);
   }
+
+  // --- List Demo State ---
+  listData = signal<string>('');
+
+  onListItemClick($event: { text: string; data: any }) {
+    this.listData.set(JSON.stringify($event, null, 2));
+  }
 }

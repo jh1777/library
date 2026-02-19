@@ -2,6 +2,18 @@
     <div class="list-header">
             {{ header() }}
             <div class="align-right">
+                @if(showItemCount()) {
+                    <span class="item-count">{{ itemCount() + ( itemCount() === 1 ? ' item' : ' items') }}</span>
+                }
+                @if(selectedItem()) {
+                    <span class="deselected-item">
+                        <ui-button 
+                            [label]="'Deselect'" 
+                            [style]="2"
+                            (onClick)="deselectAll()"
+                        ></ui-button>
+                    </span>
+                }
                 @if(isSearchable()) {
                     <ui-input 
                         [showClearButton]="true" 
