@@ -4,6 +4,7 @@
             <div class="align-right">
                 @if(isSearchable()) {
                     <ui-input 
+                        [showClearButton]="true" 
                         valuePlaceholder="Search Text ..." 
                         (valueChange)="setSearchTerm($event)" 
                     />
