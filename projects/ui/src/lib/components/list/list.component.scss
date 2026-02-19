@@ -4,6 +4,7 @@
   display: flex;
   width: var(--ui-list-width, 100%);
   height: var(--ui-list-height, auto);
+  max-height: var(--ui-list-max-height, auto);
   flex-direction: column;
   overflow-y: auto;
   border: 1px solid $ui-standard-color;
@@ -20,9 +21,30 @@
     }
   }
 
+  .description-container {
+    display: flex;
+    align-items: center;
+    font-size: small;
+    min-height: 32px;
+    padding-left: 16px;
+    padding-right: 16px;;
+    background-color: color.scale($ui-light-standard-color, $lightness: 40%);
+    color: $ui-dark-standard-color;
+
+    .description-text {
+      display: block;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
   .list-header {
       background-color: $ui-light-standard-color;
       height: 50px;
+      min-height: 50px;
       display: flex;
       font-weight: 600;
       color: $ui-standard-text-color;

@@ -859,8 +859,11 @@
         </div>
         <div class="demo-row">
 
-          <ui-list [showIndex]="'number'" 
+          <ui-list 
+          header="Demo List"
+          [showIndex]="'number'" 
           [isSearchable]="true" 
+          [isSortable]="true"
           (onItemClick)="onListItemClick($event)"
           (onDeselect)="listData.set([])"
           [showItemSeparator]="false"
@@ -901,10 +904,38 @@
           </ui-list>
 
         </div>
-        <div class="code-example">
-          <div class="code-label">On Click Result</div>
-          <span><pre>{{ listData() }}</pre></span>
-        </div>
+
+<br/>
+<br/>
+         <ui-list id="demoList"
+         header="Extensive Demo List"
+         description="Some items have KPIs, some have badges, and some have both. Click an item to see the result below."
+          [showIndex]="'none'" 
+          [isSearchable]="true" 
+          (onItemClick)="onListItemClick($event)"
+          (onDeselect)="listData.set([])"
+          [showItemSeparator]="false"
+          [showItemCount]="false"
+          >
+            @for (item of listContent(); track $index) {
+              <ui-list-item [text]="item.text" [isClickable]="true">
+                <ui-list-item-kpi 
+                  [value]=item.data?.value 
+                  [showDelta]="true" 
+                  [showPercentage]="true"
+                  [label]="item.data?.label"
+                  [currency]="'EUR'"
+                  [style]="item.data?.style"
+                  [refValue]=item.data?.refValue></ui-list-item-kpi>
+              </ui-list-item>
+            }
+
+          </ui-list>
+
+          <div class="code-example">
+            <div class="code-label">On Click Result</div>
+            <span><pre>{{ listData() }}</pre></span>
+          </div>
       </section>
     }
 

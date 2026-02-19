@@ -22,10 +22,11 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
   sortAscIcon = signal<IconDefinition>(faSortAlphaAsc);
   sortDescIcon = signal<IconDefinition>(faSortAlphaDesc);
 
-  isSortable = input<boolean>(true);
-  header = input<string>('List Header');
+  isSortable = input<boolean>(false);
+  header = input.required<string>();
+  description = input<string>('');
   showIndex = input<'number' | 'bullet' | 'dash' | 'none'>('none');
-  showItemSeparator = input<boolean>(true);
+  showItemSeparator = input<boolean>(false);
   showItemCount = input<boolean>(true);
   itemCount = signal<number>(0);
 

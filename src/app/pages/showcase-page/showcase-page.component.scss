@@ -1,5 +1,9 @@
 :host {
   display: block;
+
+  ui-list#demoList  {
+    --ui-list-max-height: 280px;
+  }
 }
 
 // height: 100% won't resolve because ui-content's inner .ui-content div
@@ -171,3 +175,4 @@
     }
   }
 }
+

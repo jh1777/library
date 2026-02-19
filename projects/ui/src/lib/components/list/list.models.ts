@@ -1,14 +1,11 @@
 
-export interface ListTextRecord {
-    [key: string]: string;
-}
-
 /**
  * Interface for List component
  */
 export interface ListComponentInterface  {
-    textValues?: Array<ListTextRecord>;
-    data?: any; // Add more properties as needed
+    text: string;
+    id: string;
+    data?: ListItemKpiEntry; 
 }
 
 export interface ListItemKpiEntry {
@@ -19,14 +16,3 @@ export interface ListItemKpiEntry {
     refValue: number | null; // Optional reference value for delta calculation
     delta: number | null; // Optional delta value
 }
-
-
-/*
-    value = input.required<number>();
-    label = input<string>('');
-    refValue = input<number | null>(null);
-    showDelta = input<boolean>(false);
-    showPercentage = input<boolean>(false);
-    style = input<'positive' | 'negative' | 'neutral'>('neutral');
-    currency = input<'EUR' | 'USD' | 'none'>('none');
-    */
