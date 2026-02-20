@@ -7,7 +7,7 @@
   min-width: 450px;
   max-height: var(--ui-list-max-height, auto);
   flex-direction: column;
-  overflow-y: auto;
+  overflow: hidden;
   border: 1px solid $ui-standard-color;
   border-radius: $ui-border-radius;
 
@@ -34,8 +34,6 @@
     position: sticky;
     top: 50px;
     z-index: 1;
-          opacity: 0.94;
-      backdrop-filter: blur(4px);
 
     .description-text {
       display: block;
@@ -95,6 +93,9 @@
     display: flex;
     flex-direction: column;
     padding: 16px;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
   }
 
   .list-footer {

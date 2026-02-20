@@ -37,6 +37,7 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
 
   showFooter = input<boolean>(true);
   showKpiSummary = input<boolean>(false);
+  showKpiSummaryMode = input<boolean>(false);
   sortMode = signal<'name' | 'kpi' | null>(null);
   nameSortDirection = signal<'asc' | 'desc' | null>(null);
   kpiSortDirection = signal<'asc' | 'desc' | null>(null);
@@ -76,6 +77,16 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
     return selected?.text() || null;
   });
 
+  constructor() {
+    super();
+
+    effect(() => {
+      this.showKpiSummary();
+      this.summaryMode();
+      this.updateKpiSummary();
+    });
+  }
+
   deselectAll() {
     this.listItems.forEach(item => item.isSelected.set(false));
     this.onDeselect.emit();
@@ -96,16 +107,6 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
     this.itemCount.set(this.listItems.filter(item => !item.isHidden()).length);
     this.applySortOrder();
     this.updateKpiSummary();
-  }
-
-  constructor() {
-    super();
-
-    effect(() => {
-      this.showKpiSummary();
-      this.summaryMode();
-      this.updateKpiSummary();
-    });
   }
 
   ngAfterContentInit() {
@@ -226,45 +227,32 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
     }
 
     const visibleItems = this.listItems.filter(item => !item.isHidden());
-    const groups = new Map<string, {
-      key: string;
-      label: string | null;
-      style: string;
-      order: number;
+    const groups = new Map<'positive' | 'negative' | 'neutral', {
+      style: 'positive' | 'negative' | 'neutral';
       values: number[];
       refValues: number[];
-      showDelta: boolean;
-      showPercentage: boolean;
       currencies: Set<KpiSummaryCurrency>;
     }>();
 
-    let orderCounter = 0;
     visibleItems.forEach(item => {
       const kpis = item.kpis?.toArray() ?? [];
-      kpis.forEach((kpi, index) => {
+      kpis.forEach(kpi => {
         const value = kpi.value();
         if (value === null || value === undefined) {
           return;
         }
 
-        const label = kpi.label();
-        const key = label ?? `__index_${index}`;
-
-        if (!groups.has(key)) {
-          groups.set(key, {
-            key,
-            label: label ?? null,
-            order: orderCounter++,
-            style: kpi.style(),
+        const style = kpi.style();
+        if (!groups.has(style)) {
+          groups.set(style, {
+            style,
             values: [],
             refValues: [],
-            showDelta: false,
-            showPercentage: false,
             currencies: new Set<KpiSummaryCurrency>()
           });
         }
 
-        const group = groups.get(key)!;
+        const group = groups.get(style)!;
         group.values.push(value);
 
         const refValue = kpi.refValue();
@@ -272,16 +260,16 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
           group.refValues.push(refValue);
         }
 
-        group.showDelta = group.showDelta || kpi.showDelta();
-        group.showPercentage = group.showPercentage || kpi.showPercentage();
         group.currencies.add(kpi.currency());
       });
     });
 
     const mode = this.summaryMode();
-    const summary = Array.from(groups.values())
-      .sort((a, b) => a.order - b.order)
-      .map(group => {
+    const summaryOrder: Array<'positive' | 'negative' | 'neutral'> = ['positive', 'negative', 'neutral'];
+    const summary = summaryOrder
+      .filter(style => groups.has(style))
+      .map(style => {
+        const group = groups.get(style)!;
         const valueSum = group.values.reduce((acc, val) => acc + val, 0);
         const refSum = group.refValues.reduce((acc, val) => acc + val, 0);
         const value = mode === 'avg' ? valueSum / group.values.length : valueSum;
@@ -294,13 +282,13 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
           : 'none';
 
         return {
-          key: group.key,
-          label: group.label,
-          style: group.style,
+          key: style,
+          label: null,
+          style,
           value,
           refValue,
-          showDelta: group.showDelta,
-          showPercentage: group.showPercentage,
+          showDelta: false,
+          showPercentage: true,
           currency
         } as KpiSummaryEntry;
       });
