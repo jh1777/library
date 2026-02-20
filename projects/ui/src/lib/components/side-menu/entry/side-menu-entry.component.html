@@ -25,6 +25,7 @@
             <ng-content select="ui-button"></ng-content>
             <ng-content select="ui-switch"></ng-content>
             <ng-content select="ui-badge"></ng-content>
+
             @if(hasSubEntries()) {
                 <ui-collapse-button [(isCollapsed)]="isCollapsed" (onClick)="handleExpandToggle($event)" [disabled]="isDisabled()"></ui-collapse-button>
             }

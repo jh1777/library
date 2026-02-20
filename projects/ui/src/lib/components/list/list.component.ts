@@ -1,5 +1,4 @@
 import { AfterContentInit, ChangeDetectionStrategy, Component, computed, ContentChildren, input, output, QueryList, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { UIBaseComponent } from '../../shared';
 import { ListItemComponent } from './list-item/list-item.component';
 import { faSortAlphaAsc, faSortAlphaDesc, faSortAmountAsc, faSortAmountDesc, IconDefinition } from '@fortawesome/free-solid-svg-icons';
@@ -13,13 +12,13 @@ import { ListFooterComponent } from './list-footer/list-footer.component';
   selector: 'ui-list',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, FontAwesomeModule, InputComponent, ButtonComponent],
+  imports: [FontAwesomeModule, InputComponent, ButtonComponent],
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent extends UIBaseComponent implements AfterContentInit {
   @ContentChildren(ListItemComponent) listItems!: QueryList<ListItemComponent>;
-  @ContentChildren(ListFooterComponent) listFooter?: QueryList<ListFooterComponent>;
+  @ContentChildren(ListFooterComponent) listFooter!: QueryList<ListFooterComponent>;
 
   sortAscIcon = signal<IconDefinition>(faSortAlphaAsc);
   sortDescIcon = signal<IconDefinition>(faSortAlphaDesc);
@@ -42,7 +41,7 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
   kpiSortDirection = signal<'asc' | 'desc' | null>(null);
   searchTerm = signal<string>('');
 
-  hasFooter = computed(() => (this.listFooter?.length ?? 0) > 0);
+  hasFooter = computed(() => this.listFooter.length > 0);
 
   filteredOutCount = computed(() => {
     const total = this.totalItemCount();
@@ -115,57 +114,37 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
       item.hostEl.nativeElement.style.order = '';
     });
 
-    if (this.sortMode() === null) {
-      // Original DOM order — just assign indices to visible items
-      visible.forEach((item, i) => item.index.set(i));
-    } else {
-      // Sort visible items
-      const sorted = [...visible].sort((a, b) => {
-        if (this.sortMode() === 'name') {
-          const cmp = a.text().localeCompare(b.text());
-          return this.nameSortDirection() === 'desc' ? -cmp : cmp;
-        }
+    let ordered = visible;
 
-        const aVal = this.getKpiValue(a);
-        const bVal = this.getKpiValue(b);
-
-        if (aVal === null && bVal === null) return 0;
-        if (aVal === null) return 1;
-        if (bVal === null) return -1;
-
-        const cmp = aVal - bVal;
-        return this.kpiSortDirection() === 'asc' ? -cmp : cmp;
-      });
-      sorted.forEach((item, i) => {
-        item.index.set(i);
+    if (this.sortMode() !== null) {
+      ordered = [...visible].sort((a, b) => this.compareItems(a, b));
+      ordered.forEach((item, i) => {
         item.hostEl.nativeElement.style.order = i;
       });
     }
 
-    // Mark the last visible item
-    if (visible.length) {
-      if (this.sortMode() === null) {
-        visible[visible.length - 1].isLast.set(true);
-      } else {
-        const lastVisible = [...visible].sort((a, b) => {
-          if (this.sortMode() === 'name') {
-            const cmp = a.text().localeCompare(b.text());
-            return this.nameSortDirection() === 'desc' ? -cmp : cmp;
-          }
-
-          const aVal = this.getKpiValue(a);
-          const bVal = this.getKpiValue(b);
-
-          if (aVal === null && bVal === null) return 0;
-          if (aVal === null) return 1;
-          if (bVal === null) return -1;
-
-          const cmp = aVal - bVal;
-          return this.kpiSortDirection() === 'desc' ? -cmp : cmp;
-        }).pop()!;
-        lastVisible.isLast.set(true);
-      }
+    // Assign indices and mark last visible item
+    ordered.forEach((item, i) => item.index.set(i));
+    if (ordered.length) {
+      ordered[ordered.length - 1].isLast.set(true);
     }
+  }
+
+  private compareItems(a: ListItemComponent, b: ListItemComponent): number {
+    if (this.sortMode() === 'name') {
+      const cmp = a.text().localeCompare(b.text());
+      return this.nameSortDirection() === 'desc' ? -cmp : cmp;
+    }
+
+    const aVal = this.getKpiValue(a);
+    const bVal = this.getKpiValue(b);
+
+    if (aVal === null && bVal === null) return 0;
+    if (aVal === null) return 1;
+    if (bVal === null) return -1;
+
+    const cmp = aVal - bVal;
+    return this.kpiSortDirection() === 'asc' ? -cmp : cmp;
   }
 
   sort() {
@@ -252,7 +231,7 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
       result.refValue = refValuesSum;
     }
     
-    // Delta    if (result.value !== null && result.refValue !== null) {
+    // Delta
     if (result.value !== null && result.refValue !== null) {
       result.delta = result.value - result.refValue;
     }

@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { UIBaseComponent } from '../../../../shared';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -14,27 +14,16 @@ import { ListItemKpiEntry } from '../../list.models';
   templateUrl: './list-item-kpi.component.html',
   styleUrls: ['./list-item-kpi.component.scss']
 })
-export class ListItemKpiComponent extends UIBaseComponent implements AfterContentInit {
-    ngAfterContentInit(): void {
-     this.kpiData.update(data => ({
-       ...data,
-       label: this.label(),
-       value: this.value(),
-       refValue: this.refValue(),
-       style: this.style(),
-       percentage: this.percentage(),
-       delta: this.delta()
-     }));
-    }
+export class ListItemKpiComponent extends UIBaseComponent {
 
-    kpiData = signal<ListItemKpiEntry>({
-        label: null,
-        value: null,
-        refValue: null,
-        delta: null,
-        percentage: null,
-        style: 'neutral'
-    });
+    kpiData = computed<ListItemKpiEntry>(() => ({
+        label: this.label(),
+        value: this.value(),
+        refValue: this.refValue(),
+        delta: this.delta(),
+        percentage: this.percentage(),
+        style: this.style()
+    }));
 
     value = input.required<number>();
     label = input<string | null>(null);

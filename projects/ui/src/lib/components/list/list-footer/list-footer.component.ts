@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { UIBaseComponent } from '../../../shared';
 import { ListComponent } from '../list.component';
 
@@ -7,7 +6,7 @@ import { ListComponent } from '../list.component';
   selector: 'ui-list-footer',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './list-footer.component.html',
   styleUrls: ['./list-footer.component.scss']
 })

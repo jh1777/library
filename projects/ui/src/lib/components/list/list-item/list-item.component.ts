@@ -53,8 +53,6 @@ export class ListItemComponent extends UIBaseComponent implements AfterContentIn
         this.uuid = this.id()!;
       }
     });
-
-   
   }
 
   ngAfterContentInit(): void {

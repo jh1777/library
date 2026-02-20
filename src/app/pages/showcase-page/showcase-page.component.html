@@ -23,7 +23,7 @@
         <ui-side-menu-entry label="Value Tile" value="valuetile" [icon]="faGauge()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Table" value="table" [icon]="faTable()"></ui-side-menu-entry>
         <ui-side-menu-entry label="List" value="list" [icon]="faList()">
-          <ui-badge value="NEW" [style]="3" slot="badge"></ui-badge>
+          <ui-badge value="NEW" [style]="3" [size]="1"></ui-badge>
         </ui-side-menu-entry>
       </ui-side-menu-section>
       <ui-side-menu-section label="Layout &amp; Navigation">
@@ -36,7 +36,7 @@
         <ui-side-menu-entry label="Modal" value="modal" [icon]="faWindowMaximize()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Signpost" value="signpost" [icon]="faWindowMaximize()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Banner" value="banner" [icon]="faWindowMaximize()">
-          <ui-badge value="NEW" [style]="3" slot="badge"></ui-badge>
+          <ui-badge value="NEW" [style]="3" [size]="1"></ui-badge>
         </ui-side-menu-entry>
       </ui-side-menu-section>
     </ui-side-menu>
@@ -870,7 +870,7 @@
           [isSortable]="true"
           (onItemClick)="onListItemClick($event)"
           (onDeselect)="listData.set([])"
-          [showItemSeparator]="false"
+          [showItemSeparator]="true"
           [showItemCount]="true"
           (onSearchTermChange)="log($event)"
           >
@@ -906,21 +906,8 @@
             <ui-list-item text="Third item">
               <ui-button label="Action" [icon]="faCheck()" [style]="3"></ui-button>
             </ui-list-item>
-            <ui-list-footer>
-              <ui-list-item-kpi
-                [value]="232111"
-                [refValue]="250000"
-                [showDelta]="true"
-                [showPercentage]="true"
-                [currency]="'EUR'"
-                [style]="'neutral'"
-              ></ui-list-item-kpi>
-            </ui-list-footer>
           </ui-list>
-
         </div>
-
-<br/>
 <br/>
          <ui-list #list2
          id="demoList"

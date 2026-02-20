@@ -28,6 +28,10 @@ WORK IN PROGRESS
   - [Tab](#tab)
   - [Toolbar](#toolbar)
   - [Value Tile](#value-tile)
+  - [List](#list)
+    - [List Item](#list--list-item)
+    - [List Item KPI](#list--list-item-kpi)
+    - [List Footer](#list--list-footer)
 - [Content and Navigation Components](#content-and-navigation-components)
   - [Grid](#grid)
   - [Menu Bar](#menu-bar)
@@ -1033,6 +1037,237 @@ Possible values:
 
 ### Screenshot
 ![alt text](src/lib/assets/docs/value-tile.jpg)
+
+## List
+> Useable standalone: **Yes**  
+> Supports loading indicator: **No**  
+> Supports error message: **No**  
+> Supports tooltip: **No**  
+> Selector: `ui-list`
+
+A versatile list component for displaying a collection of items. Supports search filtering, alphabetical and KPI-based sorting, item selection, indexing, and an optional footer with aggregated KPI data. Items are composed declaratively via `ui-list-item` sub-components.
+
+### Inputs
+
+#### `header`
+> Type: *string*  
+> Required: **Yes**  
+The header title displayed at the top of the list.
+
+#### `description`
+> Type: *string*  
+> Optional: **Yes** (default: `''`)  
+A description line shown below the header.
+
+#### `isSortable`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+If `true`, sort-by-name and sort-by-KPI buttons appear in the header. Each cycles through ascending → descending → unsorted.
+
+#### `isSearchable`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+If `true`, a search input is shown in the header. Items are filtered by their `text` value.
+
+#### `showIndex`
+> Type: *'number' | 'bullet' | 'dash' | 'none'*  
+> Optional: **Yes** (default: `'none'`)  
+Controls the index style shown before each item.
+
+#### `showItemSeparator`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+If `true`, a border line is drawn between items.
+
+#### `showItemCount`
+> Type: *boolean*  
+> Optional: **Yes** (default: `true`)  
+If `true` and no footer is present, the item count is shown in the header.
+
+#### `preserveSelectedItem`
+> Type: *boolean*  
+> Optional: **Yes** (default: `true`)  
+If `true`, clicking an item selects it and deselects the previous selection. If `false`, clicking does not persist the selection visually.
+
+### Outputs
+
+#### `onItemClick`
+> Type: *OutputEmitterRef&lt;{ id: string; text: string; data: any }&gt;*  
+Emits when an item is clicked. Payload contains the item's `id`, `text`, and an array of its KPI data.
+
+#### `onDeselect`
+> Type: *OutputEmitterRef&lt;void&gt;*  
+Emits when all items are deselected via the "Deselect" button.
+
+#### `onSearchTermChange`
+> Type: *OutputEmitterRef&lt;string[]&gt;*  
+Emits the list of visible item IDs whenever the search filter changes.
+
+### Public Methods
+
+#### `calculateSummaryKpiResults(type, calc)`
+> Parameters: `type: 'positive' | 'negative' | 'neutral'`, `calc: 'sum' | 'avg'`  
+> Returns: `ListItemKpiEntry | null`  
+Calculates an aggregate KPI (sum or average) across all visible items matching the given style type. Useful for populating a footer KPI via `@ViewChild`.
+
+### Accepts as Sub-Component
+- [List Item](#list--list-item)
+- [List Footer](#list--list-footer)
+
+### Usage
+
+```html
+<ui-list
+  header="Services"
+  description="Overview of all active services."
+  [showIndex]="'number'"
+  [isSearchable]="true"
+  [isSortable]="true"
+  [showItemSeparator]="true"
+  (onItemClick)="handleItemClick($event)"
+  (onDeselect)="handleDeselect()"
+>
+  <ui-list-item text="Service Alpha" [isClickable]="true">
+    <ui-list-item-kpi
+      [value]="2500"
+      [refValue]="2000"
+      [showDelta]="true"
+      [showPercentage]="true"
+      [currency]="'EUR'"
+      [style]="'positive'"
+    ></ui-list-item-kpi>
+  </ui-list-item>
+  <ui-list-item text="Service Beta" [isClickable]="true">
+    <ui-list-item-kpi
+      [value]="180"
+      [refValue]="200"
+      [showDelta]="true"
+      [style]="'negative'"
+      label="p95 (ms)"
+    ></ui-list-item-kpi>
+  </ui-list-item>
+  <ui-list-item text="Service Gamma">
+    <ui-button label="Details" [icon]="faInfo()" [style]="3"></ui-button>
+  </ui-list-item>
+  <ui-list-footer>
+    <ui-list-item-kpi
+      [value]="2680"
+      [refValue]="2200"
+      [showDelta]="true"
+      [showPercentage]="true"
+      [currency]="'EUR'"
+      [style]="'neutral'"
+    ></ui-list-item-kpi>
+  </ui-list-footer>
+</ui-list>
+```
+
+---
+
+## List :: List Item
+> Useable standalone: **No** (requires `ui-list` parent)  
+> Supports loading indicator: **No**  
+> Supports error message: **No**  
+> Supports tooltip: **Yes**  
+> Selector: `ui-list-item`
+
+A single entry inside `ui-list`. Can contain buttons, badges, and KPI indicators as projected content.
+
+### Inputs
+
+#### `text`
+> Type: *string*  
+> Optional: **Yes** (default: `''`)  
+The display text of the item.
+
+#### `icon`
+> Type: *IconDefinition*  
+> Optional: **Yes**  
+Optional Font Awesome icon shown before the text.
+
+#### `isClickable`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+If `true`, the item is interactive and triggers the parent's `onItemClick` output when clicked.
+
+### Accepts as Sub-Component
+- [Button](#button)
+- [Badge](#badge)
+- [List Item KPI](#list--list-item-kpi)
+
+#### Useable inside
+- [List](#list)
+
+---
+
+## List :: List Item KPI
+> Useable standalone: **No** (designed for `ui-list-item` or `ui-list-footer`)  
+> Supports loading indicator: **No**  
+> Supports error message: **No**  
+> Supports tooltip: **No**  
+> Selector: `ui-list-item-kpi`
+
+Displays a numeric KPI value with optional label, delta, percentage change, and currency formatting. Supports color-coded styles.
+
+### Inputs
+
+#### `value`
+> Type: *number*  
+> Required: **Yes**  
+The primary KPI value.
+
+#### `label`
+> Type: *string | null*  
+> Optional: **Yes** (default: `null`)  
+An optional label displayed next to the value (e.g., "Revenue", "p95 (ms)").
+
+#### `refValue`
+> Type: *number | null*  
+> Optional: **Yes** (default: `null`)  
+Reference value used to compute delta and percentage change.
+
+#### `showDelta`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+If `true`, shows the absolute difference between `value` and `refValue`.
+
+#### `showPercentage`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+If `true`, shows the percentage change relative to `refValue`.
+
+#### `style`
+> Type: *'positive' | 'negative' | 'neutral'*  
+> Optional: **Yes** (default: `'neutral'`)  
+Color style: `positive` (green), `negative` (red), `neutral` (grey).
+
+#### `currency`
+> Type: *'EUR' | 'USD' | 'none'*  
+> Optional: **Yes** (default: `'none'`)  
+If set to `'EUR'` or `'USD'`, displays the value and delta formatted as currency.
+
+#### Useable inside
+- [List Item](#list--list-item)
+- [List Footer](#list--list-footer)
+
+---
+
+## List :: List Footer
+> Useable standalone: **No** (requires `ui-list` parent)  
+> Supports loading indicator: **No**  
+> Supports error message: **No**  
+> Supports tooltip: **No**  
+> Selector: `ui-list-footer`
+
+A sticky footer bar for the list. Displays the item count, filtered count, and current sort label automatically. Accepts `ui-list-item-kpi` as projected content for aggregate KPI display.
+
+### Accepts as Sub-Component
+- [List Item KPI](#list--list-item-kpi)
+
+#### Useable inside
+- [List](#list)
+
+---
 
 # Content and Navigation Components
 
