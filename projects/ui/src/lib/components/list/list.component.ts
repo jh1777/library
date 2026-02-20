@@ -31,15 +31,13 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
   showItemCount = input<boolean>(true);
   itemCount = signal<number>(0);
   totalItemCount = signal<number>(0);
+  isSearchable = input<boolean>(false);
+  preserveSelectedItem = input<boolean>(true);
 
-  showFooter = input<boolean>(true);
   sortMode = signal<'name' | 'kpi' | null>(null);
   nameSortDirection = signal<'asc' | 'desc' | null>(null);
   kpiSortDirection = signal<'asc' | 'desc' | null>(null);
-
-  isSearchable = input<boolean>(false);
   searchTerm = signal<string>('');
-  preserveSelectedItem = input<boolean>(true);
 
   filteredOutCount = computed(() => {
     const total = this.totalItemCount();
@@ -63,6 +61,7 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
 
   onItemClick = output<{ id: string; text: string; data: any }>();
   onDeselect = output<void>();
+  onSearchTermChange = output<string[]>();
 
   selectedItem = computed(() => {
     const selected = this.listItems.find(item => item.isSelected());
@@ -86,7 +85,9 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
       item.isHidden.set(!matches);
     });
     this.totalItemCount.set(this.listItems.length);
-    this.itemCount.set(this.listItems.filter(item => !item.isHidden()).length);
+    const visibleItems = this.listItems.filter(item => !item.isHidden());
+    this.itemCount.set(visibleItems.length);
+    this.onSearchTermChange.emit(visibleItems.map(item => item.uuid));
     this.applySortOrder();
   }
 

@@ -14,8 +14,6 @@ import { ListComponent } from '../list.component';
 export class ListFooterComponent extends UIBaseComponent {
   protected parentComponent = inject(ListComponent, { optional: true });
 
-  showTotal = input<boolean>(true);
-
   itemCount = computed(() => this.parentComponent?.itemCount() ?? 0);
   filteredOutCount = computed(() => this.parentComponent?.filteredOutCount() ?? 0);
   hasSearchTerm = computed(() => !!this.parentComponent?.searchTerm());

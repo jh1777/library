@@ -29,7 +29,7 @@ export class ListItemComponent extends UIBaseComponent implements AfterContentIn
   infoIcon = signal(faInfoCircle);
 
   // get a GUID for the component instance
-  private uuid: string = "";
+  uuid: string = '';
   // Index assigned by parent ListComponent
   index = signal<number>(0);
   isLast = signal<boolean>(false);
@@ -43,13 +43,16 @@ export class ListItemComponent extends UIBaseComponent implements AfterContentIn
 
   constructor() {
     super();
-    
-    this.uuid = crypto.randomUUID();
-    /*
+    const uuid = crypto.randomUUID();
     effect(() => {
-      this.parentComponent?.pushItem(this.uuid, this.text());
+      if (!this.id()) {
+        this.uuid = uuid;
+      } else {
+        this.uuid = this.id()!;
+      }
     });
-    */
+
+   
   }
 
   ngAfterContentInit(): void {

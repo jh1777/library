@@ -1,6 +1,6 @@
 @if(isHidden() == false) {
     <div class="footer-content">
-        @if(showTotal()) {
+
             <div class="footer-text">
                 {{ itemCount() }} {{ itemCount() === 1 ? 'item' : 'items' }}
                 @if(hasSearchTerm()) {
@@ -10,7 +10,7 @@
                     <span class="sort-label">{{ sortLabel() }}</span>
                 }
             </div>
-        }
+
         <div class="footer-slot">
             <ng-content select="ui-list-item-kpi"></ng-content>
         </div>

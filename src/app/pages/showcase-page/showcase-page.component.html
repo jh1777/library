@@ -868,6 +868,7 @@
           (onDeselect)="listData.set([])"
           [showItemSeparator]="false"
           [showItemCount]="true"
+          (onSearchTermChange)="log($event)"
           >
             <ui-list-item text="First item" tooltip="This is the first item in the list." [isClickable]="true">
               <ui-badge value="New" [style]="3" slot="right"></ui-badge>
@@ -901,7 +902,7 @@
             <ui-list-item text="Third item">
               <ui-button label="Action" [icon]="faCheck()" [style]="3"></ui-button>
             </ui-list-item>
-            <ui-list-footer [showTotal]="true">
+            <ui-list-footer>
               <ui-list-item-kpi
                 [value]="232111"
                 [refValue]="250000"
@@ -925,10 +926,10 @@
           (onItemClick)="onListItemClick($event)"
           (onDeselect)="listData.set([])"
           [showItemSeparator]="false"
-          [showItemCount]="false"
+          (onSearchTermChange)="log($event)"
           >
             @for (item of listContent(); track $index) {
-              <ui-list-item [text]="item.text" [isClickable]="true">
+              <ui-list-item [id]="item.id" [text]="item.text" [isClickable]="true">
                 <ui-list-item-kpi 
                   [value]=item.data?.value 
                   [showDelta]="true" 
@@ -939,7 +940,7 @@
                   [refValue]=item.data?.refValue></ui-list-item-kpi>
               </ui-list-item>
             }
-            <ui-list-footer [showTotal]="true">
+            <ui-list-footer>
               <ui-list-item-kpi
                 [value]="1089"
                 [refValue]="1000"
