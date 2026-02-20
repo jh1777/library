@@ -1,9 +1,12 @@
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { UIBaseComponentInterface } from "../../shared/ui-base.models";
 
 /**
  * Interface for List component
  */
-export interface ListComponentInterface  {
+export interface ListComponentInterface extends UIBaseComponentInterface  {
     text: string;
+    icon?: IconDefinition;
     id: string;
     data?: ListItemKpiEntry; 
 }

@@ -918,7 +918,8 @@
 
 <br/>
 <br/>
-         <ui-list id="demoList"
+         <ui-list #list2
+         id="demoList"
          header="Extensive Demo List"
          description="Some items have KPIs, some have badges, and some have both. Click an item to see the result below."
           [showIndex]="'none'" 
@@ -929,7 +930,11 @@
           (onSearchTermChange)="log($event)"
           >
             @for (item of listContent(); track $index) {
-              <ui-list-item [id]="item.id" [text]="item.text" [isClickable]="true">
+              <ui-list-item 
+                [id]="item.id" 
+                [icon]="item.icon"
+                [text]="item.text" 
+                [isClickable]="true">
                 <ui-list-item-kpi 
                   [value]=item.data?.value 
                   [showDelta]="true" 
@@ -942,12 +947,13 @@
             }
             <ui-list-footer>
               <ui-list-item-kpi
-                [value]="1089"
-                [refValue]="1000"
+                [value]="list2SummaryKpi()?.value"
+                [refValue]="list2SummaryKpi()?.refValue"
+                [label]="list2SummaryKpi()?.label"
                 [showDelta]="true"
                 [showPercentage]="true"
                 [currency]="'EUR'"
-                [style]="'neutral'"
+                [style]="list2SummaryKpi()?.style"
               ></ui-list-item-kpi>
             </ui-list-footer>
           </ui-list>

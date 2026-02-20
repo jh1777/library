@@ -17,6 +17,9 @@
         } @else if(parentComponent?.showIndex() === 'dash') {
             <div class="list-text-item-index">&ndash;</div>
         }
+        @if(icon()) {
+            <fa-icon [icon]="icon()!" class="list-item-icon"></fa-icon>
+        }
         <div class="list-text-item-value">{{ text() }}</div>
         <ng-content select="ui-badge"></ng-content>
 

@@ -1,7 +1,7 @@
 import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, effect, ElementRef, inject, input, output, QueryList, signal } from '@angular/core';
 import { UIBaseComponent } from '../../../shared';
 import { ListComponent } from '../list.component';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ButtonComponent } from '../../button';
 import { ListItemKpiComponent } from './item-kpi/list-item-kpi.component';
@@ -35,6 +35,8 @@ export class ListItemComponent extends UIBaseComponent implements AfterContentIn
   isLast = signal<boolean>(false);
   // Input property for the text value of the list item
   text = input<string>('');
+
+  icon = input<IconDefinition>();
 
   isClickable = input<boolean>(false);
   isSelected = signal<boolean>(false);

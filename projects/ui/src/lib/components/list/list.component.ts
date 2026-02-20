@@ -6,6 +6,8 @@ import { faSortAlphaAsc, faSortAlphaDesc, faSortAmountAsc, faSortAmountDesc, Ico
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InputComponent } from '../input';
 import { ButtonComponent } from '../button';
+import { ListItemKpiEntry } from './list.models';
+import { ListFooterComponent } from './list-footer/list-footer.component';
 
 @Component({
   selector: 'ui-list',
@@ -17,6 +19,7 @@ import { ButtonComponent } from '../button';
 })
 export class ListComponent extends UIBaseComponent implements AfterContentInit {
   @ContentChildren(ListItemComponent) listItems!: QueryList<ListItemComponent>;
+  @ContentChildren(ListFooterComponent) listFooter?: QueryList<ListFooterComponent>;
 
   sortAscIcon = signal<IconDefinition>(faSortAlphaAsc);
   sortDescIcon = signal<IconDefinition>(faSortAlphaDesc);
@@ -38,6 +41,8 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
   nameSortDirection = signal<'asc' | 'desc' | null>(null);
   kpiSortDirection = signal<'asc' | 'desc' | null>(null);
   searchTerm = signal<string>('');
+
+  hasFooter = computed(() => (this.listFooter?.length ?? 0) > 0);
 
   filteredOutCount = computed(() => {
     const total = this.totalItemCount();
@@ -200,6 +205,63 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
     }
     const value = kpis[0].value();
     return value ?? null;
+  }
+
+  /**
+   * Calculate summary KPI results for visible list items.
+   * This is a helper method that can be used to display aggregate KPIs (like total or average) in the list footer.
+   * @param type The type of KPI to calculate ('positive', 'negative', 'neutral').
+   * @param calc The calculation method ('sum' or 'avg').
+   * @returns The calculated KPI entry or null if no relevant KPIs are found.
+   */
+  calculateSummaryKpiResults(type: 'positive' | 'negative' | 'neutral', calc: 'sum' | 'avg'): ListItemKpiEntry | null {
+    const visibleItems = this.listItems.filter(item => !item.isHidden());
+    if (!visibleItems.length) {
+      return null;
+    }
+    let result: ListItemKpiEntry = {
+      value: null,
+      label: calc === 'sum' ? `Total ${type}` : `Average ${type}`,
+      refValue: null,
+      delta: null,
+      percentage: null,
+      style: type
+    };
+
+    const kpiItems = visibleItems.map(item => item.kpis?.toArray() ?? []).flat();
+    const relevantKpis = kpiItems.filter(kpi => kpi.style() === type);
+    if (!relevantKpis.length) {
+      return null;
+    }
+
+    // Value (sum or average)
+    const values = relevantKpis.map(kpi => kpi.value()).filter(v => v !== null) as number[];
+    const valuesSum = values.reduce((sum, v) => sum + v, 0);
+    if (calc === 'avg') {
+      result.value = valuesSum / values.length;
+    } else {
+      result.value = valuesSum;
+    }
+
+    // refValue (sum or average)
+    const refValues = relevantKpis.map(kpi => kpi.refValue()).filter(v => v !== null) as number[];
+    const refValuesSum = refValues.reduce((sum, v) => sum + v, 0);
+    if (calc === 'avg') {
+      result.refValue = refValuesSum / refValues.length;
+    } else {
+      result.refValue = refValuesSum;
+    }
+    
+    // Delta    if (result.value !== null && result.refValue !== null) {
+    if (result.value !== null && result.refValue !== null) {
+      result.delta = result.value - result.refValue;
+    }
+
+    // Percentage
+    if (result.value !== null && result.refValue !== null && result.refValue !== 0) {
+      result.percentage = ((result.value - result.refValue) / Math.abs(result.refValue)) * 100;
+    }
+    return result;
   }
 
 }

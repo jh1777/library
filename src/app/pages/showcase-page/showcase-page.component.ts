@@ -1,4 +1,4 @@
-import { Component, inject, signal, ViewChild } from '@angular/core';
+import { Component, computed, inject, signal, ViewChild } from '@angular/core';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   faCircleCheck, faCircleExclamation, faInfoCircle, faTriangleExclamation,
@@ -37,6 +37,12 @@ import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent
 export class ShowcasePageComponent {
 
   content = inject(ContentComponent, {optional: true});
+  list2ViewChild = signal<ListComponent | null>(null);
+
+  @ViewChild('list2')
+  set list2ViewChildRef(value: ListComponent | undefined) {
+    this.list2ViewChild.set(value ?? null);
+  }
 
   // --- Icons ---
   faCheck = signal<IconDefinition>(faCircleCheck);
@@ -129,34 +135,41 @@ export class ShowcasePageComponent {
   // --- List Demo State ---
   listContent = signal<ListComponentInterface[]>(
     [
-      { id: '1', text: 'Service Alpha - API latency', data: { label: 'p95 (ms)', value: 180, style: 'positive', percentage: -10, refValue: 200, delta: -20 } },
-      { id: '2', text: 'Service Beta - Error rate', data: { label: 'Errors (%)', value: 1.2, style: 'negative', percentage: 20, refValue: 1.0, delta: 0.2 } },
-      { id: '3', text: 'Service Gamma - Throughput', data: { label: 'req/s', value: 920, style: 'positive', percentage: 5, refValue: 875, delta: 45 } },
-      { id: '4', text: 'Service Delta - Availability', data: { label: 'Uptime (%)', value: 99.95, style: 'positive', percentage: 0.05, refValue: 99.90, delta: 0.05 } },
-      { id: '5', text: 'Service Epsilon - Cache hit rate', data: { label: 'Hit rate (%)', value: 86, style: 'neutral', percentage: 0, refValue: 86, delta: 0 } },
-      { id: '6', text: 'North America - Active users', data: { label: 'DAU (k)', value: 128, style: 'positive', percentage: 8, refValue: 118, delta: 10 } },
-      { id: '7', text: 'Europe - Conversion rate', data: { label: 'CR (%)', value: 2.4, style: 'negative', percentage: -12, refValue: 2.7, delta: -0.3 } },
-      { id: '8', text: 'APAC - Avg order value', data: { label: 'AOV (USD)', value: 64, style: 'positive', percentage: 6.7, refValue: 60, delta: 4 } },
-      { id: '9', text: 'Email - Open rate', data: { label: 'Open (%)', value: 38, style: 'neutral', percentage: 0, refValue: 38, delta: 0 } },
-      { id: '10', text: 'Push - Click rate', data: { label: 'CTR (%)', value: 4.1, style: 'positive', percentage: 10, refValue: 3.7, delta: 0.4 } },
-      { id: '11', text: 'Landing page - Bounce rate', data: { label: 'Bounce (%)', value: 42, style: 'negative', percentage: 7, refValue: 39, delta: 3 } },
-      { id: '12', text: 'Checkout - Abandonment', data: { label: 'Abandon (%)', value: 18, style: 'positive', percentage: -10, refValue: 20, delta: -2 } },
-      { id: '13', text: 'Inventory - Stockouts', data: { label: 'SKU count', value: 14, style: 'negative', percentage: 16.7, refValue: 12, delta: 2 } },
-      { id: '14', text: 'Support - First response time', data: { label: 'Minutes', value: 22, style: 'positive', percentage: -12, refValue: 25, delta: -3 } },
-      { id: '15', text: 'Support - CSAT', data: { label: 'Score', value: 4.6, style: 'positive', percentage: 4.5, refValue: 4.4, delta: 0.2 } },
-      { id: '16', text: 'Billing - Failed charges', data: { label: 'Rate (%)', value: 0.9, style: 'positive', percentage: -25, refValue: 1.2, delta: -0.3 } },
-      { id: '17', text: 'Data pipeline - Freshness', data: { label: 'Delay (min)', value: 6, style: 'neutral', percentage: 0, refValue: 6, delta: 0 } },
-      { id: '18', text: 'Mobile app - Crash rate', data: { label: 'Crashes (%)', value: 0.4, style: 'positive', percentage: -20, refValue: 0.5, delta: -0.1 } },
-      { id: '19', text: 'Web app - Core Web Vitals', data: { label: 'LCP (s)', value: 2.1, style: 'positive', percentage: -8.7, refValue: 2.3, delta: -0.2 } },
-      { id: '20', text: 'Search - Zero results', data: { label: 'Rate (%)', value: 3.6, style: 'negative', percentage: 12.5, refValue: 3.2, delta: 0.4 } },
-      { id: '21', text: 'Recommendations - CTR', data: { label: 'CTR (%)', value: 6.8, style: 'positive', percentage: 9.7, refValue: 6.2, delta: 0.6 } },
-      { id: '22', text: 'Fraud - Review queue', data: { label: 'Items', value: 58, style: 'negative', percentage: 16, refValue: 50, delta: 8 } },
-      { id: '23', text: 'Shipping - On-time delivery', data: { label: 'OTD (%)', value: 96.2, style: 'positive', percentage: 1.2, refValue: 95.1, delta: 1.1 } },
-      { id: '24', text: 'Warehouse - Pick accuracy', data: { label: 'Accuracy (%)', value: 99.1, style: 'positive', percentage: 0.3, refValue: 98.8, delta: 0.3 } }
+      { id: '1', icon: faInfoCircle, text: 'Service Alpha - API latency', data: { label: 'p95 (ms)', value: 180, style: 'positive', percentage: -10, refValue: 200, delta: -20 } },
+      { id: '2', icon: faExternalLink, text: 'Service Beta - Error rate', data: { label: 'Errors (%)', value: 1.2, style: 'negative', percentage: 20, refValue: 1.0, delta: 0.2 } },
+      { id: '3', icon: faInfoCircle, text: 'Service Gamma - Throughput', data: { label: 'req/s', value: 920, style: 'positive', percentage: 5, refValue: 875, delta: 45 } },
+      { id: '4', icon: faInfoCircle, text: 'Service Delta - Availability', data: { label: 'Uptime (%)', value: 99.95, style: 'positive', percentage: 0.05, refValue: 99.90, delta: 0.05 } },
+      { id: '5', icon: faInfoCircle, text: 'Service Epsilon - Cache hit rate', data: { label: 'Hit rate (%)', value: 86, style: 'neutral', percentage: 0, refValue: 86, delta: 0 } },
+      { id: '6', icon: faInfoCircle, text: 'North America - Active users', data: { label: 'DAU (k)', value: 128, style: 'positive', percentage: 8, refValue: 118, delta: 10 } },
+      { id: '7', icon: faInfoCircle, text: 'Europe - Conversion rate', data: { label: 'CR (%)', value: 2.4, style: 'negative', percentage: -12, refValue: 2.7, delta: -0.3 } },
+      { id: '8', icon: faPlay, text: 'APAC - Avg order value', data: { label: 'AOV (USD)', value: 64, style: 'positive', percentage: 6.7, refValue: 60, delta: 4 } },
+      { id: '9', icon: faInfoCircle, text: 'Email - Open rate', data: { label: 'Open (%)', value: 38, style: 'neutral', percentage: 0, refValue: 38, delta: 0 } },
+      { id: '10', icon: faInfoCircle, text: 'Push - Click rate', data: { label: 'CTR (%)', value: 4.1, style: 'positive', percentage: 10, refValue: 3.7, delta: 0.4 } },
+      { id: '11', icon: faInfoCircle, text: 'Landing page - Bounce rate', data: { label: 'Bounce (%)', value: 42, style: 'negative', percentage: 7, refValue: 39, delta: 3 } },
+      { id: '12', icon: faInfoCircle, text: 'Checkout - Abandonment', data: { label: 'Abandon (%)', value: 18, style: 'positive', percentage: -10, refValue: 20, delta: -2 } },
+      { id: '13', icon: faCircleCheck, text: 'Inventory - Stockouts', data: { label: 'SKU count', value: 14, style: 'negative', percentage: 16.7, refValue: 12, delta: 2 } },
+      { id: '14', icon: faPlay, text: 'Support - First response time', data: { label: 'Minutes', value: 22, style: 'positive', percentage: -12, refValue: 25, delta: -3 } },
+      { id: '15', icon: faInfoCircle, text: 'Support - CSAT', data: { label: 'Score', value: 4.6, style: 'positive', percentage: 4.5, refValue: 4.4, delta: 0.2 } },
+      { id: '16', icon: faInfoCircle, text: 'Billing - Failed charges', data: { label: 'Rate (%)', value: 0.9, style: 'positive', percentage: -25, refValue: 1.2, delta: -0.3 } },
+      { id: '17', icon: faShapes, text: 'Data pipeline - Freshness', data: { label: 'Delay (min)', value: 6, style: 'neutral', percentage: 0, refValue: 6, delta: 0 } },
+      { id: '18', icon: faInfoCircle, text: 'Mobile app - Crash rate', data: { label: 'Crashes (%)', value: 0.4, style: 'positive', percentage: -20, refValue: 0.5, delta: -0.1 } },
+      { id: '19', icon: faInfoCircle, text: 'Web app - Core Web Vitals', data: { label: 'LCP (s)', value: 2.1, style: 'positive', percentage: -8.7, refValue: 2.3, delta: -0.2 } },
+      { id: '20', icon: faInfoCircle, text: 'Search - Zero results', data: { label: 'Rate (%)', value: 3.6, style: 'negative', percentage: 12.5, refValue: 3.2, delta: 0.4 } },
+      { id: '21', icon: faPencil, text: 'Recommendations - CTR', data: { label: 'CTR (%)', value: 6.8, style: 'positive', percentage: 9.7, refValue: 6.2, delta: 0.6 } },
+      { id: '22', icon: faInfoCircle, text: 'Fraud - Review queue', data: { label: 'Items', value: 58, style: 'negative', percentage: 16, refValue: 50, delta: 8 } },
+      { id: '23', icon: faInfoCircle, text: 'Shipping - On-time delivery', data: { label: 'OTD (%)', value: 96.2, style: 'positive', percentage: 1.2, refValue: 95.1, delta: 1.1 } },
+      { id: '24', icon: faInfoCircle, text: 'Warehouse - Pick accuracy', data: { label: 'Accuracy (%)', value: 99.1, style: 'positive', percentage: 0.3, refValue: 98.8, delta: 0.3 } }
     ]
   );
 
   listData = signal<string>('');
+
+  list2SummaryKpi = computed(() => {
+    if (this.activeSection() !== 'list') {
+      return null;
+    }
+    return this.list2ViewChild()?.calculateSummaryKpiResults('negative', 'sum') ?? null;
+  });
 
   onListItemClick($event: { text: string; data: any }) {
     this.listData.set(JSON.stringify($event, null, 2));

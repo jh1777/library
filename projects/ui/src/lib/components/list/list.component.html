@@ -2,7 +2,7 @@
     <div class="list-header">
         {{ header() }}
         <div class="align-right">
-            @if(showItemCount()) {
+            @if(showItemCount() && !hasFooter()) {
                 <span class="item-count">{{ itemCount() + ( itemCount() === 1 ? ' item' : ' items') }}</span>
             }
             @if(selectedItem()) {
@@ -46,8 +46,10 @@
         <ng-content select="ui-list-item"></ng-content>
     </div>
 
-    <div class="list-footer">
-        <ng-content select="ui-list-footer"></ng-content>
-    </div>
+    @if(hasFooter()) {
+        <div class="list-footer">
+            <ng-content select="ui-list-footer"></ng-content>
+        </div>
+    }
 
 }

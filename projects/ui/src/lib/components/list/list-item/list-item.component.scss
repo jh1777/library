@@ -65,6 +65,10 @@
       min-width: 20px;
       text-align: right;
     }
+    .list-item-icon {
+      color: $ui-standard-text-color;
+      font-size: small;
+    }
 
     .list-text-item-value {
       color: $ui-standard-text-color;
