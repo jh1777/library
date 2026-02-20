@@ -47,38 +47,7 @@
     </div>
     @if(showFooter()) {
         <div class="list-footer">
-            <div class="footer-text">
-                    {{ itemCount() }} {{ itemCount() === 1 ? 'item' : 'items' }}
-                    @if(searchTerm()) {
-                        <span class="filtered-count">({{ filteredOutCount() }} filtered)</span>
-                    }
-                    @if(footerSortLabel()) {
-                        <span class="sort-label">{{ footerSortLabel() }}</span>
-                    }
-                    
-            </div>
-            @if(showKpiSummary() && summaryKpis().length) {
-                <div class="footer-summary">
-                    <div class="footer-kpis">
-                        @for (kpi of summaryKpis(); track kpi.key) {
-                            <ui-list-item-kpi
-                                [value]="kpi.value"
-                                [refValue]="kpi.refValue"
-                                [showDelta]="false"
-                                [showPercentage]="true"
-                                [style]="kpi.style"
-                                [currency]="kpi.currency"
-                            ></ui-list-item-kpi>
-                        }
-                    </div>
-                    @if(showKpiSummaryMode()) {
-                    <ui-switch-button class="summary-switch" [(selectedValue)]="summaryMode">
-                        <ui-switch-button-option label="Sum" [value]="'sum'"></ui-switch-button-option>
-                        <ui-switch-button-option label="Avg" [value]="'avg'"></ui-switch-button-option>
-                    </ui-switch-button>
-                    }
-                </div>
-            }
+            <ng-content select="ui-list-footer"></ng-content>
         </div>
     }
 }

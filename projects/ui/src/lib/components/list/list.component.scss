@@ -110,35 +110,5 @@
       position: sticky;
       bottom: 0;
       z-index: 1;
-
-      .footer-text {
-        font-size: small;
-        font-weight: 600;
-        color: $ui-dark-standard-color;
-        display: block;
-        flex: 1;
-        min-width: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .footer-summary {
-        display: flex;
-        align-items: center;
-
-        .summary-switch {
-          transform: scale(0.85);
-          font-size: small;
-          transform-origin: right center;
-        }
-
-        .footer-kpis {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          justify-content: flex-end;
-        }
-      }
   }
 }

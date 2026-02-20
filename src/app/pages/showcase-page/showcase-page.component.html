@@ -862,7 +862,6 @@
           <ui-list 
           header="Demo List"
           [showIndex]="'number'" 
-          [showKpiSummary]="true"
           [isSearchable]="true" 
           [isSortable]="true"
           (onItemClick)="onListItemClick($event)"
@@ -902,6 +901,16 @@
             <ui-list-item text="Third item">
               <ui-button label="Action" [icon]="faCheck()" [style]="3"></ui-button>
             </ui-list-item>
+            <ui-list-footer [showTotal]="true">
+              <ui-list-item-kpi
+                [value]="232111"
+                [refValue]="250000"
+                [showDelta]="true"
+                [showPercentage]="true"
+                [currency]="'EUR'"
+                [style]="'neutral'"
+              ></ui-list-item-kpi>
+            </ui-list-footer>
           </ui-list>
 
         </div>
@@ -914,7 +923,6 @@
           [showIndex]="'none'" 
           [isSearchable]="true" 
           (onItemClick)="onListItemClick($event)"
-          [showKpiSummary]="true"
           (onDeselect)="listData.set([])"
           [showItemSeparator]="false"
           [showItemCount]="false"
@@ -931,7 +939,16 @@
                   [refValue]=item.data?.refValue></ui-list-item-kpi>
               </ui-list-item>
             }
-
+            <ui-list-footer [showTotal]="true">
+              <ui-list-item-kpi
+                [value]="1089"
+                [refValue]="1000"
+                [showDelta]="true"
+                [showPercentage]="true"
+                [currency]="'EUR'"
+                [style]="'neutral'"
+              ></ui-list-item-kpi>
+            </ui-list-footer>
           </ui-list>
 
           <div class="code-example">

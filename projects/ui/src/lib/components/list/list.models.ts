@@ -16,17 +16,3 @@ export interface ListItemKpiEntry {
     refValue: number | null; // Optional reference value for delta calculation
     delta: number | null; // Optional delta value
 }
-
-export type KpiSummaryMode = 'sum' | 'avg';
-export type KpiSummaryCurrency = 'EUR' | 'USD' | 'none';
-
-export interface KpiSummaryEntry {
-    key: string;
-    label: string | null;
-    value: number;
-    style: 'positive' | 'negative' | 'neutral';
-    refValue: number | null;
-    showDelta: boolean;
-    showPercentage: boolean;
-    currency: KpiSummaryCurrency;
-}

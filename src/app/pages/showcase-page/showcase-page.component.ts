@@ -8,7 +8,7 @@ import {
   faCircleDot
 } from '@fortawesome/free-solid-svg-icons';
 
-import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, SwitchButtonOptionComponent, CardComponent, CardSectionBasicComponent, EntryContainerComponent, EntryKeyValueComponent, EntryMetricComponent, EntryTileComponent, EntryTileItemComponent, MetricTileComponent, ValueTileComponent, TabComponent, TabsComponent, ToolbarComponent, ListComponent, ListItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ModalComponent, ConfirmationModalComponent, SignpostComponent, ButtonGroupComponent, GridComponent, SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent, TableComponent, ITableData, InputComponent, ContentComponent, ListItemKpiComponent, ListComponentInterface } from '../../../../projects/ui/src/public-api';
+import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, SwitchButtonOptionComponent, CardComponent, CardSectionBasicComponent, EntryContainerComponent, EntryKeyValueComponent, EntryMetricComponent, EntryTileComponent, EntryTileItemComponent, MetricTileComponent, ValueTileComponent, TabComponent, TabsComponent, ToolbarComponent, ListComponent, ListFooterComponent, ListItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ModalComponent, ConfirmationModalComponent, SignpostComponent, ButtonGroupComponent, GridComponent, SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent, TableComponent, ITableData, InputComponent, ContentComponent, ListItemKpiComponent, ListComponentInterface } from '../../../../projects/ui/src/public-api';
 
 @Component({
   selector: 'app-showcase-page',
@@ -20,7 +20,7 @@ import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent
     EntryTileComponent, EntryTileItemComponent,
     MetricTileComponent, ValueTileComponent,
     TabComponent, TabsComponent,
-    ToolbarComponent, ListComponent, ListItemComponent, ListItemKpiComponent,
+    ToolbarComponent, ListComponent, ListFooterComponent, ListItemComponent, ListItemKpiComponent,
     AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent,
     ModalComponent, ConfirmationModalComponent,
     SignpostComponent,
