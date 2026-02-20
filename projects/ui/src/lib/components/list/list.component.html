@@ -23,10 +23,16 @@
             }
             @if(isSortable()) {
                 <fa-icon 
-                    [icon]="sortDirection() === 'desc' ? sortDescIcon() : sortAscIcon()" 
+                    [icon]="nameSortDirection() === 'desc' ? sortDescIcon() : sortAscIcon()" 
                     class="header-button"
-                    [class.active]="sortDirection() !== null"
+                    [class.active]="sortMode() === 'name'"
                     (click)="sort()"
+                ></fa-icon>
+                <fa-icon 
+                    [icon]="kpiSortDirection() === 'desc' ? sortByNumberDesc() : sortByNumberAsc()" 
+                    class="header-button"
+                    [class.active]="sortMode() === 'kpi'"
+                    (click)="sortByKpi()"
                 ></fa-icon>
             }
         </div>

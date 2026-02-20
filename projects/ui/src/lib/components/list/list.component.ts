@@ -2,7 +2,7 @@ import { AfterContentInit, ChangeDetectionStrategy, Component, computed, Content
 import { CommonModule } from '@angular/common';
 import { UIBaseComponent } from '../../shared';
 import { ListItemComponent } from './list-item/list-item.component';
-import { faSortAlphaAsc, faSortAlphaDesc, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faSortAlphaAsc, faSortAlphaDesc, faSortAmountAsc, faSortAmountDesc, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InputComponent } from '../input';
 import { ButtonComponent } from '../button';
@@ -20,6 +20,8 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
 
   sortAscIcon = signal<IconDefinition>(faSortAlphaAsc);
   sortDescIcon = signal<IconDefinition>(faSortAlphaDesc);
+  sortByNumberDesc = signal<IconDefinition>(faSortAmountDesc);
+  sortByNumberAsc = signal<IconDefinition>(faSortAmountAsc);
 
   isSortable = input<boolean>(false);
   header = input.required<string>();
@@ -29,7 +31,9 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
   showItemCount = input<boolean>(true);
   itemCount = signal<number>(0);
 
-  sortDirection = signal<'asc' | 'desc' | null>(null);
+  sortMode = signal<'name' | 'kpi' | null>(null);
+  nameSortDirection = signal<'asc' | 'desc' | null>(null);
+  kpiSortDirection = signal<'asc' | 'desc' | null>(null);
 
   isSearchable = input<boolean>(false);
   searchTerm = signal<string>('');
@@ -82,14 +86,26 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
       item.hostEl.nativeElement.style.order = '';
     });
 
-    if (this.sortDirection() === null) {
+    if (this.sortMode() === null) {
       // Original DOM order — just assign indices to visible items
       visible.forEach((item, i) => item.index.set(i));
     } else {
       // Sort visible items
       const sorted = [...visible].sort((a, b) => {
-        const cmp = a.text().localeCompare(b.text());
-        return this.sortDirection() === 'desc' ? -cmp : cmp;
+        if (this.sortMode() === 'name') {
+          const cmp = a.text().localeCompare(b.text());
+          return this.nameSortDirection() === 'desc' ? -cmp : cmp;
+        }
+
+        const aVal = this.getKpiValue(a);
+        const bVal = this.getKpiValue(b);
+
+        if (aVal === null && bVal === null) return 0;
+        if (aVal === null) return 1;
+        if (bVal === null) return -1;
+
+        const cmp = aVal - bVal;
+        return this.kpiSortDirection() === 'asc' ? -cmp : cmp;
       });
       sorted.forEach((item, i) => {
         item.index.set(i);
@@ -99,25 +115,66 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
 
     // Mark the last visible item
     if (visible.length) {
-      const lastVisible = this.sortDirection() === null
-        ? visible[visible.length - 1]
-        : [...visible].sort((a, b) => {
+      if (this.sortMode() === null) {
+        visible[visible.length - 1].isLast.set(true);
+      } else {
+        const lastVisible = [...visible].sort((a, b) => {
+          if (this.sortMode() === 'name') {
             const cmp = a.text().localeCompare(b.text());
-            return this.sortDirection() === 'desc' ? -cmp : cmp;
-          }).pop()!;
-      lastVisible.isLast.set(true);
+            return this.nameSortDirection() === 'desc' ? -cmp : cmp;
+          }
+
+          const aVal = this.getKpiValue(a);
+          const bVal = this.getKpiValue(b);
+
+          if (aVal === null && bVal === null) return 0;
+          if (aVal === null) return 1;
+          if (bVal === null) return -1;
+
+          const cmp = aVal - bVal;
+          return this.kpiSortDirection() === 'desc' ? -cmp : cmp;
+        }).pop()!;
+        lastVisible.isLast.set(true);
+      }
     }
   }
 
   sort() {
     // Cycle: null → asc → desc → null
-    if (this.sortDirection() === null) {
-      this.sortDirection.set('asc');
-    } else if (this.sortDirection() === 'asc') {
-      this.sortDirection.set('desc');
+    this.sortMode.set('name');
+    this.kpiSortDirection.set(null);
+    if (this.nameSortDirection() === null) {
+      this.nameSortDirection.set('asc');
+    } else if (this.nameSortDirection() === 'asc') {
+      this.nameSortDirection.set('desc');
     } else {
-      this.sortDirection.set(null);
+      this.nameSortDirection.set(null);
+      this.sortMode.set(null);
     }
     this.applySortOrder();
+  }
+
+  sortByKpi() {
+    // Cycle: null → asc → desc → null
+    this.sortMode.set('kpi');
+    this.nameSortDirection.set(null);
+    if (this.kpiSortDirection() === null) {
+      this.kpiSortDirection.set('asc');
+    } else if (this.kpiSortDirection() === 'asc') {
+      this.kpiSortDirection.set('desc');
+    } else {
+      this.kpiSortDirection.set(null);
+      this.sortMode.set(null);
+    }
+    this.applySortOrder();
+  }
+
+  private getKpiValue(item: ListItemComponent): number | null {
+    const kpis = item.kpis?.toArray() ?? [];
+    if (!kpis.length) {
+      return null;
+    }
+    const value = kpis[0].value();
+    return value ?? null;
   }
 }
