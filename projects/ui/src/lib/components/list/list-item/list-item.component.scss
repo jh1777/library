@@ -1,0 +1,83 @@
+@use '../../../styles/ui.styles' as *;
+@use 'sass:color';
+:host {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  &.bordered:not(.last) {
+    border-bottom: 1px solid $ui-light-standard-color;
+  }
+
+  .item-marker {
+      width: 5px;
+      height: 30px;
+      border-radius: 5px;
+      &.active {
+        background-color: $ui-petrol-color;
+      }
+  }
+  
+  .tooltip-icon {
+    display: flex;
+    color: $ui-standard-color;
+    font-size: small;
+  }
+
+  .item-container {
+    display: flex;
+    width: 100%;
+    border-radius: $ui-border-radius;
+    align-items: center;
+    gap: 8px;
+    flex-direction: row;
+    padding-left: 8px;
+    height: 35px;
+    &:hover {
+      background-color: color.scale($ui-light-standard-color, $lightness: 80%);
+    }
+    &.index {
+      padding-left: 0;
+
+    }
+
+    &.clickable {
+      cursor: pointer;
+      &:hover {
+        background-color: color.scale($ui-light-standard-color, $lightness: 40%);
+      }
+    }
+    &.selected {
+      // background-color: color.scale($ui-light-standard-color, $lightness: 40%);
+      font-weight: 700;
+    }
+
+    .item-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-right: 8px;
+    }
+
+    .list-text-item-index {
+      color: $ui-standard-color;
+      min-width: 20px;
+      text-align: right;
+    }
+    .list-item-icon {
+      color: $ui-standard-text-color;
+      font-size: small;
+    }
+
+    .list-text-item-value {
+      color: $ui-standard-text-color;
+      display: block;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+}

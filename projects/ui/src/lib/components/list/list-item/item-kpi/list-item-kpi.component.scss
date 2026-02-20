@@ -1,0 +1,53 @@
+@use '../../../../styles/ui.styles' as *;
+@use 'sass:color';
+
+:host {
+    .item-kpi-container {
+        display: flex;
+        flex-direction: row;
+        font-size: small;
+        align-items: center;
+        white-space: nowrap;
+        gap: 4px;
+
+        .item-kpi-value {
+            font-weight: 700;
+            color: $ui-standard-text-color;
+        }
+
+        .item-kpi-label {
+            font-size: small;
+            color: $ui-dark-standard-color;
+            text-transform: uppercase;
+            white-space: nowrap;
+            letter-spacing: 0.05em;
+        }
+
+        .item-kpi-delta {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            //font-size: small;
+            font-weight: 300;
+
+            .delta-icon {
+                font-size: small;
+            }
+        }
+
+        // Style variants
+        &.positive {
+            .item-kpi-value { color: $ui-success-color; }
+            .item-kpi-delta { color: $ui-success-color; }
+        }
+
+        &.negative {
+            .item-kpi-value { color: $ui-error-color; }
+            .item-kpi-delta { color: $ui-error-color; }
+        }
+
+        &.neutral {
+            .item-kpi-delta { color: $ui-dark-standard-color; }
+        }
+    }
+}

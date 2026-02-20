@@ -2,11 +2,14 @@
   "name": "library",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test --browsers ChromeHeadless"
+    "test": "ng test --browsers ChromeHeadless",
+    "visual:test": "playwright test -c playwright.visual.config.ts",
+    "visual:update": "playwright test -c playwright.visual.config.ts --update-snapshots",
+    "visual:test:component": "node scripts/visual/run-component.mjs",
+    "visual:update:component": "node scripts/visual/run-component.mjs --update"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +33,7 @@
     "@angular/build": "^20.0.4",
     "@angular/cli": "^20.0.4",
     "@angular/compiler-cli": "^20.0.5",
+    "@playwright/test": "^1.58.2",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.11.30",
     "jasmine-core": "~5.1.0",

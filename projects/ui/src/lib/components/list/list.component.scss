@@ -1,0 +1,113 @@
+@use '../../styles/ui.styles' as *;
+@use 'sass:color';
+:host {
+  display: flex;
+  width: var(--ui-list-width, 100%);
+  height: var(--ui-list-height, auto);
+  min-width: 450px;
+  max-height: var(--ui-list-max-height, auto);
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid $ui-standard-color;
+  border-radius: $ui-border-radius;
+
+  .header-button {
+    color: $ui-dark-standard-color;
+    cursor: pointer;
+    &:hover {
+      color: $ui-standard-text-color;
+    }
+    &.active {
+      color: $ui-petrol-color;
+    }
+  }
+
+  .description-container {
+    display: flex;
+    align-items: center;
+    font-size: small;
+    min-height: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: color.scale($ui-light-standard-color, $lightness: 40%);
+    color: $ui-dark-standard-color;
+    position: sticky;
+    top: 50px;
+    z-index: 1;
+
+    .description-text {
+      display: block;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+    }
+  }
+
+  .list-header {
+      background-color: $ui-light-standard-color;
+      height: 50px;
+      min-height: 50px;
+      display: flex;
+      font-weight: 600;
+      color: $ui-standard-text-color;
+      align-items: center;
+      padding: 0 16px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      border-radius: $ui-border-radius $ui-border-radius 0 0;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+
+      .align-right {
+        margin-left: auto;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+
+        .deselected-item {
+          font-size: small;
+          font-weight: 400;
+        }
+
+        .item-count {
+          font-size: small;
+          font-weight: 400;
+        }
+
+        ui-input {
+          --ui-input-bg: #{color.scale($ui-light-standard-color, $lightness: 40%)};
+          --ui-input-radius: 1.5rem;
+          --ui-input-height: 16px;
+          --ui-input-padding: 6px 12px;
+          --ui-input-focus-border-color: #{$ui-inverted-text-color};
+        }
+      }
+    }
+
+  .list-items {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  .list-footer {
+      background-color: color.scale($ui-light-standard-color, $lightness: 70%);
+      border-top: 1px solid $ui-standard-color;
+      height: 40px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      border-radius: 0 0 $ui-border-radius $ui-border-radius;
+      position: sticky;
+      bottom: 0;
+      z-index: 1;
+  }
+}

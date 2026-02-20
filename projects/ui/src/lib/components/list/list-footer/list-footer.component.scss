@@ -1,0 +1,33 @@
+@use '../../../styles/ui.styles' as *;
+
+:host {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  .footer-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .footer-text {
+    font-size: small;
+    font-weight: 600;
+    color: $ui-dark-standard-color;
+    display: block;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .footer-slot {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,55 @@
+@if(isHidden() == false) {
+    <div class="list-header">
+        {{ header() }}
+        <div class="align-right">
+            @if(showItemCount() && !hasFooter()) {
+                <span class="item-count">{{ itemCount() + ( itemCount() === 1 ? ' item' : ' items') }}</span>
+            }
+            @if(selectedItem()) {
+                <span class="deselected-item">
+                    <ui-button 
+                        [label]="'Deselect'" 
+                        [style]="2"
+                        (onClick)="deselectAll()"
+                    ></ui-button>
+                </span>
+            }
+            @if(isSearchable()) {
+                <ui-input 
+                    [showClearButton]="true" 
+                    valuePlaceholder="Search Text ..." 
+                    (valueChange)="setSearchTerm($event)" 
+                />
+            }
+            @if(isSortable()) {
+                <fa-icon 
+                    [icon]="nameSortDirection() === 'desc' ? sortDescIcon() : sortAscIcon()" 
+                    class="header-button"
+                    [class.active]="sortMode() === 'name'"
+                    (click)="sort()"
+                ></fa-icon>
+                <fa-icon 
+                    [icon]="kpiSortDirection() === 'desc' ? sortByNumberDesc() : sortByNumberAsc()" 
+                    class="header-button"
+                    [class.active]="sortMode() === 'kpi'"
+                    (click)="sortByKpi()"
+                ></fa-icon>
+            }
+        </div>
+    </div>
+    @if(description()) {
+        <div class="description-container">
+             <div class="description-text">{{ description() }}</div>
+        </div>
+    }
+    <div class="list-items">
+        <ng-content select="ui-list-item"></ng-content>
+    </div>
+
+    @if(hasFooter()) {
+        <div class="list-footer">
+            <ng-content select="ui-list-footer"></ng-content>
+        </div>
+    }
+
+}

@@ -22,6 +22,9 @@
         <ui-side-menu-entry label="Key-Value &amp; Metrics" value="metrics" [icon]="faGauge()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Value Tile" value="valuetile" [icon]="faGauge()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Table" value="table" [icon]="faTable()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="List" value="list" [icon]="faList()">
+          <ui-badge value="NEW" [style]="3" [size]="1"></ui-badge>
+        </ui-side-menu-entry>
       </ui-side-menu-section>
       <ui-side-menu-section label="Layout &amp; Navigation">
         <ui-side-menu-entry label="Toolbar" value="toolbar" [icon]="faBars()"></ui-side-menu-entry>
@@ -32,7 +35,9 @@
       <ui-side-menu-section label="Overlays">
         <ui-side-menu-entry label="Modal" value="modal" [icon]="faWindowMaximize()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Signpost" value="signpost" [icon]="faWindowMaximize()"></ui-side-menu-entry>
-        <ui-side-menu-entry label="Banner" value="banner" [icon]="faWindowMaximize()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Banner" value="banner" [icon]="faWindowMaximize()">
+          <ui-badge value="NEW" [style]="3" [size]="1"></ui-badge>
+        </ui-side-menu-entry>
       </ui-side-menu-section>
     </ui-side-menu>
     <div class="nav-description">
@@ -844,6 +849,111 @@
         <ui-button label="Info with Action" (onClick)="content?.showMessage({ text: 'Item deleted.', type: 'info', actionLabel: 'Undo', action: onBannerUndo, showCloseButton: true, duration: 5000 })" [style]="2"></ui-button>
       </div>
     </section>
+    }
+
+
+    <!-- ════════════════════════════════════════════════════════════
+      SECTION: List
+      ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'list') {
+      <section id="list" class="section">
+        <div class="section-header">List</div>
+        <div class="section-description">
+          A list component for displaying a collection of items. Each item can have text, an optional description, and an optional icon.
+        </div>
+        <div class="demo-row">
+
+          <ui-list 
+          header="Demo List"
+          [showIndex]="'number'" 
+          [isSearchable]="true" 
+          [isSortable]="true"
+          (onItemClick)="onListItemClick($event)"
+          (onDeselect)="listData.set([])"
+          [showItemSeparator]="true"
+          [showItemCount]="true"
+          (onSearchTermChange)="log($event)"
+          >
+            <ui-list-item text="First item" tooltip="This is the first item in the list." [isClickable]="true">
+              <ui-badge value="New" [style]="3" slot="right"></ui-badge>
+              <ui-list-item-kpi 
+                [value]=229233 
+                [showDelta]="true" 
+                [showPercentage]="true"
+                [currency]="'none'"
+                [style]="'negative'"
+                [refValue]=312214></ui-list-item-kpi>
+            </ui-list-item>
+            <ui-list-item text="Another Item" [isClickable]="true">
+              <ui-list-item-kpi 
+                [value]=253 
+                [showDelta]="true" 
+                [showPercentage]="false"
+                [currency]="'none'"
+                [style]="'negative'"
+                [refValue]=374></ui-list-item-kpi>
+            </ui-list-item>
+            <ui-list-item text="Second item (clickable)" [isClickable]="true">
+              <ui-list-item-kpi 
+                [value]=2625 
+                [showDelta]="false" 
+                [showPercentage]="true"
+                [currency]="'EUR'"
+                label="Total"
+                [style]="'positive'"
+                [refValue]=1324></ui-list-item-kpi>
+            </ui-list-item>
+            <ui-list-item text="Third item">
+              <ui-button label="Action" [icon]="faCheck()" [style]="3"></ui-button>
+            </ui-list-item>
+          </ui-list>
+        </div>
+<br/>
+         <ui-list #list2
+         id="demoList"
+         header="Extensive Demo List"
+         description="Some items have KPIs, some have badges, and some have both. Click an item to see the result below."
+          [showIndex]="'none'" 
+          [isSearchable]="true" 
+          (onItemClick)="onListItemClick($event)"
+          (onDeselect)="listData.set([])"
+          [showItemSeparator]="false"
+          (onSearchTermChange)="log($event)"
+          >
+            @for (item of listContent(); track $index) {
+              <ui-list-item 
+                [id]="item.id" 
+                [icon]="item.icon"
+                [text]="item.text" 
+                [isClickable]="true">
+                <ui-list-item-kpi 
+                  [value]=item.data?.value 
+                  [showDelta]="true" 
+                  [showPercentage]="true"
+                  [label]="item.data?.label"
+                  [currency]="'EUR'"
+                  [style]="item.data?.style"
+                  [refValue]=item.data?.refValue></ui-list-item-kpi>
+              </ui-list-item>
+            }
+            <ui-list-footer>
+              <ui-list-item-kpi
+                [value]="list2SummaryKpi()?.value"
+                [refValue]="list2SummaryKpi()?.refValue"
+                [label]="list2SummaryKpi()?.label"
+                [showDelta]="true"
+                [showPercentage]="true"
+                [currency]="'EUR'"
+                [style]="list2SummaryKpi()?.style"
+              ></ui-list-item-kpi>
+            </ui-list-footer>
+          </ui-list>
+
+          <div class="code-example">
+            <div class="code-label">On Click Result</div>
+            <span><pre>{{ listData() }}</pre></span>
+          </div>
+      </section>
     }
 
   </main>

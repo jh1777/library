@@ -1,0 +1,38 @@
+@if(isHidden() == false) {
+    <div class="item-kpi-container" [class]="style()">
+        <div class="item-kpi-value">
+            @if (currency() !== 'none') {
+                {{ value() | currency:currency():'symbol':'1.2-2' }}
+            } @else {
+                {{ value() | number:'1.0-2' }}
+            }
+        </div>
+
+        @if (label()) {
+            <div class="item-kpi-label">{{ label() }}</div>
+        }
+
+        @if (refValue() !== null && (showDelta() || showPercentage())) {
+            <div class="item-kpi-delta">
+                <fa-icon [icon]="deltaIcon()" class="delta-icon"></fa-icon>
+
+                @if (showDelta() && delta() !== null) {
+                    <span class="delta-value">
+                        {{ delta()! > 0 ? '+' : '' }}
+                        @if (currency() !== 'none') {
+                            {{ delta() | currency:currency():'symbol':'1.2-2' }}
+                        } @else {
+                            {{ delta() | number:'1.0-2' }}
+                        }
+                    </span>
+                }
+
+                @if (showPercentage() && percentage() !== null) {
+                    <span class="delta-percentage">
+                        ({{ percentage()! > 0 ? '+' : '' }}{{ percentage() | number:'1.1-1' }}%)
+                    </span>
+                }
+            </div>
+        }
+    </div>
+}

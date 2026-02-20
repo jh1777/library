@@ -1,11 +1,13 @@
-import { ChangeDetectionStrategy, Component, computed, effect, forwardRef, Input, input, model, signal, Signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, forwardRef, Input, input, model, output, signal, Signal, WritableSignal } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { UIBaseComponent } from '../../shared';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'ui-input',
   standalone: true,
-  imports: [],
+  imports: [FontAwesomeModule],
   templateUrl: './input.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
@@ -24,6 +26,12 @@ export class InputComponent extends UIBaseComponent implements ControlValueAcces
   valuePlaceholder = input<string>('');
   type = input<string>('text');
   isDisabled = model<boolean>(false);
+  showClearButton = input<boolean>(false);
+
+  protected clearIcon = signal(faXmark);
+
+  /** Emits the current value on every keystroke */
+  valueChange = output<string>();
 
   // Create a signal for the value
   private _value: WritableSignal<string> = signal('');
@@ -41,7 +49,15 @@ export class InputComponent extends UIBaseComponent implements ControlValueAcces
     if (val !== this._value()) {
       this._value.set(val);
       this.onChange(val); // Notify Angular Forms
+      this.valueChange.emit(val);
     }
+  }
+
+  /** Clears the input value */
+  clearValue() {
+    this._value.set('');
+    this.onChange('');
+    this.valueChange.emit('');
   }
 
   /** Implements ControlValueAccessor methods */

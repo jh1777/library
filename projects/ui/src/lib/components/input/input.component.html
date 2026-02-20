@@ -4,14 +4,21 @@
     @if (label()) {
         <label class="input-label">{{ label() }}</label>
     }
-    <input
-      [type]="type()"
-      [placeholder]="valuePlaceholder()"
-      [disabled]="isDisabled()"
-      [value]="value()"
-      (input)="setValue($event)"
-      (blur)="onTouched()"
-      class="input-box"
-    />
+    <div class="input-wrapper">
+      <input
+        [type]="type()"
+        [placeholder]="valuePlaceholder()"
+        [disabled]="isDisabled()"
+        [value]="value()"
+        (input)="setValue($event)"
+        (blur)="onTouched()"
+        class="input-box"
+      />
+      @if (showClearButton() && value()) {
+        <button type="button" class="clear-btn" (click)="clearValue()" tabindex="-1">
+          <fa-icon [icon]="clearIcon()" />
+        </button>
+      }
+    </div>
   </div>
 }
