@@ -49,6 +49,13 @@
         <div class="list-footer">
             <div class="footer-text">
                     {{ itemCount() }} {{ itemCount() === 1 ? 'item' : 'items' }}
+                    @if(searchTerm()) {
+                        <span class="filtered-count">({{ filteredOutCount() }} filtered)</span>
+                    }
+                    @if(footerSortLabel()) {
+                        <span class="sort-label">{{ footerSortLabel() }}</span>
+                    }
+                    
             </div>
         </div>
     }

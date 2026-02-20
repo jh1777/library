@@ -30,6 +30,7 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
   showItemSeparator = input<boolean>(false);
   showItemCount = input<boolean>(true);
   itemCount = signal<number>(0);
+  totalItemCount = signal<number>(0);
 
   showFooter = input<boolean>(true);
   sortMode = signal<'name' | 'kpi' | null>(null);
@@ -39,6 +40,26 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
   isSearchable = input<boolean>(false);
   searchTerm = signal<string>('');
   preserveSelectedItem = input<boolean>(true);
+
+  filteredOutCount = computed(() => {
+    const total = this.totalItemCount();
+    const visible = this.itemCount();
+    return Math.max(0, total - visible);
+  });
+
+  footerSortLabel = computed(() => {
+    if (this.sortMode() === null) {
+      return '';
+    }
+    if (this.sortMode() === 'name') {
+      const dir = this.nameSortDirection()?.toLocaleUpperCase();
+      const dirLabel = dir === 'ASC' ? '↓' : dir === 'DESC' ? '↑' : '';
+      return dir ? `(sorted by Name ${dirLabel})` : '';
+    }
+    const dir = this.kpiSortDirection()?.toLocaleUpperCase();
+    const dirLabel = dir === 'ASC' ? '↓' : dir === 'DESC' ? '↑' : '';
+    return dir ? `(sorted by KPI ${dirLabel})` : '';
+  });
 
   onItemClick = output<{ id: string; text: string; data: any }>();
   onDeselect = output<void>();
@@ -64,13 +85,14 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
       const matches = !term || item.text().toLowerCase().includes(term);
       item.isHidden.set(!matches);
     });
+    this.totalItemCount.set(this.listItems.length);
     this.itemCount.set(this.listItems.filter(item => !item.isHidden()).length);
     this.applySortOrder();
   }
 
   ngAfterContentInit() {
     this.applySearchFilter();
-    this.listItems.changes.subscribe(() => this.applySortOrder());
+    this.listItems.changes.subscribe(() => this.applySearchFilter());
   }
 
   /**
