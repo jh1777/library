@@ -36,7 +36,7 @@ If necessary, delegate to specialists Subagents in this order:
 
 ## Orchestration contract
 
-For each delegated step, require a handoff with:
+For each delegated step, require a subagent with:
 
 ```md
 ## Done
@@ -49,7 +49,7 @@ For each delegated step, require a handoff with:
 - ...
 ```
 
-Only proceed to the next step when open items are resolved or explicitly accepted.
+Only proceed to the next step when open items are resolved or explicitly accepted. If a subagent routes back to the orchestrator with unresolved items, review and either request rework or accept the risk and move forward.
 
 ## Fast paths
 
