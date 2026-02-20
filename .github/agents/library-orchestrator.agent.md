@@ -1,7 +1,7 @@
 ---
 name: library-orchestrator
 description: Single entrypoint that coordinates specialist agents for component delivery.
-model: Claude Opus 4.6 (Supports Agent Mode) (aitk-foundry)
+model: "Claude Opus 4.6 (Supports Agent Mode) (aitk-foundry)"
 tools: [vscode, execute, read, agent, edit, search, web, todo]
 user-invokable: true
 ---
