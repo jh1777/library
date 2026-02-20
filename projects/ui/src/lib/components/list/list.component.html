@@ -57,6 +57,26 @@
                     }
                     
             </div>
+            @if(showKpiSummary() && summaryKpis().length) {
+                <div class="footer-summary">
+                    <div class="footer-kpis">
+                        @for (kpi of summaryKpis(); track kpi.key) {
+                            <ui-list-item-kpi
+                                [value]="kpi.value"
+                                [refValue]="kpi.refValue"
+                                [showDelta]="false"
+                                [showPercentage]="true"
+                                [style]="kpi.style"
+                                [currency]="kpi.currency"
+                            ></ui-list-item-kpi>
+                        }
+                    </div>
+                    <ui-switch-button class="summary-switch" [(selectedValue)]="summaryMode">
+                        <ui-switch-button-option label="Sum" [value]="'sum'"></ui-switch-button-option>
+                        <ui-switch-button-option label="Avg" [value]="'avg'"></ui-switch-button-option>
+                    </ui-switch-button>
+                </div>
+            }
         </div>
     }
 }

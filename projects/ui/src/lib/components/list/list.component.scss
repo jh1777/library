@@ -121,5 +121,23 @@
         text-overflow: ellipsis;
         white-space: nowrap;
       }
+
+      .footer-summary {
+        display: flex;
+        align-items: center;
+
+        .summary-switch {
+          transform: scale(0.85);
+          font-size: small;
+          transform-origin: right center;
+        }
+
+        .footer-kpis {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          justify-content: flex-end;
+        }
+      }
   }
 }

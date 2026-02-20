@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, Component, computed, ContentChildren, input, output, QueryList, signal } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, computed, ContentChildren, effect, input, output, QueryList, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UIBaseComponent } from '../../shared';
 import { ListItemComponent } from './list-item/list-item.component';
@@ -6,12 +6,15 @@ import { faSortAlphaAsc, faSortAlphaDesc, faSortAmountAsc, faSortAmountDesc, Ico
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InputComponent } from '../input';
 import { ButtonComponent } from '../button';
+import { ListItemKpiComponent } from './list-item/item-kpi/list-item-kpi.component';
+import { SwitchButtonComponent, SwitchButtonOptionComponent } from '../switch-button';
+import { KpiSummaryCurrency, KpiSummaryEntry, KpiSummaryMode } from './list.models';
 
 @Component({
   selector: 'ui-list',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, FontAwesomeModule, InputComponent, ButtonComponent],
+  imports: [CommonModule, FontAwesomeModule, InputComponent, ButtonComponent, ListItemKpiComponent, SwitchButtonComponent, SwitchButtonOptionComponent],
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
@@ -33,9 +36,13 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
   totalItemCount = signal<number>(0);
 
   showFooter = input<boolean>(true);
+  showKpiSummary = input<boolean>(false);
   sortMode = signal<'name' | 'kpi' | null>(null);
   nameSortDirection = signal<'asc' | 'desc' | null>(null);
   kpiSortDirection = signal<'asc' | 'desc' | null>(null);
+
+  summaryMode = signal<KpiSummaryMode>('sum');
+  summaryKpis = signal<KpiSummaryEntry[]>([]);
 
   isSearchable = input<boolean>(false);
   searchTerm = signal<string>('');
@@ -88,6 +95,17 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
     this.totalItemCount.set(this.listItems.length);
     this.itemCount.set(this.listItems.filter(item => !item.isHidden()).length);
     this.applySortOrder();
+    this.updateKpiSummary();
+  }
+
+  constructor() {
+    super();
+
+    effect(() => {
+      this.showKpiSummary();
+      this.summaryMode();
+      this.updateKpiSummary();
+    });
   }
 
   ngAfterContentInit() {
@@ -199,5 +217,94 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
     }
     const value = kpis[0].value();
     return value ?? null;
+  }
+
+  private updateKpiSummary() {
+    if (!this.showKpiSummary() || !this.listItems) {
+      this.summaryKpis.set([]);
+      return;
+    }
+
+    const visibleItems = this.listItems.filter(item => !item.isHidden());
+    const groups = new Map<string, {
+      key: string;
+      label: string | null;
+      style: string;
+      order: number;
+      values: number[];
+      refValues: number[];
+      showDelta: boolean;
+      showPercentage: boolean;
+      currencies: Set<KpiSummaryCurrency>;
+    }>();
+
+    let orderCounter = 0;
+    visibleItems.forEach(item => {
+      const kpis = item.kpis?.toArray() ?? [];
+      kpis.forEach((kpi, index) => {
+        const value = kpi.value();
+        if (value === null || value === undefined) {
+          return;
+        }
+
+        const label = kpi.label();
+        const key = label ?? `__index_${index}`;
+
+        if (!groups.has(key)) {
+          groups.set(key, {
+            key,
+            label: label ?? null,
+            order: orderCounter++,
+            style: kpi.style(),
+            values: [],
+            refValues: [],
+            showDelta: false,
+            showPercentage: false,
+            currencies: new Set<KpiSummaryCurrency>()
+          });
+        }
+
+        const group = groups.get(key)!;
+        group.values.push(value);
+
+        const refValue = kpi.refValue();
+        if (refValue !== null && refValue !== undefined) {
+          group.refValues.push(refValue);
+        }
+
+        group.showDelta = group.showDelta || kpi.showDelta();
+        group.showPercentage = group.showPercentage || kpi.showPercentage();
+        group.currencies.add(kpi.currency());
+      });
+    });
+
+    const mode = this.summaryMode();
+    const summary = Array.from(groups.values())
+      .sort((a, b) => a.order - b.order)
+      .map(group => {
+        const valueSum = group.values.reduce((acc, val) => acc + val, 0);
+        const refSum = group.refValues.reduce((acc, val) => acc + val, 0);
+        const value = mode === 'avg' ? valueSum / group.values.length : valueSum;
+        const refValue = group.refValues.length
+          ? (mode === 'avg' ? refSum / group.refValues.length : refSum)
+          : null;
+
+        const currency = group.currencies.size === 1
+          ? Array.from(group.currencies)[0]
+          : 'none';
+
+        return {
+          key: group.key,
+          label: group.label,
+          style: group.style,
+          value,
+          refValue,
+          showDelta: group.showDelta,
+          showPercentage: group.showPercentage,
+          currency
+        } as KpiSummaryEntry;
+      });
+
+    this.summaryKpis.set(summary);
   }
 }
