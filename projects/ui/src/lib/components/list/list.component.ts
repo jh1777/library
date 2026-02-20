@@ -31,6 +31,7 @@ export class ListComponent extends UIBaseComponent implements AfterContentInit {
   showItemCount = input<boolean>(true);
   itemCount = signal<number>(0);
 
+  showFooter = input<boolean>(true);
   sortMode = signal<'name' | 'kpi' | null>(null);
   nameSortDirection = signal<'asc' | 'desc' | null>(null);
   kpiSortDirection = signal<'asc' | 'desc' | null>(null);

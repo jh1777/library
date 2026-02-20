@@ -34,6 +34,8 @@
     position: sticky;
     top: 50px;
     z-index: 1;
+          opacity: 0.94;
+      backdrop-filter: blur(4px);
 
     .description-text {
       display: block;
@@ -42,6 +44,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+
     }
   }
 
@@ -92,7 +95,31 @@
     display: flex;
     flex-direction: column;
     padding: 16px;
-    
+  }
 
+  .list-footer {
+      background-color: color.scale($ui-light-standard-color, $lightness: 70%);
+      border-top: 1px solid $ui-standard-color;
+      height: 40px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      border-radius: 0 0 $ui-border-radius $ui-border-radius;
+      position: sticky;
+      bottom: 0;
+      z-index: 1;
+
+      .footer-text {
+        font-size: small;
+        font-weight: 600;
+        color: $ui-dark-standard-color;
+        display: block;
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
   }
 }
