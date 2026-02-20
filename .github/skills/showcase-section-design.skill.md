@@ -9,7 +9,7 @@
 ## Required structure
 
 - One dedicated section per component in `showcase-page.component.html`
-- Matching side-menu entry and `activeSection` key
+- Matching side-menu entry and `activeSection` key (nav is `ui-side-menu` component)
 - Brief section description
 - 2-4 practical demo groups
 - Usage snippet reflecting actual API usage
