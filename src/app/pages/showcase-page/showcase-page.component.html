@@ -22,7 +22,9 @@
         <ui-side-menu-entry label="Key-Value &amp; Metrics" value="metrics" [icon]="faGauge()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Value Tile" value="valuetile" [icon]="faGauge()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Table" value="table" [icon]="faTable()"></ui-side-menu-entry>
-        <ui-side-menu-entry label="List" value="list" [icon]="faList()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="List" value="list" [icon]="faList()">
+          <ui-badge value="NEW" [style]="3" slot="badge"></ui-badge>
+        </ui-side-menu-entry>
       </ui-side-menu-section>
       <ui-side-menu-section label="Layout &amp; Navigation">
         <ui-side-menu-entry label="Toolbar" value="toolbar" [icon]="faBars()"></ui-side-menu-entry>
@@ -33,7 +35,9 @@
       <ui-side-menu-section label="Overlays">
         <ui-side-menu-entry label="Modal" value="modal" [icon]="faWindowMaximize()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Signpost" value="signpost" [icon]="faWindowMaximize()"></ui-side-menu-entry>
-        <ui-side-menu-entry label="Banner" value="banner" [icon]="faWindowMaximize()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Banner" value="banner" [icon]="faWindowMaximize()">
+          <ui-badge value="NEW" [style]="3" slot="badge"></ui-badge>
+        </ui-side-menu-entry>
       </ui-side-menu-section>
     </ui-side-menu>
     <div class="nav-description">
