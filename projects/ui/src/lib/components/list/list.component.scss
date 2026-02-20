@@ -4,6 +4,7 @@
   display: flex;
   width: var(--ui-list-width, 100%);
   height: var(--ui-list-height, auto);
+  min-width: 450px;
   max-height: var(--ui-list-max-height, auto);
   flex-direction: column;
   overflow-y: auto;

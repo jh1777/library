@@ -48,7 +48,8 @@
       }
     }
     &.selected {
-      background-color: color.scale($ui-light-standard-color, $lightness: 40%);
+      // background-color: color.scale($ui-light-standard-color, $lightness: 40%);
+      font-weight: 700;
     }
 
     .item-right {
@@ -68,7 +69,6 @@
     .list-text-item-value {
       color: $ui-standard-text-color;
       display: block;
-      flex: 1;
       min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;

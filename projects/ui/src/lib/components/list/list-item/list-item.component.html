@@ -1,5 +1,5 @@
 @if(isHidden() == false) {
-    <div class="item-marker" [class.active]="isHovered()"></div>
+    <div class="item-marker" [class.active]="isHovered() || isSelected()"></div>
     <div class="item-container" 
         (mouseout)="setMarker(false)"
         (mousemove)="setMarker(true)"
