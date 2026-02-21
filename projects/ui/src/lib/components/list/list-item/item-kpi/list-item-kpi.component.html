@@ -29,10 +29,7 @@
 
                 @if (showPercentage() && percentage() !== null) {
                     <span class="delta-percentage">
-     
-
                         {{ percentage()! > 0 ? '+' : '' }}{{ percentage() | number:'1.1-1' }}%
-
                     </span>
                 }
             </div>
