@@ -39,15 +39,34 @@
         &.positive {
             .item-kpi-value { color: $ui-success-color; }
             .item-kpi-delta { color: $ui-success-color; }
+            .delta-percentage { 
+                color: $ui-success-color; 
+                background-color: color.scale($ui-light-success-color, $lightness: 40%); 
+            }
         }
 
         &.negative {
             .item-kpi-value { color: $ui-error-color; }
             .item-kpi-delta { color: $ui-error-color; }
+            .delta-percentage { 
+                color: $ui-error-color; 
+                background-color: color.scale($ui-light-error-color, $lightness: 40%); 
+            }
         }
 
         &.neutral {
             .item-kpi-delta { color: $ui-dark-standard-color; }
+            .delta-percentage { 
+                color: $ui-standard-text-color; 
+                background-color: color.scale($ui-standard-color, $lightness: 40%); 
+            }
+        }
+
+        .delta-percentage {
+            font-size: small;
+            padding: 0.17rem 0.3rem;
+            border-radius: $ui-border-radius;
+            font-weight: 600;
         }
     }
 }

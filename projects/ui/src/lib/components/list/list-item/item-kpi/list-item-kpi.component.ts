@@ -4,13 +4,14 @@ import { UIBaseComponent } from '../../../../shared';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowUp, faArrowDown, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { ListItemKpiEntry } from '../../list.models';
+import { BadgeComponent } from "ui";
 
 
 @Component({
   selector: 'ui-list-item-kpi',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FontAwesomeModule, DecimalPipe, CurrencyPipe],
+  imports: [FontAwesomeModule, DecimalPipe, CurrencyPipe, BadgeComponent],
   templateUrl: './list-item-kpi.component.html',
   styleUrls: ['./list-item-kpi.component.scss']
 })
