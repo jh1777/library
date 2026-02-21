@@ -34,6 +34,9 @@ export class BadgeComponent extends UIBaseComponent {
    */
   style = input(BadgeStyle.Error);
 
+  /**
+   * If true, the badge will be displayed in long mode, which allows for longer text values. In long mode, the badge will have a minimum width and will expand to fit the content. The badge will also have a different background color to indicate that it is in long mode. Default is false.
+   */
   longMode = input<boolean>(false);
 
   /**
