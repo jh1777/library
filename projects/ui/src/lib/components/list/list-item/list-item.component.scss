@@ -38,7 +38,6 @@
     }
     &.index {
       padding-left: 0;
-
     }
 
     &.clickable {
@@ -48,7 +47,6 @@
       }
     }
     &.selected {
-      // background-color: color.scale($ui-light-standard-color, $lightness: 40%);
       font-weight: 700;
     }
 
@@ -58,6 +56,12 @@
       align-items: center;
       gap: 8px;
       margin-right: 8px;
+
+      .item-kpi {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
     }
 
     .list-text-item-index {

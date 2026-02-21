@@ -21,7 +21,7 @@ export class BadgeComponent extends UIBaseComponent {
   /**
    * Number (value) to show in the badge color circle (optional)
    */
-  value = input<number>();
+  value = input<number | string>();
   
   /**
    * Style of the Badge; changes the backgound color  
@@ -33,6 +33,8 @@ export class BadgeComponent extends UIBaseComponent {
    * 
    */
   style = input(BadgeStyle.Error);
+
+  longMode = input<boolean>(false);
 
   /**
    * Size of badge
