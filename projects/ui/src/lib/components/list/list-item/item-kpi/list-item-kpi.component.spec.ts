@@ -42,4 +42,27 @@ describe('ListItemKpiComponent', () => {
 
     expect(component.percentage()).toBeNull();
   });
+
+  it('computes percentage correctly for negative reference values', () => {
+    fixture.componentRef.setInput('refValue', -4187.13);
+    fixture.componentRef.setInput('value', -12110.43);
+    fixture.detectChanges();
+
+    expect(component.delta()).toBeCloseTo(-7923.3, 2);
+    expect(component.percentage()).toBeCloseTo(189.2, 1);
+  });
+
+  it('computes percentage correctly for mixed sign values', () => {
+    fixture.componentRef.setInput('refValue', 200);
+    fixture.componentRef.setInput('value', -100);
+    fixture.detectChanges();
+
+    expect(component.percentage()).toBeCloseTo(-150, 5);
+
+    fixture.componentRef.setInput('refValue', -50);
+    fixture.componentRef.setInput('value', 100);
+    fixture.detectChanges();
+
+    expect(component.percentage()).toBeCloseTo(-300, 5);
+  });
 });

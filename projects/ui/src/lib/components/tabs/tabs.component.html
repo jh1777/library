@@ -9,7 +9,7 @@
                 (click)="selectTab(tab)">
                 {{ tab.label() }}
                 @if(tab.badgeValue()) {
-                    <ui-badge [value]="tab.badgeValue()" [style]="tab.badgeStyle()"></ui-badge>
+                    <ui-badge [value]="tab.badgeValue()" [style]="tab.badgeStyle()" [longMode]="true"></ui-badge>
                 }
             </div>
         }

@@ -14,7 +14,7 @@ export interface ListComponentInterface extends UIBaseComponentInterface  {
 export interface ListItemKpiEntry {
     label?: string | null;
     value?: number | null;
-    style: 'positive' | 'negative' | 'neutral';
+    style: 'positive' | 'negative' | 'neutral' | 'auto';
     percentage: number | null; // Optional percentage for progress bar
     refValue: number | null; // Optional reference value for delta calculation
     delta: number | null; // Optional delta value

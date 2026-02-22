@@ -28,7 +28,7 @@ export class ToolbarComponent extends UIBaseComponent implements AfterContentIni
   maxButtons = input<number>(10);
   maxBadges = input<number>(3);
   maxSwitches = input<number>(3);
-  maxValueTiles = input<number>(2);
+  maxValueTiles = input<number>(5);
 
   //** INTERNAL USE */
   showToolbarText = signal<boolean>(true);

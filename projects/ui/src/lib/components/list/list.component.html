@@ -28,6 +28,7 @@
                     [class.active]="sortMode() === 'name'"
                     (click)="sort()"
                 ></fa-icon>
+
                 <fa-icon 
                     [icon]="kpiSortDirection() === 'desc' ? sortByNumberDesc() : sortByNumberAsc()" 
                     class="header-button"

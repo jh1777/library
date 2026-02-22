@@ -29,11 +29,25 @@ export class ListItemKpiComponent extends UIBaseComponent {
     refValue = input<number | null>(null);
     showDelta = input<boolean>(false);
     showPercentage = input<boolean>(false);
-    style = input<'positive' | 'negative' | 'neutral'>('neutral');
+    style = input<'positive' | 'negative' | 'neutral' | 'auto'>('auto');
     currency = input<'EUR' | 'USD' | 'none'>('none');
+    invert = input<boolean>(false);
 
     readonly icons = { faArrowUp, faArrowDown, faMinus };
 
+    calculatedStyle = computed(() => {
+        if (this.style() === 'auto') {
+            if (this.delta() === null || this.delta() === 0) return 'neutral';
+            if (this.invert()) {
+                return this.delta()! > 0 ? 'negative' : 'positive';
+            } else {
+                return this.delta()! > 0 ? 'positive' : 'negative';
+            }
+        } else {
+            return this.style();
+        }
+    });
+    
     delta = computed(() => {
         const ref = this.refValue();
         const result = ref !== null ? this.value() - ref : null;
@@ -42,8 +56,12 @@ export class ListItemKpiComponent extends UIBaseComponent {
 
     percentage = computed(() => {
         const ref = this.refValue();
-        const result =  ref !== null && ref !== 0 ? ((this.value() - ref) / Math.abs(ref)) * 100 : null;
-        return result;
+        if (ref === null || ref === 0) {
+            return null;
+        }
+
+        const result = ((this.value() - ref) / ref) * 100;
+        return Object.is(result, -0) ? 0 : result;
     });
 
     deltaIcon = computed(() => {

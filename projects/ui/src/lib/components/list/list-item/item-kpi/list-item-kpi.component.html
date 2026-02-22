@@ -1,5 +1,7 @@
 @if(isHidden() == false) {
-    <div class="item-kpi-container" [class]="style()">
+    <div class="item-kpi-container" 
+        [class]="calculatedStyle()"
+        >
         <div class="item-kpi-value">
             @if (currency() !== 'none') {
                 {{ value() | currency:currency():'symbol':'1.2-2' }}

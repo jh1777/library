@@ -881,7 +881,8 @@
                 [showDelta]="true" 
                 [showPercentage]="true"
                 [currency]="'none'"
-                [style]="'negative'"
+                [invert]="false"
+                [style]="'auto'"
                 [refValue]=312214></ui-list-item-kpi>
             </ui-list-item>
             <ui-list-item text="Another Item" [isClickable]="true">
@@ -893,7 +894,7 @@
                 [style]="'negative'"
                 [refValue]=374></ui-list-item-kpi>
             </ui-list-item>
-            <ui-list-item text="Second item (clickable)" [isClickable]="true">
+            <ui-list-item text="Second item (clickable)" [isClickable]="true" description="This item has KPIs with a reference value for comparison.">
               <ui-list-item-kpi 
                 [value]=2625 
                 [showDelta]="false" 
