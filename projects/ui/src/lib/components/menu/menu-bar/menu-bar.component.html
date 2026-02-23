@@ -9,5 +9,13 @@
                 </li>
             }
         </ul>
+        @if (showBurgerMenu()) {
+            <span 
+                class="menu-right"
+                [class.toggled]="menuState() === true"
+            >
+                <fa-icon [icon]="menuIcon()" (click)="toggleMenu()"></fa-icon>
+            </span>
+        }
     </nav>
 }
