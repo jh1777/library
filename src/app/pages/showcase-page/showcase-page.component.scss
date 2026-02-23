@@ -4,6 +4,10 @@
   ui-list#demoList  {
     --ui-list-max-height: 280px;
   }
+
+  ui-drawer {
+    --ui-drawer-max-width: 580px;
+  }
 }
 
 // height: 100% won't resolve because ui-content's inner .ui-content div

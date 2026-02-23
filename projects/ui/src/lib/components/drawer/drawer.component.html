@@ -1,0 +1,36 @@
+@if(isHidden() == false && isOpen() == true) {
+    <div class="ui-drawer-wrapper no-select" @drawerSlide>
+        @if(showBackdrop() == true) {
+            <div
+                class="ui-drawer-backdrop"
+                (click)="onBackdropClick()"
+            ></div>
+        }
+
+        <div class="ui-drawer-panel"
+            [class.with-menu-bar]="hasMenuBar() === true"
+            [style.top]="drawerTopOffset()"
+            [style.height]="drawerHeight()"
+        >
+            @if(header() || showCloseButton() == true) {
+                <div class="ui-drawer-header">
+                    <span class="ui-drawer-header-title">{{ header() }}</span>
+                    @if(showCloseButton() == true) {
+                        <button
+                            type="button"
+                            class="ui-drawer-header-close-button"
+                            (click)="onCloseClick()"
+                            aria-label="Close drawer"
+                        >
+                            ×
+                        </button>
+                    }
+                </div>
+            }
+
+            <div class="ui-drawer-content">
+                <ng-content></ng-content>
+            </div>
+        </div>
+    </div>
+}
