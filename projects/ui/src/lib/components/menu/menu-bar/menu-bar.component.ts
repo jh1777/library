@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ContentChildren, input, QueryList, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, input, output, QueryList, signal } from '@angular/core';
 import { UIBaseComponent } from '../../../shared';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
 
@@ -21,11 +21,13 @@ export class MenuBarComponent extends UIBaseComponent {
   
   /**
    * If true, a burger menu will be shown on the right side of the menu bar, which can be used to toggle something
-   * If this is set to true or not can be queried using property `menuState`, which can be used by parent components to decide whether to show a side menu or not.
-   * Ther is no built-in functionality for the burger menu, so it can be used as a simple toggle button for example to show/hide a side menu in the parent component.
+   * Use `onBurgerMenuClick` output to react to clicks on the burger menu.
+   * There is no built-in functionality for the burger menu, so it can be used as a simple toggle button for example to show/hide a side menu in the parent component.
   */
   showBurgerMenu = input<boolean>(false);
-  menuState = signal<boolean>(false);
+  private menuState = signal<boolean>(false);
+
+  onBurgerMenuClick = output<boolean>();
 
   setActive(item: MenuItemComponent) {
     this.menuItems.toArray().forEach(i => {
@@ -39,5 +41,6 @@ export class MenuBarComponent extends UIBaseComponent {
 
   toggleMenu() {
     this.menuState.set(!this.menuState());
+    this.onBurgerMenuClick.emit(this.menuState());
   }
 }
