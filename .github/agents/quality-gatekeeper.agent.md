@@ -82,6 +82,7 @@ Use these keys with `visual:test:component` and `visual:update:component`:
 - `modal`
 - `signpost`
 - `banner`
+- `drawer`
 
 Examples:
 
