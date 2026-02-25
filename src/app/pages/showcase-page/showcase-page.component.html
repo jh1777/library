@@ -33,7 +33,9 @@
         <ui-side-menu-entry label="Grid Layout" value="grid" [icon]="faGrip()"></ui-side-menu-entry>
       </ui-side-menu-section>
       <ui-side-menu-section label="Overlays">
-        <ui-side-menu-entry label="Drawer" value="drawer" [icon]="faWindowMaximize()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Drawer" value="drawer" [icon]="faWindowMaximize()">
+            <ui-badge value="NEW" [style]="3" [size]="1"></ui-badge>
+        </ui-side-menu-entry>
         <ui-side-menu-entry label="Modal" value="modal" [icon]="faWindowMaximize()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Signpost" value="signpost" [icon]="faWindowMaximize()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Banner" value="banner" [icon]="faWindowMaximize()">
@@ -759,27 +761,29 @@
       </div>
 
       <div class="demo-group">
-        <div class="demo-row">
-          <ui-button label="Open Drawer" [style]="1" (onClick)="showDrawer.set(true)"></ui-button>
-        </div>
+        <div class="demo-label">Use the burger button in the top menu bar to toggle this drawer.</div>
       </div>
 
-      <ui-drawer header="Quick Drawer with a long label" [(isOpen)]="showDrawer">
+      <ui-drawer 
+      header="Quick Drawer with a long label" 
+      syncKey="main-shell-drawer"
+      (onClose)="log('Drawer closed')"
+      (onOpen)="log('Drawer opened')"
+      >
         <div class="demo-group" style="margin: 0;">
           <div class="demo-label">Projected Content</div>
           <p>This content is projected into <code>ui-drawer</code> and can contain arbitrary components.</p>
-          <br/>
-          <ui-button label="Close Drawer" [style]="4" (onClick)="showDrawer.set(false)"></ui-button>
         </div>
       </ui-drawer>
 
       <div class="code-example">
         <div class="code-label">Usage</div>
-        <pre><code>&lt;ui-button label="Open Drawer" (onClick)="showDrawer.set(true)"&gt;&lt;/ui-button&gt;
+        <pre><code>&lt;!-- app shell --&gt;
+&lt;ui-menu-bar [showBurgerMenu]="true" syncKey="main-shell-drawer"&gt;...&lt;/ui-menu-bar&gt;
 
-&lt;ui-drawer header="Quick Drawer" [(isOpen)]="showDrawer"&gt;
+&lt;!-- any routed page --&gt;
+&lt;ui-drawer header="Quick Drawer" syncKey="main-shell-drawer"&gt;
   &lt;p&gt;Arbitrary projected content...&lt;/p&gt;
-  &lt;ui-button label="Close Drawer" (onClick)="showDrawer.set(false)"&gt;&lt;/ui-button&gt;
 &lt;/ui-drawer&gt;</code></pre>
       </div>
     </section>

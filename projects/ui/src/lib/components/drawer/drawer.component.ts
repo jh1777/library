@@ -4,12 +4,15 @@ import {
   Component,
   computed,
   effect,
+  inject,
   input,
   model,
   OnDestroy,
+  output,
   signal,
 } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
+import { UiToggleSyncService } from '../../shared/ui-toggle-sync.service';
 import {
   animate,
   query,
@@ -42,6 +45,8 @@ import {
   ],
 })
 export class DrawerComponent extends UIBaseComponent implements AfterViewInit, OnDestroy {
+  private readonly toggleSyncService = inject(UiToggleSyncService);
+
   private resizeObserver?: ResizeObserver;
   private readonly onWindowResize = () => this.updateMenuBarOffset();
   private observedMenuBarElement: HTMLElement | null = null;
@@ -50,7 +55,19 @@ export class DrawerComponent extends UIBaseComponent implements AfterViewInit, O
   hasMenuBar = computed(() => this.menuBarOffset() > 0);
   drawerTopOffset = computed(() => `${this.menuBarOffset()}px`);
   drawerHeight = computed(() => `calc(100vh - ${this.menuBarOffset()}px)`);
+
   isOpen = model<boolean>(false);
+  syncKey = input<string | null>(null);
+
+  resolvedIsOpen = computed<boolean>(() => {
+    const key = this.getNormalizedSyncKey();
+
+    if (key == null) {
+      return this.isOpen();
+    }
+
+    return this.toggleSyncService.isOpen(key);
+  });
 
   header = input<string>();
 
@@ -60,11 +77,15 @@ export class DrawerComponent extends UIBaseComponent implements AfterViewInit, O
 
   showCloseButton = input<boolean>(true);
 
+  onClose = output<void>();
+  onOpen = output<void>();
+
   constructor() {
     super();
 
     effect(() => {
-      if (this.isOpen() === true) {
+      if (this.resolvedIsOpen() === true) {
+        this.onOpen.emit();
         queueMicrotask(() => {
           this.updateMenuBarOffset();
           this.attachResizeObserver();
@@ -94,12 +115,36 @@ export class DrawerComponent extends UIBaseComponent implements AfterViewInit, O
 
   onBackdropClick(): void {
     if (this.closeOnBackdropClick() == true) {
+      const key = this.getNormalizedSyncKey();
+
+      if (key != null) {
+        this.toggleSyncService.setOpen(key, false);
+      }
+
       this.isOpen.set(false);
+      this.onClose.emit();
     }
   }
 
   onCloseClick(): void {
+    const key = this.getNormalizedSyncKey();
+
+    if (key != null) {
+      this.toggleSyncService.setOpen(key, false);
+    }
+
     this.isOpen.set(false);
+    this.onClose.emit();
+  }
+
+  private getNormalizedSyncKey(): string | null {
+    const key = this.syncKey()?.trim();
+
+    if (key == null || key.length === 0) {
+      return null;
+    }
+
+    return key;
   }
 
   private updateMenuBarOffset(): void {

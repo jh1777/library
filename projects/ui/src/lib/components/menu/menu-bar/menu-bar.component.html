@@ -12,7 +12,7 @@
         @if (showBurgerMenu()) {
             <span 
                 class="menu-right"
-                [class.toggled]="menuState() === true"
+                [class.toggled]="resolvedMenuState() === true"
             >
                 <fa-icon [icon]="menuIcon()" (click)="toggleMenu()"></fa-icon>
             </span>

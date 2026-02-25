@@ -1,4 +1,4 @@
-@if(isHidden() == false && isOpen() == true) {
+@if(isHidden() == false && resolvedIsOpen() == true) {
     <div class="ui-drawer-wrapper no-select" @drawerSlide>
         @if(showBackdrop() == true) {
             <div

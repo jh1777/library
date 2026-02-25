@@ -35,7 +35,6 @@ import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent
   styleUrls: ['./showcase-page.component.scss']
 })
 export class ShowcasePageComponent {
-
   content = inject(ContentComponent, {optional: true});
   list2ViewChild = signal<ListComponent | null>(null);
 
