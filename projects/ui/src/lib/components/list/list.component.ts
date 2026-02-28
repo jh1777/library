@@ -8,6 +8,10 @@ import { ButtonComponent } from '../button';
 import { ListItemKpiEntry } from './list.models';
 import { ListFooterComponent } from './list-footer/list-footer.component';
 
+// TODO: Add error states and loading indicators (or check them if present)
+// TODO: Implement sections for the list, so the content can be grouped
+
+
 @Component({
   selector: 'ui-list',
   standalone: true,

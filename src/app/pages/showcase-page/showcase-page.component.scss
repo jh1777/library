@@ -8,6 +8,10 @@
   ui-drawer {
     --ui-drawer-max-width: 580px;
   }
+
+  ui-input {
+    --ui-input-width: 370px;
+  }
 }
 
 // height: 100% won't resolve because ui-content's inner .ui-content div
