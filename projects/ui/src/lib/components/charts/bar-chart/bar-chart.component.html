@@ -1,4 +1,4 @@
-<svg [attr.width]="width()" [attr.height]="height() + 50">
+<svg [attr.width]="resolvedSvgWidth()" [attr.height]="height() + 50">
   @for (d of data(); track d; let i = $index) {
     <!-- Balken -->
     <rect
@@ -85,7 +85,7 @@
     <line
       x1="0"
       [attr.y1]="height()"
-      [attr.x2]="width()"
+        [attr.x2]="chartWidth()"
       [attr.y2]="height()"
       stroke="black"
       opacity="0.3"

@@ -2,5 +2,10 @@
 @use 'sass:color';
 
 :host {
-    
+	display: block;
+	width: 100%;
+}
+
+svg {
+	display: block;
 }

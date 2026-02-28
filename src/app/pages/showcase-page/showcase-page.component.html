@@ -1015,27 +1015,69 @@
       <section id="bar-chart" class="section">
         <div class="section-header">Bar Chart</div>
         <div class="section-description">
-          A bar chart component for visualizing data. Each bar represents a data point with a label and value.
+          A bar chart component for visualizing data. The first example uses a fixed width, the second one scales to the parent container with <code>svgWidth="100%"</code>.
         </div>
-        <div class="demo-row">
-          <ui-bar-chart
-            [animations]="false" 
-            [showValue]="true"
-            [showPercentage]="true"
-            [showXAxis]="false"
-            textColor="#444"
-            [width]="600"
-            [height]="350"
-            [barWidthPercent]="75"
-            [data]="[ 
-              { label: 'Category A', value: 77, color: '#3b82f6' }, 
-              { label: 'Category B', value: 125, color: '#10b981' }, 
-              { label: 'Category C', value: 35, color: '#f59e0b' }, 
-              { label: 'Category D', value: 56, color: '#ef4444' }, 
-              { label: 'Category E', value: 34, color: '#ef4444' },
-              { label: 'Category F', value: 108, color: '#8b5cf6' }
-            ]"
-          ></ui-bar-chart>
+        <div class="demo-group">
+          <div class="demo-label">Fixed width</div>
+          <div class="demo-row">
+            <ui-bar-chart
+              [animations]="false"
+              [showValue]="true"
+              [showPercentage]="true"
+              [showXAxis]="false"
+              textColor="#444"
+              [width]="600"
+              [height]="260"
+              [barWidthPercent]="75"
+              [data]="[
+                { label: 'Category A', value: 77, color: '#3b82f6' },
+                { label: 'Category B', value: 125, color: '#10b981' },
+                { label: 'Category C', value: 35, color: '#f59e0b' },
+                { label: 'Category D', value: 56, color: '#ef4444' },
+                { label: 'Category E', value: 34, color: '#ef4444' },
+                { label: 'Category F', value: 108, color: '#8b5cf6' }
+              ]"
+            ></ui-bar-chart>
+          </div>
+        </div>
+
+        <div class="demo-group">
+          <div class="demo-label">Responsive width (100%)</div>
+          <div class="demo-row" style="width: 100%; max-width: 900px;">
+            <ui-bar-chart
+              [animations]="false"
+              [showValue]="true"
+              [showPercentage]="true"
+              [showXAxis]="false"
+              textColor="#444"
+              [width]="600"
+              [svgWidth]="'100%'"
+              [height]="260"
+              [barWidthPercent]="75"
+              [data]="[
+                { label: 'Category A', value: 77, color: '#3b82f6' },
+                { label: 'Category B', value: 125, color: '#10b981' },
+                { label: 'Category C', value: 35, color: '#f59e0b' },
+                { label: 'Category D', value: 56, color: '#ef4444' },
+                { label: 'Category E', value: 34, color: '#ef4444' },
+                { label: 'Category F', value: 108, color: '#8b5cf6' }
+              ]"
+            ></ui-bar-chart>
+          </div>
+        </div>
+
+        <div class="code-example">
+          <div class="code-label">Usage</div>
+          <pre><code>&lt;!-- Fixed layout --&gt;
+&lt;ui-bar-chart [width]="600" [height]="260" [data]="chartData"&gt;&lt;/ui-bar-chart&gt;
+
+&lt;!-- Responsive layout (fills parent width) --&gt;
+&lt;ui-bar-chart
+  [width]="600"
+  [svgWidth]="'100%'"
+  [height]="260"
+  [data]="chartData"&gt;
+&lt;/ui-bar-chart&gt;</code></pre>
         </div>
       </section>
     }

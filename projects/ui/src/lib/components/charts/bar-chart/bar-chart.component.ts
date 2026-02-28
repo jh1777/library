@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, DestroyRef, ElementRef, computed, inject, input, signal } from '@angular/core';
 
 @Component({
   selector: 'ui-bar-chart',
@@ -8,19 +8,64 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
   templateUrl: './bar-chart.component.html',
   styleUrl: './bar-chart.component.scss'
 })
-export class BarChartComponent {
+export class BarChartComponent implements AfterViewInit {
+
+  private readonly hostElement = inject(ElementRef<HTMLElement>);
+  private readonly destroyRef = inject(DestroyRef);
 
   data = input.required<{label: string, value: number}[]>();
   barColor = input<string>('steelblue');
   textColor = input<string>('#ffff');
   height = input<number>(200);
   width = input<number>(400);
+  svgWidth = input<string | number | null>(null);
   animations = input<boolean>(true);
   showXAxis = input<boolean>(true);
-  
 
-  barSlotWidth = computed(() => this.width() / this.data().length);
+  private containerWidth = signal(0);
+
+  resolvedSvgWidth = computed(() => this.svgWidth() ?? this.width());
+
+  chartWidth = computed(() => {
+    const svgWidth = this.svgWidth();
+    if (typeof svgWidth === 'number') {
+      return svgWidth;
+    }
+
+    if (typeof svgWidth === 'string') {
+      if (svgWidth.includes('%')) {
+        return this.containerWidth() > 0 ? this.containerWidth() : this.width();
+      }
+
+      const parsedWidth = Number.parseFloat(svgWidth);
+      if (Number.isFinite(parsedWidth)) {
+        return parsedWidth;
+      }
+    }
+
+    return this.width();
+  });
+
+  barSlotWidth = computed(() => this.data().length > 0 ? this.chartWidth() / this.data().length : 0);
   barSlotCenterOffset = computed(() => this.barSlotWidth() / 2);
+
+  constructor() {
+    this.destroyRef.onDestroy(() => {
+      this.resizeObserver?.disconnect();
+    });
+  }
+
+  private resizeObserver?: ResizeObserver;
+
+  ngAfterViewInit(): void {
+    this.updateContainerWidth();
+    this.resizeObserver = new ResizeObserver(() => this.updateContainerWidth());
+    this.resizeObserver.observe(this.hostElement.nativeElement);
+  }
+
+  private updateContainerWidth(): void {
+    this.containerWidth.set(this.hostElement.nativeElement.clientWidth);
+  }
 
   getBarSlotAnchorX(i: number): number {
     return i * this.barSlotWidth();
