@@ -16,6 +16,8 @@ export class BarChartComponent {
   height = input<number>(200);
   width = input<number>(400);
   animations = input<boolean>(true);
+  showXAxis = input<boolean>(true);
+  
 
   barSlotWidth = computed(() => this.width() / this.data().length);
   barSlotCenterOffset = computed(() => this.barSlotWidth() / 2);
