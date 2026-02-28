@@ -32,6 +32,9 @@
         <ui-side-menu-entry label="Accordion" value="accordion" [icon]="faBars()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Grid Layout" value="grid" [icon]="faGrip()"></ui-side-menu-entry>
       </ui-side-menu-section>
+      <ui-side-menu-section label="Charts">
+        <ui-side-menu-entry label="Bar Chart" value="barChart" [icon]="faBars()"></ui-side-menu-entry>
+      </ui-side-menu-section>
       <ui-side-menu-section label="Overlays">
         <ui-side-menu-entry label="Drawer" value="drawer" [icon]="faWindowMaximize()">
             <ui-badge value="NEW" [style]="3" [size]="1"></ui-badge>
@@ -956,7 +959,7 @@
             </ui-list-item>
           </ui-list>
         </div>
-<br/>
+        <br/>
          <ui-list #list2
          id="demoList"
          header="Extensive Demo List"
@@ -1001,6 +1004,38 @@
             <div class="code-label">On Click Result</div>
             <span><pre>{{ listData() }}</pre></span>
           </div>
+      </section>
+    }
+
+
+        <!-- ════════════════════════════════════════════════════════════
+      SECTION: Bar Chart
+      ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'barChart') {
+      <section id="bar-chart" class="section">
+        <div class="section-header">Bar Chart</div>
+        <div class="section-description">
+          A bar chart component for visualizing data. Each bar represents a data point with a label and value.
+        </div>
+        <div class="demo-row">
+          <ui-bar-chart
+            [animations]="false" 
+            [showValue]="true"
+            [showPercentage]="true"
+            textColor="#444"
+            [width]="600"
+            [height]="350"
+            [barWidthPercent]="75"
+            [data]="[ 
+              { label: 'Category A', value: 77, color: '#3b82f6' }, 
+              { label: 'Category B', value: 125, color: '#10b981' }, 
+              { label: 'Category C', value: 35, color: '#f59e0b' }, 
+              { label: 'Category D', value: 56, color: '#ef4444' }, 
+              { label: 'Category E', value: 34, color: '#ef4444' },
+              { label: 'Category F', value: 108, color: '#8b5cf6' }
+            ]"
+          ></ui-bar-chart>
+        </div>
       </section>
     }
 

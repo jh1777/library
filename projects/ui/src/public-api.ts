@@ -30,3 +30,5 @@ export * from './lib/components/button-group';
 export * from './lib/components/switch-button';
 export * from './lib/components/side-menu';
 export * from './lib/components/list';
+
+export * from './lib/components/charts';

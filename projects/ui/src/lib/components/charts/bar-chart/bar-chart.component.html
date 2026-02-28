@@ -1,0 +1,70 @@
+<svg [attr.width]="width()" [attr.height]="height() + 50">
+  @for (d of data(); track d; let i = $index) {
+    <!-- Balken -->
+    <rect
+      [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()- (barWidth()/2)"
+      [attr.y]="height() - (d.value / maxValue() * (height() - heightOffset()))"
+      [attr.width]="barWidth()"
+      [attr.height]="d.value / maxValue() * (height() - heightOffset())"
+      [attr.fill]="d.color || barColor()"
+      rx="6" ry="6"
+    >
+      @if (animations()) {
+          <!-- Balken-Animation -->
+          <animate
+            attributeName="height"
+            from="0"
+            [attr.to]="d.value / maxValue() * (height() - heightOffset())"
+            dur="0.4s"
+            fill="freeze"
+          />
+          <animate
+            attributeName="y"
+            [attr.from]="height()"
+            [attr.to]="height() - (d.value / maxValue() * (height() - heightOffset()))"
+            dur="0.4s"
+            fill="freeze"
+          />
+      }
+    </rect>
+
+    <!-- Wert über Balken -->
+     @if (showValue()) {
+      <text
+        [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
+        [attr.y]="height() - (d.value / maxValue() * (height() - heightOffset())) - (showPercentage() ? 22 : 10)"
+        text-anchor="middle"
+        font-size="12"
+        font-weight="bold"
+        [attr.fill]="textColor()"
+      >
+        {{ d.value }}
+      </text>
+    }
+    @if (showPercentage()) {
+      <text
+        [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
+        [attr.y]="height() - (d.value / maxValue() * (height() - heightOffset())) - (showValue() ? 7 : 10)"
+        text-anchor="middle"
+        font-size="12"
+        [attr.font-weight]="showValue() ? 'normal' : 'bold'"
+        [attr.fill-opacity]="showValue() ? 0.6 : 1"
+        [attr.fill]="textColor()"
+      >
+        {{ showValue() ? '(' + getPercentage(d.value) + ')' : getPercentage(d.value) }}
+      </text>
+    }
+
+    <!-- Label unten -->
+    <text
+      [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
+      [attr.y]="height() + 15"
+      text-anchor="middle"
+      font-size="10"
+      font-weight="bold"
+      [attr.fill]="textColor()"
+    >
+      {{ d.label }}
+    </text>
+  }
+</svg>
