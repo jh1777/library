@@ -43,6 +43,8 @@ export class ListItemComponent extends UIBaseComponent implements AfterContentIn
 
   isHovered = signal<boolean>(false);
 
+  description = input<string>();
+  
   constructor() {
     super();
     const uuid = crypto.randomUUID();

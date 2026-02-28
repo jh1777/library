@@ -1,0 +1,79 @@
+@use '../../styles/ui.styles' as *;
+@use 'sass:color';
+
+:host {
+    .ui-drawer {
+        &-wrapper {
+            box-sizing: border-box;
+            position: fixed;
+            inset: 0;
+            z-index: 9001;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        &-backdrop {
+            position: absolute;
+            inset: 0;
+            background-color: rgba($color: $ui-standard-text-color, $alpha: 0.2);
+        }
+
+        &-panel {
+            position: relative;
+            z-index: 9002;
+            width: min(90vw, var(--ui-drawer-max-width, 420px));
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: $ui-inverted-text-color;
+            -webkit-box-shadow: 0 0 10px 0 $ui-light-shadow-color;
+            -moz-box-shadow: 0 0 10px 0 $ui-light-shadow-color;
+            box-shadow: 0 0 10px 0 $ui-light-shadow-color;
+            padding: 20px;
+            gap: 12px;
+            &.with-menu-bar {
+                border-top-left-radius: $ui-border-radius;
+            }
+        }
+
+        &-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &-title {
+                font-size: 18px;
+                font-weight: 700;
+                color: $ui-standard-text-color;
+            }
+
+            &-close-button {
+                border: none;
+                background: transparent;
+                color: $ui-standard-text-color;
+                cursor: pointer;
+                font-size: 20px;
+                line-height: 1;
+                border-radius: $ui-border-radius;
+                padding: .1rem .35rem;
+
+                &:hover {
+                    background-color: color.adjust($ui-alternative-standard-color, $lightness: 6%);
+
+                    &:active {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+
+        &-content {
+            min-height: 0;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+}

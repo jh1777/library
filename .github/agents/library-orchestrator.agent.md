@@ -56,6 +56,7 @@ Only proceed to the next step when open items are resolved or explicitly accepte
 - **Docs-only change**: skip component/test/showcase agents and run `api-guardian` + `quality-gatekeeper`
 - **Internal-only refactor (no UI behavior change)**: run `component-builder` → `unit-test-engineer` → `api-guardian` → `quality-gatekeeper`
 - **User-facing component change**: run full delegation order
+- **Docs**: Always keep the `README.md` up-to-date if there are any public API changes or new features to document.
 
 ## Non-negotiable enforcement
 

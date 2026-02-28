@@ -2,7 +2,7 @@
 :host {
 
     .ui-tab-content {
-        padding: 0.5rem 1.5rem;
+        padding: var(--ui-tab-content-padding, 0.5rem 1.5rem);
         color: $ui-standard-text-color;
     }
 }

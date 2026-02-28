@@ -24,9 +24,11 @@
         
         &-label-description {
             display: flex;
-            color: $ui-standard-text-color;
+            color: $ui-dark-standard-color;
             word-wrap: break-word;
+            font-size: small;
             margin-bottom: 6px;
+            margin-top: 2px;
             line-height: normal;
         }
 

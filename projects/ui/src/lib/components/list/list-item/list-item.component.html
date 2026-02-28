@@ -1,5 +1,9 @@
 @if(isHidden() == false) {
-    <div class="item-marker" [class.active]="isHovered() || isSelected()"></div>
+    <div class="item-marker" 
+        [class.active]="isHovered() || isSelected()"
+        [class.bigger-item]="description() && description().length > 0"
+        >
+    </div>
     <div class="item-container" 
         (mouseout)="setMarker(false)"
         (mousemove)="setMarker(true)"
@@ -8,6 +12,7 @@
         [class.clickable]="isClickable()"
         [class.selected]="isSelected()"
         (click)="itemClicked()"
+        [class.bigger-item]="description() && description().length > 0"
         >
 
         @if(parentComponent?.showIndex() === 'number') {
@@ -20,9 +25,15 @@
         @if(icon()) {
             <fa-icon [icon]="icon()!" class="list-item-icon"></fa-icon>
         }
-        <div class="list-text-item-value">{{ text() }}</div>
-        <ng-content select="ui-badge"></ng-content>
-
+        <div class="list-text-item-container">
+            <div class="list-text-item-content">
+                <div class="list-text-item-value">{{ text() }}</div>
+                <ng-content select="ui-badge"></ng-content>
+            </div>
+            @if(description()) {
+                <div class="list-text-item-description">{{ description() }}</div>
+            }
+        </div>
         
         <div class="item-right">
             <div class="item-kpi">
@@ -36,6 +47,7 @@
                 </span>
             }
         </div>
+
 
     </div>
 }

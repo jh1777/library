@@ -33,6 +33,9 @@
         <ui-side-menu-entry label="Grid Layout" value="grid" [icon]="faGrip()"></ui-side-menu-entry>
       </ui-side-menu-section>
       <ui-side-menu-section label="Overlays">
+        <ui-side-menu-entry label="Drawer" value="drawer" [icon]="faWindowMaximize()">
+            <ui-badge value="NEW" [style]="3" [size]="1"></ui-badge>
+        </ui-side-menu-entry>
         <ui-side-menu-entry label="Modal" value="modal" [icon]="faWindowMaximize()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Signpost" value="signpost" [icon]="faWindowMaximize()"></ui-side-menu-entry>
         <ui-side-menu-entry label="Banner" value="banner" [icon]="faWindowMaximize()">
@@ -229,7 +232,7 @@
 
       <div class="demo-group">
         <div class="demo-label">Basic Input</div>
-        <div class="demo-row-col" style="max-width: 320px;">
+        <div class="demo-row-col">
           <ui-input label="Username" valuePlaceholder="Enter your name..." type="text"></ui-input>
           <ui-input label="Password" valuePlaceholder="••••••" type="password"></ui-input>
           <ui-input label="Disabled" valuePlaceholder="Can't edit this" [isDisabled]="true"></ui-input>
@@ -748,6 +751,45 @@
     }
 
     <!-- ════════════════════════════════════════════════════════════
+         SECTION: Drawer
+         ════════════════════════════════════════════════════════════ -->
+    @if (activeSection() === 'drawer') {
+    <section id="drawer" class="section">
+      <div class="section-header">Drawer</div>
+      <div class="section-description">
+        Slide-in overlay panel for contextual actions and content, with projected arbitrary content.
+      </div>
+
+      <div class="demo-group">
+        <div class="demo-label">Use the burger button in the top menu bar to toggle this drawer.</div>
+      </div>
+
+      <ui-drawer 
+      header="Quick Drawer with a long label" 
+      syncKey="main-shell-drawer"
+      (onClose)="log('Drawer closed')"
+      (onOpen)="log('Drawer opened')"
+      >
+        <div class="demo-group" style="margin: 0;">
+          <div class="demo-label">Projected Content</div>
+          <p>This content is projected into <code>ui-drawer</code> and can contain arbitrary components.</p>
+        </div>
+      </ui-drawer>
+
+      <div class="code-example">
+        <div class="code-label">Usage</div>
+        <pre><code>&lt;!-- app shell --&gt;
+&lt;ui-menu-bar [showBurgerMenu]="true" syncKey="main-shell-drawer"&gt;...&lt;/ui-menu-bar&gt;
+
+&lt;!-- any routed page --&gt;
+&lt;ui-drawer header="Quick Drawer" syncKey="main-shell-drawer"&gt;
+  &lt;p&gt;Arbitrary projected content...&lt;/p&gt;
+&lt;/ui-drawer&gt;</code></pre>
+      </div>
+    </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════
          SECTION: Modal
          ════════════════════════════════════════════════════════════ -->
     @if (activeSection() === 'modal') {
@@ -881,7 +923,8 @@
                 [showDelta]="true" 
                 [showPercentage]="true"
                 [currency]="'none'"
-                [style]="'negative'"
+                [invert]="false"
+                [style]="'auto'"
                 [refValue]=312214></ui-list-item-kpi>
             </ui-list-item>
             <ui-list-item text="Another Item" [isClickable]="true">
@@ -893,7 +936,7 @@
                 [style]="'negative'"
                 [refValue]=374></ui-list-item-kpi>
             </ui-list-item>
-            <ui-list-item text="Second item (clickable)" [isClickable]="true">
+            <ui-list-item text="Second item (clickable)" [isClickable]="true" description="This item has KPIs with a reference value for comparison.">
               <ui-list-item-kpi 
                 [value]=2625 
                 [showDelta]="false" 
@@ -902,6 +945,11 @@
                 label="Total"
                 [style]="'positive'"
                 [refValue]=1324></ui-list-item-kpi>
+                 <ui-list-item-kpi 
+                [value]=225
+                [showPercentage]="true"
+                [style]="'negative'"
+                [refValue]=124></ui-list-item-kpi>
             </ui-list-item>
             <ui-list-item text="Third item">
               <ui-button label="Action" [icon]="faCheck()" [style]="3"></ui-button>

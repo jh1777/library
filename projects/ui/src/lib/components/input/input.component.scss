@@ -24,6 +24,7 @@
             border-radius: var(--ui-input-radius, 4px);
             font-size: var(--ui-input-font-size, 14px);
             height: var(--ui-input-height, 20px);
+            width: var(--ui-input-width, 100%);
             background-color: var(--ui-input-bg, #ffffff);
             transition: border 0.2s;
             text-decoration: none;

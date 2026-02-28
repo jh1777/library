@@ -15,6 +15,7 @@ const showcaseSections = [
   { label: 'Tabs', sectionId: 'tabs', key: 'tabs' },
   { label: 'Accordion', sectionId: 'accordion', key: 'accordion' },
   { label: 'Grid Layout', sectionId: 'grid', key: 'grid' },
+  { label: 'Drawer', sectionId: 'drawer', key: 'drawer' },
   { label: 'Modal', sectionId: 'modal', key: 'modal' },
   { label: 'Signpost', sectionId: 'signpost', key: 'signpost' },
   { label: 'Banner', sectionId: 'banner', key: 'banner' }

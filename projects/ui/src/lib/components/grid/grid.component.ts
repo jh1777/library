@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, Component, HostListener, computed, input, signal } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { UIBaseComponent } from '../../shared';
 
 @Component({

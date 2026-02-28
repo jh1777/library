@@ -1,12 +1,9 @@
 @use '../../../styles/ui.styles' as *;
-
+@use 'sass:color';
 :host {
 
     --ui-menu-bar-border-bottom: 0px solid white;
-flex: 0 0 auto;
-    //position: sticky;
-    //left: 0;
-    //top: 0;
+    flex: 0 0 auto;
     width: 100%;
     z-index: 1000;
     backdrop-filter: blur(3px);
@@ -19,7 +16,6 @@ flex: 0 0 auto;
 
     .main-menu {
         background-color: $ui-menu-bar-background-color;
-        //background: rgba(243,243,243,0.92);
         height: $ui-menu-bar-height;
         border: 1px solid $ui-light-standard-color;
         display: flex;
@@ -27,6 +23,24 @@ flex: 0 0 auto;
         align-items: center;
         text-align: center; 
         overflow: hidden;
+        padding: 0 1rem;
+
+        .menu-right {
+            margin-left: auto;
+            padding: 0.3rem 0.4rem;
+            border-radius: $ui-border-radius;
+            display: inline-flex;
+            cursor: pointer;
+            &:hover {
+                background-color: $ui-menu-item-active-background-color;
+                &:not(.toggled):active {
+                    background-color: $ui-menu-bar-background-color;
+                }
+            }
+            &.toggled {
+                background-color: $ui-menu-item-active-background-color;
+            }
+        }
       }
       
     .main-menu ul {
@@ -35,6 +49,9 @@ flex: 0 0 auto;
         margin: 0;
         display: inline-flex;
         gap: 10px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
     }
     
     .main-menu ul li {

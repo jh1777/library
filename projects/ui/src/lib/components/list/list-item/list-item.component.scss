@@ -13,6 +13,9 @@
       width: 5px;
       height: 30px;
       border-radius: 5px;
+      &.bigger-item {
+        height: 50px;
+      }
       &.active {
         background-color: $ui-petrol-color;
       }
@@ -33,12 +36,15 @@
     flex-direction: row;
     padding-left: 8px;
     height: 35px;
+    &.bigger-item {
+      height: 55px;
+    }
+
     &:hover {
       background-color: color.scale($ui-light-standard-color, $lightness: 80%);
     }
     &.index {
       padding-left: 0;
-
     }
 
     &.clickable {
@@ -48,8 +54,8 @@
       }
     }
     &.selected {
-      // background-color: color.scale($ui-light-standard-color, $lightness: 40%);
       font-weight: 700;
+      background-color: color.scale($ui-light-standard-color, $lightness: 60%);
     }
 
     .item-right {
@@ -58,26 +64,58 @@
       align-items: center;
       gap: 8px;
       margin-right: 8px;
+
+      .item-kpi {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
     }
 
-    .list-text-item-index {
-      color: $ui-standard-color;
-      min-width: 20px;
-      text-align: right;
+    .list-text-item {
+      &-index {
+        color: $ui-standard-color;
+        min-width: 20px;
+        text-align: right;
+        font-weight: 400;
+      }
+
+      &-value {
+        color: $ui-standard-text-color;
+        display: block;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      &-content {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      &-description {
+        color: $ui-dark-standard-color;
+        font-size: small;
+        display: block;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-weight: 400;
+      }
     }
+
     .list-item-icon {
       color: $ui-standard-text-color;
       font-size: small;
     }
-
-    .list-text-item-value {
-      color: $ui-standard-text-color;
-      display: block;
-      min-width: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
   }
-
 }

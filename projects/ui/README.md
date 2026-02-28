@@ -1185,6 +1185,11 @@ The display text of the item.
 > Optional: **Yes**  
 Optional Font Awesome icon shown before the text.
 
+#### `description`
+> Type: *string*
+> Optional: **Yes**  
+Optional small grey subtitle below the item text
+
 #### `isClickable`
 > Type: *boolean*  
 > Optional: **Yes** (default: `false`)  

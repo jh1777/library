@@ -6,6 +6,7 @@ export * from './lib/components/accordion';
 export * from './lib/components/badge';
 export * from './lib/components/button';
 export * from './lib/components/card';
+export * from './lib/components/drawer';
 export * from './lib/components/entry-tile';
 export * from './lib/components/grid';
 export * from './lib/components/entry-container';

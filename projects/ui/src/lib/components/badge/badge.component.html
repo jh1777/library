@@ -26,8 +26,8 @@
             [class.ui-badge-small]="size() == 1"
             [class.ui-badge-medium]="size() == 2"
             [class.ui-badge-large]="size() == 3"
-            [class.overflow]="value()! > 9"
-            [class.long-value]="value().length > 2"
+            [class.overflow]="typeof value() === 'number' && value() > 9"
+            [class.long-value]="(typeof value() === 'string' && value().length > 2) || longMode() == true"
         >
             {{ value() }}
         </div>
