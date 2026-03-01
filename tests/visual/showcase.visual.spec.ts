@@ -12,6 +12,7 @@ const showcaseSections = [
   { label: 'Table', sectionId: 'table', key: 'table' },
   { label: 'List', sectionId: 'list', key: 'list' },
   { label: 'Toolbar', sectionId: 'toolbar', key: 'toolbar' },
+  { label: 'Bar Chart', sectionId: 'bar-chart', key: 'bar-chart' },
   { label: 'Tabs', sectionId: 'tabs', key: 'tabs' },
   { label: 'Accordion', sectionId: 'accordion', key: 'accordion' },
   { label: 'Grid Layout', sectionId: 'grid', key: 'grid' },

@@ -32,6 +32,9 @@ WORK IN PROGRESS
     - [List Item](#list--list-item)
     - [List Item KPI](#list--list-item-kpi)
     - [List Footer](#list--list-footer)
+  - [Bar Chart](#bar-chart)
+    - [Chart Axis (config only)](#bar-chart--chart-axis-config-only)
+    - [Chart Legend](#bar-chart--chart-legend)
 - [Content and Navigation Components](#content-and-navigation-components)
   - [Grid](#grid)
   - [Menu Bar](#menu-bar)
@@ -1271,6 +1274,215 @@ A sticky footer bar for the list. Displays the item count, filtered count, and c
 
 #### Useable inside
 - [List](#list)
+
+---
+
+## Bar Chart
+> Useable standalone: **Yes**  
+> Supports loading indicator: **No**  
+> Supports error message: **No**  
+> Supports tooltip: **No**  
+> Selector: `ui-bar-chart`
+
+A responsive SVG-based chart component supporting normal bars and stacked bars, with optional axis configuration, projected legend, hover effect, and click output events.
+
+### Inputs
+
+#### `dataSet`
+> Type: *ChartDataSet*  
+> Required: **Yes**  
+Chart data source. Each `ChartDataPoint` supports optional color, opacity, font/stroke config and optional `stacks` for stacked mode.
+
+#### `chartType`
+> Type: *'bar' | 'stacked-bar'*  
+> Optional: **Yes** (default: `'bar'`)  
+Switches between regular bar rendering and stacked bars.
+
+#### `svgWidth`
+> Type: *string | number | null*  
+> Optional: **Yes** (default: `null`)  
+Sets chart width. Supports numeric pixels or responsive values like `'100%'`.
+
+#### `height`
+> Type: *number*  
+> Optional: **Yes** (default: `200`)  
+Base chart height in pixels (extra space for x-axis labels is calculated automatically).
+
+#### `barWidthPercent`
+> Type: *number*  
+> Optional: **Yes** (default: `90`)  
+Controls each bar width relative to available slot width.
+
+#### `showValue`
+> Type: *boolean*  
+> Optional: **Yes** (default: `true`)  
+Shows value labels above bars.
+
+#### `showPercentage`
+> Type: *boolean*  
+> Optional: **Yes** (default: `true`)  
+Shows percentage labels above bars.
+
+#### `showStackValues`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+Shows values inside stack segments when there is enough space.
+
+#### `showBarStroke`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+Enables bar/segment border rendering using `strokeColor` and `strokeWidth` from model data.
+
+#### `defaultBarColor`
+> Type: *string*  
+> Optional: **Yes** (default: `'steelblue'`)  
+Fallback color when data point/segment color is not provided.
+
+#### `defaultTextColor`
+> Type: *string*  
+> Optional: **Yes** (default: `'#444'`)  
+Fallback text color when `fontColor` is not provided.
+
+#### `autoScaleText`
+> Type: *boolean*  
+> Optional: **Yes** (default: `true`)  
+Scales chart text sizes for very small chart dimensions.
+
+#### `roundedCorners`
+> Type: *number*  
+> Optional: **Yes** (default: `5`)  
+Rounded corner radius for bars.
+
+### Outputs
+
+#### `onItemClick`
+> Type: *OutputEmitterRef<ChartItemClickEvent>*  
+Emits when a bar (or a stack segment) is clicked.
+
+### Accepts as Sub-Component
+- [Chart Axis (config only)](#bar-chart--chart-axis-config-only)
+- [Chart Legend](#bar-chart--chart-legend)
+
+### Usage
+
+```html
+<ui-bar-chart
+  [dataSet]="salesData"
+  chartType="stacked-bar"
+  svgWidth="100%"
+  [height]="240"
+  [showStackValues]="true"
+  [showBarStroke]="true"
+  (onItemClick)="onChartItemClick($event)">
+  <uic-chart-axis
+    location="x"
+    [showAxis]="true"
+    [showLabels]="true"
+    labelOverflow="truncate">
+  </uic-chart-axis>
+  <ui-chart-legend position="bottom"></ui-chart-legend>
+</ui-bar-chart>
+```
+
+### Data Model
+
+```ts
+type ChartType = 'bar' | 'stacked-bar';
+
+interface ChartDataSet {
+  label: string;
+  data: ChartDataPoint[];
+}
+
+interface ChartDataPoint {
+  label: string;
+  value: number;
+  color?: string;
+  opacity?: number;
+  fontColor?: string;
+  strokeColor?: string;
+  strokeWidth?: number;
+  stacks?: ChartStackSegment[];
+}
+
+interface ChartStackSegment {
+  label?: string;
+  value: number;
+  color?: string;
+  opacity?: number;
+  fontColor?: string;
+  strokeColor?: string;
+  strokeWidth?: number;
+}
+
+interface ChartItemClickEvent {
+  label: string;
+  value: number;
+  color: string;
+  originalDataPoint: ChartDataPoint;
+  originalSegment: ChartStackSegment | null;
+}
+```
+
+### Screenshot
+![alt text](src/lib/assets/docs/bar-chart.jpg)
+
+---
+
+## Bar Chart :: Chart Axis (config only)
+> Useable standalone: **No** (requires `ui-bar-chart` parent)  
+> Supports loading indicator: **No**  
+> Supports error message: **No**  
+> Supports tooltip: **No**  
+> Selector: `uic-chart-axis`
+
+Config-only projected component to control axis visibility and x-label behavior.
+
+### Inputs
+
+#### `location`
+> Type: *'x' | 'y'*  
+> Optional: **Yes** (default: `'x'`)  
+Axis target. `ui-bar-chart` currently uses x-axis config.
+
+#### `showAxis`
+> Type: *boolean*  
+> Optional: **Yes** (default: `true`)  
+Shows the axis line.
+
+#### `showLabels`
+> Type: *boolean*  
+> Optional: **Yes** (default: `false`)  
+Shows ticks and labels.
+
+#### `labelOverflow`
+> Type: *'none' | 'truncate' | 'hide'*  
+> Optional: **Yes** (default: `'none'`)  
+Controls long label rendering.
+
+#### Useable inside
+- [Bar Chart](#bar-chart)
+
+---
+
+## Bar Chart :: Chart Legend
+> Useable standalone: **No** (recommended inside `ui-bar-chart`)  
+> Supports loading indicator: **No**  
+> Supports error message: **No**  
+> Supports tooltip: **No**  
+> Selector: `ui-chart-legend`
+
+Projected legend component. Items are synced automatically from chart data by the parent chart.
+
+### Inputs
+
+#### `position`
+> Type: *'top' | 'bottom'*  
+> Optional: **Yes** (default: `'bottom'`)  
+Sets legend placement.
+
+#### Useable inside
+- [Bar Chart](#bar-chart)
 
 ---
 
