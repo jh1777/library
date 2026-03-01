@@ -30,6 +30,14 @@ export interface ChartLegendItem {
     opacity?: number;
 }
 
+export interface ChartItemClickEvent {
+    label: string;
+    value: number;
+    color: string;
+    originalDataPoint: ChartDataPoint;
+    originalSegment: ChartStackSegment | null;
+}
+
 export type ChartLegendPosition = 'top' | 'bottom';
 
 export type ChartType = 'bar' | 'stacked-bar' // | 'line' | 'pie' | 'doughnut' | 'radar' | 'polarArea';

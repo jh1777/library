@@ -1,5 +1,5 @@
 import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, DestroyRef, ElementRef, QueryList, computed, effect, inject, input, output, signal } from '@angular/core';
-import { ChartDataPoint, ChartDataSet, ChartLegendItem, ChartStackSegment, ChartType } from '../chart.models';
+import { ChartDataPoint, ChartDataSet, ChartItemClickEvent, ChartLegendItem, ChartStackSegment, ChartType } from '../chart.models';
 import { UIBaseComponent } from '../../../shared';
 import { ChartLegendComponent } from '../chart-legend/chart-legend.component';
 import { ChartAxisComponent } from '../chart-axis/chart-axis.component';
@@ -47,13 +47,7 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
   /// Outputs
   /// --------------------------------------------------------------------------
 
-  itemClick = output<{
-    label: string;
-    value: number;
-    color: string;
-    originalDataPoint: ChartDataPoint;
-    originalSegment: ChartStackSegment | null;
-  }>();
+  onItemClick = output<ChartItemClickEvent>();
 
   // --------------------------------------------------------------------------
   // Internal state
@@ -460,18 +454,16 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
 
   handleClick(dataPoint: ChartDataPoint, segment: ChartStackSegment | null): void {
     const label = segment?.label || dataPoint.label;
-    //const value = segment ? this.getStackSegmentValue(dataPoint, dataPoint.stacks!.indexOf(segment)) : this.getDataPointTotal(dataPoint);
     const value = segment ? segment.value : this.getDataPointTotal(dataPoint);
     const color = segment?.color || dataPoint.color || this.defaultBarColor();
 
-    const result = {
+    const result: ChartItemClickEvent = {
       label,
       value,
       color,
       originalDataPoint: dataPoint,
       originalSegment: segment
     };
-    console.log('Emitting itemClick with', result);
-    this.itemClick.emit(result);
+    this.onItemClick.emit(result);
   }
 }

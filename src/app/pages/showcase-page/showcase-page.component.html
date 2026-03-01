@@ -1143,6 +1143,31 @@
         </div>
 
         <div class="demo-group">
+          <div class="demo-label">Click event (bar + segment)</div>
+          <div class="demo-row" style="width: 100%;">
+            <ui-bar-chart
+              [chartType]="'stacked-bar'"
+              [animations]="false"
+              [showValue]="true"
+              [showStackValues]="true"
+              [showPercentage]="false"
+              [svgWidth]="'100%'"
+              [roundedCorners]="0"
+              [height]="220"
+              [barWidthPercent]="72"
+              [dataSet]="barChartStackedData()"
+              (onItemClick)="onBarChartItemClick($event)"
+            >
+              <uic-chart-axis location="x" [showLabels]="true"></uic-chart-axis>
+            </ui-bar-chart>
+          </div>
+          <div class="code-example" style="margin-top: 0.5rem;">
+            <div class="code-label">On Click Result</div>
+            <span><pre>{{ barChartClickDataJson() }}</pre></span>
+          </div>
+        </div>
+
+        <div class="demo-group">
           <div class="demo-label">Label overflow handling (truncate)</div>
           <div class="demo-row" style="width: 100%; max-width: 520px;">
             <ui-bar-chart
@@ -1211,6 +1236,11 @@
 &lt;!-- Stacked bar chart --&gt;
 &lt;ui-bar-chart [chartType]="'stacked-bar'" [showStackValues]="true" [dataSet]="stackedData"&gt;
   &lt;uic-chart-axis location="x" [showAxis]="true" [showLabels]="true"&gt;&lt;/uic-chart-axis&gt;
+&lt;/ui-bar-chart&gt;
+
+&lt;!-- Typed click event payload (bars + stack segments) --&gt;
+&lt;ui-bar-chart [chartType]="'stacked-bar'" [dataSet]="stackedData" (onItemClick)="onBarChartItemClick($event)"&gt;
+  &lt;uic-chart-axis location="x" [showLabels]="true"&gt;&lt;/uic-chart-axis&gt;
 &lt;/ui-bar-chart&gt;
 
 &lt;!-- Optional bar stroke / border --&gt;

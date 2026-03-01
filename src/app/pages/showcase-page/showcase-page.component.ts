@@ -9,7 +9,7 @@ import {
   faBarChart
 } from '@fortawesome/free-solid-svg-icons';
 
-import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, SwitchButtonOptionComponent, CardComponent, CardSectionBasicComponent, EntryContainerComponent, EntryKeyValueComponent, EntryMetricComponent, EntryTileComponent, EntryTileItemComponent, MetricTileComponent, ValueTileComponent, TabComponent, TabsComponent, ToolbarComponent, ListComponent, ListFooterComponent, ListItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ModalComponent, ConfirmationModalComponent, DrawerComponent, SignpostComponent, ButtonGroupComponent, GridComponent, SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent, TableComponent, ITableData, InputComponent, ContentComponent, ListItemKpiComponent, ListComponentInterface, BarChartComponent, ChartDataSet, ChartLegendComponent, ChartAxisComponent } from '../../../../projects/ui/src/public-api';
+import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, SwitchButtonOptionComponent, CardComponent, CardSectionBasicComponent, EntryContainerComponent, EntryKeyValueComponent, EntryMetricComponent, EntryTileComponent, EntryTileItemComponent, MetricTileComponent, ValueTileComponent, TabComponent, TabsComponent, ToolbarComponent, ListComponent, ListFooterComponent, ListItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ModalComponent, ConfirmationModalComponent, DrawerComponent, SignpostComponent, ButtonGroupComponent, GridComponent, SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent, TableComponent, ITableData, InputComponent, ContentComponent, ListItemKpiComponent, ListComponentInterface, BarChartComponent, ChartDataSet, ChartItemClickEvent, ChartLegendComponent, ChartAxisComponent } from '../../../../projects/ui/src/public-api';
 
 @Component({
   selector: 'app-showcase-page',
@@ -193,6 +193,13 @@ export class ShowcasePageComponent {
       { label: 'International Partnerships Department', value: 45, color: '#ef4444' }
     ]
   });
+
+  barChartClickData = signal<ChartItemClickEvent | null>(null);
+  barChartClickDataJson = computed(() => this.barChartClickData() ? JSON.stringify(this.barChartClickData(), null, 2) : 'Click a bar or a stack segment to see the payload.');
+
+  onBarChartItemClick(event: ChartItemClickEvent): void {
+    this.barChartClickData.set(event);
+  }
 
   // --- Utility ---
   onBannerUndo = () => {
