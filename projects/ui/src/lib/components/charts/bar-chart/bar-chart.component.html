@@ -118,18 +118,18 @@
         >
           {{ getDisplayedLabel(d.label) }}
         </text>
-      
-        <!-- Show X-Axis line ticks-->
-        @if (showXAxis()) {
-          <line
-            [attr.x1]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
-            [attr.y1]="height()"
-            [attr.x2]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
-            [attr.y2]="height() + xAxisTickSize()"
-            stroke="black"
-            opacity="0.3"
-          />
-        }
+      }
+
+      <!-- Show X-Axis line ticks-->
+      @if (showXAxis()) {
+        <line
+          [attr.x1]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
+          [attr.y1]="height()"
+          [attr.x2]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
+          [attr.y2]="height() + xAxisTickSize()"
+          stroke="black"
+          opacity="0.3"
+        />
       }
     }
     

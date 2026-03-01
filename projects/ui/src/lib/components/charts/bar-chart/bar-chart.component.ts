@@ -13,10 +13,18 @@ import { ChartLegendComponent } from '../chart-legend';
 })
 export class BarChartComponent extends UIBaseComponent implements AfterViewInit, AfterContentInit {
 
+  // --------------------------------------------------------------------------
+  // Dependencies & projected sub-components
+  // --------------------------------------------------------------------------
+
   private readonly hostElement = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
 
   @ContentChildren(ChartLegendComponent) private legends?: QueryList<ChartLegendComponent>;
+
+  // --------------------------------------------------------------------------
+  // Inputs
+  // --------------------------------------------------------------------------
 
   dataSet = input.required<ChartDataSet>();
   barColor = input<string>('steelblue');
@@ -35,7 +43,15 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
   xLabelOverflow = input<'none' | 'truncate' | 'hide'>('none');
   showStackValues = input<boolean>(false);
 
+  // --------------------------------------------------------------------------
+  // Internal state
+  // --------------------------------------------------------------------------
+
   private containerWidth = signal(0);
+
+  // --------------------------------------------------------------------------
+  // Layout & scaling computeds
+  // --------------------------------------------------------------------------
 
   resolvedSvgWidth = computed(() => this.svgWidth() ?? this.width());
 
@@ -76,6 +92,10 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
 
   private resizeObserver?: ResizeObserver;
 
+  // --------------------------------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------------------------------
+
   ngAfterViewInit(): void {
     this.updateContainerWidth();
     this.resizeObserver = new ResizeObserver(() => this.updateContainerWidth());
@@ -92,9 +112,14 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
     this.containerWidth.set(this.hostElement.nativeElement.clientWidth);
   }
 
+  // --------------------------------------------------------------------------
+  // Geometry helpers
+  // --------------------------------------------------------------------------
+
   getBarSlotAnchorX(i: number): number {
     return i * this.barSlotWidth();
   }
+
   barWidthPercent = input<number>(90);
   barWidth = computed<number>(() => this.barSlotWidth() * (this.barWidthPercent() / 100));
 
@@ -253,6 +278,10 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
     return dataPoint.fontColor || this.textColor();
   }
 
+  // --------------------------------------------------------------------------
+  // Legend integration
+  // --------------------------------------------------------------------------
+
   private readonly legendItems = computed<ChartLegendItem[]>(() => {
     if (this.isStacked()) {
       const stackedLegendItems: ChartLegendItem[] = [];
@@ -294,6 +323,10 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
     const items = this.legendItems();
     legends.forEach((legend) => legend.items.set(items));
   }
+
+  // --------------------------------------------------------------------------
+  // Vertical layout
+  // --------------------------------------------------------------------------
 
   bottomPadding = computed(() => {
     if (this.showXAxisLabels()) {
