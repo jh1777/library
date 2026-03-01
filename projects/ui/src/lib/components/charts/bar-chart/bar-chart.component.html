@@ -2,7 +2,7 @@
   @if(dataSet().label) {
     <div class="chart-title">{{ dataSet().label }}</div>
   }
-  <svg [attr.width]="resolvedSvgWidth()" [attr.height]="height() + 50">
+  <svg [attr.width]="resolvedSvgWidth()" [attr.height]="svgHeight()">
     @for (d of dataSet().data; track d; let i = $index) {
       <!-- Balken -->
       <rect
@@ -38,9 +38,9 @@
       @if (showValue()) {
         <text
           [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
-          [attr.y]="height() - (d.value / maxValue() * (height() - heightOffset())) - (showPercentage() ? 22 : 10)"
+          [attr.y]="height() - (d.value / maxValue() * (height() - heightOffset())) - valueTopGap()"
           text-anchor="middle"
-          font-size="12"
+          [attr.font-size]="valueFontSize()"
           font-weight="bold"
           [attr.fill]="textColor()"
         >
@@ -50,9 +50,9 @@
       @if (showPercentage()) {
         <text
           [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
-          [attr.y]="height() - (d.value / maxValue() * (height() - heightOffset())) - (showValue() ? 7 : 10)"
+          [attr.y]="height() - (d.value / maxValue() * (height() - heightOffset())) - percentageTopGap()"
           text-anchor="middle"
-          font-size="12"
+          [attr.font-size]="percentageFontSize()"
           [attr.font-weight]="showValue() ? 'normal' : 'bold'"
           [attr.fill-opacity]="showValue() ? 0.6 : 1"
           [attr.fill]="textColor()"
@@ -65,9 +65,9 @@
         <!-- Label unten -->
         <text
           [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
-          [attr.y]="height() + (showXAxis() ? 20 : 15)"
+          [attr.y]="height() + xLabelOffset()"
           text-anchor="middle"
-          font-size="10"
+          [attr.font-size]="xLabelFontSize()"
           font-weight="bold"
           [attr.fill]="textColor()"
         >
@@ -80,7 +80,7 @@
           [attr.x1]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
           [attr.y1]="height()"
           [attr.x2]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
-          [attr.y2]="height() + 7"
+          [attr.y2]="height() + xAxisTickSize()"
           stroke="black"
           opacity="0.3"
         />

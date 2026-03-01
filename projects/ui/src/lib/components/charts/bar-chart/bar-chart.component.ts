@@ -27,6 +27,7 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit 
   showValue = input<boolean>(true);
   showXAxisLabels = input<boolean>(true);
   roudedCorners = input<number>(5);
+  autoScaleText = input<boolean>(true);
 
   private containerWidth = signal(0);
 
@@ -88,6 +89,41 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit 
     const percentage = total > 0 ? (value / total) * 100 : 0;
     return `${percentage.toFixed(1)}%`;
   }
+
+  textScale = computed(() => {
+    if (!this.autoScaleText()) {
+      return 1;
+    }
+
+    const widthScale = this.chartWidth() / 400;
+    const heightScale = this.height() / 200;
+    const scale = Math.min(widthScale, heightScale);
+    return Math.max(0.55, Math.min(1, scale));
+  });
+
+  valueFontSize = computed(() => Math.max(8, Math.round(12 * this.textScale())));
+  percentageFontSize = computed(() => Math.max(8, Math.round(12 * this.textScale())));
+  xLabelFontSize = computed(() => Math.max(7, Math.round(10 * this.textScale())));
+
+  valueTopGap = computed(() => this.showPercentage() ? Math.max(10, 22 * this.textScale()) : Math.max(8, 10 * this.textScale()));
+  percentageTopGap = computed(() => this.showValue() ? Math.max(6, 7 * this.textScale()) : Math.max(8, 10 * this.textScale()));
+  xLabelOffset = computed(() => this.showXAxis() ? Math.max(12, 20 * this.textScale()) : Math.max(10, 15 * this.textScale()));
+  xAxisTickSize = computed(() => Math.max(4, 7 * this.textScale()));
+
+  bottomPadding = computed(() => {
+    if (this.showXAxisLabels()) {
+      const labelSpace = this.xLabelOffset() + this.xLabelFontSize();
+      return this.showXAxis() ? labelSpace + 2 : labelSpace;
+    }
+
+    if (this.showXAxis()) {
+      return this.xAxisTickSize() + 3;
+    }
+
+    return 0;
+  });
+
+  svgHeight = computed(() => this.height() + this.bottomPadding());
 
   heightOffset = computed(() => this.showValue() && this.showPercentage() ? this.height() * 0.2 : this.height() * 0.1);
 }
