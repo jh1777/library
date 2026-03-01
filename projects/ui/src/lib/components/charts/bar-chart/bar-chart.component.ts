@@ -1,8 +1,8 @@
 import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, DestroyRef, ElementRef, QueryList, computed, effect, inject, input, output, signal } from '@angular/core';
 import { ChartDataPoint, ChartDataSet, ChartLegendItem, ChartStackSegment, ChartType } from '../chart.models';
 import { UIBaseComponent } from '../../../shared';
-import { ChartLegendComponent } from '../chart-legend';
-import { ChartAxisComponent } from '../chart-axis';
+import { ChartLegendComponent } from '../chart-legend/chart-legend.component';
+import { ChartAxisComponent } from '../chart-axis/chart-axis.component';
 
 @Component({
   selector: 'ui-bar-chart',
@@ -281,7 +281,14 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
     return this.axes?.find((axis) => axis.location() === 'x') ?? null;
   });
 
-  xAxisShowAxis = computed(() => this.xAxisConfig()?.showAxis() ?? false);
+  xAxisShowAxis = computed(() => {
+    const axisConfig = this.xAxisConfig();
+    if (!axisConfig) {
+      return false;
+    }
+
+    return axisConfig.showAxis() || axisConfig.showLabels();
+  });
   xAxisShowLabels = computed(() => this.xAxisConfig()?.showLabels() ?? false);
   xAxisLabelOverflow = computed(() => this.xAxisConfig()?.labelOverflow() ?? 'none');
 
@@ -408,10 +415,6 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
     if (this.xAxisShowLabels()) {
       const labelSpace = this.xLabelOffset() + this.xLabelFontSize();
       return this.xAxisShowAxis() ? labelSpace + 2 : labelSpace;
-    }
-
-    if (this.xAxisShowAxis()) {
-      return this.xAxisTickSize() + 3;
     }
 
     return 0;

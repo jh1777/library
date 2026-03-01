@@ -132,7 +132,7 @@
       }
 
       <!-- Show X-Axis line ticks-->
-      @if (xAxisShowAxis()) {
+      @if (xAxisShowLabels()) {
         <line
           [attr.x1]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
           [attr.y1]="height()"

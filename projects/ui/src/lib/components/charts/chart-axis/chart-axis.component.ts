@@ -12,6 +12,6 @@ import { UIBaseComponent } from '../../../shared';
 export class ChartAxisComponent extends UIBaseComponent {
   location = input<'x' | 'y'>('x');
   showAxis = input<boolean>(true);
-  showLabels = input<boolean>(true);
+  showLabels = input<boolean>(false);
   labelOverflow = input<'none' | 'truncate' | 'hide'>('none');
 }
