@@ -1,0 +1,10 @@
+@if (items().length > 0) {
+  <div class="chart-legend" [class.chart-legend-top]="position() === 'top'" [class.chart-legend-bottom]="position() === 'bottom'">
+    @for (item of items(); track item.label + '-' + $index) {
+      <div class="chart-legend-item" [attr.title]="item.label">
+        <span class="chart-legend-color" [style.background-color]="item.color" [style.opacity]="item.opacity ?? 1"></span>
+        <span class="chart-legend-label">{{ item.label }}</span>
+      </div>
+    }
+  </div>
+}
