@@ -4,6 +4,8 @@ export interface ChartDataPoint {
     color?: string;
     opacity?: number;
     fontColor?: string;
+    strokeColor?: string;
+    strokeWidth?: number;
     stacks?: ChartStackSegment[];
 }
 
@@ -13,6 +15,8 @@ export interface ChartStackSegment {
     color?: string;
     opacity?: number;
     fontColor?: string;
+    strokeColor?: string;
+    strokeWidth?: number;
 }
 
 export interface ChartDataSet {

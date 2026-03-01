@@ -9,7 +9,7 @@ import {
   faBarChart
 } from '@fortawesome/free-solid-svg-icons';
 
-import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, SwitchButtonOptionComponent, CardComponent, CardSectionBasicComponent, EntryContainerComponent, EntryKeyValueComponent, EntryMetricComponent, EntryTileComponent, EntryTileItemComponent, MetricTileComponent, ValueTileComponent, TabComponent, TabsComponent, ToolbarComponent, ListComponent, ListFooterComponent, ListItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ModalComponent, ConfirmationModalComponent, DrawerComponent, SignpostComponent, ButtonGroupComponent, GridComponent, SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent, TableComponent, ITableData, InputComponent, ContentComponent, ListItemKpiComponent, ListComponentInterface, BarChartComponent, ChartDataSet, ChartLegendComponent } from '../../../../projects/ui/src/public-api';
+import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, SwitchButtonOptionComponent, CardComponent, CardSectionBasicComponent, EntryContainerComponent, EntryKeyValueComponent, EntryMetricComponent, EntryTileComponent, EntryTileItemComponent, MetricTileComponent, ValueTileComponent, TabComponent, TabsComponent, ToolbarComponent, ListComponent, ListFooterComponent, ListItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ModalComponent, ConfirmationModalComponent, DrawerComponent, SignpostComponent, ButtonGroupComponent, GridComponent, SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent, TableComponent, ITableData, InputComponent, ContentComponent, ListItemKpiComponent, ListComponentInterface, BarChartComponent, ChartDataSet, ChartLegendComponent, ChartAxisComponent } from '../../../../projects/ui/src/public-api';
 
 @Component({
   selector: 'app-showcase-page',
@@ -32,7 +32,8 @@ import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent
     InputComponent,
     ListItemKpiComponent,
     BarChartComponent,
-    ChartLegendComponent
+    ChartLegendComponent,
+    ChartAxisComponent
 ],
   templateUrl: './showcase-page.component.html',
   styleUrls: ['./showcase-page.component.scss']
@@ -130,13 +131,13 @@ export class ShowcasePageComponent {
 
   // --- Demo State: Bar Chart ---
   barChartData = signal<ChartDataSet>({ label: 'Example Data', data: [
-    { label: 'Category A', value: 30, color: '#3b82f6', fontColor: '#1f2937' },
-    { label: 'Category B', value: 80, color: '#10b981', fontColor: '#14532d' },
-    { label: 'Category C', value: 45, color: '#f59e0b', fontColor: '#7c2d12' },
-    { label: 'Category D', value: 60, color: '#ef4444', fontColor: '#7f1d1d' },
-    { label: 'Category E', value: 20, color: '#ef4444', opacity: 0.5, fontColor: '#7f1d1d' },
-    { label: 'Category F', value: 100, color: '#8b5cf6', fontColor: '#4c1d95' },
-    { label: 'Category G', value: 55, color: '#3b82f6', fontColor: '#1e3a8a' }
+    { label: 'Category A', value: 30, color: '#3b82f6', fontColor: '#1f2937', strokeColor: '#1e40af', strokeWidth: 1 },
+    { label: 'Category B', value: 80, color: '#10b981', fontColor: '#14532d', strokeColor: '#065f46', strokeWidth: 1.5 },
+    { label: 'Category C', value: 45, color: '#f59e0b', fontColor: '#7c2d12', strokeColor: '#92400e', strokeWidth: 1 },
+    { label: 'Category D', value: 60, color: '#ef4444', fontColor: '#7f1d1d', strokeColor: '#991b1b', strokeWidth: 1.5 },
+    { label: 'Category E', value: 20, color: '#ef4444', opacity: 0.5, fontColor: '#7f1d1d', strokeColor: '#7f1d1d', strokeWidth: 1 },
+    { label: 'Category F', value: 100, color: '#8b5cf6', fontColor: '#4c1d95', strokeColor: '#5b21b6', strokeWidth: 1.5 },
+    { label: 'Category G', value: 55, color: '#3b82f6', fontColor: '#1e3a8a', strokeColor: '#1e3a8a', strokeWidth: 1 }
   ]});
 
   barChartStackedData = signal<ChartDataSet>({
@@ -145,9 +146,11 @@ export class ShowcasePageComponent {
       {
         label: 'Q1',
         value: 0,
+        strokeColor: '#1f2937',
+        strokeWidth: 1,
         stacks: [
           { label: 'Hardware', value: 18, color: '#3b82f6', fontColor: '#ffffff' },
-          { label: 'Software', value: 24, color: '#10b981', fontColor: '#052e16' },
+          { label: 'Software', value: 24, color: '#10b981', fontColor: '#052e16', strokeColor: '#064e3b', strokeWidth: 2 },
           { label: 'Services', value: 10, color: '#f59e0b', fontColor: '#111827' }
         ]
       },

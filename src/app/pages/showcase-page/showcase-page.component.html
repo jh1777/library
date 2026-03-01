@@ -1026,14 +1026,14 @@
               [animations]="false"
               [showValue]="true"
               [showPercentage]="true"
-              [showXAxis]="true"
-              [showXAxisLabels]="true"
               textColor="#444"
               [width]="600"
               [height]="260"
               [barWidthPercent]="75"
               [dataSet]="barChartData()"
-            ></ui-bar-chart>
+            >
+              <uic-chart-axis location="x" [showAxis]="true" [showLabels]="true"></uic-chart-axis>
+            </ui-bar-chart>
           </div>
         </div>
         <div class="demo-group">
@@ -1044,29 +1044,47 @@
               [animations]="false"
               [showValue]="false"
               [showPercentage]="false"
-              [showXAxis]="false"
               textColor="#444"
               [roundedCorners]="0"
-              [showXAxisLabels]="false"
               [width]="150"
               [height]="70"
               [barWidthPercent]="70"
               [dataSet]="barChartData()"
-            ></ui-bar-chart>
+            >
+              <uic-chart-axis location="x" [showAxis]="false" [showLabels]="false"></uic-chart-axis>
+            </ui-bar-chart>
             <ui-bar-chart
               [animations]="false"
               [showValue]="false"
               [showPercentage]="false"
-              [showXAxis]="true"
               textColor="#444"
               [roundedCorners]="2"
-              [showXAxisLabels]="false"
               [width]="70"
               [height]="70"
               [barWidthPercent]="70"
               [dataSet]="barChartData()"
-            ></ui-bar-chart>
+            >
+            </ui-bar-chart>
             </span>
+          </div>
+        </div>
+
+        <div class="demo-group">
+          <div class="demo-label">Optional bar stroke</div>
+          <div class="demo-row" style="width: 100%; max-width: 520px;">
+            <ui-bar-chart
+              [animations]="false"
+              [showValue]="true"
+              [showPercentage]="false"
+              [showBarStroke]="true"
+              textColor="#444"
+              [svgWidth]="'100%'"
+              [height]="190"
+              [barWidthPercent]="72"
+              [dataSet]="barChartData()"
+            >
+              <uic-chart-axis location="x" [showAxis]="true" [showLabels]="true"></uic-chart-axis>
+            </ui-bar-chart>
           </div>
         </div>
 
@@ -1077,13 +1095,14 @@
               [animations]="false"
               [showValue]="true"
               [showPercentage]="true"
-              [showXAxis]="false"
               textColor="#444"
               [svgWidth]="'100%'"
               [height]="260"
               [barWidthPercent]="75"
               [dataSet]="barChartData()"
-            ></ui-bar-chart>
+            >
+              <uic-chart-axis location="x" [showAxis]="false" [showLabels]="false"></uic-chart-axis>
+            </ui-bar-chart>
           </div>
         </div>
 
@@ -1096,15 +1115,37 @@
               [showValue]="true"
               [showStackValues]="true"
               [showPercentage]="true"
-              [showXAxis]="true"
-              [showXAxisLabels]="true"
               textColor="#444"
               [svgWidth]="'100%'"
               [roundedCorners]="0"
               [height]="220"
               [barWidthPercent]="72"
               [dataSet]="barChartStackedData()"
-            ></ui-bar-chart>
+            >
+              <uic-chart-axis location="x" [showAxis]="true" [showLabels]="true"></uic-chart-axis>
+            </ui-bar-chart>
+          </div>
+        </div>
+
+        <div class="demo-group">
+          <div class="demo-label">Stacked stroke (segment override)</div>
+          <div class="demo-row" style="width: 100%;">
+            <ui-bar-chart
+              [chartType]="'stacked-bar'"
+              [animations]="false"
+              [showValue]="false"
+              [showStackValues]="true"
+              [showPercentage]="false"
+              [showBarStroke]="true"
+              textColor="#444"
+              [svgWidth]="'100%'"
+              [roundedCorners]="0"
+              [height]="220"
+              [barWidthPercent]="72"
+              [dataSet]="barChartStackedData()"
+            >
+              <uic-chart-axis location="x" [showAxis]="true" [showLabels]="true"></uic-chart-axis>
+            </ui-bar-chart>
           </div>
         </div>
 
@@ -1115,15 +1156,14 @@
               [animations]="false"
               [showValue]="false"
               [showPercentage]="false"
-              [showXAxis]="true"
-              [showXAxisLabels]="true"
-              [xLabelOverflow]="'truncate'"
               textColor="#444"
               [svgWidth]="'100%'"
               [height]="170"
               [barWidthPercent]="70"
               [dataSet]="barChartLongLabelsData()"
-            ></ui-bar-chart>
+            >
+              <uic-chart-axis location="x" [showAxis]="true" [showLabels]="true" labelOverflow="truncate"></uic-chart-axis>
+            </ui-bar-chart>
           </div>
         </div>
         <div class="demo-group">
@@ -1133,13 +1173,12 @@
               [animations]="false"
               [showValue]="false"
               [showPercentage]="false"
-              [showXAxis]="true"
-              [showXAxisLabels]="false"
               [svgWidth]="'100%'"
               [height]="220"
               [barWidthPercent]="72"
               [dataSet]="barChartData()"
             >
+              <uic-chart-axis location="x" [showAxis]="true" [showLabels]="false"></uic-chart-axis>
               <ui-chart-legend position="top"></ui-chart-legend>
             </ui-bar-chart>
           </div>
@@ -1153,14 +1192,13 @@
               [showValue]="false"
               [showStackValues]="true"
               [showPercentage]="false"
-              [showXAxis]="true"
               [roundedCorners]="0"
-              [showXAxisLabels]="true"
               [svgWidth]="'100%'"
               [height]="220"
               [barWidthPercent]="72"
               [dataSet]="barChartStackedData()"
             >
+              <uic-chart-axis location="x" [showAxis]="true" [showLabels]="true"></uic-chart-axis>
               <ui-chart-legend position="bottom"></ui-chart-legend>
             </ui-bar-chart>
           </div>
@@ -1169,16 +1207,34 @@
         <div class="code-example">
           <div class="code-label">Usage</div>
           <pre><code>&lt;!-- Basic bar chart --&gt;
-&lt;ui-bar-chart [width]="600" [height]="260" [dataSet]="barChartData"&gt;&lt;/ui-bar-chart&gt;
+&lt;ui-bar-chart [width]="600" [height]="260" [dataSet]="barChartData"&gt;
+  &lt;uic-chart-axis location="x" [showAxis]="true" [showLabels]="true"&gt;&lt;/uic-chart-axis&gt;
+&lt;/ui-bar-chart&gt;
 
 &lt;!-- Responsive layout (fills parent width) --&gt;
-&lt;ui-bar-chart [svgWidth]="'100%'" [height]="260" [dataSet]="barChartData"&gt;&lt;/ui-bar-chart&gt;
+&lt;ui-bar-chart [svgWidth]="'100%'" [height]="260" [dataSet]="barChartData"&gt;
+  &lt;uic-chart-axis location="x" [showAxis]="false" [showLabels]="false"&gt;&lt;/uic-chart-axis&gt;
+&lt;/ui-bar-chart&gt;
 
 &lt;!-- Stacked bar chart --&gt;
-&lt;ui-bar-chart [chartType]="'stacked-bar'" [showStackValues]="true" [dataSet]="stackedData"&gt;&lt;/ui-bar-chart&gt;
+&lt;ui-bar-chart [chartType]="'stacked-bar'" [showStackValues]="true" [dataSet]="stackedData"&gt;
+  &lt;uic-chart-axis location="x" [showAxis]="true" [showLabels]="true"&gt;&lt;/uic-chart-axis&gt;
+&lt;/ui-bar-chart&gt;
+
+&lt;!-- Optional bar stroke / border --&gt;
+&lt;!-- set strokeColor / strokeWidth on data points (or stack segments) in the model --&gt;
+&lt;ui-bar-chart [showBarStroke]="true" [dataSet]="barChartData"&gt;
+  &lt;uic-chart-axis location="x" [showAxis]="true" [showLabels]="true"&gt;&lt;/uic-chart-axis&gt;
+&lt;/ui-bar-chart&gt;
+
+&lt;!-- Stacked stroke with segment override (segment overrules point stroke) --&gt;
+&lt;ui-bar-chart [chartType]="'stacked-bar'" [showBarStroke]="true" [dataSet]="stackedData"&gt;
+  &lt;uic-chart-axis location="x" [showAxis]="true" [showLabels]="true"&gt;&lt;/uic-chart-axis&gt;
+&lt;/ui-bar-chart&gt;
 
 &lt;!-- Legend as projected sub-component --&gt;
 &lt;ui-bar-chart [dataSet]="barChartData"&gt;
+  &lt;uic-chart-axis location="x" [showAxis]="true" [showLabels]="false"&gt;&lt;/uic-chart-axis&gt;
   &lt;ui-chart-legend position="top"&gt;&lt;/ui-chart-legend&gt;
 &lt;/ui-bar-chart&gt;
 
@@ -1187,8 +1243,12 @@
 &lt;!-- stack segment example: value=24, color='#10b981', fontColor='#052e16' --&gt;
 
 &lt;!-- Label overflow handling --&gt;
-&lt;ui-bar-chart [xLabelOverflow]="'truncate'" [dataSet]="longLabelData"&gt;&lt;/ui-bar-chart&gt;
-&lt;ui-bar-chart [xLabelOverflow]="'hide'" [dataSet]="longLabelData"&gt;&lt;/ui-bar-chart&gt;</code></pre>
+&lt;ui-bar-chart [dataSet]="longLabelData"&gt;
+  &lt;uic-chart-axis location="x" [showAxis]="true" [showLabels]="true" labelOverflow="truncate"&gt;&lt;/uic-chart-axis&gt;
+&lt;/ui-bar-chart&gt;
+&lt;ui-bar-chart [dataSet]="longLabelData"&gt;
+  &lt;uic-chart-axis location="x" [showAxis]="true" [showLabels]="true" labelOverflow="hide"&gt;&lt;/uic-chart-axis&gt;
+&lt;/ui-bar-chart&gt;</code></pre>
         </div>
       </section>
     }

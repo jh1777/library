@@ -2,6 +2,7 @@ import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, Co
 import { ChartDataPoint, ChartDataSet, ChartLegendItem, ChartType } from '../chart.models';
 import { UIBaseComponent } from '../../../shared';
 import { ChartLegendComponent } from '../chart-legend';
+import { ChartAxisComponent } from '../chart-axis';
 
 @Component({
   selector: 'ui-bar-chart',
@@ -21,6 +22,7 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
   private readonly destroyRef = inject(DestroyRef);
 
   @ContentChildren(ChartLegendComponent) private legends?: QueryList<ChartLegendComponent>;
+  @ContentChildren(ChartAxisComponent) private axes?: QueryList<ChartAxisComponent>;
 
   // --------------------------------------------------------------------------
   // Inputs
@@ -33,21 +35,20 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
   width = input<number>(400);
   svgWidth = input<string | number | null>(null);
   animations = input<boolean>(true);
-  showXAxis = input<boolean>(true);
   showPercentage = input<boolean>(true);
   showValue = input<boolean>(true);
-  showXAxisLabels = input<boolean>(true);
   roundedCorners = input<number>(5);
   autoScaleText = input<boolean>(true);
   chartType = input<ChartType>('bar');
-  xLabelOverflow = input<'none' | 'truncate' | 'hide'>('none');
   showStackValues = input<boolean>(false);
+  showBarStroke = input<boolean>(false);
 
   // --------------------------------------------------------------------------
   // Internal state
   // --------------------------------------------------------------------------
 
   private containerWidth = signal(0);
+  private axisConfigVersion = signal(0);
 
   // --------------------------------------------------------------------------
   // Layout & scaling computeds
@@ -105,7 +106,10 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
   ngAfterContentInit(): void {
     this.syncProjectedLegendItems();
     const legendsChangesSubscription = this.legends?.changes.subscribe(() => this.syncProjectedLegendItems());
+    this.axisConfigVersion.update((value) => value + 1);
+    const axesChangesSubscription = this.axes?.changes.subscribe(() => this.axisConfigVersion.update((value) => value + 1));
     this.destroyRef.onDestroy(() => legendsChangesSubscription?.unsubscribe());
+    this.destroyRef.onDestroy(() => axesChangesSubscription?.unsubscribe());
   }
 
   private updateContainerWidth(): void {
@@ -189,6 +193,38 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
     return segmentOpacity ?? dataPoint.opacity ?? 1;
   }
 
+  getStackSegmentStrokeColor(dataPoint: ChartDataPoint, segmentIndex: number): string | null {
+    if (!this.showBarStroke()) {
+      return null;
+    }
+
+    return dataPoint.stacks?.[segmentIndex]?.strokeColor ?? dataPoint.strokeColor ?? null;
+  }
+
+  getStackSegmentStrokeWidth(dataPoint: ChartDataPoint, segmentIndex: number): number | null {
+    if (!this.showBarStroke()) {
+      return null;
+    }
+
+    return dataPoint.stacks?.[segmentIndex]?.strokeWidth ?? dataPoint.strokeWidth ?? 1;
+  }
+
+  getDataPointStrokeColor(dataPoint: ChartDataPoint): string | null {
+    if (!this.showBarStroke()) {
+      return null;
+    }
+
+    return dataPoint.strokeColor ?? null;
+  }
+
+  getDataPointStrokeWidth(dataPoint: ChartDataPoint): number | null {
+    if (!this.showBarStroke()) {
+      return null;
+    }
+
+    return dataPoint.strokeWidth ?? 1;
+  }
+
   getDisplayedValue(dataPoint: ChartDataPoint): number {
     return this.getDataPointTotal(dataPoint);
   }
@@ -217,11 +253,21 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
 
   valueTopGap = computed(() => this.showPercentage() ? Math.max(10, 22 * this.textScale()) : Math.max(8, 10 * this.textScale()));
   percentageTopGap = computed(() => this.showValue() ? Math.max(6, 7 * this.textScale()) : Math.max(8, 10 * this.textScale()));
-  xLabelOffset = computed(() => this.showXAxis() ? Math.max(12, 20 * this.textScale()) : Math.max(10, 15 * this.textScale()));
   xAxisTickSize = computed(() => Math.max(4, 7 * this.textScale()));
 
+  private readonly xAxisConfig = computed(() => {
+    this.axisConfigVersion();
+    return this.axes?.find((axis) => axis.location() === 'x') ?? null;
+  });
+
+  xAxisShowAxis = computed(() => this.xAxisConfig()?.showAxis() ?? false);
+  xAxisShowLabels = computed(() => this.xAxisConfig()?.showLabels() ?? false);
+  xAxisLabelOverflow = computed(() => this.xAxisConfig()?.labelOverflow() ?? 'none');
+
+  xLabelOffset = computed(() => this.xAxisShowAxis() ? Math.max(12, 20 * this.textScale()) : Math.max(10, 15 * this.textScale()));
+
   getDisplayedLabel(label: string): string {
-    if (this.xLabelOverflow() !== 'truncate') {
+    if (this.xAxisLabelOverflow() !== 'truncate') {
       return label;
     }
 
@@ -234,7 +280,7 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
   }
 
   shouldHideLabel(label: string): boolean {
-    if (this.xLabelOverflow() !== 'hide') {
+    if (this.xAxisLabelOverflow() !== 'hide') {
       return false;
     }
 
@@ -329,12 +375,12 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
   // --------------------------------------------------------------------------
 
   bottomPadding = computed(() => {
-    if (this.showXAxisLabels()) {
+    if (this.xAxisShowLabels()) {
       const labelSpace = this.xLabelOffset() + this.xLabelFontSize();
-      return this.showXAxis() ? labelSpace + 2 : labelSpace;
+      return this.xAxisShowAxis() ? labelSpace + 2 : labelSpace;
     }
 
-    if (this.showXAxis()) {
+    if (this.xAxisShowAxis()) {
       return this.xAxisTickSize() + 3;
     }
 
