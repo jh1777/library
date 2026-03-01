@@ -1086,11 +1086,21 @@
 
         <div class="demo-group">
           <div class="demo-label">Responsive width (100%)</div>
+          <div class="demo-row" style="margin-bottom: 0.5rem;">
+            <ui-button
+              [label]="barChartDemoLoading() ? 'Loading active (10s)...' : 'Simulate loading (10s)'"
+              [isDisabled]="barChartDemoLoading()"
+              [style]="0"
+              [icon]="faPlay()"
+              (onClick)="simulateBarChartLoading()">
+            </ui-button>
+          </div>
           <div class="demo-row" style="width: 100%;">
             <ui-bar-chart
               [animations]="false"
               [showValue]="true"
               [showPercentage]="true"
+              [isLoading]="barChartDemoLoading()"
               [svgWidth]="'100%'"
               [height]="260"
               [barWidthPercent]="75"

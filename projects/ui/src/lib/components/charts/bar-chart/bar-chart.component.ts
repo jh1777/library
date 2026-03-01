@@ -55,6 +55,7 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
 
   private containerWidth = signal(0);
   private axisConfigVersion = signal(0);
+  private readonly loadingHeightPattern = [72, 48, 84, 60, 68, 52];
 
   // --------------------------------------------------------------------------
   // Layout & scaling computeds
@@ -84,6 +85,7 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
 
   barSlotWidth = computed(() => this.dataSet().data.length > 0 ? this.chartWidth() / this.dataSet().data.length : 0);
   barSlotCenterOffset = computed(() => this.barSlotWidth() / 2);
+  loadingPlaceholderIndices = computed(() => Array.from({ length: Math.max(this.dataSet().data.length, 4) }, (_, index) => index));
 
   constructor() {
     super();
@@ -344,6 +346,10 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
 
   getDataPointValueColor(dataPoint: ChartDataPoint): string {
     return dataPoint.fontColor || this.defaultTextColor();
+  }
+
+  getLoadingBarHeightPercent(index: number): number {
+    return this.loadingHeightPattern[index % this.loadingHeightPattern.length];
   }
 
   getBarFillColor(dataPoint: ChartDataPoint): string {

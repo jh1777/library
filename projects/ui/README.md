@@ -101,6 +101,12 @@ For more details, see the [Quick Start Guide](./QUICK_START.md).
   - improved button support in key-value component
   - styling improvements on several components
 
+- **0.4.15**
+  - Several updates to components like `menu-bar`
+  - NEW `ui-drawer` component
+  - NEW `ui-banner` component
+  - NEW `ui-list` component
+  - NEW `ui-bar-chart` component
 
 ### Key Features:
 
@@ -1279,7 +1285,7 @@ A sticky footer bar for the list. Displays the item count, filtered count, and c
 
 ## Bar Chart
 > Useable standalone: **Yes**  
-> Supports loading indicator: **No**  
+> Supports loading indicator: **Yes**  
 > Supports error message: **No**  
 > Supports tooltip: **No**  
 > Selector: `ui-bar-chart`
@@ -1302,6 +1308,11 @@ Switches between regular bar rendering and stacked bars.
 > Type: *string | number | null*  
 > Optional: **Yes** (default: `null`)  
 Sets chart width. Supports numeric pixels or responsive values like `'100%'`.
+
+#### `width`
+> Type: *number*  
+> Optional: **Yes** (default: `400`)  
+Fallback width in pixels when `svgWidth` is not set.
 
 #### `height`
 > Type: *number*  
@@ -1352,6 +1363,14 @@ Scales chart text sizes for very small chart dimensions.
 > Type: *number*  
 > Optional: **Yes** (default: `5`)  
 Rounded corner radius for bars.
+
+### Sizing Behavior (`width` vs `svgWidth`)
+
+- `svgWidth` has priority when set.
+- If `svgWidth` is a number (example: `600`), chart width is fixed to that pixel value.
+- If `svgWidth` is a percent string (example: `'100%'`), chart follows parent/container width responsively.
+- If `svgWidth` is `null`, chart uses `width` (default `400`).
+- Loading state uses the same resolved width behavior as the normal SVG state.
 
 ### Outputs
 

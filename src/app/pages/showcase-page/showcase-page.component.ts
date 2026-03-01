@@ -196,9 +196,24 @@ export class ShowcasePageComponent {
 
   barChartClickData = signal<ChartItemClickEvent | null>(null);
   barChartClickDataJson = computed(() => this.barChartClickData() ? JSON.stringify(this.barChartClickData(), null, 2) : 'Click a bar or a stack segment to see the payload.');
+  barChartDemoLoading = signal<boolean>(false);
+  private barChartDemoLoadingTimeout?: ReturnType<typeof setTimeout>;
 
   onBarChartItemClick(event: ChartItemClickEvent): void {
     this.barChartClickData.set(event);
+  }
+
+  simulateBarChartLoading(durationMs: number = 10_000): void {
+    this.barChartDemoLoading.set(true);
+
+    if (this.barChartDemoLoadingTimeout) {
+      clearTimeout(this.barChartDemoLoadingTimeout);
+    }
+
+    this.barChartDemoLoadingTimeout = setTimeout(() => {
+      this.barChartDemoLoading.set(false);
+      this.barChartDemoLoadingTimeout = undefined;
+    }, durationMs);
   }
 
   // --- Utility ---
