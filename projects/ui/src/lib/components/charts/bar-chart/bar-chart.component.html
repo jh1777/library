@@ -11,7 +11,7 @@
         [attr.width]="barWidth()"
         [attr.height]="d.value / maxValue() * (height() - heightOffset())"
         [attr.fill]="d.color || barColor()"
-        [attr.fill-opacity]="d.opacity ? d.opacity : 1"
+        [attr.opacity]="d.opacity ? d.opacity : 1"
         [attr.rx]="roudedCorners()"
         [attr.ry]="roudedCorners()"
       >
