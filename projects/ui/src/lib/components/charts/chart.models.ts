@@ -2,6 +2,7 @@ export interface ChartDataPoint {
     label: string;
     value: number;
     color?: string;
+    oapacity?: number;
 }
 
 export interface ChartDataSet {

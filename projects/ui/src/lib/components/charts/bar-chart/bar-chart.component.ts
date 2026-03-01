@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, DestroyRef, ElementRef, computed, inject, input, signal } from '@angular/core';
 import { ChartDataSet } from '../chart.models';
+import { UIBaseComponent } from '../../../shared';
 
 @Component({
   selector: 'ui-bar-chart',
@@ -9,7 +10,7 @@ import { ChartDataSet } from '../chart.models';
   templateUrl: './bar-chart.component.html',
   styleUrl: './bar-chart.component.scss'
 })
-export class BarChartComponent implements AfterViewInit {
+export class BarChartComponent extends UIBaseComponent implements AfterViewInit {
 
   private readonly hostElement = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
@@ -55,6 +56,7 @@ export class BarChartComponent implements AfterViewInit {
   barSlotCenterOffset = computed(() => this.barSlotWidth() / 2);
 
   constructor() {
+    super();
     this.destroyRef.onDestroy(() => {
       this.resizeObserver?.disconnect();
     });
@@ -87,5 +89,5 @@ export class BarChartComponent implements AfterViewInit {
     return `${percentage.toFixed(1)}%`;
   }
 
-  heightOffset = computed(() => this.showValue() && this.showPercentage() ? 40 : 30);
+  heightOffset = computed(() => this.showValue() && this.showPercentage() ? this.height() * 0.2 : this.height() * 0.1);
 }

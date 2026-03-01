@@ -133,7 +133,7 @@ export class ShowcasePageComponent {
     { label: 'Category B', value: 80, color: '#10b981' },
     { label: 'Category C', value: 45, color: '#f59e0b' },
     { label: 'Category D', value: 60, color: '#ef4444' },
-    { label: 'Category E', value: 20, color: '#ef4444' },
+    { label: 'Category E', value: 20, color: '#ef4444', oapacity: 0.5 },
     { label: 'Category F', value: 90, color: '#8b5cf6' },
     { label: 'Category G', value: 55, color: '#3b82f6' }
   ]});
