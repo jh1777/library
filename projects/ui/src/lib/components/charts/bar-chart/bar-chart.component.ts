@@ -1,6 +1,7 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, DestroyRef, ElementRef, computed, inject, input, signal } from '@angular/core';
-import { ChartDataPoint, ChartDataSet, ChartType } from '../chart.models';
+import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, DestroyRef, ElementRef, QueryList, computed, effect, inject, input, signal } from '@angular/core';
+import { ChartDataPoint, ChartDataSet, ChartLegendItem, ChartType } from '../chart.models';
 import { UIBaseComponent } from '../../../shared';
+import { ChartLegendComponent } from '../chart-legend';
 
 @Component({
   selector: 'ui-bar-chart',
@@ -10,10 +11,12 @@ import { UIBaseComponent } from '../../../shared';
   templateUrl: './bar-chart.component.html',
   styleUrl: './bar-chart.component.scss'
 })
-export class BarChartComponent extends UIBaseComponent implements AfterViewInit {
+export class BarChartComponent extends UIBaseComponent implements AfterViewInit, AfterContentInit {
 
   private readonly hostElement = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
+
+  @ContentChildren(ChartLegendComponent) legends!: QueryList<ChartLegendComponent>;
 
   dataSet = input.required<ChartDataSet>();
   barColor = input<string>('steelblue');
@@ -61,6 +64,12 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit 
 
   constructor() {
     super();
+
+    effect(() => {
+      this.legendItems();
+      this.syncProjectedLegendItems();
+    });
+
     this.destroyRef.onDestroy(() => {
       this.resizeObserver?.disconnect();
     });
@@ -72,6 +81,12 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit 
     this.updateContainerWidth();
     this.resizeObserver = new ResizeObserver(() => this.updateContainerWidth());
     this.resizeObserver.observe(this.hostElement.nativeElement);
+  }
+
+  ngAfterContentInit(): void {
+    this.syncProjectedLegendItems();
+    const legendsChangesSubscription = this.legends.changes.subscribe(() => this.syncProjectedLegendItems());
+    this.destroyRef.onDestroy(() => legendsChangesSubscription.unsubscribe());
   }
 
   private updateContainerWidth(): void {
@@ -237,6 +252,47 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit 
 
   getDataPointValueColor(dataPoint: ChartDataPoint): string {
     return dataPoint.fontColor || this.textColor();
+  }
+
+  legendItems = computed<ChartLegendItem[]>(() => {
+    if (this.isStacked()) {
+      const stackedLegendItems: ChartLegendItem[] = [];
+      const stackedLegendKeys = new Set<string>();
+
+      this.dataSet().data.forEach((dataPoint) => {
+        dataPoint.stacks?.forEach((segment, index) => {
+          const label = segment.label || `Segment ${index + 1}`;
+          const color = segment.color || dataPoint.color || this.barColor();
+          const key = `${label}|${color}|${segment.opacity ?? dataPoint.opacity ?? 1}`;
+
+          if (!stackedLegendKeys.has(key)) {
+            stackedLegendKeys.add(key);
+            stackedLegendItems.push({
+              label,
+              color,
+              opacity: segment.opacity ?? dataPoint.opacity ?? 1
+            });
+          }
+        });
+      });
+
+      return stackedLegendItems;
+    }
+
+    return this.dataSet().data.map((dataPoint) => ({
+      label: dataPoint.label,
+      color: dataPoint.color || this.barColor(),
+      opacity: dataPoint.opacity ?? 1
+    }));
+  });
+
+  private syncProjectedLegendItems(): void {
+    if (!this.legends) {
+      return;
+    }
+
+    const items = this.legendItems();
+    this.legends.forEach((legend) => legend.items.set(items));
   }
 
   bottomPadding = computed(() => {

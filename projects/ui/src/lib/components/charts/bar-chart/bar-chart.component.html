@@ -2,6 +2,7 @@
   @if(dataSet().label) {
     <div class="chart-title">{{ dataSet().label }}</div>
   }
+  <ng-content select="ui-chart-legend[position='top']"></ng-content>
   <svg [attr.width]="resolvedSvgWidth()" [attr.height]="svgHeight()">
     @for (d of dataSet().data; track d; let i = $index) {
       @if (isStacked() && hasStackSegments(d)) {
@@ -13,8 +14,8 @@
             [attr.height]="getStackSegmentHeight(d, segmentIndex)"
             [attr.fill]="getStackSegmentColor(d, segmentIndex)"
             [attr.opacity]="getStackSegmentOpacity(d, segmentIndex)"
-            [attr.rx]="isLastSegment ? roundedCorners() : 0"
-            [attr.ry]="isLastSegment ? roundedCorners() : 0"
+            [attr.rx]="roundedCorners() ?? 5"
+            [attr.ry]="roundedCorners() ?? 5"
           >
             @if (animations()) {
               <animate
@@ -117,17 +118,18 @@
         >
           {{ getDisplayedLabel(d.label) }}
         </text>
-      }
-      <!-- Show X-Axis line ticks-->
-      @if (showXAxis()) {
-        <line
-          [attr.x1]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
-          [attr.y1]="height()"
-          [attr.x2]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
-          [attr.y2]="height() + xAxisTickSize()"
-          stroke="black"
-          opacity="0.3"
-        />
+      
+        <!-- Show X-Axis line ticks-->
+        @if (showXAxis()) {
+          <line
+            [attr.x1]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
+            [attr.y1]="height()"
+            [attr.x2]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
+            [attr.y2]="height() + xAxisTickSize()"
+            stroke="black"
+            opacity="0.3"
+          />
+        }
       }
     }
     
@@ -143,4 +145,5 @@
       />
     }
   </svg>
+  <ng-content select="ui-chart-legend"></ng-content>
 }

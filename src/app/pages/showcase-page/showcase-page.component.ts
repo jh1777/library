@@ -9,7 +9,7 @@ import {
   faBarChart
 } from '@fortawesome/free-solid-svg-icons';
 
-import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, SwitchButtonOptionComponent, CardComponent, CardSectionBasicComponent, EntryContainerComponent, EntryKeyValueComponent, EntryMetricComponent, EntryTileComponent, EntryTileItemComponent, MetricTileComponent, ValueTileComponent, TabComponent, TabsComponent, ToolbarComponent, ListComponent, ListFooterComponent, ListItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ModalComponent, ConfirmationModalComponent, DrawerComponent, SignpostComponent, ButtonGroupComponent, GridComponent, SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent, TableComponent, ITableData, InputComponent, ContentComponent, ListItemKpiComponent, ListComponentInterface, BarChartComponent, ChartDataSet } from '../../../../projects/ui/src/public-api';
+import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, SwitchButtonOptionComponent, CardComponent, CardSectionBasicComponent, EntryContainerComponent, EntryKeyValueComponent, EntryMetricComponent, EntryTileComponent, EntryTileItemComponent, MetricTileComponent, ValueTileComponent, TabComponent, TabsComponent, ToolbarComponent, ListComponent, ListFooterComponent, ListItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ModalComponent, ConfirmationModalComponent, DrawerComponent, SignpostComponent, ButtonGroupComponent, GridComponent, SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent, TableComponent, ITableData, InputComponent, ContentComponent, ListItemKpiComponent, ListComponentInterface, BarChartComponent, ChartDataSet, ChartLegendComponent } from '../../../../projects/ui/src/public-api';
 
 @Component({
   selector: 'app-showcase-page',
@@ -31,7 +31,8 @@ import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent
     TableComponent,
     InputComponent,
     ListItemKpiComponent,
-    BarChartComponent
+    BarChartComponent,
+    ChartLegendComponent
 ],
   templateUrl: './showcase-page.component.html',
   styleUrls: ['./showcase-page.component.scss']
@@ -145,36 +146,36 @@ export class ShowcasePageComponent {
         label: 'Q1',
         value: 0,
         stacks: [
-          { value: 18, color: '#3b82f6', fontColor: '#ffffff' },
-          { value: 24, color: '#10b981', fontColor: '#052e16' },
-          { value: 10, color: '#f59e0b', fontColor: '#111827' }
+          { label: 'Hardware', value: 18, color: '#3b82f6', fontColor: '#ffffff' },
+          { label: 'Software', value: 24, color: '#10b981', fontColor: '#052e16' },
+          { label: 'Services', value: 10, color: '#f59e0b', fontColor: '#111827' }
         ]
       },
       {
         label: 'Q2',
         value: 0,
         stacks: [
-          { value: 16, color: '#3b82f6', fontColor: '#ffffff' },
-          { value: 20, color: '#10b981', fontColor: '#052e16' },
-          { value: 15, color: '#f59e0b', fontColor: '#111827' }
+          { label: 'Hardware', value: 16, color: '#3b82f6', fontColor: '#ffffff' },
+          { label: 'Software', value: 20, color: '#10b981', fontColor: '#052e16' },
+          { label: 'Services', value: 15, color: '#f59e0b', fontColor: '#111827' }
         ]
       },
       {
         label: 'Q3',
         value: 0,
         stacks: [
-          { value: 26, color: '#3b82f6', fontColor: '#204685' },
-          { value: 18, color: '#10b981', fontColor: '#065d40' },
-          { value: 12, color: '#f59e0b', fontColor: '#9d6608' }
+          { label: 'Hardware', value: 26, color: '#3b82f6', fontColor: '#204685' },
+          { label: 'Software', value: 18, color: '#10b981', fontColor: '#065d40' },
+          { label: 'Services', value: 12, color: '#f59e0b', fontColor: '#9d6608' }
         ]
       },
       {
         label: 'Q4',
         value: 0,
         stacks: [
-          { value: 20, color: '#3b82f6', fontColor: '#ffffff' },
-          { value: 23, color: '#10b981', fontColor: '#052e16' },
-          { value: 19, color: '#f59e0b', fontColor: '#111827' }
+          { label: 'Hardware', value: 20, color: '#3b82f6', fontColor: '#ffffff' },
+          { label: 'Software', value: 23, color: '#10b981', fontColor: '#052e16' },
+          { label: 'Services', value: 19, color: '#f59e0b', fontColor: '#111827' }
         ]
       }
     ]

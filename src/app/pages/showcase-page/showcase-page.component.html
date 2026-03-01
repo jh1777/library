@@ -1126,6 +1126,45 @@
             ></ui-bar-chart>
           </div>
         </div>
+        <div class="demo-group">
+          <div class="demo-label">Legend (top)</div>
+          <div class="demo-row" style="width: 100%;">
+            <ui-bar-chart
+              [animations]="false"
+              [showValue]="false"
+              [showPercentage]="false"
+              [showXAxis]="true"
+              [showXAxisLabels]="false"
+              [svgWidth]="'100%'"
+              [height]="220"
+              [barWidthPercent]="72"
+              [dataSet]="barChartData()"
+            >
+              <ui-chart-legend position="top"></ui-chart-legend>
+            </ui-bar-chart>
+          </div>
+        </div>
+        <div class="demo-group">
+          <div class="demo-label">Legend (bottom, stacked)</div>
+          <div class="demo-row" style="width: 100%;">
+            <ui-bar-chart
+              [chartType]="'stacked-bar'"
+              [animations]="false"
+              [showValue]="false"
+              [showStackValues]="true"
+              [showPercentage]="false"
+              [showXAxis]="true"
+              [roundedCorners]="0"
+              [showXAxisLabels]="true"
+              [svgWidth]="'100%'"
+              [height]="220"
+              [barWidthPercent]="72"
+              [dataSet]="barChartStackedData()"
+            >
+              <ui-chart-legend position="bottom"></ui-chart-legend>
+            </ui-bar-chart>
+          </div>
+        </div>
 
         <div class="code-example">
           <div class="code-label">Usage</div>
@@ -1137,6 +1176,11 @@
 
 &lt;!-- Stacked bar chart --&gt;
 &lt;ui-bar-chart [chartType]="'stacked-bar'" [showStackValues]="true" [dataSet]="stackedData"&gt;&lt;/ui-bar-chart&gt;
+
+&lt;!-- Legend as projected sub-component --&gt;
+&lt;ui-bar-chart [dataSet]="barChartData"&gt;
+  &lt;ui-chart-legend position="top"&gt;&lt;/ui-chart-legend&gt;
+&lt;/ui-bar-chart&gt;
 
 &lt;!-- Per-point / per-segment label colors via model --&gt;
 &lt;!-- data point example: value=80, color='#10b981', fontColor='#14532d' --&gt;
