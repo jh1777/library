@@ -1,0 +1,10 @@
+@if(isHidden() == false) {
+    <div class="list-item-chart">
+        @if(label()) {
+            <div class="list-item-chart-label">{{ label() }}</div>
+        }
+        <div class="list-item-chart-content">
+            <ng-content select="ui-bar-chart"></ng-content>
+        </div>
+    </div>
+}
