@@ -16,7 +16,7 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
   private readonly hostElement = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
 
-  @ContentChildren(ChartLegendComponent) legends!: QueryList<ChartLegendComponent>;
+  @ContentChildren(ChartLegendComponent) private legends?: QueryList<ChartLegendComponent>;
 
   dataSet = input.required<ChartDataSet>();
   barColor = input<string>('steelblue');
@@ -66,7 +66,6 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
     super();
 
     effect(() => {
-      this.legendItems();
       this.syncProjectedLegendItems();
     });
 
@@ -85,8 +84,8 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
 
   ngAfterContentInit(): void {
     this.syncProjectedLegendItems();
-    const legendsChangesSubscription = this.legends.changes.subscribe(() => this.syncProjectedLegendItems());
-    this.destroyRef.onDestroy(() => legendsChangesSubscription.unsubscribe());
+    const legendsChangesSubscription = this.legends?.changes.subscribe(() => this.syncProjectedLegendItems());
+    this.destroyRef.onDestroy(() => legendsChangesSubscription?.unsubscribe());
   }
 
   private updateContainerWidth(): void {
@@ -254,7 +253,7 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
     return dataPoint.fontColor || this.textColor();
   }
 
-  legendItems = computed<ChartLegendItem[]>(() => {
+  private readonly legendItems = computed<ChartLegendItem[]>(() => {
     if (this.isStacked()) {
       const stackedLegendItems: ChartLegendItem[] = [];
       const stackedLegendKeys = new Set<string>();
@@ -287,12 +286,13 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
   });
 
   private syncProjectedLegendItems(): void {
-    if (!this.legends) {
+    const legends = this.legends;
+    if (!legends || legends.length === 0) {
       return;
     }
 
     const items = this.legendItems();
-    this.legends.forEach((legend) => legend.items.set(items));
+    legends.forEach((legend) => legend.items.set(items));
   }
 
   bottomPadding = computed(() => {
