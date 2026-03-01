@@ -1046,7 +1046,7 @@
               [showPercentage]="false"
               [showXAxis]="false"
               textColor="#444"
-              [roudedCorners]="0"
+              [roundedCorners]="0"
               [showXAxisLabels]="false"
               [width]="150"
               [height]="70"
@@ -1059,7 +1059,7 @@
               [showPercentage]="false"
               [showXAxis]="true"
               textColor="#444"
-              [roudedCorners]="2"
+              [roundedCorners]="2"
               [showXAxisLabels]="false"
               [width]="70"
               [height]="70"
@@ -1087,18 +1087,64 @@
           </div>
         </div>
 
+        <div class="demo-group">
+          <div class="demo-label">Stacked bar chart</div>
+          <div class="demo-row" style="width: 100%;">
+            <ui-bar-chart
+              [chartType]="'stacked-bar'"
+              [animations]="false"
+              [showValue]="true"
+              [showStackValues]="true"
+              [showPercentage]="true"
+              [showXAxis]="true"
+              [showXAxisLabels]="true"
+              textColor="#444"
+              [svgWidth]="'100%'"
+              [roundedCorners]="0"
+              [height]="220"
+              [barWidthPercent]="72"
+              [dataSet]="barChartStackedData()"
+            ></ui-bar-chart>
+          </div>
+        </div>
+
+        <div class="demo-group">
+          <div class="demo-label">Label overflow handling (truncate)</div>
+          <div class="demo-row" style="width: 100%; max-width: 520px;">
+            <ui-bar-chart
+              [animations]="false"
+              [showValue]="false"
+              [showPercentage]="false"
+              [showXAxis]="true"
+              [showXAxisLabels]="true"
+              [xLabelOverflow]="'truncate'"
+              textColor="#444"
+              [svgWidth]="'100%'"
+              [height]="170"
+              [barWidthPercent]="70"
+              [dataSet]="barChartLongLabelsData()"
+            ></ui-bar-chart>
+          </div>
+        </div>
+
         <div class="code-example">
           <div class="code-label">Usage</div>
-          <pre><code>&lt;!-- Fixed layout --&gt;
-&lt;ui-bar-chart [width]="600" [height]="260" [data]="chartData"&gt;&lt;/ui-bar-chart&gt;
+          <pre><code>&lt;!-- Basic bar chart --&gt;
+&lt;ui-bar-chart [width]="600" [height]="260" [dataSet]="barChartData"&gt;&lt;/ui-bar-chart&gt;
 
 &lt;!-- Responsive layout (fills parent width) --&gt;
-&lt;ui-bar-chart
-  [width]="600"
-  [svgWidth]="'100%'"
-  [height]="260"
-  [data]="chartData"&gt;
-&lt;/ui-bar-chart&gt;</code></pre>
+&lt;ui-bar-chart [svgWidth]="'100%'" [height]="260" [dataSet]="barChartData"&gt;&lt;/ui-bar-chart&gt;
+
+&lt;!-- Stacked bar chart --&gt;
+&lt;ui-bar-chart [chartType]="'stacked-bar'" [showStackValues]="true" [dataSet]="stackedData"&gt;&lt;/ui-bar-chart&gt;
+
+&lt;!-- Per-point / per-segment label colors via model --&gt;
+&lt;!-- data point example: value=80, color='#10b981', fontColor='#14532d' --&gt;
+&lt;!-- stack segment example: value=24, color='#10b981', fontColor='#052e16' --&gt;
+
+&lt;!-- Label overflow handling --&gt;
+&lt;ui-bar-chart [xLabelOverflow]="'truncate'" [dataSet]="longLabelData"&gt;&lt;/ui-bar-chart&gt;
+&lt;ui-bar-chart [xLabelOverflow]="'hide'" [dataSet]="longLabelData"&gt;&lt;/ui-bar-chart&gt;</code></pre>
         </div>
       </section>
     }

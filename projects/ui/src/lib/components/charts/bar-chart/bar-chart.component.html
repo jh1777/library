@@ -4,64 +4,108 @@
   }
   <svg [attr.width]="resolvedSvgWidth()" [attr.height]="svgHeight()">
     @for (d of dataSet().data; track d; let i = $index) {
-      <!-- Balken -->
-      <rect
-        [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()- (barWidth()/2)"
-        [attr.y]="height() - (d.value / maxValue() * (height() - heightOffset()))"
-        [attr.width]="barWidth()"
-        [attr.height]="d.value / maxValue() * (height() - heightOffset())"
-        [attr.fill]="d.color || barColor()"
-        [attr.opacity]="d.opacity ? d.opacity : 1"
-        [attr.rx]="roudedCorners()"
-        [attr.ry]="roudedCorners()"
-      >
-        @if (animations()) {
-            <!-- Balken-Animation -->
-            <animate
-              attributeName="height"
-              from="0"
-              [attr.to]="d.value / maxValue() * (height() - heightOffset())"
-              dur="0.4s"
-              fill="freeze"
-            />
-            <animate
-              attributeName="y"
-              [attr.from]="height()"
-              [attr.to]="height() - (d.value / maxValue() * (height() - heightOffset()))"
-              dur="0.4s"
-              fill="freeze"
-            />
+      @if (isStacked() && hasStackSegments(d)) {
+        @for (segment of d.stacks; track segment; let segmentIndex = $index; let isLastSegment = $last) {
+          <rect
+            [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()- (barWidth()/2)"
+            [attr.y]="getStackSegmentTopY(d, segmentIndex)"
+            [attr.width]="barWidth()"
+            [attr.height]="getStackSegmentHeight(d, segmentIndex)"
+            [attr.fill]="getStackSegmentColor(d, segmentIndex)"
+            [attr.opacity]="getStackSegmentOpacity(d, segmentIndex)"
+            [attr.rx]="isLastSegment ? roundedCorners() : 0"
+            [attr.ry]="isLastSegment ? roundedCorners() : 0"
+          >
+            @if (animations()) {
+              <animate
+                attributeName="height"
+                from="0"
+                [attr.to]="getStackSegmentHeight(d, segmentIndex)"
+                dur="0.4s"
+                fill="freeze"
+              />
+              <animate
+                attributeName="y"
+                [attr.from]="height()"
+                [attr.to]="getStackSegmentTopY(d, segmentIndex)"
+                dur="0.4s"
+                fill="freeze"
+              />
+            }
+          </rect>
+
+          @if (canShowStackSegmentValue(d, segmentIndex)) {
+            <text
+              [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
+              [attr.y]="getStackSegmentCenterY(d, segmentIndex)"
+              text-anchor="middle"
+              dominant-baseline="middle"
+              [attr.font-size]="stackValueFontSize()"
+              font-weight="bold"
+              [attr.fill]="getStackSegmentValueColor(d, segmentIndex)"
+            >
+              {{ getStackSegmentValue(d, segmentIndex) }}
+            </text>
+          }
         }
-      </rect>
+      } @else {
+        <rect
+          [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()- (barWidth()/2)"
+          [attr.y]="getBarTopY(getDataPointTotal(d))"
+          [attr.width]="barWidth()"
+          [attr.height]="getBarHeight(getDataPointTotal(d))"
+          [attr.fill]="d.color || barColor()"
+          [attr.opacity]="d.opacity ? d.opacity : 1"
+          [attr.rx]="roundedCorners()"
+          [attr.ry]="roundedCorners()"
+        >
+          @if (animations()) {
+              <animate
+                attributeName="height"
+                from="0"
+                [attr.to]="getBarHeight(getDataPointTotal(d))"
+                dur="0.4s"
+                fill="freeze"
+              />
+              <animate
+                attributeName="y"
+                [attr.from]="height()"
+                [attr.to]="getBarTopY(getDataPointTotal(d))"
+                dur="0.4s"
+                fill="freeze"
+              />
+          }
+        </rect>
+      }
 
       <!-- Wert über Balken -->
       @if (showValue()) {
         <text
           [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
-          [attr.y]="height() - (d.value / maxValue() * (height() - heightOffset())) - valueTopGap()"
+          [attr.y]="getBarTopY(getDataPointTotal(d)) - valueTopGap()"
           text-anchor="middle"
           [attr.font-size]="valueFontSize()"
           font-weight="bold"
-          [attr.fill]="textColor()"
+          [attr.fill]="getDataPointValueColor(d)"
         >
-          {{ d.value }}
+          {{ getDisplayedValue(d) }}
         </text>
       }
       @if (showPercentage()) {
         <text
           [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
-          [attr.y]="height() - (d.value / maxValue() * (height() - heightOffset())) - percentageTopGap()"
+          [attr.y]="getBarTopY(getDataPointTotal(d)) - percentageTopGap()"
           text-anchor="middle"
           [attr.font-size]="percentageFontSize()"
           [attr.font-weight]="showValue() ? 'normal' : 'bold'"
           [attr.fill-opacity]="showValue() ? 0.6 : 1"
-          [attr.fill]="textColor()"
+          [attr.fill]="getDataPointValueColor(d)"
         >
-          {{ showValue() ? '(' + getPercentage(d.value) + ')' : getPercentage(d.value) }}
+          {{ showValue() ? '(' + getPercentage(getDataPointTotal(d)) + ')' : getPercentage(getDataPointTotal(d)) }}
         </text>
       }
 
-      @if(showXAxisLabels()) {
+      @if(showXAxisLabels() && !shouldHideLabel(d.label)) {
         <!-- Label unten -->
         <text
           [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
@@ -71,7 +115,7 @@
           font-weight="bold"
           [attr.fill]="textColor()"
         >
-          {{ d.label }}
+          {{ getDisplayedLabel(d.label) }}
         </text>
       }
       <!-- Show X-Axis line ticks-->

@@ -129,14 +129,66 @@ export class ShowcasePageComponent {
 
   // --- Demo State: Bar Chart ---
   barChartData = signal<ChartDataSet>({ label: 'Example Data', data: [
-    { label: 'Category A', value: 30, color: '#3b82f6' },
-    { label: 'Category B', value: 80, color: '#10b981' },
-    { label: 'Category C', value: 45, color: '#f59e0b' },
-    { label: 'Category D', value: 60, color: '#ef4444' },
-    { label: 'Category E', value: 20, color: '#ef4444', opacity: 0.5 },
-    { label: 'Category F', value: 0, color: '#8b5cf6' },
-    { label: 'Category G', value: 55, color: '#3b82f6' }
+    { label: 'Category A', value: 30, color: '#3b82f6', fontColor: '#1f2937' },
+    { label: 'Category B', value: 80, color: '#10b981', fontColor: '#14532d' },
+    { label: 'Category C', value: 45, color: '#f59e0b', fontColor: '#7c2d12' },
+    { label: 'Category D', value: 60, color: '#ef4444', fontColor: '#7f1d1d' },
+    { label: 'Category E', value: 20, color: '#ef4444', opacity: 0.5, fontColor: '#7f1d1d' },
+    { label: 'Category F', value: 100, color: '#8b5cf6', fontColor: '#4c1d95' },
+    { label: 'Category G', value: 55, color: '#3b82f6', fontColor: '#1e3a8a' }
   ]});
+
+  barChartStackedData = signal<ChartDataSet>({
+    label: 'Quarterly Revenue Split',
+    data: [
+      {
+        label: 'Q1',
+        value: 0,
+        stacks: [
+          { value: 18, color: '#3b82f6', fontColor: '#ffffff' },
+          { value: 24, color: '#10b981', fontColor: '#052e16' },
+          { value: 10, color: '#f59e0b', fontColor: '#111827' }
+        ]
+      },
+      {
+        label: 'Q2',
+        value: 0,
+        stacks: [
+          { value: 16, color: '#3b82f6', fontColor: '#ffffff' },
+          { value: 20, color: '#10b981', fontColor: '#052e16' },
+          { value: 15, color: '#f59e0b', fontColor: '#111827' }
+        ]
+      },
+      {
+        label: 'Q3',
+        value: 0,
+        stacks: [
+          { value: 26, color: '#3b82f6', fontColor: '#204685' },
+          { value: 18, color: '#10b981', fontColor: '#065d40' },
+          { value: 12, color: '#f59e0b', fontColor: '#9d6608' }
+        ]
+      },
+      {
+        label: 'Q4',
+        value: 0,
+        stacks: [
+          { value: 20, color: '#3b82f6', fontColor: '#ffffff' },
+          { value: 23, color: '#10b981', fontColor: '#052e16' },
+          { value: 19, color: '#f59e0b', fontColor: '#111827' }
+        ]
+      }
+    ]
+  });
+
+  barChartLongLabelsData = signal<ChartDataSet>({
+    label: 'Long Labels Example',
+    data: [
+      { label: 'North-West Manufacturing Cluster', value: 32, color: '#3b82f6' },
+      { label: 'Central Distribution and Fulfillment Hub', value: 54, color: '#10b981' },
+      { label: 'Southern Enterprise Service Division', value: 27, color: '#f59e0b' },
+      { label: 'International Partnerships Department', value: 45, color: '#ef4444' }
+    ]
+  });
 
   // --- Utility ---
   onBannerUndo = () => {
