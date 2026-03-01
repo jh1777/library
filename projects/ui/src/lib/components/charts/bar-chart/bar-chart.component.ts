@@ -1,4 +1,5 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, DestroyRef, ElementRef, computed, inject, input, signal } from '@angular/core';
+import { ChartDataSet } from '../chart.models';
 
 @Component({
   selector: 'ui-bar-chart',
@@ -13,7 +14,7 @@ export class BarChartComponent implements AfterViewInit {
   private readonly hostElement = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
 
-  data = input.required<{label: string, value: number}[]>();
+  dataSet = input.required<ChartDataSet>();
   barColor = input<string>('steelblue');
   textColor = input<string>('#ffff');
   height = input<number>(200);
@@ -21,6 +22,10 @@ export class BarChartComponent implements AfterViewInit {
   svgWidth = input<string | number | null>(null);
   animations = input<boolean>(true);
   showXAxis = input<boolean>(true);
+  showPercentage = input<boolean>(true);
+  showValue = input<boolean>(true);
+  showXAxisLabels = input<boolean>(true);
+  roudedCorners = input<number>(5);
 
   private containerWidth = signal(0);
 
@@ -46,7 +51,7 @@ export class BarChartComponent implements AfterViewInit {
     return this.width();
   });
 
-  barSlotWidth = computed(() => this.data().length > 0 ? this.chartWidth() / this.data().length : 0);
+  barSlotWidth = computed(() => this.dataSet().data.length > 0 ? this.chartWidth() / this.dataSet().data.length : 0);
   barSlotCenterOffset = computed(() => this.barSlotWidth() / 2);
 
   constructor() {
@@ -74,13 +79,10 @@ export class BarChartComponent implements AfterViewInit {
   barWidth = computed<number>(() => this.barSlotWidth() * (this.barWidthPercent() / 100));
 
   // Maximalwert berechnen (für Skalierung)
-  maxValue = computed(() => Math.max(...this.data().map(d => d.value), 0));
-
-  showPercentage = input<boolean>(true);
-  showValue = input<boolean>(true);
+  maxValue = computed(() => Math.max(...this.dataSet().data.map(d => d.value), 0));
 
   getPercentage(value: number): string {
-    const total = this.data().reduce((sum, d) => sum + d.value, 0);
+    const total = this.dataSet().data.reduce((sum, d) => sum + d.value, 0);
     const percentage = total > 0 ? (value / total) * 100 : 0;
     return `${percentage.toFixed(1)}%`;
   }

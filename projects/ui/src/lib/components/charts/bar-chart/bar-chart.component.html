@@ -1,5 +1,5 @@
 <svg [attr.width]="resolvedSvgWidth()" [attr.height]="height() + 50">
-  @for (d of data(); track d; let i = $index) {
+  @for (d of dataSet().data; track d; let i = $index) {
     <!-- Balken -->
     <rect
       [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()- (barWidth()/2)"
@@ -7,7 +7,8 @@
       [attr.width]="barWidth()"
       [attr.height]="d.value / maxValue() * (height() - heightOffset())"
       [attr.fill]="d.color || barColor()"
-      rx="6" ry="6"
+      [attr.rx]="roudedCorners()"
+      [attr.ry]="roudedCorners()"
     >
       @if (animations()) {
           <!-- Balken-Animation -->
@@ -55,18 +56,19 @@
       </text>
     }
 
-    <!-- Label unten -->
-    <text
-      [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
-      [attr.y]="height() + (showXAxis() ? 20 : 15)"
-      text-anchor="middle"
-      font-size="10"
-      font-weight="bold"
-      [attr.fill]="textColor()"
-    >
-      {{ d.label }}
-    </text>
-
+    @if(showXAxisLabels()) {
+      <!-- Label unten -->
+      <text
+        [attr.x]="getBarSlotAnchorX(i) + barSlotCenterOffset()"
+        [attr.y]="height() + (showXAxis() ? 20 : 15)"
+        text-anchor="middle"
+        font-size="10"
+        font-weight="bold"
+        [attr.fill]="textColor()"
+      >
+        {{ d.label }}
+      </text>
+    }
     <!-- Show X-Axis line ticks-->
     @if (showXAxis()) {
       <line

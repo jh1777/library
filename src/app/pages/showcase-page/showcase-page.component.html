@@ -33,7 +33,9 @@
         <ui-side-menu-entry label="Grid Layout" value="grid" [icon]="faGrip()"></ui-side-menu-entry>
       </ui-side-menu-section>
       <ui-side-menu-section label="Charts">
-        <ui-side-menu-entry label="Bar Chart" value="barChart" [icon]="faBars()"></ui-side-menu-entry>
+        <ui-side-menu-entry label="Bar Chart" value="barChart" [icon]="faCharts()">
+            <ui-badge value="NEW" [style]="3" [size]="1"></ui-badge>
+        </ui-side-menu-entry>
       </ui-side-menu-section>
       <ui-side-menu-section label="Overlays">
         <ui-side-menu-entry label="Drawer" value="drawer" [icon]="faWindowMaximize()">
@@ -1024,26 +1026,53 @@
               [animations]="false"
               [showValue]="true"
               [showPercentage]="true"
-              [showXAxis]="false"
+              [showXAxis]="true"
+              [showXAxisLabels]="true"
               textColor="#444"
               [width]="600"
               [height]="260"
               [barWidthPercent]="75"
-              [data]="[
-                { label: 'Category A', value: 77, color: '#3b82f6' },
-                { label: 'Category B', value: 125, color: '#10b981' },
-                { label: 'Category C', value: 35, color: '#f59e0b' },
-                { label: 'Category D', value: 56, color: '#ef4444' },
-                { label: 'Category E', value: 34, color: '#ef4444' },
-                { label: 'Category F', value: 108, color: '#8b5cf6' }
-              ]"
+              [dataSet]="barChartData()"
             ></ui-bar-chart>
+          </div>
+        </div>
+        <div class="demo-group">
+          <div class="demo-label">Small chart</div>
+          <div class="demo-row">
+            <span style="display: flex; gap: 64px; align-items: flex-start;">
+            <ui-bar-chart
+              [animations]="false"
+              [showValue]="false"
+              [showPercentage]="false"
+              [showXAxis]="false"
+              textColor="#444"
+              [roudedCorners]="0"
+              [showXAxisLabels]="false"
+              [width]="150"
+              [height]="70"
+              [barWidthPercent]="70"
+              [dataSet]="barChartData()"
+            ></ui-bar-chart>
+            <ui-bar-chart
+              [animations]="false"
+              [showValue]="false"
+              [showPercentage]="false"
+              [showXAxis]="false"
+              textColor="#444"
+              [roudedCorners]="2"
+              [showXAxisLabels]="false"
+              [width]="70"
+              [height]="70"
+              [barWidthPercent]="70"
+              [dataSet]="barChartData()"
+            ></ui-bar-chart>
+            </span>
           </div>
         </div>
 
         <div class="demo-group">
           <div class="demo-label">Responsive width (100%)</div>
-          <div class="demo-row" style="width: 100%; max-width: 900px;">
+          <div class="demo-row" style="width: 100%;">
             <ui-bar-chart
               [animations]="false"
               [showValue]="true"
@@ -1053,14 +1082,7 @@
               [svgWidth]="'100%'"
               [height]="260"
               [barWidthPercent]="75"
-              [data]="[
-                { label: 'Category A', value: 77, color: '#3b82f6' },
-                { label: 'Category B', value: 125, color: '#10b981' },
-                { label: 'Category C', value: 35, color: '#f59e0b' },
-                { label: 'Category D', value: 56, color: '#ef4444' },
-                { label: 'Category E', value: 34, color: '#ef4444' },
-                { label: 'Category F', value: 108, color: '#8b5cf6' }
-              ]"
+              [dataSet]="barChartData()"
             ></ui-bar-chart>
           </div>
         </div>

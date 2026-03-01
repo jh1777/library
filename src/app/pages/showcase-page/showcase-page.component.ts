@@ -5,10 +5,11 @@ import {
   faTrash, faExternalLink, faCopy, faTimes, faPlay, faStop,
   faShapes, faToggleOn, faLayerGroup, faTable, faGauge, faBars,
   faWindowMaximize, faSliders, faList, faGrip, faPencil,
-  faCircleDot
+  faCircleDot,
+  faBarChart
 } from '@fortawesome/free-solid-svg-icons';
 
-import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, SwitchButtonOptionComponent, CardComponent, CardSectionBasicComponent, EntryContainerComponent, EntryKeyValueComponent, EntryMetricComponent, EntryTileComponent, EntryTileItemComponent, MetricTileComponent, ValueTileComponent, TabComponent, TabsComponent, ToolbarComponent, ListComponent, ListFooterComponent, ListItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ModalComponent, ConfirmationModalComponent, DrawerComponent, SignpostComponent, ButtonGroupComponent, GridComponent, SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent, TableComponent, ITableData, InputComponent, ContentComponent, ListItemKpiComponent, ListComponentInterface, BarChartComponent } from '../../../../projects/ui/src/public-api';
+import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, SwitchButtonOptionComponent, CardComponent, CardSectionBasicComponent, EntryContainerComponent, EntryKeyValueComponent, EntryMetricComponent, EntryTileComponent, EntryTileItemComponent, MetricTileComponent, ValueTileComponent, TabComponent, TabsComponent, ToolbarComponent, ListComponent, ListFooterComponent, ListItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ModalComponent, ConfirmationModalComponent, DrawerComponent, SignpostComponent, ButtonGroupComponent, GridComponent, SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent, TableComponent, ITableData, InputComponent, ContentComponent, ListItemKpiComponent, ListComponentInterface, BarChartComponent, ChartDataSet } from '../../../../projects/ui/src/public-api';
 
 @Component({
   selector: 'app-showcase-page',
@@ -59,6 +60,7 @@ export class ShowcasePageComponent {
   faList = signal<IconDefinition>(faList);
   faGrip = signal<IconDefinition>(faGrip);
 
+
   // --- Side Menu Navigation icons ---
   faShapes = signal<IconDefinition>(faShapes);
   faToggleOn = signal<IconDefinition>(faToggleOn);
@@ -69,6 +71,7 @@ export class ShowcasePageComponent {
   faWindowMaximize = signal<IconDefinition>(faWindowMaximize);
   faSliders = signal<IconDefinition>(faSliders);
   faCircleDot = signal<IconDefinition>(faCircleDot);
+  faCharts = signal<IconDefinition>(faBarChart);
   // --- Navigation ---
   activeSection = signal<string | number | boolean>('basics');
 
@@ -123,6 +126,17 @@ export class ShowcasePageComponent {
       ], onClickCallback: () => {} }
     ]
   });
+
+  // --- Demo State: Bar Chart ---
+  barChartData = signal<ChartDataSet>({ label: 'Example Data', data: [
+    { label: 'Category A', value: 30, color: '#3b82f6' },
+    { label: 'Category B', value: 80, color: '#10b981' },
+    { label: 'Category C', value: 45, color: '#f59e0b' },
+    { label: 'Category D', value: 60, color: '#ef4444' },
+    { label: 'Category E', value: 20, color: '#ef4444' },
+    { label: 'Category F', value: 90, color: '#8b5cf6' },
+    { label: 'Category G', value: 55, color: '#3b82f6' }
+  ]});
 
   // --- Utility ---
   onBannerUndo = () => {
