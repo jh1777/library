@@ -80,7 +80,8 @@ export class BarChartComponent implements AfterViewInit {
   showValue = input<boolean>(true);
 
   getPercentage(value: number): string {
-    const percentage = this.data().reduce((sum, d) => sum + d.value, 0) > 0 ? (value / this.data().reduce((sum, d) => sum + d.value, 0)) * 100 : 0;
+    const total = this.data().reduce((sum, d) => sum + d.value, 0);
+    const percentage = total > 0 ? (value / total) * 100 : 0;
     return `${percentage.toFixed(1)}%`;
   }
 
