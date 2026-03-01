@@ -1,5 +1,5 @@
-import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, DestroyRef, ElementRef, QueryList, computed, effect, inject, input, signal } from '@angular/core';
-import { ChartDataPoint, ChartDataSet, ChartLegendItem, ChartType } from '../chart.models';
+import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, DestroyRef, ElementRef, QueryList, computed, effect, inject, input, output, signal } from '@angular/core';
+import { ChartDataPoint, ChartDataSet, ChartLegendItem, ChartStackSegment, ChartType } from '../chart.models';
 import { UIBaseComponent } from '../../../shared';
 import { ChartLegendComponent } from '../chart-legend';
 import { ChartAxisComponent } from '../chart-axis';
@@ -29,8 +29,8 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
   // --------------------------------------------------------------------------
 
   dataSet = input.required<ChartDataSet>();
-  barColor = input<string>('steelblue');
-  textColor = input<string>('#ffff');
+  defaultBarColor = input<string>('steelblue');
+  defaultTextColor = input<string>('#444');
   height = input<number>(200);
   width = input<number>(400);
   svgWidth = input<string | number | null>(null);
@@ -42,6 +42,18 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
   chartType = input<ChartType>('bar');
   showStackValues = input<boolean>(false);
   showBarStroke = input<boolean>(false);
+
+  /// --------------------------------------------------------------------------
+  /// Outputs
+  /// --------------------------------------------------------------------------
+
+  itemClick = output<{
+    label: string;
+    value: number;
+    color: string;
+    originalDataPoint: ChartDataPoint;
+    originalSegment: ChartStackSegment | null;
+  }>();
 
   // --------------------------------------------------------------------------
   // Internal state
@@ -185,7 +197,16 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
 
   getStackSegmentColor(dataPoint: ChartDataPoint, segmentIndex: number): string {
     const segmentColor = dataPoint.stacks?.[segmentIndex]?.color;
-    return segmentColor || dataPoint.color || this.barColor();
+    return segmentColor || dataPoint.color || this.defaultBarColor();
+  }
+
+  getStackSegmentFillColor(dataPoint: ChartDataPoint, segmentIndex: number, segment: ChartStackSegment): string {
+    const baseColor = this.getStackSegmentColor(dataPoint, segmentIndex);
+    if (this.mouseOverItem() !== segment) {
+      return baseColor;
+    }
+
+    return this.lightenHexColor(baseColor, 0.2);
   }
 
   getStackSegmentOpacity(dataPoint: ChartDataPoint, segmentIndex: number): number {
@@ -317,11 +338,20 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
 
   getStackSegmentValueColor(dataPoint: ChartDataPoint, segmentIndex: number): string {
     const segmentFontColor = dataPoint.stacks?.[segmentIndex]?.fontColor;
-    return segmentFontColor || dataPoint.fontColor || this.textColor();
+    return segmentFontColor || dataPoint.fontColor || this.defaultTextColor();
   }
 
   getDataPointValueColor(dataPoint: ChartDataPoint): string {
-    return dataPoint.fontColor || this.textColor();
+    return dataPoint.fontColor || this.defaultTextColor();
+  }
+
+  getBarFillColor(dataPoint: ChartDataPoint): string {
+    const baseColor = dataPoint.color || this.defaultBarColor();
+    if (this.mouseOverItem() !== dataPoint) {
+      return baseColor;
+    }
+
+    return this.lightenHexColor(baseColor, 0.2);
   }
 
   // --------------------------------------------------------------------------
@@ -336,7 +366,7 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
       this.dataSet().data.forEach((dataPoint) => {
         dataPoint.stacks?.forEach((segment, index) => {
           const label = segment.label || `Segment ${index + 1}`;
-          const color = segment.color || dataPoint.color || this.barColor();
+          const color = segment.color || dataPoint.color || this.defaultBarColor();
           const key = `${label}|${color}|${segment.opacity ?? dataPoint.opacity ?? 1}`;
 
           if (!stackedLegendKeys.has(key)) {
@@ -355,7 +385,7 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
 
     return this.dataSet().data.map((dataPoint) => ({
       label: dataPoint.label,
-      color: dataPoint.color || this.barColor(),
+      color: dataPoint.color || this.defaultBarColor(),
       opacity: dataPoint.opacity ?? 1
     }));
   });
@@ -390,4 +420,55 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
   svgHeight = computed(() => this.height() + this.bottomPadding());
 
   heightOffset = computed(() => this.showValue() && this.showPercentage() ? this.height() * 0.2 : this.height() * 0.1);
+
+  // --------------------------------------------------------------------------
+  // Interactions
+  // --------------------------------------------------------------------------
+
+  mouseOverItem = signal<ChartStackSegment | ChartDataPoint | null>(null);
+  handleMouseOver(segment: ChartStackSegment | ChartDataPoint | null): void {
+    this.mouseOverItem.set(segment);
+  }
+
+  private lightenHexColor(colorHex: string, amount: number): string {
+    const normalizedHex = colorHex.trim();
+    const match = /^#([\da-f]{3}|[\da-f]{6})$/i.exec(normalizedHex);
+    if (!match) {
+      return colorHex;
+    }
+
+    let hex = match[1];
+    if (hex.length === 3) {
+      hex = hex.split('').map((part) => part + part).join('');
+    }
+
+    const red = Number.parseInt(hex.slice(0, 2), 16);
+    const green = Number.parseInt(hex.slice(2, 4), 16);
+    const blue = Number.parseInt(hex.slice(4, 6), 16);
+
+    const blendChannel = (channel: number): number => {
+      const blended = channel + ((255 - channel) * amount);
+      return Math.max(0, Math.min(255, Math.round(blended)));
+    };
+
+    const toHex = (channel: number): string => channel.toString(16).padStart(2, '0');
+    return `#${toHex(blendChannel(red))}${toHex(blendChannel(green))}${toHex(blendChannel(blue))}`;
+  }
+
+  handleClick(dataPoint: ChartDataPoint, segment: ChartStackSegment | null): void {
+    const label = segment?.label || dataPoint.label;
+    //const value = segment ? this.getStackSegmentValue(dataPoint, dataPoint.stacks!.indexOf(segment)) : this.getDataPointTotal(dataPoint);
+    const value = segment ? segment.value : this.getDataPointTotal(dataPoint);
+    const color = segment?.color || dataPoint.color || this.defaultBarColor();
+
+    const result = {
+      label,
+      value,
+      color,
+      originalDataPoint: dataPoint,
+      originalSegment: segment
+    };
+    console.log('Emitting itemClick with', result);
+    this.itemClick.emit(result);
+  }
 }
