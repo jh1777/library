@@ -134,9 +134,9 @@ Component keys:
 - Testing style baseline: `projects/ui/src/lib/components/list/list.component.spec.ts`
 - Showcase baseline: `src/app/pages/showcase-page/showcase-page.component.html`
 
-## Change Memory (Mandatory)
+## Change Memory (Mandatory for bigger changes ONLY!)
 
-For every feature request or significant change, Copilot must create a memory note.
+For every bigger feature request or significant change, Copilot must create a memory note. Changing 5+ files ONLY - not for small tweaks or bug fixes. This is critical for tracking the evolution of the codebase and ensuring institutional knowledge is preserved.
 
 - **Location:** `.github/memory/`
 - **Index:** Use a sequential index number with 4 digits (e.g. `0001`, `0002`, `0003`)
