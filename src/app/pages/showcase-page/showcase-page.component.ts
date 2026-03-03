@@ -9,7 +9,15 @@ import {
   faBarChart
 } from '@fortawesome/free-solid-svg-icons';
 
-import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, SwitchButtonOptionComponent, CardComponent, CardSectionBasicComponent, EntryContainerComponent, EntryKeyValueComponent, EntryMetricComponent, EntryTileComponent, EntryTileItemComponent, MetricTileComponent, ValueTileComponent, TabComponent, TabsComponent, ToolbarComponent, ListComponent, ListFooterComponent, ListItemComponent, AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ModalComponent, ConfirmationModalComponent, DrawerComponent, SignpostComponent, ButtonGroupComponent, GridComponent, SideMenuComponent, SideMenuEntryComponent, SideMenuSectionComponent, SideMenuSubEntryComponent, TableComponent, ITableData, InputComponent, ContentComponent, ListItemKpiComponent, ListComponentInterface, BarChartComponent, ChartDataSet, ChartItemClickEvent, ChartLegendComponent, ChartAxisComponent } from '../../../../projects/ui/src/public-api';
+import { BadgeComponent, ButtonComponent, SwitchComponent, SwitchButtonComponent, 
+  SwitchButtonOptionComponent, CardComponent, CardSectionBasicComponent, EntryContainerComponent, 
+  EntryKeyValueComponent, EntryMetricComponent, EntryTileComponent, EntryTileItemComponent, MetricTileComponent, 
+  ValueTileComponent, TabComponent, TabsComponent, ToolbarComponent, ListComponent, ListFooterComponent, ListItemComponent, 
+  AccordionComponent, AccordionPanelComponent, AccordionPanelHeaderComponent, ModalComponent, ConfirmationModalComponent, 
+  DrawerComponent, SignpostComponent, ButtonGroupComponent, GridComponent, SideMenuComponent, SideMenuEntryComponent, 
+  SideMenuSectionComponent, SideMenuSubEntryComponent, TableComponent, ITableData, InputComponent, ContentComponent, 
+  ListItemKpiComponent, ListComponentInterface, BarChartComponent, ChartDataSet, ChartItemClickEvent, ChartLegendComponent,
+  ChartAxisComponent, euroValueFormatter } from '../../../../projects/ui/src/public-api';
 
 @Component({
   selector: 'app-showcase-page',
@@ -130,10 +138,7 @@ export class ShowcasePageComponent {
   });
 
   // --- Demo State: Bar Chart ---
-  euroValueFormatter = (value: number): string => new Intl.NumberFormat('de-DE', {
-    style: 'currency',
-    currency: 'EUR'
-  }).format(value);
+  euroFormatter = euroValueFormatter;
 
   barChartData = signal<ChartDataSet>({ label: 'Example Data', data: [
     { label: 'Category A', value: 30, color: '#3b82f6', fontColor: '#1f2937', strokeColor: '#1e40af', strokeWidth: 1 },

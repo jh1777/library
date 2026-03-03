@@ -51,3 +51,6 @@ export type ChartValueFormatter = (value: number, context: ChartValueFormatterCo
 export type ChartLegendPosition = 'top' | 'bottom';
 
 export type ChartType = 'bar' | 'stacked-bar' // | 'line' | 'pie' | 'doughnut' | 'radar' | 'polarArea';
+
+
+export const euroValueFormatter = (value: number): string => new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(value);
