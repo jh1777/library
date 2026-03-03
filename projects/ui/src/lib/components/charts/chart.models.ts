@@ -1,6 +1,7 @@
 export interface ChartDataPoint {
     label: string;
     value: number;
+    formattedValue?: string;
     color?: string;
     opacity?: number;
     fontColor?: string;
@@ -12,6 +13,7 @@ export interface ChartDataPoint {
 export interface ChartStackSegment {
     label?: string;
     value: number;
+    formattedValue?: string;
     color?: string;
     opacity?: number;
     fontColor?: string;
@@ -37,6 +39,14 @@ export interface ChartItemClickEvent {
     originalDataPoint: ChartDataPoint;
     originalSegment: ChartStackSegment | null;
 }
+
+export interface ChartValueFormatterContext {
+    dataPoint: ChartDataPoint;
+    segment: ChartStackSegment | null;
+    segmentIndex?: number;
+}
+
+export type ChartValueFormatter = (value: number, context: ChartValueFormatterContext) => string;
 
 export type ChartLegendPosition = 'top' | 'bottom';
 

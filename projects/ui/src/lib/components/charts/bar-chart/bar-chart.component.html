@@ -79,7 +79,7 @@
                 font-weight="bold"
                 [attr.fill]="getStackSegmentValueColor(d, segmentIndex)"
               >
-                {{ getStackSegmentValue(d, segmentIndex) }}
+                {{ getStackSegmentValueLabel(d, segmentIndex) }}
               </text>
             }
           }
@@ -128,7 +128,7 @@
             font-weight="bold"
             [attr.fill]="getDataPointValueColor(d)"
           >
-            {{ getDisplayedValue(d) }}
+            {{ getDataPointValueLabel(d) }}
           </text>
         }
         @if (showPercentage()) {

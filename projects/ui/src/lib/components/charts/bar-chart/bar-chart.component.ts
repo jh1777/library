@@ -1,5 +1,5 @@
 import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, DestroyRef, ElementRef, QueryList, computed, effect, inject, input, output, signal } from '@angular/core';
-import { ChartDataPoint, ChartDataSet, ChartItemClickEvent, ChartLegendItem, ChartStackSegment, ChartType } from '../chart.models';
+import { ChartDataPoint, ChartDataSet, ChartItemClickEvent, ChartLegendItem, ChartStackSegment, ChartType, ChartValueFormatter } from '../chart.models';
 import { UIBaseComponent } from '../../../shared';
 import { ChartLegendComponent } from '../chart-legend/chart-legend.component';
 import { ChartAxisComponent } from '../chart-axis/chart-axis.component';
@@ -42,6 +42,7 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
   chartType = input<ChartType>('bar');
   showStackValues = input<boolean>(false);
   showBarStroke = input<boolean>(false);
+  valueFormatter = input<ChartValueFormatter | null>(null);
 
   /// --------------------------------------------------------------------------
   /// Outputs
@@ -244,6 +245,44 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
 
   getDisplayedValue(dataPoint: ChartDataPoint): number {
     return this.getDataPointTotal(dataPoint);
+  }
+
+  getDataPointValueLabel(dataPoint: ChartDataPoint): string {
+    const displayedValue = this.getDisplayedValue(dataPoint);
+
+    if (typeof dataPoint.formattedValue === 'string' && dataPoint.formattedValue.length > 0) {
+      return dataPoint.formattedValue;
+    }
+
+    const formatter = this.valueFormatter();
+    if (!formatter) {
+      return `${displayedValue}`;
+    }
+
+    return formatter(displayedValue, {
+      dataPoint,
+      segment: null
+    });
+  }
+
+  getStackSegmentValueLabel(dataPoint: ChartDataPoint, segmentIndex: number): string {
+    const segment = dataPoint.stacks?.[segmentIndex];
+    const segmentValue = this.getStackSegmentValue(dataPoint, segmentIndex);
+
+    if (segment && typeof segment.formattedValue === 'string' && segment.formattedValue.length > 0) {
+      return segment.formattedValue;
+    }
+
+    const formatter = this.valueFormatter();
+    if (!formatter) {
+      return `${segmentValue}`;
+    }
+
+    return formatter(segmentValue, {
+      dataPoint,
+      segment: segment ?? null,
+      segmentIndex
+    });
   }
 
   getPercentage(value: number): string {

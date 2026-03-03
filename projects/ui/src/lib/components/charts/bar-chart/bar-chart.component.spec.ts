@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ChartDataSet, ChartItemClickEvent } from '../chart.models';
+import { ChartDataSet, ChartItemClickEvent, ChartValueFormatter } from '../chart.models';
 import { ChartAxisComponent } from '../chart-axis/chart-axis.component';
 import { BarChartComponent } from './bar-chart.component';
 
@@ -31,10 +31,12 @@ const STACKED_DATA_SET: ChartDataSet = {
 @Component({
   standalone: true,
   imports: [BarChartComponent],
-  template: `<ui-bar-chart [dataSet]="dataSet"></ui-bar-chart>`
+  template: `<ui-bar-chart [dataSet]="dataSet" [chartType]="chartType" [valueFormatter]="valueFormatter"></ui-bar-chart>`
 })
 class BarChartNoAxisHostComponent {
   dataSet = BAR_DATA_SET;
+  chartType: 'bar' | 'stacked-bar' = 'bar';
+  valueFormatter: ChartValueFormatter | null = null;
 
   @ViewChild(BarChartComponent)
   chartComponent?: BarChartComponent;
@@ -194,5 +196,56 @@ describe('BarChartComponent', () => {
 
     expect(baseColor).toBe('#3366ff');
     expect(hoverColor).not.toBe(baseColor);
+  });
+
+  it('formats top value label using valueFormatter input', async () => {
+    await TestBed.configureTestingModule({
+      imports: [BarChartNoAxisHostComponent]
+    }).compileComponents();
+
+    const fixture = TestBed.createComponent(BarChartNoAxisHostComponent);
+    fixture.detectChanges();
+
+    const chartComponent = fixture.componentInstance.chartComponent!;
+    fixture.componentInstance.valueFormatter = (value: number) => `€${value.toFixed(2).replace('.', ',')}`;
+    fixture.detectChanges();
+
+    expect(chartComponent.getDataPointValueLabel(BAR_DATA_SET.data[0])).toBe('€10,00');
+  });
+
+  it('prefers formattedValue from data point over formatter', async () => {
+    await TestBed.configureTestingModule({
+      imports: [BarChartNoAxisHostComponent]
+    }).compileComponents();
+
+    const fixture = TestBed.createComponent(BarChartNoAxisHostComponent);
+    fixture.detectChanges();
+
+    const chartComponent = fixture.componentInstance.chartComponent!;
+    const dataPoint = BAR_DATA_SET.data[0];
+    dataPoint.formattedValue = '€2.345,55';
+    fixture.componentInstance.valueFormatter = (value: number) => `€${value}`;
+    fixture.detectChanges();
+
+    expect(chartComponent.getDataPointValueLabel(dataPoint)).toBe('€2.345,55');
+
+    delete dataPoint.formattedValue;
+  });
+
+  it('formats stacked segment labels with formatter', async () => {
+    await TestBed.configureTestingModule({
+      imports: [BarChartNoAxisHostComponent]
+    }).compileComponents();
+
+    const fixture = TestBed.createComponent(BarChartNoAxisHostComponent);
+    fixture.detectChanges();
+
+    const chartComponent = fixture.componentInstance.chartComponent!;
+    fixture.componentInstance.chartType = 'stacked-bar';
+    fixture.componentInstance.dataSet = STACKED_DATA_SET;
+    fixture.componentInstance.valueFormatter = (value: number) => `${value}%`;
+    fixture.detectChanges();
+
+    expect(chartComponent.getStackSegmentValueLabel(STACKED_DATA_SET.data[0], 1)).toBe('12%');
   });
 });
