@@ -172,6 +172,32 @@
         }
       }
 
+      @if (trendLineY() !== null) {
+        <line
+          x1="0"
+          [attr.y1]="trendLineY()"
+          [attr.x2]="chartWidth()"
+          [attr.y2]="trendLineY()"
+          [attr.stroke]="defaultTextColor()"
+          stroke-width="1.5"
+          stroke-dasharray="4 4"
+          opacity="0.3"
+        />
+
+        @if (trendLineLabelText() !== null && trendLineLabelY() !== null) {
+          <text
+            [attr.x]="0"
+            [attr.y]="trendLineLabelY()"
+            text-anchor="start"
+            [attr.font-size]="trendLineLabelFontSize()"
+            [attr.fill]="defaultTextColor()"
+            opacity="0.5"
+          >
+            {{ trendLineLabelText() }}
+          </text>
+        }
+      }
+
       @if (xAxisShowAxis()) {
         <!-- X-Axis line -->
         <line

@@ -43,6 +43,8 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
   showStackValues = input<boolean>(false);
   showBarStroke = input<boolean>(false);
   valueFormatter = input<ChartValueFormatter | null>(null);
+  trendLine = input<'max' | 'avg' | 'median' | null>(null);
+  showTrendLineLabel = input<boolean>(false);
 
   /// --------------------------------------------------------------------------
   /// Outputs
@@ -152,10 +154,63 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
     return Math.max(0, dataPoint.value);
   }
 
+  private readonly dataPointTotals = computed<number[]>(() => this.dataSet().data.map((dataPoint) => this.getDataPointTotal(dataPoint)));
+
   // Maximalwert berechnen (für Skalierung)
-  maxValue = computed(() => Math.max(...this.dataSet().data.map((dataPoint) => this.getDataPointTotal(dataPoint)), 0));
+  maxValue = computed(() => Math.max(...this.dataPointTotals(), 0));
 
   scaleDenominator = computed(() => this.maxValue() > 0 ? this.maxValue() : 1);
+
+  trendLineValue = computed<number | null>(() => {
+    const trendLineType = this.trendLine();
+    if (trendLineType === null) {
+      return null;
+    }
+
+    const totals = this.dataPointTotals();
+    if (totals.length === 0) {
+      return null;
+    }
+
+    if (trendLineType === 'max') {
+      return Math.max(...totals);
+    }
+
+    if (trendLineType === 'avg') {
+      return totals.reduce((sum, value) => sum + value, 0) / totals.length;
+    }
+
+    const sortedValues = [...totals].sort((first, second) => first - second);
+    const middleIndex = Math.floor(sortedValues.length / 2);
+    if (sortedValues.length % 2 === 0) {
+      return (sortedValues[middleIndex - 1] + sortedValues[middleIndex]) / 2;
+    }
+
+    return sortedValues[middleIndex];
+  });
+
+  trendLineY = computed<number | null>(() => {
+    const value = this.trendLineValue();
+    if (value === null) {
+      return null;
+    }
+
+    return this.getBarTopY(value);
+  });
+
+  trendLineLabelText = computed<string | null>(() => {
+    if (!this.showTrendLineLabel()) {
+      return null;
+    }
+
+    const trendLineType = this.trendLine();
+    const trendY = this.trendLineValue();
+    if (trendLineType === null || trendY === null) {
+      return null;
+    }
+
+    return `${trendLineType}: ${trendY.toFixed(1)}`;
+  });
 
   getBarHeight(value: number): number {
     return (Math.max(0, value) / this.scaleDenominator()) * this.chartAreaHeight();
@@ -306,6 +361,16 @@ export class BarChartComponent extends UIBaseComponent implements AfterViewInit,
   percentageFontSize = computed(() => Math.max(8, Math.round(12 * this.textScale())));
   xLabelFontSize = computed(() => Math.max(7, Math.round(10 * this.textScale())));
   stackValueFontSize = computed(() => Math.max(7, Math.round(10 * this.textScale())));
+  trendLineLabelFontSize = computed(() => Math.max(7, Math.round(9 * this.textScale())));
+
+  trendLineLabelY = computed<number | null>(() => {
+    const trendY = this.trendLineY();
+    if (trendY === null) {
+      return null;
+    }
+
+    return Math.max(this.trendLineLabelFontSize(), trendY - 4);
+  });
 
   valueTopGap = computed(() => this.showPercentage() ? Math.max(10, 22 * this.textScale()) : Math.max(8, 10 * this.textScale()));
   percentageTopGap = computed(() => this.showValue() ? Math.max(6, 7 * this.textScale()) : Math.max(8, 10 * this.textScale()));
