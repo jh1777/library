@@ -3,6 +3,7 @@
 :host {
   display: flex;
   align-items: center;
+  min-width: 0;
   gap: 6px;
 
   &.bordered:not(.last) {
@@ -29,7 +30,8 @@
 
   .item-container {
     display: flex;
-    width: 100%;
+    flex: 1 1 0%;
+    min-width: 0;
     border-radius: $ui-border-radius;
     align-items: center;
     gap: 8px;
@@ -92,12 +94,15 @@
       &-container {
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        flex: 1 1 auto;
+        min-width: 0;
+        gap: 2px;
       }
 
       &-content {
         display: flex;
         align-items: center;
+        min-width: 0;
         gap: 8px;
       }
 

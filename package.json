@@ -6,6 +6,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --browsers ChromeHeadless",
+    "memory:new": "bash ./scripts/memory/new-memory.sh",
     "visual:test": "playwright test -c playwright.visual.config.ts",
     "visual:update": "playwright test -c playwright.visual.config.ts --update-snapshots",
     "visual:test:component": "node scripts/visual/run-component.mjs",

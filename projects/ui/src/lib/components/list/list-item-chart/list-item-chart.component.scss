@@ -1,0 +1,22 @@
+@use '../../../styles/ui.styles' as *;
+
+:host {
+  display: block;
+}
+
+.list-item-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 8px 8px 13px;
+
+  .list-item-chart-label {
+    font-size: small;
+    font-weight: 600;
+    color: $ui-standard-text-color;
+  }
+
+  .list-item-chart-content {
+    display: block;
+  }
+}

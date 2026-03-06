@@ -79,7 +79,7 @@
                 font-weight="bold"
                 [attr.fill]="getStackSegmentValueColor(d, segmentIndex)"
               >
-                {{ getStackSegmentValue(d, segmentIndex) }}
+                {{ getStackSegmentValueLabel(d, segmentIndex) }}
               </text>
             }
           }
@@ -128,7 +128,7 @@
             font-weight="bold"
             [attr.fill]="getDataPointValueColor(d)"
           >
-            {{ getDisplayedValue(d) }}
+            {{ getDataPointValueLabel(d) }}
           </text>
         }
         @if (showPercentage()) {
@@ -169,6 +169,32 @@
             stroke="black"
             opacity="0.3"
           />
+        }
+      }
+
+      @if (trendLineY() !== null) {
+        <line
+          x1="0"
+          [attr.y1]="trendLineY()"
+          [attr.x2]="chartWidth()"
+          [attr.y2]="trendLineY()"
+          [attr.stroke]="defaultTextColor()"
+          stroke-width="1.5"
+          stroke-dasharray="4 4"
+          opacity="0.3"
+        />
+
+        @if (trendLineLabelText() !== null && trendLineLabelY() !== null) {
+          <text
+            [attr.x]="0"
+            [attr.y]="trendLineLabelY()"
+            text-anchor="start"
+            [attr.font-size]="trendLineLabelFontSize()"
+            [attr.fill]="defaultTextColor()"
+            opacity="0.5"
+          >
+            {{ trendLineLabelText() }}
+          </text>
         }
       }
 

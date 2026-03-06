@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ChartDataSet, ChartItemClickEvent } from '../chart.models';
+import { ChartDataSet, ChartItemClickEvent, ChartValueFormatter } from '../chart.models';
 import { ChartAxisComponent } from '../chart-axis/chart-axis.component';
 import { BarChartComponent } from './bar-chart.component';
 
@@ -31,10 +31,14 @@ const STACKED_DATA_SET: ChartDataSet = {
 @Component({
   standalone: true,
   imports: [BarChartComponent],
-  template: `<ui-bar-chart [dataSet]="dataSet"></ui-bar-chart>`
+  template: `<ui-bar-chart [dataSet]="dataSet" [chartType]="chartType" [valueFormatter]="valueFormatter" [trendLine]="trendLine" [showTrendLineLabel]="showTrendLineLabel"></ui-bar-chart>`
 })
 class BarChartNoAxisHostComponent {
   dataSet = BAR_DATA_SET;
+  chartType: 'bar' | 'stacked-bar' = 'bar';
+  valueFormatter: ChartValueFormatter | null = null;
+  trendLine: 'max' | 'avg' | 'median' | null = null;
+  showTrendLineLabel = false;
 
   @ViewChild(BarChartComponent)
   chartComponent?: BarChartComponent;
@@ -194,5 +198,124 @@ describe('BarChartComponent', () => {
 
     expect(baseColor).toBe('#3366ff');
     expect(hoverColor).not.toBe(baseColor);
+  });
+
+  it('formats top value label using valueFormatter input', async () => {
+    await TestBed.configureTestingModule({
+      imports: [BarChartNoAxisHostComponent]
+    }).compileComponents();
+
+    const fixture = TestBed.createComponent(BarChartNoAxisHostComponent);
+    fixture.detectChanges();
+
+    const chartComponent = fixture.componentInstance.chartComponent!;
+    fixture.componentInstance.valueFormatter = (value: number) => `€${value.toFixed(2).replace('.', ',')}`;
+    fixture.detectChanges();
+
+    expect(chartComponent.getDataPointValueLabel(BAR_DATA_SET.data[0])).toBe('€10,00');
+  });
+
+  it('prefers formattedValue from data point over formatter', async () => {
+    await TestBed.configureTestingModule({
+      imports: [BarChartNoAxisHostComponent]
+    }).compileComponents();
+
+    const fixture = TestBed.createComponent(BarChartNoAxisHostComponent);
+    fixture.detectChanges();
+
+    const chartComponent = fixture.componentInstance.chartComponent!;
+    const dataPoint = BAR_DATA_SET.data[0];
+    dataPoint.formattedValue = '€2.345,55';
+    fixture.componentInstance.valueFormatter = (value: number) => `€${value}`;
+    fixture.detectChanges();
+
+    expect(chartComponent.getDataPointValueLabel(dataPoint)).toBe('€2.345,55');
+
+    delete dataPoint.formattedValue;
+  });
+
+  it('formats stacked segment labels with formatter', async () => {
+    await TestBed.configureTestingModule({
+      imports: [BarChartNoAxisHostComponent]
+    }).compileComponents();
+
+    const fixture = TestBed.createComponent(BarChartNoAxisHostComponent);
+    fixture.detectChanges();
+
+    const chartComponent = fixture.componentInstance.chartComponent!;
+    fixture.componentInstance.chartType = 'stacked-bar';
+    fixture.componentInstance.dataSet = STACKED_DATA_SET;
+    fixture.componentInstance.valueFormatter = (value: number) => `${value}%`;
+    fixture.detectChanges();
+
+    expect(chartComponent.getStackSegmentValueLabel(STACKED_DATA_SET.data[0], 1)).toBe('12%');
+  });
+
+  it('calculates trend line value for max, avg and median', async () => {
+    await TestBed.configureTestingModule({
+      imports: [BarChartNoAxisHostComponent]
+    }).compileComponents();
+
+    const fixture = TestBed.createComponent(BarChartNoAxisHostComponent);
+    fixture.detectChanges();
+
+    const chartComponent = fixture.componentInstance.chartComponent!;
+
+    fixture.componentInstance.trendLine = 'max';
+    fixture.detectChanges();
+    expect(chartComponent.trendLineValue()).toBe(20);
+
+    fixture.componentInstance.trendLine = 'avg';
+    fixture.detectChanges();
+    expect(chartComponent.trendLineValue()).toBe(15);
+
+    fixture.componentInstance.dataSet = {
+      label: 'Median Test',
+      data: [
+        { label: 'A', value: 10 },
+        { label: 'B', value: 30 },
+        { label: 'C', value: 50 }
+      ]
+    };
+    fixture.componentInstance.trendLine = 'median';
+    fixture.detectChanges();
+    expect(chartComponent.trendLineValue()).toBe(30);
+  });
+
+  it('renders trend line only when configured', async () => {
+    await TestBed.configureTestingModule({
+      imports: [BarChartNoAxisHostComponent]
+    }).compileComponents();
+
+    const fixture = TestBed.createComponent(BarChartNoAxisHostComponent);
+    fixture.detectChanges();
+
+    const queryTrendLine = (): SVGLineElement | null => fixture.nativeElement.querySelector('line[stroke-dasharray="4 4"]');
+
+    expect(queryTrendLine()).toBeNull();
+
+    fixture.componentInstance.trendLine = 'avg';
+    fixture.detectChanges();
+
+    const trendLine = queryTrendLine();
+    expect(trendLine).not.toBeNull();
+    expect(trendLine?.getAttribute('x1')).toBe('0');
+    expect(trendLine?.getAttribute('x2')).toBe('400');
+  });
+
+  it('shows trend line label when showTrendLineLabel is true', async () => {
+    await TestBed.configureTestingModule({
+      imports: [BarChartNoAxisHostComponent]
+    }).compileComponents();
+
+    const fixture = TestBed.createComponent(BarChartNoAxisHostComponent);
+    fixture.componentInstance.trendLine = 'avg';
+    fixture.componentInstance.showTrendLineLabel = true;
+    fixture.detectChanges();
+
+    const chartComponent = fixture.componentInstance.chartComponent!;
+    const labelElement: SVGTextElement | null = fixture.nativeElement.querySelector('text[text-anchor="start"]');
+    expect(labelElement).not.toBeNull();
+    expect(labelElement?.textContent?.trim()).toBe(`avg: ${chartComponent.trendLineValue()!.toFixed(1)}`);
   });
 });

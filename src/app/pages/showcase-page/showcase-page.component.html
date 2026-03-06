@@ -1026,9 +1026,12 @@
               [animations]="false"
               [showValue]="true"
               [showPercentage]="true"
+              [valueFormatter]="euroFormatter"
               [width]="600"
               [height]="260"
               [barWidthPercent]="75"
+              [trendLine]="'median'"
+              [showTrendLineLabel]="true"
               [dataSet]="barChartData()"
             >
               <uic-chart-axis location="x" [showAxis]="true" [showLabels]="true"></uic-chart-axis>
@@ -1234,7 +1237,7 @@
         <div class="code-example">
           <div class="code-label">Usage</div>
           <pre><code>&lt;!-- Basic bar chart --&gt;
-&lt;ui-bar-chart [width]="600" [height]="260" [dataSet]="barChartData"&gt;
+&lt;ui-bar-chart [width]="600" [height]="260" [valueFormatter]="euroValueFormatter" [dataSet]="barChartData"&gt;
   &lt;uic-chart-axis location="x" [showAxis]="true" [showLabels]="true"&gt;&lt;/uic-chart-axis&gt;
 &lt;/ui-bar-chart&gt;
 

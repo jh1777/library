@@ -133,3 +133,36 @@ Component keys:
 - Composition patterns: `ui-list`, `ui-side-menu`
 - Testing style baseline: `projects/ui/src/lib/components/list/list.component.spec.ts`
 - Showcase baseline: `src/app/pages/showcase-page/showcase-page.component.html`
+
+## Change Memory (Mandatory for bigger changes ONLY!)
+
+For every bigger feature request or significant change, Copilot must create a memory note. Changing 5+ files ONLY - not for small tweaks or bug fixes. This is critical for tracking the evolution of the codebase and ensuring institutional knowledge is preserved.
+
+- **Location:** `.github/memory/`
+- **Index:** Use a sequential index number with 4 digits (e.g. `0001`, `0002`, `0003`)
+- **Branch name:** Include the current git branch name in the memory filename and inside the note
+- **Required files:**
+  - Create one note file for the change
+  - Update `.github/memory/index.md` with the new entry
+
+### Memory filename format
+
+`<index>-<branch-name>-<short-title>.md`
+
+Example:
+
+`0007-feature-add-tabs-fix-focus-state.md`
+
+### Minimum memory note content
+
+Each memory note must contain:
+
+1. Index number
+2. Date
+3. Branch name
+4. Request summary
+5. Implemented changes
+6. Files touched
+7. Open follow-ups / TODOs
+
+If a change is too small to be called a feature, but still meaningful, it should still be tracked as a memory note.
