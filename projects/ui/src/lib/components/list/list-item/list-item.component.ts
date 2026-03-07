@@ -44,10 +44,32 @@ export class ListItemComponent extends UIBaseComponent implements AfterContentIn
   isHovered = signal<boolean>(false);
 
   description = input<string>();
+
+  private createUuid(): string {
+    const cryptoApi = globalThis.crypto;
+
+    if (cryptoApi?.randomUUID) {
+      return cryptoApi.randomUUID();
+    }
+
+    if (cryptoApi?.getRandomValues) {
+      const bytes = new Uint8Array(16);
+      cryptoApi.getRandomValues(bytes);
+
+      // RFC4122 version 4 UUID bits.
+      bytes[6] = (bytes[6] & 0x0f) | 0x40;
+      bytes[8] = (bytes[8] & 0x3f) | 0x80;
+
+      const hex = Array.from(bytes, byte => byte.toString(16).padStart(2, '0'));
+      return `${hex[0]}${hex[1]}${hex[2]}${hex[3]}-${hex[4]}${hex[5]}-${hex[6]}${hex[7]}-${hex[8]}${hex[9]}-${hex[10]}${hex[11]}${hex[12]}${hex[13]}${hex[14]}${hex[15]}`;
+    }
+
+    return `ui-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  }
   
   constructor() {
     super();
-    const uuid = crypto.randomUUID();
+    const uuid = this.createUuid();
     effect(() => {
       if (!this.id()) {
         this.uuid = uuid;
